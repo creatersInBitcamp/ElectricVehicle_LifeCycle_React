@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactMapGL,{Marker,Popup,NavigationControl,FlyToInterpolator} from 'react-map-gl'
-import '../assets/css/map.css'
+import '../../public/assets/css/map.css'
 import * as _ from 'underscore';
 
 const Map = () => {

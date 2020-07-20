@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import LoginTabset from './loginTabset';
-import { ArrowLeft, Sliders } from 'react-feather';
-import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'react-feather';
 import Slider from 'react-slick';
+import stats from '../src/assets/images/dashboard/stats.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -23,7 +23,7 @@ export class Login extends Component {
                                 <div className="col-md-5 p-0 card-left">
                                     <div className="card bg-primary">
                                         <div className="svg-icon">
-                                            <img className="Img-fluid" />
+                                            <img src={stats} className="Img-fluid" />
                                         </div>
                                         <Slider className="single-item" {...settings}>
                                             <div>

@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import './index.css';
+import './index.scss';
 import App from './App';
-import { ScrollContext } from 'react-router-scroll-4'
+
 
 class Root extends Component {
     render() {
         return (
-        <BrowserRouter>
-            <ScrollContext>
-                <Switch>
-                {/*<Route path={`/`} component={Login} />*/}
-                    <App />
-                </Switch>
-            </ScrollContext>
-        </BrowserRouter>
+        <div>
+            <App/>
+        </div>
         )
     }
 }

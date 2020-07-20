@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import './index.css';
-import App from './App';
+// import './index.scss';
 import { ScrollContext } from 'react-router-scroll-4'
+import Board from "./board/board";
 
 class Root extends Component {
     render() {
@@ -11,8 +11,7 @@ class Root extends Component {
         <BrowserRouter>
             <ScrollContext>
                 <Switch>
-                <Route path={`/`} component={Login} />
-                    <App />
+                <Route path={`/`} component={Board} />
                 </Switch>
             </ScrollContext>
         </BrowserRouter>
@@ -20,9 +19,4 @@ class Root extends Component {
     }
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Root/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+ReactDOM.render(<Root/>, document.getElementById('root'));

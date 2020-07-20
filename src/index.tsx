@@ -11,7 +11,7 @@ class Root extends Component {
         <BrowserRouter>
             <ScrollContext>
                 <Switch>
-                <Route path={`/`} component={Login} />
+                <Route path={`/`} />
                     <App />
                 </Switch>
             </ScrollContext>

@@ -45,7 +45,7 @@ export class Login extends Component {
     routeChange = () => {
 
     }
->>>>>>> Stashed changes
+
     render() {
         var settings = {
             dots: true,
@@ -62,11 +62,9 @@ export class Login extends Component {
                                 <div className="col-md-5 p-0 card-left">
                                     <div className="card bg-primary">
                                         <div className="svg-icon">
-<<<<<<< Updated upstream
 
-=======
                                             <img src={stats} className="Img-fluid" />
->>>>>>> Stashed changes
+
                                         </div>
                                         <Slider className="single-item" {...settings}>
                                             <div>
@@ -93,9 +91,9 @@ export class Login extends Component {
                                 <div className="col-md-7 p-0 card-right">
                                     <div className="card tab2-card">
                                         <div className="card-body">
-<<<<<<< Updated upstream
+
                                             <LoginTabset />
-=======
+
                                             <div>
                                                 <Fragment>
                                                     <Tabs>

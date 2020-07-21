@@ -1,0 +1,365 @@
+
+{
+  "header": {
+    "reportVersion": 2,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200720.175654.11616.0.001.json",
+    "dumpEventTime": "2020-07-20T17:56:54Z",
+    "dumpEventTimeStamp": "1595235414909",
+    "processId": 11616,
+    "threadId": null,
+    "cwd": "C:\\Users\\user\\ElectricVehicle_LifeCycle_Team\\ElectricVehicle_LifeCycle_React",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\JetBrains\\WebStorm 2020.1.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\js-language-service.js",
+      "-id=1595233863091",
+      "-debug-name=typescript"
+    ],
+    "nodejsVersion": "v12.16.3",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.16.3",
+      "v8": "7.8.279.23-node.35",
+      "uv": "1.34.2",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.16.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.4",
+      "http_parser": "2.9.3",
+      "openssl": "1.1.1g",
+      "cldr": "36.0",
+      "icu": "65.1",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.16.3/node-v12.16.3-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.16.3/node-v12.16.3.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.16.3/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18363",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 2529812,
+        "nice": 0,
+        "sys": 1755359,
+        "idle": 27856968,
+        "irq": 233468
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 3123500,
+        "nice": 0,
+        "sys": 1040218,
+        "idle": 27978140,
+        "irq": 20281
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 2915734,
+        "nice": 0,
+        "sys": 1359140,
+        "idle": 27866984,
+        "irq": 23312
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 2188171,
+        "nice": 0,
+        "sys": 948796,
+        "idle": 29004875,
+        "irq": 16937
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 3120203,
+        "nice": 0,
+        "sys": 1150187,
+        "idle": 27871453,
+        "irq": 19859
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 2536875,
+        "nice": 0,
+        "sys": 1316968,
+        "idle": 28288000,
+        "irq": 15140
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 2908328,
+        "nice": 0,
+        "sys": 1300859,
+        "idle": 27932656,
+        "irq": 17375
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 3209171,
+        "nice": 0,
+        "sys": 1327281,
+        "idle": 27605390,
+        "irq": 13343
+      }
+    ],
+    "host": "DESKTOP-T3DOGRQ"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff6f8c32449",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f8c369a9",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f8c35828",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f8d6d8c2",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f9589bbe",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f9571c91",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f943e1ec",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f9446171",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f943b743",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f9439db4",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f945afbd",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f91c1871",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6f99d6c4d",
+      "symbol": ""
+    },
+    {
+      "pc": "0x0000024aa8ebe33a",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 206688256,
+    "totalCommittedMemory": 206688256,
+    "usedMemory": 204902376,
+    "availableMemory": 1993018744,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 32808,
+        "used": 32808,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 1048576,
+        "committedMemory": 1048576,
+        "capacity": 1047456,
+        "used": 1047448,
+        "available": 8
+      },
+      "old_space": {
+        "memorySize": 177876992,
+        "committedMemory": 177876992,
+        "capacity": 177372696,
+        "used": 176985616,
+        "available": 387080
+      },
+      "code_space": {
+        "memorySize": 2265088,
+        "committedMemory": 2265088,
+        "capacity": 2145824,
+        "used": 2099648,
+        "available": 46176
+      },
+      "map_space": {
+        "memorySize": 1052672,
+        "committedMemory": 1052672,
+        "capacity": 1050984,
+        "used": 640000,
+        "available": 410984
+      },
+      "large_object_space": {
+        "memorySize": 24133632,
+        "committedMemory": 24133632,
+        "capacity": 24094072,
+        "used": 24094072,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 2784,
+        "used": 2784,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047456,
+        "used": 0,
+        "available": 1047456
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 43.906,
+    "kernelCpuSeconds": 6.968,
+    "cpuConsumptionPercent": 3.28008,
+    "maxRss": 886616064,
+    "pageFaults": {
+      "IORequired": 605230,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 4792,
+      "writes": 985
+    }
+  },
+  "libuv": [
+  ],
+  "workers": [
+  ],
+  "environmentVariables": {
+    "=::": "::\\",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "ANACONDA_HOME1": "C:\\Users\\user\\Anaconda3",
+    "ANACONDA_HOME2": "C:\\Users\\user\\Anaconda3\\Scripts",
+    "ANACONDA_HOME3": "C:\\Users\\user\\Anaconda3\\Library\\bin",
+    "ANACONDA_HOME4": "C:\\Users\\user\\Anaconda3\\Library\\mingw-w64\\bin",
+    "APPDATA": "C:\\Users\\user\\AppData\\Roaming",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "DESKTOP-T3DOGRQ",
+    "ComSpec": "C:\\Windows\\system32\\cmd.exe",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\user",
+    "IDEA_INITIAL_DIRECTORY": "C:\\Windows\\system32",
+    "IntelliJ IDEA Educational Edition": "C:\\Program Files\\JetBrains\\IntelliJ IDEA Educational Edition 2020.1\\bin;",
+    "JAVA_HOME": "C:\\Program Files\\Java\\jdk1.8.0_241",
+    "LOCALAPPDATA": "C:\\Users\\user\\AppData\\Local",
+    "LOGONSERVER": "\\\\DESKTOP-T3DOGRQ",
+    "MARIADB_HOME": "C:\\Program Files\\MariaDB 5.5\\bin\\",
+    "NUMBER_OF_PROCESSORS": "8",
+    "OneDrive": "C:\\Users\\user\\OneDrive",
+    "OneDriveConsumer": "C:\\Users\\user\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Java\\jdk1.8.0_241\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\MariaDB 5.5\\bin\\;C:\\Program Files\\nodejs\\;C:\\Users\\user\\Anaconda3;C:\\Users\\user\\Anaconda3\\Scripts;C:\\Users\\user\\Anaconda3\\Library\\bin;C:\\Users\\user\\Anaconda3\\Library\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Users\\user\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA Educational Edition 2020.1\\bin;C:\\Users\\user\\AppData\\Roaming\\npm;C:\\Users\\user\\AppData\\Local\\GitHubDesktop\\bin;C:\\Program Files\\JetBrains\\PyCharm 2020.1.2\\bin;;C:\\Program Files\\Bandizip\\;C:\\Users\\user\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\JetBrains\\WebStorm 2020.1.2\\bin;",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 94 Stepping 3, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "5e03",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "PyCharm": "C:\\Program Files\\JetBrains\\PyCharm 2020.1.2\\bin;",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\Windows",
+    "TEMP": "C:\\Users\\user\\AppData\\Local\\Temp",
+    "TMP": "C:\\Users\\user\\AppData\\Local\\Temp",
+    "USERDOMAIN": "DESKTOP-T3DOGRQ",
+    "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-T3DOGRQ",
+    "USERNAME": "user",
+    "USERPROFILE": "C:\\Users\\user",
+    "WebStorm": "C:\\Program Files\\JetBrains\\WebStorm 2020.1.2\\bin;",
+    "windir": "C:\\Windows"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Windows\\SYSTEM32\\ntdll.dll",
+    "C:\\Windows\\System32\\KERNEL32.DLL",
+    "C:\\Windows\\System32\\KERNELBASE.dll",
+    "C:\\Windows\\System32\\WS2_32.dll",
+    "C:\\Windows\\System32\\RPCRT4.dll",
+    "C:\\Windows\\System32\\PSAPI.DLL",
+    "C:\\Windows\\System32\\ADVAPI32.dll",
+    "C:\\Windows\\System32\\msvcrt.dll",
+    "C:\\Windows\\System32\\sechost.dll",
+    "C:\\Windows\\System32\\USER32.dll",
+    "C:\\Windows\\System32\\win32u.dll",
+    "C:\\Windows\\System32\\GDI32.dll",
+    "C:\\Windows\\System32\\gdi32full.dll",
+    "C:\\Windows\\System32\\msvcp_win.dll",
+    "C:\\Windows\\System32\\ucrtbase.dll",
+    "C:\\Windows\\System32\\CRYPT32.dll",
+    "C:\\Windows\\System32\\MSASN1.dll",
+    "C:\\Windows\\System32\\bcrypt.dll",
+    "C:\\Windows\\SYSTEM32\\dbghelp.dll",
+    "C:\\Windows\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\Windows\\SYSTEM32\\USERENV.dll",
+    "C:\\Windows\\System32\\profapi.dll",
+    "C:\\Windows\\SYSTEM32\\WINMM.dll",
+    "C:\\Windows\\SYSTEM32\\WINMMBASE.dll",
+    "C:\\Windows\\System32\\cfgmgr32.dll",
+    "C:\\Windows\\System32\\bcryptPrimitives.dll",
+    "C:\\Windows\\System32\\IMM32.DLL",
+    "C:\\Windows\\System32\\powrprof.dll",
+    "C:\\Windows\\System32\\UMPDC.dll",
+    "C:\\Windows\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\Windows\\system32\\uxtheme.dll",
+    "C:\\Windows\\System32\\combase.dll",
+    "C:\\Windows\\system32\\mswsock.dll",
+    "C:\\Windows\\System32\\kernel.appcore.dll",
+    "C:\\Windows\\System32\\NSI.dll",
+    "C:\\Windows\\SYSTEM32\\dhcpcsvc6.DLL"
+  ]
+}

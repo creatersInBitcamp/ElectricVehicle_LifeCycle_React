@@ -10,7 +10,6 @@ import '../index.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export class Login extends Component {
 
 import { ArrowLeft, Sliders } from 'react-feather';
 import Slider from 'react-slick';

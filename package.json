@@ -37,6 +37,7 @@
     "react-router-dom": "^5.2.0",
     "react-router-scroll-4": "^1.0.0-beta.2",
     "react-scripts": "3.4.1",
+    "react-simple-chatbot": "^0.6.1",
     "react-slick": "^0.24.0",
     "react-smart-data-table": "^0.7.1",
     "react-star-rating-component": "^1.4.1",
@@ -46,6 +47,7 @@
     "reactstrap": "^8.0.1",
     "scss": "^0.2.4",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^5.1.1",
     "typescript": "~3.7.2",
     "underscore": "^1.10.2"
   },

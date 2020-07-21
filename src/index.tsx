@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { ScrollContext } from 'react-router-scroll-4';
 import './index.scss';
 import Login from "./login";
-import Chatbot from "./chatbot/Chatbot";
+import CarChatbot from "./chatbot/CarChatbot";
 
 
 
@@ -12,11 +12,13 @@ class Root extends Component {
     render() {
         return (
             <BrowserRouter basename={'/'}>
+                <CarChatbot/>
                 <ScrollContext>
                     <Switch>
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Login}/>
-                        <Route exact path={`${process.env.PUBLIC_URL}/`} component={Chatbot} />
+
                     </Switch>
+
                 </ScrollContext>
             </BrowserRouter>
         )

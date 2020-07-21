@@ -1,12 +1,12 @@
 import React from 'react';
 import Login from "./TestDit/Login";
-import Chatbot from "./chatbot/Chatbot";
+import CarChatbot from "./chatbot/CarChatbot";
 
 
 function App() {
   return (
     <div className="App">
-      <Chatbot/>
+      <CarChatbot/>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 import './index.scss';
@@ -16,12 +17,15 @@ import './index.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './index.css';
 >>>>>>> parent of f8d2434... 20200720
+=======
+import './index.scss';
+>>>>>>> Stashed changes
 import App from './App';
-import { ScrollContext } from 'react-router-scroll-4'
 
 class Root extends Component {
     render() {
         return (
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
         <div>
@@ -52,6 +56,11 @@ class Root extends Component {
 >>>>>>> Stashed changes
 =======
 >>>>>>> parent of f8d2434... 20200720
+=======
+        <div>
+            <App/>
+        </div>
+>>>>>>> Stashed changes
         )
     }
 }

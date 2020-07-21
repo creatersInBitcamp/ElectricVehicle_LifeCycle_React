@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-<<<<<<< Updated upstream
+
 import LoginTabset from "./LoginTabset";
 import { ArrowLeft, Sliders } from 'react-feather';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export class Login extends Component {
-=======
+
 import { ArrowLeft, Sliders } from 'react-feather';
 import Slider from 'react-slick';
 import stats from '../assets/images/dashboard/stats.png';
@@ -172,7 +172,6 @@ export class Login extends Component {
                                                     </Tabs>
                                                 </Fragment>
                                             </div>
->>>>>>> Stashed changes
                                         </div>
                                     </div>
                                 </div>

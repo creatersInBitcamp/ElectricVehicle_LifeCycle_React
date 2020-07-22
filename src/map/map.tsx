@@ -48,7 +48,7 @@ const Map = () => {
                 transitionDuration={800}
                 transitionInterpolator = {new FlyToInterpolator()}
                 mapboxApiAccessToken={MAP_TOKEN}
-                mapStyle={"mapbox://styles/mapbox/streets-v9"}
+                mapStyle={"mapbox://styles/mapbox/streets-v11"}
                 onViewportChange={(viewport)=>{
                     setViewport(viewport);
                 }}

@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import './index.css';
-import App from './App';
 import { ScrollContext } from 'react-router-scroll-4'
+import Login from "./admin/login";
+import './index.scss';
+import * as serviceWorker from './serviceWorker';
 
 class Root extends Component {
     render() {
         return (
-        <BrowserRouter>
+        <BrowserRouter basename={'/'}>
             <ScrollContext>
                 <Switch>
-                <Route path={`/`} component={Login} />
-                    <App />
+                <Route exact path={`${process.env.PUBLIC_URL}/`} component={Login} />
                 </Switch>
             </ScrollContext>
         </BrowserRouter>
@@ -20,9 +20,6 @@ class Root extends Component {
     }
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Root/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+ReactDOM.render(<Root/>, document.getElementById('root'));
+
+serviceWorker.unregister();

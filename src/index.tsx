@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { ScrollContext } from 'react-router-scroll-4'
 import Login from "./admin/login";
-import './index.scss';
 import * as serviceWorker from './serviceWorker';
 
 class Root extends Component {

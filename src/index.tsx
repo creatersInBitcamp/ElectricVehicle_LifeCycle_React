@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { ScrollContext } from 'react-router-scroll-4'
-import Login from "./admin/login";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ScrollContext } from 'react-router-scroll-4';
 import './index.scss';
-import * as serviceWorker from './serviceWorker';
+import Login from "./login";
+import Map from "./map/map"
+
 
 class Root extends Component {
     render() {
         return (
-        <BrowserRouter basename={'/'}>
-            <ScrollContext>
-                <Switch>
-                <Route exact path={`${process.env.PUBLIC_URL}/`} component={Login} />
-                </Switch>
-            </ScrollContext>
-        </BrowserRouter>
+            <BrowserRouter basename={'/'}>
+                <ScrollContext>
+                    <Switch>
+                        <Route exact path={`${process.env.PUBLIC_URL}/`} component={Map} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login} />
+                    </Switch>
+                </ScrollContext>
+            </BrowserRouter>
         )
     }
 }
 
-ReactDOM.render(<Root/>, document.getElementById('root'));
-
-serviceWorker.unregister();
+ReactDOM.render(
+  <React.StrictMode>
+    <Root/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ScrollContext } from 'react-router-scroll-4';
 import './index.scss';
 import Login from "./login";
+import Map from "./map/map"
 
 
 class Root extends Component {
@@ -12,7 +13,8 @@ class Root extends Component {
             <BrowserRouter basename={'/'}>
                 <ScrollContext>
                     <Switch>
-                        <Route exact path={`${process.env.PUBLIC_URL}/`} component={Login} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/`} component={Map} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login} />
                     </Switch>
                 </ScrollContext>
             </BrowserRouter>

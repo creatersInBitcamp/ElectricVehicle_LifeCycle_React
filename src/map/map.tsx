@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactMapGL,{Marker,Popup,NavigationControl,FlyToInterpolator} from 'react-map-gl'
-import '../../public/assets/css/map.css'
+import '../assets/css/map.css'
 import * as _ from 'underscore';
 
 const Map = () => {
@@ -48,7 +48,7 @@ const Map = () => {
                 transitionDuration={800}
                 transitionInterpolator = {new FlyToInterpolator()}
                 mapboxApiAccessToken={MAP_TOKEN}
-                mapStyle={"mapbox://styles/mapbox/streets-v11"}
+                mapStyle={"mapbox://styles/mapbox/streets-v9"}
                 onViewportChange={(viewport)=>{
                     setViewport(viewport);
                 }}

@@ -22,8 +22,8 @@ $slick-opacity-on-hover: 1 !default;
 $slick-opacity-not-active: 0.25 !default;
 
 @function slick-image-url($url) {
-    @if function-exists(image-url) {
-        @return image-url($url);
+    @if function-exists(url) {
+        @return url($url);
     }
     @else {
         @return url($slick-loader-path + $url);
@@ -31,8 +31,8 @@ $slick-opacity-not-active: 0.25 !default;
 }
 
 @function slick-font-url($url) {
-    @if function-exists(font-url) {
-        @return font-url($url);
+    @if function-exists(url) {
+        @return url($url);
     }
     @else {
         @return url($slick-font-path + $url);
@@ -43,7 +43,7 @@ $slick-opacity-not-active: 0.25 !default;
 
 .slick-list {
     .slick-loading & {
-        background: #fff slick-image-url("../images/ajax-loader.gif") center center no-repeat;
+        background: #fff slick-image-url("../images/ajax-loader.gif") center no-repeat;
     }
 }
 

@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
-import MapboxLanguage from '@mapbox/mapbox-gl-language'
+import MapboxLanguage,{setLayoutProperty} from '@mapbox/mapbox-gl-language'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoianVuaHdhIiwiYSI6ImNrY3Q4NG5xNDE3bDIyeXBnZzg0NzZ0YzYifQ.c4ILQswrvoXNzakCMy82Hg';
 
@@ -22,10 +22,8 @@ class Map extends React.Component  {
         });
 
         //Change Language
-        mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.0/mapbox-gl-rtl-text.js');
-        map.addControl(new MapboxLanguage({
-            defaultLanguage: 'ko'
-        }));
+        mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v0.10.0/mapbox-gl-language.js');
+        map.addControl(new MapboxLanguage({ defaultLanguage: "ko"}));
 
         // Creates new directions control instance
         const directions = new MapboxDirections({

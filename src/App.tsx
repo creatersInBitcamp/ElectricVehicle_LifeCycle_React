@@ -17,7 +17,7 @@ class App extends Component {
                 {this.props.children}
                 <FooterTwo logoName={'logo.png'}/>
 
-                <ThemeSettings />
+                {/*<ThemeSettings />*/}
 
             </div>
         );

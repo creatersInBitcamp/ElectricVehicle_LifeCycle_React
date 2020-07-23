@@ -4,7 +4,7 @@ import ReactMapGL,{Marker,Popup,NavigationControl,FlyToInterpolator} from 'react
 import '../assets/css/map.css'
 import * as _ from 'underscore';
 
-const Map = () => {
+const MapTs = () => {
     const MAP_TOKEN = 'pk.eyJ1IjoianVuaHdhIiwiYSI6ImNrY3Q4NG5xNDE3bDIyeXBnZzg0NzZ0YzYifQ.c4ILQswrvoXNzakCMy82Hg';
 
     const[viewport,setViewport] = useState({
@@ -85,4 +85,4 @@ const Map = () => {
     );
 };
 
-export default Map;
+export default MapTs;

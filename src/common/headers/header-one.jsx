@@ -6,6 +6,7 @@ import Pace from 'react-pace-progress'
 import store from "../../atomic/store";
 import NavBar from "./common/navbar";
 import SideBar from "./common/sidebar";
+import CartContainer from "../../cart/CartContainer";
 import TopBar from "./common/topbar";
 import LogoImage from "./common/logo";
 import {changeCurrency} from '../../atomic/actions'
@@ -129,6 +130,8 @@ class HeaderOne extends Component {
 															</ul>
 														</div>
 													</li>
+													{/*Header Cart Component */}
+													<CartContainer/>
 												</ul>
 											</div>
 										</div>

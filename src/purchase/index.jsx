@@ -9,7 +9,6 @@ import Breadcrumb from "../common/breadcrumb";
 import {removeFromWishlist} from '../atomic/actions'
 import {getCartTotal} from "../atomic/services";
 
-
 class checkOut extends Component {
 
     constructor (props) {
@@ -84,7 +83,30 @@ class checkOut extends Component {
     }
 
     render (){
+        const {cartItems, symbol, total} = this.props;
 
+        // Paypal Integration
+        const onSuccess = (payment) => {
+            console.log("The payment was succeeded!", payment);
+            this.props.history.push({
+                pathname: '/order-success',
+                    state: { payment: payment, items: cartItems, orderTotal: total, symbol: symbol }
+            })
+
+        }
+
+        const onCancel = (data) => {
+            console.log('The payment was cancelled!', data);
+        }
+
+        const onError = (err) => {
+            console.log("Error!", err);
+        }
+
+        const client = {
+            sandbox:    'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
+            production: 'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
+        }
 
 
         return (
@@ -286,9 +308,6 @@ class checkOut extends Component {
         )
     }
 }
-
-
-
 const mapStateToProps = (state) => ({
     cartItems: state.cartList.cart,
     symbol: state.data.symbol,

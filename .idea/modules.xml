@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/team_electric_vehicle_life_cycle_react.iml" filepath="$PROJECT_DIR$/.idea/team_electric_vehicle_life_cycle_react.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ElectricVehicle_LifeCycle_React.iml" filepath="$PROJECT_DIR$/.idea/ElectricVehicle_LifeCycle_React.iml" />
     </modules>
   </component>
 </project>

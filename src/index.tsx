@@ -32,7 +32,7 @@ import CollectionLeftSidebar from "./newSales/collection-left-sidebar";
 //Admin
 import AdminLogin from "./admin/login";
 import AdminDashboard from "./admin/dashboard";
-import App from "./admin/app";
+// import App from "./admin/app";
 
 import Details from "./board/details"
 import RightSide from './board/right-sidebar'
@@ -45,6 +45,7 @@ import Register from './user/register'
 import Search from './search/search'
 
 import Compare from "./comparison";
+import BoardMain from "./board/BoardMain";
 
 class Root extends Component {
     render() {
@@ -76,6 +77,7 @@ class Root extends Component {
 
                                     <Route path={`${process.env.PUBLIC_URL}/blog/details`} component={Details}/>
                                     <Route path={`${process.env.PUBLIC_URL}/blog/right-sidebar`} component={RightSide}/>
+                                    <Route path={`${process.env.PUBLIC_URL}/blog/board-main`} component={BoardMain}/>
 
 
                                     <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishList}/>

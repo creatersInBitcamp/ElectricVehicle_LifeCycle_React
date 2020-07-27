@@ -26,7 +26,44 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7391774a-aa25-43ef-bbcf-6fbde24c4ada" name="Default Changelist" comment="" />
+    <list default="true" id="7391774a-aa25-43ef-bbcf-6fbde24c4ada" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/BoardDetail.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/BoardMain.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/BoardProfile.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/board.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/boardDetail.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/boardMain.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/boardNewPost.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/boardProfile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/common.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/detail-page.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/new_post.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/profile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/reset.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/details.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/GIF/follow.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/GIF/like-bookmark.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/GIF/login.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/GIF/post.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/GIF/tag.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/background01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/background02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/bear.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/img_section/img01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/img_section/img02.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/img_section/img03.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/img_section/img04.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/img_section/img05.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/img_section/img06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/img_section/img07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/instagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/thumb.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/thumb02.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/imgs/thumb03.jpg" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,12 +96,23 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="C:\Users\UserK\WebstormProjects\ElectricVehicle_LifeCycle_React\node_modules\typescript\lib" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
@@ -81,6 +129,8 @@
       <option name="presentableId" value="Default" />
       <updated>1595604141022</updated>
       <workItem from="1595604147885" duration="598000" />
+      <workItem from="1595841367141" duration="1384000" />
+      <workItem from="1595842958355" duration="569000" />
     </task>
     <servers />
   </component>
@@ -112,29 +162,34 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="420" y="197" width="1082" height="686" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595839266290">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="1786" y="-121" width="1082" height="686" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595842455507">
+      <screen x="1366" y="-311" width="1920" height="1040" />
     </state>
+    <state x="1786" y="-121" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/1366.-311.1920.1040@1366.-311.1920.1040" timestamp="1595842455507" />
     <state x="420" y="197" width="1082" height="686" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1595839266290" />
-    <state width="1894" height="287" key="GridCell.Tab.0.bottom" timestamp="1595839245317">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1899" height="178" key="GridCell.Tab.0.bottom" timestamp="1595843200169">
+      <screen x="1366" y="-311" width="1920" height="1040" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595604758285" />
+    <state width="1899" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-311.1920.1040@1366.-311.1920.1040" timestamp="1595843200169" />
+    <state width="671" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595841406061" />
     <state width="1894" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245317" />
-    <state width="1894" height="287" key="GridCell.Tab.0.center" timestamp="1595839245316">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1899" height="178" key="GridCell.Tab.0.center" timestamp="1595843200168">
+      <screen x="1366" y="-311" width="1920" height="1040" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595604758285" />
+    <state width="1899" height="178" key="GridCell.Tab.0.center/0.0.1366.728/1366.-311.1920.1040@1366.-311.1920.1040" timestamp="1595843200168" />
+    <state width="671" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595841406061" />
     <state width="1894" height="287" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245316" />
-    <state width="1894" height="287" key="GridCell.Tab.0.left" timestamp="1595839245316">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1899" height="178" key="GridCell.Tab.0.left" timestamp="1595843200168">
+      <screen x="1366" y="-311" width="1920" height="1040" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595604758284" />
+    <state width="1899" height="178" key="GridCell.Tab.0.left/0.0.1366.728/1366.-311.1920.1040@1366.-311.1920.1040" timestamp="1595843200168" />
+    <state width="671" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595841406046" />
     <state width="1894" height="287" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245316" />
-    <state width="1894" height="287" key="GridCell.Tab.0.right" timestamp="1595839245317">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1899" height="178" key="GridCell.Tab.0.right" timestamp="1595843200168">
+      <screen x="1366" y="-311" width="1920" height="1040" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595604758285" />
+    <state width="1899" height="178" key="GridCell.Tab.0.right/0.0.1366.728/1366.-311.1920.1040@1366.-311.1920.1040" timestamp="1595843200168" />
+    <state width="671" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595841406061" />
     <state width="1894" height="287" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245317" />
   </component>
 </project>

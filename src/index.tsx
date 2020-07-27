@@ -35,7 +35,6 @@ import AdminDashboard from "./admin/dashboard";
 // import App from "./admin/app";
 
 import Details from "./board/details"
-import RightSide from './board/right-sidebar'
 
 //user
 import Login from './user/login'
@@ -80,7 +79,6 @@ class Root extends Component {
 
 
                                     <Route path={`${process.env.PUBLIC_URL}/blog/details`} component={Details}/>
-                                    <Route path={`${process.env.PUBLIC_URL}/blog/right-sidebar`} component={RightSide}/>
                                     <Route path={`${process.env.PUBLIC_URL}/blog/board-main`} component={BoardMain}/>
                                     <Route path={`${process.env.PUBLIC_URL}/blog/new-post`} component={NewPost}/>
                                     <Route path={`${process.env.PUBLIC_URL}/blog/board-profile`} component={BoardProfile}/>

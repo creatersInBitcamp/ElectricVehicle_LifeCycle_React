@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import './css/boardMain.css'
 import img from './imgs/img_section/img01.jpg'
+import profile from './imgs/thumb.jpeg'
+import profile2 from './imgs/thumb02.jpg'
 
 const BoardMain = () => {
 
@@ -14,7 +16,7 @@ const BoardMain = () => {
                                 <header className="top">
                                     <div className="user_container">
                                         <div className="profile_img">
-                                            <img src="imgs/thumb.jpeg" alt="프로필이미지"/>
+                                            <img src={profile} alt="프로필이미지"/>
                                         </div>
                                         <div className="user_name">
                                             <div className="nick_name m_text">KindTiger</div>
@@ -83,7 +85,7 @@ const BoardMain = () => {
                             <Link to={`${process.env.PUBLIC_URL}/blog/board-detail`}><button>DETAIL</button></Link>
                             <div className="user_profile">
                                 <div className="profile_thumb">
-                                    <img src="imgs/thumb.jpeg" alt="프로필사진"/>
+                                    <img src={profile} alt="프로필사진"/>
                                 </div>
                                 <div className="detail">
                                     <div className="id m_text">KindTiger</div>
@@ -100,43 +102,7 @@ const BoardMain = () => {
                                 <div className="scroll_inner">
                                     <div className="thumb_user">
                                         <div className="profile_thumb">
-                                            <img src="imgs/thumb02.jpg" alt="프로필사진"/>
-                                        </div>
-                                        <div className="detail">
-                                            <div className="id">kind_tigerrrr</div>
-                                            <div className="time">1시간 전</div>
-                                        </div>
-                                    </div>
-                                    <div className="thumb_user">
-                                        <div className="profile_thumb">
-                                            <img src="imgs/thumb02.jpg" alt="프로필사진"/>
-                                        </div>
-                                        <div className="detail">
-                                            <div className="id">kind_tigerrrr</div>
-                                            <div className="time">1시간 전</div>
-                                        </div>
-                                    </div>
-                                    <div className="thumb_user">
-                                        <div className="profile_thumb">
-                                            <img src="imgs/thumb02.jpg" alt="프로필사진"/>
-                                        </div>
-                                        <div className="detail">
-                                            <div className="id">kind_tigerrrr</div>
-                                            <div className="time">1시간 전</div>
-                                        </div>
-                                    </div>
-                                    <div className="thumb_user">
-                                        <div className="profile_thumb">
-                                            <img src="imgs/thumb02.jpg" alt="프로필사진"/>
-                                        </div>
-                                        <div className="detail">
-                                            <div className="id">kind_tigerrrr</div>
-                                            <div className="time">1시간 전</div>
-                                        </div>
-                                    </div>
-                                    <div className="thumb_user">
-                                        <div className="profile_thumb">
-                                            <img src="imgs/thumb02.jpg" alt="프로필사진"/>
+                                            <img src={profile2} alt="프로필사진"/>
                                         </div>
                                         <div className="detail">
                                             <div className="id">kind_tigerrrr</div>
@@ -154,16 +120,7 @@ const BoardMain = () => {
 
                                 <div className="thumb_user">
                                     <div className="profile_thumb">
-                                        <img src="imgs/thumb02.jpg" alt="프로필사진"/>
-                                    </div>
-                                    <div className="detail">
-                                        <div className="id">kind_tigerrrr</div>
-                                        <div className="time">1시간 전</div>
-                                    </div>
-                                </div>
-                                <div className="thumb_user">
-                                    <div className="profile_thumb">
-                                        <img src="imgs/thumb02.jpg" alt="프로필사진"/>
+                                        <img src={profile2} alt="프로필사진"/>
                                     </div>
                                     <div className="detail">
                                         <div className="id">kind_tigerrrr</div>

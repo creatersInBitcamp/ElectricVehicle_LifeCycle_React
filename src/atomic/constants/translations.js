@@ -109,7 +109,8 @@ var module = {
             map : 'map',
             board : 'board',
             admin : 'admin',
-            chatbot : 'chatbot'
+            chatbot : 'chatbot',
+            blog_board_main:'board main',
         }
     },
     ko: {
@@ -222,7 +223,8 @@ var module = {
             map : '지도',
             board : '게시판',
             admin : '관리자',
-            chatbot : '챗봇'
+            chatbot : '챗봇',
+            blog_board_main: '인스타그램형 게시판'
         }
     }
 

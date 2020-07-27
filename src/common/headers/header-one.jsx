@@ -7,7 +7,7 @@ import store from "../../atomic/store";
 import NavBar from "./common/navbar";
 import SideBar from "./common/sidebar";
 import CartContainer from "../../cart/CartContainer";
-import TopBar from "./common/topbar";
+// import TopBar from "./common/topbar";
 import LogoImage from "./common/logo";
 import {changeCurrency} from '../../atomic/actions'
 import {connect} from "react-redux";
@@ -85,7 +85,7 @@ class HeaderOne extends Component {
 					{this.state.isLoading ? <Pace color="#27ae60"/> : null}
 					<div className="mobile-fix-option"/>
 					{/*Top Header Component*/}
-					<TopBar/>
+					{/*<TopBar/>*/}
 
 					<div className="container">
 						<div className="row">

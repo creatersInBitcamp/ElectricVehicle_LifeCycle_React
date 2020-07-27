@@ -79,7 +79,7 @@ class FooterTwo extends Component {
                             <div className="row">
                                 <div className="col-xl-6 col-md-6 col-sm-12">
                                     <div className="footer-end">
-                                        <p><i className="fa fa-copyright" aria-hidden="true"></i> 2018-19 themeforest
+                                        <p><i className="fa fa-copyright" aria-hidden="true"/> 2018-19 themeforest
                                             powered by pixelstrap</p>
                                     </div>
                                 </div>

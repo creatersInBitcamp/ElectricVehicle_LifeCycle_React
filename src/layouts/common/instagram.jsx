@@ -52,7 +52,7 @@ class Instagram extends Component {
                                                 <div className="instagram-box">
                                                     <img src={`${pic.images.standard_resolution.url}`} alt="Avatar" className="w-100" />
                                                     <div className="overlay">
-                                                        <i className="fa fa-instagram" aria-hidden="true"></i>
+                                                        <i className="fa fa-instagram" aria-hidden="true"/>
                                                     </div>
                                                 </div>
                                             </a>

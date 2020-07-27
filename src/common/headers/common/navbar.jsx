@@ -129,6 +129,7 @@ class NavBar extends Component {
                                 <ul className="nav-submenu">
                                     <li><Link to={`${process.env.PUBLIC_URL}/blog/right-sidebar`} >{translate('blog_right_sidebar')}</Link></li>
                                     <li><Link to={`${process.env.PUBLIC_URL}/blog/details`} >{translate('blog_detail')}</Link></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/blog/board-main`} >{translate('blog_board_main')}</Link></li>
                                 </ul>
                             </li>
                             <li className="mega-menu">

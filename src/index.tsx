@@ -12,7 +12,7 @@ import translations from './atomic/constants/translations'
 import { getAllProducts } from './atomic/actions'
 
 // Layouts
-import Fashion from './layouts/fashion/main';
+// import Fashion from './layouts/fashion/main';
 
 // Features
 import Layout from './App'
@@ -46,6 +46,10 @@ import Search from './search/search'
 
 import Compare from "./comparison";
 import BoardMain from "./board/BoardMain";
+import BoardProfile from "./board/BoardProfile";
+import BoardDetail from "./board/BoardDetail";
+// @ts-ignore
+import NewPost from "./board/NewPost";
 
 class Root extends Component {
     render() {
@@ -59,7 +63,7 @@ class Root extends Component {
                             <Switch>
                                 <Layout>
                                     {/*Routes For Layouts*/}
-                                    <Route exact path={`${process.env.PUBLIC_URL}/`} component={Fashion}/>
+                                    <Route exact path={`${process.env.PUBLIC_URL}/`} component={BoardMain}/>
 
                                     <Route exact path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
                                     <Route exact path={`${process.env.PUBLIC_URL}/map`} component={Map} />
@@ -78,6 +82,9 @@ class Root extends Component {
                                     <Route path={`${process.env.PUBLIC_URL}/blog/details`} component={Details}/>
                                     <Route path={`${process.env.PUBLIC_URL}/blog/right-sidebar`} component={RightSide}/>
                                     <Route path={`${process.env.PUBLIC_URL}/blog/board-main`} component={BoardMain}/>
+                                    <Route path={`${process.env.PUBLIC_URL}/blog/new-post`} component={NewPost}/>
+                                    <Route path={`${process.env.PUBLIC_URL}/blog/board-profile`} component={BoardProfile}/>
+                                    <Route path={`${process.env.PUBLIC_URL}/blog/board-detail`} component={BoardDetail}/>
 
 
                                     <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishList}/>

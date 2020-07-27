@@ -187,7 +187,7 @@ class BlogDetails extends Component {
                                         <div className="col-md-12">
                                             <label htmlFor="exampleFormControlTextarea1">Comment</label>
                                             <textarea className="form-control" placeholder="Write Your Comment"
-                                                      id="exampleFormControlTextarea1" rows="6"></textarea>
+                                                      id="exampleFormControlTextarea1" rows="6"/>
                                         </div>
                                         <div className="col-md-12">
                                             <button className="btn btn-solid" type="submit">Post Comment</button>

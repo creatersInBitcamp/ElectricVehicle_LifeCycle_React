@@ -20,7 +20,7 @@ import Cart from './cart'
 import wishList from './bookmark'
 
 // Extra Pages
-import MapTs from "./map/mapTs"
+import MapBox from "./map/mapBox"
 import Contact from "./map/contact";
 import Map from "./map/map"
 
@@ -29,6 +29,8 @@ import Login from './user/login'
 import Register from './user/register'
 
 import Search from './search/search'
+import ChargingStationMap from "./map/charging-station-map";
+import Service from './map/service'
 
 class Root extends Component {
     render() {
@@ -42,12 +44,12 @@ class Root extends Component {
                             <Switch>
                                 <Layout>
                                     {/*Routes For Layouts*/}
-                                    <Route exact path={`${process.env.PUBLIC_URL}/`} component={Map}/>
+                                    <Route exact path={`${process.env.PUBLIC_URL}/`} component={Service}/>
 
                                     <Route exact path={`${process.env.PUBLIC_URL}/main`} component={Fashion}/>
 
                                     <Route exact path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
-                                    <Route exact path={`${process.env.PUBLIC_URL}/map`} component={Map} />
+                                    <Route exact path={`${process.env.PUBLIC_URL}/map`} component={ChargingStationMap} />
 
                                     <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
 

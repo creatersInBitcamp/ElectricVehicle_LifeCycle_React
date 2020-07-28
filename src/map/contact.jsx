@@ -9,7 +9,6 @@ class Contact extends Component {
 
     render (){
 
-
         return (
             <div>
                 <Breadcrumb title={'Contact Us'}/>

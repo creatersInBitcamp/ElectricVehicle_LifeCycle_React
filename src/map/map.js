@@ -8,17 +8,17 @@ import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 import MapboxLanguage,{setLayoutProperty} from '@mapbox/mapbox-gl-language'
-
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 mapboxgl.accessToken = 'pk.eyJ1IjoianVuaHdhIiwiYSI6ImNrY3Q4NG5xNDE3bDIyeXBnZzg0NzZ0YzYifQ.c4ILQswrvoXNzakCMy82Hg';
 
 class Map extends React.Component  {
     componentDidMount() {
         // Creates new map instance
         const map = new mapboxgl.Map({
-            container: this.mapWrapper,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [126.886020,37.553818],
-            zoom:13
+            container: this.mapWrapper, // Container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // Map style to use
+            center: [126.886020,37.553818], // Starting position [lng, lat]
+            zoom:13 // Starting zoom level
         });
 
         //Change Language
@@ -114,14 +114,54 @@ class Map extends React.Component  {
 
             // make a marker for each feature and add to the map
             new mapboxgl.Marker(el)
-                .setLngLat(marker.geometry.coordinates)
+                .setLngLat(marker.geometry.coordinates) //Marker [lng, lat] coordinates
                 .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-                    .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
-                .addTo(map);
+                .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+                .addTo(map); // Add the marker to the map
         });
 
         // Add zoom and rotation controls to the map.
         map.addControl(new mapboxgl.NavigationControl());
+
+        //Add the geocoder
+        var geocoder = new MapboxGeocoder({ // Initialize the geocoder
+            accessToken: mapboxgl.accessToken, // Set the access token
+            mapboxgl: mapboxgl, // Set the mapbox-gl instance
+            marker: false, // Do not use the default marker style
+            placeholder: '충전소를 검색해주세요.'
+        });
+
+        // Add the geocoder to the map
+        map.addControl(geocoder);
+
+        // After the map style has loaded on the page,
+        // add a source layer and default styling for a single point
+        map.on('load', function() {
+            map.addSource('single-point', {
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: []
+                }
+            });
+
+            map.addLayer({
+                id: 'point',
+                source: 'single-point',
+                type: 'circle',
+                paint: {
+                    'circle-radius': 10,
+                    'circle-color': '#448ee4'
+                }
+            });
+
+            // Listen for the `result` event from the Geocoder
+            // `result` event is triggered when a user makes a selection
+            // Add a marker at the result's coordinates
+            geocoder.on('result', function(ev) {
+                map.getSource('single-point').setData(ev.result.geometry);
+            });
+        });
     }
 
     render() {

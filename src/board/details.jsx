@@ -25,8 +25,8 @@ class BlogDetails extends Component {
                                 <ul className="post-social">
                                     <li>25 January 2018</li>
                                     <li>Posted By : Admin Admin</li>
-                                    <li><i className="fa fa-heart"></i> 5 Hits</li>
-                                    <li><i className="fa fa-comments"></i> 10 Comment</li>
+                                    <li><i className="fa fa-heart"/> 5 Hits</li>
+                                    <li><i className="fa fa-comments"/> 10 Comment</li>
                                 </ul>
                                 <div class="row">
                                     <div class="col-sm-4">

@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import Slider from 'react-slick';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom'
 
 import {getBestSeller} from "../atomic/services";
 import {addToCart, addToWishlist, addToCompare} from "../atomic/actions";

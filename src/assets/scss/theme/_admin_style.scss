@@ -1,5 +1,5 @@
 /**=====================
-    Admin CSS Start
+    A CSS Start
 ==========================**/
 .card-left {
   z-index: 1;
@@ -95,7 +95,7 @@
     &.slick-current {
       div {
         .item {
-           border: 1px solid $primary-color;
+          border: 1px solid $primary-color;
         }
       }
     }
@@ -232,7 +232,7 @@ a {
   position: relative;
   i{
     font-size: 50px;
-  color: $theme-deafult;
+    color: $theme-deafult;
   }
   .dzu-input{
     border: 1px solid #ddd;
@@ -366,8 +366,8 @@ a {
         margin-bottom: 0;
       }
       @each $shape-name, $shape-color in (primary, $primary-color), (secondary, $secondary-color),
-        (success, $success-color), (danger, $danger-color), (info, $info-color), (light, $light-color),
-        (dark, $dark-color), (warning, $warning-color)
+              (success, $success-color), (danger, $danger-color), (info, $info-color), (light, $light-color),
+              (dark, $dark-color), (warning, $warning-color)
       {
         .order-shape-#{$shape-name} {
           background-color: $shape-color;
@@ -379,8 +379,8 @@ a {
       }
     }
     @each $order-name, $order-color in (primary, $primary-color), (secondary, $secondary-color),
-      (success, $success-color), (danger, $danger-color), (info, $info-color), (light, $light-color),
-      (dark, $dark-color), (warning, $warning-color)
+            (success, $success-color), (danger, $danger-color), (info, $info-color), (light, $light-color),
+            (dark, $dark-color), (warning, $warning-color)
     {
       .order-color-#{$order-name} {
         background-color: $order-color;
@@ -509,7 +509,7 @@ a {
     max-width: 900px;
     .bg-primary{
       padding: 50px;
-      background-image: url(../../../assets/images/dashboard/login-bg.png);
+      background-image: url("/assets/images/dashboard/login-bg.png");
       background-position: center;
       box-shadow: 1px 5px 24px 0 rgba(255, 128, 132, 0.8);
     }
@@ -941,9 +941,9 @@ a {
     margin-bottom: 30px;
     border-bottom: 1px solid $white-4;
     li {
-        svg {
-          width: 18px;
-          vertical-align: middle;
+      svg {
+        width: 18px;
+        vertical-align: middle;
       }
     }
   }
@@ -1152,7 +1152,7 @@ a {
   }
 }
 /**=====================
-  Admin CSS Ends
+  A CSS Ends
 ==========================**/
 
 /**=====================
@@ -1207,7 +1207,7 @@ a {
 
 // forms //
 @each $btn-name, $btn-color in (primary, $primary-color), (secondary, $secondary-color), (success, $success-color),
-  (danger, $danger-color), (info, $info-color), (light, $light-color), (dark, $dark-color), (warning, $warning-color)
+        (danger, $danger-color), (info, $info-color), (light, $light-color), (dark, $dark-color), (warning, $warning-color)
 {
   .input-air-#{$btn-name} {
     box-shadow: 0 3px 5px 1px rgba(88, 103, 221, 0.15) !important;
@@ -1219,7 +1219,7 @@ a {
 
 //input background //
 @each $btn-name, $btn-color in (primary, $primary-color), (secondary, $secondary-color), (success, $success-color),
-  (danger, $danger-color), (info, $info-color), (light, $light-color), (dark, $dark-color), (warning, $warning-color)
+        (danger, $danger-color), (info, $info-color), (light, $light-color), (dark, $dark-color), (warning, $warning-color)
 {
   .form-bg-#{$btn-name} {
     background: $btn-color;
@@ -1265,12 +1265,12 @@ a {
     transition: 1.5s;
     background-position: right center;
     background-image: linear-gradient(
-      to right,
-      lighten($primary-color, 8%),
-      0%,
-      darken($primary-color, 8%),
-      100%,
-      $white
+                    to right,
+                    lighten($primary-color, 8%),
+                    0%,
+                    darken($primary-color, 8%),
+                    100%,
+                    $white
     ) !important;
   }
 }
@@ -1284,12 +1284,12 @@ a {
     transition: 1.5s;
     background-position: right center;
     background-image: linear-gradient(
-      to right,
-      lighten($secondary-color, 8%),
-      0%,
-      darken($secondary-color, 8%),
-      100%,
-      $white
+                    to right,
+                    lighten($secondary-color, 8%),
+                    0%,
+                    darken($secondary-color, 8%),
+                    100%,
+                    $white
     ) !important;
   }
 }
@@ -1303,12 +1303,12 @@ a {
     transition: 1.5s;
     background-position: right center;
     background-image: linear-gradient(
-      to right,
-      lighten($success-color, 8%),
-      0%,
-      darken($success-color, 8%),
-      100%,
-      $white
+                    to right,
+                    lighten($success-color, 8%),
+                    0%,
+                    darken($success-color, 8%),
+                    100%,
+                    $white
     ) !important;
   }
 }
@@ -1322,12 +1322,12 @@ a {
     transition: 1.5s;
     background-position: right center;
     background-image: linear-gradient(
-      to right,
-      lighten($danger-color, 8%),
-      0%,
-      darken($danger-color, 8%),
-      100%,
-      $white
+                    to right,
+                    lighten($danger-color, 8%),
+                    0%,
+                    darken($danger-color, 8%),
+                    100%,
+                    $white
     ) !important;
   }
 }
@@ -1341,12 +1341,12 @@ a {
     transition: 1.5s;
     background-position: right center;
     background-image: linear-gradient(
-      to right,
-      lighten($warning-color, 8%),
-      0%,
-      darken($warning-color, 8%),
-      100%,
-      $white
+                    to right,
+                    lighten($warning-color, 8%),
+                    0%,
+                    darken($warning-color, 8%),
+                    100%,
+                    $white
     ) !important;
   }
 }
@@ -1360,12 +1360,12 @@ a {
     transition: 1.5s;
     background-position: right center;
     background-image: linear-gradient(
-      to right,
-      lighten($info-color, 8%),
-      0%,
-      darken($info-color, 8%),
-      100%,
-      $white
+                    to right,
+                    lighten($info-color, 8%),
+                    0%,
+                    darken($info-color, 8%),
+                    100%,
+                    $white
     ) !important;
   }
 }
@@ -1382,12 +1382,12 @@ a {
     transition: 1.5s;
     background-position: right center;
     background-image: linear-gradient(
-      to right,
-      lighten($light-color, 8%),
-      0%,
-      darken($light-color, 8%),
-      100%,
-      $white
+                    to right,
+                    lighten($light-color, 8%),
+                    0%,
+                    darken($light-color, 8%),
+                    100%,
+                    $white
     ) !important;
   }
 }
@@ -1401,12 +1401,12 @@ a {
     transition: 1.5s;
     background-position: right center;
     background-image: linear-gradient(
-      to right,
-      lighten($dark-color, 8%),
-      0%,
-      darken($dark-color, 8%),
-      100%,
-      $white
+                    to right,
+                    lighten($dark-color, 8%),
+                    0%,
+                    darken($dark-color, 8%),
+                    100%,
+                    $white
     ) !important;
   }
 }
@@ -1544,14 +1544,14 @@ h2 {
   color: $black;
   line-height: 1;
   letter-spacing: 0.02em;
- }
+}
 
 h3 {
   font-size: 24px;
   font-weight: 400;
   color: $grey;
   letter-spacing: 0.03em;
- }
+}
 
 h4 {
   font-size: 18px;
@@ -2729,7 +2729,7 @@ $i: 10;
 /*======= Text css starts ===========*/
 $text-name: primary, secondary, success, danger, info, light, dark, warning;
 $text-color: $primary-color, $secondary-color, $success-color, $danger-color, $info-color, $light-color, $dark-color,
-  $warning-color;
+$warning-color;
 @each $var in $text-name {
   $i: index($text-name, $var);
   .font-#{$var} {
@@ -2755,7 +2755,7 @@ $text-color: $primary-color, $secondary-color, $success-color, $danger-color, $i
 
 $badge-name: primary, secondary, success, danger, info, light, dark, warning;
 $badge-color: $primary-color, $secondary-color, $success-color, $danger-color, $info-color, $light-color, $dark-color,
-  $warning-color;
+$warning-color;
 @each $var in $badge-name {
   $i: index($badge-name, $var);
   .badge-#{$var} {
@@ -2769,7 +2769,7 @@ $badge-color: $primary-color, $secondary-color, $success-color, $danger-color, $
 
 $background-name: primary, secondary, success, danger, info, light, dark, warning;
 $background-color: $primary-color, $secondary-color, $success-color, $danger-color, $info-color, $light-color,
-  $dark-color, $warning-color;
+$dark-color, $warning-color;
 @each $var in $background-name {
   $i: index($background-name, $var);
   .bg-#{$var} {
@@ -2784,13 +2784,13 @@ $background-color: $primary-color, $secondary-color, $success-color, $danger-col
 
 $text-name: primary, secondary, success, danger, info, light, dark, warning, google-plus, twitter, linkedin, fb;
 $label-color: $primary-color, $secondary-color, $success-color, $danger-color, $info-color, $light-color, $dark-color,
-  $warning-color;
+$warning-color;
 /*======= Font-color css end  ======= */
 
 /*======= Button-color css starts  ======= */
 // btn--color//
 @each $btn-name, $btn-color in (primary, $primary-color), (secondary, $secondary-color), (success, $success-color),
-  (danger, $danger-color), (info, $info-color), (light, $light-color), (dark, $dark-color), (warning, $warning-color)
+        (danger, $danger-color), (info, $info-color), (light, $light-color), (dark, $dark-color), (warning, $warning-color)
 {
   .btn-#{$btn-name} {
     background-color: $btn-color !important;
@@ -2820,7 +2820,7 @@ $label-color: $primary-color, $secondary-color, $success-color, $danger-color, $
 //active button css //
 
 @each $btn-name, $btn-color in (primary, $primary-color), (secondary, $secondary-color), (success, $success-color),
-  (danger, $danger-color), (info, $info-color), (light, $light-color), (dark, $dark-color), (warning, $warning-color)
+        (danger, $danger-color), (info, $info-color), (light, $light-color), (dark, $dark-color), (warning, $warning-color)
 {
   .btn-#{$btn-name}:not([disabled]):not(.disabled).active {
     background-color: darken($btn-color, 10%);
@@ -2840,7 +2840,7 @@ $label-color: $primary-color, $secondary-color, $success-color, $danger-color, $
 //* active button css end *//
 
 @each $btn-name, $btn-color in (primary, $primary-color), (secondary, $secondary-color), (success, $success-color),
-  (danger, $danger-color), (info, $info-color), (light, $light-color), (dark, $dark-color), (warning, $warning-color)
+        (danger, $danger-color), (info, $info-color), (light, $light-color), (dark, $dark-color), (warning, $warning-color)
 {
   .btn-outline-#{$btn-name}-2x:not([disabled]):not(.disabled).active {
     background-color: $btn-color;
@@ -2863,7 +2863,7 @@ $label-color: $primary-color, $secondary-color, $success-color, $danger-color, $
 
 $border-name: primary, secondary, success, danger, info, light, dark, warning;
 $border-color: $primary-color, $secondary-color, $success-color, $danger-color, $info-color, $light-color, $dark-color,
-  $warning-color;
+$warning-color;
 @each $var in $border-name {
   $i: index($border-name, $var);
   table thead .border-bottom-#{$var} th,
@@ -2879,7 +2879,7 @@ $border-color: $primary-color, $secondary-color, $success-color, $danger-color, 
 
 $table-name: primary, secondary, success, danger, info, light, dark, warning;
 $table-color: $primary-color, $secondary-color, $success-color, $danger-color, $info-color, $light-color, $dark-color,
-  $warning-color;
+$warning-color;
 @each $var in $table-name {
   $i: index($table-name, $var);
   .table-styling .table-#{$var},
@@ -2900,7 +2900,7 @@ $table-color: $primary-color, $secondary-color, $success-color, $danger-color, $
 
 $b-name: primary, secondary, success, danger, info, light, dark, warning;
 $b-color: $primary-color, $secondary-color, $success-color, $danger-color, $info-color, $light-color, $dark-color,
-  $warning-color;
+$warning-color;
 @each $var in $b-name {
   $i: index($b-name, $var);
   .b-#{$var} {
@@ -3125,11 +3125,11 @@ $i: 1;
           }
         }
         .rt-tr-group {
-           .rt-td {
-             &:nth-child(2) {
-               width: 200px !important;
-             }
-           }
+          .rt-td {
+            &:nth-child(2) {
+              width: 200px !important;
+            }
+          }
         }
       }
     }
@@ -3417,7 +3417,7 @@ $i: 1;
         width: 460px;
       }
     }
-    
+
   }
   .product-adding {
     .add-product-form {
@@ -3850,7 +3850,7 @@ $i: 1;
       margin-bottom: 15px;
       li {
         display: block;
-       text-align: center;
+        text-align: center;
       }
     }
   }

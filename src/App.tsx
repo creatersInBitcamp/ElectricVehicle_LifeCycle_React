@@ -1,14 +1,26 @@
-import React from 'react';
-import Login from "./TestDit/Login";
-import CarChatbot from "./chatbot/CarChatbot";
+import React, {Component} from 'react';
+import { withTranslate } from 'react-redux-multilingual'
 
+// Custom Components
+import HeaderOne from './common/headers/header-one';
+// import FooterTwo from "./common/footers/footer-two";
 
-function App() {
-  return (
-    <div className="App">
-      <CarChatbot/>
-    </div>
-  );
+// ThemeSettings
+// import ThemeSettings from "./common/theme-settings"
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <HeaderOne logoName={'logo.png'}/>
+                {this.props.children}
+                {/*<FooterTwo logoName={'logo.png'}/>*/}
+
+                {/*<ThemeSettings />*/}
+
+            </div>
+        );
+    }
 }
 
-export default App;
+export default withTranslate(App);

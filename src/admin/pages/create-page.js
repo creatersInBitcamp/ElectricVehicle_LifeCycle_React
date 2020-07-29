@@ -1,11 +1,10 @@
-import React, { Component ,Fragment} from 'react';
+import React from 'react';
 import Breadcrumb from '../common/breadcrumb';
 import Tabset_page from './tabset-page';
 
-export class Create_page extends Component {
-    render() {
+const Create_page = () => {
         return (
-            <Fragment>
+            <>
                 <Breadcrumb title="Create Page" parent="Pages" />
                 <div className="container-fluid">
                 <div className="card">
@@ -17,9 +16,8 @@ export class Create_page extends Component {
                     </div>
                 </div>
             </div>
-            </Fragment>
+            </>
         )
-    }
 }
 
 export default Create_page

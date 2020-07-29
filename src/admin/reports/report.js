@@ -7,11 +7,9 @@ import {
 import { lineChart, chartOptions, areaChart, areaOptions, barOptions, barChart, sellOption, sellData, salesOption, salesData } from '../../constants/chartData'
 import Report_table from './report-table';
 
-export class Reports extends Component {
-
-    render() {
+const Reports = () => {
         return (
-            <div>
+            <>
                 <Breadcrumb title="Reports" parent="Reports" />
                 <div className="container-fluid">
                     <div className="row">
@@ -88,9 +86,8 @@ export class Reports extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </>
         )
-    }
 }
 
 export default Reports

@@ -44,6 +44,7 @@
     "react-tabs": "^3.0.0",
     "react-toastify": "^5.3.2",
     "reactstrap": "^8.0.1",
+    "redux": "^4.0.5",
     "scss": "^0.2.4",
     "slick-carousel": "^1.8.1",
     "typescript": "~3.7.2",

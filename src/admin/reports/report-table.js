@@ -2,10 +2,9 @@ import React, { Component, Fragment } from 'react';
 import data from '../../assets/data/reports';
 import Datatable from '../common/datatable'
 
-export class Report_table extends Component {
-    render() {
+const Report_table = () => {
         return (
-            <Fragment>
+            <>
                 <div className="translation-list">
                     <Datatable
                         multiSelectOption={false}
@@ -15,9 +14,8 @@ export class Report_table extends Component {
                         class="-striped -highlight"
                     />
                 </div>
-            </Fragment>
+            </>
         )
-    }
 }
 
 export default Report_table

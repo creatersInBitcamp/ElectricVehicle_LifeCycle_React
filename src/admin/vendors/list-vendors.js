@@ -3,10 +3,9 @@ import Breadcrumb from '../common/breadcrumb';
 import data from '../../assets/data/listVendor';
 import Datatable from '../common/datatable'
 
-export class List_vendors extends Component {
-    render() {
+const List_vendors = () => {
         return (
-            <Fragment>
+            <>
                 <Breadcrumb title="Vendor List" parent="Vendors" />
                 <div className="container-fluid">
                     <div className="card">
@@ -24,9 +23,8 @@ export class List_vendors extends Component {
                         </div>
                     </div>
                 </div>
-            </Fragment>
+            </>
         )
-    }
 }
 
 export default List_vendors

@@ -1,73 +1,61 @@
-import React, { Component, Fragment } from 'react';
+import React, {useState} from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-export class Datatable extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            checkedValues: [],
-            myData: this.props.myData
-        }
-    }
+const Datatable = (props) => {
+    const [checkedValues, setCheckedValues] = useState([])
+    const [myData, setMyData] = useState(props.myData)
 
-    selectRow = (e, i) => {
+    const selectRow = (e, i) => {
         if (!e.target.checked) {
-            this.setState({
-                checkedValues: this.state.checkedValues.filter((item, j) => i !== item)
-            });
+            setCheckedValues(checkedValues).filter((item, j) => i !== item)
         } else {
-            this.state.checkedValues.push(i);
-            this.setState({
-                checkedValues: this.state.checkedValues
-            })
+            checkedValues.push(i);
+            setCheckedValues(checkedValues)
         }
     }
 
-    handleRemoveRow = () => {
-        const selectedValues = this.state.checkedValues;
-        const updatedData = this.state.myData.filter(function (el) {
+    const handleRemoveRow = () => {
+        const selectedValues = checkedValues;
+        const updatedData = myData.filter(function (el) {
             return selectedValues.indexOf(el.id) < 0;
         });
-        this.setState({
-            myData: updatedData
-        })
+            setMyData(updatedData)
         toast.success("Successfully Deleted !")
     };
 
-    renderEditable = (cellInfo) => {
+    const renderEditable = (cellInfo) => {
         return (
             <div
                 style={{ backgroundColor: "#fafafa" }}
                 contentEditable
                 suppressContentEditableWarning
                 onBlur={e => {
-                    const data = [...this.state.myData];
+                    const data = [...myData];
                     data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
-                    this.setState({ myData: data });
+                    setMyData(data);
                 }}
                 dangerouslySetInnerHTML={{
-                    __html: this.state.myData[cellInfo.index][cellInfo.column.id]
+                    __html: myData[cellInfo.index][cellInfo.column.id]
                 }}
             />
         );
     }
 
-    Capitalize(str) {
+    const Capitalize = (str) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    render() {
-        const { pageSize, myClass, multiSelectOption, pagination } = this.props;
-        const { myData } = this.state
+
+        const { pageSize, myClass, multiSelectOption, pagination } = props;
 
         const columns = [];
         for (var key in myData[0]) {
 
-            let editable = this.renderEditable
+            let editable = renderEditable
             if (key === "image") {
                 editable = null;
             }
@@ -86,7 +74,7 @@ export class Datatable extends Component {
 
             columns.push(
                 {
-                    Header: <b>{this.Capitalize(key.toString())}</b>,
+                    Header: <b>{Capitalize(key.toString())}</b>,
                     accessor: key,
                     Cell: editable,
                     style: {
@@ -95,17 +83,17 @@ export class Datatable extends Component {
                 });
         }
 
-        if (multiSelectOption == true) {
+        if (multiSelectOption === true) {
             columns.push(
                 {
                     Header: <button className="btn btn-danger btn-sm btn-delete mb-0 b-r-4"
                         onClick={
                             (e) => {
                                 if (window.confirm('Are you sure you wish to delete this item?'))
-                                    this.handleRemoveRow()
+                                    handleRemoveRow()
                             }}>Delete</button>,
                     id: 'delete',
-                    accessor: str => "delete",
+                    accessor: any => 'delete',
                     sortable: false,
                     style: {
                         textAlign: 'center'
@@ -113,15 +101,11 @@ export class Datatable extends Component {
                     Cell: (row) => (
                         <div>
                             <span >
-                                <input type="checkbox" name={row.original.id} defaultChecked={this.state.checkedValues.includes(row.original.id)}
-                                    onChange={e => this.selectRow(e, row.original.id)} />
+                                <input type="checkbox" name={row.original.id} defaultChecked={checkedValues.includes(row.original.id)}
+                                    onChange={e => selectRow(e, row.original.id)} />
                             </span>
                         </div>
                     ),
-                    accessor: key,
-                    style: {
-                        textAlign: 'center'
-                    }
                 }
             )
         } else {
@@ -136,7 +120,7 @@ export class Datatable extends Component {
                                 if (window.confirm('Are you sure you wish to delete this item?')) {
                                     let data = myData;
                                     data.splice(row.index, 1);
-                                    this.setState({ myData: data });
+                                    setMyData(data);
                                 }
                                 toast.success("Successfully Deleted !")
 
@@ -157,18 +141,19 @@ export class Datatable extends Component {
         }
 
         return (
-            <Fragment>
+            <>
                 <ReactTable
                     data={myData}
+                    filtered
                     columns={columns}
                     defaultPageSize={pageSize}
                     className={myClass}
                     showPagination={pagination}
                 />
                 <ToastContainer />
-            </Fragment>
+            </>
         )
-    }
+
 }
 
 export default Datatable

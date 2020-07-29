@@ -1,12 +1,11 @@
-import React, { Component,Fragment } from 'react'
+import React from 'react'
 import Breadcrumb from '../common/breadcrumb';
 import data from '../../assets/data/listMenu';
 import Datatable from '../common/datatable'
 
-export class List_menu extends Component {
-    render() {
+const List_menu = () => {
         return (
-            <Fragment>
+            <>
                 <Breadcrumb title="List Menu" parent="Menu" />
                 <div className="container-fluid">
                     <div className="row">
@@ -30,9 +29,8 @@ export class List_menu extends Component {
                         </div>
                     </div>
                 </div>
-            </Fragment>
+            </>
         )
-    }
 }
 
 export default List_menu

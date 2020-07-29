@@ -1,10 +1,9 @@
-import React, { Component,Fragment } from 'react'
+import React from 'react'
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 
-export class Tabset_user extends Component {
-    render() {
+const Tabset_user = () => {
         return (
-            <Fragment>
+            <>
                 <Tabs>
                     <TabList className="nav nav-tabs tab-coupon" >
                         <Tab className="nav-link">Account</Tab>
@@ -187,9 +186,8 @@ export class Tabset_user extends Component {
                 <div className="pull-right">
                     <button type="button" className="btn btn-primary">Save</button>
                 </div>
-            </Fragment>
+            </>
         )
-    }
 }
 
 export default Tabset_user

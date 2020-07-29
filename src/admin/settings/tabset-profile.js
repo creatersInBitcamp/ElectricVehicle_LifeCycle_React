@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 import {User,Settings} from 'react-feather'
 
-export class Tabset_profile extends Component {
-    render() {
+const Tabset_profile = () => {
         return (
             <div>
                 <Tabs>
@@ -122,7 +121,6 @@ export class Tabset_profile extends Component {
                 </Tabs>
             </div>
         )
-    }
 }
 
 export default Tabset_profile

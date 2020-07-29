@@ -1,24 +1,19 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom'
 import Breadcrumb from '../common/breadcrumb';
 import data from '../../assets/data/listUser';
 import Datatable from '../common/datatable'
 
 
-export class List_user extends Component {
-    render() {
+const List_user = () => {
         return (
-            <Fragment>
-                <Breadcrumb title="User List" parent="Users" />
+            <>
+                <Breadcrumb title="사용자 현황" parent="Users" />
                 <div className="container-fluid">
                     <div className="card">
                         <div className="card-header">
-                            <h5>User Details</h5>
+                            <h5>사용자 정보</h5>
                         </div>
                         <div className="card-body">
-                            <div className="btn-popup pull-right">
-                                <Link to="/users/create-user" className="btn btn-secondary">Create User</Link>
-                            </div>
                             <div className="clearfix"></div>
                             <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
                                 <Datatable
@@ -32,9 +27,8 @@ export class List_user extends Component {
                         </div>
                     </div>
                 </div>
-            </Fragment>
+            </>
         )
-    }
 }
 
 export default List_user

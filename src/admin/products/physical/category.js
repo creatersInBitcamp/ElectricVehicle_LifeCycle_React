@@ -1,43 +1,37 @@
-import React, { Component, Fragment} from 'react'
+import React, {Component, Fragment, useState} from 'react'
 import Breadcrumb from '../../common/breadcrumb';
 import Modal from 'react-responsive-modal';
 import 'react-toastify/dist/ReactToastify.css';
 import data from '../../../assets/data/category';
 import Datatable from '../../common/datatable';
+import SearchHeader from "../../common/header_components/searchHeader";
 
-export class Category extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            open: false,
-        };
-    }
-    onOpenModal = () => {
-        this.setState({ open: true });
+const Category = () => {
+    const [open, setOpen] = useState(false)
+
+    const onOpenModal = () => {
+        setOpen(true)
     };
 
-    onCloseModal = () => {
-        this.setState({ open: false });
+    const onCloseModal = () => {
+        setOpen(false)
     };
-
-    render() {
-        const { open } = this.state;
         return (
-            <Fragment>
-                <Breadcrumb title="Category" parent="Physical" />
+            <>
+                <Breadcrumb title="전기차" parent="Physical" />
                 {/* <!-- Container-fluid starts--> */}
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5>Products Category</h5>
+                                    <h5>전기차 종합관리</h5>
                                 </div>
                                 <div className="card-body">
                                     <div className="btn-popup pull-right">
-
-                                        <button type="button" className="btn btn-primary" onClick={this.onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Category</button>
-                                        <Modal open={open} onClose={this.onCloseModal} >
+                                        <SearchHeader/>
+                                        <button type="button" className="btn btn-primary" onClick={onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Category</button>
+                                        <Modal open={open} onClose={onCloseModal} >
                                             <div className="modal-header">
                                                 <h5 className="modal-title f-w-600" id="exampleModalLabel2">Add Physical Product</h5>
                                             </div>
@@ -54,8 +48,8 @@ export class Category extends Component {
                                                 </form>
                                             </div>
                                             <div className="modal-footer">
-                                                <button type="button" className="btn btn-primary" onClick={() => this.onCloseModal('VaryingMdo')}>Save</button>
-                                                <button type="button" className="btn btn-secondary" onClick={() => this.onCloseModal('VaryingMdo')}>Close</button>
+                                                <button type="button" className="btn btn-primary" onClick={() => onCloseModal('VaryingMdo')}>Save</button>
+                                                <button type="button" className="btn btn-secondary" onClick={() => onCloseModal('VaryingMdo')}>Close</button>
                                             </div>
                                         </Modal>
                                     </div>
@@ -64,7 +58,7 @@ export class Category extends Component {
                                         <Datatable
                                             multiSelectOption={false}
                                             myData={data} 
-                                            pageSize={10} 
+                                            pageSize={10}
                                             pagination={true}
                                             class="-striped -highlight" 
                                         />
@@ -75,9 +69,9 @@ export class Category extends Component {
                     </div>
                 </div>
                 {/* <!-- Container-fluid Ends--> */}
-            </Fragment>
+            </>
         )
-    }
+
 }
 
 export default Category

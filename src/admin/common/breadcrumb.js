@@ -3,16 +3,16 @@ import {Home} from 'react-feather';
 import {Link} from 'react-router-dom'
 
 
-export class Breadcrumb extends Component {
-    render() {
+const Breadcrumb = (props) => {
+
         return (
                 <div className="container-fluid">
                     <div className="page-header">
                         <div className="row">
                             <div className="col-lg-6">
                                 <div className="page-header-left">
-                                    <h3>{this.props.title}
-                                    <small>Multikart Admin panel</small>
+                                    <h3>{props.title}
+                                    <small>Admin Page</small>
                                     </h3>
                                 </div>
                             </div>
@@ -23,15 +23,14 @@ export class Breadcrumb extends Component {
                                             <Home />
                                     </Link>
                                     </li>
-                                    <li className="breadcrumb-item">{this.props.parent}</li>
-                                    <li className="breadcrumb-item active">{this.props.title}</li>
+                                    <li className="breadcrumb-item">{props.parent}</li>
+                                    <li className="breadcrumb-item active">{props.title}</li>
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </div>
         )
-    }
 }
 
 export default Breadcrumb

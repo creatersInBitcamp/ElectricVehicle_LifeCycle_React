@@ -1,13 +1,12 @@
-import React, { Component ,Fragment} from 'react'
+import React from 'react'
 
 import designer from '../../assets/images/dashboard/designer.jpg';
 import Tabset_profile from './tabset-profile';
 import Breadcrumb from '../common/breadcrumb';
 
-export class Profile extends Component {
-    render() {
+const Profile = () => {
         return (
-            <Fragment>
+            <>
                 <Breadcrumb title="Profile" parent="Settings" />
                  <div className="container-fluid">
                 <div className="row">
@@ -66,9 +65,8 @@ export class Profile extends Component {
                     </div>
                 </div>
             </div>
-            </Fragment>
+            </>
         )
-    }
 }
 
 export default Profile

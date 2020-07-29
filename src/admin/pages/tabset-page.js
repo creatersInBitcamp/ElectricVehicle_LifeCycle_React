@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 import CKEditors from "react-ckeditor-component";
-export class Tabset_page extends Component {
-    render() {
+const Tabset_page = () => {
         return (
-            <Fragment>
+            <>
                    <div>
                 <Tabs>
                     <TabList className="nav nav-tabs tab-coupon" >
@@ -61,9 +60,8 @@ export class Tabset_page extends Component {
                         <button type="button" className="btn btn-primary">Save</button>
                     </div>
                 </div>
-            </Fragment>
+            </>
         )
-    }
 }
 
 export default Tabset_page

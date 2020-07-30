@@ -1,1 +1,1 @@
-export {default as Chatbot} from './Chabot'
+export {default as MyChatBot} from './MyChatBot.js'

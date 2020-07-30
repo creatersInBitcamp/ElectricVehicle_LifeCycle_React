@@ -10,7 +10,7 @@ io.onconnection(socket => {
         console.log(`disconnect: ${socket.id}`)
     })
 
-    io.listen(3001)
+    io.listen(3000)
 
     setInterval(() => {
         io.emit('message', new Date().toISOString())

@@ -5,6 +5,14 @@ import Slider from 'react-slick';
 import stats from '../assets/images/dashboard/stats.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+const loginTypes = {REQUEST: 'login/REQUEST'}
+const loginRequest = action => ({type: loginTypes.REQUEST, payload: action.payload})
+const loginReducer = ( state, action ) => {
+    switch (action.type){
+        case loginTypes.REQUEST: return {...state, payload: action.payload}
+        default : return null
+    }
+}
 
 export class Login extends Component {
     render() {
@@ -64,4 +72,4 @@ export class Login extends Component {
     }
 }
 
-export default Login
+export default loginReducer

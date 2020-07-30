@@ -1,22 +1,29 @@
 import React from 'react';
-import img from "./imgs/img_section/img01.jpg";
-import profile from "./imgs/thumb.jpeg";
+import Comments from "./comments";
 
-const Post = () => {
+const comment_submit = () => {
+    alert(`댓글 내용 : ${document.getElementById('input_comment').value}`)
+}
+
+const more_button = () => {
+    alert('more버튼 클릭')
+}
+
+const Post = ({post}) => {
     return (
         <>
             <article className="contents">
                 <header className="top">
                     <div className="user_container">
                         <div className="profile_img">
-                            <img src={profile} alt="프로필이미지"/>
+                            <img src={post.profileImg} alt="프로필이미지"/>
                         </div>
                         <div className="user_name">
-                            <div className="nick_name m_text">KindTiger</div>
-                            <div className="country s_text">Seoul, South Korea</div>
+                            <div className="nick_name m_text">{post.userId}</div>
+                            <div className="country s_text">{post.location}</div>
                         </div>
                     </div>
-                    <div className="sprite_more_icon" data-name="more">
+                    <div className="sprite_more_icon" data-name="more" onClick={more_button}>
                         <ul className="toggle_box">
                             <li><input type="submit" className="follow" value="팔로우" data-name="follow"/></li>
                             <li>수정</li>
@@ -27,7 +34,7 @@ const Post = () => {
 
                 <div className="img_section">
                     <div className="trans_inner">
-                        <img src={img} alt="visual01"/>
+                        <img src={post.img} alt="visual01"/>
                     </div>
                 </div>
                 <div className="bottom_icons">
@@ -46,28 +53,19 @@ const Post = () => {
 
                 <div className="likes m_text">
                     좋아요
-                    <span id="like-count-39">2,346</span>
+                    <span id="like-count-39">{post.like}</span>
                     <span id="bookmark-count-39"/>
                     개
                 </div>
+                {post.comments.map( comment => (
+                <Comments comment={comment} key={comment.commentId}/>
+                ))}
 
-                <div className="comment_container">
-                    <div className="comment" id="comment-list-ajax-post37">
-                        <div className="comment-detail">
-                            <div className="nick_name m_text">dongdong2</div>
-                            <div>강아지가 너무 귀여워요~!</div>
-                        </div>
-                    </div>
-                    <div className="small_heart">
-                        <div className="sprite_small_heart_icon_outline"/>
-                    </div>
-                </div>
-
-                <div className="timer">1시간 전</div>
+                <div className="timer">{post.dateTime}</div>
 
                 <div className="comment_field" id="add-comment-post37">
-                    <input type="text" placeholder="댓글달기..."/>
-                    <div className="upload_btn m_text" data-name="comment">게시</div>
+                    <input id={"input_comment"} type="text" placeholder="댓글달기..."/>
+                    <div className="upload_btn m_text" data-name="comment" onClick={comment_submit}>게시</div>
                 </div>
             </article>
         </>

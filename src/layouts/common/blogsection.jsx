@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Slider from 'react-slick';
 import {Link} from 'react-router-dom';
 
-import {Slider3} from "../../atomic/services/script"
+import {Slider3} from "../../_atomic/services/script"
 
 class BlogSection extends Component {
     render (){

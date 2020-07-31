@@ -1,12 +1,6 @@
 import React from 'react';
 import './css/boardDetail.css'
-import img01 from './imgs/img_section/img01.jpg'
-import img02 from './imgs/img_section/img02.jpg'
 import img03 from './imgs/img_section/img03.jpg'
-import img04 from './imgs/img_section/img04.jpg'
-import img05 from './imgs/img_section/img05.jpg'
-import img06 from './imgs/img_section/img06.png'
-import img07 from './imgs/img_section/img07.png'
 import profile from './imgs/thumb.jpeg'
 import profile2 from './imgs/thumb02.jpg'
 import profile3 from './imgs/thumb03.jpg'
@@ -29,7 +23,9 @@ const BoardDetail = () => {
 
                                 <div className="img_section">
                                     <div className="trans_inner">
-                                        <div><img src={img03} alt=""/></div>
+                                        <div>
+                                            <img src={img03} alt=""/>
+                                        </div>
                                     </div>
                                 </div>
 

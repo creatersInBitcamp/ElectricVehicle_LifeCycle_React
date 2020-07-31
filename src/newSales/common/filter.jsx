@@ -5,8 +5,8 @@ import 'react-input-range/lib/css/index.css';
 import { SlideToggle } from 'react-slide-toggle';
 
 
-import {getBrands, getColors, getMinMaxPrice} from '../../atomic/services';
-import {filterBrand, filterColor, filterPrice} from '../../atomic/actions'
+import {getBrands, getColors, getMinMaxPrice} from '../../_atomic/services';
+import {filterBrand, filterColor, filterPrice} from '../../_atomic/actions'
 
 class Filter extends Component {
 

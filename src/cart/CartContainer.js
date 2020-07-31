@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import CartPage from '../common/headers/common/cart-header'
-import {removeFromCart} from '../atomic/actions'
-import {getCartTotal} from '../atomic/services'
+import {removeFromCart} from '../_atomic/actions'
+import {getCartTotal} from '../_atomic/services'
 
 const CartContainer = ({cartList, total, symbol, removeFromCart}) => (
     <li  className="onhover-div mobile-cart"><div className="cart-qty-cls">{cartList.length}</div>

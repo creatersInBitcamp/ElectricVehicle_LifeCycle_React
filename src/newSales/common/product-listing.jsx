@@ -4,9 +4,9 @@ import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
-import { getTotal, getCartProducts } from '../../atomic/reducers'
-import { addToCart, addToWishlist, addToCompare } from '../../atomic/actions'
-import {getVisibleproducts} from '../../atomic/services';
+import { getTotal, getCartProducts } from '../../_atomic/reducers'
+import { addToCart, addToWishlist, addToCompare } from '../../_atomic/actions'
+import {getVisibleproducts} from '../../_atomic/services';
 import ProductListItem from "./product-list-item";
 
 class ProductListing extends Component {

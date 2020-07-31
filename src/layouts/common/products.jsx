@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {connect} from 'react-redux'
 
-import {getBestSeller, getMensWear, getWomensWear} from '../../atomic/services/index'
-import {addToCart, addToWishlist, addToCompare} from "../../atomic/actions/index";
+import {getBestSeller, getMensWear, getWomensWear} from '../../_atomic/services/index'
+import {addToCart, addToWishlist, addToCompare} from "../../_atomic/actions/index";
 import ProductItem from './product-item';
 
 class SpecialProducts extends Component {

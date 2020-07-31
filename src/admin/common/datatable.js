@@ -3,15 +3,24 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {SearchHeader} from "./header_components";
 
+const datatableTypes = {REQUEST: 'datatable/REQUEST'}
+const datatableRequest = action => ({type: datatableTypes.REQUEST, payload: action.payload})
+const datatableReducer = (state={}, action) => {
+    switch (action.type) {
+        case datatableTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
 
-const Datatable = (props) => {
+export const Datatable = (props) => {
     const [checkedValues, setCheckedValues] = useState([])
     const [myData, setMyData] = useState(props.myData)
 
     const selectRow = (e, i) => {
         if (!e.target.checked) {
-            setCheckedValues(checkedValues).filter((item, j) => i !== item)
+            setCheckedValues(checkedValues).filter((item, i) => i !== item)
         } else {
             checkedValues.push(i);
             setCheckedValues(checkedValues)
@@ -21,6 +30,7 @@ const Datatable = (props) => {
     const handleRemoveRow = () => {
         const selectedValues = checkedValues;
         const updatedData = myData.filter(function (el) {
+
             return selectedValues.indexOf(el.id) < 0;
         });
             setMyData(updatedData)
@@ -69,6 +79,9 @@ const Datatable = (props) => {
                 editable = null;
             }
             if(key === "order_status"){
+                editable = null;
+            }
+            if(key === 'id'){
                 editable = null;
             }
 
@@ -142,13 +155,17 @@ const Datatable = (props) => {
 
         return (
             <>
+                <SearchHeader
+                myData = {props.myData}
+                columns={columns}
+                />
                 <ReactTable
                     data={myData}
-                    filtered
                     columns={columns}
                     defaultPageSize={pageSize}
                     className={myClass}
                     showPagination={pagination}
+
                 />
                 <ToastContainer />
             </>
@@ -156,4 +173,4 @@ const Datatable = (props) => {
 
 }
 
-export default Datatable
+export default datatableReducer

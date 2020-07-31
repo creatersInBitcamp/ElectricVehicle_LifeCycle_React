@@ -1,7 +1,16 @@
 import React from 'react'
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 
-const Tabset_user = () => {
+const tabset_userTypes = {REQUEST: 'tabset_user/REQUEST'}
+const tabset_userRequest = action => ({type: tabset_userTypes.REQUEST, payload: action.payload})
+const tabset_userReducer = ( state={}, action ) => {
+    switch (action.type) {
+        case tabset_userTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Tabset_user = () => {
         return (
             <>
                 <Tabs>
@@ -190,4 +199,4 @@ const Tabset_user = () => {
         )
 }
 
-export default Tabset_user
+export default tabset_userReducer

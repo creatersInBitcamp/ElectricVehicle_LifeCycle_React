@@ -1,6 +1,15 @@
 import React from 'react'
 
-const Footer = () => {
+const footerTypes = {REQUEST: 'footer/REQUEST'}
+const footerRequest = action => ({type: footerTypes.REQUEST, payload: action.payload})
+const footerReducer = (state={}, action) => {
+    switch (action.type) {
+        case footerTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Footer = () => {
     return (
         <div>
             <footer className="footer">
@@ -19,4 +28,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default footerReducer

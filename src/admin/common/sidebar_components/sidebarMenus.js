@@ -2,10 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import {MENUITEMS} from "../../../constants/menu";
 
-const SidebarManus = () => {
+const sidebarMenusTypes = {REQUEST: 'sidebarMenus/REQUEST'}
+const sidebarRequest = action => ({type: sidebarMenusTypes.REQUEST, payload: action.payload})
+const sidebarMenusReducer = (state={},action) => {
+    switch (action.type) {
+        case sidebarMenusTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
 
+export const SidebarMenus = () => {
     const [mainmenu, setmainmenu] = useState(MENUITEMS)
-
 
     useEffect(()=>{
         var currentUrl = window.location.pathname;
@@ -127,4 +134,4 @@ const SidebarManus = () => {
     );
 };
 
-export default SidebarManus;
+export default sidebarMenusReducer;

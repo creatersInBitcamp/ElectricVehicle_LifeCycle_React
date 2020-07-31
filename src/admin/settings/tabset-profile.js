@@ -1,8 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 import {User,Settings} from 'react-feather'
 
-const Tabset_profile = () => {
+const tabset_profileTypes = {REQUEST: 'tabset_profile/REQUEST'}
+const tabset_profileRequest = action => ({type: tabset_profileTypes.REQUEST, payload: action.payload})
+const tabset_profileReducer = ( state={}, action ) => {
+    switch (action.type) {
+        case tabset_profileTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Tabset_profile = () => {
         return (
             <div>
                 <Tabs>
@@ -123,4 +132,4 @@ const Tabset_profile = () => {
         )
 }
 
-export default Tabset_profile
+export default tabset_profileReducer

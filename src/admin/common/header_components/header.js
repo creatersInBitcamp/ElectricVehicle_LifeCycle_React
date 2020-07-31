@@ -1,12 +1,22 @@
-import React, {Component, useState} from 'react'
-import SearchHeader from './searchHeader';
-import User_menu from './user-menu';
+import React, {useState} from 'react'
+import {SearchHeader} from './';
 import { AlignLeft, Maximize2, Bell, MessageSquare, MoreHorizontal } from 'react-feather';
 
 //images
 import logo from '../../../assets/images/dashboard/08.png'
+import man from "../../../assets/images/dashboard/man.png";
+import {Link} from "react-router-dom";
 
-const Header = () => {
+const headerTypes = {REQUEST: 'header/REQUEST'}
+const headerRequest = action => ({type: headerTypes.REQUEST, payload: action.payload})
+const headerReducer = (state={}, action) => {
+    switch (action.type) {
+        case headerTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Header = () => {
     const [sidebar, setSidebar] = useState(true)
     const [rightSidebar, setRightSidebar] = useState(true)
     const [navMenus, setNavMenus] = useState(false)
@@ -69,13 +79,25 @@ const Header = () => {
                             </div>
                         </div>
                         <div className="nav-right col">
-                            <ul className={"nav-menus " + (navMenus ? 'open' : '')}>
+                            <ul className={"nav-notice " + (navMenus ? 'open' : '')}>
                                 <li>
                                     <SearchHeader />
                                 </li>
                                 <li><a onClick={goFull} className="text-dark" href="#!"><Maximize2 /></a></li>
                                 <li><a onClick={showRightSidebar}><MessageSquare /><span className="dot"></span></a></li>
-                                <User_menu />
+                                <li className="onhover-dropdown">
+                                    <div className="media align-items-center">
+                                        <img className="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src={man} alt="header-user" />
+                                        <div className="dotted-animation"><span className="animate-circle"></span><span className="main-circle"></span></div>
+                                    </div>
+                                    <ul className="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
+                                        <li><Link to={`${process.env.PUBLIC_URL}/settings/profile`} ><i data-feather="user"></i>Edit Profile</Link></li>
+                                        <li><a><i data-feather="mail"></i>Inbox</a></li>
+                                        <li><a><i data-feather="lock"></i>Lock Screen</a></li>
+                                        <li><a><i data-feather="settings"></i>Settings</a></li>
+                                        <li><Link to={`${process.env.PUBLIC_URL}/`}><i data-feather="log-out"></i>Logout</Link></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -84,4 +106,4 @@ const Header = () => {
         )
 }
 
-export default Header
+export default headerReducer

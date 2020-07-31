@@ -1,25 +1,34 @@
 import React from 'react'
-import Breadcrumb from '../common/breadcrumb'
-import data from '../../assets/data/listPages';
-import Datatable from '../common/datatable';
+import {Breadcrumb} from '../common';
+import data from '../../assets/data/listMenu';
+import {Datatable} from '../common'
 
-const ListPages = () => {
+const list_menuTypes = {REQUEST: 'list_menu/REQUEST'}
+const list_menuRequest = action => ({type: list_menuTypes.REQUEST, payload: action.payload})
+const list_menuReducer = ( state={}, action ) => {
+    switch (action.type) {
+        case list_menuTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Notice = () => {
         return (
             <>
-                <Breadcrumb title="중고차 현황" parent="Pages" />
+                <Breadcrumb title="공지사항" parent="Menu" />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5>중고차 관리</h5>
+                                    <h5>Menu Lists</h5>
                                 </div>
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">
-                                        <Datatable
+                                    <Datatable
                                             multiSelectOption={true}
                                             myData={data}
-                                            pageSize={7}
+                                            pageSize={6}
                                             pagination={false}
                                             class="-striped -highlight"
                                         />
@@ -33,4 +42,4 @@ const ListPages = () => {
         )
 }
 
-export default ListPages
+export default Notice

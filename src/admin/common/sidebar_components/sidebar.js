@@ -5,13 +5,18 @@ import { MENUITEMS } from '../../../constants/menu';
 // image import
 import logo from '../../../assets/images/dashboard/08.png'
 import man from '../../../assets/images/dashboard/man.png'
-import SidebarManus from "./sidebar_manus";
+import {SidebarMenus} from "./";
 
+const sidebarTypes = {REQUEST: 'sidebar/REQUEST'}
+const sidebarRequest = action => ({type: sidebarTypes.REQUEST, payload: action.payload})
+const sidebarReducer = (state={}, action) => {
+    switch (action.type) {
+        case sidebarTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
 
-
-const sidebar =() => {
-
-
+export const Sidebar =() => {
     return (
             <>
                 <div className="page-sidebar">
@@ -30,7 +35,7 @@ const sidebar =() => {
                             <p> ADMIN 담당개발자 </p>
                         </div>
                         <ul className="sidebar-menu">
-                            <SidebarManus/>
+                            <SidebarMenus/>
                         </ul>
                     </div>
                 </div>
@@ -39,4 +44,4 @@ const sidebar =() => {
 
 }
 
-export default sidebar
+export default sidebarReducer

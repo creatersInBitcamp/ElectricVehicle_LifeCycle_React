@@ -1,3 +1,4 @@
+/*
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
 import { MENUITEMS } from '../../../constants/menu';
@@ -5,7 +6,7 @@ import { MENUITEMS } from '../../../constants/menu';
 // image import
 import logo from '../../../assets/images/dashboard/08.png'
 import man from '../../../assets/images/dashboard/man.png'
-import SidebarManus from "./sidebar_manus";
+import SidebarMenus from "./sidebar_manus";
 import {AlignLeft, BarChart, Box, Camera, Clipboard, DollarSign, Home, LogIn, UserPlus, Users} from "react-feather";
 
 
@@ -155,3 +156,4 @@ const sidebar =() => {
 }
 
 export default sidebar
+*/

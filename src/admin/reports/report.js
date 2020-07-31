@@ -1,16 +1,22 @@
-import React, { Component } from 'react';
-import Breadcrumb from '../common/breadcrumb';
-import { Chart } from "react-google-charts";
-import {
-    Line, Bar
-} from 'react-chartjs-2';
+import React from 'react';
+import {Breadcrumb} from '../common/breadcrumb';
+import { Line, Bar } from 'react-chartjs-2';
 import { lineChart, chartOptions, areaChart, areaOptions, barOptions, barChart, sellOption, sellData, salesOption, salesData } from '../../constants/chartData'
-import Report_table from './report-table';
+import {Report_table} from './';
 
-const Reports = () => {
+const reportsTypes = {REQUEST: 'reports/REQUEST'}
+const reportsRequest = action => ({type: reportsTypes.REQUEST, payload: action.payload})
+const reportsReducer = ( state={}, action ) => {
+    switch (action.type) {
+        case reportsTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Reports = () => {
         return (
             <>
-                <Breadcrumb title="Reports" parent="Reports" />
+                <Breadcrumb title="보고서" parent="Reports" />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-xl-8 col-md-6">
@@ -90,4 +96,4 @@ const Reports = () => {
         )
 }
 
-export default Reports
+export default reportsReducer

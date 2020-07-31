@@ -1,9 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Home} from 'react-feather';
 import {Link} from 'react-router-dom'
 
+const breadcrumbTypes = {REQUEST: 'breadcrumb/REQUEST'}
+const breadcrumbRequest = action => ({type: breadcrumbTypes.REQUEST, payload: action.payload})
+const breadcrumbReducer = (state={}, action) => {
+    switch (action.type) {
+        case breadcrumbTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
 
-const Breadcrumb = (props) => {
+export const Breadcrumb = (props) => {
 
         return (
                 <div className="container-fluid">
@@ -23,7 +31,6 @@ const Breadcrumb = (props) => {
                                             <Home />
                                     </Link>
                                     </li>
-                                    <li className="breadcrumb-item">{props.parent}</li>
                                     <li className="breadcrumb-item active">{props.title}</li>
                                 </ol>
                             </div>
@@ -33,4 +40,4 @@ const Breadcrumb = (props) => {
         )
 }
 
-export default Breadcrumb
+export default breadcrumbReducer

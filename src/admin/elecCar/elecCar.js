@@ -1,14 +1,23 @@
-import React, {Component, Fragment, useState} from 'react'
-import Breadcrumb from '../../common/breadcrumb';
+import React, {useState} from 'react'
+import {Breadcrumb} from '../common';
 import Modal from 'react-responsive-modal';
 import 'react-toastify/dist/ReactToastify.css';
-import data from '../../../assets/data/category';
-import Datatable from '../../common/datatable';
-import SearchHeader from "../../common/header_components/searchHeader";
+import data from '../../assets/data/category';
+import carData from '../../constants/evdb_eccar.json'
+import {Datatable} from '../common';
 
-const Category = () => {
+const elecCarTypes = {REQUEST: 'elecCar/REQUEST'}
+const elecCarRequest = action => ({type: elecCarTypes.REQUEST, payload: action.payload})
+const elecCarReducer = ( state={}, action ) => {
+    switch (action.type) {
+        case elecCarTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const ElecCar = () => {
     const [open, setOpen] = useState(false)
-
+    const [array, setArray] = useState(carData)
     const onOpenModal = () => {
         setOpen(true)
     };
@@ -29,7 +38,6 @@ const Category = () => {
                                 </div>
                                 <div className="card-body">
                                     <div className="btn-popup pull-right">
-                                        <SearchHeader/>
                                         <button type="button" className="btn btn-primary" onClick={onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Category</button>
                                         <Modal open={open} onClose={onCloseModal} >
                                             <div className="modal-header">
@@ -57,7 +65,7 @@ const Category = () => {
                                     <div id="basicScenario" className="product-physical">
                                         <Datatable
                                             multiSelectOption={false}
-                                            myData={data} 
+                                            myData={array}
                                             pageSize={10}
                                             pagination={true}
                                             class="-striped -highlight" 
@@ -74,5 +82,5 @@ const Category = () => {
 
 }
 
-export default Category
+export default elecCarReducer
 

@@ -1,6 +1,15 @@
 import React from 'react';
 
-const Image = (props) => {
+const imageTypes = {REQUEST: 'image/REQUEST'}
+const imageRequest = action => ({type: imageTypes.REQUEST, payload: action.payload})
+const imageReducer = ( state={}, action ) => {
+    switch (action.type) {
+        case imageTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Image = (props) => {
         return (
             <>
                 <div className="d-flex" >
@@ -14,4 +23,4 @@ const Image = (props) => {
         )
 }
 
-export default Image
+export default imageReducer

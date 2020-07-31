@@ -1,9 +1,18 @@
 import React from 'react'
-import Breadcrumb from '../common/breadcrumb';
+import {Breadcrumb} from '../common';
 import data from '../../assets/data/orders';
-import Datatable from '../common/datatable'
+import {Datatable} from '../common'
 
-const Orders = () => {
+const ordersTypes = {REQUEST: 'orders/REQUEST'}
+const ordersRequest = action => ({type: ordersTypes.REQUEST, payload: action.payload})
+const ordersReducer = ( state, action ) => {
+    switch (action.type) {
+        case ordersTypes.REQUEST: return {...state, payload: action.payload}
+        default: return null
+    }
+}
+
+export const Orders = () => {
         return (
             <>
                 <Breadcrumb title="판매현황" parent="Sales" />
@@ -32,4 +41,4 @@ const Orders = () => {
         )
 }
 
-export default Orders
+export default ordersReducer

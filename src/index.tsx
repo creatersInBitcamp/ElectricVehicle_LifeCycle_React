@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.scss';
@@ -8,27 +8,17 @@ import {Provider } from 'react-redux';
 import {createStore} from 'redux'
 
 // Components
-import Dashboard from './admin/dashboard';
-
-// Products physical
-import Category from './admin/products/physical/category';
-
-
-//Sales
-import Orders from './admin/sales/orders';
-
-//Pages
-import ListPages from './admin/pages/list-page';
-import Create_page from './admin/pages/create-page';
-import Media from './admin/media/media';
-import List_menu from './admin/menus/list-menu';
-import List_user from './admin/users/list-user';
-import List_vendors from './admin/vendors/list-vendors';
-import Profile from './admin/settings/profile';
-import Reports from './admin/reports/report';
-import Datatable from './admin/common/datatable'
-import Login from './admin/auth/login';
-import rootReducer from "./store";
+import {Dashboard} from './admin';
+import {ElecCar} from './admin/elecCar';
+import {Orders} from './admin/sales';
+import {UsedCar} from './admin/usedCar';
+import {Community} from './admin/community';
+import {Notice} from './admin/notice';
+import {List_user} from './admin/users';
+import {Profile} from './admin/settings';
+import {Reports} from './admin/reports';
+import {Login} from './admin/auth/login';
+import rootReducer from "./store/index.js";
 
 
 const store = createStore(rootReducer)
@@ -45,25 +35,21 @@ ReactDOM.render(
                         <App>
                             <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/products/physical/category`} component={Category} />
+                            <Route path={`${process.env.PUBLIC_URL}/elecCar`} component={ElecCar} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/sales/orders`} component={Orders} />
-                            <Route path={`${process.env.PUBLIC_URL}/pages/list-page`} component={ListPages} />
-                            <Route path={`${process.env.PUBLIC_URL}/pages/create-page`} component={Create_page} />
+                            <Route path={`${process.env.PUBLIC_URL}/orders`} component={Orders} />
+                            <Route path={`${process.env.PUBLIC_URL}/usedCar`} component={UsedCar} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/media`} component={Media} />
+                            <Route path={`${process.env.PUBLIC_URL}/community`} component={Community} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/menus/list-menu`} component={List_menu} />
+                            <Route path={`${process.env.PUBLIC_URL}/notice`} component={Notice} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/users/list-user`} component={List_user} />
+                            <Route path={`${process.env.PUBLIC_URL}/users`} component={List_user} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/vendors/list_vendors`} component={List_vendors} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/reports/report`} component={Reports} />
+                            <Route path={`${process.env.PUBLIC_URL}/reports`} component={Reports} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/settings/profile`} component={Profile} />
-
-                            <Route path={`${process.env.PUBLIC_URL}/data-table`} component={Datatable} />
+                            <Route path={`${process.env.PUBLIC_URL}/userDetail`} component={Profile} />
 
                         </App>
                     </Switch>

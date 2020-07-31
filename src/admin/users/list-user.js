@@ -1,10 +1,18 @@
 import React, { Component, Fragment } from 'react';
-import Breadcrumb from '../common/breadcrumb';
+import {Breadcrumb} from '../common';
 import data from '../../assets/data/listUser';
-import Datatable from '../common/datatable'
+import {Datatable} from '../common'
 
+const list_userTypes = {REQUEST: 'list_user/REQUEST'}
+const list_userRequest = action => ({type: list_userTypes.REQUEST, payload: action.payload})
+const list_userReducer = ( state= {}, action ) => {
+    switch (action.type) {
+        case list_userTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
 
-const List_user = () => {
+export const List_user = () => {
         return (
             <>
                 <Breadcrumb title="사용자 현황" parent="Users" />
@@ -31,4 +39,4 @@ const List_user = () => {
         )
 }
 
-export default List_user
+export default list_userReducer

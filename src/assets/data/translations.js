@@ -116,7 +116,7 @@ export const data = [
             english: "sub category",
         },
         {
-            user_key: "media:media.dropzone",
+            user_key: "community:community.dropzone",
             russian : "зона сброса",
             arabic: "منطقة الإسقاط",
             english: "dropzone",
@@ -200,7 +200,7 @@ export const data = [
             english: "general tabs",
         },
         {
-            user_key: "media:media.dropzone",
+            user_key: "community:community.dropzone",
             russian : "зона сброса",
             arabic: "منطقة الإسقاط",
             english: "dropzone",

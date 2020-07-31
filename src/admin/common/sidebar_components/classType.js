@@ -1,3 +1,4 @@
+/*
 import React, { Component, Fragment } from 'react'
 import User_panel from './user-panel';
 import { Link } from 'react-router-dom';
@@ -6,7 +7,7 @@ import { MENUITEMS } from '../../../constants/menu';
 // image import
 import logo from '../../../assets/images/dashboard/multikart-logo.png'
 
-export class sidebar extends Component {
+export class sidebar extends Component {/!**!/
 
     state = { selectedPath: "1", mainmenu: [] };
     onItemSelection = (arg, e) => {
@@ -167,3 +168,4 @@ export class sidebar extends Component {
 }
 
 export default sidebar
+*/

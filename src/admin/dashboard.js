@@ -1,5 +1,5 @@
 import React from 'react';
-import Breadcrumb from './common/breadcrumb';
+import {Breadcrumb} from './common';
 import { Navigation, Box, MessageSquare, Users, Briefcase, CreditCard, ShoppingCart, Calendar } from 'react-feather';
 import CountUp from 'react-countup';
 import { Chart } from "react-google-charts";
@@ -18,7 +18,16 @@ import user from '../assets/images/dashboard/user.png';
 import designer from '../assets/images/dashboard/designer.jpg'
 
 
-const Dashboard = () => {
+const dashboardTypes = {REQUEST: 'dashboard/REQUEST'}
+const dashboardRequest = action => ({type: dashboardTypes.REQUEST, payload: action.payload})
+const dashboardReducer = ( state={}, action ) => {
+    switch (action.type) {
+        case dashboardTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Dashboard = () => {
 
         const lineData = {
             labels: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -839,4 +848,4 @@ const Dashboard = () => {
 }
 // javascript:void(0)
 
-export default Dashboard
+export default dashboardReducer

@@ -1,10 +1,19 @@
 import React from 'react'
 
 import designer from '../../assets/images/dashboard/designer.jpg';
-import Tabset_profile from './tabset-profile';
-import Breadcrumb from '../common/breadcrumb';
+import {Tabset_profile} from './';
+import {Breadcrumb} from '../common';
 
-const Profile = () => {
+const profileTypes = {REQUEST: 'profile/REQUEST'}
+const profileRequest = action => ({type: profileTypes.REQUEST, payload: action.payload})
+const profileReducer = ( state={}, action ) => {
+    switch (action.type) {
+        case profileTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Profile = () => {
         return (
             <>
                 <Breadcrumb title="Profile" parent="Settings" />
@@ -69,4 +78,4 @@ const Profile = () => {
         )
 }
 
-export default Profile
+export default profileReducer

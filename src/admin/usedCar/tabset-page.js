@@ -1,7 +1,17 @@
 import React from 'react';
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 import CKEditors from "react-ckeditor-component";
-const Tabset_page = () => {
+
+const tabset_pageTypes = {REQUEST: 'tabset_page/REQUEST'}
+const tabset_pageRequest = action => ({type: tabset_pageTypes.REQUEST, payload: action.payload})
+const tabset_pageReducer = ( state={}, action ) => {
+    switch (action.type) {
+        case tabset_pageTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Tabset_page = () => {
         return (
             <>
                    <div>
@@ -64,4 +74,4 @@ const Tabset_page = () => {
         )
 }
 
-export default Tabset_page
+export default tabset_pageReducer

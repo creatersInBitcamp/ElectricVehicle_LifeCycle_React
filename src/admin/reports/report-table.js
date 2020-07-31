@@ -1,8 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import data from '../../assets/data/reports';
-import Datatable from '../common/datatable'
+import {Datatable} from '../common'
 
-const Report_table = () => {
+const report_tableTypes = {REQUEST: 'report_table/REQUEST'}
+const report_tableRequest = action => ({type: report_tableTypes.REQUEST, payload: action.payload})
+const report_tableReducer = ( state={}, action ) => {
+    switch (action.type) {
+        case report_tableTypes.REQUEST: return {...state, payload: action.payload}
+        default: return state
+    }
+}
+
+export const Report_table = () => {
         return (
             <>
                 <div className="translation-list">
@@ -18,4 +27,4 @@ const Report_table = () => {
         )
 }
 
-export default Report_table
+export default report_tableReducer

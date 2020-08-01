@@ -64,6 +64,7 @@ export const posts = [
         location: "대한민국, 인천 계양",
         img: img,
         like: 12,
+        content: 'post 글쓴이의 글',
         comments: [
             {
                 commentId: 1,

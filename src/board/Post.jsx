@@ -10,9 +10,10 @@ const comment_submit = (e) => {
     alert(`댓글 내용 : ${document.getElementById('input_comment').value}`)
 }
 
-
 const Post = ({post}) => {
-    const {profileImg, location, img, userId, like, comments, dateTime} = post
+    const {profileImg, location, img, userId, like, comments, dateTime, content} = post
+    const [showComment, setShowComment] = useState(false)
+    const handlePostComment = () => showComment === false ? setShowComment(true) : setShowComment(false)
 
     return (
         <>
@@ -55,9 +56,20 @@ const Post = ({post}) => {
                     <span id="bookmark-count-39"/>
                     개
                 </div>
-                {comments.map( comment => (
-                <Comments comment={comment} key={comment.commentId}/>
-                ))}
+                <div className="comment_container">
+                    <div className="comment" id="comment-list-ajax-post37">
+                        <div className="comment-detail">
+                            <div className="nick_name m_text">{userId}</div>
+                            <div>{content}</div>
+                        </div>
+                    </div>
+                    <div className="small_heart">
+                        <div className="sprite_small_heart_icon_outline"/>
+                    </div>
+                </div>
+                <Button onClick={handlePostComment}>더보기</Button>
+
+                    {showComment ? comments.map(comment => (<Comments comment={comment} key={comment.commentId}/>)) : null}
 
                 <div className="timer">{dateTime}</div>
 

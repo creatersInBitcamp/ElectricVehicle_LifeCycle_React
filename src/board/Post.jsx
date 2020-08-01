@@ -3,7 +3,6 @@ import Comments from "./comments";
 import {Link} from "react-router-dom";
 import {MoreHoriz} from '@material-ui/icons'
 import Button from "@material-ui/core/Button";
-import Popover from "@material-ui/core/Popover";
 
 const comment_submit = (e) => {
     e.preventDefault()

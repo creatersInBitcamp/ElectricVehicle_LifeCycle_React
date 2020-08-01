@@ -30,13 +30,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7391774a-aa25-43ef-bbcf-6fbde24c4ada" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/mainPage/mainpage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -181,5 +189,9 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="443" y="274" key="MultipleFileMergeDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1596259639052" />
+    <state x="477" y="44" width="838" height="1032" key="search.everywhere.popup" timestamp="1596262246003">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="477" y="44" width="838" height="1032" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1596262246003" />
   </component>
 </project>

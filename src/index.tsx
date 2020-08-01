@@ -49,6 +49,7 @@ import BoardProfile from "./board/BoardProfile";
 import BoardDetail from "./board/BoardDetail";
 // @ts-ignore
 import NewPost from "./board/NewPost";
+import Mainpage from "./mainPage/mainpage";
 
 class Root extends Component {
     render() {
@@ -62,7 +63,7 @@ class Root extends Component {
                             <Switch>
                                 <Layout>
                                     {/*Routes For Layouts*/}
-                                    <Route exact path={`${process.env.PUBLIC_URL}/`} component={BoardMain}/>
+                                    <Route exact path={`${process.env.PUBLIC_URL}/`} component={Mainpage}/>
 
                                     <Route exact path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
                                     <Route exact path={`${process.env.PUBLIC_URL}/map`} component={Map} />

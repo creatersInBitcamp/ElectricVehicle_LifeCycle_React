@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -28,11 +31,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7391774a-aa25-43ef-bbcf-6fbde24c4ada" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chatbot/Chabot.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatbot/MyChatBot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chatbot/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatbot/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +64,9 @@
     <property name="last_opened_file_path" value="$USER_HOME$/ChatbotProject/frontend" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="C:\Users\user\ElectricVehicle_LifeCycle_Team\ElectricVehicle_LifeCycle_React\node_modules\typescript\lib" />
   </component>
@@ -145,29 +145,41 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1596090220355" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1596089874185">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1766" height="275" key="GridCell.Tab.0.bottom" timestamp="1596260051454">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1345" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595604758285" />
+    <state width="1766" height="275" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1596260051454" />
     <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1596089874185" />
     <state width="1894" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245317" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1596089874185">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1766" height="275" key="GridCell.Tab.0.center" timestamp="1596260051453">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1345" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595604758285" />
+    <state width="1766" height="275" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1596260051453" />
     <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1596089874185" />
     <state width="1894" height="287" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245316" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1596089874184">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1766" height="275" key="GridCell.Tab.0.left" timestamp="1596260051452">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1345" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595604758284" />
+    <state width="1766" height="275" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1596260051452" />
     <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1596089874184" />
     <state width="1894" height="287" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245316" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1596089874185">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1766" height="275" key="GridCell.Tab.0.right" timestamp="1596260051453">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1345" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595604758285" />
+    <state width="1766" height="275" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1596260051453" />
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1596089874185" />
     <state width="1894" height="287" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245317" />
+    <state x="179" y="101" key="MergeDialog" timestamp="1596259638990">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="179" y="101" key="MergeDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1596259638990" />
+    <state x="443" y="274" key="MultipleFileMergeDialog" timestamp="1596259639052">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="443" y="274" key="MultipleFileMergeDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1596259639052" />
   </component>
 </project>

@@ -1,0 +1,1 @@
+export {ElecCar, default as elecCarReducer } from './elecCar'

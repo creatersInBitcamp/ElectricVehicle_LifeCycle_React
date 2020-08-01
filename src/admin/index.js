@@ -1,1 +1,1 @@
-export { default as loginReducer } from './login'
+export {Dashboard, default as dashboardReducer } from './dashboard'

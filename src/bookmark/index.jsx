@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 
 import Breadcrumb from '../common/breadcrumb';
-import {addToCartAndRemoveWishlist, removeFromWishlist} from '../atomic/actions'
+import {addToCartAndRemoveWishlist, removeFromWishlist} from '../_atomic/actions'
 
 class wishList extends Component {
 

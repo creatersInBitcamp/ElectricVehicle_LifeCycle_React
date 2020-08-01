@@ -14,21 +14,21 @@ class DetailsTopTabs extends Component {
                             <TabList className="nav nav-tabs nav-material">
                                 <Tab className="nav-item">
                                     <span className="nav-link active">
-                                        <i className="icofont icofont-ui-home"></i>Description</span>
+                                        <i className="icofont icofont-ui-home"/>Description</span>
                                     <div className="material-border"></div>
                                 </Tab>
                                 <Tab className="nav-item">
-                                    <span className="nav-link" ><i className="icofont icofont-man-in-glasses"></i>Details</span>
-                                    <div className="material-border"></div>
-                                </Tab>
-                                <Tab className="nav-item">
-                                    <span className="nav-link" >
-                                        <i className="icofont icofont-contacts"></i>Video</span>
+                                    <span className="nav-link" ><i className="icofont icofont-man-in-glasses"/>Details</span>
                                     <div className="material-border"></div>
                                 </Tab>
                                 <Tab className="nav-item">
                                     <span className="nav-link" >
-                                        <i className="icofont icofont-contacts"></i>Write Review</span>
+                                        <i className="icofont icofont-contacts"/>Video</span>
+                                    <div className="material-border"></div>
+                                </Tab>
+                                <Tab className="nav-item">
+                                    <span className="nav-link" >
+                                        <i className="icofont icofont-contacts"/>Write Review</span>
                                     <div className="material-border"></div>
                                 </Tab>
                             </TabList>
@@ -99,11 +99,11 @@ class DetailsTopTabs extends Component {
                                                 <label>Rating</label>
                                                 <div className="media-body ml-3">
                                                     <div className="rating three-star">
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
+                                                        <i className="fa fa-star"/>
+                                                        <i className="fa fa-star"/>
+                                                        <i className="fa fa-star"/>
+                                                        <i className="fa fa-star"/>
+                                                        <i className="fa fa-star"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,7 +122,7 @@ class DetailsTopTabs extends Component {
                                         </div>
                                         <div className="col-md-12">
                                             <label htmlFor="review">Review Title</label>
-                                            <textarea className="form-control" placeholder="Wrire Your Testimonial Here" id="exampleFormControlTextarea1" rows="6"></textarea>
+                                            <textarea className="form-control" placeholder="Wrire Your Testimonial Here" id="exampleFormControlTextarea1" rows="6"/>
                                         </div>
                                         <div className="col-md-12">
                                             <button className="btn btn-solid" type="submit">Submit YOur Review</button>

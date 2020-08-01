@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import Slider from 'react-slick';
 
 import Breadcrumb from '../common/breadcrumb';
-import {removeFromCompare, addToCart} from '../atomic/actions'
+import {removeFromCompare, addToCart} from '../_atomic/actions'
 
 class Compare extends Component {
 

@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom'
 
 
 import Breadcrumb from "../common/breadcrumb";
-import {getCartTotal} from "../atomic/services";
-import {removeFromCart, incrementQty, decrementQty} from '../atomic/actions'
+import {getCartTotal} from "../_atomic/services";
+import {removeFromCart, incrementQty, decrementQty} from '../_atomic/actions'
 
 class cartComponent extends Component {
 

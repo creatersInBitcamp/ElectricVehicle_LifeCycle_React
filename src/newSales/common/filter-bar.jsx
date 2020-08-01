@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import {filterSort} from '../../atomic/actions'
-import {getVisibleproducts} from '../../atomic/services';
+import {filterSort} from '../../_atomic/actions'
+import {getVisibleproducts} from '../../_atomic/services';
 
 class FilterBar extends Component {
 

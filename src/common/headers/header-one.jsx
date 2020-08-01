@@ -3,13 +3,13 @@ import { IntlActions } from 'react-redux-multilingual'
 import Pace from 'react-pace-progress'
 
 // Import custom components
-import store from "../../atomic/store";
+import store from "../../_atomic/store";
 import NavBar from "./common/navbar";
 import SideBar from "./common/sidebar";
 import CartContainer from "../../cart/CartContainer";
 // import TopBar from "./common/topbar";
 import LogoImage from "./common/logo";
-import {changeCurrency} from '../../atomic/actions'
+import {changeCurrency} from '../../_atomic/actions'
 import {connect} from "react-redux";
 
 class HeaderOne extends Component {
@@ -100,7 +100,8 @@ class HeaderOne extends Component {
 											<SideBar/>
 										</div>
 										<div className="brand-logo">
-											<LogoImage logo={this.props.logoName} />
+											{/*<LogoImage logo={this.props.logoName} />*/}
+											<LogoImage />
 										</div>
 									</div>
 									<div className="menu-right pull-right">

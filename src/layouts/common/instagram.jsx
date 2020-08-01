@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Slider from 'react-slick';
 import ig from 'fetch-instagram';
 
-import {Slider5, Slider7} from "../../atomic/services/script"
+import {Slider5, Slider7} from "../../_atomic/services/script"
 
 class Instagram extends Component {
 

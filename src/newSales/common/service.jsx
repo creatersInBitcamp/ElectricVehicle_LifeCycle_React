@@ -5,7 +5,7 @@ import {
     svgservice,
     svgoffer,
     svgpayment
-} from "../../atomic/services/script"
+} from "../../_atomic/services/script"
 
 class Service extends Component {
     render (){

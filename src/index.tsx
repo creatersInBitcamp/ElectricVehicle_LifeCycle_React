@@ -7,9 +7,9 @@ import { IntlProvider } from 'react-redux-multilingual'
 import './index.scss';
 
 // Import custom components
-import store from "./atomic/store";
-import translations from './atomic/constants/translations'
-import { getAllProducts } from './atomic/actions'
+import store from "./_atomic/store";
+import translations from './_atomic/constants/translations'
+import { getAllProducts } from './_atomic/actions'
 
 // Layouts
 // import Fashion from './layouts/fashion/main';

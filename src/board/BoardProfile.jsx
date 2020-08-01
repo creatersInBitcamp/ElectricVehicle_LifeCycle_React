@@ -1,7 +1,14 @@
 import React from 'react';
 import './css/boardProfile.css'
 
+import {user, posts} from './data'
+import ProfileImgs from "./profileImgs";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tabs";
+
 const BoardProfile = () => {
+    const {profileImg, follow, follower, userId, bookMarks} = user
+
     return (
         <>
             <div id="main_container">
@@ -11,13 +18,13 @@ const BoardProfile = () => {
                     <div className="hori_cont">
                         <div className="profile_wrap">
                             <div className="profile_img">
-                                <img src="imgs/thumb.jpeg" alt="착한호랑이"/>
+                                <img src={profileImg} alt="착한호랑이"/>
                             </div>
                         </div>
 
                         <div className="detail">
                             <div className="top">
-                                <div className="user_name">KindTiger</div>
+                                <div className="user_name">{userId}</div>
                                 <a className="profile_edit">프로필편집</a>
                                 <a href="#" className="logout">로그아웃</a>
                             </div>
@@ -25,87 +32,36 @@ const BoardProfile = () => {
                             <ul className="middle">
                                 <li>
                                     <span>게시물</span>
-                                    3
+                                    {posts.length}
                                 </li>
                                 <li>
                                     <span>팔로워</span>
-                                    3
+                                    {follower.length}
                                 </li>
                                 <li>
                                     <span>팔로우</span>
-                                    3
+                                    {follow.length}
                                 </li>
                             </ul>
-                            <p className="about">
-                                <span className="nick_name">kindtigerrr</span>
-                                <span className="book_mark">bookmark</span>
-                            </p>
-
                         </div>
                     </div>
 
-                    <div className="mylist_contents contents_container active">
-                        <div className="pic">
-                            <a href="#"><img src="imgs/img_section/img01.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"><img src="imgs/img_section/img02.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""/></a>
-                        </div>
-                    </div>
-
-
-                    <div className="bookmark_contents contents_container">
-                        <div className="pic">
-                            <a href="#"><img src="imgs/img_section/img03.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"><img src="imgs/img_section/img01.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""/></a>
-                        </div>
-                        <div className="pic">
-                            <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""/></a>
-                        </div>
-                    </div>
-
-
+                    <Tabs defaultActiveKey={userId}>
+                        <Tab eventKey={userId} title={userId}>
+                            <div className="mylist_contents contents_container active">
+                                {
+                                    posts.map( post => (<ProfileImgs img={post.img}/>))
+                                }
+                            </div>
+                        </Tab>
+                        <Tab eventKey={'Bookmark'} title={'Bookmark'}>
+                            <div className="mylist_contents contents_container active">
+                                {
+                                    bookMarks.map( bookMark => (<ProfileImgs img={bookMark.img}/>))
+                                }
+                            </div>
+                        </Tab>
+                    </Tabs>
                 </section>
             </div>
         </>

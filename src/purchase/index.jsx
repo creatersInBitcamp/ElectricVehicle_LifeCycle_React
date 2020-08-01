@@ -6,8 +6,8 @@ import PaypalExpressBtn from 'react-paypal-express-checkout';
 import SimpleReactValidator from 'simple-react-validator';
 
 import Breadcrumb from "../common/breadcrumb";
-import {removeFromWishlist} from '../atomic/actions'
-import {getCartTotal} from "../atomic/services";
+import {removeFromWishlist} from '../_atomic/actions'
+import {getCartTotal} from "../_atomic/services";
 
 class checkOut extends Component {
 

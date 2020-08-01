@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link} from 'react-router-dom';
 
 import LogoImage from "../headers/common/logo"
-import {SlideUpDown} from "../../atomic/services/script";
+import {SlideUpDown} from "../../_atomic/services/script";
 
 class FooterTwo extends Component {
 

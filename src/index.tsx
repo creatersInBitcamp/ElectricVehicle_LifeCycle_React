@@ -40,7 +40,7 @@ import CollectionLeftSidebar from "./newSales/collection-left-sidebar";
 
 //Admin
 import AdminDashboard from "./admin/dashboard";
-import AdminApp from "./admin/app";
+import App from "./admin/app";
 
 import Details from "./board/details"
 
@@ -60,6 +60,12 @@ import Mainpage from "./mainPage/mainpage";
 import {List_user} from "./admin/users";
 import store from "./_atomic/store";
 
+const AppRoute = ({component: Component, layout: Layout, ...rest}) => (
+    <Route {...rest} reder={props => (
+    <Layout><Component {...props}/></Layout>
+)}/>
+)
+
 class Root extends Component {
     render() {
         store.dispatch(getAllProducts());
@@ -70,25 +76,6 @@ class Root extends Component {
                     <BrowserRouter basename={'/'}>
                         <ScrollContext>
                             <Switch>
-                                {/*<AdminApp>*/}
-                                {/*    <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />*/}
-
-                                {/*    <Route path={`${process.env.PUBLIC_URL}/elecCar`} component={ElecCar} />*/}
-
-                                {/*    <Route path={`${process.env.PUBLIC_URL}/orders`} component={Orders} />*/}
-
-                                {/*    <Route path={`${process.env.PUBLIC_URL}/usedCar`} component={UsedCar} />*/}
-
-                                {/*    <Route path={`${process.env.PUBLIC_URL}/community`} component={Community} />*/}
-
-                                {/*    <Route path={`${process.env.PUBLIC_URL}/notice`} component={Notice} />*/}
-
-                                {/*    <Route path={`${process.env.PUBLIC_URL}/users`} component={List_user} />*/}
-
-                                {/*    <Route path={`${process.env.PUBLIC_URL}/reports`} component={Reports} />*/}
-
-                                {/*    <Route path={`${process.env.PUBLIC_URL}/userDetail`} component={Profile} />*/}
-                                {/*</AdminApp>*/}
                                 <Layout>
                                     {/*Routes For Layouts*/}
 
@@ -123,7 +110,6 @@ class Root extends Component {
                                     <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
 
                                     <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare}/>
-
                                     {/*admin*/}
                                     <Route path={`${process.env.PUBLIC_URL}/admin/admindashboard`} component={Dashboard} />
 
@@ -142,6 +128,7 @@ class Root extends Component {
                                     <Route path={`${process.env.PUBLIC_URL}/admin/reports`} component={Reports} />
 
                                     <Route path={`${process.env.PUBLIC_URL}/admin/userDetail`} component={Profile} />
+
                                 </Layout>
                             </Switch>
                         </ScrollContext>

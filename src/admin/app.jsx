@@ -7,19 +7,7 @@ import {Header} from './common/header_components';
 export class App extends Component {
     constructor(props){
         super(props);
-        this.state ={
-            ltr:true,
-            divName:'RTL',
-        }
-    }
-    ChangeRtl(divName){
-        if(divName === 'RTL') {
-            document.body.classList.add('rtl');
-            this.setState({divName: 'LTR'});
-        }else{
-            document.body.classList.remove('rtl');
-            this.setState({divName: 'RTL'});
-        }
+
     }
     render() {
         return (
@@ -35,7 +23,6 @@ export class App extends Component {
                         <Footer />
                     </div>
                 </div>
-                <div className="btn-light custom-theme" onClick={ () => this.ChangeRtl(this.state.divName)}>{this.state.divName}</div>
             </div>
         )
     }

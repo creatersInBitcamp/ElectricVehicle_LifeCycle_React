@@ -85,8 +85,14 @@ class NavBar extends Component {
                                     <span className="sub-arrow"/>
                                 </Link>
                                 <ul className="nav-submenu" >
-                                    <li><Link to={`${process.env.PUBLIC_URL}/admin/login`} >{translate('login')}</Link></li>
-                                    <li><Link to={`${process.env.PUBLIC_URL}/admin/dashboard`} >{translate('dashboard')}</Link></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/admin/admindashboard`} >{translate('admindashboard')}</Link></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/admin/elecCar`} >{translate('elecCar')}</Link></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/admin/orders`} >{translate('orders')}</Link></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/admin/community`} >{translate('community')}</Link></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/admin/notice`} >{translate('notice')}</Link></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/admin/users`} >{translate('users')}</Link></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/admin/reports`} >{translate('reports')}</Link></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/admin/userDetail`} >{translate('userDetail')}</Link></li>
                                 </ul>
                             </li>
                             <li >

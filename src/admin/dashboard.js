@@ -316,7 +316,7 @@ export const Dashboard = () => {
                                         </div>
                                         <div className="col-6">
                                             <div className="value-graph">
-                                                <h3>42% <span><i className="fa fa-angle-up font-primary"></i></span></h3>
+                                                <h3>42% <span><i className="fa fa-angle-up font-primary"/></span></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -326,7 +326,7 @@ export const Dashboard = () => {
                                         <div className="media-body">
                                             <span>Sales Last Month</span>
                                             <h2 className="mb-0">9054</h2>
-                                            <p>0.25% <span><i className="fa fa-angle-up"></i></span></p>
+                                            <p>0.25% <span><i className="fa fa-angle-up"/></span></p>
                                             <h5 className="f-w-600 f-16">Gross sales of August</h5>
                                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
                                         </div>
@@ -440,7 +440,7 @@ export const Dashboard = () => {
                                         </div>
                                         <div className="col-6">
                                             <div className="value-graph">
-                                                <h3>28% <span><i className="fa fa-angle-up font-warning"></i></span></h3>
+                                                <h3>28% <span><i className="fa fa-angle-up font-warning"/></span></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -450,7 +450,7 @@ export const Dashboard = () => {
                                         <div className="media-body">
                                             <span>Cash on hand</span>
                                             <h2 className="mb-0">4672</h2>
-                                            <p>0.8% <span><i className="fa fa-angle-up"></i></span></p>
+                                            <p>0.8% <span><i className="fa fa-angle-up"/></span></p>
                                             <h5 className="f-w-600 f-16">Details about cash</h5>
                                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
                                         </div>
@@ -502,7 +502,7 @@ export const Dashboard = () => {
                                         </div>
                                         <div className="col-6">
                                             <div className="value-graph">
-                                                <h3>75% <span><i className="fa fa-angle-up font-danger"></i></span></h3>
+                                                <h3>75% <span><i className="fa fa-angle-up font-danger"/></span></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -512,7 +512,7 @@ export const Dashboard = () => {
                                         <div className="media-body">
                                             <span>Security Deposits</span>
                                             <h2 className="mb-0">5782</h2>
-                                            <p>0.25% <span><i className="fa fa-angle-up"></i></span></p>
+                                            <p>0.25% <span><i className="fa fa-angle-up"/></span></p>
                                             <h5 className="f-w-600 f-16">Gross sales of June</h5>
                                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
                                         </div>

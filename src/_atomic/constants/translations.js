@@ -111,6 +111,14 @@ var module = {
             admin : 'admin',
             chatbot : 'chatbot',
             blog_board_main:'board main',
+            admindashboard: 'dashboard',
+            elecCar: 'elecCar',
+            orders: 'orders',
+            community: 'community',
+            notice: 'notice',
+            users: 'users',
+            reports: 'reports',
+            userDetail: 'userDetail'
         }
     },
     ko: {
@@ -224,7 +232,15 @@ var module = {
             board : '게시판',
             admin : '관리자',
             chatbot : '챗봇',
-            blog_board_main: '인스타그램형 게시판'
+            blog_board_main: '포스트 메인',
+            admindashboard: '관리자 메인',
+            elecCar: '전기차 통계',
+            orders: '주문 통계',
+            community: '포스트 통계',
+            notice: '공지사항',
+            users: '사용자 통계',
+            reports: '보고서 통계',
+            userDetail: '사용자 관리'
         }
     }
 

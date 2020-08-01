@@ -5930,7 +5930,7 @@ footer p {
   }
 }
 /*=====================
-    21.Tab to top CSS start
+    21.TableChargingStation to top CSS start
 ==========================*/
 .tap-top {
   width: 50px;
@@ -10357,7 +10357,7 @@ body.dark {
   border-color: #404040;
 }
 .dark .main-navbar .nav-menu .back-btn .mobile-back {
-  color: #404040;
+  color: #f1f3f5;
 }
 .dark .main-navbar .nav-menu > li > a {
   color: #f1f3f5;

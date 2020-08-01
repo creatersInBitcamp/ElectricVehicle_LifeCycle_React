@@ -27,12 +27,12 @@ import { getAllProducts } from './_atomic/actions'
 // Features
 import Layout from './App'
 import Cart from './cart'
-import checkOut from './purchase/index'
-import orderSuccess from './purchase/success-page'
 import wishList from './bookmark'
 
 // Extra Pages
+import MapBox from "./map/mapBox"
 import Contact from "./map/contact";
+import Map from "./map/map"
 
 // Product Pages
 import LeftSideBar from "./newSales/left-sidebar";
@@ -47,7 +47,6 @@ import Details from "./board/details"
 //user
 import Login from './user/login'
 import Register from './user/register'
-
 
 import Search from './search/search'
 
@@ -65,6 +64,8 @@ const AppRoute = ({component: Component, layout: Layout, ...rest}) => (
     <Layout><Component {...props}/></Layout>
 )}/>
 )
+import ChargingStationMap from "./map/charging-station-map";
+import Service from './map/service'
 
 class Root extends Component {
     render() {
@@ -82,7 +83,7 @@ class Root extends Component {
                                     <Route exact path={`${process.env.PUBLIC_URL}/`} component={Mainpage}/>
 
                                     <Route exact path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
-                                    <Route exact path={`${process.env.PUBLIC_URL}/map`} component={Map} />
+                                    <Route exact path={`${process.env.PUBLIC_URL}/map`} component={ChargingStationMap} />
 
                                     <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
                                     <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
@@ -141,7 +142,3 @@ class Root extends Component {
 }
 
 ReactDOM.render(<Root />, document.getElementById('root'));
-
-
-
-

@@ -30,15 +30,12 @@ import Cart from './cart'
 import wishList from './bookmark'
 
 // Extra Pages
-import MapBox from "./map/mapBox"
 import Contact from "./map/contact";
-import Map from "./map/map"
 
 // Product Pages
 
 //Admin
 import AdminDashboard from "./admin/dashboard";
-import App from "./admin/app";
 
 import Details from "./board/details"
 
@@ -57,14 +54,6 @@ import Mainpage from "./mainPage/mainpage";
 import {List_user} from "./admin/users";
 import store from "./_atomic/store";
 
-const AppRoute = ({component: Component, layout: Layout, ...rest}) => (
-    <Route {...rest} reder={props => (
-    <Layout><Component {...props}/></Layout>
-)}/>
-)
-import ChargingStationMap from "./map/charging-station-map";
-import Service from './map/service'
-
 class Root extends Component {
     render() {
         store.dispatch(getAllProducts());
@@ -75,13 +64,31 @@ class Root extends Component {
                     <BrowserRouter basename={'/'}>
                         <ScrollContext>
                             <Switch>
+                                {/*<AdminApp>*/}
+                                {/*    <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />*/}
+
+                                {/*    <Route path={`${process.env.PUBLIC_URL}/elecCar`} component={ElecCar} />*/}
+
+                                {/*    <Route path={`${process.env.PUBLIC_URL}/orders`} component={Orders} />*/}
+
+                                {/*    <Route path={`${process.env.PUBLIC_URL}/usedCar`} component={UsedCar} />*/}
+
+                                {/*    <Route path={`${process.env.PUBLIC_URL}/community`} component={Community} />*/}
+
+                                {/*    <Route path={`${process.env.PUBLIC_URL}/notice`} component={Notice} />*/}
+
+                                {/*    <Route path={`${process.env.PUBLIC_URL}/users`} component={List_user} />*/}
+
+                                {/*    <Route path={`${process.env.PUBLIC_URL}/reports`} component={Reports} />*/}
+
+                                {/*    <Route path={`${process.env.PUBLIC_URL}/userDetail`} component={Profile} />*/}
+                                {/*</AdminApp>*/}
                                 <Layout>
                                     {/*Routes For Layouts*/}
 
                                     <Route exact path={`${process.env.PUBLIC_URL}/`} component={Mainpage}/>
 
                                     <Route exact path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
-                                    <Route exact path={`${process.env.PUBLIC_URL}/map`} component={ChargingStationMap} />
 
                                     <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
 
@@ -124,7 +131,6 @@ class Root extends Component {
                                     <Route path={`${process.env.PUBLIC_URL}/admin/reports`} component={Reports} />
 
                                     <Route path={`${process.env.PUBLIC_URL}/admin/userDetail`} component={Profile} />
-
                                 </Layout>
                             </Switch>
                         </ScrollContext>

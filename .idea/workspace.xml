@@ -31,6 +31,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7391774a-aa25-43ef-bbcf-6fbde24c4ada" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/assets/css/color1.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/css/color10.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/css/color11.css" beforeDir="false" />
@@ -49,6 +50,21 @@
       <change beforePath="$PROJECT_DIR$/src/assets/css/color7.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/css/color8.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/css/color9.css" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_atomic/constants/translations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/_atomic/constants/translations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_atomic/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/_atomic/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/admin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/auth/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/auth/loginTabset.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/reports/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/reports/report.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/headers/common/navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/headers/common/navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" />
+>>>>>>> parent of fb2734a... fixxing test
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

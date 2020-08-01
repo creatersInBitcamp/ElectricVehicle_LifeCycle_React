@@ -93,6 +93,7 @@
     "react-map-gl-directions": "^1.0.4",
     "react-map-gl-geocoder": "^2.0.11",
     "react-masonry-css": "^1.0.14",
+    "react-modal": "^3.11.2",
     "react-naver-maps": "^0.0.13",
     "react-pace-progress": "^2.0.0",
     "react-paypal-express-checkout": "^1.0.5",

@@ -9,6 +9,7 @@ import ChargingStationMap from "./charging-station-map";
 import Breadcrumb from "../common/breadcrumb";
 import SightsMap from "./sights-map"
 import BookmarkMap from "./bookmark-map";
+import Transactions_sales from "./table-charging-station";
 
 class SpecialProducts extends Component {
     render (){
@@ -39,7 +40,7 @@ class SpecialProducts extends Component {
                             </TabPanel>
                             <TabPanel>
                                 <div className=" no-slider row">
-
+                                    <Transactions_sales/>
                                 </div>
                             </TabPanel>
                             <TabPanel>

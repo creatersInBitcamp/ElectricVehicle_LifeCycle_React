@@ -67,7 +67,7 @@ const SightsMap = () =>{
                     );
                 }}
             >
-                <img src="https://image.flaticon.com/icons/png/128/487/487021.png"/>
+                <img src="https://image.flaticon.com/icons/png/128/487/487021.png" alt={"no"}/>
             </button>
         );
     }

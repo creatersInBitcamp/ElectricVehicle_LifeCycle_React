@@ -35,8 +35,6 @@ import Contact from "./map/contact";
 import Map from "./map/map"
 
 // Product Pages
-import LeftSideBar from "./newSales/left-sidebar";
-import CollectionLeftSidebar from "./newSales/collection-left-sidebar";
 
 //Admin
 import AdminDashboard from "./admin/dashboard";
@@ -86,11 +84,6 @@ class Root extends Component {
                                     <Route exact path={`${process.env.PUBLIC_URL}/map`} component={ChargingStationMap} />
 
                                     <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
-                                    <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
-                                    <Route path={`${process.env.PUBLIC_URL}/order-success`} component={orderSuccess}/>
-
-                                    <Route path={`${process.env.PUBLIC_URL}/left-sidebar/product/:id`} component={LeftSideBar}/>
-                                    <Route path={`${process.env.PUBLIC_URL}/left-sidebar/collection`} component={CollectionLeftSidebar}/>
 
                                     <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={AdminDashboard} />
 
@@ -106,11 +99,13 @@ class Root extends Component {
 
 
                                     <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
+
                                     <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
 
                                     <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
 
                                     <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare}/>
+
                                     {/*admin*/}
                                     <Route path={`${process.env.PUBLIC_URL}/admin/admindashboard`} component={Dashboard} />
 

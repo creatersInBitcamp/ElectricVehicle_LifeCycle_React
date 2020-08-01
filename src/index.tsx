@@ -15,7 +15,6 @@ import {Notice} from './admin/notice';
 
 import {Profile} from './admin/settings';
 import {Reports} from './admin/reports';
-import {Login} from './admin/auth/login';
 import { IntlProvider } from 'react-redux-multilingual'
 import './index.scss';
 

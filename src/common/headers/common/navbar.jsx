@@ -118,8 +118,6 @@ const NavBar = () => {
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link to={`${process.env.PUBLIC_URL}/contact`}>{translate('contact')}</Link>
-                                </li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/map`}>{translate('map')}</Link></li>
                             </ul>
                         </li>

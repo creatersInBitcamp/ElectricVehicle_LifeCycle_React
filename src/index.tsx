@@ -9,7 +9,6 @@ import { IntlProvider } from 'react-redux-multilingual'
 import './index.scss';
 
 // Layouts
-import Fashion from './layouts/fashion/main';
 
 // Features
 import Layout from './App'
@@ -17,15 +16,12 @@ import Cart from './cart'
 import wishList from './wishlist'
 
 // Extra Pages
-import Contact from "./map/contact";
 
 //user
 import Login from './user/login'
 import Register from './user/register'
 
-// import Search from './search/search'
 import ChargingStationMap from "./map/charging-station-map";
-import Service from './map/service'
 
 // Components
 
@@ -66,12 +62,12 @@ const Root =()=> {
                         <Switch>
                             <Layout>
                                 {/*common*/}
-                                <Route exact path={`${process.env.PUBLIC_URL}/`} component={MainPage}/>
+                                <Route path={`${process.env.PUBLIC_URL}/`} component={MainPage}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
 
                                 {/*map*/}
-                                <Route path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
                                 <Route path={`${process.env.PUBLIC_URL}/map`} component={ChargingStationMap} />
 
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>

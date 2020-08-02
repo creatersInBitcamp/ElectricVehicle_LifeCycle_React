@@ -45,8 +45,8 @@ import Search from './search/search'
 
 import { getAllProducts } from './product'
 import store from "./store";
-// @ts-ignore
 import MainPage from "./common/MainPage";
+import SightsMap from "./map/sights-map";
 
 /*import { createStore, combineReducers } from 'redux'
 let reducers = combineReducers(Object.assign({}, { Intl }))
@@ -68,7 +68,7 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
 
                                 {/*map*/}
-                                <Route path={`${process.env.PUBLIC_URL}/map`} component={ChargingStationMap} />
+                                <Route path={`${process.env.PUBLIC_URL}/map`} component={SightsMap} />
 
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
                                 <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishList}/>

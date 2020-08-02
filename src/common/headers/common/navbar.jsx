@@ -21,11 +21,11 @@ const NavBar = () => {
         setNavClose({right: '-410px'})
     }
 
-    const onMouseEnterHandler = () => {
-        if (window.innerWidth > 1199) {
-            document.querySelector("#main-menu").classList.add("hover-unset");
-        }
-    }
+    // const onMouseEnterHandler = () => {
+    //     if (window.innerWidth > 1199) {
+    //         document.querySelector("#main-menu").classList.add("hover-unset");
+    //     }
+    // }
 
     const handleSubmenu = e => {
         if (e.target.classList.contains('sub-arrow'))

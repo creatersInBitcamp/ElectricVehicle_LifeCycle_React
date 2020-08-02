@@ -7,6 +7,9 @@ import Story from "./story";
 import Recommend from "./recommend";
 import {user, posts} from './data'
 import NewPost from "./NewPost";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
+import Hashtags from "./hashtags";
 
 const BoardMain = () => {
 
@@ -15,9 +18,17 @@ const BoardMain = () => {
                 <section id="main_container">
                     <div className="inner">
                         <div className="contents_box">
-                            {posts.map(post => (
-                                <Post post={post} key={post.postId}/>
-                            ))}
+                            <Tabs defaultActiveKey={'post'}>
+                                <Tab eventKey={'post'} title={'post'}>
+                                    {
+                                        posts.map(post => (<Post post={post} key={post.postId}/>))
+                                    }
+                                </Tab>
+                                <Tab eventKey={'hash tag'} title={'hash tag'}>
+                                    <Hashtags posts={posts}/>
+                                </Tab>
+                            </Tabs>
+
                         </div>
                         <input type="hidden" id="page" value="1"/>
                         <div className="side_box">
@@ -32,7 +43,7 @@ const BoardMain = () => {
                                 </div>
                             </div>
 
-                            <Story/>
+                            <Story posts={posts}/>
 
                             <Recommend/>
 

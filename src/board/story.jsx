@@ -1,8 +1,8 @@
 import React from 'react';
 import img from "./imgs/img_section/img01.jpg";
-import profile2 from "./imgs/thumb02.jpg";
 
-const Story = () => {
+const Story = ({posts}) => {
+
     return (
         <>
             <article className="story">
@@ -12,15 +12,17 @@ const Story = () => {
                 </header>
 
                 <div className="scroll_inner">
-                    <div className="thumb_user">
-                        <div className="profile_thumb">
-                            <img src={profile2} alt="프로필사진"/>
+                    {posts.map( post => (
+                        <div className="thumb_user">
+                            <div className="profile_thumb">
+                                <img src={post.profileImg} alt="프로필사진"/>
+                            </div>
+                            <div className="detail">
+                                <div className="id">{post.userId}</div>
+                                <div className="time">{post.dateTime}</div>
+                            </div>
                         </div>
-                        <div className="detail">
-                            <div className="id">kind_tigerrrr</div>
-                            <div className="time">1시간 전</div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </article>
         </>

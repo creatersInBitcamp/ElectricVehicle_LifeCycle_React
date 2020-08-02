@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ChargingStationMap from "./charging-station-map";
 import Breadcrumb from "../common/breadcrumb";
@@ -6,7 +6,7 @@ import SightsMap from "./sights-map"
 import BookmarkMap from "./bookmark-map";
 import Transactions_sales from "./table-charging-station";
 
-const SpecialProducts = () => {
+const MapService = () => {
     return (
         <div>
             <Breadcrumb title={'Map'}/> <br/>
@@ -47,5 +47,5 @@ const SpecialProducts = () => {
     )
 }
 
-export default SpecialProducts
+export default MapService
 

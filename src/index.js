@@ -13,8 +13,8 @@ import Fashion from './layouts/fashion/main';
 
 // Features
 import Layout from './App'
-import Cart from './cart'
-import wishList from './wishlist'
+
+import wishlist from './wishlist/Wishlist'
 
 // Extra Pages
 import Contact from "./map/contact";
@@ -45,16 +45,13 @@ import BoardMain from "./board/BoardMain";
 import BoardProfile from "./board/BoardProfile";
 import BoardDetail from "./board/BoardDetail";
 import NewPost from "./board/NewPost";
-
+import Cart from "./cart/CartComponent";
 import Search from './search/search'
 
 
 import { getAllProducts } from './product'
 import store from "./store";
 
-/*import { createStore, combineReducers } from 'redux'
-let reducers = combineReducers(Object.assign({}, { Intl }))
-let store = createStore(reducers)*/
 
 const Root =()=> {
     store.dispatch(getAllProducts());
@@ -75,7 +72,7 @@ const Root =()=> {
 
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
 
-                                <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishList}/>
+                                <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishlist}/>
 
 
                                 <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>

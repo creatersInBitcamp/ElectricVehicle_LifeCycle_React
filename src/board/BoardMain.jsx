@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
 import './css/boardMain.css'
 import img from './imgs/img_section/img01.jpg'
@@ -27,7 +27,7 @@ const BoardMain = () => {
                                     <img src={user.profileImg} alt="프로필사진"/>
                                 </div>
                                 <div className="detail">
-                                    <Link to={`${process.env.PUBLIC_URL}/blog/board-profile`}><div className="id m_text">{user.userId}</div></Link>
+                                    <Link to={`${process.env.PUBLIC_URL}/post/profile`}><div className="id m_text">{user.userId}</div></Link>
                                     <div className="ko_name">{user.name}</div>
                                 </div>
                             </div>

@@ -75,11 +75,14 @@ const NavBar = () => {
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/login`}>{translate('login')}</Link>
-                                </li>
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/admin/dashboard`}>{translate('dashboard')}</Link>
-                                </li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/dashboard`}>{translate('dashboard')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/orders`}>{translate('orders')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/usedCar`}>{translate('usedCar')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/community`}>{translate('community')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/notice`}>{translate('notice')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/users`}>{translate('users')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/reports`}>{translate('reports')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/userDetail`}>{translate('userDetail')}</Link></li>
                             </ul>
                         </li>
                         <li>
@@ -88,14 +91,9 @@ const NavBar = () => {
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>{translate('products')}</Link>
-                                </li>
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/left-sidebar/product/1`}>{translate('left_sidebar')}</Link>
-                                </li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/checkout`}>{translate('checkout')}</Link>
-                                </li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>{translate('products')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/1`}>{translate('left_sidebar')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/checkout`}>{translate('checkout')}</Link></li>
                             </ul>
                         </li>
                         <li>
@@ -131,12 +129,7 @@ const NavBar = () => {
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/blog/right-sidebar`}>{translate('blog_right_sidebar')}</Link>
-                                </li>
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/blog/details`}>{translate('blog_detail')}</Link>
-                                </li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/post/main`}>{translate('post')}</Link></li>
                             </ul>
                         </li>
                         <li className="mega-menu">

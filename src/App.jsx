@@ -15,7 +15,6 @@ const App = (props) => {
     const result = useSelector(state => state.elecCarReducer)
     useEffect(()=>{
         setAdmin(result.admin)
-        alert(result.admin)
     },[])
     if(admin){
         return (

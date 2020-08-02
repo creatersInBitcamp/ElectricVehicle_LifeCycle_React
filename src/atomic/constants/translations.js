@@ -114,11 +114,14 @@ const module = {
             admindashboard: 'dashboard',
             elecCar: 'elecCar',
             orders: 'orders',
+            usedCar: 'usedCar',
             community: 'community',
             notice: 'notice',
             users: 'users',
             reports: 'reports',
-            userDetail: 'userDetail'
+            userDetail: 'userDetail',
+            post: 'post',
+
         }
     },
     ko: {
@@ -236,11 +239,13 @@ const module = {
             admindashboard: '관리자 메인',
             elecCar: '전기차 통계',
             orders: '주문 통계',
+            usedCar: '중고차',
             community: '포스트 통계',
             notice: '공지사항',
             users: '사용자 통계',
             reports: '보고서 통계',
-            userDetail: '사용자 관리'
+            userDetail: '사용자 관리',
+            post: '포스트'
         }
     }
 

@@ -23,7 +23,7 @@ const Post = ({post}) => {
                             <img src={profileImg} alt="프로필이미지"/>
                         </div>
                         <div className="user_name">
-                            <Link to={`${process.env.PUBLIC_URL}/blog/board-profile`}><div className="nick_name m_text">{userId}</div></Link>
+                            <Link to={`${process.env.PUBLIC_URL}/post/profile`}><div className="nick_name m_text">{userId}</div></Link>
                             <div className="country s_text">{location}</div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@ const Post = ({post}) => {
 
                 <div className="img_section">
                     <div className="trans_inner">
-                        <Link to={`${process.env.PUBLIC_URL}/blog/board-detail`}><img src={img} alt="visual01"/></Link>
+                        <Link to={`${process.env.PUBLIC_URL}/post/detail`}><img src={img} alt="visual01"/></Link>
                     </div>
                 </div>
                 <div className="bottom_icons">

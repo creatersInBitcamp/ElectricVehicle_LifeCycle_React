@@ -1,7 +1,7 @@
 import React from 'react';
-import {Breadcrumb} from '../common';
+import {Breadcrumb} from '../common/breadcrumb';
 import { Line, Bar } from 'react-chartjs-2';
-import { lineChart, chartOptions, areaChart, areaOptions, barOptions, barChart, sellOption, sellData, salesOption, salesData } from '../../constants/chartData'
+import { lineChart, chartOptions, areaChart, areaOptions, barOptions, barChart, sellOption, sellData, salesOption, salesData } from '../../atomic/constants/chartData'
 import {Report_table} from './';
 
 const reportsTypes = {REQUEST: 'reports/REQUEST'}

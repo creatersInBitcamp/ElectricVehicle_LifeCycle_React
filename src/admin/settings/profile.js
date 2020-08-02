@@ -28,9 +28,9 @@ export const Profile = () => {
                                     <span>johndeo@gmail.com</span>
                                     <div className="social">
                                         <div className="form-group btn-showcase">
-                                            <button className="btn social-btn btn-fb d-inline-block"> <i className="fa fa-facebook"></i></button>
-                                            <button className="btn social-btn btn-twitter d-inline-block"><i className="fa fa-google"></i></button>
-                                            <button className="btn social-btn btn-google d-inline-block mr-0"><i className="fa fa-twitter"></i></button>
+                                            <button className="btn social-btn btn-fb d-inline-block"> <i className="fa fa-facebook"/></button>
+                                            <button className="btn social-btn btn-twitter d-inline-block"><i className="fa fa-google"/></button>
+                                            <button className="btn social-btn btn-google d-inline-block mr-0"><i className="fa fa-twitter"/></button>
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@ export const Profile = () => {
                                         <div className="media-body">
                                             <h6>Performance <span className="pull-right">80%</span></h6>
                                             <div className="progress sm-progress-bar">
-                                                <div className="progress-bar bg-primary" role="progressbar" style={{width: '90%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div className="progress-bar bg-primary" role="progressbar" style={{width: '90%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
                                             </div>
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@ export const Profile = () => {
                                         <div className="media-body">
                                             <h6>Overtime <span className="pull-right">60%</span></h6>
                                             <div className="progress sm-progress-bar">
-                                                <div className="progress-bar bg-secondary" role="progressbar" style={{width: '60%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div className="progress-bar bg-secondary" role="progressbar" style={{width: '60%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
                                             </div>
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@ export const Profile = () => {
                                         <div className="media-body">
                                             <h6>Leaves taken <span className="pull-right">50%</span></h6>
                                             <div className="progress sm-progress-bar">
-                                                <div className="progress-bar bg-danger" role="progressbar" style={{width: '50%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div className="progress-bar bg-danger" role="progressbar" style={{width: '50%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
                                             </div>
                                         </div>
                                     </div>

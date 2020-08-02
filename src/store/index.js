@@ -1,10 +1,11 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 
 // middlewares
 import thunkMiddleware from 'redux-thunk'
 
 // Import custom components
-import rootReducer from '../reducers';
+import rootReducer from "../reducer";
+import {IntlReducer as Intl} from "react-redux-multilingual";
 
 
 function saveToLocalStorage(state) {
@@ -30,8 +31,9 @@ function loadFromLocalStorage() {
 const persistedState = loadFromLocalStorage()
 
 /**
- * Create a Redux store that holds the app state.
+ * Create a Redux reducer that holds the app state.
  */
+
 const store = createStore(rootReducer, persistedState, compose(
     applyMiddleware(thunkMiddleware),
 

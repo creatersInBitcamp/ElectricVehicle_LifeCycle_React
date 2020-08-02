@@ -1,10 +1,46 @@
 import React, {Component} from 'react';
+import Slider from 'react-slick';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom'
 
-import {getBestSeller} from "../_atomic/services";
-import {addToCart, addToWishlist, addToCompare} from "../_atomic/actions";
+import {getBestSeller} from "../atomic/services";
+// import {addToCart, addToWishlist, addToCompare, addToWishlistUnsafe, addToCompareUnsafe} from "../atomic/actions";
 import ProductItem from '../layouts/common/product-item';
+import {toast} from "react-toastify";
+// import * as types from "../atomic/constants/ActionTypes";
 
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
+export const ADD_TO_COMPARE = 'ADD_TO_COMPARE'
+
+const addToCart = (product,qty) => (dispatch) => {
+    toast.success("Item Added to Cart");
+    dispatch(addToCartUnsafe(product, qty))
+
+}
+const addToCartUnsafe = (product, qty) => ({
+    type: ADD_TO_CART,
+    product,
+    qty
+})
+const addToWishlist = (product) => (dispatch) => {
+    toast.success("Item Added to Wishlist");
+    dispatch(addToWishlistUnsafe(product))
+
+}
+const addToCompare = (product) => (dispatch) => {
+    toast.success("Item Added to Compare");
+    dispatch(addToCompareUnsafe(product))
+
+}
+const addToWishlistUnsafe = (product) => ({
+    type: ADD_TO_WISHLIST,
+    product
+});
+const addToCompareUnsafe= (product) => ({
+    type: ADD_TO_COMPARE,
+    product
+});
 
 class RelatedProduct extends Component {
     render (){

@@ -61,7 +61,7 @@ export const Tabset_page = () => {
                                 </div>
                                 <div className="form-group row editor-label">
                                     <label className="col-xl-3 col-md-4">Meta Description</label>
-                                    <textarea rows="4" className="col-xl-8 col-md-7"></textarea>
+                                    <textarea rows="4" className="col-xl-8 col-md-7"/>
                                 </div>
                             </form>
                         </TabPanel>

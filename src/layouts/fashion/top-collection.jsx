@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Slider from 'react-slick';
 import {connect} from 'react-redux'
 
-import {getTrendingCollection} from '../../_atomic/services/index'
-import {Product4, Product5} from '../../_atomic/services/script'
-import {addToCart, addToWishlist, addToCompare} from "../../_atomic/actions/index";
+import {getTrendingCollection} from '../../atomic/services/index'
+import {Product4, Product5} from '../../atomic/services/script'
+import {addToCart} from '../../cart'
+import {addToWishlist} from '../../wishlist'
+import {addToCompare} from "../../compare";
 import ProductItem from '../common/product-item';
 
 class TopCollection extends Component {

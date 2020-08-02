@@ -2,7 +2,7 @@ var module = {
     en: {
         locale: 'en_US',
         messages: {
-            topbar_title: 'Welcome to Our store {theme_name}',
+            topbar_title: 'Welcome to Our reducer {theme_name}',
             call_us: 'Call Us',
             home: 'home',
             features: 'features',

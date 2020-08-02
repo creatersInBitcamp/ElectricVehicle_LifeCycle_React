@@ -3,12 +3,16 @@ import {Breadcrumb} from '../common';
 import Modal from 'react-responsive-modal';
 import 'react-toastify/dist/ReactToastify.css';
 import data from '../../assets/data/category';
-import carData from '../../constants/evdb_eccar.json'
+import carData from '../../atomic/constants/evdb_eccar.json'
 import {Datatable} from '../common';
+import {useDispatch} from "react-redux";
 
 const elecCarTypes = {REQUEST: 'elecCar/REQUEST'}
+const initialState = {
+    admin: true
+}
 const elecCarRequest = action => ({type: elecCarTypes.REQUEST, payload: action.payload})
-const elecCarReducer = ( state={}, action ) => {
+const elecCarReducer = ( state=initialState, action ) => {
     switch (action.type) {
         case elecCarTypes.REQUEST: return {...state, payload: action.payload}
         default: return state
@@ -61,7 +65,7 @@ export const ElecCar = () => {
                                             </div>
                                         </Modal>
                                     </div>
-                                    <div className="clearfix"></div>
+                                    <div className="clearfix"/>
                                     <div id="basicScenario" className="product-physical">
                                         <Datatable
                                             multiSelectOption={false}

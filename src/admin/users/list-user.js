@@ -22,7 +22,7 @@ export const List_user = () => {
                             <h5>사용자 정보</h5>
                         </div>
                         <div className="card-body">
-                            <div className="clearfix"></div>
+                            <div className="clearfix"/>
                             <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
                                 <Datatable
                                     multiSelectOption={true}

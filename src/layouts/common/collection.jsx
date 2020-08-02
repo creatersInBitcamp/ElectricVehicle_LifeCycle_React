@@ -1,59 +1,55 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
-import {connect} from 'react-redux'
+import {useSelector} from 'react-redux'
 
-import {getTrendingCollection} from '../../_atomic/services/index'
-import {Product4, Product5} from '../../_atomic/services/script'
-import {addToCart, addToWishlist, addToCompare} from "../../_atomic/actions/index";
-import ProductItem from '../../features/product/common/product-style-five';
+import {getTrendingCollection} from '../../atomic/services/index'
+import {Product4, Product5} from '../../atomic/services/script'
+import {addToCart} from '../../cart'
+import {addToWishlist} from '../../wishlist'
+import {addToCompare} from "../../compare";
+import ProductItem from './product-style-five';
 
-class TopCollection extends Component {
+const TopCollection = () => {
+    const {items, symbol, type} = useSelector(({state,ownProps})=>({
+        items: getTrendingCollection(state.data.products, ownProps.type),
+        symbol: state.data.symbol,
+        type: state.type
+    }))
 
-    render (){
+    let properties;
+    if(type === 'kids'){
+        properties = Product5
+    }else{
+        properties = Product4
+    }
 
-        const {items, symbol, addToCart, addToWishlist, addToCompare, type} = this.props;
-
-        var properties;
-        if(type === 'kids'){
-            properties = Product5
-        }else{
-            properties = Product4
-        }
-
-        return (
-            <div>
-                {/*Paragraph*/}
-                <div className="title1  section-t-space">
-                    <h4>special offer</h4>
-                    <h2 className="title-inner1">top collection</h2>
-                </div>
-                {/*Paragraph End*/}
-                <section className="section-b-space p-t-0">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col">
-                                <Slider {...properties} className="product-4 product-m no-arrow">
-                                    { items.map((product, index ) =>
-                                        <div key={index}>
+    return <>
+        <div>
+            {/*Paragraph*/}
+            <div className="title1  section-t-space">
+                <h4>special offer</h4>
+                <h2 className="title-inner1">top collection</h2>
+            </div>
+            {/*Paragraph End*/}
+            <section className="section-b-space p-t-0">
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <Slider {...properties} className="product-4 product-m no-arrow">
+                                { items.map((product, index ) =>
+                                    <div key={index}>
                                         <ProductItem product={product} symbol={symbol}
-                                                     onAddToCompareClicked={() => addToCompare(product)}
-                                                     onAddToWishlistClicked={() => addToWishlist(product)}
-                                                     onAddToCartClicked={() => addToCart(product, 1)} key={index} />
-                                        </div>)
-                                    }
-                                </Slider>
-                            </div>
+                                                     onAddToCompareClicked={addToCompare(product)}
+                                                     onAddToWishlistClicked={addToWishlist(product)}
+                                                     onAddToCartClicked={addToCart(product, 1)} key={index} />
+                                    </div>)
+                                }
+                            </Slider>
                         </div>
                     </div>
-                </section>
-            </div>
-        )
-    }
+                </div>
+            </section>
+        </div>
+    </>
 }
-
-const mapStateToProps = (state, ownProps) => ({
-    items: getTrendingCollection(state.data.products, ownProps.type),
-    symbol: state.data.symbol
-})
-
-export default connect(mapStateToProps, {addToCart, addToWishlist, addToCompare}) (TopCollection);
+export default TopCollection

@@ -194,7 +194,7 @@ const SightsMap = () =>{
                                                 <p>수용인원수: {selected.capacity}</p>
                                                 <p>주차가능수: {selected.parking_lot}</p>
                                                 <p>관광지 정보: {selected.info}</p>
-                                                <button onClick={()=>bookmark(selected)}>북마크</button>
+                                                <button onClick={()=>bookmark(selected.sights_id)}>북마크</button>
                                                 <button onClick={()=>deleteBookmark(selected.sights_id)}>북마크삭제</button>
                                             </div>
                                         </InfoWindow>

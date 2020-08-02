@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
-import {MENUITEMS} from "../../../constants/menu";
+import {MENUITEMS} from "../../../_atomic/constants/menu";
 
 const sidebarMenusTypes = {REQUEST: 'sidebarMenus/REQUEST'}
 const sidebarRequest = action => ({type: sidebarMenusTypes.REQUEST, payload: action.payload})

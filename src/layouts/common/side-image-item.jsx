@@ -1,24 +1,16 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {Link} from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 
-class SideImageItem extends Component {
+const SideImageItem = props => {
+    const [image,setimage] = useState('')
 
-    constructor(props){
-        super(props)
 
-        this.state = {
-            image: ''
-        }
+    const onClickHandle = (img) => {
+        setimage( img );
     }
-
-    onClickHandle(img) {
-        this.setState({ image : img} );
-    }
-
-    render() {
-        const {product, symbol} = this.props;
+        const {product, symbol} = props;
 
         let RatingStars = []
         for(var i = 0; i < product.rating; i++) {
@@ -58,7 +50,6 @@ class SideImageItem extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default SideImageItem;

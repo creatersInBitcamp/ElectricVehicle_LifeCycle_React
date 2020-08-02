@@ -1,45 +1,44 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState} from 'react';
 import { IntlActions } from 'react-redux-multilingual'
 import Pace from 'react-pace-progress'
-
-// Import custom components
-import store from "../../_atomic/store";
+import store from "../../atomic/store";
 import NavBar from "./common/navbar";
 import SideBar from "./common/sidebar";
 import CartContainer from "../../cart/CartContainer";
-// import TopBar from "./common/topbar";
 import LogoImage from "./common/logo";
-import {changeCurrency} from '../../_atomic/actions'
-import {connect} from "react-redux";
 
-class HeaderOne extends Component {
+const CHANGE_CURRENCY = 'CHANGE_CURRENCY'
 
-	constructor(props) {
-		super(props);
+export const changeCurrency = (symbol) => ({
+	type: CHANGE_CURRENCY,
+	symbol
+});
 
-		this.state = {
-			isLoading:false
-		}
-	}
+const HeaderOne = props => {
+	const [isLoading, setIsLoading] = useState(false)
+	const [open, setOpen] = useState(false)
+
 	/*=====================
          Pre loader
          ==========================*/
-	componentDidMount() {
+	const componentDidMount = () => {
 		setTimeout(function() {
 			document.querySelector(".loader-wrapper").style = "display: none";
 		}, 2000);
 
-		this.setState({ open: true });
+		setOpen(  true );
 	}
 
-	componentWillMount(){
-		window.addEventListener('scroll', this.handleScroll);
-	}
-	componentWillUnmount() {
-		window.removeEventListener('scroll', this.handleScroll);
-	}
+	useEffect(() => {
+		setTimeout(() => {
+			document.querySelector(".loader-wrapper").style = "display: none"
+		}, 2000)
+		setOpen(true)
+		window.addEventListener('scroll', handleScroll)
+		window.removeEventListener('scroll', handleScroll)
+	})
 
-	handleScroll = () => {
+	const handleScroll = () => {
 		let number = window.pageXOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 		if (number >= 300) {
 			if (window.innerWidth < 576) {
@@ -51,38 +50,38 @@ class HeaderOne extends Component {
 		}
 	}
 
-	changeLanguage(lang) {
+	const changeLanguage = (lang) => {
 		store.dispatch(IntlActions.setLocale(lang))
 	}
 
-	openNav() {
+	const openNav = () => {
 		var openmyslide = document.getElementById("mySidenav");
 		if(openmyslide){
 			openmyslide.classList.add('open-side')
 		}
 	}
-	openSearch() {
+	const openSearch = () => {
 		document.getElementById("search-overlay").style.display = "block";
 	}
 
-	closeSearch() {
+	const closeSearch = () => {
 		document.getElementById("search-overlay").style.display = "none";
 	}
 
-	load = ()=>{
-		this.setState({isLoading: true});
+	const load = ()=>{
+		setIsLoading( true);
 		fetch().then(()=>{
 			// deal with data fetched
-			this.setState({isLoading: false})
+			setIsLoading( false)
 		})
 	};
 
-	render() {
+
 
 		return (
 			<div>
 				<header id="sticky" className="sticky">
-					{this.state.isLoading ? <Pace color="#27ae60"/> : null}
+					{isLoading ? <Pace color="#27ae60"/> : null}
 					<div className="mobile-fix-option"/>
 					{/*Top Header Component*/}
 					{/*<TopBar/>*/}
@@ -93,15 +92,14 @@ class HeaderOne extends Component {
 								<div className="main-menu">
 									<div className="menu-left">
 										<div className="navbar">
-											<a href="javascript:void(0)" onClick={this.openNav}>
+											<a href="javascript:void(0)" onClick={openNav}>
 												<div className="bar-style"> <i className="fa fa-bars sidebar-bar" aria-hidden="true"/></div>
 											</a>
 											{/*SideBar Navigation Component*/}
 											<SideBar/>
 										</div>
 										<div className="brand-logo">
-											{/*<LogoImage logo={this.props.logoName} />*/}
-											<LogoImage />
+											<LogoImage logo={props.logoName} />
 										</div>
 									</div>
 									<div className="menu-right pull-right">
@@ -112,8 +110,8 @@ class HeaderOne extends Component {
 											<div className="icon-nav">
 												<ul>
 													<li className="onhover-div mobile-search">
-														<div><img src={`${process.env.PUBLIC_URL}/assets/images/icon/search.png`} onClick={this.openSearch} className="img-fluid" alt="" />
-															<i className="fa fa-search" onClick={this.openSearch}/></div>
+														<div><img src={`${process.env.PUBLIC_URL}/assets/images/icon/search.png`} onClick={openSearch} className="img-fluid" alt="" />
+															<i className="fa fa-search" onClick={openSearch}/></div>
 													</li>
 													<li className="onhover-div mobile-setting">
 														<div><img src={`${process.env.PUBLIC_URL}/assets/images/icon/setting.png`} className="img-fluid" alt="" />
@@ -121,13 +119,13 @@ class HeaderOne extends Component {
 														<div className="show-div setting">
 															<h6>language</h6>
 															<ul>
-																<li><a href={null} onClick={() => this.changeLanguage('ko')}>Korea</a> </li>
-																<li><a href={null} onClick={() => this.changeLanguage('en')}>English</a> </li>
+																<li><a href={null} onClick={() => changeLanguage('ko')}>Korea</a> </li>
+																<li><a href={null} onClick={() => changeLanguage('en')}>English</a> </li>
 															</ul>
 															<h6>currency</h6>
 															<ul className="list-inline">
-																<li><a href={null} onClick={() => this.props.changeCurrency('\\')}>won</a> </li>
-																<li><a href={null} onClick={() => this.props.changeCurrency('$')}>doller</a> </li>
+																<li><a href={null} onClick={() => changeCurrency('\\')}>won</a> </li>
+																<li><a href={null} onClick={() => changeCurrency('$')}>doller</a> </li>
 															</ul>
 														</div>
 													</li>
@@ -145,7 +143,7 @@ class HeaderOne extends Component {
 
 				<div id="search-overlay" className="search-overlay">
 					<div>
-						<span className="closebtn" onClick={this.closeSearch} title="Close Overlay">×</span>
+						<span className="closebtn" onClick={closeSearch} title="Close Overlay">×</span>
 						<div className="overlay-content">
 							<div className="container">
 								<div className="row">
@@ -165,9 +163,6 @@ class HeaderOne extends Component {
 
 			</div>
 		)
-	}
-}
 
-export default connect(null,
-	{ changeCurrency }
-)(HeaderOne);
+}
+export default HeaderOne

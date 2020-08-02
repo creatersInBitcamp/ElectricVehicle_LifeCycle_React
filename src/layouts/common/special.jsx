@@ -1,26 +1,49 @@
-import React, { Component } from 'react';
-import Slider from 'react-slick';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux'
-
-import {getSingleItem, getSpecialCollection} from '../../_atomic/services/index'
-import {
-    addToCart,
-    addToWishlist,
-    addToCompare,
-    incrementQty,
-    decrementQty,
-    removeFromCart
-} from "../../../actions/index";
+import {connect, useSelector} from 'react-redux'
+import { getSpecialCollection} from '../../atomic/services/index'
 import ProductItem from './special-product-item';
 
-class Special extends Component {
+export const addToCart = (product,qty) => (dispatch) => {
+    toast.success("Item Added to Cart");
+    dispatch(addToCartUnsafe(product, qty))
 
-    render (){
+}
+export const addToWishlist = (product) => (dispatch) => {
+    toast.success("Item Added to Wishlist");
+    dispatch(addToWishlistUnsafe(product))
 
-        const {product, symbol, addToCart, addToWishlist, addToCompare, incrementQty, decrementQty, removeFromCart} = this.props;
+}
+export const addToCompare = (product) => (dispatch) => {
+    toast.success("Item Added to Compare");
+    dispatch(addToCompareUnsafe(product))
 
-        return (
+}
+export const incrementQty = (product,qty) => (dispatch) => {
+    toast.success("Item Added to Cart");
+    dispatch(addToCartUnsafe(product, qty))
+
+}
+export const decrementQty = productId => (dispatch) => {
+    toast.warn("Item Decrement Qty to Cart");
+
+    dispatch({
+        type: types.DECREMENT_QTY,
+        productId})
+};
+export const removeFromCart = product_id => (dispatch) => {
+    toast.error("Item Removed from Cart");
+    dispatch({
+        type: types.REMOVE_FROM_CART,
+        product_id
+    })
+};
+
+const Special = props => {
+         const product = useSelector(state => getSpecialCollection(state.data.products, Ownprops.type))
+         const symbol = useSelector(state => state.data.symbol)
+         const {addToCart, addToWishlist, addToCompare, incrementQty, decrementQty, removeFromCart} = props;
+         return (
             <div>
                 {/*Paragraph*/}
                 <section className="section-b-space addtocart_count">
@@ -156,20 +179,9 @@ class Special extends Component {
                 </section>
             </div>
         )
-    }
 }
 
-const mapStateToProps = (state, Ownprops) => ({
-    product: getSpecialCollection(state.data.products, Ownprops.type),
-    symbol: state.data.symbol
-})
 
-export default connect(mapStateToProps,
-    {
-        addToCart,
-        addToWishlist,
-        addToCompare,
-        incrementQty,
-        decrementQty,
-        removeFromCart
-    }) (Special);
+
+
+export default Special

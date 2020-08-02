@@ -1,43 +1,25 @@
-import React, { Component } from 'react';
+import React, {Component, useState} from 'react';
 import {Link} from 'react-router-dom'
 import Slider from 'react-slick';
 import ig from 'fetch-instagram';
+import {Slider5, Slider7} from "../../atomic/services/script"
 
-import {Slider5, Slider7} from "../../_atomic/services/script"
-
-class Instagram extends Component {
-
-    constructor (props) {
-        super (props)
-
-        this.state = {
-            InstaData: []
-        }
-    }
-
-    componentWillMount() {
+const Instagram = props => {
+    const [InstaData,setInstaData] = useState([])
+    const componentWillMount = () => {
         const instagram = ig({
             accessToken: '8295761913.aa0cb6f.2914e9f04dd343b8a57d9dc9baca91cc',
         });
-
         const users = instagram.media();
-        users.then(res => this.setState({InstaData:res.data}));
-
+        users.then(res => setInstaData(res.data));
     }
-
-    render (){
-
-        const {InstaData} = this.state;
-        const {type} = this.props;
-
+        const {type} = props;
         var Sliders = {};
         if(type === 'watch'){
             Sliders = Slider5;
         }else{
             Sliders = Slider7;
         }
-
-
         return (
             <section className={`instagram`}>
                 <div className={`container${(type === 'watch')?'':'-fluid'}`}>
@@ -64,7 +46,5 @@ class Instagram extends Component {
                 </div>
             </section>
         )
-    }
 }
-
 export default Instagram;

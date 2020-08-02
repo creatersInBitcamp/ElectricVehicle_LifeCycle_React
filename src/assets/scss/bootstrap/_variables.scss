@@ -163,7 +163,7 @@ $paragraph-margin-bottom:   1rem !default;
 // Grid breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
-// adapting to different screen sizes, for use in community queries.
+// adapting to different screen sizes, for use in media queries.
 
 $grid-breakpoints: (
   xs: 0,
@@ -584,7 +584,7 @@ $dropdown-header-color:             $gray-600 !default;
 // Z-index master list
 //
 // Warning: Avoid customizing these values. They're used for a bird's eye view
-// of admin dependent on the z-axis and are designed to all work together.
+// of components dependent on the z-axis and are designed to all work together.
 
 $zindex-dropdown:                   1000 !default;
 $zindex-sticky:                     1020 !default;

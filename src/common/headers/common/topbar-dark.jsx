@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-class TopBarDark extends Component {
+const TopBarDark = () => {
 
-
-    render() {
         return (
             <div className="top-header top-header-dark3">
                 <div className="container">
@@ -42,7 +40,7 @@ class TopBarDark extends Component {
                 </div>
             </div>
         )
-    }
+
 }
 
 

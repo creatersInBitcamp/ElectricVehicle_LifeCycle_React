@@ -1,1 +1,0 @@
-export {Orders, default as ordersReducer } from './orders'

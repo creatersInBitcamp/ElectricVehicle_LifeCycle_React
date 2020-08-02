@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 
-class SideBar extends Component {
+const SideBar = () => {
 
 
-    closeNav() {
+   const closeNav = () => {
         var closemyslide = document.getElementById("mySidenav");
         if (closemyslide)
             closemyslide.classList.remove('open-side');
     }
 
-    handleSubmenu = (event) => {
+   const handleSubmenu = (event) => {
         if (event.target.classList.contains('sub-arrow'))
             return;
 
@@ -23,7 +23,7 @@ class SideBar extends Component {
             event.target.nextElementSibling.classList.add('opensub1')
         }
     }
-    handleSubTwoMenu = (event) => {
+   const handleSubTwoMenu = (event) => {
         if (event.target.classList.contains('sub-arrow'))
             return;
 
@@ -36,7 +36,7 @@ class SideBar extends Component {
             event.target.nextElementSibling.classList.add('opensub2')
         }
     }
-    handleSubThreeMenu = (event) => {
+   const handleSubThreeMenu = (event) => {
         if (event.target.classList.contains('sub-arrow'))
             return;
 
@@ -49,7 +49,7 @@ class SideBar extends Component {
             event.target.nextElementSibling.classList.add('opensub3')
         }
     }
-    handleSubFourMenu = (event) => {
+   const handleSubFourMenu = (event) => {
         if (event.target.classList.contains('sub-arrow'))
             return;
 
@@ -63,7 +63,7 @@ class SideBar extends Component {
         }
     }
 
-    handleMegaSubmenu = (event) => {
+   const handleMegaSubmenu = (event) => {
         if (event.target.classList.contains('sub-arrow'))
             return;
 
@@ -73,20 +73,20 @@ class SideBar extends Component {
             event.target.nextElementSibling.classList.add('opensidesubmenu')
         }
     }
+    const handleSuTwobmenu = () => {}
 
-    render() {
         return (
             <div id="mySidenav" className="sidenav">
-                <a href="javascript:void(0)" className="sidebar-overlay" onClick={this.closeNav}/>
+                <a href="javascript:void(0)" className="sidebar-overlay" onClick={closeNav}/>
                 <nav>
-                    <a onClick={this.closeNav}>
+                    <a onClick={closeNav}>
                         <div className="sidebar-back text-left">
                             <i className="fa fa-angle-left pr-2" aria-hidden="true"/> Back
                         </div>
                     </a>
                     <ul id="sub-menu" className="sidebar-menu">
                         <li>
-                            <Link to="#" onClick={(e) => this.handleMegaSubmenu(e)}>
+                            <Link to="#" onClick={(e) => handleMegaSubmenu(e)}>
                                 clothing
                                 <span className="sub-arrow"/>
                             </Link>
@@ -171,7 +171,7 @@ class SideBar extends Component {
                             </ul>
                         </li>
                         <li>
-                            <Link to="#" onClick={(e) => this.handleSubmenu(e)}>
+                            <Link to="#" onClick={(e) => handleSubmenu(e)}>
                                 bags
                                 <span className="sub-arrow"/>
                             </Link>
@@ -186,7 +186,7 @@ class SideBar extends Component {
                                     <Link to="#">clutches</Link>
                                 </li>
                                 <li>
-                                    <Link to="#" onClick={(e) => this.handleSubTwoMenu(e)} >
+                                    <Link to="#" onClick={(e) => handleSubTwoMenu(e)} >
                                         purses
                                         <span className="sub-arrow"/>
                                     </Link>
@@ -208,7 +208,7 @@ class SideBar extends Component {
                             </ul>
                         </li>
                         <li>
-                            <Link to="#" onClick={(e) => this.handleSubmenu(e)}>
+                            <Link to="#" onClick={(e) => handleSubmenu(e)}>
                                 footwear
                                 <span className="sub-arrow"/>
                             </Link>
@@ -230,7 +230,7 @@ class SideBar extends Component {
                             </Link>
                         </li>
                         <li>
-                            <Link to="#" onClick={(e) => this.handleSubmenu(e)}>
+                            <Link to="#" onClick={(e) => handleSubmenu(e)}>
                                 Accessories
                                 <span className="sub-arrow"/>
                             </Link>
@@ -245,7 +245,7 @@ class SideBar extends Component {
                                     <Link to="#">precious jewellery</Link>
                                 </li>
                                 <li>
-                                    <Link to="#" onClick={(e) => this.handleSubTwoMenu(e)} >
+                                    <Link to="#" onClick={(e) => handleSubTwoMenu(e)} >
                                         more..
                                         <span className="sub-arrow"/>
                                     </Link>
@@ -260,7 +260,7 @@ class SideBar extends Component {
                                             <Link to="#">wrist wear</Link>
                                         </li>
                                         <li>
-                                            <Link to="#" onClick={(e) => this.handleSubThreeMenu(e)} >
+                                            <Link to="#" onClick={(e) => handleSubThreeMenu(e)} >
                                                 accessories
                                                 <span className="sub-arrow"/>
                                             </Link>
@@ -281,7 +281,7 @@ class SideBar extends Component {
                                                     <Link to="#">scarves</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="#" onClick={(e) => this.handleSubFourMenu(e)} >
+                                                    <Link to="#" onClick={(e) => handleSubFourMenu(e)} >
                                                         more...
                                                         <span className="sub-arrow"/>
                                                     </Link>
@@ -313,7 +313,7 @@ class SideBar extends Component {
                             <Link to="#" >house of design</Link>
                         </li>
                         <li>
-                            <Link to="#" onClick={(e) => this.handleSubmenu(e)}>
+                            <Link to="#" onClick={(e) => handleSubmenu(e)}>
                                 beauty & personal care
                                 <span className="sub-arrow"/>
                             </Link>
@@ -328,7 +328,7 @@ class SideBar extends Component {
                                     <Link to="#">premium beaty</Link>
                                 </li>
                                 <li>
-                                    <Link to="#" onClick={(e) => this.handleSuTwobmenu(e)}>
+                                    <Link to="#" onClick={(e) => handleSuTwobmenu(e)}>
                                         more
                                         <span className="sub-arrow"/>
                                     </Link>
@@ -360,7 +360,6 @@ class SideBar extends Component {
             </div>
 
         )
-    }
 }
 
 

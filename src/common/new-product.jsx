@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 import Slider from 'react-slick';
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom'
 
-import {getBestSeller} from "../_atomic/services";
 
+export const getBestSeller = products => {
+    const items = products.filter(product => {
+        return product.sale === true;
+    })
+    return items.slice(0,8)
+}
 
-class NewProduct extends Component {
-    render (){
-        const {items, symbol} = this.props;
+const NewProduct = () => {
+        const items = useSelector(state=>getBestSeller(state.data.products))
+        const symbol = useSelector(state=>state.data.symbol)
 
         var arrays = [];
         while (items.length > 0) {
@@ -43,14 +48,8 @@ class NewProduct extends Component {
                 </Slider>
             </div>
         )
-    }
 }
 
-function mapStateToProps(state) {
-    return {
-        items: getBestSeller(state.data.products),
-        symbol: state.data.symbol
-    }
-}
 
-export default connect(mapStateToProps, null)(NewProduct);
+
+export default NewProduct

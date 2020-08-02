@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { withTranslate } from 'react-redux-multilingual'
 
-class TopBar extends Component {
+const TopBar = (props) => {
 
-    render() {
-        const {translate} = this.props;
+        const {translate} = props;
         return (
             <div className="top-header">
                 <div className="container">
@@ -39,7 +38,6 @@ class TopBar extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 

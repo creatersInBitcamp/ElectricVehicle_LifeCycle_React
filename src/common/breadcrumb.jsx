@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 
-class Breadcrumb extends Component {
-    render (){
-        const {title, parent} = this.props;
+const Breadcrumb = props => {
+        const {title, parent} = props
         return (
             <div className="breadcrumb-section">
                 <div className="container">
@@ -11,7 +10,7 @@ class Breadcrumb extends Component {
                         <div className="col-md-6">
                             <div className="page-title">
                                 <h2>{title}</h2>
-                            </div>
+                            </div> 
                         </div>
                         <div className="col-md-6">
                             <nav aria-label="breadcrumb" className="theme-breadcrumb">
@@ -27,7 +26,7 @@ class Breadcrumb extends Component {
                 </div>
             </div>
         )
-    }
+
 }
 
 export default Breadcrumb;

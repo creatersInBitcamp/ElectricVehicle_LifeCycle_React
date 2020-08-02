@@ -1,77 +1,70 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {Link} from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 
-class SpecialProductItem extends Component {
+const SpecialProductItem = props => {
+    const [open,setopen] = useState(false)
+    // const [openQuantity,setopenQuantity] = useState(false)
+    const [stock,setstock] = useState(false)
+    const [quantity,setquantity] = useState(false)
+    const [image,setimage] = useState(false)
 
-    constructor(props){
-        super(props)
 
-        this.state = {
-            open: false,
-            openQuantity: false,
-            stock: 'InStock',
-            quantity: 1,
-            image: ''
-        }
+    const onClickHandle = (img) => {
+        setimage( img );
     }
-
-    onClickHandle(img) {
-        this.setState({ image : img} );
-    }
-    onOpenModal = () => {
-        this.setState({ open: true });
+    const onOpenModal = () => {
+        setopen( true );
     };
 
-    onCloseModal = () => {
-        this.setState({ open: false });
+    const onCloseModal = () => {
+        setopen( false );
     };
 
-    minusQty = () => {
-        if(this.state.quantity > 1) {
-            this.setState({stock: 'InStock'})
-            this.setState({quantity: this.state.quantity - 1})
-            this.props.onDecrementClicked()
+    const minusQty = () => {
+        if(quantity > 1) {
+            setstock( 'InStock')
+            setquantity(quantity - 1)
+            props.onDecrementClicked()
         }else{
             console.log('removefromcart')
-            this.setState({openQuantity:false})
-            this.props.onRemoveFromCart()
+            setopenQuantity(false)
+            props.onRemoveFromCart()
         }
     }
 
-    plusQty = () => {
-        if(this.props.product.stock >= this.state.quantity) {
-            this.setState({quantity: this.state.quantity+1})
-            this.props.onIncrementClicked()
+    const plusQty = () => {
+        if(props.product.stock >= quantity) {
+            setquantity(quantity+1)
+            props.onIncrementClicked()
         }else{
-            this.setState({stock: 'Out of Stock !'})
+            setstock({stock: 'Out of Stock !'})
         }
     }
-    changeQty = (e) => {
-            this.setState({ quantity: parseInt(e.target.value) })
+    const changeQty = (e) => {
+            setquantity( parseInt(e.target.value) )
     }
-    updateQty = (e) => {
-        if(this.props.product.stock >= parseInt(e.target.value)) {
-            this.setState({ quantity: parseInt(e.target.value) })
-            this.props.onAddToCartClicked()
+    const updateQty = (e) => {
+        if(props.product.stock >= parseInt(e.target.value)) {
+            setquantity( parseInt(e.target.value))
+            props.onAddToCartClicked()
         }else{
-            this.setState({stock: 'Out of Stock !'})
+            setstock( 'Out of Stock !')
         }
     }
-    openQuantity = () => {
-        this.setState({openQuantity:true});
-        this.props.onAddToCartClicked()
+    const openQuantity = () => {
+        setquantity(true);
+       props.onAddToCartClicked()
     }
 
-    render() {
         const {
             product,
             symbol,
             onAddToCartClicked,
             onAddToWishlistClicked,
             onAddToCompareClicked
-        } = this.props;
+        } = props;
 
         let RatingStars = []
         for(var i = 0; i < product.rating; i++) {
@@ -89,7 +82,7 @@ class SpecialProductItem extends Component {
                         <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`} ><img
                             src={`${
                                 product.variants?
-                                    this.state.image?this.state.image:product.variants[0].images
+                                    image?image:product.variants[0].images
                                 :product.pictures[0]
                             }`}
                             className="img-fluid lazyload bg-img"
@@ -102,37 +95,37 @@ class SpecialProductItem extends Component {
                         <a href="javascript:void(0)" data-toggle="modal"
                            data-target="#quick-view"
                            title="Quick View"
-                           onClick={this.onOpenModal}><i className="fa fa-search" aria-hidden="true"></i></a>
+                           onClick={onOpenModal}><i className="fa fa-search" aria-hidden="true"></i></a>
                         <Link to={`${process.env.PUBLIC_URL}/compare`} title="Compare" onClick={onAddToCompareClicked}>
                             <i className="fa fa-refresh" aria-hidden="true"></i></Link>
                     </div>
                     <div className="addtocart_btn">
-                        <button className="add-button add_cart" title="Add to cart" onClick={this.openQuantity}>
+                        <button className="add-button add_cart" title="Add to cart" onClick={openQuantity}>
                             add to cart
                         </button>
-                        <div className={`qty-box cart_qty ${this.state.openQuantity?'open':''}`}>
+                        <div className={`qty-box cart_qty ${openQuantity?'open':''}`}>
                             <div className="input-group">
                               <span className="input-group-prepend">
-                                <button type="button" className="btn quantity-left-minus" onClick={this.minusQty} data-type="minus" data-field="">
+                                <button type="button" className="btn quantity-left-minus" onClick={minusQty} data-type="minus" data-field="">
                                  <i className="fa fa-minus"></i>
                                 </button>
                               </span>
                                 <input
                                     type="number"
                                     name="quantity"
-                                    value={this.state.quantity}
-                                    onChange={this.changeQty}
-                                    onBlur={this.updateQty}
+                                    value={quantity}
+                                    onChange={changeQty}
+                                    onBlur={updateQty}
                                     className="form-control input-number" />
                                 <span className="input-group-prepend">
-                                <button type="button" className="btn quantity-right-plus" onClick={this.plusQty} data-type="plus" data-field="">
+                                <button type="button" className="btn quantity-right-plus" onClick={plusQty} data-type="plus" data-field="">
                                 <i className="fa fa-plus"></i>
                                 </button>
                                </span>
                             </div>
                         </div>
                     </div>
-                    {this.state.stock != 'InStock'?<span>Out Of Stock</span>:''}
+                    {stock != 'InStock'?<span>Out Of Stock</span>:''}
                 </div>
                 <div className="product-detail text-center">
                     <div>
@@ -147,7 +140,7 @@ class SpecialProductItem extends Component {
                         </h4>
                     </div>
                 </div>
-                <Modal open={this.state.open} onClose={this.onCloseModal} center>
+                <Modal open={open} onClose={onCloseModal} center>
                     <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
                         <div className="modal-content quick-view-modal">
                             <div className="modal-body">
@@ -156,7 +149,7 @@ class SpecialProductItem extends Component {
                                         <div className="quick-view-img">
                                             <img src={`${
                                                 product.variants?
-                                                    this.state.image?this.state.image:product.variants[0].images
+                                                    image?image:product.variants[0].images
                                                     :product.pictures[0]
                                             }`} alt="" className="img-fluid" />
                                         </div>
@@ -168,7 +161,7 @@ class SpecialProductItem extends Component {
                                             {product.variants?
                                             <ul className="color-variant">
                                                 {product.variants.map((vari, i) =>
-                                                    <li className={vari.color} key={i} title={vari.color} onClick={() => this.onClickHandle(vari.images)}></li>)
+                                                    <li className={vari.color} key={i} title={vari.color} onClick={() => onClickHandle(vari.images)}></li>)
                                                 }
                                             </ul>:''}
                                             <div className="border-product">
@@ -188,13 +181,13 @@ class SpecialProductItem extends Component {
                                                 <div className="qty-box">
                                                     <div className="input-group">
                                                               <span className="input-group-prepend">
-                                                                <button type="button" className="btn quantity-left-minus" onClick={this.minusQty} data-type="minus" data-field="">
+                                                                <button type="button" className="btn quantity-left-minus" onClick={minusQty} data-type="minus" data-field="">
                                                                  <i className="fa fa-angle-left"></i>
                                                                 </button>
                                                               </span>
-                                                        <input type="text" name="quantity" value={this.state.quantity}  onChange={this.changeQty} className="form-control input-number" />
+                                                        <input type="text" name="quantity" value={quantity}  onChange={changeQty} className="form-control input-number" />
                                                         <span className="input-group-prepend">
-                                                                <button type="button" className="btn quantity-right-plus" onClick={this.plusQty} data-type="plus" data-field="">
+                                                                <button type="button" className="btn quantity-right-plus" onClick={plusQty} data-type="plus" data-field="">
                                                                 <i className="fa fa-angle-right"></i>
                                                                 </button>
                                                                </span>
@@ -202,7 +195,7 @@ class SpecialProductItem extends Component {
                                                 </div>
                                             </div>
                                             <div className="product-buttons">
-                                                <button  className="btn btn-solid" onClick={() => onAddToCartClicked(product, this.state.quantity)} >add to cart</button>
+                                                <button  className="btn btn-solid" onClick={() => onAddToCartClicked(product, quantity)} >add to cart</button>
                                                 <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`} className="btn btn-solid">view detail</Link>
                                             </div>
                                         </div>
@@ -214,7 +207,7 @@ class SpecialProductItem extends Component {
                 </Modal>
             </div>
         )
-    }
+
 }
 
 export default SpecialProductItem;

@@ -1,16 +1,28 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-
-import {getBestSeller} from "../_atomic/services";
-import {addToCart, addToWishlist, addToCompare} from "../_atomic/actions";
+import React from 'react';
+import {useSelector} from 'react-redux';
 import ProductItem from '../layouts/common/product-item';
+const getBestSeller = products => {
+    const items = products.filter(product => {
+        return product.sale === true;
+    })
+    return items.slice(0,8)
+}
+const addToCart = (product,qty) => (dispatch) => {
+    toast.success("Item Added to Cart");
+    dispatch(addToCartUnsafe(product, qty))
+}
+const addToWishlist = (product) => (dispatch) => {
+    toast.success("Item Added to Wishlist");
+    dispatch(addToWishlistUnsafe(product))
+}
+const addToCompare = (product) => (dispatch) => {
+    toast.success("Item Added to Compare");
+    dispatch(addToCompareUnsafe(product))
+}
 
-
-class RelatedProduct extends Component {
-    render (){
-        const {items, symbol, addToCart, addToWishlist, addToCompare} = this.props;
-
-
+const RelatedProduct = props => {
+    const items = useSelector(state =>getBestSeller(state.data.products))
+    const symbol = useSelector(state =>state.data.symbol)
         return (
             <section className="section-b-space">
                 <div className="container">
@@ -32,14 +44,10 @@ class RelatedProduct extends Component {
                 </div>
             </section>
         )
-    }
+
 }
 
-function mapStateToProps(state) {
-    return {
-        items: getBestSeller(state.data.products),
-        symbol: state.data.symbol
-    }
-}
 
-export default connect(mapStateToProps, {addToCart, addToWishlist, addToCompare})(RelatedProduct);
+
+
+export default RelatedProduct

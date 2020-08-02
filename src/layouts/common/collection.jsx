@@ -1,25 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import {connect} from 'react-redux'
-
-import {getTrendingCollection} from '../../_atomic/services/index'
-import {Product4, Product5} from '../../_atomic/services/script'
-import {addToCart, addToWishlist, addToCompare} from "../../_atomic/actions/index";
+import {getTrendingCollection} from '../../atomic/services/index'
+import {Product4, Product5} from '../../atomic/services/script'
 import ProductItem from '../../features/product/common/product-style-five';
 
-class TopCollection extends Component {
+const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
 
-    render (){
+const addToCart = (product,qty) => (dispatch) => {
+    toast.success("Item Added to Cart");
+    dispatch(addToCartUnsafe(product, qty))
+}
+const addToWishlist = (product) => (dispatch) => {
+    toast.success("Item Added to Wishlist");
+    dispatch(addToWishlistUnsafe(product))
+}
+const addToCompare = (product) => (dispatch) => {
+    toast.success("Item Added to Compare");
+    dispatch(addToCompareUnsafe(product))
 
-        const {items, symbol, addToCart, addToWishlist, addToCompare, type} = this.props;
-
+}
+const addToWishlistUnsafe = (product) => ({
+    type: ADD_TO_WISHLIST,
+    product
+});
+const TopCollection = (props) => {
+        const {items, symbol, addToCart, addToWishlist, addToCompare, type} = props;
         var properties;
         if(type === 'kids'){
             properties = Product5
         }else{
             properties = Product4
         }
-
         return (
             <div>
                 {/*Paragraph*/}
@@ -48,12 +60,9 @@ class TopCollection extends Component {
                 </section>
             </div>
         )
-    }
 }
-
 const mapStateToProps = (state, ownProps) => ({
     items: getTrendingCollection(state.data.products, ownProps.type),
     symbol: state.data.symbol
 })
-
 export default connect(mapStateToProps, {addToCart, addToWishlist, addToCompare}) (TopCollection);

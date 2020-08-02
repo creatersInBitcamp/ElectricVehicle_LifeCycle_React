@@ -1,1 +1,0 @@
-export {default as MyChatBot} from './MyChatBot.js'

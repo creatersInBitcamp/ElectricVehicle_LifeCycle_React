@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import { Link} from 'react-router-dom';
 
 import LogoImage from "../headers/common/logo"
-import {SlideUpDown} from "../../_atomic/services/script";
+import {SlideUpDown} from "../../atomic/services/script";
 
-class FooterTwo extends Component {
+const FooterTwo = props => {
 
-    componentDidMount(){
+    const componentDidMount = () => {
         var contentwidth = window.innerWidth;
         if ((contentwidth) < 750) {
             SlideUpDown('footer-title');
@@ -19,7 +19,6 @@ class FooterTwo extends Component {
         }
     }
 
-    render () {
 
         return (
                 <footer className="footer-light pet-layout-footer">
@@ -30,7 +29,7 @@ class FooterTwo extends Component {
                                     <div className="col">
                                         <div className="footer-link link-white">
                                             <div className="footer-brand-logo">
-                                                <LogoImage logo={this.props.logoName} />
+                                                <LogoImage logo={props.logoName} />
                                             </div>
                                             <div className="social-white">
                                                 <ul>
@@ -109,7 +108,6 @@ class FooterTwo extends Component {
                     </div>
                 </footer>
         );
-    }
 }
 
 export default FooterTwo;

@@ -4,7 +4,9 @@ import {connect} from 'react-redux'
 
 import {getTrendingCollection} from '../../atomic/services/index'
 import {Product4, Product5} from '../../atomic/services/script'
-import {addToCart, addToWishlist, addToCompare} from "../../atomic/actions/index";
+import {addToCart} from '../../cart'
+import {addToWishlist} from '../../wishlist'
+import {addToCompare} from "../../compare";
 import ProductItem from '../common/product-item';
 
 class TopCollection extends Component {

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Slider from 'react-slick';
 import ig from 'fetch-instagram';
 
-import {Slider5, Slider7} from "../../atomic/services/script"
+import {Slider5, Slider7} from "../../_atomic/services/script"
 
 class Instagram extends Component {
 
@@ -52,7 +52,7 @@ class Instagram extends Component {
                                                 <div className="instagram-box">
                                                     <img src={`${pic.images.standard_resolution.url}`} alt="Avatar" className="w-100" />
                                                     <div className="overlay">
-                                                        <i className="fa fa-instagram" aria-hidden="true"></i>
+                                                        <i className="fa fa-instagram" aria-hidden="true"/>
                                                     </div>
                                                 </div>
                                             </a>

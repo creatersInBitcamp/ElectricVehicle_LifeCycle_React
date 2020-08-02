@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { Link} from 'react-router-dom';
 
 import LogoImage from "../headers/common/logo"
-import {SlideUpDown} from "../../atomic/services/script";
+import {SlideUpDown} from "../../_atomic/services/script";
 
 const FooterTwo = props =>{
     useEffect(()=>{
@@ -182,7 +182,7 @@ const FooterTwo = props =>{
                             <div className="row">
                                 <div className="col-xl-6 col-md-6 col-sm-12">
                                     <div className="footer-end">
-                                        <p><i className="fa fa-copyright" aria-hidden="true"></i> 2018-19 themeforest
+                                        <p><i className="fa fa-copyright" aria-hidden="true"/> 2018-19 themeforest
                                             powered by pixelstrap</p>
                                     </div>
                                 </div>

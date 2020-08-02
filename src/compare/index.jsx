@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import Slider from 'react-slick';
 import Breadcrumb from '../common/breadcrumb';
 import {toast} from "react-toastify";
-import {addToCart} from "../cart";
+// import {addToCart} from "../cart";
 
 /* types */
 const ADD_TO_COMPARE = 'ADD_TO_COMPARE'
@@ -165,7 +165,7 @@ export const Compare = () => {
                                                     </div>
                                                 </div>
                                                 <div className="btn-part">
-                                                    <a className="btn btn-solid" onClick={addToCart(item, 1)}>add to cart</a>
+                                                    {/*<a className="btn btn-solid" onClick={addToCart(item, 1)}>add to cart</a>*/}
                                                 </div>
                                             </div>
                                         </div>

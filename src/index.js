@@ -15,6 +15,7 @@ import Fashion from './layouts/fashion/main';
 import Layout from './App'
 
 import wishlist from './wishlist/Wishlist'
+import Compare from './compare/Compare'
 
 // Extra Pages
 import Contact from "./map/contact";
@@ -71,7 +72,7 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/map`} component={ChargingStationMap} />
 
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
-
+                                <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare}/>
                                 <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishlist}/>
 
 

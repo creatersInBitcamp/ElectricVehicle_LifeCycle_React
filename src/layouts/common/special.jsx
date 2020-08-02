@@ -6,7 +6,7 @@ import {getSpecialCollection} from '../../atomic/services/index'
 import ProductItem from './special-product-item';
 import {addToCart,incrementQty,decrementQty,removeFromCart} from "../../cart/cartReducer";
 import {addToWishlist} from "../../wishlist/wishlistReducer";
-import {addToCompare} from "../../compare";
+import {addToCompare} from "../../compare/compareReducer";
 
 const Special = props => {
 

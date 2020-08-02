@@ -6,7 +6,7 @@ import {getTrendingCollection} from '../../atomic/services/index'
 import {Product4, Product5} from '../../atomic/services/script'
 import {addToCart} from '../../cart/cartReducer'
 import {addToWishlist} from '../../wishlist/wishlistReducer'
-import {addToCompare} from "../../compare";
+import {addToCompare} from "../../compare/compareReducer";
 import ProductItem from './product-style-five';
 
 const TopCollection = () => {

@@ -4,15 +4,18 @@ import {Link} from 'react-router-dom'
 import Slider from 'react-slick';
 import Breadcrumb from '../common/breadcrumb';
 import {addToCart} from "../cart/cartReducer";
+import {removeFromCompare} from './compareReducer'
 
 /* component */
-export const Compare = () => {
+const Compare = () => {
     const [quantity, setQuantity] = useState('')
     const {Items, symbol} = useSelector(state=>({
         Items: state.compare.items,
         symbol: state.data.symbol
     }))
-    const dispatch = useDispatch
+
+    const dispatch = useDispatch()
+
     const settings = {
         infinite: false,
         speed: 300,
@@ -61,7 +64,7 @@ export const Compare = () => {
                                     {Items.map((item,index) =>
                                         <div key={index}>
                                             <div className="compare-part">
-                                                <button type="button" className="close-btn" onClick={removeFromCompare(item)}>
+                                                <button type="button" className="close-btn" onClick={()=>{dispatch(removeFromCompare(item))}}>
                                                     <span aria-hidden="true">×</span>
                                                 </button>
                                                 <div className="img-secton">
@@ -114,7 +117,7 @@ export const Compare = () => {
                                                     </div>
                                                 </div>
                                                 <div className="btn-part">
-                                                    <a className="btn btn-solid" onClick={addToCart(item, 1)}>add to cart</a>
+                                                    <a className="btn btn-solid" onClick={()=>{dispatch(addToCart(item, 1))}}>add to cart</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,4 +149,4 @@ export const Compare = () => {
         </div>
     </>
 }
-export default compareReducer
+export default Compare

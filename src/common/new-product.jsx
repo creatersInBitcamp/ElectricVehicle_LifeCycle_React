@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
 
-import {getBestSeller} from "../_atomic/services";
+import {getBestSeller} from "../atomic/services";
 
 
 class NewProduct extends Component {

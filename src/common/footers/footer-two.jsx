@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { Link} from 'react-router-dom';
 
 import LogoImage from "../headers/common/logo"
-import {SlideUpDown} from "../../_atomic/services/script";
+import {SlideUpDown} from "../../atomic/services/script";
 
 const FooterTwo = props =>{
     useEffect(()=>{

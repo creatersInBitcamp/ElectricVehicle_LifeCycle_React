@@ -1,4 +1,4 @@
-var module = {
+const module = {
     en: {
         locale: 'en_US',
         messages: {

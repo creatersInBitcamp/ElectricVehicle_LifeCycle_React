@@ -9,7 +9,7 @@ import {
     buyOption, 
     employeeData, 
     employeeOptions 
-} from '../_atomic/constants/chartData'
+} from '../atomic/constants/chartData'
 // image impoer
 import user2 from '../assets/images/dashboard/user2.jpg';
 import user1 from '../assets/images/dashboard/user1.jpg';

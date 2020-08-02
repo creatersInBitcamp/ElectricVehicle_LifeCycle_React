@@ -14,7 +14,7 @@ import {
     svgFreeShipping,
     svgservice,
     svgoffer
-} from "../../_atomic/services/script"
+} from "../../atomic/services/script"
 
 
 class Fashion extends Component {

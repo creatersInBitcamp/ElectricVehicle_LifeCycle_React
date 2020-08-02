@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
-import { MENUITEMS } from '../../../_atomic/constants/menu';
+import { MENUITEMS } from '../../../atomic/constants/menu';
 
 // image import
 import logo from '../../../assets/images/dashboard/08.png'
@@ -44,4 +44,4 @@ export const Sidebar =() => {
 
 }
 
-export default sidebarReducer
+export default sidebarReducer;

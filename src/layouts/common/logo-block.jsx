@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 
-import {Slider6} from "../../_atomic/services/script";
+import {Slider6} from "../../atomic/services/script";
 
 class LogoBlock extends Component {
 

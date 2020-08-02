@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 
-import {getSingleItem, getSpecialCollection} from '../../_atomic/services/index'
+import {getSingleItem, getSpecialCollection} from '../../atomic/services/index'
 import {
     addToCart,
     addToWishlist,

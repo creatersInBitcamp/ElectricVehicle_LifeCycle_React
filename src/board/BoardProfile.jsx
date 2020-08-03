@@ -46,7 +46,7 @@ const BoardProfile = () => {
                         </div>
                     </div>
 
-                    <Tabs defaultActiveKey={userId}>
+                    <Tabs variant="pills" className="justify-content-center" defaultActiveKey={userId}>
                         <Tab eventKey={userId} title={userId}>
                             <div className="mylist_contents contents_container active">
                                 {

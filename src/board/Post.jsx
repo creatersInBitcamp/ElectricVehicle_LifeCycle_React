@@ -3,6 +3,8 @@ import Comments from "./comments";
 import {Link} from "react-router-dom";
 import {MoreHoriz} from '@material-ui/icons'
 import Button from "@material-ui/core/Button";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const comment_submit = (e) => {
     e.preventDefault()
@@ -27,7 +29,12 @@ const Post = ({post}) => {
                             <div className="country s_text">{location}</div>
                         </div>
                     </div>
-                    <Button onClick={()=>{alert('click')}}><MoreHoriz/></Button>
+                    <DropdownButton title="...">
+                        <Dropdown.Item>수정</Dropdown.Item>
+                        <Dropdown.Item>삭제</Dropdown.Item>
+                        <Dropdown.Item>신고</Dropdown.Item>
+                    </DropdownButton>
+                    {/*<Button onClick={()=>{alert('click')}}><MoreHoriz/></Button>*/}
                 </header>
 
                 <div className="img_section">

@@ -10,6 +10,7 @@ import NewPost from "./NewPost";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Hashtags from "./hashtags";
+import Nav from "react-bootstrap/Nav";
 
 const BoardMain = () => {
 
@@ -18,7 +19,7 @@ const BoardMain = () => {
                 <section id="main_container">
                     <div className="inner">
                         <div className="contents_box">
-                            <Tabs defaultActiveKey={'post'}>
+                            <Tabs variant="pills" className="justify-content-center" defaultActiveKey={'post'} >
                                 <Tab eventKey={'post'} title={'post'}>
                                     {
                                         posts.map(post => (<Post post={post} key={post.postId}/>))

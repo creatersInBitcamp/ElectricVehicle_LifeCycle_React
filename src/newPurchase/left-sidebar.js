@@ -11,6 +11,7 @@ import DetailsWithPrice from "./common/product/details-price";
 import ImageZoom from './common/product/image-zoom'
 import SmallImages from './common/product/small-image'
 import MyCar from "./MyCar";
+import Service from "./common/service";
 import DetailedContents from "./DetailedContents";
 import {addToCart} from "../cart/cartReducer";
 import {addToCartUnsafe} from "../cart/cartReducer";
@@ -24,11 +25,22 @@ import {addToWishlist} from "../wishlist/wishlistReducer";
 /* reducer */
 
 
-const productDetail = () => {
-    const [open, setOpen] = useState(false)
-    const [nav1, setNav1] = useState(null)
-    const [nav2, setNav2] = useState(null)
-    const match = useRouteMatch('/used-car/product/:id')
+const LeftSideBar = () => {
+    const [state, setState] = useState({ nav1: null, nav2: null });
+    const slider1 = useRef();
+    const slider2 = useRef();
+
+    useEffect(() => {
+        setState({
+            nav1: slider1.current,
+            nav2: slider2.current
+        });
+    }, []);
+
+    const { nav1, nav2 } = state;
+
+    const match = useRouteMatch('/new-car/product/:id')
+
     const {symbol, item} = useSelector((state) => {
         let productId = match.params.id
         return {
@@ -36,13 +48,6 @@ const productDetail = () => {
             symbol: state.data.symbol
         }
     })
-    const slider1 = useRef();
-    const slider2 = useRef();
-
-    useEffect(()=>{
-        setNav1(slider1)
-        setNav2(slider2)
-    },[])
 
     const products = {
         slidesToShow: 1,
@@ -82,7 +87,7 @@ const productDetail = () => {
                                     </div>
 
                                     {/* <BrandBlock/> */}
-                                    <MyCar/>
+                                    {/*<Service/>*/}
                                     {/*side-bar single product slider start*/}
                                     <NewProduct/>
                                     {/*side-bar single product slider end*/}
@@ -91,7 +96,7 @@ const productDetail = () => {
                                     <div className="">
                                         <div className="row">
                                             <div className="col-lg-6 product-thumbnail">
-                                                <Slider {...products} asNavFor={nav2} ref={slider1 => setNav1(slider1)} className="product-slick">
+                                                <Slider {...products} asNavFor={nav2} ref={slider => (slider1.current = slider)} className="product-slick">
                                                     {item.variants?
                                                         item.variants.map((vari, index) =>
                                                             <div key={index}>
@@ -106,7 +111,7 @@ const productDetail = () => {
                                                 </Slider>
                                                 <SmallImages item={item} settings={productsnav} navOne={nav1} />
                                             </div>
-                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart(item,1))} BuynowClicked={()=>dispatch(addToCartUnsafe(item,1))} addToWishlistClicked={()=>dispatch(addToWishlist(item))} />
+                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={dispatch(addToCart)} BuynowClicked={dispatch(addToCartUnsafe)} addToWishlistClicked={dispatch(addToWishlist)} />
                                         </div>
                                     </div>
                                     <DetailedContents item={item} />
@@ -120,4 +125,4 @@ const productDetail = () => {
     </>
 }
 
-export default productDetail
+export default LeftSideBar

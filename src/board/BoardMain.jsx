@@ -10,12 +10,13 @@ import NewPost from "./NewPost";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Hashtags from "./hashtags";
-import Nav from "react-bootstrap/Nav";
+import Breadcrumb from "../common/breadcrumb";
 
 const BoardMain = () => {
 
     return (
         <>
+            <Breadcrumb title={'Post'}/>
                 <section id="main_container">
                     <div className="inner">
                         <div className="contents_box">

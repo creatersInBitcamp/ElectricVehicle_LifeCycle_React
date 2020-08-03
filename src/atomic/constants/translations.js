@@ -113,6 +113,7 @@ var module = {
             scrapped : 'Scrapping a Car',
             map : 'map',
             post : 'post',
+            board: 'board',
             admin : 'admin',
             chatbot : 'chatbot',
             blog_board_main:'board main',
@@ -123,7 +124,8 @@ var module = {
             notice: 'notice',
             users: 'users',
             reports: 'reports',
-            userDetail: 'userDetail'
+            userDetail: 'userDetail',
+            myaccount: 'my Account'
         }
     },
     ko: {
@@ -239,10 +241,10 @@ var module = {
             used_car_compare : '내차비교',
             scrapped : '폐차',
             map : '지도',
-            post : '게시판',
+            post : '포스트',
+            board: '게시판',
             admin : '관리자',
             chatbot : '챗봇',
-            blog_board_main: '포스트 메인',
             admindashboard: '관리자 메인',
             elecCar: '전기차 통계',
             orders: '주문 통계',
@@ -250,7 +252,8 @@ var module = {
             notice: '공지사항',
             users: '사용자 통계',
             reports: '보고서 통계',
-            userDetail: '사용자 관리'
+            userDetail: '사용자 관리',
+            myaccount: '내 계정'
         }
     }
 

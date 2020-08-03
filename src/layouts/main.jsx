@@ -56,7 +56,7 @@ const Fashion = () => {
                                             <div>
                                                 <h4>welcome to EV life cycle.</h4>
                                                 <h1>used</h1>
-                                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">USED now</Link>
+                                                <Link to={`${process.env.PUBLIC_URL}/used-car/collection`} className="btn btn-solid">USED now</Link>
                                             </div>
                                         </div>
                                     </div>

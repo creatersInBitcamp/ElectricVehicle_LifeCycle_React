@@ -19,7 +19,6 @@ import Cart from "./cart/CartComponent";
 
 //used car
 import {productDetail, PurchaseRequest, UsedPurchaseCollection} from "./usedPurchase";
-import {MyCarComparison} from "./usedCompare"
 import {SalesForm} from "./usedSales";
 import {Scrapped} from "./scrapped";
 
@@ -45,8 +44,8 @@ import mapNaver from "./map/anothermap/mapNaver"
 import BoardMain from "./board/BoardMain";
 import BoardProfile from "./board/BoardProfile";
 import BoardDetail from "./board/BoardDetail";
-import ClassicBoardMain from "./board/classic/classicBoard.main";
-import ClassicBoardDetails from "./board/classic/classicBoard.details";
+import NewPost from "./board/NewPost";
+
 
 // Admin
 import {Dashboard} from './admin';
@@ -65,6 +64,7 @@ import LoginTabset from "./admin/auth/loginTabset";
 import { getAllProducts } from './product'
 import store from "./store";
 import CollectionLeftSidebar from "./newPurchase/Collection-left-sidebar";
+import LeftSideBar from "./newPurchase/left-sidebar";
 
 
 const Root =()=> {
@@ -77,10 +77,8 @@ const Root =()=> {
                     <ScrollContext>
                         <Switch>
                             <Layout>
-                                {/*<Route exact path={`${process.env.PUBLIC_URL}/`} component={Service}/>*/}
 
                                 <Route exact path={`${process.env.PUBLIC_URL}/`} component={Main}/>
-                                {/*<Route exact path={`${process.env.PUBLIC_URL}/main`} component={MainPage}/>*/}
 
                                 {/*common*/}
                                 <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
@@ -94,12 +92,12 @@ const Root =()=> {
 
                                 {/*newcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/new-car/product/:id`} component={LeftSideBar}/>
 
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/product/:id`} component={productDetail}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/purchase`} component={PurchaseRequest}/>
-                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/comparison`} component={MyCarComparison}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/sales`} component={SalesForm}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/scrapped`} component={Scrapped}/>
 
@@ -117,11 +115,10 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
+
                                 <Route path={`${process.env.PUBLIC_URL}/post/main`} component={BoardMain}/>
                                 <Route path={`${process.env.PUBLIC_URL}/post/profile`} component={BoardProfile}/>
                                 <Route path={`${process.env.PUBLIC_URL}/post/detail`} component={BoardDetail}/>
-                                <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
-                                <Route path={`${process.env.PUBLIC_URL}/board/detail`} component={ClassicBoardDetails}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />

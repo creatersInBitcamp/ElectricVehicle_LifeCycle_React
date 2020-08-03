@@ -1,16 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import Breadcrumb from "../common/breadcrumb";
+import {Link} from "react-router-dom";
 
-class Login extends Component {
-
-    constructor (props) {
-        super (props)
-
-    }
-
-    render (){
-
+const Login = () => {
 
         return (
             <div>
@@ -46,7 +39,8 @@ class Login extends Component {
                                     <p>Sign up for a free account at our store. Registration is quick and easy. It
                                         allows you to be able to order from our shop. To start shopping click
                                         register.</p>
-                                    <a href="#" className="btn btn-solid">Create an Account</a>
+                                    <a className="btn btn-solid">Create an Account</a><br/><br/><br/>
+                                    <Link to={`${process.env.PUBLIC_URL}/pages/forgot`}><a className="btn btn-solid">Forgot Password</a></Link>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +49,6 @@ class Login extends Component {
 
             </div>
         )
-    }
 }
 
 export default Login

@@ -39,7 +39,7 @@ const Fashion = () => {
                                             <div>
                                                 <h4>welcome to EV life cycle.</h4>
                                                 <h1>news</h1>
-                                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">NEW now</Link>
+                                                <Link to={`${process.env.PUBLIC_URL}/new-car/collection`} className="btn btn-solid">NEW now</Link>
                                             </div>
                                         </div>
                                     </div>

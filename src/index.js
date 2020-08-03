@@ -63,6 +63,7 @@ import LoginTabset from "./admin/auth/loginTabset";
 
 import { getAllProducts } from './product'
 import store from "./store";
+import CollectionLeftSidebar from "./newPurchase/Collection-left-sidebar";
 
 
 const Root =()=> {
@@ -91,6 +92,7 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishlist}/>
 
                                 {/*newcar*/}
+                                <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>
 
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>

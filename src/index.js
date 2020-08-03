@@ -69,6 +69,8 @@ import ClassicBoardMain from "./board/classic/classicBoard.main";
 import ClassicBoardDetails from "./board/classic/classicBoard.details";
 import Faq from "./common/faq";
 import {MyCarComparison} from "./usedCompare";
+import ForgetPassword from "./user/forget-password";
+import MyAccount from "./user/myAccount";
 
 
 const Root =()=> {
@@ -89,6 +91,9 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/forgot`} component={ForgetPassword}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/myaccount`} component={MyAccount}/>
+
 
                                 {/*car*/}
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>

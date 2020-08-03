@@ -21,11 +21,11 @@ const NavBar = () => {
         setNavClose({right: '-410px'})
     }
 
-    const onMouseEnterHandler = () => {
-        if (window.innerWidth > 1199) {
-            document.querySelector("#main-menu").classList.add("hover-unset");
-        }
-    }
+    // const onMouseEnterHandler = () => {
+    //     if (window.innerWidth > 1199) {
+    //         document.querySelector("#main-menu").classList.add("hover-unset");
+    //     }
+    // }
 
     const handleSubmenu = e => {
         if (e.target.classList.contains('sub-arrow'))
@@ -75,11 +75,14 @@ const NavBar = () => {
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/login`}>{translate('login')}</Link>
-                                </li>
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/admin/dashboard`}>{translate('dashboard')}</Link>
-                                </li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/dashboard`}>{translate('dashboard')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/orders`}>{translate('orders')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/usedCar`}>{translate('used_car')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/community`}>{translate('community')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/notice`}>{translate('notice')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/users`}>{translate('users')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/reports`}>{translate('reports')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/userDetail`}>{translate('userDetail')}</Link></li>
                             </ul>
                         </li>
                         <li>
@@ -88,14 +91,9 @@ const NavBar = () => {
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>{translate('products')}</Link>
-                                </li>
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/left-sidebar/product/1`}>{translate('left_sidebar')}</Link>
-                                </li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/checkout`}>{translate('checkout')}</Link>
-                                </li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>{translate('products')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/1`}>{translate('left_sidebar')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/checkout`}>{translate('checkout')}</Link></li>
                             </ul>
                         </li>
                         <li>
@@ -120,159 +118,17 @@ const NavBar = () => {
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link to={`${process.env.PUBLIC_URL}/contact`}>{translate('contact')}</Link>
-                                </li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/map`}>{translate('map')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/service`}>{translate('map')}</Link></li>
                             </ul>
                         </li>
                         <li>
                             <Link to="#" className="nav-link" onClick={handleSubmenu}>
-                                {translate('board')}
+                                {translate('post')}
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/blog/right-sidebar`}>{translate('blog_right_sidebar')}</Link>
-                                </li>
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/blog/details`}>{translate('blog_detail')}</Link>
-                                </li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/post/main`}>{translate('post')}</Link></li>
                             </ul>
-                        </li>
-                        <li className="mega-menu">
-                            <Link to="#" className="dropdown" onClick={handleSubmenu}>
-                                {translate('features')}
-                                <span className="sub-arrow"/>
-                            </Link>
-                            <div className="mega-menu-container">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col mega-box">
-                                            <div className="link-section">
-                                                <div className="menu-title">
-                                                    <h5 onClick={handleMegaSubmenu}>
-                                                        {translate('portfolio')}
-                                                        <span className="sub-arrow"/>
-                                                    </h5>
-                                                </div>
-                                                <div className="menu-content">
-                                                    <ul>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/portfolio-grid/2`}>{translate('portfolio_grid_2')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/portfolio-grid/3`}>{translate('portfolio_grid_3')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/portfolio-grid/4`}>{translate('portfolio_grid_4')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/portfolio-masonary/2`}>{translate('portfolio_masonary_2')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/portfolio-masonary/3`}>{translate('portfolio_masonary_3')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/portfolio-masonary/4`}>{translate('portfolio_masonary_4')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/portfolio-masonary/full`}>{translate('portfolio_masonary_full')}</Link>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col mega-box">
-                                            <div className="link-section">
-                                                <div className="menu-title">
-                                                    <h5 onClick={handleMegaSubmenu}>
-                                                        {translate('theme_elements')}
-                                                        <span className="sub-arrow"/>
-                                                    </h5>
-                                                </div>
-                                                <div className="menu-content">
-                                                    <ul>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/element-title`}>{translate('element_title')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/element-banner`}>{translate('collection_banner')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/element-slider`}>{translate('home_slider')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/element-category`}>{translate('category')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/element-service`}>{translate('service')}</Link>
-                                                        </li>
-                                                        {/*<li><Link to={`${process.env.PUBLIC_URL}/features/element-ratio`} >{translate('image_size_ratio')}</Link></li>*/}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col mega-box">
-                                            <div className="link-section">
-                                                <div className="menu-title">
-                                                    <h5 onClick={handleMegaSubmenu}>
-                                                        {translate('product_elements')}
-                                                        <span className="sub-arrow"/>
-                                                    </h5>
-                                                </div>
-                                                <div className="menu-content">
-                                                    <ul>
-                                                        <li className="up-text"><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/element-product-box`}>{translate('product_box')}<span>10+</span></Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/element-product-slider`}>{translate('product_slider')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/element-product-no-slider`}>{translate('no_slider')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/element-product-multiple-slider`}>{translate('multi_slider')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/features/element-product-tab`}>{translate('tab')}</Link>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col mega-box">
-                                            <div className="link-section">
-                                                <div className="menu-title">
-                                                    <h5 onClick={handleMegaSubmenu}>
-                                                        {translate('email_template')}
-                                                        <span className="sub-arrow"/>
-                                                    </h5>
-                                                </div>
-                                                <div className="menu-content">
-                                                    <ul>
-                                                        <li><Link to={`${process.env.PUBLIC_URL}/email-template.html`}
-                                                                  target="_blank">{translate('order_success')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/email-template-two.html`}
-                                                            target="_blank">{translate('order_success')}2</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/email-order-success.html`}
-                                                            target="_blank">{translate('email_template')}</Link>
-                                                        </li>
-                                                        <li><Link
-                                                            to={`${process.env.PUBLIC_URL}/email-order-success-two.html`}
-                                                            target="_blank">{translate('email_template')}2</Link>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
                     </ul>
                 </div>
@@ -280,5 +136,4 @@ const NavBar = () => {
         </div>
     </>
 }
-
 export default NavBar

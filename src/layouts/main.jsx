@@ -3,6 +3,8 @@ import {Helmet} from 'react-helmet'
 import '../common/index.scss';
 import Slider from 'react-slick';
 import {Link} from 'react-router-dom';
+import mapimg from '../assets/images/mainPage/mapimg.png'
+import communityimg from '../assets/images/mainPage/community.jpg'
 
 // Import custom components
 import TopCollection from './top-collection';
@@ -35,9 +37,9 @@ const Fashion = () => {
                                     <div className="col">
                                         <div className="slider-contain">
                                             <div>
-                                                <h4>welcome to fashion</h4>
-                                                <h1>men fashion</h1>
-                                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">shop now</Link>
+                                                <h4>welcome to EV life cycle.</h4>
+                                                <h1>news</h1>
+                                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">NEW now</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -52,9 +54,9 @@ const Fashion = () => {
                                     <div className="col">
                                         <div className="slider-contain">
                                             <div>
-                                                <h4>welcome to fashion</h4>
-                                                <h1>women fashion</h1>
-                                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">shop now</Link>
+                                                <h4>welcome to EV life cycle.</h4>
+                                                <h1>used</h1>
+                                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">USED now</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -70,26 +72,26 @@ const Fashion = () => {
                 <div className="container">
                     <div className="row partition2">
                         <div className="col-md-6">
-                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>
+                            <Link to={`${process.env.PUBLIC_URL}/service`}>
                                 <div className="collection-banner p-right text-center">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/sub-banner1.jpg`} className="img-fluid" alt=""/>
+                                    <img src={mapimg} className="img-fluid" alt=""/>
                                     <div className="contain-banner">
                                         <div>
-                                            <h4>save 30%</h4>
-                                            <h2>men</h2>
+                                            <h4>전국 방방 곳곳.</h4>
+                                            <h2>MAP</h2>
                                         </div>
                                     </div>
                                 </div>
                             </Link>
                         </div>
                         <div className="col-md-6">
-                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>
+                            <Link to={`${process.env.PUBLIC_URL}/post/main`}>
                                 <div className="collection-banner p-right text-center">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/sub-banner2.jpg`} className="img-fluid" alt=""/>
+                                    <img src={communityimg} className="img-fluid" alt=""/>
                                     <div className="contain-banner">
                                         <div>
-                                            <h4>save 60%</h4>
-                                            <h2>women</h2>
+                                            <h4>같은 차, 다른 차, 내차 자랑.</h4>
+                                            <h2>POST</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +160,7 @@ const Fashion = () => {
                     <div className="col">
                         <div className="title1 section-t-space">
                             <h4>Recent Story</h4>
-                            <h2 className="title-inner1">from the blog</h2>
+                            <h2 className="title-inner1">from the Post</h2>
                         </div>
                     </div>
                 </div>

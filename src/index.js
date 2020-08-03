@@ -113,6 +113,7 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
+
                                 <Route path={`${process.env.PUBLIC_URL}/post/main`} component={BoardMain}/>
                                 <Route path={`${process.env.PUBLIC_URL}/post/profile`} component={BoardProfile}/>
                                 <Route path={`${process.env.PUBLIC_URL}/post/detail`} component={BoardDetail}/>

@@ -55,10 +55,10 @@ const wishlist = () => {
                                                         </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
-                                                                <a href="javascript:void(0)" className="icon" onClick={()=>{dispatch(removeFromWishlist(item))}}>
+                                                                <a className="icon" onClick={()=>{dispatch(removeFromWishlist(item))}}>
                                                                     <i className="fa fa-times"/>
                                                                 </a>
-                                                                <a href="javascript:void(0)" className="cart" onClick={()=>{dispatch(addToCartAndRemoveWishlist(item, 1))}}>
+                                                                <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveWishlist(item, 1))}}>
                                                                     <i className="fa fa-shopping-cart"/>
                                                                 </a>
                                                             </h2>

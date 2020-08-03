@@ -9,10 +9,9 @@ import {useDispatch} from "react-redux";
 
 const elecCarTypes = {REQUEST: 'elecCar/REQUEST'}
 const initialState = {
-    admin: true
 }
 const elecCarRequest = action => ({type: elecCarTypes.REQUEST, payload: action.payload})
-const elecCarReducer = ( state={admin: true}, action ) => {
+const elecCarReducer = ( state=initialState, action ) => {
     switch (action.type) {
         case elecCarTypes.REQUEST: return {...state, payload: action.payload}
         default: return state

@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react';
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 import { User, Unlock } from 'react-feather';
 import { withRouter } from 'react-router-dom';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {adminCheck, checkadmin} from "./admincheckReducer";
 
 const LoginTabset = (props) => {
     const[activeShow, setActiveShow] = useState()
     const[startDate, setStartDate] = useState()
+    const [adminck,setAdminck] = useState();
 
     // handleChange = handleChange.bind(this)
     const clickActive = (event) => {
@@ -16,8 +18,11 @@ const LoginTabset = (props) => {
     /*const handleChange = (date) => {
         setStartDate(data)
     }*/
+    const {result} = useSelector(state => state.checkadmin)
 
     const routeChange = () => {
+        setAdminck(result.adminck)
+        console.log(adminck)
         props.history.push(`${process.env.PUBLIC_URL}/admin/dashboard`);
     }
     return (

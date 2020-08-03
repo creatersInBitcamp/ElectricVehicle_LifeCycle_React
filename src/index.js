@@ -45,8 +45,8 @@ import mapNaver from "./map/anothermap/mapNaver"
 import BoardMain from "./board/BoardMain";
 import BoardProfile from "./board/BoardProfile";
 import BoardDetail from "./board/BoardDetail";
-import NewPost from "./board/NewPost";
-
+import ClassicBoardMain from "./board/classic/classicBoard.main";
+import ClassicBoardDetails from "./board/classic/classicBoard.details";
 
 // Admin
 import {Dashboard} from './admin';
@@ -117,10 +117,11 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
-
                                 <Route path={`${process.env.PUBLIC_URL}/post/main`} component={BoardMain}/>
                                 <Route path={`${process.env.PUBLIC_URL}/post/profile`} component={BoardProfile}/>
                                 <Route path={`${process.env.PUBLIC_URL}/post/detail`} component={BoardDetail}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/detail`} component={ClassicBoardDetails}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />

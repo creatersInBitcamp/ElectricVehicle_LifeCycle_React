@@ -65,6 +65,9 @@ import { getAllProducts } from './product'
 import store from "./store";
 import CollectionLeftSidebar from "./newPurchase/Collection-left-sidebar";
 import LeftSideBar from "./newPurchase/left-sidebar";
+import ClassicBoardMain from "./board/classic/classicBoard.main";
+import ClassicBoardDetails from "./board/classic/classicBoard.details";
+import Faq from "./common/faq";
 
 
 const Root =()=> {
@@ -84,6 +87,7 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
 
                                 {/*car*/}
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
@@ -115,10 +119,11 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
-
                                 <Route path={`${process.env.PUBLIC_URL}/post/main`} component={BoardMain}/>
                                 <Route path={`${process.env.PUBLIC_URL}/post/profile`} component={BoardProfile}/>
                                 <Route path={`${process.env.PUBLIC_URL}/post/detail`} component={BoardDetail}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/details`} component={ClassicBoardDetails}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />

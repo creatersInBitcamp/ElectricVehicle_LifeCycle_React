@@ -81,10 +81,10 @@ const HeaderOne = props =>{
 								<div className="menu-left">
 									<div className="navbar">
 										<a onClick={openNav}>
-											<div className="bar-style"> <i className="fa fa-bars sidebar-bar" aria-hidden="true"/></div>
+											{/*<div className="bar-style"> <i className="fa fa-bars sidebar-bar" aria-hidden="true"/></div>*/}
 										</a>
 										{/*Sidebar Navigation Component*/}
-										<SideBar/>
+										{/*<SideBar/>*/}
 									</div>
 									<div className="brand-logo">
 										<LogoImage logo={props.logoName}/>

@@ -68,6 +68,7 @@ import LeftSideBar from "./newPurchase/left-sidebar";
 import ClassicBoardMain from "./board/classic/classicBoard.main";
 import ClassicBoardDetails from "./board/classic/classicBoard.details";
 import Faq from "./common/faq";
+import {MyCarComparison} from "./usedCompare";
 
 
 const Root =()=> {
@@ -102,6 +103,7 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/product/:id`} component={productDetail}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/purchase`} component={PurchaseRequest}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/comparison`} component={MyCarComparison}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/sales`} component={SalesForm}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/scrapped`} component={Scrapped}/>
 

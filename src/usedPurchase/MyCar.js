@@ -1,4 +1,6 @@
 import React from "react";
+import {Link} from 'react-router-dom'
+import {MyCarComparison} from "../usedCompare";
 
 const MyCar = () => {
     return <div>
@@ -8,7 +10,7 @@ const MyCar = () => {
                  src="https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_410" alt=""/>
             <h3>2019 테슬라 모델3</h3>
             <br/>
-            <button>비교하기</button>
+            <a href={'/used-car/comparison'}>비교하기</a>
         </div>
     </div>
 }

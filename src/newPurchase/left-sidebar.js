@@ -111,7 +111,7 @@ const LeftSideBar = () => {
                                                 </Slider>
                                                 <SmallImages item={item} settings={productsnav} navOne={nav1} />
                                             </div>
-                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={dispatch(addToCart)} BuynowClicked={dispatch(addToCartUnsafe)} addToWishlistClicked={dispatch(addToWishlist)} />
+                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart)} BuynowClicked={()=>dispatch(addToCartUnsafe)} addToWishlistClicked={()=>dispatch(addToWishlist)} />
                                         </div>
                                     </div>
                                     <DetailedContents item={item} />

@@ -64,40 +64,48 @@ const CartComponent = () => {
                                                             </div>
                                                         </div>
                                                         <div className="col-xs-3">
-                                                            <h2 className="td-color">{symbol}{item.price-(item.price*item.discount/100)}</h2>
+                                                            <h2 className="td-color">{symbol}{item.price}</h2>
                                                         </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
-                                                                <a href="#" className="icon" onClick={()=>{dispatch(removeFromCart(item))}}>
-                                                                    <i className="icon-close"></i>
+                                                                <a className="icon" onClick={()=>{dispatch(removeFromCart(item))}}>
+                                                                    <i className="icon-close"/>
                                                                 </a>
                                                             </h2>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td><h2>{symbol}{item.price-(item.price*item.discount/100)}</h2></td>
+                                                <td>
+                                                    <div className="col-xs-3">
+                                                        <h2 className="td-color">{symbol}{item.price}</h2>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div className="qty-box">
                                                         <div className="input-group">
                                                             <span className="input-group-prepend">
                                                                 <button type="button" className="btn quantity-left-minus" onClick={()=>{dispatch(decrementQty(item.id))}} data-type="minus" data-field="">
-                                                                 <i className="fa fa-angle-left"></i>
+                                                                 <i className="fa fa-angle-left"/>
                                                                 </button>
                                                             </span>
                                                             <input type="text" name="quantity" value={item.qty} readOnly={true} className="form-control input-number" />
 
                                                             <span className="input-group-prepend">
                                                             <button className="btn quantity-right-plus" onClick={()=>{dispatch(incrementQty(item, 1))}}  data-type="plus" disabled={(item.qty >= item.stock)? true : false}>
-                                                            <i className="fa fa-angle-right"></i>
+                                                            <i className="fa fa-angle-right"/>
                                                             </button>
                                                            </span>
                                                         </div>
                                                     </div>{(item.qty >= item.stock)? 'out of Stock' : ''}
                                                 </td>
                                                 <td>
-                                                    <a href="#" className="icon" onClick={()=>{dispatch(removeFromCart(item))}}>
-                                                        <i className="fa fa-times"></i>
-                                                    </a>
+                                                    <div className="col-xs-3">
+                                                        <h2 className="td-color">
+                                                            <a className="icon" onClick={()=>{dispatch(removeFromCart(item))}}>
+                                                                <i className="icon-close"/>
+                                                            </a>
+                                                        </h2>
+                                                    </div>
                                                 </td>
                                                 <td><h2 className="td-color">{symbol}{item.sum}</h2></td>
                                             </tr>
@@ -107,8 +115,16 @@ const CartComponent = () => {
                                 <table className="table cart-table table-responsive-md">
                                     <tfoot>
                                     <tr>
-                                        <td>total price :</td>
-                                        <td><h2>{symbol} {total} </h2></td>
+                                        <td>
+                                            <div className="col-xs-3">
+                                                <h2 className="td-color">total price :</h2>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div className="col-xs-3">
+                                                <h2 className="td-color">{symbol} {total}</h2>
+                                            </div>
+                                        </td>
                                     </tr>
                                     </tfoot>
                                 </table>
@@ -116,7 +132,7 @@ const CartComponent = () => {
                         </div>
                         <div className="row cart-buttons">
                             <div className="col-6">
-                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">continue shopping</Link>
+                                <Link to={`${process.env.PUBLIC_URL}/`} className="btn btn-solid">continue shopping</Link>
                             </div>
                             <div className="col-6">
                                 <Link to={`${process.env.PUBLIC_URL}/checkout`} className="btn btn-solid">check out</Link>

@@ -1,4 +1,5 @@
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 // middlewares
 import thunkMiddleware from 'redux-thunk'

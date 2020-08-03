@@ -8,46 +8,22 @@ import {addToWishlist} from "../../../wishlist/wishlistReducer";
 
 
 const DetailsWithPrice = props => {
-
-    const [open,setOpen]=useState(false)
-    const [quantity,setQuantity]=useState(1)
-    const [stock,setStock]=useState('InStock')
-    const [nav3,setNav3]=useState(null)
+    const [state, setState] = useState({
+        open:false,
+        quantity:1,
+        stock: 'InStock',
+        nav3: null
+    });
 
     const slider3 = useRef();
 
-    useEffect(()=>{
+    useEffect(() => {
+        setState({
+            nav3: slider3.current
+        });
+    }, []);
 
-        return () => {
-            setNav3(slider3)
-        }
-    },[])
-
-    const onOpenModal = () => {
-        setOpen(true)
-    };
-
-    const onCloseModal = () => {
-        setOpen(false)
-    };
-
-    const minusQty = () => {
-        if(quantity > 1) {
-            setStock('InStock')
-            setQuantity(quantity-1)
-        }
-    }
-
-    const plusQty = () => {
-        if(props.item.stock >= quantity) {
-            setQuantity(quantity+1)
-        }else{
-            setStock('Out of Stock !')
-        }
-    }
-    const changeQty = (e) => {
-        setQuantity(parseInt(e.target.value))
-    }
+    const { open, quantity, stock, nav3 } = state;
 
     const {symbol, item, addToCartClicked, BuynowClicked, addToWishlistClicked} = props
 
@@ -66,16 +42,14 @@ const DetailsWithPrice = props => {
                 <h3>{symbol}{item.price} </h3>
                 {item.variants?
                     <ul >
-                        <Slider {...colorsnav} asNavFor={props.navOne} ref={slider1 => setNav3(slider1)} className="color-variant">
+                        <Slider {...colorsnav} asNavFor={props.navOne} ref={slider => (slider3.current = slider)} className="color-variant">
                             {item.variants.map((vari, i) => {
                                 return <li className={vari.color} key={i} title={vari.color}/>
                             })}
                         </Slider>
                     </ul>:''}
                 <div className="product-description border-product">
-                    <div className="qty-box">
-                        <MarketPrice/>
-                    </div>
+
                 </div>
                 <div className="product-buttons" >
                     <a className="btn btn-solid" onClick={() => addToCartClicked(item, quantity)}>add to cart</a>
@@ -94,18 +68,6 @@ const DetailsWithPrice = props => {
                     <p>{item.shortDetails}</p>
                 </div>
             </div>
-            <Modal open={open} onClose={onCloseModal} center>
-                <div className="modal-dialog modal-dialog-centered" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Sheer Straight Kurta</h5>
-                        </div>
-                        <div className="modal-body">
-                            <img src={`${process.env.PUBLIC_URL}/assets/images/size-chart.jpg`} alt="" className="img-fluid" />
-                        </div>
-                    </div>
-                </div>
-            </Modal>
         </div>
     )
 }

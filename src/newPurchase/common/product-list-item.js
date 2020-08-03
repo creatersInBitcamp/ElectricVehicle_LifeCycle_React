@@ -22,25 +22,6 @@ const ProductListItem = props => {
         setImage({ image : img} );
     }
 
-    const minusQty = () => {
-        if(quantity > 1) {
-            setStock('InStock')
-            setQuantity(quantity - 1)
-        }
-    }
-
-    const plusQty = () => {
-        if(product.stock >= quantity) {
-            setQuantity(quantity+1)
-        }else{
-            setStock('Out of Stock !')
-        }
-    }
-
-    const changeQty = (e) => {
-        setQuantity(parseInt(e.target.value))
-    }
-
     const {product, symbol, onAddToCartClicked, onAddToWishlistClicked, onAddToCompareClicked} = props;
 
 
@@ -94,8 +75,7 @@ const ProductListItem = props => {
                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`}>
                         <h6>{product.name}</h6>
                     </Link>
-                    <h4>{symbol}{product.price-(product.price*product.discount/100)}
-                        <del><span className="money">{symbol}{product.price}</span></del></h4>
+                    <h4><span className="money">{symbol}{product.price}</span></h4>
                     {product.variants?
                         <ul className="color-variant">
                             {product.variants.map((vari, i) => {
@@ -120,9 +100,7 @@ const ProductListItem = props => {
                                 <div className="col-lg-6 rtl-text">
                                     <div className="product-right">
                                         <h2> {product.name} </h2>
-                                        <h3>{symbol}{product.price-(product.price*product.discount/100)}
-                                            <del><span className="money">{symbol}{product.price}</span></del>
-                                        </h3>
+                                        <h3><span className="money">{symbol}{product.price}</span></h3>
                                         {product.variants?
                                             <ul className="color-variant">
                                                 {product.variants.map((vari, i) =>
@@ -132,32 +110,6 @@ const ProductListItem = props => {
                                         <div className="border-product">
                                             <h6 className="product-title">product details</h6>
                                             <p>{product.shortDetails}</p>
-                                        </div>
-                                        <div className="product-description border-product">
-                                            {product.size?
-                                                <div className="size-box">
-                                                    <ul>
-                                                        {product.size.map((size, i) => {
-                                                            return <li key={i}><a href="#">{size}</a></li>
-                                                        })}
-                                                    </ul>
-                                                </div>:''}
-                                            <h6 className="product-title">quantity</h6>
-                                            <div className="qty-box">
-                                                <div className="input-group">
-                                                    <span className="input-group-prepend">
-                                                        <button type="button" className="btn quantity-left-minus" onClick={minusQty} data-type="minus" data-field="">
-                                                            <i className="fa fa-angle-left"/>
-                                                        </button>
-                                                    </span>
-                                                    <input type="text" name="quantity" value={quantity}  onChange={changeQty} className="form-control input-number" />
-                                                    <span className="input-group-prepend">
-                                                        <button type="button" className="btn quantity-right-plus" onClick={plusQty} data-type="plus" data-field="">
-                                                            <i className="fa fa-angle-right"/>
-                                                        </button>
-                                                    </span>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div className="product-buttons">
                                             <button  className="btn btn-solid" onClick={() => onAddToCartClicked(product, quantity)} >add to cart</button>

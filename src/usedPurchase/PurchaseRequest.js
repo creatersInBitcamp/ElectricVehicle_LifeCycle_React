@@ -51,7 +51,7 @@ export const PurchaseRequest = props => {
             </Helmet>
             {/*SEO Support End */}
 
-            <Breadcrumb  title={'purchase request'}/>
+            <Breadcrumb  title={'checkout request'}/>
 
             <section className="section-b-space">
                 <div className="container padding-cls">

@@ -128,6 +128,7 @@ const NavBar = () => {
                             </Link>
                             <ul className="nav-submenu">
                                 <li><Link to={`${process.env.PUBLIC_URL}/post/main`}>{translate('post')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/board/main`}>{translate('board')}</Link></li>
                             </ul>
                         </li>
                     </ul>

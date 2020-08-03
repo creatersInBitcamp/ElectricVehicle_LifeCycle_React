@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Breadcrumb from "../common/breadcrumb";
+import Breadcrumb from "./breadcrumb";
 
 const PageNotFound = () => {
 

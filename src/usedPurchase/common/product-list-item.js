@@ -3,13 +3,8 @@ import {Link} from 'react-router-dom';
 
 
 const ProductListItem = props => {
-    const [image,setImage] = useState('')
-
-    const onClickHandle = img =>{
-        setImage({ image : img} );
-    }
-
-    return (
+    const [image] = useState('')
+    return <>
         <div className="product-box">
             <div className="img-wrapper">
                 <div className="front">
@@ -40,7 +35,7 @@ const ProductListItem = props => {
                 </div>
             </div>
         </div>
-    )
+    </>
 
 }
 

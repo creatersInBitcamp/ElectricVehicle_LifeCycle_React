@@ -22,8 +22,8 @@ export const Datatable = (props) => {
     const [name, setName] = useState('kwak')
     const userData = useSelector(state => state.searchHeaderReducer)
     useEffect(()=>{
-        console.log(userData)
-    },[userData])
+        setName(userData.id)
+    },[userData.id])
 
     useEffect(()=>{
         setMyData(props.myData)
@@ -170,6 +170,7 @@ export const Datatable = (props) => {
                 myData = {props.myData}
                 columns={columns}
                 />
+                <h1>{name}</h1>
                 <ReactTable
                     data={myData}
                     columns={columns}

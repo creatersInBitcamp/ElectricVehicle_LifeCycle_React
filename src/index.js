@@ -64,6 +64,7 @@ import LoginTabset from "./admin/auth/loginTabset";
 import { getAllProducts } from './product'
 import store from "./store";
 import CollectionLeftSidebar from "./newPurchase/Collection-left-sidebar";
+import LeftSideBar from "./newPurchase/left-sidebar";
 
 
 const Root =()=> {
@@ -93,6 +94,7 @@ const Root =()=> {
 
                                 {/*newcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/new-car/product/:id`} component={LeftSideBar}/>
 
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>

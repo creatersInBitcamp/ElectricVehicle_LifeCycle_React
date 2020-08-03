@@ -60,7 +60,7 @@ const Filter = () => {
                                 {brands.map((brand, index) => {
                                     return (
                                         <div className="custom-control custom-checkbox collection-filter-checkbox" key={index}>
-                                            <input type="checkbox" onClick={(e)=>clickBrandHendle(filteredBrands)} value={brand} defaultChecked={filteredBrands.includes(brand)} className="custom-control-input" id={brand} />
+                                            <input type="checkbox" onClick={(e)=>clickBrandHendle(e,filteredBrands)} value={brand} defaultChecked={filteredBrands.includes(brand)} className="custom-control-input" id={brand} />
                                             <label className="custom-control-label"
                                                    htmlFor={brand}>{brand}</label>
                                         </div> )
@@ -89,24 +89,7 @@ const Filter = () => {
                     </div>
                 )}
             </SlideToggle>
-            {/*color filter start here*/}
-            <SlideToggle>
-                {({onToggle, setCollapsibleElement}) => (
-                    <div className="collection-collapse-block">
-                        <h3 className="collapse-block-title" onClick={onToggle}>colors</h3>
-                        <div className="collection-collapse-block-content" ref={setCollapsibleElement}>
-                            <div className="color-selector">
-                                <ul>
-                                    {colors.map((color, index) => {
-                                        return (
-                                            <li className={color} title={color} onClick={(e) => colorHandle(e, color)} key={index}/> )
-                                    })}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </SlideToggle>
+
             {/*price filter start here */}
             <SlideToggle>
                 {({onToggle, setCollapsibleElement}) => (

@@ -18,6 +18,7 @@ import Cart from "./cart/CartComponent";
 
 //used car
 import {productDetail, PurchaseRequest, UsedPurchaseCollection} from "./usedPurchase";
+import {MyCarComparison} from "./usedCompare"
 import {SalesForm} from "./usedSales";
 import {Scrapped} from "./scrapped";
 
@@ -101,6 +102,7 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/product/:id`} component={productDetail}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/purchase`} component={PurchaseRequest}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/comparison`} component={MyCarComparison}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/sales`} component={SalesForm}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/scrapped`} component={Scrapped}/>
 

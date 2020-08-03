@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {SearchHeader} from "./header_components";
+import {SearchHeader } from "./header_components";
+import {useSelector} from "react-redux";
+
 
 const datatableTypes = {REQUEST: 'datatable/REQUEST'}
-const datatableRequest = action => ({type: datatableTypes.REQUEST, payload: action.payload})
+//const datatableRequest = action => ({type: datatableTypes.REQUEST, payload: action.payload})
 const datatableReducer = (state={}, action) => {
     switch (action.type) {
         case datatableTypes.REQUEST: return {...state, payload: action.payload}
@@ -16,7 +18,16 @@ const datatableReducer = (state={}, action) => {
 
 export const Datatable = (props) => {
     const [checkedValues, setCheckedValues] = useState([])
-    const [myData, setMyData] = useState(props.myData)
+    const [myData, setMyData] = useState([])
+    const [name, setName] = useState('kwak')
+    const userData = useSelector(state => state.searchHeaderReducer)
+    useEffect(()=>{
+        console.log(userData)
+    },[userData])
+
+    useEffect(()=>{
+        setMyData(props.myData)
+    },[props.myData])
 
     const selectRow = (e, i) => {
         if (!e.target.checked) {
@@ -63,7 +74,7 @@ export const Datatable = (props) => {
         const { pageSize, myClass, multiSelectOption, pagination } = props;
 
         const columns = [];
-        for (var key in myData[0]) {
+        for (let key in myData[0]) {
 
             let editable = renderEditable
             if (key === "image") {
@@ -138,11 +149,11 @@ export const Datatable = (props) => {
                                 toast.success("Successfully Deleted !")
 
                             }}>
-                                <i className="fa fa-trash" style={{ width: 35, fontSize: 20, padding: 11, color: '#e4566e' }}
-                                ></i>
+                                <i className="fa fa-trash" style={{width: 35, fontSize: 20, padding: 11, color: '#e4566e'}}
+    />
                             </span>
 
-                        <span><i className="fa fa-pencil" style={{ width: 35, fontSize: 20, padding: 11,color:'rgb(40, 167, 69)' }}></i></span>
+                        <span><i className="fa fa-pencil" style={{width: 35, fontSize: 20, padding: 11, color: 'rgb(40, 167, 69)'}}/></span>
                     </div>
                 ),
                 style: {

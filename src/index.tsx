@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './index.scss';
 import App from './App';
-import { ScrollContext } from 'react-router-scroll-4';
-import {Provider } from 'react-redux';
-import {createStore} from 'redux'
+import {Provider} from 'react-redux';
+import {applyMiddleware, createStore} from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 // Components
 import {Dashboard} from './admin';
@@ -17,23 +17,18 @@ import {Notice} from './admin/notice';
 import {List_user} from './admin/users';
 import {Profile} from './admin/settings';
 import {Reports} from './admin/reports';
-import {Login} from './admin/auth/login';
 import rootReducer from "./store/index.js";
+import reduxThunk from 'redux-thunk'
 
 
-const store = createStore(rootReducer)
-
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(reduxThunk)))
+console.log(store.getState())
 ReactDOM.render(
             <React.StrictMode>
             <Provider store = {store}>
             <BrowserRouter basename={'/'}>
-                <ScrollContext>
-                    <Switch>
-                        <Route exact path={`${process.env.PUBLIC_URL}/`} component={Login} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/auth/login`} component={Login} />
-
                         <App>
-                            <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />
+                            <Route exact path={`${process.env.PUBLIC_URL}/`} component={Dashboard} />
 
                             <Route path={`${process.env.PUBLIC_URL}/elecCar`} component={ElecCar} />
 
@@ -52,8 +47,6 @@ ReactDOM.render(
                             <Route path={`${process.env.PUBLIC_URL}/userDetail`} component={Profile} />
 
                         </App>
-                    </Switch>
-                </ScrollContext>
             </BrowserRouter>
             </Provider>
             </React.StrictMode>,

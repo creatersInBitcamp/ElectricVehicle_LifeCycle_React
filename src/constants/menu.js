@@ -14,7 +14,7 @@ import {
 
 export const MENUITEMS = [
     {
-        path: '/dashboard', title: '종합현황', icon: Home, type: 'link', badgeType: 'primary', active: false
+        path: '/', title: '종합현황', icon: Home, type: 'link', badgeType: 'primary', active: false
     },
     {
         path: '/elecCar', title: '전기자동차', icon: Box, type: 'link', active: false

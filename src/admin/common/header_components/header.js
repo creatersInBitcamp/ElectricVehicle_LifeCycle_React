@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {SearchHeader} from './';
 import { AlignLeft, Maximize2, Bell, MessageSquare, MoreHorizontal } from 'react-feather';
 
 //images
@@ -80,9 +79,9 @@ export const Header = () => {
                         </div>
                         <div className="nav-right col">
                             <ul className={"nav-notice " + (navMenus ? 'open' : '')}>
-                                <li>
+                                {/*<li>
                                     <SearchHeader />
-                                </li>
+                                </li>*/}
                                 <li><a onClick={goFull} className="text-dark" href="#!"><Maximize2 /></a></li>
                                 <li><a onClick={showRightSidebar}><MessageSquare /><span className="dot"></span></a></li>
                                 <li className="onhover-dropdown">

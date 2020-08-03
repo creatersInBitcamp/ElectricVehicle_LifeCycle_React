@@ -14,10 +14,10 @@ import {dashboardReducer} from '../admin'
 
 
 const rootReducer = combineReducers({
-    headerReducer, searchHeaderReducer, breadcrumbReducer, datatableReducer,
-    footerReducer, imageReducer,sidebarReducer, sidebarMenusReducer, communityReducer, elecCarReducer, list_menuReducer,
+    headerReducer, searchHeaderReducer, breadcrumbReducer, datatableReducer, footerReducer,
+    imageReducer,sidebarReducer, sidebarMenusReducer, communityReducer, elecCarReducer, list_menuReducer,
     reportsReducer, report_tableReducer, ordersReducer, profileReducer, tabset_profileReducer,
-    tabset_pageReducer, usedCarReducer, list_userReducer, tabset_userReducer, dashboardReducer
+    tabset_pageReducer, usedCarReducer, list_userReducer, tabset_userReducer,dashboardReducer
     }
 )
 export default rootReducer

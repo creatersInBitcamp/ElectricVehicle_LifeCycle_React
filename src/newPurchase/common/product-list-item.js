@@ -1,0 +1,47 @@
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+
+
+const ProductListItem = props => {
+    const [image,setImage] = useState('')
+
+    const onClickHandle = img =>{
+        setImage({ image : img} );
+    }
+
+    return (
+        <div className="product-box">
+            <div className="img-wrapper">
+                <div className="front">
+                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${props.product.id}`} ><img
+                        src={props.product.variants?
+                            image?image:props.product.variants[0].images
+                            :props.product.pictures[0]}
+                        className="img-fluid"
+                        alt="" /></Link>
+                </div>
+                <div className="cart-info cart-wrap">
+                    <button title="Add to cart" onClick={()=>props.onAddToCartClicked(props.product, 1)}>
+                        <i className="fa fa-shopping-cart" aria-hidden="true"/>
+                    </button>
+                    <a title="Add to Wishlist" onClick={props.onAddToWishlistClicked} >
+                        <i className="fa fa-heart" aria-hidden="true"/>
+                    </a>
+                    <Link to={`${process.env.PUBLIC_URL}/compare`} title="Compare" onClick={props.onAddToCompareClicked}>
+                        <i className="fa fa-refresh" aria-hidden="true"/></Link>
+                </div>
+            </div>
+            <div className="product-detail">
+                <div>
+                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${props.product.id}`}>
+                        <h6>{props.product.name}</h6>
+                    </Link>
+                    <h4>{props.symbol}{props.product.price}</h4>
+                </div>
+            </div>
+        </div>
+    )
+
+}
+
+export default ProductListItem;

@@ -40,11 +40,11 @@ import map from "./map/anothermap/map"
 import mapBox from "./map/anothermap/mapBox"
 import mapNaver from "./map/anothermap/mapBox"
 
-/*//board
+//board
 import BoardMain from "./board/BoardMain";
 import BoardProfile from "./board/BoardProfile";
 import BoardDetail from "./board/BoardDetail";
-import NewPost from "./board/NewPost";*/
+import NewPost from "./board/NewPost";
 
 
 // Admin
@@ -59,17 +59,10 @@ import {Profile} from './admin/settings';
 import {Reports} from './admin/reports';
 
 
-import BoardMain from "./board/BoardMain";
-import BoardProfile from "./board/BoardProfile";
-import BoardDetail from "./board/BoardDetail";
-
-import Search from './search/search'
 
 
 import { getAllProducts } from './product'
 import store from "./store";
-import MainPage from "./common/MainPage";
-import MapService from "./map/service";
 
 
 const Root =()=> {
@@ -121,10 +114,10 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
-                                {/*<Route path={`${process.env.PUBLIC_URL}/blog/board-main`} component={BoardMain}/>
+                                <Route path={`${process.env.PUBLIC_URL}/blog/board-main`} component={BoardMain}/>
                                 <Route path={`${process.env.PUBLIC_URL}/blog/new-post`} component={NewPost}/>
                                 <Route path={`${process.env.PUBLIC_URL}/blog/board-profile`} component={BoardProfile}/>
-                                <Route path={`${process.env.PUBLIC_URL}/blog/board-detail`} component={BoardDetail}/>*/}
+                                <Route path={`${process.env.PUBLIC_URL}/blog/board-detail`} component={BoardDetail}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />

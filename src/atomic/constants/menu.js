@@ -42,6 +42,6 @@ export const MENUITEMS = [
     },
 
     {
-        title: '로그아웃',path:'/admin/auth/login', icon: LogIn, type: 'link', active: false
+        title: '로그아웃',path:'/', icon: LogIn, type: 'link', active: false
     }
 ]

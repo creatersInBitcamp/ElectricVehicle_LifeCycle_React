@@ -14,7 +14,6 @@ import img07 from './imgs/img_section/img07.png'
 
 const time = new Date().toLocaleTimeString()
 
-
 export const user = {
     userId: "tedd911",
     name: "이형태",
@@ -61,6 +60,7 @@ export const user = {
             profileImg: profile,
             location: "대한민국, 서울",
             img: img06,
+            hits: 123,
             like: 1,
             comments: [
                 {
@@ -79,7 +79,7 @@ export const user = {
                     comment: '다시 연습 중.'
                 }
             ],
-            dateTime: time
+            dateTime: time,
         },
     ]
 }
@@ -91,6 +91,7 @@ export const posts = [
         profileImg: profile,
         location: "대한민국, 인천 계양",
         img: img,
+        hits: 123,
         like: 12,
         content: 'post 글쓴이의 글',
         comments: [
@@ -110,7 +111,7 @@ export const posts = [
                 comment: '다시 연습 중.'
             }
         ],
-        dateTime: time
+        dateTime: time,
     },
     {
         postId: 2,
@@ -119,6 +120,7 @@ export const posts = [
         profileImg: profile,
         location: "대한민국, 인천 계양",
         img: img02,
+        hits: 123,
         like: 32,
         comments: [
             {
@@ -137,7 +139,7 @@ export const posts = [
                 comment: '다시 연습 중.'
             }
         ],
-        dateTime: time
+        dateTime: time,
     },
     {
         postId: 3,
@@ -146,6 +148,7 @@ export const posts = [
         profileImg: profile,
         location: "대한민국, 인천 계양",
         img: img03,
+        hits: 123,
         like: 3,
         comments: [
             {
@@ -164,7 +167,7 @@ export const posts = [
                 comment: '다시 연습 중.'
             }
         ],
-        dateTime: time
+        dateTime: time,
     },
     {
         postId: 4,
@@ -173,6 +176,7 @@ export const posts = [
         profileImg: profile,
         location: "대한민국, 인천 계양",
         img: img04,
+        hits: 123,
         like: 7,
         comments: [
             {
@@ -191,7 +195,7 @@ export const posts = [
                 comment: '다시 연습 중.'
             }
         ],
-        dateTime: time
+        dateTime: time,
     },
     {
         postId: 5,
@@ -200,6 +204,7 @@ export const posts = [
         profileImg: profile,
         location: "대한민국, 인천 계양",
         img: img05,
+        hits: 123,
         like: 125,
         comments: [
             {
@@ -218,7 +223,7 @@ export const posts = [
                 comment: '다시 연습 중.'
             }
         ],
-        dateTime: time
+        dateTime: time,
     },
     {
         postId: 6,
@@ -227,6 +232,7 @@ export const posts = [
         profileImg: profile,
         location: "대한민국, 인천 계양",
         img: img06,
+        hits: 123,
         like: 67,
         comments: [
             {
@@ -245,7 +251,7 @@ export const posts = [
                 comment: '다시 연습 중.'
             }
         ],
-        dateTime: time
+        dateTime: time,
     },
     {
         postId: 7,
@@ -254,6 +260,7 @@ export const posts = [
         profileImg: profile,
         location: "대한민국, 인천 계양",
         img: img07,
+        hits: 123,
         like: 97,
         comments: [
             {
@@ -272,6 +279,6 @@ export const posts = [
                 comment: '다시 연습 중.'
             }
         ],
-        dateTime: time
+        dateTime: time,
     },
 ]

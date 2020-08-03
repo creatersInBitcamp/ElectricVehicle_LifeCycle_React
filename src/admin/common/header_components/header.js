@@ -6,6 +6,7 @@ import { AlignLeft, Maximize2, Bell, MessageSquare, MoreHorizontal } from 'react
 import logo from '../../../assets/images/dashboard/08.png'
 import man from "../../../assets/images/dashboard/man.png";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 const headerTypes = {REQUEST: 'header/REQUEST'}
 const headerRequest = action => ({type: headerTypes.REQUEST, payload: action.payload})
@@ -16,10 +17,16 @@ const headerReducer = (state={}, action) => {
     }
 }
 
+const ADMIN_CHECK = 'ADMIN_CHECK'
+const adminCheckAction = admin =>({type: ADMIN_CHECK, check: admin})
+
 export const Header = () => {
     const [sidebar, setSidebar] = useState(true)
     const [rightSidebar, setRightSidebar] = useState(true)
     const [navMenus, setNavMenus] = useState(false)
+    const [admin, setAdmin] = useState(false)
+
+    const dispatch = useDispatch()
 
     const showRightSidebar = () => {
         if (rightSidebar) {
@@ -61,6 +68,10 @@ export const Header = () => {
             document.querySelector(".page-sidebar").classList.remove('open');
         }
     }
+    const logout = (e) => {
+        e.preventDefault()
+        dispatch(adminCheckAction(admin))
+    }
         return (
             <>
                 {/* open */}
@@ -95,7 +106,7 @@ export const Header = () => {
                                         <li><a><i data-feather="mail"/>Inbox</a></li>
                                         <li><a><i data-feather="lock"/>Lock Screen</a></li>
                                         <li><a><i data-feather="settings"/>Settings</a></li>
-                                        <li><Link to={`${process.env.PUBLIC_URL}/`}><i data-feather="log-out"/>Logout</Link></li>
+                                        <li onClick={logout} ><Link to={`${process.env.PUBLIC_URL}/`} ><i data-feather="log-out"/>Logout</Link></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -1,4 +1,5 @@
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 // middlewares
 import thunkMiddleware from 'redux-thunk'
@@ -34,7 +35,7 @@ const persistedState = loadFromLocalStorage()
  * Create a Redux reducer that holds the app state.
  */
 
-const store = createStore(rootReducer, persistedState, compose(
+const store = createStore(rootReducer, persistedState, composeWithDevTools(
     applyMiddleware(thunkMiddleware),
 
     //For working redux dev tools in chrome (https://github.com/zalmoxisus/redux-devtools-extension)

@@ -53,16 +53,13 @@ const FooterTwo = props =>{
                                     </div>
                                     <div className="footer-contant">
                                         <ul>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >womens</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >clothing</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >accessories</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >featured</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >service</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >cart</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >my order</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >FAQ</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >new product</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >featured product</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/new-car/collection`} >New-car</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/used-car/collection`} >Used-car</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/service`} >Map</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/cart`} >cart</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/pages/faq`} >FAQ</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/post/main`} >Post</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/board/main`} >Board</Link></li>
                                         </ul>
                                     </div>
                                 </div>

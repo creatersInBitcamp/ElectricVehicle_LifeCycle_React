@@ -29,9 +29,9 @@ const Fashion = () => {
             </Helmet>
             {/*Home Slider*/}
             <section className="p-0">
-                <Slider  className="slide-1 home-slider">
+                <Slider className="slide-1 home-slider" >
                     <div>
-                        <div className="home home1 text-center">
+                        <div className="home home1 text-center" color={'red'}>
                             <div className="container">
                                 <div className="row">
                                     <div className="col">
@@ -109,8 +109,8 @@ const Fashion = () => {
                         <div className="row">
                             <div className="col">
                                 <div className="banner-contain">
-                                    <h2>2018</h2>
-                                    <h3>fashion trends</h3>
+                                    <h2>2020</h2>
+                                    <h3>ElectricVehicle trends</h3>
                                     <h4>special offer</h4>
                                 </div>
                             </div>

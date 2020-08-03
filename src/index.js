@@ -65,6 +65,12 @@ import { getAllProducts } from './product'
 import store from "./store";
 import CollectionLeftSidebar from "./newPurchase/Collection-left-sidebar";
 import LeftSideBar from "./newPurchase/left-sidebar";
+import ClassicBoardMain from "./board/classic/classicBoard.main";
+import ClassicBoardDetails from "./board/classic/classicBoard.details";
+import Faq from "./common/faq";
+import {MyCarComparison} from "./usedCompare";
+import ForgetPassword from "./user/forget-password";
+import MyAccount from "./user/myAccount";
 
 
 const Root =()=> {
@@ -77,15 +83,17 @@ const Root =()=> {
                     <ScrollContext>
                         <Switch>
                             <Layout>
-                                {/*<Route exact path={`${process.env.PUBLIC_URL}/`} component={Service}/>*/}
 
                                 <Route exact path={`${process.env.PUBLIC_URL}/`} component={Main}/>
-                                {/*<Route exact path={`${process.env.PUBLIC_URL}/main`} component={MainPage}/>*/}
 
                                 {/*common*/}
                                 <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/forgot`} component={ForgetPassword}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/myaccount`} component={MyAccount}/>
+
 
                                 {/*car*/}
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
@@ -100,6 +108,7 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/product/:id`} component={productDetail}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/purchase`} component={PurchaseRequest}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/comparison`} component={MyCarComparison}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/sales`} component={SalesForm}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/scrapped`} component={Scrapped}/>
 
@@ -117,10 +126,11 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
-
                                 <Route path={`${process.env.PUBLIC_URL}/post/main`} component={BoardMain}/>
                                 <Route path={`${process.env.PUBLIC_URL}/post/profile`} component={BoardProfile}/>
                                 <Route path={`${process.env.PUBLIC_URL}/post/detail`} component={BoardDetail}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/details`} component={ClassicBoardDetails}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />

@@ -80,7 +80,7 @@ const HeaderOne = props =>{
 							<div className="main-menu">
 								<div className="menu-left">
 									<div className="navbar">
-										<a href="javascript:void(0)" onClick={openNav}>
+										<a onClick={openNav}>
 											<div className="bar-style"> <i className="fa fa-bars sidebar-bar" aria-hidden="true"/></div>
 										</a>
 										{/*Sidebar Navigation Component*/}

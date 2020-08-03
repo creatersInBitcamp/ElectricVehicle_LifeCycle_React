@@ -105,12 +105,12 @@ const NavBar = () => {
                             </Link>
                             <ul className="nav-submenu">
                                 <li><Link
-                                    to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>{translate('products')}</Link>
+                                    to={`${process.env.PUBLIC_URL}/used-car/collection`}>{translate('used_car_purchase')}</Link>
                                 </li>
                                 <li><Link
-                                    to={`${process.env.PUBLIC_URL}/left-sidebar/product/1`}>{translate('left_sidebar')}</Link>
+                                    to={`${process.env.PUBLIC_URL}/used-car/sales`}>{translate('used_car_sales')}</Link>
                                 </li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/checkout`}>{translate('checkout')}</Link>
+                                <li><Link to={`${process.env.PUBLIC_URL}/scrapped`}>{translate('scrapped')}</Link>
                                 </li>
                             </ul>
                         </li>

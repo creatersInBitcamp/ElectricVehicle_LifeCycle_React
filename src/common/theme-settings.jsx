@@ -76,7 +76,7 @@ const ThemeSettings = () => {
 
     return <>
         <div>
-            <a href="javascript:void(0)" onClick={() => openSetting()}>
+            <a onClick={() => openSetting()}>
                 <div className="setting-sidebar" id="setting-icon">
                     <div>
                         <i className="fa fa-cog" aria-hidden="true"/>
@@ -84,7 +84,7 @@ const ThemeSettings = () => {
                 </div>
             </a>
             <div id="setting_box" className="setting-box">
-                <a href="javascript:void(0)" className="overlay" onClick={() => closeSetting()}/>
+                <a className="overlay" onClick={() => closeSetting()}/>
                 <div className="setting_box_body">
                     <div onClick={() => closeSetting()}>
                         <div className="sidebar-back text-left">

@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 
 
 const ProductListItem = props => {
-    const {product, symbol, onAddToCartClicked, onAddToWishlistClicked, onAddToCompareClicked} = props;
     const [image,setImage] = useState('')
 
     const onClickHandle = img =>{
@@ -14,30 +13,30 @@ const ProductListItem = props => {
         <div className="product-box">
             <div className="img-wrapper">
                 <div className="front">
-                    <Link to={`${process.env.PUBLIC_URL}/product-detail/product/${product.id}`} ><img
-                        src={product.variants?
-                            image?image:product.variants[0].images
-                            :product.pictures[0]}
+                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${props.product.id}`} ><img
+                        src={props.product.variants?
+                            image?image:props.product.variants[0].images
+                            :props.product.pictures[0]}
                         className="img-fluid"
                         alt="" /></Link>
                 </div>
                 <div className="cart-info cart-wrap">
-                    <button title="Add to cart" onClick={onAddToCartClicked}>
+                    <button title="Add to cart" onClick={()=>props.onAddToCartClicked(props.product, 1)}>
                         <i className="fa fa-shopping-cart" aria-hidden="true"/>
                     </button>
-                    <a title="Add to Wishlist" onClick={onAddToWishlistClicked} >
+                    <a title="Add to Wishlist" onClick={props.onAddToWishlistClicked} >
                         <i className="fa fa-heart" aria-hidden="true"/>
                     </a>
-                    <Link to={`${process.env.PUBLIC_URL}/compare`} title="Compare" onClick={onAddToCompareClicked}>
+                    <Link to={`${process.env.PUBLIC_URL}/compare`} title="Compare" onClick={props.onAddToCompareClicked}>
                         <i className="fa fa-refresh" aria-hidden="true"/></Link>
                 </div>
             </div>
             <div className="product-detail">
                 <div>
-                    <Link to={`${process.env.PUBLIC_URL}/product-detail/product/${product.id}`}>
-                        <h6>{product.name}</h6>
+                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${props.product.id}`}>
+                        <h6>{props.product.name}</h6>
                     </Link>
-                    <h4>{symbol}{product.price}</h4>
+                    <h4>{props.symbol}{props.product.price}</h4>
                 </div>
             </div>
         </div>

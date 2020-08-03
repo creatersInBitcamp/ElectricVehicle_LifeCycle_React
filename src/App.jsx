@@ -19,7 +19,7 @@ const App = (props) => {
         setAdmin(result.admin)
         alert(result.admin)
     },[])
-    if(admin){
+    if(false){
         return (
             <div className="page-wrapper">
                 {/*<button onClick={toggleAdmin}>toggle</button>*/}

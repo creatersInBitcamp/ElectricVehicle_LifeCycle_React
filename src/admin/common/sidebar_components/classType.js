@@ -84,7 +84,7 @@ export class sidebar extends Component {/!**!/
                     <div className="sidebar-title">{menuItem.sidebartitle}</div>
                     : ''}
                 {(menuItem.type === 'sub') ?
-                    <a className="sidebar-header " href="javascript:void(0)" onClick={() => this.setNavActive(menuItem)}>
+                    <a className="sidebar-header " onClick={() => this.setNavActive(menuItem)}>
                         <menuItem.icon />
                         <span>{menuItem.title}</span>
                         <i className="fa fa-angle-right pull-right"></i>
@@ -110,7 +110,7 @@ export class sidebar extends Component {/!**!/
                         {menuItem.children.map((childrenItem, index) =>
                             <li key={index} className={childrenItem.children ? childrenItem.active ? 'active' : '' : ''}>
                                 {(childrenItem.type === 'sub') ?
-                                    <a href="javascript:void(0)" onClick={() => this.setNavActive(childrenItem)} >
+                                    <a onClick={() => this.setNavActive(childrenItem)} >
                                         <i className="fa fa-circle"></i>{childrenItem.title} <i className="fa fa-angle-right pull-right"></i></a>
                                     : ''}
 

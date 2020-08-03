@@ -28,7 +28,7 @@ const productDetail = () => {
     const [open, setOpen] = useState(false)
     const [nav1, setNav1] = useState(null)
     const [nav2, setNav2] = useState(null)
-    const match = useRouteMatch('/product-detail/product/:id')
+    const match = useRouteMatch('/used-car/product/:id')
     const {symbol, item} = useSelector((state) => {
         let productId = match.params.id
         return {

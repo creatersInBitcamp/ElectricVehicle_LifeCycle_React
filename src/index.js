@@ -10,7 +10,6 @@ import './index.scss';
 // Layouts
 import Layout from './App'
 import Main from './layouts/main';
-// import MainPage from "./common/MainPage";
 
 //car
 import wishlist from './wishlist/Wishlist'
@@ -26,6 +25,8 @@ import {Scrapped} from "./scrapped";
 import Login from './user/login'
 import Register from './user/register'
 import Search from './search/search'
+import PageNotFound from "./common/404";
+import MyAccount from "./user/myAccount";
 
 //map
 import ChargingStationMap from "./map/charging-station-map";
@@ -64,6 +65,8 @@ import LoginTabset from "./admin/auth/loginTabset";
 import { getAllProducts } from './product'
 import store from "./store";
 import CollectionLeftSidebar from "./newPurchase/Collection-left-sidebar";
+import Faq from "./common/faq";
+import ForgetPassword from "./user/forget-password";
 
 
 const Root =()=> {
@@ -76,20 +79,20 @@ const Root =()=> {
                     <ScrollContext>
                         <Switch>
                             <Layout>
-                                {/*<Route exact path={`${process.env.PUBLIC_URL}/`} component={Service}/>*/}
-
                                 <Route exact path={`${process.env.PUBLIC_URL}/`} component={Main}/>
-                                {/*<Route exact path={`${process.env.PUBLIC_URL}/main`} component={MainPage}/>*/}
 
                                 {/*common*/}
-                                <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/pages/myaccount`} component={MyAccount}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/pages/fnq`} component={Faq}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/pages/forgot`} component={ForgetPassword}/>
 
                                 {/*car*/}
-                                <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
-                                <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare}/>
-                                <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishlist}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/compare`} component={Compare}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/wishlist`} component={wishlist}/>
 
                                 {/*newcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>
@@ -115,24 +118,25 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
-                                <Route path={`${process.env.PUBLIC_URL}/post/main`} component={BoardMain}/>
-                                <Route path={`${process.env.PUBLIC_URL}/post/profile`} component={BoardProfile}/>
-                                <Route path={`${process.env.PUBLIC_URL}/post/detail`} component={BoardDetail}/>
-                                <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
-                                <Route path={`${process.env.PUBLIC_URL}/board/detail`} component={ClassicBoardDetails}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/post/main`} component={BoardMain}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/post/profile`} component={BoardProfile}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/post/detail`} component={BoardDetail}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/board/details`} component={ClassicBoardDetails}/>
 
                                 {/*admin*/}
-                                <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/elecCar`} component={ElecCar} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/orders`} component={Orders} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/usedCar`} component={UsedCar} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/community`} component={Community} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/notice`} component={Notice} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/users`} component={List_user} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/reports`} component={Reports} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/userDetail`} component={Profile} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/login`} component={AdminLogin} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/lgoinTabset`} component={LoginTabset} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/elecCar`} component={ElecCar} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/orders`} component={Orders} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/usedCar`} component={UsedCar} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/community`} component={Community} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/notice`} component={Notice} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/users`} component={List_user} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/reports`} component={Reports} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/userDetail`} component={Profile} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/login`} component={AdminLogin} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/admin/lgoinTabset`} component={LoginTabset} />
+                                {/*<Route path='*' component={PageNotFound}/>*/}
                             </Layout>
                         </Switch>
                     </ScrollContext>

@@ -31,6 +31,9 @@ const Topbar = () => {
                                     <li>
                                         <Link to={`${process.env.PUBLIC_URL}/pages/register`} data-lng="en">{translate('register')}</Link>
                                     </li>
+                                    <li>
+                                        <Link to={`${process.env.PUBLIC_URL}/pages/myaccount`} data-lng="en">{translate('myaccount')}</Link>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>

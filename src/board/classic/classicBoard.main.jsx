@@ -6,7 +6,7 @@ const ClassicBoardMain = () => {
 
         return (
             <div>
-                <Breadcrumb title={'Blog Page'}/>
+                <Breadcrumb title={'Board'}/>
                 
                 {/*Blog Details section*/}
                 <section className="section-b-space  blog-page">
@@ -55,7 +55,7 @@ const ClassicBoardMain = () => {
                                 <div className="row blog-media">
                                     <div className="col-xl-6">
                                         <div className="blog-left">
-                                            <Link to={`${process.env.PUBLIC_URL}/blog/details`} >
+                                            <Link to={`${process.env.PUBLIC_URL}/board/details`} >
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/blog/1.jpg`} className="img-fluid" alt=""/>
                                             </Link>
                                         </div>

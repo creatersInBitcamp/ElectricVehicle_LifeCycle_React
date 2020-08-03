@@ -112,10 +112,10 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
-                                {/*<Route path={`${process.env.PUBLIC_URL}/blog/board-main`} component={BoardMain}/>
+                                <Route path={`${process.env.PUBLIC_URL}/blog/board-main`} component={BoardMain}/>
                                 <Route path={`${process.env.PUBLIC_URL}/blog/new-post`} component={NewPost}/>
                                 <Route path={`${process.env.PUBLIC_URL}/blog/board-profile`} component={BoardProfile}/>
-                                <Route path={`${process.env.PUBLIC_URL}/blog/board-detail`} component={BoardDetail}/>*/}
+                                <Route path={`${process.env.PUBLIC_URL}/blog/board-detail`} component={BoardDetail}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />

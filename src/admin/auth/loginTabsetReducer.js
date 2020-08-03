@@ -1,7 +1,7 @@
-import React from "react";
+// import React from "react";
 
 /* type */
-const ADMIN_CHECK = 'ADMIN_CHECK'
+// const ADMIN_CHECK = 'ADMIN_CHECK'
 
 /* actions */
-export const adminCheck = ()
+// export const adminCheck = ()

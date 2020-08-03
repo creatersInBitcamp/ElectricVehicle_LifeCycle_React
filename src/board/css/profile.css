@@ -25,10 +25,10 @@
 
 
 .detail{
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 .detail .top{
     display: flex;
@@ -54,6 +54,7 @@
     color: #262626;
     padding: 3px 20px;
     font-weight: 600;
+    font-size: medium;
     vertical-align: text-bottom;
     text-decoration: none;
     box-sizing: border-box;

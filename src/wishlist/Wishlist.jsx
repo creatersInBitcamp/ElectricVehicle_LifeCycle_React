@@ -50,8 +50,8 @@ const wishlist = () => {
                                                             <p>in stock</p>
                                                         </div>
                                                         <div className="col-xs-3">
-                                                            <h2 className="td-color">{symbol}{item.price-(item.price*item.discount/100)}
-                                                                <del><span className="money">{symbol}{item.price}</span></del></h2>
+                                                            <h2 className="td-color">
+                                                                <span className="money">{symbol}{item.price}</span></h2>
                                                         </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
@@ -65,18 +65,28 @@ const wishlist = () => {
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td><h2>{symbol}{item.price-(item.price*item.discount/100)}
-                                                    <del><span className="money">{symbol}{item.price}</span></del></h2></td>
+                                                <td>
+                                                    <div className="col-xs-3">
+                                                        <h2 className="td-color">
+                                                            <span className="money">{symbol}{item.price}</span></h2>
+                                                    </div>
+                                                </td>
                                                 <td >
-                                                    <p>in stock</p>
+                                                    <div className="col-xs-3">
+                                                        <p>in stock</p>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <a className="icon" onClick={()=>{dispatch(removeFromWishlist(item))}}>
-                                                        <i className="fa fa-times"/>
-                                                    </a>
-                                                    <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveWishlist(item, 1))}}>
-                                                        <i className="fa fa-shopping-cart"/>
-                                                    </a>
+                                                    <div className="col-xs-3">
+                                                        <h2 className="td-color">
+                                                            <a className="icon" onClick={()=>{dispatch(removeFromWishlist(item))}}>
+                                                                <i className="fa fa-times"/>
+                                                            </a>
+                                                            <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveWishlist(item, 1))}}>
+                                                                <i className="fa fa-shopping-cart"/>
+                                                            </a>
+                                                        </h2>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             </tbody> )

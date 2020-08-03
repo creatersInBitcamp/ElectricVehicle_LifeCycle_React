@@ -12,18 +12,10 @@ import ImageZoom from './common/product/image-zoom'
 import SmallImages from './common/product/small-image'
 import MyCar from "./MyCar";
 import Service from "./common/service";
-import DetailedContents from "./DetailedContents";
+import DetailsTopTabs from "./common/details-top-tabs";
 import {addToCart} from "../cart/cartReducer";
 import {addToCartUnsafe} from "../cart/cartReducer";
 import {addToWishlist} from "../wishlist/wishlistReducer";
-
-/* type */
-
-/* action */
-
-
-/* reducer */
-
 
 const LeftSideBar = () => {
     const [state, setState] = useState({ nav1: null, nav2: null });
@@ -111,10 +103,10 @@ const LeftSideBar = () => {
                                                 </Slider>
                                                 <SmallImages item={item} settings={productsnav} navOne={nav1} />
                                             </div>
-                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart)} BuynowClicked={()=>dispatch(addToCartUnsafe)} addToWishlistClicked={()=>dispatch(addToWishlist)} />
+                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart(item,1))} BuynowClicked={()=>dispatch(addToCartUnsafe(item))} addToWishlistClicked={()=>dispatch(addToWishlist(item))} />
                                         </div>
                                     </div>
-                                    <DetailedContents item={item} />
+                                    <DetailsTopTabs item={item} />
                                 </div>
                             </div>
                         </div>

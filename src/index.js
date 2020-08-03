@@ -10,22 +10,22 @@ import './index.scss';
 // Layouts
 import Layout from './App'
 import Main from './layouts/main';
-// import MainPage from "./common/MainPage";
 
 //car
 import wishlist from './wishlist/Wishlist'
-import Compare from './compare/Compare'
 import Cart from "./cart/CartComponent";
+import checkOut from "./checkout";
+
+//new car
+import Compare from './compare/Compare'
+import CollectionLeftSidebar from "./newPurchase/Collection-left-sidebar";
+import LeftSideBar from "./newPurchase/left-sidebar";
 
 //used car
 import {productDetail, PurchaseRequest, UsedPurchaseCollection} from "./usedPurchase";
 import {SalesForm} from "./usedSales";
 import {Scrapped} from "./scrapped";
-
-//common
-import Login from './user/login'
-import Register from './user/register'
-import Search from './search/search'
+import {MyCarComparison} from "./usedCompare";
 
 //map
 import ChargingStationMap from "./map/charging-station-map";
@@ -44,7 +44,8 @@ import mapNaver from "./map/anothermap/mapNaver"
 import BoardMain from "./board/BoardMain";
 import BoardProfile from "./board/BoardProfile";
 import BoardDetail from "./board/BoardDetail";
-import NewPost from "./board/NewPost";
+import ClassicBoardMain from "./board/classic/classicBoard.main";
+import ClassicBoardDetails from "./board/classic/classicBoard.details";
 
 
 // Admin
@@ -60,17 +61,18 @@ import {Reports} from './admin/reports';
 import AdminLogin from "./admin/auth/adminlogin";
 import LoginTabset from "./admin/auth/loginTabset";
 
+//common
+import Search from './search/search'
+import Faq from "./common/faq";
+
+//user
+import Login from './user/login'
+import Register from './user/register'
+import ForgetPassword from "./user/forget-password";
+import MyAccount from "./user/myAccount";
 
 import { getAllProducts } from './product'
 import store from "./store";
-import CollectionLeftSidebar from "./newPurchase/Collection-left-sidebar";
-import LeftSideBar from "./newPurchase/left-sidebar";
-import ClassicBoardMain from "./board/classic/classicBoard.main";
-import ClassicBoardDetails from "./board/classic/classicBoard.details";
-import Faq from "./common/faq";
-import {MyCarComparison} from "./usedCompare";
-import ForgetPassword from "./user/forget-password";
-import MyAccount from "./user/myAccount";
 
 
 const Root =()=> {
@@ -97,12 +99,13 @@ const Root =()=> {
 
                                 {/*car*/}
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
-                                <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare}/>
                                 <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishlist}/>
+                                <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
 
                                 {/*newcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/product/:id`} component={LeftSideBar}/>
+                                <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare}/>
 
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>

@@ -71,28 +71,11 @@ const NavBar = () => {
                         </li>
                         <li>
                             <Link to="#" className="nav-link" onClick={handleSubmenu}>
-                                {translate('admin')}
-                                <span className="sub-arrow"/>
-                            </Link>
-                            <ul className="nav-submenu">
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/dashboard`}>{translate('dashboard')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/orders`}>{translate('orders')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/usedCar`}>{translate('used_car')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/community`}>{translate('community')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/notice`}>{translate('notice')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/users`}>{translate('users')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/reports`}>{translate('reports')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/userDetail`}>{translate('userDetail')}</Link></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <Link to="#" className="nav-link" onClick={handleSubmenu}>
                                 {translate('new_car')}
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>{translate('products')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/1`}>{translate('left_sidebar')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/new-car/collection`}>{translate('new_car_purchase')}</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/checkout`}>{translate('checkout')}</Link></li>
                             </ul>
                         </li>
@@ -129,6 +112,22 @@ const NavBar = () => {
                             <ul className="nav-submenu">
                                 <li><Link to={`${process.env.PUBLIC_URL}/post/main`}>{translate('post')}</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/board/main`}>{translate('board')}</Link></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <Link to="#" className="nav-link" onClick={handleSubmenu}>
+                                {translate('admin')}
+                                <span className="sub-arrow"/>
+                            </Link>
+                            <ul className="nav-submenu">
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/dashboard`}>{translate('dashboard')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/orders`}>{translate('orders')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/usedCar`}>{translate('used_car')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/community`}>{translate('community')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/notice`}>{translate('notice')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/users`}>{translate('users')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/reports`}>{translate('reports')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/userDetail`}>{translate('userDetail')}</Link></li>
                             </ul>
                         </li>
                     </ul>

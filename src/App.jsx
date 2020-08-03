@@ -23,7 +23,6 @@ const App = (props) => {
         return (
             <div className="page-wrapper">
                 {/*<button onClick={toggleAdmin}>toggle</button>*/}
-                <MyChatBot/>
                 <Header/>
                 <div className="page-body-wrapper">
                     <Sidebar />

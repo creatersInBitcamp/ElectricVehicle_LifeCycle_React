@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
 
@@ -20,10 +20,27 @@ const Topbar = () => {
                     </div>
                     <div className="col-lg-6 text-right">
                         <ul className="header-dropdown">
-                            <li className="mobile-wishlist compare-mobile"><Link to={`${process.env.PUBLIC_URL}/compare`}><i className="fa fa-random" aria-hidden="true"/>{translate('compare')}</Link></li>
-                            <li className="mobile-wishlist"><Link to={`${process.env.PUBLIC_URL}/wishlist`}><i className="fa fa-heart" aria-hidden="true"/>{translate('wishlist')}</Link></li>
+                            <li className="mobile-wishlist compare-mobile">
+                                <Link to={`${process.env.PUBLIC_URL}/compare`}>
+                                    <i className="fa fa-random" aria-hidden="true"/>
+                                    {translate('new_car_compare')}
+                                </Link>
+                            </li>
+                            <li className="mobile-wishlist compare-mobile">
+                                <Link to={`${process.env.PUBLIC_URL}/used-car/comparison`}>
+                                    <i className="fa fa-random" aria-hidden="true"/>
+                                    {translate('used_car_compare')}
+                                </Link>
+                            </li>
+                            <li className="mobile-wishlist">
+                                <Link to={`${process.env.PUBLIC_URL}/wishlist`}>
+                                    <i className="fa fa-heart" aria-hidden="true"/>
+                                    {translate('wishlist')}
+                                </Link>
+                            </li>
                             <li className="onhover-dropdown mobile-account">
-                                <i className="fa fa-user" aria-hidden="true"/> {translate('my_account')}
+                                <i className="fa fa-user" aria-hidden="true"/>
+                                {translate('my_account')}
                                 <ul className="onhover-show-div">
                                     <li>
                                         <Link to={`${process.env.PUBLIC_URL}/pages/login`} data-lng="en">{translate('login')}</Link>

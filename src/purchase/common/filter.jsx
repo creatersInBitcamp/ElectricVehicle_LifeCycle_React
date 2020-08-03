@@ -141,7 +141,7 @@ const Filter = (props) => {
                     {/*brand filter start*/}
                     <div className="collection-mobile-back">
                         <span className="filter-back" onClick={(e) => closeFilter(e)} >
-                            <i className="fa fa-angle-left" aria-hidden="true"></i> back
+                            <i className="fa fa-angle-left" aria-hidden="true"/> back
                         </span>
                     </div>
                     <SlideToggle>

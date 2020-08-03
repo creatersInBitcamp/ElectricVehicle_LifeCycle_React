@@ -66,7 +66,7 @@ const Purchase = () => {
                                                                             <span onClick={openFilter}
                                                                                   className="filter-btn btn btn-theme"><i
                                                                                 className="fa fa-filter"
-                                                                                aria-hidden="true"></i> Filter</span>
+                                                                                aria-hidden="true"/> Filter</span>
                                                                     </div>
                                                                 </div>
                                                             </div>

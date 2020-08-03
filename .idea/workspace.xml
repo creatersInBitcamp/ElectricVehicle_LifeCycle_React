@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -27,12 +30,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7391774a-aa25-43ef-bbcf-6fbde24c4ada" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/admin/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/admin/app.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/common/headers/header-one.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/common/headers/header-one.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/comparison/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/comparison/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/layouts/common/side-image-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/layouts/common/side-image-item.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/map/datatable.js" beforeDir="false" afterPath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/map/datatable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/purchase/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ElectricVehicle_LifeCycle_React/src/purchase/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/purchase/common/filter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/purchase/common/filter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/purchase/purchase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/purchase/purchase.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +72,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="C:\Users\ME\WebstormProjects\새 폴더\ElectricVehicle_LifeCycle_React\node_modules\typescript\lib" />
   </component>
@@ -221,30 +223,34 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="696" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596334604093" />
-    <state width="1345" height="67" key="GridCell.Tab.0.bottom" timestamp="1596387483898">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1894" height="277" key="GridCell.Tab.0.bottom" timestamp="1596427808663">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1259" height="145" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1280.680@1366.0.1280.680" timestamp="1596221993163" />
     <state width="1345" height="67" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596387483898" />
     <state width="1894" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245317" />
-    <state width="1345" height="67" key="GridCell.Tab.0.center" timestamp="1596387483898">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1894" height="277" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1596427808663" />
+    <state width="1894" height="277" key="GridCell.Tab.0.center" timestamp="1596427808663">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1259" height="145" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1280.680@1366.0.1280.680" timestamp="1596221993163" />
     <state width="1345" height="67" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596387483898" />
     <state width="1894" height="287" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245316" />
-    <state width="1345" height="67" key="GridCell.Tab.0.left" timestamp="1596387483898">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1894" height="277" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1596427808663" />
+    <state width="1894" height="277" key="GridCell.Tab.0.left" timestamp="1596427808663">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1259" height="145" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1280.680@1366.0.1280.680" timestamp="1596221993163" />
     <state width="1345" height="67" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596387483898" />
     <state width="1894" height="287" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245316" />
-    <state width="1345" height="67" key="GridCell.Tab.0.right" timestamp="1596387483898">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1894" height="277" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1596427808663" />
+    <state width="1894" height="277" key="GridCell.Tab.0.right" timestamp="1596427808663">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1259" height="145" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1280.680@1366.0.1280.680" timestamp="1596221993163" />
     <state width="1345" height="67" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596387483898" />
     <state width="1894" height="287" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1595839245317" />
+    <state width="1894" height="277" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1596427808663" />
     <state x="249" y="78" key="Vcs.Push.Dialog.v2" timestamp="1596380685196">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -259,10 +265,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1596380583704" />
-    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup" timestamp="1596352494392">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="476" y="48" width="942" height="982" key="search.everywhere.popup" timestamp="1596428085070">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="339" y="17" width="670" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1596352494392" />
+    <state x="476" y="48" width="942" height="982" key="search.everywhere.popup/0.23.1920.1057@0.23.1920.1057" timestamp="1596428085070" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

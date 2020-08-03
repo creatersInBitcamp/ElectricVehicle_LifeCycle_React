@@ -96,14 +96,6 @@ export const SalesForm = () => {
                                                            value={carNumber}
                                                            onChange={onChangeNumber} />
                                                 </div>
-                                                <div className="col-md-3">
-                                                    <MDBBadge color={"primary"}>소유주</MDBBadge><br/><br/>
-                                                    <h3>{userName}</h3>
-                                                </div>
-                                                <div className="col-md-3">
-                                                    <MDBBadge color={"primary"}>차량번호</MDBBadge><br/><br/>
-                                                    <h3>{carNumber}</h3>
-                                                </div>
                                             </div>
                                             <div className="form-row">
                                                 <div className="col-md-3">
@@ -126,14 +118,6 @@ export const SalesForm = () => {
                                                            value={desiredPrice}
                                                            onChange={onChangePrice} />
                                                 </div>
-                                                <div className="col-md-3">
-                                                    <MDBBadge color={"primary"}>차량색상</MDBBadge><br/><br/>
-                                                    <h3>{carColor}</h3>
-                                                </div>
-                                                <div className="col-md-3">
-                                                    <MDBBadge color={"primary"}>희망가격</MDBBadge><br/><br/>
-                                                    <h3>{desiredPrice}</h3>
-                                                </div>
                                             </div>
                                             <div className="form-row">
                                                 <div className="col-md-3">
@@ -155,14 +139,6 @@ export const SalesForm = () => {
                                                            required=""
                                                            value={mileage}
                                                            onChange={onChangeMileage} />
-                                                </div>
-                                                <div className="col-md-3">
-                                                    <MDBBadge color={"primary"}>등록연월</MDBBadge><br/><br/>
-                                                    <h3>{yyyymm}</h3>
-                                                </div>
-                                                <div className="col-md-3">
-                                                    <MDBBadge color={"primary"}>주행거리</MDBBadge><br/><br/>
-                                                    <h3>{mileage}</h3>
                                                 </div>
                                             </div>
                                             <div className="form-row">

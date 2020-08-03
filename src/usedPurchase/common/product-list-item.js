@@ -22,7 +22,7 @@ const ProductListItem = props => {
                     <a title="Add to Wishlist" onClick={props.onAddToWishlistClicked} >
                         <i className="fa fa-heart" aria-hidden="true"/>
                     </a>
-                    <Link to={`${process.env.PUBLIC_URL}/compare`} title="Compare" onClick={props.onAddToCompareClicked}>
+                    <Link to={`${process.env.PUBLIC_URL}/used-car/comparison`} title="Compare" onClick={props.onAddToCompareClicked}>
                         <i className="fa fa-refresh" aria-hidden="true"/></Link>
                 </div>
             </div>

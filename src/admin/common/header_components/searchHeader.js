@@ -11,6 +11,7 @@ const searchHeaderTypes = {REQUEST: 'searchHeader/REQUEST',
 
 const searchHeaderRequest = () => ({type : searchHeaderTypes.REQUEST})
 const searchHeaderSuccess = users  => ({type: searchHeaderTypes.SUCCESS, id: users})
+const searchHeaderUserList = users  => ({type: searchHeaderTypes.USER_LIST, id: users})
 const userListAction = users => ({type: searchHeaderTypes.USER_LIST, users})
 const searchHeaderFail = errorMsg =>({type: searchHeaderTypes.FAIL, payload: errorMsg})
 
@@ -18,6 +19,7 @@ const searchHeaderReducer = (state={id:[]}, action) => {
     switch (action.type) {
         case searchHeaderTypes.REQUEST: return {...state }
         case searchHeaderTypes.SUCCESS: return {id: action.id}
+        case searchHeaderTypes.USER_LIST: return {id: action.id}
         default: return state
     }
 }
@@ -59,12 +61,11 @@ export const SearchHeader = (props) => {
         )
     }
 
-    const handleSearch = (data) => {
-        dispatch(searchHeaderSuccess(data))};
-
-    const search = e => {
-        setSearchValue(e.target.value.trim().toLowerCase())
-        globalSearch()
+    const handleSearch = (e) => {
+        console.log(data)
+        e.preventDefault()
+        alert('핸들서츠 들어옴')
+        dispatch(searchHeaderUserList(data))
     }
 
     return (
@@ -75,7 +76,7 @@ export const SearchHeader = (props) => {
                         <span className="d-sm-none mobile-search" ><Search /></span>
                         <input onChange={inputSomething}/>
 
-                        <button onClick={(e)=>{handleSearch(e.valueOf(true))}}>그냥 버튼</button>
+                        <button onClick={handleSearch}>그냥 버튼</button>
                     </div>
                 </form>
             </>

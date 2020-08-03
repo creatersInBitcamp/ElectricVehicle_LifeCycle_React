@@ -16,6 +16,7 @@ import cartReducer from "../cart/cartReducer";
 import filtersReducer from "../filters";
 import wishlistReducer from "../wishlist/wishlistReducer";
 import compareReducer from "../compare/compareReducer";
+import loginTabsetReducer from "../admin/auth/loginTabset"
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 
 

@@ -38,13 +38,13 @@ import TableChargingStation from "./map/table-charging-station";
 import googleMap from "./map/anothermap/googleMap";
 import map from "./map/anothermap/map"
 import mapBox from "./map/anothermap/mapBox"
-import mapNaver from "./map/anothermap/mapBox"
+import mapNaver from "./map/anothermap/mapNaver"
 
-/*//board
+//board
 import BoardMain from "./board/BoardMain";
 import BoardProfile from "./board/BoardProfile";
 import BoardDetail from "./board/BoardDetail";
-import NewPost from "./board/NewPost";*/
+import NewPost from "./board/NewPost";
 
 
 // Admin
@@ -57,6 +57,8 @@ import {Notice} from './admin/notice';
 import {List_user} from './admin/users';
 import {Profile} from './admin/settings';
 import {Reports} from './admin/reports';
+import AdminLogin from "./admin/auth/adminlogin";
+import LoginTabset from "./admin/auth/loginTabset";
 
 
 import { getAllProducts } from './product'
@@ -112,21 +114,23 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
-                                <Route path={`${process.env.PUBLIC_URL}/blog/board-main`} component={BoardMain}/>
-                                <Route path={`${process.env.PUBLIC_URL}/blog/new-post`} component={NewPost}/>
-                                <Route path={`${process.env.PUBLIC_URL}/blog/board-profile`} component={BoardProfile}/>
-                                <Route path={`${process.env.PUBLIC_URL}/blog/board-detail`} component={BoardDetail}/>
+
+                                <Route path={`${process.env.PUBLIC_URL}/post/main`} component={BoardMain}/>
+                                <Route path={`${process.env.PUBLIC_URL}/post/profile`} component={BoardProfile}/>
+                                <Route path={`${process.env.PUBLIC_URL}/post/detail`} component={BoardDetail}/>
 
                                 {/*admin*/}
-                                <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />
-                                <Route path={`${process.env.PUBLIC_URL}/elecCar`} component={ElecCar} />
-                                <Route path={`${process.env.PUBLIC_URL}/orders`} component={Orders} />
-                                <Route path={`${process.env.PUBLIC_URL}/usedCar`} component={UsedCar} />
-                                <Route path={`${process.env.PUBLIC_URL}/community`} component={Community} />
-                                <Route path={`${process.env.PUBLIC_URL}/notice`} component={Notice} />
-                                <Route path={`${process.env.PUBLIC_URL}/users`} component={List_user} />
-                                <Route path={`${process.env.PUBLIC_URL}/reports`} component={Reports} />
-                                <Route path={`${process.env.PUBLIC_URL}/userDetail`} component={Profile} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/elecCar`} component={ElecCar} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/orders`} component={Orders} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/usedCar`} component={UsedCar} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/community`} component={Community} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/notice`} component={Notice} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/users`} component={List_user} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/reports`} component={Reports} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/userDetail`} component={Profile} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/login`} component={AdminLogin} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/lgoinTabset`} component={LoginTabset} />
                             </Layout>
                         </Switch>
                     </ScrollContext>

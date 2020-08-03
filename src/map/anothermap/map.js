@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Breadcrumb from "../../common/breadcrumb";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactMapGL,{Marker,Popup,NavigationControl,FlyToInterpolator} from 'react-map-gl'
-import '../../assets/css/map.css'
+import './anothermap.css'
 import * as _ from 'underscore';
 import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'

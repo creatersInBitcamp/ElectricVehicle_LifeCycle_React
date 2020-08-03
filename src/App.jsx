@@ -14,7 +14,11 @@ import {ToastContainer} from "react-toastify";
 const App = (props) => {
     const [admin,setAdmin] = useState(false);
     // const toggleAdmin = () => setAdmin(!admin)
-
+    const result = useSelector(state=>state.adminCheckReducer)
+    useEffect(()=>{
+        console.log(result.check)
+        setAdmin(result.check)
+    },[result])
     if(admin){
         return (
             <div className="page-wrapper">

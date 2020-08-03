@@ -3,28 +3,40 @@ import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 import { User, Unlock } from 'react-feather';
 import { withRouter } from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
-import {adminCheck, checkadmin} from "./admincheckReducer";
+
+const ADMIN_CHECK = 'ADMIN_CHECK'
+const adminCheckAction = admin =>({type: ADMIN_CHECK, check: admin})
+export const adminCheckReducer = (state=false, action)=>{
+    switch (action.type) {
+        case ADMIN_CHECK: return {check: action.check}
+        default: return state
+    }
+}
+
 
 const LoginTabset = (props) => {
     const[activeShow, setActiveShow] = useState()
     const[startDate, setStartDate] = useState()
-    const [adminck,setAdminck] = useState();
+    const [adminCheck,setAdminCheck] = useState(false);
 
-    // handleChange = handleChange.bind(this)
+    const dispatch = useDispatch()
+
     const clickActive = (event) => {
         document.querySelector(".nav-link").classList.remove('show');
         event.target.classList.add('show');
     }
-    /*const handleChange = (date) => {
-        setStartDate(data)
-    }*/
-    const {result} = useSelector(state => state.checkadmin)
 
-    const routeChange = () => {
-        setAdminck(result.adminck)
-        console.log(adminck)
+    const result = useSelector(state => state.adminCheckReducer)
+    useEffect(()=>{
+        setAdminCheck(result.check)
+    },[result])
+
+    const routeChange = (e) => {
+        e.preventDefault()
+        dispatch(adminCheckAction(!result.check))
         props.history.push(`${process.env.PUBLIC_URL}/admin/dashboard`);
     }
+
     return (
         <div>
             <>
@@ -51,7 +63,7 @@ const LoginTabset = (props) => {
                                 </div>
                             </div>
                             <div className="form-button">
-                                <button className="btn btn-primary" type="submit"  onClick={() => routeChange()}>Login</button>
+                                <button className="btn btn-primary" type="submit"  onClick={routeChange}>Login</button>
                             </div>
                             <div className="form-footer">
                                 <span>Or Login up with social platforms</span>
@@ -85,7 +97,7 @@ const LoginTabset = (props) => {
                                 </div>
                             </div>
                             <div className="form-button">
-                                <button className="btn btn-primary" type="submit" onClick={() => routeChange()}>Register</button>
+                                <button className="btn btn-primary" type="submit" onClick={routeChange}>Register</button>
                             </div>
                             <div className="form-footer">
                                 <span>Or Sign up with social platforms</span>

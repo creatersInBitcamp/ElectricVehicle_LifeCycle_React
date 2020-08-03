@@ -44,7 +44,7 @@ const ProductItem = props => {
                     {(props.product.sale === true)? <span className="lable4">on sale</span> : ''}
                 </div>
                 <div className="front">
-                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${props.product.id}`} ><img
+                    <Link to={`${process.env.PUBLIC_URL}/product-detail/product/${props.product.id}`} ><img
                         src={`${
                             props.product.variants?
                                 image?image:props.product.variants[0].images
@@ -72,7 +72,7 @@ const ProductItem = props => {
                         { props.product.variants.map((vari, i) =>
                             <li className={`grid_thumb_img ${(vari.images === image)?'active':''}`} key={i}>
                                 <a title="Add to Wishlist">
-                                    <img src={`${vari.images}`} onClick={onClickHandle(vari.images)} />
+                                    <img src={`${vari.images}`} onClick={()=>onClickHandle(vari.images)} />
                                 </a>
                             </li>)}
                     </ul>:''}
@@ -82,7 +82,7 @@ const ProductItem = props => {
                     <div className="rating">
                         {RatingStars}
                     </div>
-                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${props.product.id}`}>
+                    <Link to={`${process.env.PUBLIC_URL}/product-detail/product/${props.product.id}`}>
                         <h6>{props.product.name}</h6>
                     </Link>
                     <h4>{props.symbol}{props.product.price-(props.product.price*props.product.discount/100)}
@@ -92,7 +92,7 @@ const ProductItem = props => {
                         <ul className="color-variant">
                             {props.product.variants.map((vari, i) => {
                                 return (
-                                    <li className={vari.color} key={i} title={vari.color} onClick={onClickHandle(vari.images)}/>)
+                                    <li className={vari.color} key={i} title={vari.color} onClick={()=>onClickHandle(vari.images)}/>)
                             })}
                         </ul>:''}
                 </div>
@@ -118,7 +118,7 @@ const ProductItem = props => {
                                         {props.product.variants?
                                             <ul className="color-variant">
                                                 {props.product.variants.map((vari, i) =>
-                                                    <li className={vari.color} key={i} title={vari.color} onClick={onClickHandle(vari.images)}/>)
+                                                    <li className={vari.color} key={i} title={vari.color} onClick={()=>onClickHandle(vari.images)}/>)
                                                 }
                                             </ul>:''}
                                         <div className="border-product">
@@ -152,8 +152,8 @@ const ProductItem = props => {
                                             </div>
                                         </div>
                                         <div className="product-buttons">
-                                            <button  className="btn btn-solid" onClick={props.onAddToCartClicked(props.product, quantity)} >add to cart</button>
-                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${props.product.id}`} className="btn btn-solid">view detail</Link>
+                                            <button  className="btn btn-solid" onClick={()=>props.onAddToCartClicked(props.product, quantity)} >add to cart</button>
+                                            <Link to={`${process.env.PUBLIC_URL}/product-detail/product/${props.product.id}`} className="btn btn-solid">view detail</Link>
                                         </div>
                                     </div>
                                 </div>

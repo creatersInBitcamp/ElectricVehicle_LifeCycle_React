@@ -13,7 +13,7 @@ const mapContainerStyle = {
     height: "830px",
 };
 const options = {
-    disableDefaultUI: true,
+    // disableDefaultUI: true,
     zoomControl: true,
 };
 const center = {

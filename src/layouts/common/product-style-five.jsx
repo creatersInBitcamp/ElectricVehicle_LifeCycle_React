@@ -63,10 +63,10 @@ const ProductStyleFive = props => {
                         alt="" /></Link>
                 </div>
                 <div className="cart-box">
-                    <button title="Add to cart" onClick={props.onAddToCartClicked(props.product, 1)}>
+                    <button title="Add to cart" onClick={()=>props.onAddToCartClicked(props.product, 1)}>
                         <i className="fa fa-shopping-cart" aria-hidden="true"/>
                     </button>
-                    <a title="Add to Wishlist" onClick={props.onAddToWishlistClicked} >
+                    <a title="Add to Wishlist" onClick={()=>props.onAddToWishlistClicked} >
                         <i className="fa fa-heart" aria-hidden="true"/>
                     </a>
                     <a data-toggle="modal"
@@ -90,7 +90,7 @@ const ProductStyleFive = props => {
                         <ul className="color-variant">
                             {props.product.variants.map((vari, i) => {
                                 return (
-                                    <li className={vari.color} key={i} title={vari.color} onClick={onClickHandle(vari.images)}/>)
+                                    <li className={vari.color} key={i} title={vari.color} onClick={()=>onClickHandle(vari.images)}/>)
                             })}
                         </ul>:''}
                 </div>
@@ -116,7 +116,7 @@ const ProductStyleFive = props => {
                                         {props.product.variants?
                                             <ul className="color-variant">
                                                 {props.product.variants.map((vari, i) =>
-                                                    <li className={vari.color} key={i} title={vari.color} onClick={onClickHandle(vari.images)}/>)
+                                                    <li className={vari.color} key={i} title={vari.color} onClick={()=>onClickHandle(vari.images)}/>)
                                                 }
                                             </ul>:''}
                                         <div className="border-product">
@@ -150,7 +150,7 @@ const ProductStyleFive = props => {
                                             </div>
                                         </div>
                                         <div className="product-buttons">
-                                            <button  className="btn btn-solid" onClick={props.onAddToCartClicked(props.product, quantity)} >add to cart</button>
+                                            <button  className="btn btn-solid" onClick={()=>props.onAddToCartClicked(props.product, quantity)} >add to cart</button>
                                             <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${props.product.id}`} className="btn btn-solid">view detail</Link>
                                         </div>
                                     </div>

@@ -71,7 +71,7 @@ const SpecialProductItem = props => {
 
                 </div>
                 <div className="front">
-                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${props.product.id}`}><img
+                    <Link to={`${process.env.PUBLIC_URL}/product-detail/product/${props.product.id}`}><img
                         src={`${
                             props.product.variants ?
                                 image ? image : props.product.variants[0].images
@@ -126,7 +126,7 @@ const SpecialProductItem = props => {
                     <div className="rating">
                         {RatingStars}
                     </div>
-                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${props.product.id}`}>
+                    <Link to={`${process.env.PUBLIC_URL}/product-detail/product/${props.product.id}`}>
                         <h6>{props.product.name}</h6>
                     </Link>
                     <h4>{props.symbol}{props.product.price - (props.product.price * props.product.discount / 100)}
@@ -202,7 +202,7 @@ const SpecialProductItem = props => {
                                                     onClick={props.onAddToCartClicked(props.product, quantity)}>add
                                                 to cart
                                             </button>
-                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${props.product.id}`}
+                                            <Link to={`${process.env.PUBLIC_URL}/product-detail/product/${props.product.id}`}
                                                   className="btn btn-solid">view detail</Link>
                                         </div>
                                     </div>

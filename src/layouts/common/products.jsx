@@ -7,7 +7,7 @@ import {addToCompare} from '../../compare/compareReducer'
 import {addToWishlist} from '../../wishlist/wishlistReducer'
 import {addToCart} from '../../cart/cartReducer'
 
-const SpecialProducts = props => {
+const SpecialProducts = () => {
     const {bestSeller,mensWear,womensWear,symbol} = useSelector(state=>({
         bestSeller: getBestSeller(state.data.products),
         mensWear: getMensWear(state.data.products),

@@ -8,6 +8,8 @@ import MyChatBot from "./chatbot/chatbot";
 import {Sidebar} from "./admin/common/sidebar_components";
 import {Footer} from "./admin/common";
 import {Header} from "./admin/common/header_components";
+import ThemeSettings from "./common/theme-settings";
+import {ToastContainer} from "react-toastify";
 
 const App = (props) => {
     const [admin,setAdmin] = useState();
@@ -39,6 +41,8 @@ const App = (props) => {
                 <HeaderOne logoName={'logo.png'}/>
                 {props.children}
                 <FooterTwo logoName={'logo.png'}/>
+                <ToastContainer/>
+                {/*<ThemeSettings />*/}
             </div>
         );
     }

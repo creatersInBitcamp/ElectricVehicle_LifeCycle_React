@@ -1,12 +1,12 @@
 import React from 'react';
 import Slider from 'react-slick';
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 import {getTrendingCollection} from '../../atomic/services/index'
 import {Product4, Product5} from '../../atomic/services/script'
-import {addToCart} from '../../cart'
-import {addToWishlist} from '../../wishlist'
-import {addToCompare} from "../../compare";
+import {addToCart} from '../../cart/cartReducer'
+import {addToWishlist} from '../../wishlist/wishlistReducer'
+import {addToCompare} from "../../compare/compareReducer";
 import ProductItem from './product-style-five';
 
 const TopCollection = () => {
@@ -15,6 +15,7 @@ const TopCollection = () => {
         symbol: state.data.symbol,
         type: state.type
     }))
+    const dispatch = useDispatch()
 
     let properties;
     if(type === 'kids'){
@@ -39,9 +40,9 @@ const TopCollection = () => {
                                 { items.map((product, index ) =>
                                     <div key={index}>
                                         <ProductItem product={product} symbol={symbol}
-                                                     onAddToCompareClicked={addToCompare(product)}
-                                                     onAddToWishlistClicked={addToWishlist(product)}
-                                                     onAddToCartClicked={addToCart(product, 1)} key={index} />
+                                                     onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
+                                                     onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
+                                                     onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} />
                                     </div>)
                                 }
                             </Slider>

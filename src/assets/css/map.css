@@ -74,8 +74,8 @@ h1 {
 
 .locate {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 4rem;
+    right: 1.5rem;
     background: none;
     border: none;
     z-index: 10;

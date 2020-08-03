@@ -5,24 +5,28 @@ import Pace from 'react-pace-progress'
 // Import custom components
 import store from "../../store";
 import NavBar from "./common/navbar";
-import SideBar from "./common/sidebar";
-import {CartContainer} from "../../cart";
+// import SideBar from "./common/sidebar";
+import CartContainer from "../../cart/CartContainer";
 import TopBar from "./common/topbar";
 import LogoImage from "./common/logo";
 import {changeCurrency} from "../../currency/index";
+import {useDispatch} from "react-redux";
 
 const HeaderOne = props =>{
 	const [isLoading, setIsLoading] = useState(false)
 	const [open, setOpen] = useState(false)
 
 	useEffect(() => {
-		setTimeout(() => {
-			document.querySelector(".loader-wrapper").style = "display: none"
-		}, 2000)
-		setOpen(true)
+		setTimeout(function() {
+			document.querySelector(".loader-wrapper").style = "display: none";
+		}, 2000);
+		setOpen(true);
+
 		window.addEventListener('scroll', handleScroll)
-		window.removeEventListener('scroll', handleScroll)
-	})
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
+	},[])
 
 	const handleScroll = () => {
 		let number = window.pageXOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -61,7 +65,7 @@ const HeaderOne = props =>{
 			setIsLoading(false)
 		})
 	}
-
+	const dispatch = useDispatch()
 	return <>
 		<div>
 			<header id="sticky" className="sticky">
@@ -102,13 +106,13 @@ const HeaderOne = props =>{
 													<div className="show-div setting">
 														<h6>language</h6>
 														<ul>
-															<li><a href={null} onClick={changeLanguage('ko')}>Korea</a> </li>
-															<li><a href={null} onClick={changeLanguage('en')}>English</a> </li>
+															<li><a href={null} onClick={() => changeLanguage('ko')}>Korea</a> </li>
+															<li><a href={null} onClick={() => changeLanguage('en')}>English</a> </li>
 														</ul>
 														<h6>currency</h6>
 														<ul className="list-inline">
-															<li><a href={null} onClick={changeCurrency('\\')}>won</a> </li>
-															<li><a href={null} onClick={changeCurrency('$')}>doller</a> </li>
+															<li><a href={null} onClick={()=>{dispatch(changeCurrency('￦'))}}>won</a> </li>
+															<li><a href={null} onClick={()=>{dispatch(changeCurrency('$'))}}>doller</a> </li>
 														</ul>
 													</div>
 												</li>

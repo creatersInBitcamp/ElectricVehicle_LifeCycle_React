@@ -2,10 +2,10 @@ import React,{useState,useCallback,useRef} from "react";
 import { GoogleMap,useLoadScript,Marker,InfoWindow,} from "@react-google-maps/api";
 import usePlacesAutocomplete, {getGeocode,getLatLng} from "use-places-autocomplete";
 import {Combobox,ComboboxInput, ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
-import '../assets/css/map.css'
-import './map.scss'
+// import '../assets/css/map.css'
+// import './map.scss'
 import "@reach/combobox/styles.css";
-import myData from './data-charging-station';
+import myData from './data/data-charging-station';
 
 const libraries = ["places"];
 
@@ -14,7 +14,7 @@ const mapContainerStyle = {
     height: "830px",
 };
 const options = {
-    disableDefaultUI: true,
+    // disableDefaultUI: true,
     zoomControl: true,
 };
 const center = {

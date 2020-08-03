@@ -12,10 +12,10 @@ import {tabset_pageReducer, usedCarReducer} from '../admin/usedCar'
 import {list_userReducer, tabset_userReducer} from '../admin/users'
 import {dashboardReducer} from '../admin'
 import productReducer from '../product'
-import cartReducer from "../cart";
+import cartReducer from "../cart/cartReducer";
 import filtersReducer from "../filters";
-import wishlistReducer from "../wishlist";
-import compareReducer from "../compare";
+import wishlistReducer from "../wishlist/wishlistReducer";
+import compareReducer from "../compare/compareReducer";
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 
 

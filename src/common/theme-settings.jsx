@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom"
 import { useTranslate  } from 'react-redux-multilingual'
 
-// import {SlideUpDown} from "../../services/script"
+import {SlideUpDown} from "../atomic/services/script"
 import { ToastContainer } from 'react-toastify';
 
 const ThemeSettings = () => {
@@ -11,9 +11,12 @@ const ThemeSettings = () => {
     const [themeLayout, setThemeLayout] = useState(false)
 
     useEffect(()=>{
+        SlideUpDown('setting-title');
         window.addEventListener('scroll', handleScroll)
-        window.removeEventListener('scroll', handleScroll)
-    })
+        return()=>{
+            window.removeEventListener('scroll', handleScroll)
+        }
+    },[])
 
     const handleScroll = () => {
         if (document.documentElement.scrollTop > 600) {
@@ -73,7 +76,7 @@ const ThemeSettings = () => {
 
     return <>
         <div>
-            <a onClick={openSetting}>
+            <a href="javascript:void(0)" onClick={() => openSetting()}>
                 <div className="setting-sidebar" id="setting-icon">
                     <div>
                         <i className="fa fa-cog" aria-hidden="true"/>
@@ -81,9 +84,9 @@ const ThemeSettings = () => {
                 </div>
             </a>
             <div id="setting_box" className="setting-box">
-                <a className="overlay" onClick={closeSetting}/>
+                <a href="javascript:void(0)" className="overlay" onClick={() => closeSetting()}/>
                 <div className="setting_box_body">
-                    <div onClick={closeSetting}>
+                    <div onClick={() => closeSetting()}>
                         <div className="sidebar-back text-left">
                             <i className="fa fa-angle-left pr-2" aria-hidden="true"/> Back
                         </div>
@@ -484,7 +487,7 @@ const ThemeSettings = () => {
                         <div className="setting-contant">
                             <ul className="setting_buttons">
                                 <li className="active" id="ltr_btn">
-                                    <a href={null} className="btn setting_btn" onClick={ChangeRtl(divName)}>
+                                    <a href={null} className="btn setting_btn" onClick={()=>ChangeRtl(divName)}>
                                         {divName}
                                     </a>
                                 </li>
@@ -511,7 +514,7 @@ const ThemeSettings = () => {
                 <div className="dark-light">
                     <div
                         className="theme-layout-version"
-                        onClick={changeThemeLayout}
+                        onClick={()=>changeThemeLayout}
                     >{themeLayout?'Light':'Dark'}</div>
                 </div>
             </div>

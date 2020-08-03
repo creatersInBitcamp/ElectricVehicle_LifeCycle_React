@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import myData from './data-charging-station';
+import myData from './data/data-charging-station';
 import 'react-table/react-table.css';
 import ReactTable from "react-table";
 

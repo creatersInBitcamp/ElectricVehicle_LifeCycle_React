@@ -5,7 +5,7 @@ import {Combobox,ComboboxInput, ComboboxPopover,ComboboxList, ComboboxOption,} f
 import '../assets/css/map.css'
 import './map.scss'
 import "@reach/combobox/styles.css";
-import myData from './data-sights';
+import myData from './data/data-sights';
 
 const libraries = ["places"];
 
@@ -14,7 +14,7 @@ const mapContainerStyle = {
     height: "830px",
 };
 const options = {
-    disableDefaultUI: true,
+    // disableDefaultUI: true,
     zoomControl: true,
 };
 const center = {

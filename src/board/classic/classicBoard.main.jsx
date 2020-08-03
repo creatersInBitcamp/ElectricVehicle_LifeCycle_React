@@ -1,7 +1,9 @@
 import React from 'react';
 import Breadcrumb from "../../common/breadcrumb";
 import {Link} from 'react-router-dom';
-
+import {posts} from '../data'
+import Recent from "./recent";
+import Media from "./media";
 const ClassicBoardMain = () => {
 
         return (
@@ -16,22 +18,15 @@ const ClassicBoardMain = () => {
                             <div className="col-xl-3 col-lg-4 col-md-5">
                                 <div className="blog-sidebar">
                                     <div className="theme-card">
-                                        <h4>Recent Blog</h4>
+                                        <h4>Recent Post</h4>
                                         <ul className="recent-blog">
-                                            <li>
-                                                <div className="media">
-                                                    <img className="img-fluid" src={`${process.env.PUBLIC_URL}/assets/images/blog/1.jpg`}
-                                                         alt="Generic placeholder image" />
-                                                        <div className="media-body align-self-center">
-                                                            <h6>25 Dec 2018</h6>
-                                                            <p>0 hits</p>
-                                                        </div>
-                                                </div>
-                                            </li>
+                                            {
+                                                posts.map( post => (<Recent post={post} key={post.postId}/>) )
+                                            }
                                         </ul>
                                     </div>
                                     <div className="theme-card">
-                                        <h4>Popular Blog</h4>
+                                        <h4>Popular Post</h4>
                                         <ul className="popular-blog">
                                             <li>
                                                 <div className="media">
@@ -53,6 +48,7 @@ const ClassicBoardMain = () => {
 
                             <div className="col-xl-9 col-lg-8 col-md-7 order-sec">
                                 <div className="row blog-media">
+                                    {posts.map( post => (<Media post={post} key={post.postId}/>))}
                                     <div className="col-xl-6">
                                         <div className="blog-left">
                                             <Link to={`${process.env.PUBLIC_URL}/board/details`} >
@@ -68,8 +64,8 @@ const ClassicBoardMain = () => {
                                                     and praising pain was born.</h4></Link>
                                                 <ul className="post-social">
                                                     <li>Posted By : Admin Admin</li>
-                                                    <li><i className="fa fa-heart"></i> 5 Hits</li>
-                                                    <li><i className="fa fa-comments"></i> 10 Comment</li>
+                                                    <li><i className="fa fa-heart"/> 5 Hits</li>
+                                                    <li><i className="fa fa-comments"/> 10 Comment</li>
                                                 </ul>
                                                 <p>Consequences that are extremely painful. Nor again is there anyone
                                                     who loves or pursues or desires to obtain pain of itself, because it

@@ -77,10 +77,8 @@ const Root =()=> {
                     <ScrollContext>
                         <Switch>
                             <Layout>
-                                {/*<Route exact path={`${process.env.PUBLIC_URL}/`} component={Service}/>*/}
 
                                 <Route exact path={`${process.env.PUBLIC_URL}/`} component={Main}/>
-                                {/*<Route exact path={`${process.env.PUBLIC_URL}/main`} component={MainPage}/>*/}
 
                                 {/*common*/}
                                 <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>

@@ -1,17 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import Breadcrumb from "../common/breadcrumb";
 import {Link} from "react-router-dom";
 
-class Login extends Component {
-
-    constructor (props) {
-        super (props)
-
-    }
-
-    render (){
-
+const Login = () => {
 
         return (
             <div>
@@ -57,7 +49,6 @@ class Login extends Component {
 
             </div>
         )
-    }
 }
 
 export default Login

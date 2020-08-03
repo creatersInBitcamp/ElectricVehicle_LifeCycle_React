@@ -12,7 +12,6 @@ const searchHeaderTypes = {REQUEST: 'searchHeader/REQUEST',
 const searchHeaderRequest = () => ({type : searchHeaderTypes.REQUEST})
 const searchHeaderSuccess = users  => ({type: searchHeaderTypes.SUCCESS, id: users})
 const searchHeaderUserList = users  => ({type: searchHeaderTypes.USER_LIST, id: users})
-const userListAction = users => ({type: searchHeaderTypes.USER_LIST, users})
 const searchHeaderFail = errorMsg =>({type: searchHeaderTypes.FAIL, payload: errorMsg})
 
 const searchHeaderReducer = (state={id:[]}, action) => {

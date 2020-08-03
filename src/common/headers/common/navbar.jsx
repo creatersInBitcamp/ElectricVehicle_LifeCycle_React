@@ -77,7 +77,7 @@ const NavBar = () => {
                             <ul className="nav-submenu">
                                 <li><Link to={`${process.env.PUBLIC_URL}/admin/dashboard`}>{translate('dashboard')}</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/admin/orders`}>{translate('orders')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/usedCar`}>{translate('usedCar')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/admin/usedCar`}>{translate('used_car')}</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/admin/community`}>{translate('community')}</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/admin/notice`}>{translate('notice')}</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/admin/users`}>{translate('users')}</Link></li>

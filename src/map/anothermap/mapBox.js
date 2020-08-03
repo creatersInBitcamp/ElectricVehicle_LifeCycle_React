@@ -5,7 +5,7 @@ import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import ReactMapGL,{Marker,Popup,NavigationControl,FlyToInterpolator} from 'react-map-gl'
 import Directions from 'react-map-gl-directions'
 import Geocoder from 'react-map-gl-geocoder'
-import '../../assets/css/map.css'
+import '../map.scss'
 import * as _ from 'underscore';
 
 const MapBox = () => {

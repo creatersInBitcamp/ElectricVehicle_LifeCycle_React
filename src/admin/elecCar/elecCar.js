@@ -12,7 +12,7 @@ const initialState = {
     admin: true
 }
 const elecCarRequest = action => ({type: elecCarTypes.REQUEST, payload: action.payload})
-const elecCarReducer = ( state=initialState, action ) => {
+const elecCarReducer = ( state={admin: true}, action ) => {
     switch (action.type) {
         case elecCarTypes.REQUEST: return {...state, payload: action.payload}
         default: return state

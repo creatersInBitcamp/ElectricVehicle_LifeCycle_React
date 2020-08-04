@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import {headerReducer, searchHeaderReducer} from "../admin/common/header_components";
+import {headerReducer} from "../admin/common/header_components";
 import {breadcrumbReducer, datatableReducer, footerReducer, imageReducer} from "../admin/common"
 import {sidebarReducer, sidebarMenusReducer} from "../admin/common/sidebar_components"
 import {communityReducer} from "../admin/community"
@@ -24,7 +24,7 @@ import {adminCheckReducer} from "../admin/auth/loginTabset";
 
 
 const rootReducer = combineReducers({
-        headerReducer, searchHeaderReducer, breadcrumbReducer, datatableReducer,
+        headerReducer, breadcrumbReducer, datatableReducer,
         footerReducer, imageReducer,sidebarReducer, sidebarMenusReducer, communityReducer, elecCarReducer, list_menuReducer,
         reportsReducer, report_tableReducer, ordersReducer, profileReducer, tabset_profileReducer,
         tabset_pageReducer, usedCarReducer, list_userReducer, tabset_userReducer, dashboardReducer,

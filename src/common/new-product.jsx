@@ -27,13 +27,6 @@ const NewProduct = () => {
                             <div className="media" key={i}>
                                 <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`}><img className="img-fluid" src={`${product.variants[0].images}`} alt="" /></Link>
                                 <div className="media-body align-self-center">
-                                    <div className="rating">
-                                        <i className="fa fa-star"/>
-                                        <i className="fa fa-star"/>
-                                        <i className="fa fa-star"/>
-                                        <i className="fa fa-star"/>
-                                        <i className="fa fa-star"/>
-                                    </div>
                                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`}><h6>{product.name}</h6></Link>
                                     <h4>{symbol}{(product.price)}</h4>
                                 </div>

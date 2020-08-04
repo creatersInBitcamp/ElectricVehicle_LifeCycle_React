@@ -24,7 +24,7 @@ import {addToWishlist} from "../wishlist/wishlistReducer";
 /* reducer */
 
 
-const productDetail = () => {
+const productDetail = props => {
     const [open, setOpen] = useState(false)
     const [nav1, setNav1] = useState(null)
     const [nav2, setNav2] = useState(null)
@@ -80,12 +80,9 @@ const productDetail = () => {
                                             <i className="fa fa-angle-left" aria-hidden="true"/> back
                                         </span>
                                     </div>
-
-                                    {/* <BrandBlock/> */}
                                     <MyCar/>
-                                    {/*side-bar single product slider start*/}
-                                    <NewProduct/>
-                                    {/*side-bar single product slider end*/}
+                                    {/* post */}
+                                    {/* video */}
                                 </div>
                                 <div className="col-lg-9 col-sm-12 col-xs-12">
                                     <div className="">

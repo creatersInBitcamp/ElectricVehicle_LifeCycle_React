@@ -91,9 +91,6 @@ export const Header = () => {
                         </div>
                         <div className="nav-right col">
                             <ul className={"nav-notice " + (navMenus ? 'open' : '')}>
-                                <li>
-                                    <SearchHeader />
-                                </li>
                                 <li><a onClick={goFull} className="text-dark" href="#!"><Maximize2 /></a></li>
                                 <li><a onClick={showRightSidebar}><MessageSquare /><span className="dot"/></a></li>
                                 <li className="onhover-dropdown">

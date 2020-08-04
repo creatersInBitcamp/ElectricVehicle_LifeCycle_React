@@ -35,7 +35,7 @@ export const MENUITEMS = [
         title: '사용자현황', path: '/admin/users', icon: UserPlus, type: 'link', active: false
     },
     {
-        title: '서비스현황', path: '/admin/service', icon: Users, type: 'link', active: false
+        title: '서비스현황', path: '/service', icon: Users, type: 'link', active: false
     },
     {
         title: '보고서',path:'/admin/reports', icon: BarChart, type: 'link', active: false

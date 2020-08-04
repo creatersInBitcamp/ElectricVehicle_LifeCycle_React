@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {SearchHeader} from "./header_components";
+import {useDispatch, useSelector} from "react-redux";
+import {Search} from "react-feather";
 
 const datatableTypes = {REQUEST: 'datatable/REQUEST'}
 const datatableRequest = action => ({type: datatableTypes.REQUEST, payload: action.payload})
@@ -17,6 +18,10 @@ const datatableReducer = (state={}, action) => {
 export const Datatable = (props) => {
     const [checkedValues, setCheckedValues] = useState([])
     const [myData, setMyData] = useState(props.myData)
+    const [searchValue, setSearchValue] = useState('')
+    const [searchbar, setSearchbar] = useState(false)
+
+    const dispatch = useDispatch()
 
     const selectRow = (e, i) => {
         if (!e.target.checked) {
@@ -25,6 +30,28 @@ export const Datatable = (props) => {
             checkedValues.push(i);
             setCheckedValues(checkedValues)
         }
+    }
+
+    const globalSearch = () => {
+        let filteredData = props.myData.filter(value => {
+            return ( value.car_name.includes(searchValue.toLowerCase())
+            )
+        });
+        setMyData( filteredData );
+        console.log(filteredData)
+    };
+
+    const handleSearchClick = () => {
+        setSearchbar(!searchbar)
+
+    }
+
+    const search = (e) => {
+        e.preventDefault()
+        setSearchValue(e.target.value)
+        console.log(e.target.value)
+        globalSearch()
+        console.log(myData)
     }
 
     const handleRemoveRow = () => {
@@ -154,10 +181,13 @@ export const Datatable = (props) => {
 
         return (
             <>
-                <SearchHeader
-                myData = {props.myData}
-                columns={columns}
-                />
+                <form className="form-inline search-form">
+                    <div className="form-group">
+                        <input className={"form-control-plaintext " + (searchbar ? 'open' : '')}
+                               type="search" placeholder="Search.." value={searchValue|| ""} onChange={search} />
+                        <span className="d-sm-none mobile-search" onClick={handleSearchClick}><Search /></span>
+                    </div>
+                </form>
                 <ReactTable
                     data={myData}
                     columns={columns}

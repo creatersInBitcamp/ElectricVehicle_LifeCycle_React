@@ -64,14 +64,6 @@ const DetailsWithPrice = props => {
             <div className="product-right">
                 <h2> {item.name} </h2>
                 <h3>{symbol}{item.price} </h3>
-                {item.variants?
-                    <ul >
-                        <Slider {...colorsnav} asNavFor={props.navOne} ref={slider1 => setNav3(slider1)} className="color-variant">
-                            {item.variants.map((vari, i) => {
-                                return <li className={vari.color} key={i} title={vari.color}/>
-                            })}
-                        </Slider>
-                    </ul>:''}
                 <div className="product-description border-product">
                     <div className="qty-box">
                         <MarketPrice/>

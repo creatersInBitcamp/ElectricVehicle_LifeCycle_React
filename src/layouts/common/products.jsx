@@ -25,9 +25,9 @@ const SpecialProducts = () => {
                 <div className="container">
                     <Tabs className="theme-tab">
                         <TabList className="tabs tab-title">
-                            <Tab>New Products</Tab>
-                            <Tab>Mens Wear</Tab>
-                            <Tab>Womens Wear</Tab>
+                            <Tab>New</Tab>
+                            <Tab>Used</Tab>
+                            <Tab>Post</Tab>
                         </TabList>
                         <TabPanel>
                             <div className="no-slider row">

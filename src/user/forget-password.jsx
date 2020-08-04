@@ -20,7 +20,7 @@ const ForgetPassword = () => {
                                             <input type="text" className="form-control" id="email"
                                                    placeholder="Enter Your Email" required="" />
                                         </div>
-                                        <a href="#" className="btn btn-solid">Submit</a>
+                                        <a className="btn btn-solid" onClick={()=> alert(`email 전송주소 : ${document.getElementById('email').value}`)}>Submit</a>
                                     </div>
                                 </form>
                             </div>

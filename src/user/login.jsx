@@ -2,6 +2,7 @@ import React from 'react';
 
 import Breadcrumb from "../common/breadcrumb";
 import {Link} from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const Login = () => {
 
@@ -29,6 +30,7 @@ const Login = () => {
                                                    placeholder="Enter your password" required="" />
                                         </div>
                                         <a href="#" className="btn btn-solid">Login</a>
+                                        <Link to={`${process.env.PUBLIC_URL}/admin/login`}><Button>Admin Login</Button></Link>
                                     </form>
                                 </div>
                             </div>

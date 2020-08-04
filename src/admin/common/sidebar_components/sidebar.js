@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MENUITEMS } from '../../../atomic/constants/menu';
 
 // image import
-import logo from '../../../assets/images/dashboard/08.png'
+import logo from '../../../assets/images/dashboard/logoEv.jpeg'
 import man from '../../../assets/images/dashboard/man.png'
 import {SidebarMenus} from "./";
 

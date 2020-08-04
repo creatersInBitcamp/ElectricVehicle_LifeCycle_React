@@ -46,12 +46,10 @@ export const Datatable = (props) => {
 
     }
 
-    const search = (e) => {
+    const onSearch = (e) => {
         e.preventDefault()
         setSearchValue(e.target.value)
-        console.log(e.target.value)
         globalSearch()
-        console.log(myData)
     }
 
     const handleRemoveRow = () => {
@@ -184,7 +182,7 @@ export const Datatable = (props) => {
                 <form className="form-inline search-form">
                     <div className="form-group">
                         <input className={"form-control-plaintext " + (searchbar ? 'open' : '')}
-                               type="search" placeholder="Search.." value={searchValue|| ""} onChange={search} />
+                               type="search" placeholder="Search.." value={searchValue|| ""} onChange={onSearch} />
                         <span className="d-sm-none mobile-search" onClick={handleSearchClick}><Search /></span>
                     </div>
                 </form>

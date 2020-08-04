@@ -79,6 +79,7 @@
     "react-dropzone-uploader": "^2.10.1",
     "react-feather": "^2.0.3",
     "react-fontawesome": "^1.6.1",
+    "react-geocode": "^0.2.1",
     "react-google-charts": "^3.0.14",
     "react-google-maps": "^9.4.5",
     "react-helmet": "^5.2.1",

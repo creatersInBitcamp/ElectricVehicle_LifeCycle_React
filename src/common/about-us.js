@@ -29,23 +29,13 @@ const aboutUs = () => {
                                 </div>
                             </div>
                             <div className="col-sm-12">
-                                <h4>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                    doloremque laudantium</h4>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                    laudantium,</p>
-                                <p>On the other hand, we denounce with righteous indignation and dislike men who are so
-                                    beguiled and demoralized by the charms of pleasure of the moment, so blinded by
-                                    desire, that they cannot foresee the pain and trouble that are bound to ensue; and
-                                    equal blame belongs to those who fail in their duty through weakness of will, which
-                                    is the same as saying through shrinking from toil and pain. These cases are
-                                    perfectly simple and easy to distinguish. In a free hour, when our power of choice
-                                    is untrammelled and when nothing prevents our being able to do what we like best,
-                                    every pleasure is to be welcomed and every pain avoided. But in certain
-                                    circumstances and owing to the claims of duty or the obligations of business it will
-                                    frequently occur that pleasures have to be repudiated and annoyances accepted. The
-                                    wise man therefore always holds in these matters to this principle of selection: he
-                                    rejects pleasures to secure other greater pleasures, or else he endures pains to
-                                    avoid worse pains.</p>
+                                <h4>내연기관의 종말, 엔진 멸종시대 곧 닥친다.</h4>
+                                <p>"기존 내연기관은 전기차로 대표되는 배출가스 없는 차량시대 도래를 위한 교량 역할을 담당하게 될 것이다."</p>
+                                <p>독일 프랑크푸르트에서 열린 국제 모터쇼에서 마티아스 뮐러 폴크스바겐그룹 이사회 회장은 2025년까지 80종의 새로운 전기차를
+                                    출시하겠다는 '로드맵 E'를 발표했다. 그는 "모호한 선언이 아니다. 우리가 변화를 선도할 것"이라고 했다.
+                                    자동차 산업의 중심이었던 내연기관이 '조연'으로 전락하는 순간이었다.</p>
+                                <p>네덜란드와 노르웨이는 2025년, 영국과 프랑스는 2040년에 가솔린과 디젤 엔진 차량의 판매를 금지한다고 밝혔다. 지난달엔 중국 공업정보화부의 신궈빈 부부장(차관)이 "내연기관 자동차의 생산과 판매를 중단하기 위한 일정표를 마련 중"이라고 밝히기도 했다. 업계에서는 중국이 2040년부터 내연기관차를 금지할 것으로 예상한다. 국내에서도 2030년부터 내연기관 차량의 판매를 전면 금지하는 법안이 발의된 상태다.</p>
+
                             </div>
                         </div>
                     </div>

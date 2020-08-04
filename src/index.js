@@ -26,6 +26,7 @@ import {productDetail, PurchaseRequest, UsedPurchaseCollection} from "./usedPurc
 import {SalesForm} from "./usedSales";
 import {Scrapped} from "./scrapped";
 import {MyCarComparison} from "./usedCompare";
+import UsedWishlist from "./usedWishlist/UsedWishlist"
 
 //map
 import ChargingStationMap from "./map/charging-station-map";
@@ -99,13 +100,13 @@ const Root =()=> {
 
                                 {/*car*/}
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
-                                <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishlist}/>
                                 <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
 
                                 {/*newcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/product/:id`} component={LeftSideBar}/>
-                                <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare}/>
+                                <Route path={`${process.env.PUBLIC_URL}/new-car/compare`} component={Compare}/>
+                                <Route path={`${process.env.PUBLIC_URL}/new-car/wishlist`} component={wishlist}/>
 
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>
@@ -114,6 +115,7 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/comparison`} component={MyCarComparison}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/sales`} component={SalesForm}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/scrapped`} component={Scrapped}/>
+                                <Route path={`${process.env.PUBLIC_URL}/used-car/wishlist`} component={UsedWishlist}/>
 
                                 {/*map*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/service`} component={MapService}/>

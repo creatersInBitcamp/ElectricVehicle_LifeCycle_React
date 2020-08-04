@@ -68,13 +68,12 @@ const Compare = () => {
                                                     <span aria-hidden="true">×</span>
                                                 </button>
                                                 <div className="img-secton">
-                                                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${item.id}`}>
+                                                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>
                                                         <img src={item.variants?
                                                             item.variants[0].images
                                                             :item.pictures[0]} className="img-fluid" alt="" />
                                                         <h5>{item.name}</h5></Link>
-                                                    <h5>{symbol}{(item.price*item.discount/100)}
-                                                        <del><span className="money">{symbol}{item.price}</span></del></h5>
+                                                    <h5><span className="money">{symbol}{item.price}</span></h5>
                                                 </div>
                                                 <div className="detail-part">
                                                     <div className="title-detail">
@@ -106,14 +105,6 @@ const Compare = () => {
                                                     </div>
                                                     <div className="inner-detail">
                                                         <p>{item.colors}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>availability</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>In stock</p>
                                                     </div>
                                                 </div>
                                                 <div className="btn-part">

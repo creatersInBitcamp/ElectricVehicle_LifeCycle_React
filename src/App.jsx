@@ -16,7 +16,6 @@ const App = (props) => {
     // const toggleAdmin = () => setAdmin(!admin)
     const result = useSelector(state=>state.adminCheckReducer)
     useEffect(()=>{
-        console.log(result.check)
         setAdmin(result.check)
     },[result])
     if(admin){

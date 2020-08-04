@@ -85,7 +85,7 @@ export const SidebarMenus = () => {
                         >
                             <menuItem.icon /><span>{menuItem.title}</span>
                             {menuItem.children ?
-                                <i className="fa fa-angle-right pull-right"/> : ''}
+                                <i className="fa fa-angle-right pull-right"></i> : ''}
                         </Link>
                         : ''}
                     {menuItem.children ?

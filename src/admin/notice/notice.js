@@ -21,7 +21,7 @@ export const Notice = () => {
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5>Menu Lists</h5>
+                                    <h5>공지사항</h5>
                                 </div>
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">

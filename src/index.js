@@ -42,9 +42,6 @@ import mapBox from "./map/anothermap/mapBox"
 import mapNaver from "./map/anothermap/mapNaver"
 
 //board
-import BoardMain from "./board/BoardMain";
-import BoardProfile from "./board/BoardProfile";
-import BoardDetail from "./board/BoardDetail";
 import ClassicBoardMain from "./board/classic/classicBoard.main";
 import ClassicBoardDetails from "./board/classic/classicBoard.details";
 
@@ -74,6 +71,7 @@ import MyAccount from "./user/myAccount";
 
 import { getAllProducts } from './product'
 import store from "./store";
+import aboutUs from "./common/about-us";
 
 
 const Root =()=> {
@@ -96,6 +94,7 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/forgot`} component={ForgetPassword}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/myaccount`} component={MyAccount}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/about-us`} component={aboutUs}/>
 
                                 {/*newcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>
@@ -128,9 +127,6 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
-                                <Route path={`${process.env.PUBLIC_URL}/post/main`} component={BoardMain}/>
-                                <Route path={`${process.env.PUBLIC_URL}/post/profile`} component={BoardProfile}/>
-                                <Route path={`${process.env.PUBLIC_URL}/post/detail`} component={BoardDetail}/>
                                 <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
                                 <Route path={`${process.env.PUBLIC_URL}/board/details`} component={ClassicBoardDetails}/>
 

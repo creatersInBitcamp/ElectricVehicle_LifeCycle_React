@@ -2,17 +2,13 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Breadcrumb from '../common/breadcrumb';
-import {removeFromUsedWishlist,addToCartAndRemoveUsedWishlist} from './usedwishlistReducer'
+import {removeFromUsedWishlist} from './usedwishlistReducer'
 
 const UsedWishlist = () => {
     const {Items, symbol} = useSelector(state=>({
         Items: state.usedwishlist.list,
         symbol: state.data.symbol
     }))
-
-    const changeQty = e => {
-        this.setState({ quantity: parseInt(e.target.value) })
-    }
 
     const dispatch = useDispatch()
     return <>
@@ -26,6 +22,7 @@ const UsedWishlist = () => {
                                 <table className="table cart-table table-responsive-xs">
                                     <thead>
                                     <tr className="table-head">
+                                        <th scope="col">#</th>
                                         <th scope="col">image</th>
                                         <th scope="col">product name</th>
                                         <th scope="col">price</th>
@@ -37,6 +34,9 @@ const UsedWishlist = () => {
                                         return (
                                             <tbody key={index}>
                                             <tr>
+                                                <td>
+                                                    <input type={"checkbox"}/>
+                                                </td>
                                                 <td>
                                                     <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
                                                         <img src={item.variants?
@@ -58,9 +58,6 @@ const UsedWishlist = () => {
                                                                 <a className="icon" onClick={()=>{dispatch(removeFromUsedWishlist(item))}}>
                                                                     <i className="fa fa-times"/>
                                                                 </a>
-                                                                <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveUsedWishlist(item, 1))}}>
-                                                                    <i className="fa fa-shopping-cart"/>
-                                                                </a>
                                                             </h2>
                                                         </div>
                                                     </div>
@@ -68,7 +65,8 @@ const UsedWishlist = () => {
                                                 <td>
                                                     <div className="col-xs-3">
                                                         <h2 className="td-color">
-                                                            <span className="money">{symbol}{item.price}</span></h2>
+                                                            <span className="money">{symbol}{item.price}</span>
+                                                        </h2>
                                                     </div>
                                                 </td>
                                                 <td >
@@ -81,9 +79,6 @@ const UsedWishlist = () => {
                                                         <h2 className="td-color">
                                                             <a className="icon" onClick={()=>{dispatch(removeFromUsedWishlist(item))}}>
                                                                 <i className="fa fa-times"/>
-                                                            </a>
-                                                            <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveUsedWishlist(item, 1))}}>
-                                                                <i className="fa fa-shopping-cart"/>
                                                             </a>
                                                         </h2>
                                                     </div>
@@ -111,7 +106,7 @@ const UsedWishlist = () => {
                                     <div className="col-sm-12 empty-cart-cls text-center">
                                         <img src={`${process.env.PUBLIC_URL}/assets/images/empty-usedWishlist.png`} className="img-fluid mb-4" alt="" />
                                         <h3>
-                                            <strong>WhishList is Empty</strong>
+                                            <strong>WishList is Empty</strong>
                                         </h3>
                                         <h4>Explore more shortlist some items.</h4>
                                     </div>

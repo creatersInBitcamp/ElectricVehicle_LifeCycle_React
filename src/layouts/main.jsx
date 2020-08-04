@@ -39,7 +39,7 @@ const Fashion = () => {
                                             <div>
                                                 <h4>Why Eelectric Vehicle?.</h4>
                                                 <h1>Why?</h1>
-                                                <Link to={`${process.env.PUBLIC_URL}/new-car/collection`} className="btn btn-solid">Intro</Link>
+                                                <Link to={`${process.env.PUBLIC_URL}/pages/about-us`} className="btn btn-solid">Intro</Link>
                                             </div>
                                         </div>
                                     </div>

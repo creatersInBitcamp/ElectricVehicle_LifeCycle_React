@@ -41,19 +41,6 @@ const NavBar = () => {
         }
     }
 
-    const handleMegaSubmenu = e => {
-        if (e.target.classList.contains('sub-arrow'))
-            return;
-        if (e.target.parentNode.nextElementSibling.classList.contains('opensubmegamenu'))
-            e.target.parentNode.nextElementSibling.classList.remove('opensubmegamenu')
-        else {
-            document.querySelectorAll('.menu-content').forEach(function (value) {
-                value.classList.remove('opensubmegamenu');
-            })
-            e.target.parentNode.nextElementSibling.classList.add('opensubmegamenu')
-        }
-    }
-
     const translate = useTranslate();
     return <>
         <div>
@@ -105,31 +92,33 @@ const NavBar = () => {
                             </ul>
                         </li>
                         <li>
-                            <Link to="#" className="nav-link" onClick={handleSubmenu}>
-                                {translate('post')}
+                            <Link to={`${process.env.PUBLIC_URL}/board/main`} className="nav-link">
+                                {translate('board')}
                                 <span className="sub-arrow"/>
                             </Link>
-                            <ul className="nav-submenu">
-                                <li><Link to={`${process.env.PUBLIC_URL}/post/main`}>{translate('post')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/board/main`}>{translate('board')}</Link></li>
-                            </ul>
                         </li>
                         <li>
-                            <Link to="#" className="nav-link" onClick={handleSubmenu}>
-                                {translate('admin')}
+                            <Link to={`${process.env.PUBLIC_URL}/pages/about-us`} className="nav-link">
+                                {translate('about_us')}
                                 <span className="sub-arrow"/>
                             </Link>
-                            <ul className="nav-submenu">
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/dashboard`}>{translate('dashboard')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/orders`}>{translate('orders')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/usedCar`}>{translate('used_car')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/community`}>{translate('community')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/notice`}>{translate('notice')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/users`}>{translate('users')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/reports`}>{translate('reports')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/admin/userDetail`}>{translate('userDetail')}</Link></li>
-                            </ul>
                         </li>
+                        {/*<li>*/}
+                        {/*    <Link to="#" className="nav-link" onClick={handleSubmenu}>*/}
+                        {/*        {translate('admin')}*/}
+                        {/*        <span className="sub-arrow"/>*/}
+                        {/*    </Link>*/}
+                        {/*    <ul className="nav-submenu">*/}
+                        {/*        <li><Link to={`${process.env.PUBLIC_URL}/admin/dashboard`}>{translate('dashboard')}</Link></li>*/}
+                        {/*        <li><Link to={`${process.env.PUBLIC_URL}/admin/orders`}>{translate('orders')}</Link></li>*/}
+                        {/*        <li><Link to={`${process.env.PUBLIC_URL}/admin/usedCar`}>{translate('used_car')}</Link></li>*/}
+                        {/*        <li><Link to={`${process.env.PUBLIC_URL}/admin/community`}>{translate('community')}</Link></li>*/}
+                        {/*        <li><Link to={`${process.env.PUBLIC_URL}/admin/notice`}>{translate('notice')}</Link></li>*/}
+                        {/*        <li><Link to={`${process.env.PUBLIC_URL}/admin/users`}>{translate('users')}</Link></li>*/}
+                        {/*        <li><Link to={`${process.env.PUBLIC_URL}/admin/reports`}>{translate('reports')}</Link></li>*/}
+                        {/*        <li><Link to={`${process.env.PUBLIC_URL}/admin/userDetail`}>{translate('userDetail')}</Link></li>*/}
+                        {/*    </ul>*/}
+                        {/*</li>*/}
                     </ul>
                 </div>
             </div>

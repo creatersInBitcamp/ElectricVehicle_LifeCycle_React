@@ -40,7 +40,6 @@ export const MENUITEMS = [
     {
         title: '보고서',path:'/admin/reports', icon: BarChart, type: 'link', active: false
     },
-
     {
         title: '로그아웃',path:'/', icon: LogIn, type: 'link', active: false
     }

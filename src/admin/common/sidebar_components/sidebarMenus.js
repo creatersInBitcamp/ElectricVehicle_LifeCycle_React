@@ -73,7 +73,7 @@ export const SidebarMenus = () => {
                         <a className="sidebar-header " onClick={setNavActive(menuItem)}>
                             <menuItem.icon />
                             <span>{menuItem.title}</span>
-                            <i className="fa fa-angle-right pull-right"></i>
+                            <i className="fa fa-angle-right pull-right"/>
                         </a>
                         : ''}
                     {(menuItem.type === 'link') ?
@@ -85,7 +85,7 @@ export const SidebarMenus = () => {
                         >
                             <menuItem.icon /><span>{menuItem.title}</span>
                             {menuItem.children ?
-                                <i className="fa fa-angle-right pull-right"></i> : ''}
+                                <i className="fa fa-angle-right pull-right"/> : ''}
                         </Link>
                         : ''}
                     {menuItem.children ?
@@ -96,8 +96,8 @@ export const SidebarMenus = () => {
                             {menuItem.children.map((childrenItem, index) =>
                                 <li key={index} className={childrenItem.children ? childrenItem.active ? 'active' : '' : ''}>
                                     {(childrenItem.type === 'sub') ?
-                                        <a onClick={() => setNavActive(childrenItem)} >
-                                            <i className="fa fa-circle"></i>{childrenItem.title} <i className="fa fa-angle-right pull-right"></i></a>
+                                        <a onClick={() => setNavActive(childrenItem)}>
+                                            <i className="fa fa-circle"/>{childrenItem.title} <i className="fa fa-angle-right pull-right"/></a>
                                         : ''}
 
                                     {(childrenItem.type === 'link') ?
@@ -106,7 +106,7 @@ export const SidebarMenus = () => {
                                             className={childrenItem.active ? 'active' : ''}
                                             onClick={() => setNavActive(childrenItem)}
                                         >
-                                            <i className="fa fa-circle"></i>{childrenItem.title} </Link>
+                                            <i className="fa fa-circle"/>{childrenItem.title} </Link>
                                         : ''}
                                     {childrenItem.children ?
                                         <ul className={`sidebar-submenu ${childrenItem.active ? 'menu-open' : 'active'}`}>
@@ -118,7 +118,7 @@ export const SidebarMenus = () => {
                                                             className={childrenSubItem.active ? 'active' : ''}
                                                             onClick={() => setNavActive(childrenSubItem)}
                                                         >
-                                                            <i className="fa fa-circle"></i>{childrenSubItem.title}</Link>
+                                                            <i className="fa fa-circle"/>{childrenSubItem.title}</Link>
                                                         : ''}
                                                 </li>
                                             )}

@@ -106,7 +106,7 @@ export const Header = () => {
                                         <li><a><i data-feather="mail"/>Inbox</a></li>
                                         <li><a><i data-feather="lock"/>Lock Screen</a></li>
                                         <li><a><i data-feather="settings"/>Settings</a></li>
-                                        <li onClick={logout} ><Link to={`${process.env.PUBLIC_URL}/`} ><i data-feather="log-out"/>Logout</Link></li>
+                                        <li onClick={logout}><Link to={`${process.env.PUBLIC_URL}/`}><i data-feather="log-out"/>Logout</Link></li>
                                     </ul>
                                 </li>
                             </ul>

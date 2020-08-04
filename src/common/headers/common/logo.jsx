@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import Logo from '../../../assets/images/icon/logo.jpeg'
+import Logo from '../../../assets/images/icon/logo.png'
 
 const logoStyle = {
     weight: "179px", height: "45px"

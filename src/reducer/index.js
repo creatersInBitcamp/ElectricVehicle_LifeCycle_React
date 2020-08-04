@@ -16,6 +16,8 @@ import cartReducer from "../cart/cartReducer";
 import filtersReducer from "../filters";
 import wishlistReducer from "../wishlist/wishlistReducer";
 import compareReducer from "../compare/compareReducer";
+import usedwishlistReducer from "../usedWishlist/usedwishlistReducer"
+import usedcompareReducer from "../usedCompare/usedcompareReducer";
 // import admincheckReducer from "../admin/auth/admincheckReducer";
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {adminCheckReducer} from "../admin/auth/loginTabset";
@@ -32,6 +34,8 @@ const rootReducer = combineReducers({
         wishlist: wishlistReducer,
         compare: compareReducer,
         adminCheckReducer,
+        usedwishlist : usedwishlistReducer,
+        usedcompare : usedcompareReducer,
         Intl
 });
 export default rootReducer

@@ -97,16 +97,13 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/pages/forgot`} component={ForgetPassword}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/myaccount`} component={MyAccount}/>
 
-
-                                {/*car*/}
-                                <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
-                                <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
-
                                 {/*newcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/product/:id`} component={LeftSideBar}/>
                                 <Route path={`${process.env.PUBLIC_URL}/new-car/compare`} component={Compare}/>
                                 <Route path={`${process.env.PUBLIC_URL}/new-car/wishlist`} component={wishlist}/>
+                                <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
+                                <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
 
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>

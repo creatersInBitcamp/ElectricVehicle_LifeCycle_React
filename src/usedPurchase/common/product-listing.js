@@ -3,8 +3,8 @@ import {connect, useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {addToCart} from '../../cart/cartReducer'
-import {addToWishlist} from '../../wishlist/wishlistReducer'
-import {addToCompare} from '../../compare/compareReducer'
+import {addToUsedWishlist} from '../../usedWishlist/usedwishlistReducer'
+import {addToUsedCompare} from '../../usedCompare/usedcompareReducer'
 import {getVisibleproducts} from '../../atomic/services';
 import ProductListItem from "./product-list-item";
 
@@ -55,9 +55,8 @@ const ProductListing = props => {
                                 { products.slice(0, limit).map((product, index) =>
                                     <div className={`${props.colSize===3?'col-xl-3 col-md-6 col-grid-box':'col-lg-'+props.colSize}`} key={index}>
                                     <ProductListItem product={product} symbol={symbol}
-                                                     onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
-                                                     onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
-                                                     onAddToCartClicked={()=>dispatch(addToCart(product,1))} key={index}/>
+                                                     onAddToCompareClicked={()=>{dispatch(addToUsedCompare(product))}}
+                                                     onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(product))}}/>
                                     </div>)
                                 }
                             </div>

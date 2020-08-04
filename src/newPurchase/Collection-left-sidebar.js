@@ -6,7 +6,6 @@ import Filter from "./common/filter";
 import FilterBar from "./common/filter-bar";
 import ProductListing from "./common/product-listing";
 import StickyBox from "react-sticky-box";
-import MyCar from "./MyCar";
 
 export const CollectionLeftSidebar = () => {
     const [layoutColumns, setLayoutColumns] = useState(3)

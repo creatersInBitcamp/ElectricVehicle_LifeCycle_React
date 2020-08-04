@@ -16,9 +16,6 @@ const ProductListItem = props => {
                         alt="" /></Link>
                 </div>
                 <div className="cart-info cart-wrap">
-                    <button title="Add to cart" onClick={()=>props.onAddToCartClicked(props.product, 1)}>
-                        <i className="fa fa-shopping-cart" aria-hidden="true"/>
-                    </button>
                     <a title="Add to Wishlist" onClick={props.onAddToWishlistClicked} >
                         <i className="fa fa-heart" aria-hidden="true"/>
                     </a>

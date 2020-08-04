@@ -52,7 +52,7 @@ const ProductListItem = props => {
                        data-target="#quick-view"
                        title="Quick View"
                        onClick={onOpenModal}><i className="fa fa-search" aria-hidden="true"/></a>
-                    <Link to={`${process.env.PUBLIC_URL}/compare`} title="Compare" onClick={onAddToCompareClicked}>
+                    <Link to={`${process.env.PUBLIC_URL}/new-car/compare`} title="Compare" onClick={onAddToCompareClicked}>
                         <i className="fa fa-refresh" aria-hidden="true"/></Link>
                 </div>
                 {product.variants?

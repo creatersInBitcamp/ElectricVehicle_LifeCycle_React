@@ -1,4 +1,4 @@
-import {removeFromCompare} from "../compare/compareReducer";
+import {removeFromUsedCompare} from "./usedcompareReducer";
 import {useDispatch, useSelector} from 'react-redux'
 import {MarketPrice} from "../usedPurchase";
 import {Link} from 'react-router-dom'
@@ -6,7 +6,7 @@ import React from "react";
 
 export const CompareList = () => {
     const {Items, symbol} = useSelector(state=>({
-        Items: state.compare.items,
+        Items: state.usedcompare.items,
         symbol: state.data.symbol
     }))
     const dispatch = useDispatch()
@@ -14,7 +14,7 @@ export const CompareList = () => {
         {Items.map((item,index) =>
             <div key={index}>
                 <div className="compare-part">
-                    <button type="button" className="close-btn" onClick={()=>{dispatch(removeFromCompare(item))}}>
+                    <button type="button" className="close-btn" onClick={()=>{dispatch(removeFromUsedCompare(item))}}>
                         <span aria-hidden="true">×</span>
                     </button>
                     <div className="img-secton">

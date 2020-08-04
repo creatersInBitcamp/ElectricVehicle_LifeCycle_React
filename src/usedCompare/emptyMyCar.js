@@ -2,14 +2,14 @@ import React, {useState} from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import Breadcrumb from "../common/breadcrumb";
 import {MarketPrice} from "../usedPurchase";
-import {removeFromCompare} from "../compare/compareReducer";
+import {removeFromUsedCompare} from "../usedCompare/usedcompareReducer";
 import Slider from 'react-slick';
 import {CompareList} from "./compareList";
 
 export const emptyMyCar = props => {
     const [item,setItem]=useState(false)
     const {Items, symbol} = useSelector(state=>({
-        Items: state.compare.items,
+        Items: state.usedcompare.items,
         symbol: state.data.symbol
     }))
 

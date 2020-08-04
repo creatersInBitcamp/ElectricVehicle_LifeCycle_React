@@ -4,13 +4,13 @@ import {Link} from 'react-router-dom'
 import Slider from 'react-slick';
 import Breadcrumb from '../common/breadcrumb';
 import {addToCart} from "../cart/cartReducer";
-import {removeFromCompare} from '../compare/compareReducer'
+import {removeFromUsedCompare} from '../usedCompare/usedcompareReducer'
 import {MarketPrice} from "../usedPurchase";
 
 const MyCarComparison = () => {
     const [quantity, setQuantity] = useState('')
     const {Items, symbol} = useSelector(state=>({
-        Items: state.compare.items,
+        Items: state.usedcompare.items,
         symbol: state.data.symbol
     }))
 
@@ -115,7 +115,7 @@ const MyCarComparison = () => {
                                     {Items.map((item,index) =>
                                         <div key={index}>
                                             <div className="compare-part">
-                                                <button type="button" className="close-btn" onClick={()=>{dispatch(removeFromCompare(item))}}>
+                                                <button type="button" className="close-btn" onClick={()=>{dispatch(removeFromUsedCompare(item))}}>
                                                     <span aria-hidden="true">×</span>
                                                 </button>
                                                 <div className="img-secton">

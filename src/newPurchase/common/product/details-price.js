@@ -3,8 +3,6 @@ import {Link} from 'react-router-dom'
 import Slider from 'react-slick';
 import Modal from 'react-responsive-modal';
 import MarketPrice from "../../MarketPrice";
-import {addToCart, addToCartUnsafe} from "../../../cart/cartReducer";
-import {addToWishlist} from "../../../wishlist/wishlistReducer";
 
 
 const DetailsWithPrice = props => {

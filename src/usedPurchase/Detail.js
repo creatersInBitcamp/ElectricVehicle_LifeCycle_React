@@ -14,7 +14,7 @@ import MyCar from "./MyCar";
 import DetailedContents from "./DetailedContents";
 import {addToCart} from "../cart/cartReducer";
 import {addToCartUnsafe} from "../cart/cartReducer";
-import {addToWishlist} from "../wishlist/wishlistReducer";
+import {addToUsedWishlist} from "../usedWishlist/usedwishlistReducer";
 
 /* type */
 
@@ -103,7 +103,7 @@ const productDetail = props => {
                                                 </Slider>
                                                 <SmallImages item={item} settings={productsnav} navOne={nav1} />
                                             </div>
-                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart(item,1))} BuynowClicked={()=>dispatch(addToCartUnsafe(item,1))} addToWishlistClicked={()=>dispatch(addToWishlist(item))} />
+                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart(item,1))} BuynowClicked={()=>dispatch(addToCartUnsafe(item,1))} addToWishlistClicked={()=>dispatch(addToUsedWishlist(item))} />
                                         </div>
                                     </div>
                                     <DetailedContents item={item} />

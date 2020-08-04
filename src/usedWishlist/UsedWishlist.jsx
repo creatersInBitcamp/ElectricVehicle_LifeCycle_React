@@ -2,11 +2,11 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Breadcrumb from '../common/breadcrumb';
-import {removeFromWishlist,addToCartAndRemoveWishlist} from '../wishlist/wishlistReducer'
+import {removeFromUsedWishlist,addToCartAndRemoveUsedWishlist} from './usedwishlistReducer'
 
 const UsedWishlist = () => {
     const {Items, symbol} = useSelector(state=>({
-        Items: state.wishlist.list,
+        Items: state.usedwishlist.list,
         symbol: state.data.symbol
     }))
 
@@ -38,13 +38,13 @@ const UsedWishlist = () => {
                                             <tbody key={index}>
                                             <tr>
                                                 <td>
-                                                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${item.id}`}>
+                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
                                                         <img src={item.variants?
                                                             item.variants[0].images
                                                             :item.pictures[0]} alt="" />
                                                     </Link>
                                                 </td>
-                                                <td><Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${item.id}`}>{item.name}</Link>
+                                                <td><Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>{item.name}</Link>
                                                     <div className="mobile-cart-content row">
                                                         <div className="col-xs-3">
                                                             <p>in stock</p>
@@ -55,10 +55,10 @@ const UsedWishlist = () => {
                                                         </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
-                                                                <a className="icon" onClick={()=>{dispatch(removeFromWishlist(item))}}>
+                                                                <a className="icon" onClick={()=>{dispatch(removeFromUsedWishlist(item))}}>
                                                                     <i className="fa fa-times"/>
                                                                 </a>
-                                                                <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveWishlist(item, 1))}}>
+                                                                <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveUsedWishlist(item, 1))}}>
                                                                     <i className="fa fa-shopping-cart"/>
                                                                 </a>
                                                             </h2>
@@ -79,10 +79,10 @@ const UsedWishlist = () => {
                                                 <td>
                                                     <div className="col-xs-3">
                                                         <h2 className="td-color">
-                                                            <a className="icon" onClick={()=>{dispatch(removeFromWishlist(item))}}>
+                                                            <a className="icon" onClick={()=>{dispatch(removeFromUsedWishlist(item))}}>
                                                                 <i className="fa fa-times"/>
                                                             </a>
-                                                            <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveWishlist(item, 1))}}>
+                                                            <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveUsedWishlist(item, 1))}}>
                                                                 <i className="fa fa-shopping-cart"/>
                                                             </a>
                                                         </h2>
@@ -96,8 +96,8 @@ const UsedWishlist = () => {
                         </div>
                         <div className="row wishlist-buttons">
                             <div className="col-12">
-                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">continue shopping</Link>
-                                <Link to={`${process.env.PUBLIC_URL}/checkout`} className="btn btn-solid">check out</Link>
+                                <Link to={`${process.env.PUBLIC_URL}/used-car/collection`} className="btn btn-solid">continue shopping</Link>
+                                <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`} className="btn btn-solid">check out</Link>
                             </div>
                         </div>
                     </div>

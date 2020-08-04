@@ -108,8 +108,11 @@ export const Team4 = {
 
 export const Slider2 = {
     infinite: true,
+    speed: 300,
     slidesToShow: 2,
     slidesToScroll: 2,
+    autoplay: true,
+    autoplaySpeed: 6000,
     responsive: [
         {
             breakpoint: 991,

@@ -48,15 +48,6 @@ const MyCar = () => {
                                             <option value="3">Option 3</option>
                                         </select>
                                     </div>
-                                    <div className="border-product">
-                                        <h6 className="product-title">장바구니</h6>
-                                        <select>
-                                            <option>Choose your option</option>
-                                            <option value="1">Option 1</option>
-                                            <option value="2">Option 2</option>
-                                            <option value="3">Option 3</option>
-                                        </select>
-                                    </div>
                                     <div className="product-buttons">
                                         <button  className="btn btn-solid">비교하기</button>
                                     </div>

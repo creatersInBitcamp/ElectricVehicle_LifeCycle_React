@@ -1,11 +1,19 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from 'react-router-dom'
 import Modal from 'react-responsive-modal';
 import {MyCarComparison} from "../usedCompare";
+import {useSelector} from "react-redux";
+import {addToUsedCompare} from "../usedCompare/usedcompareReducer";
 
 const MyCar = () => {
+    const {items} = useSelector(state=>({
+        items: state.usedwishlist.list
+    }))
+
     const [open,setOpen] = useState(false)
     const [image,setImage] = useState('')
+    const [value,setValue] = useState([])
+    const [item,setItem] = useState([])
 
     const onOpenModal = () => {
         setOpen(true)
@@ -13,6 +21,21 @@ const MyCar = () => {
     const onCloseModal = () => {
         setOpen(false)
     }
+
+    const handleSubmit = e => {
+        alert('value: ' + value)
+        e.preventDefault()
+    }
+    const handleChange = e => {
+        setValue(e.target.value)
+        setItem(e.target.value)
+        alert('value: ' + value)
+    }
+    const onClickSubmit = e => {
+        e.preventDefault()
+        addToUsedCompare(value)
+    }
+
 
     return <div>
         <div className="collection-filter-block">
@@ -41,15 +64,20 @@ const MyCar = () => {
                                     <h2>내 차량과 비교하기</h2>
                                     <div className="border-product">
                                         <h6 className="product-title">관심상품</h6>
-                                        <select>
-                                            <option>Choose your option</option>
-                                            <option value="1">Option 1</option>
-                                            <option value="2">Option 2</option>
-                                            <option value="3">Option 3</option>
-                                        </select>
-                                    </div>
-                                    <div className="product-buttons">
-                                        <button  className="btn btn-solid">비교하기</button>
+                                        <form onSubmit={handleSubmit}>
+                                            <select value={value} onChange={handleChange}>
+                                                <option>Choose your option</option>
+                                                <option value={items[0]}>{items[0].name}</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                            </select>
+                                            <div className="product-buttons">
+                                                <button className="btn btn-solid"
+                                                        type={"submit"}
+                                                        value={"Submit"}
+                                                        onClick={onClickSubmit}>비교하기</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -11,11 +11,9 @@ const MyCar = () => {
     }))
 
     const [open,setOpen] = useState(false)
-    const [image,setImage] = useState('')
-    const [value,setValue] = useState([])
-    const [item,setItem] = useState([])
 
     const onOpenModal = () => {
+
         setOpen(true)
     }
     const onCloseModal = () => {
@@ -23,18 +21,28 @@ const MyCar = () => {
     }
 
     const handleSubmit = e => {
-        alert('value: ' + value)
-        e.preventDefault()
+        // alert('value: ' + value)
+        // e.preventDefault()
     }
     const handleChange = e => {
-        setValue(e.target.value)
-        setItem(e.target.value)
-        alert('value: ' + value)
+        // alert('value: ' + value)
+        console.log(e.target.value)
     }
     const onClickSubmit = e => {
-        e.preventDefault()
-        addToUsedCompare(value)
+        console.log(e.target.value)
+        if(e.target.value !== 'default'){
+            
+        }
+        // e.preventDefault()
+        // addToUsedCompare(value)
+        // for(let i=0;i<items.length;i++){
+        //     console.log(items[i].name)
+        //
+        // }
+
     }
+
+
 
 
     return <div>
@@ -65,13 +73,16 @@ const MyCar = () => {
                                     <div className="border-product">
                                         <h6 className="product-title">관심상품</h6>
                                         <form onSubmit={handleSubmit}>
-                                            <select value={value} onChange={handleChange}>
-                                                <option value={(items[0])}>{items[0].name}</option>
+                                            <select onChange={handleChange}>
+                                                <option value="default">상품을 선택해주세요.</option>
+                                                {
+                                                    items.map((item,index)=>{
+                                                        return <option key={index} value={item.id}>{item.name}</option>
+                                                    })
+                                                }
                                             </select>
                                             <div className="product-buttons">
                                                 <button className="btn btn-solid"
-                                                        type={"submit"}
-                                                        value={"Submit"}
                                                         onClick={onClickSubmit}>비교하기</button>
                                             </div>
                                         </form>

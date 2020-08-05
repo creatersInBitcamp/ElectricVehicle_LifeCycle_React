@@ -14,18 +14,6 @@ export const PurchaseRequest = props => {
 
     const validator = new SimpleReactValidator()
 
-    const onChangeName = e => {
-        setName(e.target.value)
-    }
-    const onChangePhone = e => {
-        setPhone(e.target.value)
-    }
-    const onChangeEmail = e => {
-        setEmail(e.target.value)
-    }
-    const onChangeAddress = e => {
-        setAddress(e.target.value)
-    }
     const onChangeAgreement = e => {
         const obj = {}
         obj[e.target.name] = e.target.checked
@@ -66,22 +54,22 @@ export const PurchaseRequest = props => {
                                         <div className="row check-out">
                                             <div className="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <div className="field-label">Name</div>
-                                                <input type="text" name="name" value={name} onChange={onChangeName} />
+                                                <input type="text" name="name" value={name} onChange={ e => setName(e.target.value) } />
                                                 {validator.message('name', name, 'required|alpha')}
                                             </div>
                                             <div className="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <div className="field-label">Phone</div>
-                                                <input type="text" name="phone"  value={phone} onChange={onChangePhone} />
+                                                <input type="text" name="phone"  value={phone} onChange={ e => setPhone(e.target.value) } />
                                                 {validator.message('phone', phone, 'required|phone')}
                                             </div>
                                             <div className="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <div className="field-label">Email Address</div>
-                                                <input type="text" name="email" value={email} onChange={onChangeEmail} />
+                                                <input type="text" name="email" value={email} onChange={ e => setEmail(e.target.value) } />
                                                 {validator.message('email', email, 'required|email')}
                                             </div>
                                             <div className="form-group col-md-12 col-sm-12 col-xs-12">
                                                 <div className="field-label">Address</div>
-                                                <input type="text" name="address" value={address} onChange={onChangeAddress} placeholder="Street address" />
+                                                <input type="text" name="address" value={address} onChange={ e => setAddress(e.target.value) } placeholder="Street address" />
                                                 {validator.message('address', address, 'required|min:20|max:120')}
                                             </div>
                                             <div className="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

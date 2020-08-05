@@ -16,6 +16,8 @@ import DetailsTopTabs from "./common/details-top-tabs";
 import {addToCart} from "../cart/cartReducer";
 import {addToCartUnsafe} from "../cart/cartReducer";
 import {addToWishlist} from "../wishlist/wishlistReducer";
+import {posts} from "../board/data";
+import Recent from "../board/classic/recent";
 
 const LeftSideBar = () => {
     const [state, setState] = useState({ nav1: null, nav2: null });
@@ -77,11 +79,26 @@ const LeftSideBar = () => {
                                             <i className="fa fa-angle-left" aria-hidden="true"/> back
                                         </span>
                                     </div>
-
-                                    {/* <BrandBlock/> */}
-                                    {/*<Service/>*/}
                                     {/*side-bar single product slider start*/}
-                                    <NewProduct/>
+                                    <div className="theme-card">
+                                        <h5 className="title-border">Recent Post</h5>
+                                        <Slider className="offer-slider slide-1">
+                                            <div className="theme-card">
+                                                <ul className="recent-blog">
+                                                    {
+                                                        posts.map(post => {
+                                                            if (post.postId < 6) {
+                                                                return (
+                                                                    <Recent post={post} key={post.postId}/>
+                                                                )
+                                                            }
+                                                            return null
+                                                        })
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </Slider>
+                                    </div>
                                     {/*side-bar single product slider end*/}
                                 </div>
                                 <div className="col-lg-9 col-sm-12 col-xs-12">

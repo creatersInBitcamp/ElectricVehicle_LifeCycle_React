@@ -31,7 +31,7 @@ const Fashion = () => {
             <section className="p-0">
                 <Slider className="slide-1 home-slider" >
                     <div>
-                        <div className="home home1 text-center">
+                        <div className="home home2 text-center">
                             <div className="container">
                                 <div className="row">
                                     <div className="col">
@@ -40,23 +40,6 @@ const Fashion = () => {
                                                 <h4>Why Eelectric Vehicle?.</h4>
                                                 <h1>Why?</h1>
                                                 <Link to={`${process.env.PUBLIC_URL}/pages/about-us`} className="btn btn-solid">Intro</Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="home home2 text-center">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col">
-                                        <div className="slider-contain">
-                                            <div>
-                                                <h4>welcome to EV life cycle.</h4>
-                                                <h1>news</h1>
-                                                <Link to={`${process.env.PUBLIC_URL}/new-car/collection`} className="btn btn-solid">NEW now</Link>
                                             </div>
                                         </div>
                                     </div>

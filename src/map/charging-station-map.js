@@ -115,7 +115,7 @@ const ChargingStationMap = () =>{
             clearSuggestions,
         } = usePlacesAutocomplete({
             requestOptions: {
-                location: { lat: () => 37.553818, lng: () => 126.886020 },// 검색할때의 이 지점에서부터 찾는?
+                location: { lat: () => 37.553818, lng: () => 126.886020 },// 검색할때의 이 지점에서부터 찾는다
                 radius: 200 * 1000,//검색 반경
             },
         });
@@ -127,8 +127,7 @@ const ChargingStationMap = () =>{
         };
 
         const handleSelect = async (address) => {
-            // When user selects a place, we can replace the keyword without request data from API
-            // by setting the second parameter as "false"
+            // When user selects a place, we can replace the keyword without request data from API by setting the second parameter as "false"
             setValue(address, false);
             //Calling the method will clear and reset all the properties of the suggestions object to default. It's useful for dismissing the dropdown.
             //메소드를 호출하면 suggestions객체 의 모든 속성이 지워지고 기본값으로 재설정됩니다 .
@@ -136,7 +135,6 @@ const ChargingStationMap = () =>{
 
             try {
                 const results = await getGeocode({ address });
-                // console.log(results[0]) formatted address, compo 전부 가져옴
                 const { lat, lng } = await getLatLng(results[0]);
                 const postal_code = await getZipCode(results[0],false)
                 panTo({ lat, lng });

@@ -165,7 +165,7 @@ const sights = [
 
 const BookmarkMap = () =>{
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0',
+        googleMapsApiKey: MAP_KEY,
         libraries,
         region:'kr'
     });

@@ -6,6 +6,10 @@ import Filter from "./common/filter";
 import FilterBar from "./common/filter-bar";
 import ProductListing from "./common/product-listing";
 import StickyBox from "react-sticky-box";
+import Slider from "react-slick";
+import {Link} from "react-router-dom";
+import {posts} from "../board/data";
+import Recent from "../board/classic/recent";
 
 export const CollectionLeftSidebar = () => {
     const [layoutColumns, setLayoutColumns] = useState(3)
@@ -29,7 +33,18 @@ export const CollectionLeftSidebar = () => {
                             <div className="col-sm-3 collection-filter">
                                 <StickyBox offsetTop={20} offsetBottom={20}>
                                     <Filter/>
-                                    <NewProduct/>
+                                    <div className="theme-card">
+                                        <h5 className="title-border">Recent Post</h5>
+                                        <Slider className="offer-slider slide-1">
+                                            <div className="theme-card">
+                                                <ul className="recent-blog">
+                                                    {
+                                                        posts.map( post => (<Recent post={post} key={post.postId}/>) )
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </Slider>
+                                    </div>
                                 </StickyBox>
                             </div>
                             <div className="collection-content col">

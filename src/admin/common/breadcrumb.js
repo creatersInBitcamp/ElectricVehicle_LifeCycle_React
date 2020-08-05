@@ -3,7 +3,6 @@ import {Home} from 'react-feather';
 import {Link} from 'react-router-dom'
 
 const breadcrumbTypes = {REQUEST: 'breadcrumb/REQUEST'}
-const breadcrumbRequest = action => ({type: breadcrumbTypes.REQUEST, payload: action.payload})
 const breadcrumbReducer = (state={}, action) => {
     switch (action.type) {
         case breadcrumbTypes.REQUEST: return {...state, payload: action.payload}

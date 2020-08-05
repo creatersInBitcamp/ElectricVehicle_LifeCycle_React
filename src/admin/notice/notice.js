@@ -1,10 +1,7 @@
-import React from 'react'
-import {Breadcrumb} from '../common';
-import data from '../../assets/data/listMenu';
-import {Datatable} from '../common'
+import React, {useState} from 'react'
+import {Breadcrumb, Image} from '../common';
 
 const list_menuTypes = {REQUEST: 'list_menu/REQUEST'}
-const list_menuRequest = action => ({type: list_menuTypes.REQUEST, payload: action.payload})
 const list_menuReducer = ( state={}, action ) => {
     switch (action.type) {
         case list_menuTypes.REQUEST: return {...state, payload: action.payload}
@@ -13,6 +10,13 @@ const list_menuReducer = ( state={}, action ) => {
 }
 
 export const Notice = () => {
+
+    const [picture, setPicture] = useState([])
+
+    const onDrop = (e, picture) => {
+        e.preventDefault()
+        setPicture(picture)
+    }
         return (
             <>
                 <Breadcrumb title="공지사항" parent="Menu" />
@@ -25,14 +29,8 @@ export const Notice = () => {
                                 </div>
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">
-                                    <Datatable
-                                            multiSelectOption={true}
-                                            myData={data}
-                                            pageSize={6}
-                                            pagination={false}
-                                            class="-striped -highlight"
-                                        />
                                     </div>
+                                    <Image/>
                                 </div>
                             </div>
                         </div>
@@ -42,4 +40,4 @@ export const Notice = () => {
         )
 }
 
-export default Notice
+export default list_menuReducer

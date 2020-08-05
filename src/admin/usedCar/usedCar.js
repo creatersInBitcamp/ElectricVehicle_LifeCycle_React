@@ -4,7 +4,6 @@ import data from '../../assets/data/listPages';
 import {Datatable} from '../common';
 
 const usedCarTypes = {REQUEST: 'usedCar/REQUEST'}
-const usedCarRequest = action => ({type: usedCarTypes.REQUEST, payload: action.payload})
 const usedCarReducer = ( state={}, action ) => {
     switch (action.type) {
         case usedCarTypes.REQUEST: return {...state, payload: action.payload}

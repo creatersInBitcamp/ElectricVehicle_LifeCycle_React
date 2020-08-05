@@ -9,13 +9,6 @@ import communityimg from '../assets/images/mainPage/community.jpg'
 // Import custom components
 import TopCollection from './top-collection';
 import SpecialProducts from "./common/products";
-// import LogoBlock from "./common/logo-block";
-
-// import {
-//     svgFreeShipping,
-//     svgservice,
-//     svgoffer
-// } from "../atomic/services/script"
 
 const Fashion = () => {
     useEffect(()=>{

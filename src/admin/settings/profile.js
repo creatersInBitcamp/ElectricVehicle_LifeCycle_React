@@ -5,7 +5,6 @@ import {Tabset_profile} from './';
 import {Breadcrumb} from '../common';
 
 const profileTypes = {REQUEST: 'profile/REQUEST'}
-const profileRequest = action => ({type: profileTypes.REQUEST, payload: action.payload})
 const profileReducer = ( state={}, action ) => {
     switch (action.type) {
         case profileTypes.REQUEST: return {...state, payload: action.payload}

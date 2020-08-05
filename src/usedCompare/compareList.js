@@ -18,11 +18,8 @@ export const CompareList = () => {
                         <span aria-hidden="true">×</span>
                     </button>
                     <div className="img-secton">
-                        <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
-                            <img src={item.variants?
-                                item.variants[0].images
-                                :item.pictures[0]} className="img-fluid" alt="" />
-                            <h5>{item.name}</h5></Link>
+
+                        <h5>{item.name}</h5>
                         <h5>{symbol}{item.price}</h5>
                     </div>
                     <div className="detail-part">

@@ -66,10 +66,7 @@ const MyCar = () => {
                                         <h6 className="product-title">관심상품</h6>
                                         <form onSubmit={handleSubmit}>
                                             <select value={value} onChange={handleChange}>
-                                                <option>Choose your option</option>
-                                                <option value={items[0]}>{items[0].name}</option>
-                                                <option value="2">Option 2</option>
-                                                <option value="3">Option 3</option>
+                                                <option value={(items[0])}>{items[0].name}</option>
                                             </select>
                                             <div className="product-buttons">
                                                 <button className="btn btn-solid"

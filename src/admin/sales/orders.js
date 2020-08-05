@@ -4,7 +4,6 @@ import data from '../../assets/data/orders';
 import {Datatable} from '../common'
 
 const ordersTypes = {REQUEST: 'orders/REQUEST'}
-const ordersRequest = action => ({type: ordersTypes.REQUEST, payload: action.payload})
 const ordersReducer = ( state, action ) => {
     switch (action.type) {
         case ordersTypes.REQUEST: return {...state, payload: action.payload}

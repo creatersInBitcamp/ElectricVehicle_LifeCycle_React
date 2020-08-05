@@ -5,12 +5,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import data from '../../assets/data/category';
 import carData from '../../atomic/constants/evdb_eccar.json'
 import {Datatable} from '../common';
-import {useDispatch} from "react-redux";
 
 const elecCarTypes = {REQUEST: 'elecCar/REQUEST'}
 const initialState = {
 }
-const elecCarRequest = action => ({type: elecCarTypes.REQUEST, payload: action.payload})
 const elecCarReducer = ( state=initialState, action ) => {
     switch (action.type) {
         case elecCarTypes.REQUEST: return {...state, payload: action.payload}

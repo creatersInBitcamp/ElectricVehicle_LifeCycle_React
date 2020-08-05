@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ImageUploader from 'react-images-upload'
 
 const imageTypes = {REQUEST: 'image/REQUEST'}
 const imageRequest = action => ({type: imageTypes.REQUEST, payload: action.payload})
@@ -9,17 +10,20 @@ const imageReducer = ( state={}, action ) => {
     }
 }
 
-export const Image = (props) => {
+export const Image = () => {
+    const [image, setImage] = useState([])
+    const onDrop = (pictureFiles, pictureBase64) => {
+        setImage(pictureFiles)
+        console.log(image)
+    }
         return (
-            <>
-                <div className="d-flex" >
-                {props.data.map((res,i) => {
-                    return (
-                        <img src={res} alt="" key={i} className="img-fluid img-30 mr-2 blur-up lazyloaded" />
-                    )
-                })}
-                </div>
-            </>
+            <ImageUploader
+            label={'jpg, jpeg, png, gif 파일만 가능'}
+            withIcon={true}
+            buttonText='이미지를 선택하세요'
+            onChange={onDrop}
+            imgExtension={['.jpg', '.gif','.png']}
+            />
         )
 }
 

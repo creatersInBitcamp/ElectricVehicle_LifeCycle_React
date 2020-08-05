@@ -4,7 +4,6 @@ import {Datatable} from '../common'
 import data from '../../assets/data/media';
 
 const communityTypes = {REQUEST: 'community/REQUEST'}
-const communityRequest = action => ({type: communityTypes.REQUEST, payload: action.payload})
 const communityReducer = ( state={}, action ) => {
     switch (action.type) {
         case communityTypes.REQUEST: return {...state, payload: action.payload}

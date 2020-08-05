@@ -39,7 +39,14 @@ export const CollectionLeftSidebar = () => {
                                             <div className="theme-card">
                                                 <ul className="recent-blog">
                                                     {
-                                                        posts.map( post => (<Recent post={post} key={post.postId}/>) )
+                                                        posts.map(post => {
+                                                            if (post.postId < 6) {
+                                                                return (
+                                                                    <Recent post={post} key={post.postId}/>
+                                                                )
+                                                            }
+                                                            return null
+                                                        })
                                                     }
                                                 </ul>
                                             </div>

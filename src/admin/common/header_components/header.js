@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {SearchHeader} from './';
 import { AlignLeft, Maximize2, Bell, MessageSquare, MoreHorizontal } from 'react-feather';
 
 //images
@@ -9,7 +8,6 @@ import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
 const headerTypes = {REQUEST: 'header/REQUEST'}
-const headerRequest = action => ({type: headerTypes.REQUEST, payload: action.payload})
 const headerReducer = (state={}, action) => {
     switch (action.type) {
         case headerTypes.REQUEST: return {...state, payload: action.payload}

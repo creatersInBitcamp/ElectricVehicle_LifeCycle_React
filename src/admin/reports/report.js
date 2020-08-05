@@ -5,7 +5,6 @@ import { lineChart, chartOptions, areaChart, areaOptions, barOptions, barChart, 
 import {Report_table} from './';
 
 const reportsTypes = {REQUEST: 'reports/REQUEST'}
-const reportsRequest = action => ({type: reportsTypes.REQUEST, payload: action.payload})
 const reportsReducer = ( state={}, action ) => {
     switch (action.type) {
         case reportsTypes.REQUEST: return {...state, payload: action.payload}

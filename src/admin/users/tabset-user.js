@@ -2,7 +2,6 @@ import React from 'react'
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 
 const tabset_userTypes = {REQUEST: 'tabset_user/REQUEST'}
-const tabset_userRequest = action => ({type: tabset_userTypes.REQUEST, payload: action.payload})
 const tabset_userReducer = ( state={}, action ) => {
     switch (action.type) {
         case tabset_userTypes.REQUEST: return {...state, payload: action.payload}

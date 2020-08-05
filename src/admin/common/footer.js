@@ -1,7 +1,6 @@
 import React from 'react'
 
 const footerTypes = {REQUEST: 'footer/REQUEST'}
-const footerRequest = action => ({type: footerTypes.REQUEST, payload: action.payload})
 const footerReducer = (state={}, action) => {
     switch (action.type) {
         case footerTypes.REQUEST: return {...state, payload: action.payload}

@@ -1,14 +1,12 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
-import { MENUITEMS } from '../../../atomic/constants/menu';
 
 // image import
-import logo from '../../../assets/images/dashboard/logoEv.jpeg'
+import logo from '../../../assets/images/dashboard/logoEv.jpg'
 import man from '../../../assets/images/dashboard/man.png'
 import {SidebarMenus} from "./";
 
 const sidebarTypes = {REQUEST: 'sidebar/REQUEST'}
-const sidebarRequest = action => ({type: sidebarTypes.REQUEST, payload: action.payload})
 const sidebarReducer = (state={}, action) => {
     switch (action.type) {
         case sidebarTypes.REQUEST: return {...state, payload: action.payload}
@@ -22,8 +20,8 @@ export const Sidebar =() => {
                 <div className="page-sidebar">
                     <div className="main-header-left d-none d-lg-block">
                         <div className="logo-wrapper">
-                            <Link to={`${process.env.PUBLIC_URL}/dashboard`}>
-                                <img className="blur-up lazyloaded" src={logo} alt="" />
+                            <Link to={`${process.env.PUBLIC_URL}/admin/dashboard`}>
+                                <img className="blur-up lazyloaded" src={logo} alt=""/>
                             </Link>
                         </div>
                     </div>

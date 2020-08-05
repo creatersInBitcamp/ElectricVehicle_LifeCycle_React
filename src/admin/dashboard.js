@@ -19,7 +19,6 @@ import designer from '../assets/images/dashboard/designer.jpg'
 
 
 const dashboardTypes = {REQUEST: 'dashboard/REQUEST'}
-const dashboardRequest = action => ({type: dashboardTypes.REQUEST, payload: action.payload})
 const dashboardReducer = ( state={}, action ) => {
     switch (action.type) {
         case dashboardTypes.REQUEST: return {...state, payload: action.payload}

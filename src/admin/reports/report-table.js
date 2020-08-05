@@ -3,7 +3,6 @@ import data from '../../assets/data/reports';
 import {Datatable} from '../common'
 
 const report_tableTypes = {REQUEST: 'report_table/REQUEST'}
-const report_tableRequest = action => ({type: report_tableTypes.REQUEST, payload: action.payload})
 const report_tableReducer = ( state={}, action ) => {
     switch (action.type) {
         case report_tableTypes.REQUEST: return {...state, payload: action.payload}

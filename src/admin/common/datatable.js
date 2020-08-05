@@ -7,7 +7,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {Search} from "react-feather";
 
 const datatableTypes = {REQUEST: 'datatable/REQUEST'}
-const datatableRequest = action => ({type: datatableTypes.REQUEST, payload: action.payload})
 const datatableReducer = (state={}, action) => {
     switch (action.type) {
         case datatableTypes.REQUEST: return {...state, payload: action.payload}

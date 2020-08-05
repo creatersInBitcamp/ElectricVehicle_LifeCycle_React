@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {Link} from 'react-router-dom'
+import {Link, Redirect } from 'react-router-dom'
 import Modal from 'react-responsive-modal';
 import {MyCarComparison} from "../usedCompare";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addToUsedCompare} from "../usedCompare/usedcompareReducer";
 
-const MyCar = () => {
+const MyCar = props => {
+    const [redirect,setRedirect] = useState(false)
+    const [targetId,setTargetId] = useState(0)
     const {items} = useSelector(state=>({
         items: state.usedwishlist.list
     }))
@@ -27,22 +29,27 @@ const MyCar = () => {
     const handleChange = e => {
         // alert('value: ' + value)
         console.log(e.target.value)
+        setTargetId(e.target.value)
     }
     const onClickSubmit = e => {
         console.log(e.target.value)
         if(e.target.value !== 'default'){
-            
-        }
-        // e.preventDefault()
-        // addToUsedCompare(value)
-        // for(let i=0;i<items.length;i++){
-        //     console.log(items[i].name)
-        //
-        // }
+            dispatch(addToUsedCompare(e.target.value))
 
+        }
+        return <Link to={`${process.env.PUBLIC_URL}/used-car/comparison/${e.target.value}`}/>
+    }
+    const onClickRedirect = () => {
+        setRedirect(true)
+    }
+    const renderRedirect = e => {
+        if(redirect===true){
+            dispatch(addToUsedCompare(targetId))
+            return <Link to={`${process.env.PUBLIC_URL}/used-car/comparison/${targetId}`} />
+        }
     }
 
-
+    const dispatch = useDispatch()
 
 
     return <div>
@@ -82,8 +89,11 @@ const MyCar = () => {
                                                 }
                                             </select>
                                             <div className="product-buttons">
+                                                {renderRedirect()}
                                                 <button className="btn btn-solid"
-                                                        onClick={onClickSubmit}>비교하기</button>
+                                                        onClick={onClickRedirect}>
+                                                    비교하기
+                                                </button>
                                             </div>
                                         </form>
                                     </div>

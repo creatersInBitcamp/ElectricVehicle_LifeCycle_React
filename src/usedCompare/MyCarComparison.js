@@ -1,18 +1,29 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, useRouteMatch} from 'react-router-dom'
+
 import Slider from 'react-slick';
 import Breadcrumb from '../common/breadcrumb';
 import {addToCart} from "../cart/cartReducer";
 import {removeFromUsedCompare} from '../usedCompare/usedcompareReducer'
 import {MarketPrice} from "../usedPurchase";
 
-const MyCarComparison = () => {
+const MyCarComparison = (props) => {
     const [quantity, setQuantity] = useState('')
-    const {Items, symbol} = useSelector(state=>({
-        Items: state.usedcompare.items,
-        symbol: state.data.symbol
-    }))
+    // const {Items, symbol} = useSelector(state=>({
+    //     Items: state.usedcompare.items,
+    //     symbol: state.data.symbol
+    // }))
+    const {params} = props.match
+
+    const match = useRouteMatch(`/used-car/comparison/:id`)
+    const {symbol, item} = useSelector((state) => {
+        let productId = match.params.id
+        return {
+            item: state.data.products.find(el => el.id == productId),
+            symbol: state.data.symbol
+        }
+    })
 
     const dispatch = useDispatch()
 
@@ -54,7 +65,7 @@ const MyCarComparison = () => {
     return <>
         <div>
             <Breadcrumb title={'Compare'} />
-            {Items.length>0 ?
+            {item.length>0 ?
                 <section className="compare-section section-b-space">
                     <div className="container">
                         <div className="row">
@@ -112,7 +123,7 @@ const MyCarComparison = () => {
                                             <a className="btn btn-solid" onClick={()=>{dispatch(addToCart(item, 1))}}>add to cart</a>
                                         </div>*/}
                                     </div>
-                                    {Items.map((item,index) =>
+                                    {item.map((item,index) =>
                                         <div key={index}>
                                             <div className="compare-part">
                                                 <button type="button" className="close-btn" onClick={()=>{dispatch(removeFromUsedCompare(item))}}>
@@ -123,7 +134,8 @@ const MyCarComparison = () => {
                                                         <img src={item.variants?
                                                             item.variants[0].images
                                                             :item.pictures[0]} className="img-fluid" alt="" />
-                                                        <h5>{item.name}</h5></Link>
+                                                        <h5>{item.name}</h5>
+                                                    </Link>
                                                     <h5>{symbol}{item.price}</h5>
                                                 </div>
                                                 <div className="detail-part">

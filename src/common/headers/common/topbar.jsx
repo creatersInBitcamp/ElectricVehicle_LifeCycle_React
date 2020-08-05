@@ -34,7 +34,7 @@ const Topbar = () => {
                                         <Link to={`${process.env.PUBLIC_URL}/new-car/compare`} data-lng="en">{translate('new_car')}</Link>
                                     </li>
                                     <li>
-                                        <Link to={`${process.env.PUBLIC_URL}/used-car/comparison`} data-lng="en">{translate('used_car')}</Link>
+                                        <Link to={`${process.env.PUBLIC_URL}/used-car/comparison/:id`} data-lng="en">{translate('used_car')}</Link>
                                     </li>
                                 </ul>
                             </li>

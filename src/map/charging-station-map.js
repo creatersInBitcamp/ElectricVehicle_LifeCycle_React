@@ -1,10 +1,14 @@
 import React,{useState,useCallback,useRef} from "react";
 import { GoogleMap,useLoadScript,Marker,InfoWindow,} from "@react-google-maps/api";
-import usePlacesAutocomplete, {getGeocode,getLatLng} from "use-places-autocomplete";
+import usePlacesAutocomplete, {getGeocode,getLatLng,getZipCode} from "use-places-autocomplete";
+import Geocode from 'react-geocode'
 import {Combobox,ComboboxInput, ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 import './map.scss'
 import "@reach/combobox/styles.css";
 import myData from './data/data-charging-station';
+
+const MAP_KEY = 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0';
 
 const libraries = ["places"];
 
@@ -20,27 +24,62 @@ const center = {
     lat: 36.620505,
     lng: 128.001429,
 };
+
 const ChargingStationMap = () =>{
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0',
+        googleMapsApiKey: MAP_KEY,
         libraries,
         region:'kr'
     });
     const [ selected, setSelected ] = useState({});
     const [ currentPosition, setCurrentPosition ] = useState({});
     const [ searchLocation, setSearchLocation] = useState({})
+    const [markers, setMarkers] = useState([]);
+    const [selectedAddr, setSelectedAddr]= useState("")
+    const [selectedPc,setSelectedPc] = useState("")
+    const [infoShow, setInfoShow]= useState(false)
+
+    Geocode.setApiKey(MAP_KEY);
+    Geocode.setLanguage('ko')
+    Geocode.fromLatLng(selected.lat,selected.lng).then(
+        response => {
+            console.log(response)
+            const address = response.results[0].formatted_address
+            const length = response.results[0].address_components.length
+            const postcode = response.results[0].address_components[length-1].long_name
+            console.log(postcode.indexOf('-'))
+            if(postcode.indexOf('-') != -1){ //결과값이 없으면 -1 반환
+                setSelectedPc(postcode)
+            }else{
+                setSelectedPc("정보없음")
+            }
+            setSelectedAddr(address)
+            console.log(address);
+        },
+        error => {
+            console.error(error);
+        }
+    );
 
     const mapRef = useRef();
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
     }, []);
 
-    const panTo = useCallback(({ lat, lng }) => {
+    const panTo = useCallback(({ lat, lng }) => { //( panTo )의 경우 :  변경 사항이 지도의 너비와 높이보다 작 으면 전환이 부드럽게 움직입니다
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
     }, []);
 
-
+    const onMapClick = useCallback((e) => {
+        setMarkers((current) => [
+            ...current,
+            {
+                lat: e.latLng.lat(),
+                lng: e.latLng.lng()
+            },
+        ]);
+    }, []);
 
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
@@ -52,14 +91,11 @@ const ChargingStationMap = () =>{
                 onClick={() => {
                     navigator.geolocation.getCurrentPosition(
                         (position) => {
-                            panTo({
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude,
-                            });
                             const currentPosition = {
                                 lat: position.coords.latitude,
                                 lng: position.coords.longitude
                             }
+                            panTo(currentPosition);
                             setCurrentPosition(currentPosition);
                         },
                         () => null
@@ -79,28 +115,33 @@ const ChargingStationMap = () =>{
             clearSuggestions,
         } = usePlacesAutocomplete({
             requestOptions: {
-                location: { lat: () => 37.553818, lng: () => 126.886020 },
-                radius: 200 * 1000,
+                location: { lat: () => 37.553818, lng: () => 126.886020 },// 검색할때의 이 지점에서부터 찾는?
+                radius: 200 * 1000,//검색 반경
             },
         });
+        // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
         const handleInput = (e) => {
+            // Update the keyword of the input element
             setValue(e.target.value);
         };
 
         const handleSelect = async (address) => {
+            // When user selects a place, we can replace the keyword without request data from API
+            // by setting the second parameter as "false"
             setValue(address, false);
+            //Calling the method will clear and reset all the properties of the suggestions object to default. It's useful for dismissing the dropdown.
+            //메소드를 호출하면 suggestions객체 의 모든 속성이 지워지고 기본값으로 재설정됩니다 .
             clearSuggestions();
 
             try {
                 const results = await getGeocode({ address });
+                // console.log(results[0]) formatted address, compo 전부 가져옴
                 const { lat, lng } = await getLatLng(results[0]);
+                const postal_code = await getZipCode(results[0],false)
                 panTo({ lat, lng });
-                const searchLocation = {
-                    lat: lat,
-                    lng: lng
-                }
-                setSearchLocation(searchLocation);
+                setSelectedPc(postal_code)
+                setSearchLocation({ lat, lng });
             } catch (error) {
                 console.log("😱 Error: ", error);
             }
@@ -163,6 +204,7 @@ const ChargingStationMap = () =>{
                                 zoom={8}
                                 center={center}
                                 options={options}
+                                onClick={onMapClick}
                                 onLoad={onMapLoad}
                             >
                                 {
@@ -171,44 +213,54 @@ const ChargingStationMap = () =>{
                                             key={i}
                                             position={{lat:store.x_value, lng:store.y_value}}
                                             onClick={()=>setSelected(store)}
-                                            icon={
-                                                { url : "https://image.flaticon.com/icons/svg/2555/2555024.svg",
-                                                    scaledSize : new window.google.maps.Size(40,40)}
-                                            }
-
+                                            icon={{
+                                                    url : "https://image.flaticon.com/icons/svg/3198/3198588.svg",
+                                                    scaledSize : new window.google.maps.Size(40,40)
+                                            }}
                                         />
                                     ))
                                 }
                                 {
-                                    selected.x_value && (
+                                    selected.x_value ? (
                                         <InfoWindow
                                             position={{lat:selected.x_value, lng:selected.y_value}}
                                             clickable={true}
                                             onCloseClick={()=>setSelected({})}
                                         >
                                             <div className="infowindow">
-                                                <p>{selected.unit_name}</p>
-                                                {/*<img src={selected.image} className="small-image" alt="rental"/><br/><br/>*/}
-                                                <p>충전기 타입: {selected.charger_type}</p>
-                                                <p>상태: {selected.charger_state}</p>
-                                                <p>주소: {selected.address}</p>
-                                                <p>운영시간: {selected.business_hours}</p>
-                                                <p>관리부서: {selected.agency_name}</p>
-                                                <p>연락처: {selected.phone}</p>
-                                                <button onClick={()=>bookmark(selected.charging_station_id)}>북마크</button>
-                                                <button onClick={()=>deleteBookmark(selected.charging_station_id)}>북마크삭제</button>
+                                                <MDBCol>
+                                                    <MDBCard>
+                                                        <MDBCardBody>
+                                                            <MDBCardTitle><h3>{selected.unit_name}</h3></MDBCardTitle><br/>
+                                                            <MDBCardText>
+                                                                <h4>충전기 타입: {selected.charger_type}</h4><br/>
+                                                                <h4>상태: {selected.charger_state}</h4><br/>
+                                                                <h4>주소: {selected.address}</h4><br/>
+                                                                <h4>운영시간: {selected.business_hours}</h4><br/>
+                                                                <h4>관리부서: {selected.agency_name}</h4><br/>
+                                                                <h4>연락처: {selected.phone}</h4><br/>
+                                                            </MDBCardText>
+                                                            <MDBBtn color="secondary" onClick={()=>bookmark(selected.charging_station_id)}>북마크</MDBBtn>
+                                                            <MDBBtn color="warning" onClick={()=>deleteBookmark(selected.charging_station_id)}>북마크삭제</MDBBtn>
+                                                        </MDBCardBody>
+                                                    </MDBCard>
+                                                </MDBCol>
                                             </div>
                                         </InfoWindow>
-                                    )
+                                    ) :null
                                 }
                                 {
                                     currentPosition.lat ?
                                         <Marker
                                             position={currentPosition}
-                                            icon={
-                                                { url : "https://image.flaticon.com/icons/svg/2536/2536611.svg",
-                                                    scaledSize : new window.google.maps.Size(40,40)}
-                                            }
+                                            onClick={() => {
+                                                setSelected(currentPosition)
+                                                setInfoShow(true)
+                                            }}
+                                            icon={{
+                                                    url : "https://image.flaticon.com/icons/svg/3198/3198517.svg",
+                                                    scaledSize : new window.google.maps.Size(40,40)
+                                            }}
                                         />
                                         :null
                                 }
@@ -216,12 +268,56 @@ const ChargingStationMap = () =>{
                                     searchLocation.lat ?
                                         <Marker
                                             position={searchLocation}
-                                            icon={
-                                                { url : "https://image.flaticon.com/icons/svg/2948/2948278.svg",
-                                                    scaledSize : new window.google.maps.Size(40,40)}
-                                            }
+                                            onClick={() => {
+                                                setSelected(searchLocation)
+                                                setInfoShow(true)
+                                            }}
+                                            icon={{
+                                                url : "https://image.flaticon.com/icons/svg/3198/3198467.svg",
+                                                scaledSize : new window.google.maps.Size(40,40)
+                                            }}
                                         />
                                         :null
+                                }
+                                {
+                                    markers.map((marker) => (
+                                        <Marker
+                                            key={`${marker.lat}-${marker.lng}`}
+                                            position={{ lat: marker.lat, lng: marker.lng }}
+                                            onClick={() => {
+                                                setSelected(marker);
+                                                setInfoShow(true)
+                                            }}
+                                            icon={{
+                                                url: `https://image.flaticon.com/icons/svg/3198/3198591.svg`,
+                                                scaledSize: new window.google.maps.Size(40, 40),
+                                            }}
+                                        />
+                                    ))
+                                }
+                                {
+                                    infoShow ? (
+                                        <InfoWindow
+                                            position={{ lat: selected.lat, lng: selected.lng }}
+                                            onCloseClick={() => {setInfoShow(false);}}
+                                            clickable={true}
+                                        >
+                                            <div>
+                                                <MDBCol>
+                                                    <MDBCard>
+                                                        <MDBCardBody>
+                                                            <MDBCardText>
+                                                                <h3><span>우편번호 </span></h3><br/>
+                                                                <h4>{selectedPc} </h4><br/>
+                                                                <h3><span>주소</span></h3><br/>
+                                                                <h4>{selectedAddr} </h4>
+                                                            </MDBCardText>
+                                                        </MDBCardBody>
+                                                    </MDBCard>
+                                                </MDBCol>
+                                            </div>
+                                        </InfoWindow>
+                                    ) : null
                                 }
                             </GoogleMap>
                         </div>

@@ -6,7 +6,7 @@ import axios from "axios"
 
 
 
-const Register = () =>  {
+const Register = ({ history }) =>  {
 
     const [userId, setUserId] = useState('')
     const [password, setPassword] = useState('')
@@ -33,7 +33,7 @@ const Register = () =>  {
             name: name,
             ssn: year.concat("-",month,"-",day),
             sex: sex,
-            address: addr.concat(" ",addr2)
+            address: addr.concat(" ",addr2),
     }
     const allChk = (e) =>{
         e.preventDefault()
@@ -167,7 +167,7 @@ const Register = () =>  {
                                         </div>
                                         <div className="form-row">
                                             <Link to={`${process.env.PUBLIC_URL}/pages/login`}>
-                                                <button type="submit" className="btn btn-solid" onClick={postInfo} aria-disabled={allChk}>가입하기</button>
+                                                <button type="submit" className="btn btn-solid" onClick={ ()=> postInfo} aria-disabled={allChk}>가입하기</button>
                                             </Link>
                                         </div>
                                     </form>

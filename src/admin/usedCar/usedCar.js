@@ -1,5 +1,5 @@
 import React from 'react'
-import {Breadcrumb} from '../common'
+import {AdminBreadcrumb} from '../common'
 import data from '../../assets/data/listPages';
 import {Datatable} from '../common';
 
@@ -14,7 +14,7 @@ const usedCarReducer = ( state={}, action ) => {
 export const UsedCar = () => {
         return (
             <>
-                <Breadcrumb title="중고차 현황" parent="Pages" />
+                <AdminBreadcrumb title="중고차 현황" />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">

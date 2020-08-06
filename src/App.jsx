@@ -13,7 +13,6 @@ import {ToastContainer} from "react-toastify";
 
 const App = (props) => {
     const [admin,setAdmin] = useState(false);
-    // const toggleAdmin = () => setAdmin(!admin)
     const result = useSelector(state=>state.adminCheckReducer)
     useEffect(()=>{
         setAdmin(result.check)

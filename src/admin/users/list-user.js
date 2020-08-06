@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Breadcrumb} from '../common';
+import {AdminBreadcrumb} from '../common';
 import data from '../../assets/data/listUser';
 import {Datatable} from '../common'
 import axios from 'axios'
@@ -35,7 +35,7 @@ export const List_user = () => {
 
         return (
             <>
-                <Breadcrumb title="사용자 현황" parent="Users" />
+                <AdminBreadcrumb title="사용자 현황" parent="Users" />
                 <div className="container-fluid">
                     <div className="card">
                         <div className="card-header">

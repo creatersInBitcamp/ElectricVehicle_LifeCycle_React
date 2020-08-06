@@ -1,7 +1,8 @@
-import React,{useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import myData from './data/data-charging-station';
 import 'react-table/react-table.css';
 import ReactTable from "react-table";
+import {useSelector} from "react-redux";
 
 
 function Capitalize(str) {
@@ -11,6 +12,7 @@ function Capitalize(str) {
 const TableChargingStation = () => {
     const [searchInput, setSearchInput] = useState("")
     const [data,setData] = useState(myData)
+
     const columns=[]
     for (var key in myData[0]) {
         if ((key === 'unit_name') || (key === 'charger_type') || (key === 'address')
@@ -51,40 +53,39 @@ const TableChargingStation = () => {
             globalSearch();
         }
     }
-
     return (
-        <>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-sm-12">
-                        <div className="card">
-                            <div className="card-header">
-                                <h5>충전소 찾기</h5>
-                            </div>
-                            <input
-                                size="large"
-                                name="searchInput"
-                                value={searchInput || ""}
-                                onChange={handleChange}
-                                onKeyPress={kepressChange}
-                                placeholder=" 검색어 입력후 enter를 눌러주세요"
-                            />
-                            <div className="card-body">
-                                <div id="batchDelete" className="transactions">
-                                    <ReactTable
-                                        data={data}
-                                        columns={columns}
-                                        defaultPageSize={20}
-                                        showPagination={true}
-                                    />
+            <>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h5>충전소 찾기</h5>
+                                </div>
+                                <input
+                                    size="large"
+                                    name="searchInput"
+                                    value={searchInput || ""}
+                                    onChange={handleChange}
+                                    onKeyPress={kepressChange}
+                                    placeholder=" 검색어 입력후 enter를 눌러주세요"
+                                />
+                                <div className="card-body">
+                                    <div id="batchDelete" className="transactions">
+                                        <ReactTable
+                                            data={data}
+                                            columns={columns}
+                                            defaultPageSize={20}
+                                            showPagination={true}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
-    );
-};
+            </>
+        );
+}
 
 export default TableChargingStation

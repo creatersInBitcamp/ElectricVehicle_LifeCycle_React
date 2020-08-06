@@ -1,5 +1,5 @@
 import React from 'react'
-import {Breadcrumb} from '../common';
+import {AdminBreadcrumb} from '../common';
 import data from '../../assets/data/orders';
 import {Datatable} from '../common'
 
@@ -14,7 +14,7 @@ const ordersReducer = ( state, action ) => {
 export const Orders = () => {
         return (
             <>
-                <Breadcrumb title="판매현황" parent="Sales" />
+                <AdminBreadcrumb title="판매현황" parent="Sales" />
 
                 <div className="container-fluid">
                     <div className="row">

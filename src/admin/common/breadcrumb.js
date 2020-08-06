@@ -10,7 +10,7 @@ const breadcrumbReducer = (state={}, action) => {
     }
 }
 
-export const Breadcrumb = (props) => {
+export const AdminBreadcrumb = (props) => {
 
         return (
                 <div className="container-fluid">

@@ -1,29 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {Link, useRouteMatch} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import Slider from 'react-slick';
 import Breadcrumb from '../common/breadcrumb';
-import {addToCart} from "../cart/cartReducer";
-import {removeFromUsedCompare} from '../usedCompare/usedcompareReducer'
+import {removeFromUsedCompare} from './usedcompareReducer'
 import {MarketPrice} from "../usedPurchase";
 
-const MyCarComparison = (props) => {
-    const [quantity, setQuantity] = useState('')
-    // const {Items, symbol} = useSelector(state=>({
-    //     Items: state.usedcompare.items,
-    //     symbol: state.data.symbol
-    // }))
-    const {params} = props.match
-
-    const match = useRouteMatch(`/used-car/comparison/:id`)
-    const {symbol, item} = useSelector((state) => {
-        let productId = match.params.id
-        return {
-            item: state.usedcompare.items.find(el => el.id == productId),
-            symbol: state.data.symbol
-        }
-    })
+const MyCarComparison = () => {
+    const {symbol, Items} = useSelector((state) => ({
+        Items: state.usedcompare.items,
+        symbol: state.data.symbol
+    }))
 
     const dispatch = useDispatch()
 
@@ -59,13 +47,15 @@ const MyCarComparison = (props) => {
         ]
     };
 
-    const changeQty = e => {
-        setQuantity(parseInt(e.target.value))
+    const test = () => {
+        console.log({Items})
     }
+
     return <>
         <div>
+            {test()}
             <Breadcrumb title={'Compare'} />
-            {item ?
+            {Items.length>0 ?
                 <section className="compare-section section-b-space">
                     <div className="container">
                         <div className="row">
@@ -123,7 +113,7 @@ const MyCarComparison = (props) => {
                                             <a className="btn btn-solid" onClick={()=>{dispatch(addToCart(item, 1))}}>add to cart</a>
                                         </div>*/}
                                     </div>
-                                    {item.map((item,index) =>
+                                    {Items.map((item,index) =>
                                         <div key={index}>
                                             <div className="compare-part">
                                                 <button type="button" className="close-btn" onClick={()=>{dispatch(removeFromUsedCompare(item))}}>
@@ -131,12 +121,17 @@ const MyCarComparison = (props) => {
                                                 </button>
                                                 <div className="img-secton">
                                                     <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
-                                                        <img src={item.variants?
-                                                            item.variants[0].images
-                                                            :item.pictures[0]} className="img-fluid" alt="" />
                                                         <h5>{item.name}</h5>
                                                     </Link>
                                                     <h5>{symbol}{item.price}</h5>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>name</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.name}</p>
+                                                    </div>
                                                 </div>
                                                 <div className="detail-part">
                                                     <div className="title-detail">

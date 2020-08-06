@@ -1,6 +1,5 @@
 import React from 'react';
 import Breadcrumb from "../../common/breadcrumb";
-import {Link} from 'react-router-dom';
 import {posts} from '../data'
 import Recent from "./recent";
 import Media from "./media";
@@ -20,9 +19,7 @@ const ClassicBoardMain = () => {
                                     <div className="theme-card">
                                         <h4>Recent Post</h4>
                                         <ul className="recent-blog">
-                                            {
-                                                posts.map( post => (<Recent post={post} key={post.postId}/>) )
-                                            }
+                                            {posts.map( post => (<Recent post={post} key={post.postId}/>) )}
                                         </ul>
                                     </div>
                                     <div className="theme-card">

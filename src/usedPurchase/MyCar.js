@@ -21,15 +21,11 @@ const MyCar = props => {
     const onCloseModal = () => {
         setOpen(false)
     }
-
-    const handleSubmit = e => {
-        // alert('value: ' + value)
-        // e.preventDefault()
-    }
     const handleChange = e => {
         // alert('value: ' + value)
         console.log(e.target.value)
         setTargetId(e.target.value)
+        console.log(targetId)
     }
     const onClickSubmit = e => {
         console.log(e.target.value)
@@ -41,12 +37,14 @@ const MyCar = props => {
     }
     const onClickRedirect = () => {
         setRedirect(true)
+        console.log(targetId)
     }
-    const renderRedirect = e => {
-        if(redirect===true){
-            dispatch(addToUsedCompare(targetId))
-            return <Link to={`${process.env.PUBLIC_URL}/used-car/comparison/${targetId}`} />
+    const renderRedirect = () => {
+        if(redirect===true && targetId!==0){
+            dispatch(()=>{addToUsedCompare(targetId)})
+            return <Redirect to={`${process.env.PUBLIC_URL}/used-car/comparison/${targetId}`} />
         }
+
     }
 
     const dispatch = useDispatch()
@@ -79,7 +77,7 @@ const MyCar = props => {
                                     <h2>내 차량과 비교하기</h2>
                                     <div className="border-product">
                                         <h6 className="product-title">관심상품</h6>
-                                        <form onSubmit={handleSubmit}>
+                                        <form>
                                             <select onChange={handleChange}>
                                                 <option value="default">상품을 선택해주세요.</option>
                                                 {

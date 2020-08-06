@@ -5531,6 +5531,11 @@ component-inherit@0.0.3:
   resolved "https://registry.yarnpkg.com/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
   integrity sha1-ZF/ErfWLcrZJ1crmUTVhnbJv8UM=
 
+component-will-mount-hook@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/component-will-mount-hook/-/component-will-mount-hook-1.0.2.tgz#620fa000b1ad0053886b6c9221eff42ed8e8a734"
+  integrity sha512-o7xEpfJ4RveThNT0xJ/3+zuBPaJxBmtG+ZmmzHy2KUfMU+v5PSo8hKKg0vb0f4rU0bhdyvrQHWwREd+Z9GwhgA==
+
 compose-function@3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/compose-function/-/compose-function-3.0.3.tgz#9ed675f13cc54501d30950a486ff6a7ba3ab185f"

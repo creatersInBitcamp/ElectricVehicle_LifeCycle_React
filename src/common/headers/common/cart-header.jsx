@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom'
 const CartHeader  = ({item, total, symbol, removeFromCart}) => (
     <li >
         <div className="media">
-            <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
+            <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>
                 <img alt="" className="mr-3" src={`${item.pictures[0]}`} />
             </Link>
             <div className="media-body">
-                <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
+                <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>
                     <h4>{item.name}</h4>
                 </Link>
                 <h4>

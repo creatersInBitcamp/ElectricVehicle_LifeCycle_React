@@ -2,6 +2,7 @@ import React, {Component, useEffect, useState} from 'react';
 import {connect, useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import useComponentWillMount from 'component-will-mount-hook'
 import {addToCart} from '../../cart/cartReducer'
 import {addToWishlist} from '../../wishlist/wishlistReducer'
 import {addToCompare} from '../../compare/compareReducer'
@@ -12,11 +13,16 @@ const ProductListing = props => {
     const [limit, setLimit] = useState(5)
     const [hasMoreItems, setHasMoreItems] = useState(true)
 
-    useEffect(state=>{
+    const {products, symbol} = useSelector(state=>({
+        products: getVisibleproducts(state.data, state.filters),
+        symbol: state.data.symbol,
+    }))
+
+    useComponentWillMount(()=>{
         fetchMoreItems()
     })
 
-    const fetchMoreItems = () => {
+    function fetchMoreItems (){
         if (limit >= products.length) {
             setHasMoreItems(false)
             return;
@@ -25,14 +31,8 @@ const ProductListing = props => {
         setTimeout(() => {
             setLimit(limit+5);
         }, 3000);
-
-
     }
 
-    const {products, symbol} = useSelector(state=>({
-        products: getVisibleproducts(state.data, state.filters),
-        symbol: state.data.symbol,
-    }))
 
     const dispatch = useDispatch()
     return (

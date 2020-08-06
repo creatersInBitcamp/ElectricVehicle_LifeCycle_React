@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { IntlActions } from 'react-redux-multilingual'
 import Pace from 'react-pace-progress'
+import useComponentWillMount from 'component-will-mount-hook'
 
 // Import custom components
 import store from "../../store";
@@ -15,14 +16,15 @@ import {useDispatch} from "react-redux";
 const HeaderOne = props =>{
 	const [isLoading, setIsLoading] = useState(false)
 	const [open, setOpen] = useState(false)
-
+	useComponentWillMount(()=> {
+		window.addEventListener('scroll', handleScroll)
+	});
 	useEffect(() => {
 		setTimeout(function() {
 			document.querySelector(".loader-wrapper").style = "display: none";
 		}, 2000);
 		setOpen(true);
 
-		window.addEventListener('scroll', handleScroll)
 		return () => {
 			window.removeEventListener('scroll', handleScroll)
 		}

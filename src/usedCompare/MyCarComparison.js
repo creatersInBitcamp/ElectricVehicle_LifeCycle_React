@@ -20,7 +20,7 @@ const MyCarComparison = (props) => {
     const {symbol, item} = useSelector((state) => {
         let productId = match.params.id
         return {
-            item: state.data.products.find(el => el.id == productId),
+            item: state.usedcompare.items.find(el => el.id == productId),
             symbol: state.data.symbol
         }
     })
@@ -65,7 +65,7 @@ const MyCarComparison = (props) => {
     return <>
         <div>
             <Breadcrumb title={'Compare'} />
-            {item.length>0 ?
+            {item ?
                 <section className="compare-section section-b-space">
                     <div className="container">
                         <div className="row">

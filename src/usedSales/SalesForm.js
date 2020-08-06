@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import Breadcrumb from "../common/breadcrumb";
-import MyCar from "../usedPurchase/MyCar";
-import {MDBBadge, MDBContainer, MDBModal, MDBModalBody, MDBModalHeader} from "mdbreact";
 
 export const SalesForm = () => {
     const [userName, setUserName] = useState('')

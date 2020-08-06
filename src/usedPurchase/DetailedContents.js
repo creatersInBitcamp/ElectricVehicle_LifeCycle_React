@@ -1,8 +1,7 @@
 import React from "react";
-// import '@fontawesome/fontawesome-free/css/all.min.css';
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import MarketPrice from "./MarketPrice";
-import {MDBContainer, MDBRating, MDBTable, MDBTableBody, MDBTableHead} from "mdbreact";
+import {MDBTable, MDBTableBody, MDBTableHead} from "mdbreact";
 
 const DetailedContents = () => {
     return <>
@@ -91,26 +90,7 @@ const DetailedContents = () => {
                                     <td>김수빈</td>
                                 </MDBTableBody>
                             </MDBTable>
-                            {/* 거래자 */}
-                            <form className="theme-form mt-4">
-                                <div className="form-row">
-                                    <MDBContainer>
-                                        <h6>판매자와의 거래를 평가해주세요!</h6>
-                                        <MDBRating
-                                            iconFaces
-                                            fillClassName='black-text'
-                                            iconRegular
-                                        />
-                                    </MDBContainer>
-                                    <div className="col-md-12">
-                                        <textarea className="form-control" placeholder="Write Your Trading Experience Here" id="exampleFormControlTextarea1" rows="6"/>
-                                    </div>
-                                    <div className="col-md-12">
-                                        <button className="btn btn-solid" type="submit">Submit YOur DetailContents</button>
-                                    </div>
-                                </div>
-                            </form>
-                            {/* 비거래자 */}
+                            {/* 댓글 쓰기 */}
                             <form className="theme-form mt-4">
                                 <div className="form-row">
                                     <h6>궁금한 점이 있다면 물어보세요!</h6>

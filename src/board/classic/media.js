@@ -6,8 +6,8 @@ const Media = ({post}) => {
         <>
             <div className="col-xl-6">
                 <div className="blog-left">
-                    <Link to={`${process.env.PUBLIC_URL}/board/details`} >
-                        <img src={post.img} className="img-fluid" alt=""/>
+                    <Link to={`${process.env.PUBLIC_URL}/board/details/${post.postId}`}>
+                        <img src={post.img} className="img-fluid" alt="대표이미지" />
                     </Link>
                 </div>
             </div>
@@ -15,7 +15,7 @@ const Media = ({post}) => {
                 <div className="blog-right">
                     <div>
                         <h6>{post.date}</h6>
-                        <Link to={`${process.env.PUBLIC_URL}/blog/details`} ><h4>you how all this mistaken idea of denouncing pleasure
+                        <Link to={`${process.env.PUBLIC_URL}/board/details`} ><h4>you how all this mistaken idea of denouncing pleasure
                             and praising pain was born.</h4></Link>
                         <ul className="post-social">
                             <li>Posted By : {post.name}</li>

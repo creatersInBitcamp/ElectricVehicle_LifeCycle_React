@@ -128,7 +128,7 @@ const Root =()=> {
 
                                 {/*board*/}
                                 <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
-                                <Route path={`${process.env.PUBLIC_URL}/board/details/:postId`} component={ClassicBoardDetails}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/details/:post`} component={ClassicBoardDetails}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />

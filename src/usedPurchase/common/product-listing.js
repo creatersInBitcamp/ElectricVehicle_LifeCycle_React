@@ -18,11 +18,15 @@ const ProductListing = props => {
         symbol: state.data.symbol,
     }))
 
-    useComponentWillMount(()=>{
+    /*useComponentWillMount(()=>{
+        fetchMoreItems()
+    })*/
+
+    useEffect(()=>{
         fetchMoreItems()
     })
 
-    function fetchMoreItems (){
+    const fetchMoreItems = () =>{
         if (limit >= products.length) {
             setHasMoreItems(false)
             return;
@@ -31,8 +35,6 @@ const ProductListing = props => {
         setTimeout(() => {
             setLimit(limit+5);
         }, 3000);
-
-
     }
 
     const dispatch = useDispatch()

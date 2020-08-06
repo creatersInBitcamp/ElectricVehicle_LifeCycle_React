@@ -18,11 +18,15 @@ const ProductListing = props => {
         symbol: state.data.symbol,
     }))
 
-    useComponentWillMount(()=>{
+    /*useComponentWillMount(()=>{
+        fetchMoreItems()
+    })*/
+
+    useEffect(()=>{
         fetchMoreItems()
     })
 
-    function fetchMoreItems (){
+    const fetchMoreItems = () =>{
         if (limit >= products.length) {
             setHasMoreItems(false)
             return;

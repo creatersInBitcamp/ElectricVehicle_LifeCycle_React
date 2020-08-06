@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Breadcrumb} from '../common';
+import {AdminBreadcrumb} from '../common';
 import Modal from 'react-responsive-modal';
 import 'react-toastify/dist/ReactToastify.css';
 import data from '../../assets/data/category';
@@ -28,7 +28,7 @@ export const ElecCar = () => {
     };
         return (
             <>
-                <Breadcrumb title="전기차" parent="Physical" />
+                <AdminBreadcrumb title="전기차" parent="Physical" />
                 {/* <!-- Container-fluid starts--> */}
                 <div className="container-fluid">
                     <div className="row">

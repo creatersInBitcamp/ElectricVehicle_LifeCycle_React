@@ -2,7 +2,7 @@ import React from 'react'
 
 import designer from '../../assets/images/dashboard/designer.jpg';
 import {Tabset_profile} from './';
-import {Breadcrumb} from '../common';
+import {AdminBreadcrumb} from '../common';
 
 const profileTypes = {REQUEST: 'profile/REQUEST'}
 const profileReducer = ( state={}, action ) => {
@@ -15,7 +15,7 @@ const profileReducer = ( state={}, action ) => {
 export const Profile = () => {
         return (
             <>
-                <Breadcrumb title="Profile" parent="Settings" />
+                <AdminBreadcrumb title="Profile" parent="Settings" />
                  <div className="container-fluid">
                 <div className="row">
                     <div className="col-xl-4">

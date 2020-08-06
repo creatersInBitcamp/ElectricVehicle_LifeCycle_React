@@ -1,5 +1,5 @@
 import React from 'react';
-import {Breadcrumb} from '../common/breadcrumb';
+import {AdminBreadcrumb} from '../common/breadcrumb';
 import { Line, Bar } from 'react-chartjs-2';
 import { lineChart, chartOptions, areaChart, areaOptions, barOptions, barChart, sellOption, sellData, salesOption, salesData } from '../../atomic/constants/chartData'
 import {Report_table} from './';
@@ -15,7 +15,7 @@ const reportsReducer = ( state={}, action ) => {
 export const Reports = () => {
         return (
             <>
-                <Breadcrumb title="보고서" parent="Reports" />
+                <AdminBreadcrumb title="보고서" parent="Reports" />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-xl-8 col-md-6">

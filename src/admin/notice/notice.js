@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Breadcrumb, Image} from '../common';
+import {AdminBreadcrumb, Image} from '../common';
 
 const list_menuTypes = {REQUEST: 'list_menu/REQUEST'}
 const list_menuReducer = ( state={}, action ) => {
@@ -19,7 +19,7 @@ export const Notice = () => {
     }
         return (
             <>
-                <Breadcrumb title="공지사항" parent="Menu" />
+                <AdminBreadcrumb title="공지사항" parent="Menu" />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">

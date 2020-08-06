@@ -1,5 +1,5 @@
 import React from 'react'
-import {Breadcrumb} from '../common';
+import {AdminBreadcrumb} from '../common';
 import {Datatable} from '../common'
 import data from '../../assets/data/media';
 
@@ -14,7 +14,7 @@ const communityReducer = ( state={}, action ) => {
 export const Community = () => {
         return (
             <>
-                <Breadcrumb title="커뮤니티" parent="Community" />
+                <AdminBreadcrumb title="커뮤니티" parent="Community" />
                 <div className="container-fluid bulk-cate">
                     <div className="card">
                         <div className="card-header">

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Breadcrumb} from './common';
+import {AdminBreadcrumb} from './common';
 import { Navigation, Box, MessageSquare, Users, Briefcase, CreditCard, ShoppingCart, Calendar } from 'react-feather';
 import CountUp from 'react-countup';
 import { Chart } from "react-google-charts";
@@ -161,7 +161,7 @@ export const Dashboard = () => {
         return (
 
             <>
-                <Breadcrumb title="종합현황" parent="Dashboard" />
+                <AdminBreadcrumb title="종합현황" parent="Dashboard" />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-xl-3 col-md-6 xl-50">

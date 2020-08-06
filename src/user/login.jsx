@@ -41,7 +41,7 @@ const Login = () => {
                                     <p>Sign up for a free account at our store. Registration is quick and easy. It
                                         allows you to be able to order from our shop. To start shopping click
                                         register.</p>
-                                    <a className="btn btn-solid">Create an Account</a><br/><br/><br/>
+                                    <Link to={`${process.env.PUBLIC_URL}/pages/register`}><a className="btn btn-solid">Create an Account</a></Link><br/><br/><br/>
                                     <Link to={`${process.env.PUBLIC_URL}/pages/forgot`}><a className="btn btn-solid">Forgot Password</a></Link>
                                 </div>
                             </div>

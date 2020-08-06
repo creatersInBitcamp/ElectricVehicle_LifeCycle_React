@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
+import useComponentWillMount from "component-will-mount-hook/es6/useComponentWillMount";
 
 const NavBar = () => {
     const [navClose, setNavClose] = useState({right: '0px'})
-    useEffect(() => {
+
+    useComponentWillMount(()=>{
         if (window.innerWidth < 750) {
             setNavClose({right: '-410px'})
         }
@@ -12,6 +14,15 @@ const NavBar = () => {
             setNavClose({right: '-300px'})
         }
     })
+
+    /*useEffect(() => {
+        if (window.innerWidth < 750) {
+            setNavClose({right: '-410px'})
+        }
+        if (window.innerWidth < 1199) {
+            setNavClose({right: '-300px'})
+        }
+    })*/
 
     const openNav = () => {
         console.log('open')

@@ -5,7 +5,7 @@ import Breadcrumb from "../common/breadcrumb";
 import {AdminBreadcrumb} from "../admin/common"
 import SightsMap from "./sights-map"
 import BookmarkMap from "./bookmark-map";
-import Transactions_sales from "./table-charging-station";
+import TableChargingStation from "./table-charging-station";
 import {useSelector} from "react-redux";
 
 const SpecialProducts = () => {
@@ -48,7 +48,7 @@ const SpecialProducts = () => {
                             </TabPanel>
                             <TabPanel>
                                 <div className=" no-slider row">
-                                    <Transactions_sales/>
+                                    <TableChargingStation/>
                                 </div>
                             </TabPanel>
                             <TabPanel>
@@ -90,7 +90,7 @@ const SpecialProducts = () => {
                             </TabPanel>
                             <TabPanel>
                                 <div className=" no-slider row">
-                                    <Transactions_sales/>
+                                    <TableChargingStation/>
                                 </div>
                             </TabPanel>
                             <TabPanel>

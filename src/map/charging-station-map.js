@@ -21,8 +21,8 @@ const options = {
     zoomControl: true,
 };
 const center = {
-    lat: 36.620505,
-    lng: 128.001429,
+    lat: 36.582921,
+    lng: 128.075400
 };
 
 const ChargingStationMap = () =>{
@@ -38,28 +38,6 @@ const ChargingStationMap = () =>{
     const [selectedAddr, setSelectedAddr]= useState("")
     const [selectedPc,setSelectedPc] = useState("")
     const [infoShow, setInfoShow]= useState(false)
-
-    Geocode.setApiKey(MAP_KEY);
-    Geocode.setLanguage('ko')
-    Geocode.fromLatLng(selected.lat,selected.lng).then(
-        response => {
-            console.log(response)
-            const address = response.results[0].formatted_address
-            const length = response.results[0].address_components.length
-            const postcode = response.results[0].address_components[length-1].long_name
-            console.log(postcode.indexOf('-'))
-            if(postcode.indexOf('-') != -1){ //결과값이 없으면 -1 반환
-                setSelectedPc(postcode)
-            }else{
-                setSelectedPc("정보없음")
-            }
-            setSelectedAddr(address)
-            console.log(address);
-        },
-        error => {
-            console.error(error);
-        }
-    );
 
     const mapRef = useRef();
     const onMapLoad = useCallback((map) => {
@@ -80,6 +58,30 @@ const ChargingStationMap = () =>{
             },
         ]);
     }, []);
+
+    const geocode = async (marker) => {
+        Geocode.setApiKey(MAP_KEY);
+        Geocode.setLanguage('ko')
+        Geocode.fromLatLng(marker.lat,marker.lng).then(
+            response => {
+                console.log(response)
+                const address = response.results[0].formatted_address
+                const length = response.results[0].address_components.length
+                const postcode = response.results[0].address_components[length-1].long_name
+                console.log(postcode.indexOf('-'))
+                if(postcode.indexOf('-') != -1){ //결과값이 없으면 -1 반환
+                    setSelectedPc(postcode)
+                }else{
+                    setSelectedPc("정보없음")
+                }
+                setSelectedAddr(address)
+                console.log(address);
+            },
+            error => {
+                console.error(error);
+            }
+        );
+    };
 
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
@@ -115,22 +117,17 @@ const ChargingStationMap = () =>{
             clearSuggestions,
         } = usePlacesAutocomplete({
             requestOptions: {
-                location: { lat: () => 37.553818, lng: () => 126.886020 },// 검색할때의 이 지점에서부터 찾는다
+                location: { lat: () => 36.582921, lng: () => 128.075400 },// 검색할때의 이 지점에서부터 찾는다
                 radius: 200 * 1000,//검색 반경
             },
         });
-        // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
         const handleInput = (e) => {
-            // Update the keyword of the input element
             setValue(e.target.value);
         };
 
         const handleSelect = async (address) => {
-            // When user selects a place, we can replace the keyword without request data from API by setting the second parameter as "false"
             setValue(address, false);
-            //Calling the method will clear and reset all the properties of the suggestions object to default. It's useful for dismissing the dropdown.
-            //메소드를 호출하면 suggestions객체 의 모든 속성이 지워지고 기본값으로 재설정됩니다 .
             clearSuggestions();
 
             try {
@@ -138,6 +135,7 @@ const ChargingStationMap = () =>{
                 const { lat, lng } = await getLatLng(results[0]);
                 const postal_code = await getZipCode(results[0],false)
                 panTo({ lat, lng });
+                setSelectedAddr(address)
                 setSelectedPc(postal_code)
                 setSearchLocation({ lat, lng });
             } catch (error) {
@@ -252,6 +250,7 @@ const ChargingStationMap = () =>{
                                         <Marker
                                             position={currentPosition}
                                             onClick={() => {
+                                                geocode(currentPosition)
                                                 setSelected(currentPosition)
                                                 setInfoShow(true)
                                             }}
@@ -267,6 +266,7 @@ const ChargingStationMap = () =>{
                                         <Marker
                                             position={searchLocation}
                                             onClick={() => {
+                                                geocode(searchLocation)
                                                 setSelected(searchLocation)
                                                 setInfoShow(true)
                                             }}
@@ -278,11 +278,12 @@ const ChargingStationMap = () =>{
                                         :null
                                 }
                                 {
-                                    markers.map((marker) => (
+                                    markers.map((marker,i) => (
                                         <Marker
-                                            key={`${marker.lat}-${marker.lng}`}
+                                            key={i}
                                             position={{ lat: marker.lat, lng: marker.lng }}
                                             onClick={() => {
+                                                geocode(marker)
                                                 setSelected(marker);
                                                 setInfoShow(true)
                                             }}
@@ -305,9 +306,9 @@ const ChargingStationMap = () =>{
                                                     <MDBCard>
                                                         <MDBCardBody>
                                                             <MDBCardText>
-                                                                <h3><span>우편번호 </span></h3><br/>
+                                                                <h3>우편번호</h3><br/>
                                                                 <h4>{selectedPc} </h4><br/>
-                                                                <h3><span>주소</span></h3><br/>
+                                                                <h3>주소</h3><br/>
                                                                 <h4>{selectedAddr} </h4>
                                                             </MDBCardText>
                                                         </MDBCardBody>

@@ -20,8 +20,8 @@ const options = {
     zoomControl: true,
 };
 const center = {
-    lat: 36.620505,
-    lng: 128.001429,
+    lat: 36.8728622,
+    lng: 128.0718825
 };
 const charging_station = [
     {
@@ -177,28 +177,6 @@ const BookmarkMap = () =>{
     const [selectedPc,setSelectedPc] = useState("")
     const [infoShow, setInfoShow]= useState(false)
 
-    Geocode.setApiKey(MAP_KEY);
-    Geocode.setLanguage('ko')
-    Geocode.fromLatLng(selected.lat,selected.lng).then(
-        response => {
-            console.log(response)
-            const address = response.results[0].formatted_address
-            const length = response.results[0].address_components.length
-            const postcode = response.results[0].address_components[length-1].long_name
-            console.log(postcode.indexOf('-'))
-            if(postcode.indexOf('-') != -1){ //결과값이 없으면 -1 반환
-                setSelectedPc(postcode)
-            }else{
-                setSelectedPc("정보없음")
-            }
-            setSelectedAddr(address)
-            console.log(address);
-        },
-        error => {
-            console.error(error);
-        }
-    );
-
     const mapRef = useRef();
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
@@ -218,6 +196,30 @@ const BookmarkMap = () =>{
             },
         ]);
     }, []);
+
+    const geocode = async (marker) => {
+        Geocode.setApiKey(MAP_KEY);
+        Geocode.setLanguage('ko')
+        Geocode.fromLatLng(marker.lat,marker.lng).then(
+            response => {
+                console.log(response)
+                const address = response.results[0].formatted_address
+                const length = response.results[0].address_components.length
+                const postcode = response.results[0].address_components[length-1].long_name
+                console.log(postcode.indexOf('-'))
+                if(postcode.indexOf('-') != -1){ //결과값이 없으면 -1 반환
+                    setSelectedPc(postcode)
+                }else{
+                    setSelectedPc("정보없음")
+                }
+                setSelectedAddr(address)
+                console.log(address);
+            },
+            error => {
+                console.error(error);
+            }
+        );
+    };
 
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
@@ -422,6 +424,7 @@ const BookmarkMap = () =>{
                                         <Marker
                                             position={currentPosition}
                                             onClick={() => {
+                                                geocode(currentPosition)
                                                 setSelected(currentPosition)
                                                 setInfoShow(true)
                                             }}
@@ -437,6 +440,7 @@ const BookmarkMap = () =>{
                                         <Marker
                                             position={searchLocation}
                                             onClick={() => {
+                                                geocode(searchLocation)
                                                 setSelected(searchLocation)
                                                 setInfoShow(true)
                                             }}
@@ -453,6 +457,7 @@ const BookmarkMap = () =>{
                                             key={`${marker.lat}-${marker.lng}`}
                                             position={{ lat: marker.lat, lng: marker.lng }}
                                             onClick={() => {
+                                                geocode(marker)
                                                 setSelected(marker);
                                                 setInfoShow(true)
                                             }}

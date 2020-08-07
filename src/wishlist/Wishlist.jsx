@@ -10,9 +10,9 @@ const wishlist = () => {
         symbol: state.data.symbol
     }))
 
-    const changeQty = e => {
-        this.setState({ quantity: parseInt(e.target.value) })
-    }
+    // const changeQty = e => {
+    //     this.setState({ quantity: parseInt(e.target.value) })
+    // }
 
     const dispatch = useDispatch()
     return <>
@@ -41,7 +41,7 @@ const wishlist = () => {
                                                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>
                                                         <img src={item.variants?
                                                             item.variants[0].images
-                                                            :item.pictures[0]} alt="" />
+                                                            :item.pictures[0]} alt="item" />
                                                     </Link>
                                                 </td>
                                                 <td><Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>{item.name}</Link>
@@ -109,7 +109,7 @@ const wishlist = () => {
                             <div className="col-sm-12">
                                 <div >
                                     <div className="col-sm-12 empty-cart-cls text-center">
-                                        <img src={`${process.env.PUBLIC_URL}/assets/images/empty-wishlist.png`} className="img-fluid mb-4" alt="" />
+                                        <img src={`${process.env.PUBLIC_URL}/assets/images/empty-wishlist.png`} className="img-fluid mb-4" alt="router tag" />
                                         <h3>
                                             <strong>WhishList is Empty</strong>
                                         </h3>

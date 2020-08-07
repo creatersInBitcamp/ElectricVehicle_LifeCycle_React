@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
-
 const ProductListItem = props => {
     const [image] = useState('')
     return <>

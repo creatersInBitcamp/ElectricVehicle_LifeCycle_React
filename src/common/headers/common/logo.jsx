@@ -9,7 +9,7 @@ const logoStyle = {
 const LogoImage = props => {
     return <Link to={`${process.env.PUBLIC_URL}/`} >
         {/*<img src={`${process.env.PUBLIC_URL}/assets/images/icon/${props.logo}`} alt="" className="img-fluid" />*/}
-        <img src={Logo} style={logoStyle} />
+        <img src={Logo} style={logoStyle} alt="team logo"/>
     </Link>
 }
 

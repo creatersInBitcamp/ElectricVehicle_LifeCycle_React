@@ -22,7 +22,9 @@ export const Image = () => {
             withIcon={true}
             buttonText='이미지를 선택하세요'
             onChange={onDrop}
-            imgExtension={['.jpg', '.gif','.png']}
+            withPreview={true}
+            withLabel={true}
+            imgExtension={['.jpg','.jpeg', '.gif','.png']}
             />
         )
 }

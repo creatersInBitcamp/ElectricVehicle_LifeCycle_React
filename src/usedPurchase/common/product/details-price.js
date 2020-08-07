@@ -1,7 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom'
-import Slider from 'react-slick';
-import Modal from 'react-responsive-modal';
 import MarketPrice from "../../MarketPrice";
 
 
@@ -21,36 +19,22 @@ const DetailsWithPrice = props => {
         });
     }, []);
 
-    const { open, quantity, stock, nav3 } = state;
-
-    const {symbol, item, addToCartClicked, BuynowClicked, addToWishlistClicked} = props
-
-
-    const colorsnav = {
-        slidesToShow: 6,
-        swipeToSlide: true,
-        arrows: false,
-        dots: false,
-        focusOnSelect: true
-    };
-
     return (
         <div className="col-lg-6 rtl-text">
             <div className="product-right">
-                <h2> {item.name} </h2>
-                <h3>{symbol}{item.price} </h3>
+                <h2> {props.item.name} </h2>
+                <h3>{props.symbol}{props.item.price} </h3>
                 <div className="product-description border-product">
                     <div className="qty-box">
                         <MarketPrice/>
                     </div>
                 </div>
                 <div className="product-buttons" >
-                    <a className="btn btn-solid" onClick={() => addToCartClicked(props.item, quantity)}>add to cart</a>
-                    <Link to={`${process.env.PUBLIC_URL}/checkout`} className="btn btn-solid" onClick={() => BuynowClicked(props.item, quantity)} >buy now</Link>
+                    <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`} className="btn btn-solid">purchase request</Link>
                 </div>
                 <div className="border-product">
                     <div className="product-icon">
-                        <button className="wishlist-btn" onClick={() => addToWishlistClicked(props.item)}><i
+                        <button className="wishlist-btn" onClick={() => props.addToWishlistClicked(props.item)}><i
                             className="fa fa-heart"/><span
                             className="title-font">Add To WishList</span>
                         </button>
@@ -58,7 +42,7 @@ const DetailsWithPrice = props => {
                 </div>
                 <div className="border-product">
                     <h6 className="product-title">product details</h6>
-                    <p>{item.shortDetails}</p>
+                    <p>{props.item.shortDetails}</p>
                 </div>
             </div>
         </div>

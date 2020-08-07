@@ -68,7 +68,7 @@ const NavBar = () => {
                             </div>
                         </li>
                         <li>
-                            <Link to="#" className="nav-link" onClick={handleSubmenu}>
+                            <Link to={`${process.env.PUBLIC_URL}/new-car/collection`} className="nav-link" >
                                 {translate('new_car')}
                                 <span className="sub-arrow"/>
                             </Link>
@@ -78,7 +78,7 @@ const NavBar = () => {
                             </ul>
                         </li>
                         <li>
-                            <Link to="#" className="nav-link" onClick={handleSubmenu}>
+                            <Link to={`${process.env.PUBLIC_URL}/used-car/collection`} className="nav-link" >
                                 {translate('used_car')}
                                 <span className="sub-arrow"/>
                             </Link>
@@ -94,7 +94,7 @@ const NavBar = () => {
                             </ul>
                         </li>
                         <li>
-                            <Link to="#" className="nav-link" onClick={handleSubmenu}>
+                            <Link to={`${process.env.PUBLIC_URL}/service`} className="nav-link">
                                 {translate('map')}
                                 <span className="sub-arrow"/>
                             </Link>

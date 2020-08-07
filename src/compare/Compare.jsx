@@ -8,7 +8,7 @@ import {removeFromCompare} from './compareReducer'
 
 /* component */
 const Compare = () => {
-    const [quantity, setQuantity] = useState('')
+    // const [quantity, setQuantity] = useState('')
     const {Items, symbol} = useSelector(state=>({
         Items: state.compare.items,
         symbol: state.data.symbol
@@ -48,9 +48,9 @@ const Compare = () => {
         ]
     };
 
-    const changeQty = e => {
-        setQuantity(parseInt(e.target.value))
-    }
+    // const changeQty = e => {
+    //     setQuantity(parseInt(e.target.value))
+    // }
 
     return <>
         <div>

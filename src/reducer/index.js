@@ -21,9 +21,11 @@ import usedcompareReducer from "../usedCompare/usedcompareReducer";
 // import admincheckReducer from "../admin/auth/admincheckReducer";
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {adminCheckReducer} from "../admin/auth/loginTabset";
+import boardReducer from "../board/boardReducer";
 
 
 const rootReducer = combineReducers({
+        boardReducer,
         headerReducer, breadcrumbReducer, datatableReducer,
         footerReducer, imageReducer,sidebarReducer, sidebarMenusReducer, communityReducer, elecCarReducer, list_menuReducer,
         reportsReducer, report_tableReducer, ordersReducer, profileReducer, tabset_profileReducer,

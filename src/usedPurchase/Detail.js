@@ -16,14 +16,6 @@ import {addToCart} from "../cart/cartReducer";
 import {addToCartUnsafe} from "../cart/cartReducer";
 import {addToUsedWishlist} from "../usedWishlist/usedwishlistReducer";
 
-/* type */
-
-/* action */
-
-
-/* reducer */
-
-
 const productDetail = () => {
     const [state, setState] = useState({ nav1: null, nav2: null });
     const slider1 = useRef();

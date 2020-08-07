@@ -83,7 +83,8 @@ export const user = {
         },
     ]
 }
-export const posts = [
+export const posts =
+[
     {
         postId: 1,
         userId: "tedd911",

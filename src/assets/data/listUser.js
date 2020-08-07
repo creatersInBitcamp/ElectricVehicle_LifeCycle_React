@@ -9,7 +9,7 @@ import user from '../images/dashboard/user.png'
 export const data = [
     {
         id: "1",
-        avtar: <img src={user5} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user5} style={{ width: 50, height: 50 }} alt="profile" />,
         f_name: "Rowan",
         l_name: "Torres",
         email: "Rowan.torres@gmail.com",
@@ -18,7 +18,7 @@ export const data = [
     },
     {
         id: "2",
-        avtar: <img src={user3} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user3} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Alonzo",
         l_name: "Perez",
         email: "Perez.Alonzo@gmail.com",
@@ -27,7 +27,7 @@ export const data = [
     },
     {
         id: "3",
-        avtar: <img src={user1} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user1} style={{ width: 50, height: 50 }} alt="profile" />,
         f_name: "Skylar",
         l_name: "Lane",
         email: "Lane.Skylar@gmail.com",
@@ -36,7 +36,7 @@ export const data = [
     },
     {
         id: "4",
-        avtar: <img src={boy2} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={boy2} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Brody",
         l_name: "Gray",
         email: "Gray.Brody@gmail.com",
@@ -45,7 +45,7 @@ export const data = [
     },
     {
         id: "5",
-        avtar: <img src={designer} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={designer} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Colton",
         l_name: "Clay",
         email: "Colton.Clay@gmail.com",
@@ -54,7 +54,7 @@ export const data = [
     },
     {
         id: "6",
-        avtar: <img src={user} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Maxine",
         l_name: "Woters",
         email: "woters.maxine@gmail.com",
@@ -63,7 +63,7 @@ export const data = [
     },
     {
         id: "7",
-        avtar: <img src={user3} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user3} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Alonzo",
         l_name: "Perez",
         email: "Perez.Alonzo@gmail.com",
@@ -72,7 +72,7 @@ export const data = [
     },
     {
         id: "8",
-        avtar: <img src={user1} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user1} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Skylar",
         l_name: "Lane",
         email: "Lane.Skylar@gmail.com",
@@ -81,7 +81,7 @@ export const data = [
     },
     {
         id: "9",
-        avtar: <img src={boy2} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={boy2} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Brody",
         l_name: "Gray",
         email: "Gray.Brody@gmail.com",
@@ -90,7 +90,7 @@ export const data = [
     },
     {
         id: "10",
-        avtar: <img src={designer} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={designer} style={{ width: 50, height: 50 }} alt="profile" />,
         f_name: "Colton",
         l_name: "Clay",
         email: "Colton.Clay@gmail.com",
@@ -99,7 +99,7 @@ export const data = [
     },
     {
         id: "11",
-        avtar: <img src={user} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Maxine",
         l_name: "Woters",
         email: "woters.maxine@gmail.com",
@@ -108,7 +108,7 @@ export const data = [
     },
     {
         id: "12",
-        avtar: <img src={user3} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user3} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Alonzo",
         l_name: "Perez",
         email: "Perez.Alonzo@gmail.com",
@@ -117,7 +117,7 @@ export const data = [
     },
     {
         id: "13",
-        avtar: <img src={user1} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user1} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Skylar",
         l_name: "Lane",
         email: "Lane.Skylar@gmail.com",
@@ -126,7 +126,7 @@ export const data = [
     },
     {
         id: "14",
-        avtar: <img src={boy2} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={boy2} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Brody",
         l_name: "Gray",
         email: "Gray.Brody@gmail.com",
@@ -135,7 +135,7 @@ export const data = [
     },
     {
         id: "15",
-        avtar: <img src={designer} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={designer} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Colton",
         l_name: "Clay",
         email: "Colton.Clay@gmail.com",
@@ -144,7 +144,7 @@ export const data = [
     },
     {
         id: "16",
-        avtar: <img src={user5} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user5} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Rowan",
         l_name: "Torres",
         email: "Rowan.torres@gmail.com",
@@ -153,7 +153,7 @@ export const data = [
     },
     {
         id: "17",
-        avtar: <img src={user3} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user3} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Alonzo",
         l_name: "Perez",
         email: "Perez.Alonzo@gmail.com",
@@ -162,7 +162,7 @@ export const data = [
     },
     {
         id: "18",
-        avtar: <img src={user1} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={user1} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Skylar",
         l_name: "Lane",
         email: "Lane.Skylar@gmail.com",
@@ -171,7 +171,7 @@ export const data = [
     },
     {
         id: "19",
-        avtar: <img src={boy2} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={boy2} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Brody",
         l_name: "Gray",
         email: "Gray.Brody@gmail.com",
@@ -180,7 +180,7 @@ export const data = [
     },
     {
         id: "20",
-        avtar: <img src={designer} style={{ width: 50, height: 50 }} />,
+        avtar: <img src={designer} style={{ width: 50, height: 50 }} alt="profile"/>,
         f_name: "Colton",
         l_name: "Clay",
         email: "Colton.Clay@gmail.com",

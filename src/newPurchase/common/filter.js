@@ -8,7 +8,7 @@ import {getBrands, getColors, getMinMaxPrice} from '../../atomic/services';
 import {filterBrand, filterColor, filterPrice} from '../../filters'
 
 const Filter = () => {
-    const [openFilter, setOpenFilter] = useState(false)
+    // const [openFilter, setOpenFilter] = useState(false)
 
     const { brands, colors, prices, filters } = useSelector(state=>({
         brands: getBrands(state.data.products),

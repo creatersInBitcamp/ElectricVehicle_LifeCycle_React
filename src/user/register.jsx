@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import Breadcrumb from "../common/breadcrumb";
 import PostCode from "../common/postCode";
 import {Link} from "react-router-dom";
+import axios from "axios"
 
 
 
-const Register = () =>  {
-    const [userInfo, setUserInfo] = useState([])
+const Register = ({ history }) =>  {
+
     const [userId, setUserId] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
@@ -16,23 +17,58 @@ const Register = () =>  {
     const [sex, setSex] = useState('')
     const [addr, setAddr] = useState('')
     const [addr2, setAddr2] = useState('')
+    const [passwordCheck, setPasswordCheck] = useState('')
 
-    const findInfo = (e) => {
-        e.preventDefault()
-        setUserInfo({
+    const [passwordConfirm, setPasswordConfirm] = useState(false)
+    const [passwordError, setPasswordError] = useState(false)
+    const [idOverlap, setIdOverlap] = useState(false)
+    const [idConfirm, setIdConfirm] = useState(false)
+    const [mustId, setMustId] = useState(false)
+    const [mustPw, setMustPw] = useState(false)
+    const [mustSex, setMustSex] = useState(false)
+
+    const userInfo =  {
             userId: userId,
             password: password,
             name: name,
             ssn: year.concat("-",month,"-",day),
             sex: sex,
-            address: addr.concat(" ",addr2)
-        })
+            address: addr.concat(" ",addr2),
+    }
+    const allChk = (e) =>{
+        e.preventDefault()
+        return !mustId && !mustPw && !mustSex
+    }
+    axios.post()
+
+    const postInfo = (e) => {
+        e.preventDefault()
         console.log(userInfo)
     }
 
     const setAddress = (addr) =>{
         setAddr(addr)
     }
+
+    const onChangeIdChk = useCallback((e) => {
+        setMustId('' === e.target.value)
+        setIdOverlap('123' === e.target.value)
+        setIdConfirm('123' !== e.target.value)
+        setUserId(e.target.value)
+    },[userId])
+
+    const onChangePasswordChk = useCallback((e) => {
+        setMustPw('성별' === e.target.value)
+        setPasswordError(password !== e.target.value)
+        setPasswordConfirm(password === e.target.value)
+        setPasswordCheck(e.target.value)
+    },[passwordCheck])
+
+    const onChangeSexChk = useCallback((e) => {
+        setMustSex('' === e.target.value)
+        setSex(e.target.value)
+    },[sex])
+
         return (
             <div>
                 <Breadcrumb title={'회원가입'}/>
@@ -47,58 +83,68 @@ const Register = () =>  {
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">아이디</label>
-                                                <input type="text" className="form-control" id="fname"
-                                                       onChange={(e)=>{setUserId(e.target.value)}} placeholder="아이디" required="" />
+                                                <input type="text" className="form-control"
+                                                       onChange={onChangeIdChk} placeholder="아이디" required="" />
+                                                {idOverlap && <div style={{color: 'red'}}>중복된 아이디입니다.</div>}
+                                                {!mustId && idConfirm && <div style={{color: 'green'}}>가능한 아이디입니다.</div>}
+                                                {mustId && <div style={{color: 'red'}}>반드시 필요한 항목입니다.</div>}
+                                                <br/>
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">비밀번호</label>
-                                                <input type="password" className="form-control" id="fname"
+                                                <input type="password" className="form-control"
                                                        onChange={(e)=>{setPassword(e.target.value)}} placeholder="비밀번호" required="" />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">비밀번호 재확인</label>
-                                                <input type="password" className="form-control" id="fname"
-                                                       placeholder="비밀번호 재확인" required="" />
+                                                <input type="password" className="form-control" value={passwordCheck}
+                                                       onChange={onChangePasswordChk} placeholder="비밀번호 재확인" required="" />
+                                                {!mustPw && passwordError && <div style={{color:'red'}}>비밀번호가 일치하지 않습니다.</div>}
+                                                {passwordConfirm && <div style={{color:'green'}}>비밀번호가 일치합니다.</div>}
+                                                {mustPw && <div style={{color: 'red'}}>반드시 필요한 항목입니다.</div>}
+                                                <br/>
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">이름</label>
-                                                <input type="text" className="form-control" id="fname"
+                                                <input type="text" className="form-control"
                                                        onChange={(e)=>{setName(e.target.value)}} placeholder="이름" required="" />
                                             </div>
                                         </div>
                                         <div className="form-row">
-                                            <div className="col-md-1">
+                                            <div className="col-md-2">
                                                 <label htmlFor="email">연도</label>
-                                                <input type="text" className="form-control" id="fname"
+                                                <input type="text" className="form-control"
                                                        onChange={(e)=>{setYear(e.target.value)}} placeholder="년(4자)" required="" maxLength="4"/>
                                             </div>
-                                            <div className="col-md-1">
+                                            <div className="col-md-2">
                                                 <label htmlFor="email">월</label>
-                                                <input type="text" className="form-control" id="fname"
-                                                       onChange={(e)=>{setMonth(e.target.value)}}placeholder="월" required="" maxLength="2" />
+                                                <input type="text" className="form-control"
+                                                       onChange={(e) => {setMonth(e.target.value)}} placeholder="월" required="" maxLength="2" />
                                             </div>
-                                            <div className="col-md-1">
+                                            <div className="col-md-2">
                                                 <label htmlFor="email">일</label>
-                                                <input type="text" className="form-control" id="fname"
+                                                <input type="text" className="form-control"
                                                        onChange={(e)=>{setDay(e.target.value)}} placeholder="일" required="" maxLength="2" />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-1">
                                                 <label htmlFor="email">성별</label>
-                                                <select type="text" className="form-control" id="fname"
-                                                        onChange={(e)=>{setSex(e.target.value)}} placeholder="성별" required="" >
+                                                <select className="form-control"
+                                                        onChange={onChangeSexChk} placeholder="성별" required="" >
                                                     <option>성별</option>
                                                     <option>남</option>
                                                     <option>여</option>
                                                 </select>
                                                 <br/>
+                                                {mustSex && <div style={{color: 'red'}}>반드시 필요한 항목입니다.</div>}
+                                                <br/><br/>
                                             </div>
                                         </div>
                                         <div className="form-row">
@@ -120,7 +166,9 @@ const Register = () =>  {
                                             </div>
                                         </div>
                                         <div className="form-row">
-                                            <Link to={`${process.env.PUBLIC_URL}/pages/login`}><button className="btn btn-solid" onClick={findInfo}>가입하기</button></Link>
+                                            <Link to={`${process.env.PUBLIC_URL}/pages/login`}>
+                                                <button type="submit" className="btn btn-solid" onClick={ ()=> postInfo} aria-disabled={allChk}>가입하기</button>
+                                            </Link>
                                         </div>
                                     </form>
                                 </div>

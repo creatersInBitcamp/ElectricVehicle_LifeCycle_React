@@ -40,7 +40,7 @@ export const CollectionLeftSidebar = () => {
                                                 <ul className="recent-blog">
                                                     {
                                                         posts.map(post => {
-                                                            if (post.postId < 6) {
+                                                            if (post.postId < 5) {
                                                                 return (
                                                                     <Recent post={post} key={post.postId}/>
                                                                 )

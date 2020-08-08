@@ -18,6 +18,7 @@ export const addToWishlistUnsafe = (product) => ({
     type: ADD_TO_WISHLIST,
     product
 });
+
 export const removeFromWishlist = product_id => (dispatch) => {
     toast.error("Item Removed from Wishlist");
     dispatch({

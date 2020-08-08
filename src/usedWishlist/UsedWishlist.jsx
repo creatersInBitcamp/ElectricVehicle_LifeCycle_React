@@ -22,11 +22,10 @@ const UsedWishlist = () => {
                                 <table className="table cart-table table-responsive-xs">
                                     <thead>
                                     <tr className="table-head">
-                                        <th scope="col">#</th>
                                         <th scope="col">image</th>
                                         <th scope="col">product name</th>
                                         <th scope="col">price</th>
-                                        <th scope="col">availability</th>
+                                        <th scope="col">purchase</th>
                                         <th scope="col">action</th>
                                     </tr>
                                     </thead>
@@ -34,9 +33,6 @@ const UsedWishlist = () => {
                                         return (
                                             <tbody key={index}>
                                             <tr>
-                                                <td>
-                                                    <input type={"checkbox"}/>
-                                                </td>
                                                 <td>
                                                     <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
                                                         <img src={item.variants?
@@ -69,9 +65,9 @@ const UsedWishlist = () => {
                                                         </h2>
                                                     </div>
                                                 </td>
-                                                <td >
+                                                <td>
                                                     <div className="col-xs-3">
-                                                        <p>in stock</p>
+                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`} className="btn btn-solid">purchase request</Link>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -92,7 +88,6 @@ const UsedWishlist = () => {
                         <div className="row wishlist-buttons">
                             <div className="col-12">
                                 <Link to={`${process.env.PUBLIC_URL}/used-car/collection`} className="btn btn-solid">continue shopping</Link>
-                                <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`} className="btn btn-solid">check out</Link>
                             </div>
                         </div>
                     </div>

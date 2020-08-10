@@ -1,1 +1,0 @@
-export { Header, default as headerReducer} from './header'

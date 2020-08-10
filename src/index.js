@@ -47,15 +47,15 @@ import ClassicBoardDetails from "./board/page/classicBoard.details";
 
 
 // Admin
-import {Dashboard} from './admin';
-import {ElecCar} from './admin/elecCar';
-import {Orders} from './admin/sales';
-import {UsedCar} from './admin/usedCar';
-import {Community} from './admin/community';
-import {Notice} from './admin/notice';
-import {List_user} from './admin/users';
-import {Profile} from './admin/settings';
-import {Reports} from './admin/reports';
+import {Dashboard} from './admin/page';
+import {ElecCar} from './admin/page';
+import {Orders} from './admin/page';
+import {UsedCar} from './admin/page';
+import {Community} from './admin/page';
+import {Notice} from './admin/page';
+import {User} from './admin/page';
+import {Profile} from './admin/page';
+import {Reports} from './admin/page';
 
 //common
 import Search from './search/search'
@@ -135,7 +135,7 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/admin/usedCar`} component={UsedCar} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/community`} component={Community} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/notice`} component={Notice} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/users`} component={List_user} />
+                                <Route path={`${process.env.PUBLIC_URL}/admin/users`} component={User} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/reports`} component={Reports} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/userDetail`} component={Profile} />
                             </Layout>

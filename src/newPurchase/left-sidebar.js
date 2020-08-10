@@ -16,8 +16,8 @@ import DetailsTopTabs from "./common/details-top-tabs";
 import {addToCart} from "../cart/cartReducer";
 import {addToCartUnsafe} from "../cart/cartReducer";
 import {addToWishlist} from "../wishlist/wishlistReducer";
-import {posts} from "../board/data";
-import Recent from "../board/classic/recent";
+import {posts} from "../board/items/data";
+import Recent from "../board/items/recent";
 
 const LeftSideBar = () => {
     const [state, setState] = useState({ nav1: null, nav2: null });

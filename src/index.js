@@ -42,8 +42,8 @@ import mapBox from "./map/anothermap/mapBox"
 import mapNaver from "./map/anothermap/mapNaver"
 
 //board
-import ClassicBoardMain from "./board/classic/classicBoard.main";
-import ClassicBoardDetails from "./board/classic/classicBoard.details";
+import ClassicBoardMain from "./board/page/classicBoard.main";
+import ClassicBoardDetails from "./board/page/classicBoard.details";
 
 
 // Admin

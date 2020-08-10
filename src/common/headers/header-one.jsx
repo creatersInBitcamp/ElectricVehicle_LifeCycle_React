@@ -3,7 +3,7 @@ import { IntlActions } from 'react-redux-multilingual'
 import Pace from 'react-pace-progress'
 import useComponentWillMount from 'component-will-mount-hook'
 
-// Import custom components
+// Import custom items
 import store from "../../store";
 import NavBar from "./common/navbar";
 import SideBar from "./common/sidebar";

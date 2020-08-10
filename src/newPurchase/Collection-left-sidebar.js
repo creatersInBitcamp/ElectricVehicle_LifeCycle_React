@@ -8,8 +8,8 @@ import ProductListing from "./common/product-listing";
 import StickyBox from "react-sticky-box";
 import Slider from "react-slick";
 import {Link} from "react-router-dom";
-import {posts} from "../board/data";
-import Recent from "../board/classic/recent";
+import {posts} from "../board/items/data";
+import Recent from "../board/items/recent";
 
 export const CollectionLeftSidebar = () => {
     const [layoutColumns, setLayoutColumns] = useState(3)

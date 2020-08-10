@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import mapimg from '../assets/images/mainPage/mapimg.png'
 import communityimg from '../assets/images/mainPage/community.jpg'
 
-// Import custom components
+// Import custom items
 import TopCollection from './top-collection';
 import SpecialProducts from "./common/products";
 

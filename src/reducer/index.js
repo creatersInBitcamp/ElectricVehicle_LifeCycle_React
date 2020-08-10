@@ -20,7 +20,7 @@ import usedwishlistReducer from "../usedWishlist/usedwishlistReducer"
 import usedcompareReducer from "../usedCompare/usedcompareReducer";
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {adminCheckReducer} from "../user/login";
-import boardReducer from "../board/boardReducer";
+import boardReducer from "../board/items/boardReducer";
 
 
 const rootReducer = combineReducers({

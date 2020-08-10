@@ -12429,13 +12429,13 @@ r .top-header .header-dropdown li:nth-child(2) {
   height: 75vh;
 }
 .home-slider .home.home1, .center-slider .home.home1 {
-  background-image: url("/assets/images/home-banner/1.jpg");
+  background-image: url("/assets/images/home-banner/1.jpeg");
 }
 .home-slider .home.home2, .center-slider .home.home2 {
-  background-image: url("/assets/images/home-banner/2.jpg");
+  background-image: url("/assets/images/home-banner/2.jpeg");
 }
 .home-slider .home.home3, .center-slider .home.home3 {
-  background-image: url("/assets/images/home-banner/3.jpg");
+  background-image: url("/assets/images/home-banner/3.jpeg");
 }
 .home-slider .home.home4, .center-slider .home.home4 {
   background-image: url("/assets/images/home-banner/4.jpg");

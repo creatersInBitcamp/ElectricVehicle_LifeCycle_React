@@ -13,8 +13,7 @@ export const Notice = () => {
 
     const [picture, setPicture] = useState([])
 
-    const onDrop = (e, picture) => {
-        e.preventDefault()
+    const getPicture = (picture) => {
         setPicture(picture)
     }
         return (
@@ -26,7 +25,6 @@ export const Notice = () => {
                             <div className="card">
                                 <div className="card-header">
                                     <h5>공지사항</h5>
-                                    <img src={picture} alt="picture"/>
                                 </div>
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">

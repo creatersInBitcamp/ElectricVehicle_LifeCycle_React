@@ -10,11 +10,11 @@ const imageReducer = ( state={}, action ) => {
     }
 }
 
-export const Image = () => {
+export const Image = ({getPicture}) => {
     const [image, setImage] = useState([])
     const onDrop = (pictureFiles, pictureBase64) => {
         setImage(pictureFiles)
-        console.log(image)
+        getPicture(image)
     }
         return (
             <ImageUploader
@@ -23,7 +23,6 @@ export const Image = () => {
             buttonText='이미지를 선택하세요'
             onChange={onDrop}
             withPreview={true}
-            withLabel={true}
             imgExtension={['.jpg','.jpeg', '.gif','.png']}
             />
         )

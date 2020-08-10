@@ -18,9 +18,8 @@ import wishlistReducer from "../wishlist/wishlistReducer";
 import compareReducer from "../compare/compareReducer";
 import usedwishlistReducer from "../usedWishlist/usedwishlistReducer"
 import usedcompareReducer from "../usedCompare/usedcompareReducer";
-// import admincheckReducer from "../admin/auth/admincheckReducer";
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
-import {adminCheckReducer} from "../admin/auth/loginTabset";
+import {adminCheckReducer} from "../user/login";
 import boardReducer from "../board/boardReducer";
 
 

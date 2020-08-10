@@ -6,7 +6,7 @@ import axios from "axios"
 
 
 
-const Register = ({ history }) =>  {
+const Register = () =>  {
 
     const [userId, setUserId] = useState('')
     const [password, setPassword] = useState('')
@@ -27,34 +27,21 @@ const Register = ({ history }) =>  {
     const [mustPw, setMustPw] = useState(false)
     const [mustSex, setMustSex] = useState(false)
 
-    const userInfo =  {
-            userId: userId,
-            password: password,
-            name: name,
-            ssn: year.concat("-",month,"-",day),
-            sex: sex,
-            address: addr.concat(" ",addr2),
-    }
-    const allChk = (e) =>{
-        e.preventDefault()
-        return !mustId && !mustPw && !mustSex
-    }
-    axios.post()
-
-    const postInfo = (e) => {
-        e.preventDefault()
-        console.log(userInfo)
-    }
-
     const setAddress = (addr) =>{
         setAddr(addr)
     }
 
     const onChangeIdChk = useCallback((e) => {
-        setMustId('' === e.target.value)
-        setIdOverlap('123' === e.target.value)
-        setIdConfirm('123' !== e.target.value)
         setUserId(e.target.value)
+        console.log(userId)
+        axios.get(`http://localhost:8080/user/idCheck/${userId}`)
+            .then(res => {
+                setIdOverlap(res.data) // 같은 아이디가 있으면 ture
+                setIdConfirm(!res.data) // 같은 아이디가 없으면 true
+            }).catch(()=>{
+            alert("통신실패")
+        })
+        setMustId('' === e.target.value)
     },[userId])
 
     const onChangePasswordChk = useCallback((e) => {
@@ -68,6 +55,29 @@ const Register = ({ history }) =>  {
         setMustSex('' === e.target.value)
         setSex(e.target.value)
     },[sex])
+
+    const handleSubmit = e => {
+
+        e.preventDefault()
+
+        const userInfo =  {
+            userId: userId,
+            password: password,
+            name: name,
+            ssn: year.concat("-",month,"-",day),
+            sex: sex,
+            address: addr.concat(" ",addr2),
+        }
+        console.log(userInfo)
+        axios.post(`http://localhost:8080/user/register`, userInfo)
+            .then(res =>{
+                if(res.data) alert("회원가입성공")
+                console.log(res.data)
+            })
+            .catch(()=>{
+                alert("통신실패")
+            })
+    }
 
         return (
             <div>
@@ -154,20 +164,20 @@ const Register = ({ history }) =>  {
                                                 <PostCode setAddress={setAddress}/>
                                                 <br/>
                                                 <br/>
-                                                <input type="text" value={addr} className="form-control" id="fname"
+                                                <input type="text" value={addr} className="form-control"
                                                        placeholder="주소찾기로 검색해주세요." required="" readOnly/>
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">나머지 주소</label>
-                                                <input type="text" className="form-control" id="fname"
+                                                <input type="text" className="form-control"
                                                        onChange={(e)=>{setAddr2(e.target.value)}} placeholder="나머지 주소는 직접입력해 주세요." required="" />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <Link to={`${process.env.PUBLIC_URL}/pages/login`}>
-                                                <button type="submit" className="btn btn-solid" onClick={ ()=> postInfo} aria-disabled={allChk}>가입하기</button>
+                                                <button type="submit" className="btn btn-solid" onClick={handleSubmit} >가입하기</button>
                                             </Link>
                                         </div>
                                     </form>

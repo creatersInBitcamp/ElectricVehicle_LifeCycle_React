@@ -56,8 +56,6 @@ import {Notice} from './admin/notice';
 import {List_user} from './admin/users';
 import {Profile} from './admin/settings';
 import {Reports} from './admin/reports';
-import AdminLogin from "./admin/auth/adminlogin";
-import LoginTabset from "./admin/auth/loginTabset";
 
 //common
 import Search from './search/search'
@@ -140,8 +138,6 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/admin/users`} component={List_user} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/reports`} component={Reports} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/userDetail`} component={Profile} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/login`} component={AdminLogin} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/lgoinTabset`} component={LoginTabset} />
                             </Layout>
                         </Switch>
                     </ScrollContext>

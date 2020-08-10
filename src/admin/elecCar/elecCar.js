@@ -39,10 +39,10 @@ export const ElecCar = () => {
                                 </div>
                                 <div className="card-body">
                                     <div className="btn-popup pull-right">
-                                        <button type="button" className="btn btn-primary" onClick={onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Category</button>
+                                        <button type="button" className="btn btn-primary" onClick={onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">전기차 추가</button>
                                         <Modal open={open} onClose={onCloseModal} >
                                             <div className="modal-header">
-                                                <h5 className="modal-title f-w-600" id="exampleModalLabel2">Add Physical Product</h5>
+                                                <h5 className="modal-title f-w-600" id="exampleModalLabel2">전기차 리스트 추가</h5>
                                             </div>
                                             <div className="modal-body">
                                                 <form>

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Breadcrumb from "../../common/breadcrumb";
 import {posts} from '../data'
 import Recent from "./recent";
 import Media from "./media";
-const ClassicBoardMain = () => {
 
+const ClassicBoardMain = () => {
+        useEffect(()=>{
+            console.log('useEffect on')
+
+        })
         return (
             <div>
                 <Breadcrumb title={'Board'}/>

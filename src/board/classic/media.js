@@ -15,17 +15,13 @@ const Media = ({post}) => {
                 <div className="blog-right">
                     <div>
                         <h6>{post.date}</h6>
-                        <Link to={{pathname:`${process.env.PUBLIC_URL}/board/details/${post.postId}`, state: post}} ><h4>you how all this mistaken idea of denouncing pleasure
-                            and praising pain was born.</h4></Link>
+                        <Link to={{pathname:`${process.env.PUBLIC_URL}/board/details/${post.postId}`, state: post}} ><h4>titles</h4></Link>
                         <ul className="post-social">
                             <li>Posted By : {post.name}</li>
                             <li><i className="fa fa-heart"/> {post.hits} Hits</li>
                             <li><i className="fa fa-comments"/> {post.comments.length} Comment</li>
                         </ul>
-                        <p>Consequences that are extremely painful. Nor again is there anyone
-                            who loves or pursues or desires to obtain pain of itself, because it
-                            is pain, but because occasionally circumstances occur in which toil
-                            and pain can procure him some great pleasure.</p>
+                        <p>contents</p>
                     </div>
                 </div>
             </div>

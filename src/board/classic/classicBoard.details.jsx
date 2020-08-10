@@ -1,8 +1,6 @@
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom'
 import Breadcrumb from "../../common/breadcrumb";
-import PageNotFound from "../../common/404";
-import {posts} from '../data'
 
 const ClassicBoardDetails = () => {
         // const [post, setPost] = useState({})
@@ -24,25 +22,23 @@ const ClassicBoardDetails = () => {
         return (
             <div>
                 {/*Blog Details section*/}
-                {(true)?
                     <>
                     <Breadcrumb title={'Board - Details'}/>
                     <section className="blog-detail-page section-b-space">
                         <div className="container">
                             <div className="row">
                                 <div className="col-sm-12 blog-detail">
-                                    {/*<img src={post.img} className="img-fluid" alt=""/>*/}
-                                    <h3>{match}</h3>
+                                    {/*<img src={} className="img-fluid" alt=""/>*/}
+                                    <h3>title</h3>
                                     <ul className="post-social">
-                                        {/*<li>{post.dateTime}</li>*/}
-                                        {/*<li>Posted By :{post.name}</li>*/}
-                                        {/*<li><i className="fa fa-heart"/> {post.hits} Hits</li>*/}
-                                        {/*<li><i className="fa fa-comments"/> {post.comments.length} Comment</li>*/}
+                                        <li>작성시간</li>
+                                        <li>Posted By :작성자</li>
+                                        <li><i className="fa fa-heart"/>  Hits</li>
+                                        <li><i className="fa fa-comments"/> Comment</li>
                                     </ul>
                                     <div className="row">
-                                        <div className="col-sm-4">
-                                            {/*<p>{post.content}</p>*/}
-                                        </div>
+                                        <iframe src={"https://www.evpost.co.kr/wp/쏘울soul-ev-시승기-감성과-테크놀로지의-조화/"} width={1920} height={2000} sandbox></iframe>
+                                        {/*<iframe src={post.url} width={1920} height={2000} sandbox></iframe>*/}
                                     </div>
                                 </div>
                             </div>
@@ -66,6 +62,14 @@ const ClassicBoardDetails = () => {
                                                         vestibulum ex. </p>
                                                 </div>
                                             </div>
+                                            {/*<div className="media">*/}
+                                            {/*    <img src={comment.userProfile}*/}
+                                            {/*         alt="Generic placeholder image"/>*/}
+                                            {/*    <div className="media-body">*/}
+                                            {/*        <h6>{comment.userName} <span>( {comment.date} )</span></h6>*/}
+                                            {/*        <p> { comment.content } </p>*/}
+                                            {/*    </div>*/}
+                                            {/*</div>*/}
                                         </li>
                                     </ul>
                                 </div>
@@ -101,8 +105,6 @@ const ClassicBoardDetails = () => {
                         </div>
                     </section>
                     </>
-                    :
-                    <PageNotFound/>}
             </div>
         )
 }

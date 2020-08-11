@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Helmet} from 'react-helmet'
 import Breadcrumb from "../../common/breadcrumb";
-import NewProduct from "../../common/new-product";
 import {Filter,FilterBar,ProductListing} from "../items";
 import StickyBox from "react-sticky-box";
 import Slider from "react-slick";

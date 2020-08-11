@@ -33,7 +33,7 @@ return (result.length !== 0)?
         <div>
             {this.state.result.map((item,index) =>{
                 return<div key={index} style={{textAlign: 'center', marginTop: 20}}>
-                    <p>출발지: {item.startName} ==> 도착지: {item.arriveName} </p>
+                    <p>출발지: {item.startName} → 도착지: {item.arriveName} </p>
                     <p>1종: {item.typeOne}</p>
                     <p>2종: {item.typeTwo}</p>
                     <p>3종: {item.typeThree}</p>

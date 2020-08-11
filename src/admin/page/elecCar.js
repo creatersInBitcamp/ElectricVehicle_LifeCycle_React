@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {AdminBreadcrumb} from '../common';
 import Modal from 'react-responsive-modal';
 import 'react-toastify/dist/ReactToastify.css';
-import data from '../../assets/data/category';
 import carData from '../../atomic/constants/evdb_eccar.json'
 import {Datatable} from '../item';
 

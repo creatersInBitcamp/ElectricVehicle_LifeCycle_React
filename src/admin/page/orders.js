@@ -1,7 +1,5 @@
 import React from 'react'
 import {AdminBreadcrumb} from '../common';
-import data from '../../assets/data/orders';
-import {Datatable} from '../item'
 
 const ordersTypes = {REQUEST: 'orders/REQUEST'}
 const ordersReducer = ( state, action ) => {
@@ -24,13 +22,7 @@ export const Orders = () => {
                                     <h5>주문</h5>
                                 </div>
                                 <div className="card-body order-datatable">
-                                <Datatable
-                                            multiSelectOption={false}
-                                            myData={data}
-                                            pageSize={10}
-                                            pagination={true}
-                                            class="-striped -highlight"
-                                        />
+
                                 </div>
                             </div>
                         </div>

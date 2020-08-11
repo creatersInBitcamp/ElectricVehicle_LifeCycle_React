@@ -7,10 +7,10 @@ import useComponentWillMount from 'component-will-mount-hook'
 import store from "../../store";
 import NavBar from "./common/navbar";
 import SideBar from "./common/sidebar";
-import CartContainer from "../../cart/CartContainer";
+import {CartContainer} from "../../newCar/items";
 import TopBar from "./common/topbar";
 import LogoImage from "./common/logo";
-import {changeCurrency} from "../../currency/index";
+import {changeCurrency} from "../items/currency";
 import {useDispatch} from "react-redux";
 
 const HeaderOne = props =>{

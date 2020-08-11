@@ -1,22 +1,52 @@
 import React, {useEffect, useState,useRef} from 'react';
 import Slider from 'react-slick';
-import '../common/index.scss';
+import '../../common/index.scss';
 import {useDispatch, useSelector} from "react-redux";
 import { useRouteMatch } from 'react-router-dom';
 
 // import custom Components
-import NewProduct from "../common/new-product";
-import Breadcrumb from "../common/breadcrumb";
-import DetailsWithPrice from "./common/product/details-price";
-import ImageZoom from './common/product/image-zoom'
-import SmallImages from './common/product/small-image'
-import MyCar from "./MyCar";
-import DetailedContents from "./DetailedContents";
-import {addToCart,addToCartUnsafe} from "../newCar/page";
-import {addToUsedWishlist} from "../usedWishlist/usedwishlistReducer";
+import Breadcrumb from "../../common/breadcrumb";
+import {DetailsWithPrice,DetailsTopTabs,ImageZoom,SmallImages} from "../items";
+import {addToCart} from "./cartReducer";
+import {addToCartUnsafe} from "./cartReducer";
+import {addToWishlist} from "./wishlistReducer";
+import Recent from "../../board/items/recent";
 
-const productDetail = () => {
+const initinalState = [
+        {
+            postId: 1,
+            userId: "tedd911",
+            title: "쏘울(SOUL) EV 시승기 – 감성과 테크놀로지의 조화",
+            name: "이형태",
+            link: "https://www.evpost.co.kr/wp/쏘울soul-ev-시승기-감성과-테크놀로지의-조화/",
+            img: "https://d3jn14jkdoqvmm.cloudfront.net/wp/wp-content/uploads/2020/05/13112107/05-13-%ED%95%9C%EC%9A%A9%EB%8D%95-%EC%8F%98%EC%9A%B8-EV-%EC%8B%9C%EC%8A%B9%EA%B8%B0-%EA%B0%90%EC%84%B1%EA%B3%BC-%ED%85%8C%ED%81%AC%EB%86%80%EB%A1%9C%EC%A7%80%EC%9D%98-%EC%A1%B0%ED%99%94-696x365.jpg",
+            hits: 123,
+            like: 12,
+            content: 'post 글쓴이의 글',
+            comments: [
+                {
+                    commentId: 1,
+                    userId: 'wnsghk16',
+                    comment: '코멘트 출력 테스트'
+                },
+                {
+                    commentId: 2,
+                    userId: 'tedd911',
+                    comment: '코멘트 출력 테스트2'
+                },
+                {
+                    commentId: 3,
+                    userId: 'karkky',
+                    comment: '다시 연습 중.'
+                }
+            ],
+            dateTime: "time",
+        },
+    ]
+
+export const LeftSideBar = () => {
     const [state, setState] = useState({ nav1: null, nav2: null });
+    const [posts, setposts] = useState(initinalState)
     const slider1 = useRef();
     const slider2 = useRef();
 
@@ -29,7 +59,8 @@ const productDetail = () => {
 
     const { nav1, nav2 } = state;
 
-    const match = useRouteMatch('/used-car/product/:id')
+    const match = useRouteMatch('/new-car/product/:id')
+
     const {symbol, item} = useSelector((state) => {
         let productId = match.params.id
         return {
@@ -74,9 +105,27 @@ const productDetail = () => {
                                             <i className="fa fa-angle-left" aria-hidden="true"/> back
                                         </span>
                                     </div>
-                                    <MyCar/>
-                                    {/* post */}
-                                    {/* video */}
+                                    {/*side-bar single product slider start*/}
+                                    <div className="theme-card">
+                                        <h5 className="title-border">Recent Post</h5>
+                                        <Slider className="offer-slider slide-1">
+                                            <div className="theme-card">
+                                                <ul className="recent-blog">
+                                                    {
+                                                        posts.map(post => {
+                                                            if (post.postId < 5) {
+                                                                return (
+                                                                    <Recent post={post} key={post.postId}/>
+                                                                )
+                                                            }
+                                                            return null
+                                                        })
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </Slider>
+                                    </div>
+                                    {/*side-bar single product slider end*/}
                                 </div>
                                 <div className="col-lg-9 col-sm-12 col-xs-12">
                                     <div className="">
@@ -97,10 +146,10 @@ const productDetail = () => {
                                                 </Slider>
                                                 <SmallImages item={item} settings={productsnav} navOne={nav1} />
                                             </div>
-                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart(item,1))} BuynowClicked={()=>dispatch(addToCartUnsafe(item,1))} addToWishlistClicked={()=>dispatch(addToUsedWishlist(item))} />
+                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart(item,1))} BuynowClicked={()=>dispatch(addToCartUnsafe(item))} addToWishlistClicked={()=>dispatch(addToWishlist(item))} />
                                         </div>
                                     </div>
-                                    <DetailedContents item={item} />
+                                    <DetailsTopTabs item={item} />
                                 </div>
                             </div>
                         </div>
@@ -111,4 +160,4 @@ const productDetail = () => {
     </>
 }
 
-export default productDetail
+export default LeftSideBar

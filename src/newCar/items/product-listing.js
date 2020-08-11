@@ -1,12 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import React, {Component, useEffect, useState} from 'react';
+import {connect, useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {addToUsedWishlist} from '../../usedWishlist/usedwishlistReducer'
+import useComponentWillMount from 'component-will-mount-hook'
+import {addToCart} from '../page/cartReducer'
+import {addToWishlist} from '../page/wishlistReducer'
+import {addToCompare} from '../page/compareReducer'
 import {getVisibleproducts} from '../../atomic/services/services';
-import ProductListItem from "./product-list-item";
+import {ProductListItem} from "../items";
 
-const ProductListing = props => {
+export const ProductListing = props => {
     const [limit, setLimit] = useState(5)
     const [hasMoreItems, setHasMoreItems] = useState(true)
 
@@ -34,6 +37,7 @@ const ProductListing = props => {
         }, 3000);
     }
 
+
     const dispatch = useDispatch()
     return (
         <div>
@@ -55,7 +59,9 @@ const ProductListing = props => {
                                 { products.slice(0, limit).map((product, index) =>
                                     <div className={`${props.colSize===3?'col-xl-3 col-md-6 col-grid-box':'col-lg-'+props.colSize}`} key={index}>
                                     <ProductListItem product={product} symbol={symbol}
-                                                     onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(product))}}/>
+                                                     onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
+                                                     onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
+                                                     onAddToCartClicked={()=>dispatch(addToCart(product,1))} key={index}/>
                                     </div>)
                                 }
                             </div>

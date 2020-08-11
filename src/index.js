@@ -11,15 +11,8 @@ import './index.scss';
 import Layout from './App'
 import Main from './layouts/main';
 
-//car
-import wishlist from './wishlist/Wishlist'
-import Cart from "./cart/CartComponent";
-import checkOut from "./checkout";
-
 //new car
-import Compare from './compare/Compare'
-import CollectionLeftSidebar from "./newPurchase/Collection-left-sidebar";
-import LeftSideBar from "./newPurchase/left-sidebar";
+import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar/page'
 
 //used car
 import {productDetail, PurchaseRequest, UsedPurchaseCollection} from "./usedPurchase";
@@ -29,36 +22,18 @@ import {MyCarComparison} from "./usedCompare";
 import UsedWishlist from "./usedWishlist/UsedWishlist"
 
 //map
-import ChargingStationMap from "./map/charging-station-map";
-import MapService from './map/service'
-import SightsMap from "./map/sights-map";
-import BookmarkMap from "./map/bookmark-map";
-import TableChargingStation from "./map/table-charging-station";
-
-//other
-import googleMap from "./map/anothermap/googleMap";
-import map from "./map/anothermap/map"
-import mapBox from "./map/anothermap/mapBox"
-import mapNaver from "./map/anothermap/mapNaver"
+import {ChargingStationMap,SightsMap,TableChargingStation,BookmarkMap} from "./map/items";
+import MapService from './map/page/service'
 
 //board
 import ClassicBoardMain from "./board/page/classicBoard.main";
 import ClassicBoardDetails from "./board/page/classicBoard.details";
 
-
 // Admin
-import {Dashboard} from './admin/page';
-import {ElecCar} from './admin/page';
-import {Orders} from './admin/page';
-import {UsedCar} from './admin/page';
-import {Community} from './admin/page';
-import {Notice} from './admin/page';
-import {User} from './admin/page';
-import {Profile} from './admin/page';
-import {Reports} from './admin/page';
+import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Profile,Reports} from './admin/page';
 
 //common
-import Search from './search/search'
+import Search from './common/items/search'
 import Faq from "./common/faq";
 
 //user
@@ -67,7 +42,7 @@ import Register from './user/register'
 import ForgetPassword from "./user/forget-password";
 import MyAccount from "./user/myAccount";
 
-import { getAllProducts } from './product'
+import { getAllProducts } from './common/items/product'
 import store from "./store";
 import aboutUs from "./common/about-us";
 
@@ -99,7 +74,7 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/product/:id`} component={LeftSideBar}/>
                                 <Route path={`${process.env.PUBLIC_URL}/new-car/compare`} component={Compare}/>
                                 <Route path={`${process.env.PUBLIC_URL}/new-car/wishlist`} component={wishlist}/>
-                                <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
+                                <Route path={`${process.env.PUBLIC_URL}/cart`} component={CartComponent}/>
                                 <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
 
                                 {/*usedcar*/}
@@ -117,12 +92,6 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/service/map/sights`} component={SightsMap} />
                                 <Route exact path={`${process.env.PUBLIC_URL}/service/map/bookmark`} component={BookmarkMap} />
                                 <Route exact path={`${process.env.PUBLIC_URL}/service/table`} component={TableChargingStation} />
-
-                                {/*other map*/}
-                                <Route exact path={`${process.env.PUBLIC_URL}/othermap/google`} component={googleMap}/>
-                                <Route exact path={`${process.env.PUBLIC_URL}/othermap/map`} component={map}/>
-                                <Route exact path={`${process.env.PUBLIC_URL}/othermap/mapbox`} component={mapBox}/>
-                                <Route exact path={`${process.env.PUBLIC_URL}/othermap/naver`} component={mapNaver}/>
 
                                 {/*board*/}
                                 <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>

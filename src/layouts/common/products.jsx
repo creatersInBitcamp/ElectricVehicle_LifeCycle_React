@@ -1,11 +1,9 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {useDispatch, useSelector} from 'react-redux'
-import {getBestSeller, getMensWear, getWomensWear} from '../../atomic/services/index'
+import {getBestSeller, getMensWear, getWomensWear} from '../../atomic/services/services'
 import ProductItem from './product-item';
-import {addToCompare} from '../../compare/compareReducer'
-import {addToWishlist} from '../../wishlist/wishlistReducer'
-import {addToCart} from '../../cart/cartReducer'
+import {addToCompare,addToWishlist,addToCart} from '../../newCar/page'
 
 const SpecialProducts = () => {
     const {bestSeller,mensWear,womensWear,symbol} = useSelector(state=>({

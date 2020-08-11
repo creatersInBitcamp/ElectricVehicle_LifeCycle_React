@@ -7,7 +7,7 @@ import useComponentWillMount from 'component-will-mount-hook'
 import store from "../../store";
 import NavBar from "./common/navbar";
 import SideBar from "./common/sidebar";
-import {CartContainer} from "../../newCar/items";
+import {CartContainer} from "../../newCar";
 import TopBar from "./common/topbar";
 import LogoImage from "./common/logo";
 import {changeCurrency} from "../items/currency";

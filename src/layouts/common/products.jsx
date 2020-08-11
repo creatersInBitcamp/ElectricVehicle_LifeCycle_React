@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {useDispatch, useSelector} from 'react-redux'
 import {getBestSeller, getMensWear, getWomensWear} from '../../atomic/services/services'
 import ProductItem from './product-item';
-import {addToCompare,addToWishlist,addToCart} from '../../newCar/page'
+import {addToCompare,addToWishlist,addToCart} from '../../newCar'
 
 const SpecialProducts = () => {
     const {bestSeller,mensWear,womensWear,symbol} = useSelector(state=>({

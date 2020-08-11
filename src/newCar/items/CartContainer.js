@@ -24,7 +24,7 @@ export const CartContainer = () => {
                     <div>
                         <li>
                             <div className="total">
-                                <h5>subtotal : <span>{total}{symbol}</span></h5>
+                                <h5>subtotal : <span>{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h5>
                             </div>
                         </li>
                         <li>

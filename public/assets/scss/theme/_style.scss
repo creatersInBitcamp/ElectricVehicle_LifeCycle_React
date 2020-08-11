@@ -3848,7 +3848,7 @@ header {
         background-size: 36.77px 36.77px;
         @for $i from 1 through 15 {
           &.modal#{$i} {
-            // background-image:url("#{$assetspath}/modal-bg/#{$i}.jpg");
+             //background-image:url("#{$assetspath}/modal-bg/#{$i}.jpg");
           }
         }
         .modal-bg {

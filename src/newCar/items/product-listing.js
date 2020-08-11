@@ -3,9 +3,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useComponentWillMount from 'component-will-mount-hook'
-import {addToCart,addToWishlist,addToCompare} from '../page'
+import {addToCart,addToWishlist,addToCompare} from '../index'
 import {getVisibleproducts} from '../../atomic/services/services';
-import {ProductListItem} from "../items";
+import {ProductListItem} from "../index";
 
 export const ProductListing = props => {
     const [limit, setLimit] = useState(5)

@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 
 import {getSpecialCollection} from '../../atomic/services/services'
 import ProductItem from './special-product-item';
-import {addToCart,incrementQty,decrementQty,removeFromCart,addToWishlist,addToCompare} from "../../newCar/page";
+import {addToCart,incrementQty,decrementQty,removeFromCart,addToWishlist,addToCompare} from "../../newCar";
 
 const Special = props => {
 

@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 
 import {getTrendingCollection} from '../../atomic/services/services'
 import {Product4, Product5} from '../../atomic/services/script'
-import {addToCart,addToWishlist,addToCompare} from '../../newCar/page'
+import {addToCart,addToWishlist,addToCompare} from '../../newCar'
 import ProductItem from './product-style-five';
 
 const TopCollection = () => {

@@ -6,7 +6,7 @@ import { useRouteMatch } from 'react-router-dom';
 
 // import custom Components
 import Breadcrumb from "../../common/breadcrumb";
-import {DetailsWithPrice,DetailsTopTabs,ImageZoom,SmallImages} from "../items";
+import {DetailsWithPrice,DetailsTopTabs,ImageZoom,SmallImages} from "../index";
 import {addToCart} from "./cartReducer";
 import {addToCartUnsafe} from "./cartReducer";
 import {addToWishlist} from "./wishlistReducer";
@@ -137,7 +137,7 @@ export const LeftSideBar = () => {
                                                 </Slider>
                                                 <SmallImages item={item} settings={productsnav} navOne={nav1} />
                                             </div>
-                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart(item,1))} BuynowClicked={()=>dispatch(addToCartUnsafe(item))} addToWishlistClicked={()=>dispatch(addToWishlist(item))} />
+                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart(item,1))} BuynowClicked={()=>dispatch(addToCartUnsafe(item,1))} addToWishlistClicked={()=>dispatch(addToWishlist(item))} />
                                         </div>
                                     </div>
                                     <DetailsTopTabs item={item} />

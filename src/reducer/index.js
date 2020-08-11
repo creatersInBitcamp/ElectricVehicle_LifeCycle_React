@@ -4,7 +4,7 @@ import {sidebarReducer, sidebarMenusReducer} from "../admin/common"
 import {communityReducer, elecCarReducer, reportsReducer, ordersReducer, profileReducer, userReducer, usedCarReducer, dashboardReducer, tabset_userReducer} from "../admin/page"
 import {tabset_pageReducer, report_tableReducer, tabset_profileReducer} from '../admin/item'
 import productReducer from '../common/items/product'
-import {cartReducer,wishlistReducer,compareReducer} from "../newCar/page";
+import {cartReducer,wishlistReducer,compareReducer} from "../newCar";
 import filtersReducer from "../common/items/filters";
 import {usedWishlistReducer,usedCompareReducer} from "../usedCar"
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'

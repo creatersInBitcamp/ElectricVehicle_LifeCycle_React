@@ -1,7 +1,7 @@
 
 .search {
   position: absolute;
-  top: 2rem;
+  top: 1rem;
   left: 50%;
   height: 30px;
   transform: translateX(-50%);

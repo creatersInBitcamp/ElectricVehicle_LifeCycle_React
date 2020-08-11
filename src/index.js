@@ -12,7 +12,7 @@ import Layout from './App'
 import Main from './layouts/main';
 
 //new car
-import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar/page'
+import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar'
 
 //used car
 import {UsedPurchaseCollection,productDetail,PurchaseRequest,MyCarComparison,SalesForm,UsedWishlist,Scrapped} from './usedCar'

@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom'
-import MarketPrice from "../../MarketPrice";
-
+import {MarketPrice} from './MarketPrice'
 
 const DetailsWithPrice = props => {
     const [state, setState] = useState({

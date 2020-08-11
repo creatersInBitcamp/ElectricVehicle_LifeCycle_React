@@ -11,7 +11,7 @@ const Recent = ({posts}) => {
                             <img className="img-fluid" src={post.img} alt="Generic placeholder image" />
                         </Link>
                         <div className="media-body align-self-center">
-                            <h6>{post.dateTime}</h6>
+                            <h6>{post.date}</h6>
                             <p>{post.hits} hits</p>
                         </div>
                     </div>

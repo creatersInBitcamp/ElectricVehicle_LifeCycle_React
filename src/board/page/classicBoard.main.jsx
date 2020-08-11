@@ -2,8 +2,12 @@ import React, {useEffect, useState} from 'react';
 import Breadcrumb from "../../common/breadcrumb";
 import {Recent, Media, Popular} from "../items";
 import {Link, useRouteMatch} from "react-router-dom";
-import MaterialTable from "material-table";
-import MediaTable from "../items/mediaTable";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Pagination from "@material-ui/lab/Pagination";
+import {makeStyles} from '@material-ui/core/styles'
+import axios from "axios";
 
 const initialState = [
     {
@@ -36,15 +40,35 @@ const initialState = [
         dateTime: "time",
     },
 ]
+const useStyles = makeStyles((theme) => ({
+    pagination: {
+        '& > * + *': {
+            marginTop: theme.spacing(2),
+        },
+    },
+}));
 
 const ClassicBoardMain = () => {
+        const classes = useStyles()
         const [posts, setPosts] = useState([])
         const match = useRouteMatch('/board/main/:category').params.category
-        console.log(match)
+        const [page, setPage] = useState(1)
+        const [count, setCount] = useState(10)
+        const handleChange = (event, value) => {
+            setPage(value)
+        }
         useEffect(()=>{
-            console.log('useEffect on')
-            setPosts(initialState)
-        })
+            axios.get(`http://localhost:8080/posts/pageall/${page}`)
+                .then((res) => {
+                   console.log(res.data)
+                    setPosts(res.data.content)
+                    setCount(res.data.totalPages)
+                })
+                .catch((error)=> {
+                    console.log(error)
+                })
+            // setPosts(initialState)
+        }, [])
         return (
             <div>
                 <Breadcrumb title={'Board'}/>
@@ -70,11 +94,31 @@ const ClassicBoardMain = () => {
                                 </div>
                             </div>
                             <div className="col-xl-9 col-lg-8 col-md-7 order-sec">
-                            <Link to={`${process.env.PUBLIC_URL}/board/input/${match}`}>
-                                <button className="btn btn-solid">글쓰기</button>
-                            </Link>
+
                                 <div className="row blog-media">
-                                    <Media posts={posts}/>
+                                    <Container>
+                                        <Row>
+                                            <Media posts={posts}/>
+                                        </Row>
+                                        <Row>
+                                            <Col/>
+                                            <Col xs lg={2}>
+                                                <Link to={`${process.env.PUBLIC_URL}/board/input/${match}`}>
+                                                    <button className="btn btn-solid">글쓰기</button>
+                                                </Link>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                           <Col md={{ span: 6, offset: 3 }}>
+                                                <Pagination
+                                                    className={classes.pagination}
+                                                    variant={"outlined"}
+                                                    count={count}
+                                                    page={page}
+                                                    onChange={handleChange} />
+                                           </Col>
+                                        </Row>
+                                    </Container>
                                     {/*<MediaTable/>*/}
                                 </div>
                             </div>

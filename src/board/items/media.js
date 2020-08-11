@@ -13,17 +13,17 @@ const Media = ({posts}) => {
                             </Link>
                         </div>
                     </div>
-                    <div className="col-xl-6" key={post.postId}>
+                    <div className="col-xl-6">
                         <div className="blog-right">
                             <div>
                                 <h6>{post.date}</h6>
-                                <Link to={{pathname:`${process.env.PUBLIC_URL}/board/details/${post.postId}`, state: post}} ><h4>titles</h4></Link>
+                                <Link to={`${process.env.PUBLIC_URL}/board/details/${post.postId}`} ><h4>{post.titie}</h4></Link>
                                 <ul className="post-social">
                                     <li>Posted By : {post.name}</li>
                                     <li><i className="fa fa-heart"/> {post.hits} Hits</li>
                                     <li><i className="fa fa-comments"/> {post.comments.length} Comment</li>
                                 </ul>
-                                <p>contents</p>
+                                <p>{post.content}</p>
                             </div>
                         </div>
                     </div>

@@ -27,39 +27,48 @@ const Register = () =>  {
     const [mustPw, setMustPw] = useState(false)
     const [mustSex, setMustSex] = useState(false)
 
-    const setAddress = (addr) =>{
-        setAddr(addr)
-    }
-
-    const onChangeIdChk = useCallback((e) => {
+    const onChangeIdChk = (e) => {
         setUserId(e.target.value)
-        console.log(userId)
-        axios.get(`http://localhost:8080/user/idCheck/${userId}`)
+        setMustId('' === e.target.value)
+        axios.get(`http://localhost:8080/user/check/${userId}`)
             .then(res => {
                 setIdOverlap(res.data) // 같은 아이디가 있으면 ture
                 setIdConfirm(!res.data) // 같은 아이디가 없으면 true
-            }).catch(()=>{
-            alert("통신실패")
-        })
-        setMustId('' === e.target.value)
-    },[userId])
+            }).catch(function (error) {
+            if (error.response) {
+                // 요청이 이루어졌으며 서버가 2xx의 범위를 벗어나는 상태 코드로 응답했습니다.
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            }
+            else if (error.request) {
+                // 요청이 이루어 졌으나 응답을 받지 못했습니다.
+                // `error.request`는 브라우저의 XMLHttpRequest 인스턴스 또는
+                // Node.js의 http.ClientRequest 인스턴스입니다.
+                console.log(error.request);
+            }
+            else {
+                // 오류를 발생시킨 요청을 설정하는 중에 문제가 발생했습니다.
+                console.log('Error', error.message);
+            }
+            console.log(error.config);
+        });
+    }
 
-    const onChangePasswordChk = useCallback((e) => {
-        setMustPw('성별' === e.target.value)
+    const onChangePasswordChk = (e) => {
+        setMustPw('' === e.target.value)
         setPasswordError(password !== e.target.value)
         setPasswordConfirm(password === e.target.value)
         setPasswordCheck(e.target.value)
-    },[passwordCheck])
+    }
 
     const onChangeSexChk = useCallback((e) => {
-        setMustSex('' === e.target.value)
+        setMustSex('성별' === e.target.value)
         setSex(e.target.value)
     },[sex])
 
-    const handleSubmit = e => {
-
+    const handleSubmit = (e) => {
         e.preventDefault()
-
         const userInfo =  {
             userId: userId,
             password: password,
@@ -114,7 +123,7 @@ const Register = () =>  {
                                                 <input type="password" className="form-control" value={passwordCheck}
                                                        onChange={onChangePasswordChk} placeholder="비밀번호 재확인" required="" />
                                                 {!mustPw && passwordError && <div style={{color:'red'}}>비밀번호가 일치하지 않습니다.</div>}
-                                                {passwordConfirm && <div style={{color:'green'}}>비밀번호가 일치합니다.</div>}
+                                                {!mustPw && passwordConfirm && <div style={{color:'green'}}>비밀번호가 일치합니다.</div>}
                                                 {mustPw && <div style={{color: 'red'}}>반드시 필요한 항목입니다.</div>}
                                                 <br/>
                                             </div>
@@ -161,7 +170,7 @@ const Register = () =>  {
                                             <div className="col-md-6">
                                                 <label htmlFor="email">주소</label>
                                                 <br/>
-                                                <PostCode setAddress={setAddress}/>
+                                                <PostCode setAddress={(addr)=>setAddr(addr)}/>
                                                 <br/>
                                                 <br/>
                                                 <input type="text" value={addr} className="form-control"

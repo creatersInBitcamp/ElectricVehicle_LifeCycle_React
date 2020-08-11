@@ -38,6 +38,8 @@
     "date-fns": "^2.15.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
+    "emailjs": "^3.3.0",
+    "emailjs-com": "^2.6.3",
     "eslint": "5.6.0",
     "eslint-config-react-app": "^3.0.8",
     "eslint-loader": "2.1.1",

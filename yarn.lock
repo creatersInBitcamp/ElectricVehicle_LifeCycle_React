@@ -6791,6 +6791,16 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+emailjs-com@^2.6.3:
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/emailjs-com/-/emailjs-com-2.6.3.tgz#881269588aac453a6f44a84b814922d52b8ec202"
+  integrity sha512-hucvmelA6wUN1W7Lnw3yKXTWq3lNyVOBN306WcODPcfazuGWTot9/7aaiHQESBo9VrG1JgSk7La6fckq3eLvUg==
+
+emailjs@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/emailjs/-/emailjs-3.3.0.tgz#d6cef5a984fe0ef20bb95c18f0fda3d51c1ca286"
+  integrity sha512-O8fUbXhyzZEokeLq+mrefYaSdToLXlW3oQfCU+75kqkwL27W8Cb6PW/ipjF1ePapLNoAvWPvwInh/x7x4z/jKA==
+
 emoji-regex@^6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-6.5.1.tgz#9baea929b155565c11ea41c6626eaa65cef992c2"

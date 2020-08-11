@@ -5,9 +5,9 @@ import {useSelector} from 'react-redux'
 import HeaderOne from './common/headers/header-one';
 import FooterTwo from "./common/footers/footer-two";
 import MyChatBot from "./chatbot/chatbot";
-import {Sidebar} from "./admin/common/sidebar_components";
+import {Sidebar} from "./admin/common";
 import {Footer} from "./admin/common";
-import {Header} from "./admin/common/header_components";
+import {Header} from "./admin/common";
 import ThemeSettings from "./common/theme-settings";
 import {ToastContainer} from "react-toastify";
 

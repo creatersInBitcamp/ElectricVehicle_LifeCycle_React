@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useRouteMatch } from 'react-router-dom'
 import Breadcrumb from "../../common/breadcrumb";
 
 const ClassicBoardDetails = () => {
-        // const [post, setPost] = useState({})
+        const [post, setPost] = useState({})
         const match = useRouteMatch('/board/details/:postId')
         // const {post} = useSelector((state) => {
         //     let postId = macth.params.postId

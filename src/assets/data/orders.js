@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Image} from '../../admin/common';
+import {Image} from '../../admin/item';
 
 // Import Images 
 

@@ -1,4 +1,3 @@
-import { posts } from './data'
 import axios from 'axios'
 
 // types

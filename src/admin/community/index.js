@@ -1,1 +1,0 @@
-export {Community, default as communityReducer } from './community'

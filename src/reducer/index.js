@@ -1,16 +1,8 @@
 import {combineReducers} from 'redux'
-import {headerReducer} from "../admin/common/header_components";
-import {breadcrumbReducer, datatableReducer, footerReducer, imageReducer} from "../admin/common"
-import {sidebarReducer, sidebarMenusReducer} from "../admin/common/sidebar_components"
-import {communityReducer} from "../admin/community"
-import {elecCarReducer} from "../admin/elecCar"
-import {list_menuReducer} from "../admin/notice"
-import {reportsReducer, report_tableReducer} from "../admin/reports"
-import {ordersReducer} from '../admin/sales'
-import {profileReducer, tabset_profileReducer} from '../admin/settings'
-import {tabset_pageReducer, usedCarReducer} from '../admin/usedCar'
-import {list_userReducer, tabset_userReducer} from '../admin/users'
-import {dashboardReducer} from '../admin'
+import {datatableReducer, imageReducer} from "../admin/item"
+import {sidebarReducer, sidebarMenusReducer} from "../admin/common"
+import {communityReducer, elecCarReducer, reportsReducer, ordersReducer, profileReducer, userReducer, usedCarReducer, dashboardReducer, tabset_userReducer} from "../admin/page"
+import {tabset_pageReducer, report_tableReducer, tabset_profileReducer} from '../admin/item'
 import productReducer from '../product'
 import cartReducer from "../cart/cartReducer";
 import filtersReducer from "../filters";
@@ -25,10 +17,10 @@ import boardReducer from "../board/items/boardReducer";
 
 const rootReducer = combineReducers({
         boardReducer,
-        headerReducer, breadcrumbReducer, datatableReducer,
-        footerReducer, imageReducer,sidebarReducer, sidebarMenusReducer, communityReducer, elecCarReducer, list_menuReducer,
+        datatableReducer,
+        imageReducer,sidebarReducer, sidebarMenusReducer, communityReducer, elecCarReducer,
         reportsReducer, report_tableReducer, ordersReducer, profileReducer, tabset_profileReducer,
-        tabset_pageReducer, usedCarReducer, list_userReducer, tabset_userReducer, dashboardReducer,
+        tabset_pageReducer, usedCarReducer, userReducer, tabset_userReducer, dashboardReducer,
         data: productReducer,
         cartList: cartReducer,
         filters: filtersReducer,

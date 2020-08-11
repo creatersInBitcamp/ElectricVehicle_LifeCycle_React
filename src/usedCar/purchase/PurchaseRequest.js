@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import SimpleReactValidator from "simple-react-validator";
 import {Helmet} from "react-helmet";
-import Breadcrumb from "../common/breadcrumb";
+import Breadcrumb from "../../common/breadcrumb";
 import {useSelector} from "react-redux";
-import {getCartTotal} from "../atomic/services/services";
+import {getCartTotal} from "../../atomic/services/services";
 
-export const PurchaseRequest = props => {
+export const PurchaseRequest = () => {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')

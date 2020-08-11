@@ -15,11 +15,7 @@ import Main from './layouts/main';
 import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar/page'
 
 //used car
-import {productDetail, PurchaseRequest, UsedPurchaseCollection} from "./usedPurchase";
-import {SalesForm} from "./usedSales";
-import {Scrapped} from "./scrapped";
-import {MyCarComparison} from "./usedCompare";
-import UsedWishlist from "./usedWishlist/UsedWishlist"
+import {UsedPurchaseCollection,productDetail,PurchaseRequest,MyCarComparison,SalesForm,UsedWishlist,Scrapped} from './usedCar'
 
 //map
 import {ChargingStationMap,SightsMap,TableChargingStation,BookmarkMap} from "./map/items";

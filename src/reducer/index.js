@@ -6,8 +6,8 @@ import {tabset_pageReducer, report_tableReducer, tabset_profileReducer} from '..
 import productReducer from '../common/items/product'
 import {cartReducer,wishlistReducer,compareReducer} from "../newCar/page";
 import filtersReducer from "../common/items/filters";
-import usedwishlistReducer from "../usedWishlist/usedwishlistReducer"
-import usedcompareReducer from "../usedCompare/usedcompareReducer";
+import usedwishlistReducer from "../usedCar/wishlist/UsedCarWishlist"
+import usedcompareReducer from "../usedCar/compare/MyCarComparison";
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {adminCheckReducer} from "../user/login";
 import boardReducer from "../board/items/boardReducer";

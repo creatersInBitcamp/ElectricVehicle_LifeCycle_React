@@ -2,8 +2,8 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 
-class MarketPrice extends React.Component {
-    state = {
+export const MarketPrice = () => {
+    const state = {
         dataLine: {
             labels: ["1년후", "2년후", "3년후", "4년후", "5년후"],
             datasets: [
@@ -32,13 +32,11 @@ class MarketPrice extends React.Component {
         }
     };
 
-    render() {
+
         return (
             <MDBContainer>
-                <Line data={this.state.dataLine} options={{ responsive: true }} />
+                <Line data={state.dataLine} options={{ responsive: true }} />
             </MDBContainer>
         );
-    }
-}
 
-export default MarketPrice;
+}

@@ -30,13 +30,12 @@ export const MarketPrice = () => {
                 }
             ]
         }
-    };
+    }
 
-
-        return <>
-            <MDBContainer>
-                <Line data={state.dataLine} options={{ responsive: true }} />
-            </MDBContainer>
-        </>
+    return <>
+        <MDBContainer>
+            <Line data={state.dataLine} options={{ responsive: true }} />
+        </MDBContainer>
+    </>
 
 }

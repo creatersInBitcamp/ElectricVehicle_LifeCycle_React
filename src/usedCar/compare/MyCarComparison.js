@@ -1,35 +1,33 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-
+import {toast} from "react-toastify";
 import Slider from 'react-slick';
 import Breadcrumb from "../../common/breadcrumb";
 import {MarketPrice} from "../index";
-import {toast} from "react-toastify";
 
 /* types */
-const ADD_TO_USEDCOMPARE = 'ADD_TO_USEDCOMPARE'
-const REMOVE_FROM_USEDCOMPARE = 'REMOVE_FROM_USEDCOMPARE'
+const ADD_TO_USED_COMPARE = 'ADD_TO_USED_COMPARE'
+const REMOVE_FROM_USED_COMPARE = 'REMOVE_FROM_USED_COMPARE'
 
 /* actions */
 export const addToUsedCompare = (product) => (dispatch) => {
     toast.success("Item Added to UsedCompare");
     dispatch(addToUsedCompareUnsafe(product))
-
 }
 export const addToUsedCompareUnsafe= (product) => ({
-    type: ADD_TO_USEDCOMPARE,
+    type: ADD_TO_USED_COMPARE,
     product
-});
+})
 export const removeFromUsedCompare = product_id => ({
-    type: REMOVE_FROM_USEDCOMPARE,
+    type: REMOVE_FROM_USED_COMPARE,
     product_id
-});
+})
 
 /* reducer */
-export const usedcompareReducer = (state = {items: []}, action) => {
+export const usedCompareReducer = (state = {items: []}, action) => {
     switch (action.type) {
-        case ADD_TO_USEDCOMPARE:
+        case ADD_TO_USED_COMPARE:
             const productId = action.product.id
             if (state.items.findIndex(product => product.id === productId) !== -1) {
                 const items = state.items.reduce((cartAcc, product) => {
@@ -47,7 +45,7 @@ export const usedcompareReducer = (state = {items: []}, action) => {
 
             return { ...state, items: [...state.items, action.product] }
 
-        case REMOVE_FROM_USEDCOMPARE:
+        case REMOVE_FROM_USED_COMPARE:
             return {
                 items: state.items.filter(id => id !== action.product_id)
             }
@@ -59,7 +57,7 @@ export const usedcompareReducer = (state = {items: []}, action) => {
 
 export const MyCarComparison = () => {
     const {symbol, Items} = useSelector((state) => ({
-        Items: state.usedcompare.items,
+        Items: state.usedCompare.items,
         symbol: state.data.symbol
     }))
 
@@ -95,177 +93,170 @@ export const MyCarComparison = () => {
                 }
             }
         ]
-    };
-
-    const test = () => {
-        console.log({Items})
     }
 
     return <>
-        <div>
-            {test()}
-            <Breadcrumb title={'Compare'} />
-            {Items.length>0 ?
-                <section className="compare-section section-b-space">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12">
-                                <Slider {...settings} className="slide-4">
-                                    <div className="compare-part">
-                                        {/*<button type="button" className="close-btn" onClick={()=>{dispatch(removeFromCompare(item))}}>
-                                            <span aria-hidden="true">×</span>
-                                        </button>*/}
-                                        <div className="img-secton">
-                                            <img className="img-fluid"
-                                                 src="https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_410" alt=""/>
-                                        </div>
-                                        <div className="detail-part">
-                                            <div className="title-detail">
-                                                market price
-                                            </div>
-                                            <div className="inner-detail">
-                                                <MarketPrice/>
-                                            </div>
-                                        </div>
-                                        <div className="detail-part">
-                                            <div className="title-detail">
-                                                <h5>discription</h5>
-                                            </div>
-                                            <div className="inner-detail">
-                                                <p>shortdetail</p>
-                                            </div>
-                                        </div>
-                                        <div className="detail-part">
-                                            <div className="title-detail">
-                                                <h5>Brand Name</h5>
-                                            </div>
-                                            <div className="inner-detail">
-                                                <p>tag</p>
-                                            </div>
-                                        </div>
-                                        <div className="detail-part">
-                                            <div className="title-detail">
-                                                <h5>size</h5>
-                                            </div>
-                                            <div className="inner-detail">
-                                                <p>size</p>
-                                            </div>
-                                        </div>
-                                        <div className="detail-part">
-                                            <div className="title-detail">
-                                                <h5>color</h5>
-                                            </div>
-                                            <div className="inner-detail">
-                                                <p>color</p>
-                                            </div>
-                                        </div>
-                                        {/*<div className="btn-part">
-                                            <a className="btn btn-solid" onClick={()=>{dispatch(addToCart(item, 1))}}>add to cart</a>
-                                        </div>*/}
+        <Breadcrumb title={'Compare'} />
+        {Items.length>0 ?
+            <section className="compare-section section-b-space">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <Slider {...settings} className="slide-4">
+                                <div className="compare-part">
+                                    {/*<button type="button" className="close-btn" onClick={()=>{dispatch(removeFromCompare(item))}}>
+                                        <span aria-hidden="true">×</span>
+                                    </button>*/}
+                                    <div className="img-section">
+                                        <img className="img-fluid"
+                                             src="https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_410" alt=""/>
                                     </div>
-                                    {Items.map((item,index) =>
-                                        <div key={index}>
-                                            <div className="compare-part">
-                                                <button type="button" className="close-btn" onClick={()=>{dispatch(removeFromUsedCompare(item))}}>
-                                                    <span aria-hidden="true">×</span>
-                                                </button>
-                                                <div className="img-secton">
-                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
-                                                        <h5>{item.name}</h5>
-                                                    </Link>
-                                                    <h5>{symbol}{item.price}</h5>
+                                    <div className="detail-part">
+                                        <div className="title-detail">
+                                            market price
+                                        </div>
+                                        <div className="inner-detail">
+                                            <MarketPrice/>
+                                        </div>
+                                    </div>
+                                    <div className="detail-part">
+                                        <div className="title-detail">
+                                            <h5>discription</h5>
+                                        </div>
+                                        <div className="inner-detail">
+                                            <p>shortdetail</p>
+                                        </div>
+                                    </div>
+                                    <div className="detail-part">
+                                        <div className="title-detail">
+                                            <h5>Brand Name</h5>
+                                        </div>
+                                        <div className="inner-detail">
+                                            <p>tag</p>
+                                        </div>
+                                    </div>
+                                    <div className="detail-part">
+                                        <div className="title-detail">
+                                            <h5>size</h5>
+                                        </div>
+                                        <div className="inner-detail">
+                                            <p>size</p>
+                                        </div>
+                                    </div>
+                                    <div className="detail-part">
+                                        <div className="title-detail">
+                                            <h5>color</h5>
+                                        </div>
+                                        <div className="inner-detail">
+                                            <p>color</p>
+                                        </div>
+                                    </div>
+                                    {/*<div className="btn-part">
+                                        <a className="btn btn-solid" onClick={()=>{dispatch(addToCart(item, 1))}}>add to cart</a>
+                                    </div>*/}
+                                </div>
+                                {Items.map((item,index) =>
+                                    <div key={index}>
+                                        <div className="compare-part">
+                                            <button type="button" className="close-btn" onClick={()=>{dispatch(removeFromUsedCompare(item))}}>
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <div className="img-secton">
+                                                <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
+                                                    <h5>{item.name}</h5>
+                                                </Link>
+                                                <h5>{symbol}{item.price}</h5>
+                                            </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    <h5>name</h5>
                                                 </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>name</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.name}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        market price
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <MarketPrice/>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>discription</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>shortdetail</p>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>Brand Name</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.tags}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>size</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.size}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>color</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.colors}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>availability</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>In stock</p>
-                                                    </div>
-                                                </div>
-                                                <div className="btn-part">
-                                                    <a className="btn btn-solid">
-                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`}>
-                                                            purchase request
-                                                        </Link>
-                                                    </a>
+                                                <div className="inner-detail">
+                                                    <p>{item.name}</p>
                                                 </div>
                                             </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    market price
+                                                </div>
+                                                <div className="inner-detail">
+                                                    <MarketPrice/>
+                                                </div>
+                                            </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    <h5>discription</h5>
+                                                </div>
+                                                <div className="inner-detail">
+                                                    <p>shortdetail</p>
+                                                </div>
+                                            </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    <h5>Brand Name</h5>
+                                                </div>
+                                                <div className="inner-detail">
+                                                    <p>{item.tags}</p>
+                                                </div>
+                                            </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    <h5>size</h5>
+                                                </div>
+                                                <div className="inner-detail">
+                                                    <p>{item.size}</p>
+                                                </div>
+                                            </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    <h5>color</h5>
+                                                </div>
+                                                <div className="inner-detail">
+                                                    <p>{item.colors}</p>
+                                                </div>
+                                            </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    <h5>availability</h5>
+                                                </div>
+                                                <div className="inner-detail">
+                                                    <p>In stock</p>
+                                                </div>
+                                            </div>
+                                            <div className="btn-part">
+                                                <a className="btn btn-solid">
+                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`}>
+                                                        purchase request
+                                                    </Link>
+                                                </a>
+                                            </div>
                                         </div>
-                                    )}
-                                </Slider>
-                            </div>
+                                    </div>
+                                )}
+                            </Slider>
                         </div>
                     </div>
-                </section>
-                :
-                <section className="cart-section section-b-space">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-sm-12">
-                                <div >
-                                    <div className="col-sm-12 empty-cart-cls text-center">
-                                        <img src={`${process.env.PUBLIC_URL}/assets/images/empty-compare.png`} className="img-fluid mb-4" alt="" />
-                                        <h3>
-                                            <strong>Compare List is Empty</strong>
-                                        </h3>
-                                        <h4>Explore more shortlist some items.</h4>
-                                    </div>
+                </div>
+            </section>
+            :
+            <section className="cart-section section-b-space">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <div >
+                                <div className="col-sm-12 empty-cart-cls text-center">
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/empty-compare.png`} className="img-fluid mb-4" alt="" />
+                                    <h3>
+                                        <strong>Compare List is Empty</strong>
+                                    </h3>
+                                    <h4>Explore more shortlist some items.</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-            }
-        </div>
+                </div>
+            </section>
+        }
     </>
 }
-export default usedcompareReducer
+export default usedCompareReducer

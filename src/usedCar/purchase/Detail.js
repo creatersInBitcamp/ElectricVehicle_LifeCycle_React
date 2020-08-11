@@ -24,8 +24,6 @@ export const productDetail = () => {
         });
     }, []);
 
-    const { nav1, nav2 } = state;
-
     const match = useRouteMatch('/used-car/product/:id')
     const {symbol, item} = useSelector((state) => {
         let productId = match.params.id
@@ -34,36 +32,26 @@ export const productDetail = () => {
             symbol: state.data.symbol
         }
     })
-
     const products = {
         slidesToShow: 1,
         slidesToScroll: 1,
         dots: false,
         arrows: true,
         fade: true
-    };
+    }
     const productsnav = {
         slidesToShow: 3,
         swipeToSlide: true,
         arrows: false,
         dots: false,
         focusOnSelect: true
-    };
-
+    }
     const backClick = () => {
         document.getElementById("filter").style.left = "-365px";
     }
 
-
-    useEffect(() => {
-        setState({
-            nav2: slider2.current
-        });
-    }, []);
-
-
-
     const dispatch = useDispatch()
+
     return <>
         <div>
             <Breadcrumb parent={'Product'} title={item.name} />
@@ -89,22 +77,22 @@ export const productDetail = () => {
                                     <div className="">
                                         <div className="row">
                                             <div className="col-lg-6 product-thumbnail">
-                                                <Slider {...products} asNavFor={nav2} ref={slider => (slider1.current = slider)} className="product-slick">
+                                                <Slider {...products} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
                                                     {item.variants?
                                                         item.variants.map((vari, index) =>
                                                             <div key={index}>
-                                                                <img src={vari.images}  className="img-fluid image_zoom_cls-0" />
+                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0" />
                                                             </div>
                                                         ):
                                                         item.pictures.map((vari, index) =>
                                                             <div key={index}>
-                                                                <img src={vari.images}  className="img-fluid image_zoom_cls-0" />
+                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0" />
                                                             </div>
                                                         )}
                                                 </Slider>
                                                 <div className="row">
                                                     <div className="col-12 p-0">
-                                                        <Slider {...productsnav} asNavFor={nav1} ref={slider => (slider2.current = slider)} className="slider-nav">
+                                                        <Slider {...productsnav} asNavFor={state.nav1} ref={slider => (state.nav2 = slider)} className="slider-nav">
                                                             {item.variants?
                                                                 item.variants.map((vari, index) =>
                                                                     <div key={index}>
@@ -122,7 +110,7 @@ export const productDetail = () => {
                                             </div>
                                             <DetailsWithPrice symbol={symbol}
                                                               item={item}
-                                                              navOne={nav1}
+                                                              navOne={state.nav1}
                                                               addToCartClicked={()=>dispatch(addToCart(item,1))}
                                                               BuynowClicked={()=>dispatch(addToCartUnsafe(item,1))}
                                                               addToWishlistClicked={()=>dispatch(addToUsedWishlist(item))} />
@@ -134,22 +122,31 @@ export const productDetail = () => {
                                                 <Tabs className="tab-content nav-material">
                                                     <TabList className="nav nav-tabs nav-material">
                                                         <Tab className="nav-item">
-                                    <span className="nav-link active">
-                                        <i className="icofont icofont-ui-home"/>Description</span>
+                                                            <span className="nav-link active">
+                                                                <i className="icofont icofont-ui-home"/>
+                                                                Description
+                                                            </span>
                                                             <div className="material-border"/>
                                                         </Tab>
                                                         <Tab className="nav-item">
-                                                            <span className="nav-link" ><i className="icofont icofont-man-in-glasses"/>Details</span>
+                                                            <span className="nav-link" >
+                                                                <i className="icofont icofont-man-in-glasses"/>
+                                                                Details
+                                                            </span>
                                                             <div className="material-border"/>
                                                         </Tab>
                                                         <Tab className="nav-item">
-                                    <span className="nav-link" >
-                                        <i className="icofont icofont-contacts"/>Chart</span>
+                                                            <span className="nav-link" >
+                                                                <i className="icofont icofont-contacts"/>
+                                                                Chart
+                                                            </span>
                                                             <div className="material-border"/>
                                                         </Tab>
                                                         <Tab className="nav-item">
-                                    <span className="nav-link" >
-                                        <i className="icofont icofont-contacts"/>Write Comments</span>
+                                                            <span className="nav-link" >
+                                                                <i className="icofont icofont-contacts"/>
+                                                                Write Comments
+                                                            </span>
                                                             <div className="material-border"/>
                                                         </Tab>
                                                     </TabList>
@@ -235,7 +232,6 @@ export const productDetail = () => {
                         </div>
                     </div>
                 </section> : ''}
-            {/*Section End*/}
         </div>
     </>
 }

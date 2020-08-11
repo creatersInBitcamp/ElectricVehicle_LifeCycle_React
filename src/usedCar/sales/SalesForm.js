@@ -13,26 +13,8 @@ export const SalesForm = () => {
         e.preventDefault()
         alert(`성공`)
     }
-    const onClickSearch = e => {
+    const onClickSearch = () => {
 
-    }
-    const onChangeName = e => {
-        setUserName(e.target.value)
-    }
-    const onChangeNumber = e => {
-        setCarNumber(e.target.value)
-    }
-    const onChangeColor = e => {
-        setCarColor(e.target.value)
-    }
-    const onChangePrice = e => {
-        setDesiredPrice(e.target.value)
-    }
-    const onChangeDate = e => {
-        setYyyymm(e.target.value)
-    }
-    const onChangeMileage = e => {
-        setMileage(e.target.value)
     }
 
     return <>
@@ -82,7 +64,7 @@ export const SalesForm = () => {
                                                        placeholder="Owner's Name"
                                                        required=""
                                                        value={userName}
-                                                       onChange={onChangeName}/>
+                                                       onChange={e => { setUserName(e.target.value) }}/>
                                             </div>
                                             <div className="col-md-3">
                                                 <label htmlFor="email">차량번호</label>
@@ -92,7 +74,7 @@ export const SalesForm = () => {
                                                        placeholder="Car Number"
                                                        required=""
                                                        value={carNumber}
-                                                       onChange={onChangeNumber} />
+                                                       onChange={e => { setCarNumber(e.target.value) }} />
                                             </div>
                                         </div>
                                         <div className="form-row">
@@ -104,7 +86,7 @@ export const SalesForm = () => {
                                                        placeholder="Car Color"
                                                        required=""
                                                        value={carColor}
-                                                       onChange={onChangeColor} />
+                                                       onChange={e => { setCarColor(e.target.value) }} />
                                             </div>
                                             <div className="col-md-3">
                                                 <label htmlFor="review">희망가격</label>
@@ -114,7 +96,7 @@ export const SalesForm = () => {
                                                        placeholder="Desired Price"
                                                        required=""
                                                        value={desiredPrice}
-                                                       onChange={onChangePrice} />
+                                                       onChange={e => { setDesiredPrice(e.target.value) }} />
                                             </div>
                                         </div>
                                         <div className="form-row">
@@ -126,7 +108,7 @@ export const SalesForm = () => {
                                                        placeholder="Registration YYYYMM"
                                                        required=""
                                                        value={yyyymm}
-                                                       onChange={onChangeDate} />
+                                                       onChange={e => { setYyyymm(e.target.value) }} />
                                             </div>
                                             <div className="col-md-3">
                                                 <label htmlFor="review">주행거리</label>
@@ -136,18 +118,16 @@ export const SalesForm = () => {
                                                        placeholder="Mileage"
                                                        required=""
                                                        value={mileage}
-                                                       onChange={onChangeMileage} />
+                                                       onChange={e => { setMileage(e.target.value) }} />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <textarea className={"form-control"} rows={5}/>
                                         </div>
                                         <br/>
-                                        <button href="#" className="btn btn-solid" onClick={onClickSubmit}>Submit</button>
+                                        <button className="btn btn-solid" onClick={onClickSubmit}>Submit</button>
                                     </form>
-
                                 }
-
                             </div>
                         </div>
                     </div>
@@ -156,4 +136,3 @@ export const SalesForm = () => {
         </div>
     </>
 }
-export default SalesForm

@@ -85,7 +85,7 @@ export const Scrapped = () => {
                                                         차액을 환수 조치하되, 운행기간에 따라 표에 해당하는 금액을 초과하여 환수할 수 없습니다.
                                                         폐차승인서와 교통사고 사실확인서 등 지역에서 지정한 서류를 준비해 각 시/도청에 폐차 승인 요청 후 검토를 받아야 합니다.
                                                         <br/>
-                                                        <img src={'https://imagazinekorea.com/upload/Editor/motor1_20180913_02(0).jpg'}/>
+                                                        <img src={'https://imagazinekorea.com/upload/Editor/motor1_20180913_02(0).jpg'} alt={""}/>
                                                     </div>,
                                                 end: true,
                                             },
@@ -98,7 +98,7 @@ export const Scrapped = () => {
                                                         차액을 환수 조치하되, 운행기간에 따라 표에 해당하는 금액을 초과하여 환수할 수 없습니다.
                                                         폐차승인서와 교통사고 사실확인서 등 지역에서 지정한 서류를 준비해 각 시/도청에 폐차 승인 요청 후 검토를 받아야 합니다.
                                                         <br/>
-                                                        <img src={'https://imagazinekorea.com/upload/Editor/motor1_20180913_02(0).jpg'}/>
+                                                        <img src={'https://imagazinekorea.com/upload/Editor/motor1_20180913_02(0).jpg'} alt={""}/>
                                                     </div>,
                                                 end: true,
                                             },

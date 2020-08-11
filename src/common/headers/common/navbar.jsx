@@ -107,6 +107,16 @@ const NavBar = () => {
                                 {translate('board')}
                                 <span className="sub-arrow"/>
                             </Link>
+                            <ul className="nav-submenu">
+                                <li><Link
+                                    to={`${process.env.PUBLIC_URL}/board/main`}>{translate('notice')}</Link>
+                                </li>
+                                <li><Link
+                                    to={`${process.env.PUBLIC_URL}/board/main`}>{translate('news')}</Link>
+                                </li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/board/main`}>{translate('userboard')}</Link>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <Link to={`${process.env.PUBLIC_URL}/pages/about-us`} className="nav-link">

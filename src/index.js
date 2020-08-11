@@ -70,6 +70,7 @@ import MyAccount from "./user/myAccount";
 import { getAllProducts } from './product'
 import store from "./store";
 import aboutUs from "./common/about-us";
+import PostInput from "./board/page/postInput";
 
 
 const Root =()=> {
@@ -127,6 +128,7 @@ const Root =()=> {
                                 {/*board*/}
                                 <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
                                 <Route path={`${process.env.PUBLIC_URL}/board/details/:post`} component={ClassicBoardDetails}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/input`} component={PostInput}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />

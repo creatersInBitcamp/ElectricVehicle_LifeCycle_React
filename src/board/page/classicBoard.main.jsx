@@ -50,7 +50,6 @@ const ClassicBoardMain = () => {
                 <section className="section-b-space  blog-page">
                     <div className="container">
                         <div className="row">
-
                             <div className="col-xl-3 col-lg-4 col-md-5">
                                 <div className="blog-sidebar">
                                     <div className="theme-card">
@@ -79,8 +78,8 @@ const ClassicBoardMain = () => {
                                     </div>
                                 </div>
                             </div>
-
                             <div className="col-xl-9 col-lg-8 col-md-7 order-sec">
+                            <button>test </button>
                                 <div className="row blog-media">
                                     {posts.map( post => (<Media post={post} key={post.postId}/>))}
                                 </div>

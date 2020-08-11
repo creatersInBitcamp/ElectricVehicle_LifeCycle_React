@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Redirect } from 'react-router-dom'
 import Modal from 'react-responsive-modal';
 import {useDispatch, useSelector} from "react-redux";
-import {addToUsedCompare} from './MyCarComparison'
+import {addToUsedCompare} from '../page/MyCarComparison'
 
 const MyCar = () => {
     const [open,setOpen] = useState(false)

@@ -9,7 +9,7 @@ import {MyCar} from "../../newCar";
 
 const SpecialProducts = () => {
     const [admin,setAdmin] = useState(false);
-    const result = useSelector(state=>state.adminCheckReducer)
+    const result = useSelector(state=>state.loginReducer)
 
     useEffect(()=>{
         setAdmin(result.check)

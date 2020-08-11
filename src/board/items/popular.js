@@ -1,21 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
 
-const Popular = ({posts}) => {
+const Popular = () => {
+    const [populars, setPopulars] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:8080/posts/popular')
+            .then((res) => {
+                setPopulars(res.data.content)
+            })
+            .catch((err) => {
+                console.log(err.status)
+            })
+    },[])
     return (
         <>
-            { posts.map(post => (
-                <li>
-                    <div className="media" key={post.postId}>
+            { populars.map(popular => (
+                <li key={popular.postId}>
+                    <div className="media" >
                         <div className="blog-date">
-                            <span>03</span>
-                            <span>aug</span>
+                            <span>{popular.date}</span>
                         </div>
                         <div className="media-body align-self-center">
-                            <h6>{post.content}</h6>
-                            <p>{post.hits} hits</p>
+                            <h6>{popular.content}</h6>
+                            <p>{popular.hits} hits</p>
                         </div>
                     </div>
-                    <p> contents </p>
                 </li>
             ))}
         </>

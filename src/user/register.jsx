@@ -187,7 +187,9 @@ const Register = () =>  {
                                         <div className="form-row">
                                             <Link to={`${process.env.PUBLIC_URL}/pages/login`}>
                                                 <button type="submit" className="btn btn-solid" onClick={handleSubmit} >가입하기</button>
+                                                <button type="submit" className="btn btn-solid" >취소</button>
                                             </Link>
+
                                         </div>
                                     </form>
                                 </div>

@@ -8,7 +8,7 @@ import {addToUsedWishlist} from '../wishlist/UsedCarWishlist'
 const ProductListing = props => {
     const [limit, setLimit] = useState(5)
     const [hasMoreItems, setHasMoreItems] = useState(true)
-    const [image] = useState('')
+    const [image,setImage] = useState('')
 
     const {products, symbol} = useSelector(state=>({
         products: getVisibleproducts(state.data, state.filters),
@@ -35,6 +35,7 @@ const ProductListing = props => {
     }
 
     const dispatch = useDispatch()
+
 
     return <>
         <div className="product-wrapper-grid">

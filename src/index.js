@@ -95,9 +95,9 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/service/table`} component={TableChargingStation} />
 
                                 {/*board*/}
-                                <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
-                                <Route path={`${process.env.PUBLIC_URL}/board/details/:post`} component={ClassicBoardDetails}/>
-                                <Route path={`${process.env.PUBLIC_URL}/board/input`} component={PostInput}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/main/:category`} component={ClassicBoardMain}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/details/:postId`} component={ClassicBoardDetails}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/input/:category`} component={PostInput}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />

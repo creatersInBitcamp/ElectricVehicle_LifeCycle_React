@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useRouteMatch} from 'react-router-dom'
 import Breadcrumb from "../../common/breadcrumb";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -9,15 +10,23 @@ const initUser = {
 }
 
 const PostInput = () => {
+    const match = useRouteMatch('/board/input/:category').params.category
+    alert(match)
     const [user, setUser] = useState(initUser)
     const [post, setPost] = useState({})
+    const [title, setTitle] = useState("")
+    const [link, setLink] = useState("")
+    const [content, setContent] =useState("")
+    const [category, setCategory] = useState("")
     const onPostIn = (e) => {
         e.preventDefault()
+        setCategory(match)
         setPost({
-           title : document.getElementById('title').value,
-           content : document.getElementById('content').value,
-           link : document.getElementById('link').value,
-           userId : user.userId
+           title : title,
+           content : content,
+           link : link,
+           userId : user.userId,
+           category: category
         })
         alert(JSON.stringify(post))
     }
@@ -41,18 +50,17 @@ const PostInput = () => {
                                 <div className="form-row">
                                     <div className="col-md-12">
                                         <label htmlFor="title">제목</label>
-                                        <input type="text" className="form-control" id="title"
-                                               placeholder="Enter this title" required=""/>
+                                        <input type="text" className="form-control" id="title" onChange={(e) => {setTitle(e.target.value)}}
+                                               placeholder="Enter this title" />
                                     </div>
                                     <div className="col-md-12">
                                         <label htmlFor="link">link</label>
-                                        <input type="text" className="form-control" id="link"
-                                               placeholder="Link"
-                                               required=""/>
+                                        <input type="text" className="form-control" id="link" onChange={(e) => {setLink(e.target.value)}}
+                                               placeholder="Link"/>
                                     </div>
                                     <div className="col-md-12">
                                         <label htmlFor="content">내용</label>
-                                        <textarea className="form-control" placeholder="Write Your Content" id="content"
+                                        <textarea className="form-control" placeholder="Write Your Content" id="content" onChange={(e) => {setContent(e.target.value)}}
                                                   rows="24"/>
                                     </div>
                                     <div className="col-md-12">
@@ -60,7 +68,7 @@ const PostInput = () => {
                                             <Row>
                                                 <Col/>
                                                 <Col xs lg={2}>
-                                                    <button className="btn btn-solid" type={"submit"} onClick={onPostIn}>Post</button>
+                                                    <button className="btn btn-solid" onClick={onPostIn}>Post</button>
                                                     <button className="btn btn-solid">취소</button></Col>
                                             </Row>
                                         </Container>

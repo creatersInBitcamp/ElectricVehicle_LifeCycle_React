@@ -2,22 +2,24 @@ import React, {useEffect, useState} from 'react';
 import { useRouteMatch } from 'react-router-dom'
 import Breadcrumb from "../../common/breadcrumb";
 import Comment from "../items/comment";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import axios from 'axios'
 
 const ClassicBoardDetails = () => {
         const [post, setPost] = useState({})
         const match = useRouteMatch('/board/details/:postId')
-        // const {post} = useSelector((state) => {
-        //     let postId = macth.params.postId
-        //     return {
-        //         post: state.data.posts.find(el => el.postId == postId)
-        //     }
-        // })
         useEffect(() => {
-            setPost()
+            setPost(
+                // axios.get(`http://localhost:8080/posts/getone/${match}`)
+                //     .then((res) => {
+                //         setPost(res.data)
+                //     })
+                //     .catch((error) => {
+                //         console.log(error)
+                //     })
+            )
         })
 
         return (
@@ -41,8 +43,8 @@ const ClassicBoardDetails = () => {
                                                     <li><i className="fa fa-comments"/> Comment</li>
                                                 </Col>
                                                 <Col xs lg={2}>
-                                                    <Button className="justify-content-center" onClick={() => {alert('post 수정버튼')}}>수정</Button>
-                                                    <Button className="justify-content-center" onClick={() => {alert('post 삭제버튼')}}>삭제</Button>
+                                                    <button className="btn btn-solid" onClick={() => {alert('post 수정버튼')}}>수정</button>
+                                                    <button className="btn btn-solid" onClick={() => {alert('post 삭제버튼')}}>삭제</button>
                                                 </Col>
                                             </Row>
                                         </Container>

@@ -4,7 +4,6 @@ import {filterSort} from '../../common/items/filters'
 import {getVisibleproducts} from '../../atomic/services/services';
 
 const FilterBar = props => {
-
     //List Layout View
     const listLayout = () => {
         document.querySelector(".collection-grid-view").style = "opacity:0";
@@ -28,7 +27,7 @@ const FilterBar = props => {
         [].forEach.call(elems, function(el) {
             el.className = '';
             el.classList.add('col-lg-3');
-        });
+        })
     }
 
     // Layout Column View
@@ -43,12 +42,12 @@ const FilterBar = props => {
         props.onLayoutViewClicked(colSize);
     }
 
-    const {products, filters} = useSelector(state=>({
-        products: getVisibleproducts(state.data, state.filters),
-        filters: state.filters
+    const {products} = useSelector(state=>({
+        products: getVisibleproducts(state.data, state.filters)
     }))
 
     const dispatch = useDispatch()
+
     return <>
         <div className="product-filter-content">
             <div className="search-count">

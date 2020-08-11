@@ -22,7 +22,7 @@ export const fetchSingleProduct = productId => ({ type: FETCH_SINGLE_PRODUCT, pr
 
 const initialState = {
     products: [],
-    symbol: '$',
+    symbol: '￦',
     product_details: []
 };
 /* reducer */

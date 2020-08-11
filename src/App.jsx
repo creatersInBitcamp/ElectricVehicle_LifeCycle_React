@@ -8,7 +8,6 @@ import MyChatBot from "./chatbot/chatbot";
 import {Sidebar} from "./admin/common";
 import {Footer} from "./admin/common";
 import {Header} from "./admin/common";
-import ThemeSettings from "./common/theme-settings";
 import {ToastContainer} from "react-toastify";
 
 const App = (props) => {
@@ -20,7 +19,6 @@ const App = (props) => {
     if(admin){
         return (
             <div className="page-wrapper">
-                {/*<button onClick={toggleAdmin}>toggle</button>*/}
                 <Header/>
                 <div className="page-body-wrapper">
                     <Sidebar />
@@ -34,7 +32,6 @@ const App = (props) => {
     }else{
         return (
             <div>
-                {/*<button onClick={toggleAdmin}>toggle</button>*/}
                 <MyChatBot/>
                 <HeaderOne logoName={'logo.png'}/>
                 {props.children}

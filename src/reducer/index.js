@@ -6,8 +6,7 @@ import {tabset_pageReducer, report_tableReducer, tabset_profileReducer} from '..
 import productReducer from '../common/items/product'
 import {cartReducer,wishlistReducer,compareReducer} from "../newCar/page";
 import filtersReducer from "../common/items/filters";
-import usedwishlistReducer from "../usedCar/wishlist/UsedCarWishlist"
-import usedcompareReducer from "../usedCar/compare/MyCarComparison";
+import {usedWishlistReducer,usedCompareReducer} from "../usedCar"
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {adminCheckReducer} from "../user/login";
 import boardReducer from "../board/items/boardReducer";
@@ -25,8 +24,8 @@ const rootReducer = combineReducers({
         wishlist: wishlistReducer,
         compare: compareReducer,
         adminCheckReducer,
-        usedwishlist : usedwishlistReducer,
-        usedcompare : usedcompareReducer,
+        usedWishlist : usedWishlistReducer,
+        usedCompare : usedCompareReducer,
         Intl
 });
 export default rootReducer

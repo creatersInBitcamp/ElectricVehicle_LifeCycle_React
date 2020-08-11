@@ -1,5 +1,5 @@
 import React from 'react';
-import {AdminBreadcrumb} from '../common/adminBreadcrumb';
+import {AdminBreadcrumb} from '../common';
 import { Line, Bar } from 'react-chartjs-2';
 import { lineChart, chartOptions, areaChart, areaOptions, barOptions, barChart, sellOption, sellData, salesOption, salesData } from '../../atomic/constants/chartData'
 import {Report_table} from '../item';

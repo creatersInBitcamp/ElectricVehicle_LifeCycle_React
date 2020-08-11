@@ -1,15 +1,13 @@
 import React, {useEffect, useState,useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {MDBTable, MDBTableBody, MDBTableHead} from "mdbreact";
-import { useRouteMatch } from 'react-router-dom';
+import {Link, useRouteMatch} from 'react-router-dom';
 import Slider from 'react-slick';
+import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import '../../common/index.scss';
 import Breadcrumb from "../../common/breadcrumb";
-import DetailsWithPrice from "./details-price";
 import MyCar from "../compare/MyCar";
-import {addToCart,addToCartUnsafe} from "../../newCar/page";
 import {addToUsedWishlist} from "../wishlist/UsedCarWishlist";
-import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import {MarketPrice} from './MarketPrice'
 
 export const productDetail = () => {
@@ -21,8 +19,8 @@ export const productDetail = () => {
         setState({
             nav1: slider1.current,
             nav2: slider2.current
-        });
-    }, []);
+        })
+    }, [])
 
     const match = useRouteMatch('/used-car/product/:id')
     const {symbol, item} = useSelector((state) => {
@@ -39,7 +37,7 @@ export const productDetail = () => {
         arrows: true,
         fade: true
     }
-    const productsnav = {
+    const productsNav = {
         slidesToShow: 3,
         swipeToSlide: true,
         arrows: false,
@@ -55,8 +53,6 @@ export const productDetail = () => {
     return <>
         <div>
             <Breadcrumb parent={'Product'} title={item.name} />
-
-            {/*Section Start*/}
             {(item)?
                 <section className="section-b-space">
                     <div className="collection-wrapper">
@@ -81,18 +77,18 @@ export const productDetail = () => {
                                                     {item.variants?
                                                         item.variants.map((vari, index) =>
                                                             <div key={index}>
-                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0" />
+                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0" alt={""} />
                                                             </div>
                                                         ):
                                                         item.pictures.map((vari, index) =>
                                                             <div key={index}>
-                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0" />
+                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0"  alt={""} />
                                                             </div>
                                                         )}
                                                 </Slider>
                                                 <div className="row">
                                                     <div className="col-12 p-0">
-                                                        <Slider {...productsnav} asNavFor={state.nav1} ref={slider => (state.nav2 = slider)} className="slider-nav">
+                                                        <Slider {...productsNav} asNavFor={state.nav1} ref={slider => (state.nav2 = slider)} className="slider-nav">
                                                             {item.variants?
                                                                 item.variants.map((vari, index) =>
                                                                     <div key={index}>
@@ -108,12 +104,32 @@ export const productDetail = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <DetailsWithPrice symbol={symbol}
-                                                              item={item}
-                                                              navOne={state.nav1}
-                                                              addToCartClicked={()=>dispatch(addToCart(item,1))}
-                                                              BuynowClicked={()=>dispatch(addToCartUnsafe(item,1))}
-                                                              addToWishlistClicked={()=>dispatch(addToUsedWishlist(item))} />
+                                            <div className="col-lg-6 rtl-text">
+                                                <div className="product-right">
+                                                    <h2> {item.name} </h2>
+                                                    <h3>{symbol}{item.price} </h3>
+                                                    <div className="product-description border-product">
+                                                        <div className="qty-box">
+                                                            <MarketPrice/>
+                                                        </div>
+                                                    </div>
+                                                    <div className="product-buttons" >
+                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`} className="btn btn-solid">purchase request</Link>
+                                                    </div>
+                                                    <div className="border-product">
+                                                        <div className="product-icon">
+                                                            <button className="wishlist-btn" onClick={()=>dispatch(addToUsedWishlist(item))}><i
+                                                                className="fa fa-heart"/><span
+                                                                className="title-font">Add To WishList</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div className="border-product">
+                                                        <h6 className="product-title">product details</h6>
+                                                        <p>{item.shortDetails}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <section className="tab-product m-0">
@@ -215,7 +231,7 @@ export const productDetail = () => {
                                                             <div className="form-row">
                                                                 <h6>궁금한 점이 있다면 물어보세요!</h6>
                                                                 <div className="col-md-12">
-                                                                    <textarea className="form-control" placeholder="Wrire Your Question Here" id="exampleFormControlTextarea1" rows="6"/>
+                                                                    <textarea className="form-control" placeholder="Write Your Question Here" id="exampleFormControlTextarea1" rows="6"/>
                                                                 </div>
                                                                 <div className="col-md-12">
                                                                     <button className="btn btn-solid" type="submit">Submit YOur DetailContents</button>

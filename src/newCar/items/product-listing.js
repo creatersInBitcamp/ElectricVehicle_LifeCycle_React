@@ -1,11 +1,9 @@
-import React, {Component, useEffect, useState} from 'react';
-import {connect, useDispatch, useSelector} from 'react-redux'
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useComponentWillMount from 'component-will-mount-hook'
-import {addToCart} from '../page/cartReducer'
-import {addToWishlist} from '../page/wishlistReducer'
-import {addToCompare} from '../page/compareReducer'
+import {addToCart,addToWishlist,addToCompare} from '../page'
 import {getVisibleproducts} from '../../atomic/services/services';
 import {ProductListItem} from "../items";
 

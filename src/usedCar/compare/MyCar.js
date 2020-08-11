@@ -5,13 +5,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {addToUsedCompare} from './MyCarComparison'
 
 const MyCar = () => {
-
     const [open,setOpen] = useState(false)
     const [redirect,setRedirect] = useState(false)
     const [targetId,setTargetId] = useState(0)
 
     const {items,products} = useSelector(state=>({
-        items: state.usedwishlist.list,
+        items: state.usedWishlist.list,
         products: state.data.products
     }))
 
@@ -23,14 +22,14 @@ const MyCar = () => {
 
     const dispatch = useDispatch()
 
-    return <div>
+    return <>
         <div className="collection-filter-block">
-            <h3>My Car</h3>
+            <h2 style={{textAlign: "center", padding: "15px"}}>My Car</h2>
             <img className="img-fluid"
                  src="https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_410" alt=""/>
-            <h3>2019 테슬라 모델3</h3>
-            <br/>
-            <button onClick={()=>setOpen(true)} className="btn btn-solid">비교하기</button>
+            <h5 style={{textAlign: "center"}}>2019 테슬라 모델3</h5>
+            <div style={{textAlign: "center", padding: "15px"}}>
+            <button onClick={()=>setOpen(true)} className="btn btn-solid">비교하기</button></div>
         </div>
         <Modal open={open} onClose={()=>setOpen(false)} center>
             <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -79,6 +78,6 @@ const MyCar = () => {
                 </div>
             </div>
         </Modal>
-    </div>
+    </>
 }
 export default MyCar

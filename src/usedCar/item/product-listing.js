@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {getVisibleproducts} from '../../atomic/services/services';
-import {addToUsedWishlist} from '../wishlist/UsedCarWishlist'
+import {addToUsedWishlist} from '../page/UsedCarWishlist'
 
 const ProductListing = props => {
     const [limit, setLimit] = useState(5)

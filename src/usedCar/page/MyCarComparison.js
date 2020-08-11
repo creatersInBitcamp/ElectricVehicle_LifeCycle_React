@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {toast} from "react-toastify";
 import Slider from 'react-slick';
 import Breadcrumb from "../../common/breadcrumb";
-import {MarketPrice} from "../index";
+import {MarketPrice} from "../item/MarketPrice";
 
 /* types */
 const ADD_TO_USED_COMPARE = 'ADD_TO_USED_COMPARE'

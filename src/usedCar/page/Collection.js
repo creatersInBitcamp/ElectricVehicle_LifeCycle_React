@@ -5,9 +5,9 @@ import InputRange from "react-input-range";
 import { SlideToggle } from 'react-slide-toggle';
 import Breadcrumb from "../../common/breadcrumb";
 import NewProduct from "../../common/new-product";
-import FilterBar from "./filter-bar";
-import ProductListing from "./product-listing";
-import MyCar from "../compare/MyCar";
+import FilterBar from "../item/filter-bar";
+import ProductListing from "../item/product-listing";
+import MyCar from "../item/MyCar";
 import {filterBrand, filterColor, filterPrice} from "../../common/items/filters";
 import {getBrands, getColors, getMinMaxPrice} from "../../atomic/services/services";
 

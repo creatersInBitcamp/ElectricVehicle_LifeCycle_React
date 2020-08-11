@@ -1,18 +1,18 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-import Breadcrumb from "../common/breadcrumb";
-import {Slider2, Team4} from "../atomic/services/script"
+import {Breadcrumb} from "../index";
+import {Slider2, Team4} from "../../atomic/services/script"
 
 // image
-import img from '../assets/images/team/1.jpg'
-import aboutus from '../assets/images/about/model-s-hero-social.jpg'
-import rudduf from '../assets/images/about/avtar/rudduf.png'
-import gudxo from '../assets/images/about/avtar/gudxo.png'
-import wnsghk from '../assets/images/about/avtar/wnsghk.png'
-import tnqls from '../assets/images/about/avtar/tnqls.png'
+import img from '../../assets/images/team/1.jpg'
+import aboutus from '../../assets/images/about/model-s-hero-social.jpg'
+import rudduf from '../../assets/images/about/avtar/rudduf.png'
+import gudxo from '../../assets/images/about/avtar/gudxo.png'
+import wnsghk from '../../assets/images/about/avtar/wnsghk.png'
+import tnqls from '../../assets/images/about/avtar/tnqls.png'
 
-const aboutUs = () => {
+export const aboutUs = () => {
 
 
         return (

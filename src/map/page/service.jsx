@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {ChargingStationMap,SightsMap,TableChargingStation,BookmarkMap} from "../items";
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from "../../common";
 import {AdminBreadcrumb} from "../../admin/common"
 import {useSelector} from "react-redux";
 import StickyBox from "react-sticky-box";

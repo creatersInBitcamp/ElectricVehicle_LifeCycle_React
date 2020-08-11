@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Breadcrumb from "./breadcrumb";
+import {Breadcrumb} from "../../common/index";
 
-const PageNotFound = () => {
+export const PageNotFound = () => {
 
         return (
             <div>

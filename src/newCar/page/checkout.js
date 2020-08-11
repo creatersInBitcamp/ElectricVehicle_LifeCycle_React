@@ -5,7 +5,7 @@ import {useHistory} from 'react-router-dom'
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 import SimpleReactValidator from 'simple-react-validator';
 
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from "../../common";
 import {removeFromWishlist} from './wishlistReducer'
 import {getCartTotal} from "../../atomic/services/services";
 

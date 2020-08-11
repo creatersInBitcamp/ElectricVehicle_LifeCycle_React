@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useRouteMatch } from 'react-router-dom'
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from "../../common";
 import {Comment} from "../items";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";

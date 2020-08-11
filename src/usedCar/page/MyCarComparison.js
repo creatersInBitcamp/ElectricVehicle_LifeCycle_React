@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {toast} from "react-toastify";
 import Slider from 'react-slick';
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from "../../common";
 import {MarketPrice} from "../item/MarketPrice";
 
 /* types */

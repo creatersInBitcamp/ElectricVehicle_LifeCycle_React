@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-const CartHeader  = ({item, total, symbol, removeFromCart}) => (
+export const CartHeader  = ({item, total, symbol, removeFromCart}) => (
     <li >
         <div className="media">
             <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>

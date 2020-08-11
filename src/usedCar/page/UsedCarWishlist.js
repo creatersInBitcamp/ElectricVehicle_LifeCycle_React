@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {toast} from "react-toastify";
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from "../../common";
 
 /* type */
 const ADD_TO_USED_WISHLIST = 'ADD_TO_USED_WISHLIST'

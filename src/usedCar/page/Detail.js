@@ -5,10 +5,9 @@ import {Link, useRouteMatch} from 'react-router-dom';
 import Slider from 'react-slick';
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import '../../common/index.scss';
-import Breadcrumb from "../../common/breadcrumb";
-import MyCar from "../item/MyCar";
+import {Breadcrumb} from "../../common";
+import {MyCar,MarketPrice} from "../index";
 import {addToUsedWishlist} from "./UsedCarWishlist";
-import {MarketPrice} from '../item/MarketPrice'
 
 export const productDetail = () => {
     const [state, setState] = useState({ nav1: null, nav2: null });

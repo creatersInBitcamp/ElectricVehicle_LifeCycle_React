@@ -3,28 +3,24 @@ import { IntlActions } from 'react-redux-multilingual'
 import Pace from 'react-pace-progress'
 import useComponentWillMount from 'component-will-mount-hook'
 
-// Import custom items
+// Import custom item
 import store from "../../store";
-import NavBar from "./common/navbar";
-import SideBar from "./common/sidebar";
+import {NavBar,TopBar,LogoImage,changeCurrency} from "../index";
 import {CartContainer} from "../../newCar";
-import TopBar from "./common/topbar";
-import LogoImage from "./common/logo";
-import {changeCurrency} from "../items/currency";
 import {useDispatch} from "react-redux";
 
-const HeaderOne = props =>{
+export const HeaderOne = props =>{
 	const [isLoading, setIsLoading] = useState(false)
 	const [open, setOpen] = useState(false)
-	useComponentWillMount(()=> {
-		window.addEventListener('scroll', handleScroll)
-	});
+	/*useComponentWillMount(()=> {
+
+	});*/
 	useEffect(() => {
 		setTimeout(function() {
 			document.querySelector(".loader-wrapper").style = "display: none";
 		}, 2000);
 		setOpen(true);
-
+		window.addEventListener('scroll', handleScroll)
 		return () => {
 			window.removeEventListener('scroll', handleScroll)
 		}

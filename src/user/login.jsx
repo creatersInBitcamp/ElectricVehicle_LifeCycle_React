@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios'
-import Breadcrumb from "../common/breadcrumb";
+import {Breadcrumb} from "../common";
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import {useDispatch, useSelector} from "react-redux";
@@ -16,7 +16,7 @@ export const loginReducer = (state=false, action)=>{
 }
 
 
-const Login = (props) => {
+export const Login = (props) => {
 
     const [userId, setUserid] = useState('')
     const [password, setPassword] = useState('')

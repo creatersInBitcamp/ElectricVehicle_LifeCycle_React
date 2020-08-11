@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from "../../common";
 import {Recent, Media, Popular} from "../items";
 import {Link, useRouteMatch} from "react-router-dom";
 import Container from "react-bootstrap/Container";

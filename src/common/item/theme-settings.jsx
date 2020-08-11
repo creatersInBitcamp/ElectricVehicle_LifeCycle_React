@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom"
 import { useTranslate  } from 'react-redux-multilingual'
 
-import {SlideUpDown} from "../atomic/services/script"
+import {SlideUpDown} from "../../atomic/services/script"
 import { ToastContainer } from 'react-toastify';
 
-const ThemeSettings = () => {
+export const ThemeSettings = () => {
 
     const [divName, setDivName] = useState('RTL')
     const [themeLayout, setThemeLayout] = useState(false)

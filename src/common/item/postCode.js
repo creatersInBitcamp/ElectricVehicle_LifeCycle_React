@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import DaumPostcode from "react-daum-postcode";
 import Modal from "react-bootstrap/Modal";
-const PostCode = ({setAddress}) => {
+export const PostCode = ({setAddress}) => {
 
     const [show,setShow] = useState(false)
 

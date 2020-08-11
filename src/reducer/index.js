@@ -3,11 +3,11 @@ import {datatableReducer, imageReducer} from "../admin/item"
 import {sidebarReducer, sidebarMenusReducer} from "../admin/common"
 import {communityReducer, elecCarReducer, reportsReducer, ordersReducer, profileReducer, userReducer, usedCarReducer, dashboardReducer, tabset_userReducer} from "../admin/page"
 import {tabset_pageReducer, report_tableReducer, tabset_profileReducer} from '../admin/item'
-import productReducer from '../common/items/product'
+import productReducer from "../common/item/productReducer";
+import filtersReducer from "../common/item/filtersReducer";
 import {cartReducer,wishlistReducer,compareReducer} from "../newCar";
-import filtersReducer from "../common/items/filters";
 import {usedWishlistReducer,usedCompareReducer} from "../usedCar"
-import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
+import { IntlReducer as Intl } from 'react-redux-multilingual'
 import {loginReducer} from "../user/login";
 import boardReducer from "../board/items/boardReducer";
 

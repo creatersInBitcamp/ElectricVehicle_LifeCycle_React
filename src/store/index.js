@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 // middlewares
 import thunkMiddleware from 'redux-thunk'
 
-// Import custom items
+// Import custom item
 import rootReducer from "../reducer";
 import {IntlReducer as Intl} from "react-redux-multilingual";
 

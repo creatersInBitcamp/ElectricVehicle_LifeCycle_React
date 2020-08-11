@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-const Breadcrumb = props => {
+export const Breadcrumb = props => {
 
     return <>
         <div className="breadcrumb-section">

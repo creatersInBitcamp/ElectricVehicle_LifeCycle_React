@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
 
-const Topbar = () => {
+export const TopBar = () => {
 
     const translate = useTranslate();
 
@@ -73,4 +73,4 @@ const Topbar = () => {
     </>
 }
 
-export default Topbar
+export default TopBar

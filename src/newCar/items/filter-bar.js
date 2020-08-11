@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {filterSort} from '../../common/items/filters'
+import {filterSort} from '../../common'
 import {getVisibleproducts} from '../../atomic/services/services';
 
 export const FilterBar = props => {

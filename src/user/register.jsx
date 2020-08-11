@@ -1,12 +1,11 @@
 import React, {useCallback, useState} from 'react';
-import Breadcrumb from "../common/breadcrumb";
-import PostCode from "../common/postCode";
+import {Breadcrumb,PostCode} from "../common";
 import {Link} from "react-router-dom";
 import axios from "axios"
 
 
 
-const Register = () =>  {
+export const Register = () =>  {
 
     const [userId, setUserId] = useState('')
     const [password, setPassword] = useState('')

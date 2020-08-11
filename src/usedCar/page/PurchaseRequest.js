@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import SimpleReactValidator from "simple-react-validator";
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from "../../common";
 import {getCartTotal} from "../../atomic/services/services";
 
 export const PurchaseRequest = () => {

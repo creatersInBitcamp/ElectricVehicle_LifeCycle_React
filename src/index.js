@@ -7,9 +7,9 @@ import translations from './atomic/constants/translations'
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import './index.scss';
 
-// Layouts
+//common
 import Layout from './App'
-import Main from './layouts/main';
+import {Main,Search,Faq,aboutUs,getAllProducts,PageNotFound} from "./common"
 
 //new car
 import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar'
@@ -27,20 +27,11 @@ import {BoardDetail, BoardInput, BoardMain} from "./board/";
 // Admin
 import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Profile,Reports} from './admin/page';
 
-//common
-import Search from './common/items/search'
-import Faq from "./common/faq";
-
 //user
-import Login from './user/login'
-import Register from './user/register'
-import ForgetPassword from "./user/forget-password";
-import MyAccount from "./user/myAccount";
+import {ForgetPassword,Login,MyAccount,Register} from './user'
 
-import { getAllProducts } from './common/items/product'
+
 import store from "./store";
-import aboutUs from "./common/about-us";
-
 
 const Root =()=> {
     store.dispatch(getAllProducts());
@@ -56,13 +47,15 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/`} component={Main}/>
 
                                 {/*common*/}
-                                <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/about-us`} component={aboutUs}/>
+
+                                {/*user*/}
+                                <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/forgot`} component={ForgetPassword}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/myaccount`} component={MyAccount}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/about-us`} component={aboutUs}/>
 
                                 {/*newcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>

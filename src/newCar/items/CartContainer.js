@@ -2,8 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getCartTotal} from "../../atomic/services/services";
-import CartPage from "../../common/headers/common/cart-header";
-import {removeFromCart} from '../page/cartReducer'
+import {removeFromCart,CartHeader} from '../index'
 
 export const CartContainer = () => {
     const {cartList, symbol, total} = useSelector(state=>({
@@ -18,7 +17,7 @@ export const CartContainer = () => {
                 <i className="fa fa-shopping-cart"/></Link>
             <ul className="show-div shopping-cart">
                 { cartList.map((item,index) => (
-                    <CartPage key={index} item={item} total={total} symbol={symbol} removeFromCart={()=>{dispatch(removeFromCart(item))}}  />
+                    <CartHeader key={index} item={item} total={total} symbol={symbol} removeFromCart={()=>{dispatch(removeFromCart(item))}}  />
                 ))}
                 {(cartList.length > 0) ?
                     <div>

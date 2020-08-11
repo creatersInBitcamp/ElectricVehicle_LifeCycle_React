@@ -1,12 +1,12 @@
 import React from 'react';
 import Slider from 'react-slick';
 import {useDispatch, useSelector} from 'react-redux'
-import {getTrendingCollection} from '../atomic/services/services'
-import {Product4, Product5} from '../atomic/services/script'
-import ProductItem from './common/product-style-five';
-import {addToCart,addToWishlist,addToCompare} from "../newCar";
+import {getTrendingCollection} from '../../atomic/services/services'
+import {Product4, Product5} from '../../atomic/services/script'
+import {ProductStyleFive} from '../index';
+import {addToCart,addToWishlist,addToCompare} from "../../newCar";
 
-const TopCollection = props => {
+export const TopCollection = props => {
     const {type} = props
     const {items,symbol} = useSelector((state)=>({
         items: getTrendingCollection(state.data.products, type),
@@ -35,7 +35,7 @@ const TopCollection = props => {
                             <Slider {...properties} className="product-4 product-m no-arrow">
                                 { items.map((product, index ) =>
                                     <div key={index}>
-                                        <ProductItem product={product} symbol={symbol}
+                                        <ProductStyleFive product={product} symbol={symbol}
                                                      onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
                                                      onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
                                                      onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} />

@@ -1,16 +1,15 @@
 import React, {useEffect} from 'react';
 import {Helmet} from 'react-helmet'
-import '../common/index.scss';
+import '../index.scss';
 import Slider from 'react-slick';
 import {Link} from 'react-router-dom';
-import mapimg from '../assets/images/mainPage/mapimg.png'
-import communityimg from '../assets/images/mainPage/community.jpg'
+import mapimg from '../../assets/images/mainPage/mapimg.png'
+import communityimg from '../../assets/images/mainPage/community.jpg'
 
-// Import custom items
-import TopCollection from './top-collection';
-import SpecialProducts from "./common/products";
+// Import custom item
+import {TopCollection,SpecialProducts} from '../index';
 
-const Fashion = () => {
+export const Main = () => {
     useEffect(()=>{
         document.getElementById("color").setAttribute("href", `#` );
     })
@@ -99,4 +98,4 @@ const Fashion = () => {
         </div>
     </>
 }
-export default Fashion;
+export default Main;

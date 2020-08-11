@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
 import useComponentWillMount from "component-will-mount-hook/es6/useComponentWillMount";
 
-const NavBar = () => {
+export const NavBar = () => {
     const [navClose, setNavClose] = useState({right: '0px'})
 
     useComponentWillMount(()=>{

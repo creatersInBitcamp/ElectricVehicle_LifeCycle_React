@@ -2,10 +2,11 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {useDispatch, useSelector} from 'react-redux'
 import {getBestSeller, getMensWear, getWomensWear} from '../../atomic/services/services'
-import ProductItem from './product-item';
-import {addToCompare,addToWishlist,addToCart} from '../../newCar'
+import {ProductItem}from '../../usedCar'
+import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
+import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
 
-const SpecialProducts = () => {
+export const SpecialProducts = () => {
     const {bestSeller,mensWear,womensWear,symbol} = useSelector(state=>({
         bestSeller: getBestSeller(state.data.products),
         mensWear: getMensWear(state.data.products),
@@ -30,7 +31,7 @@ const SpecialProducts = () => {
                         <TabPanel>
                             <div className="no-slider row">
                                 { bestSeller.map((product, index ) =>
-                                    <ProductItem product={product} symbol={symbol}
+                                    <ProductListItem product={product} symbol={symbol}
                                                  onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
                                                  onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
                                                  onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} /> )
@@ -41,9 +42,7 @@ const SpecialProducts = () => {
                             <div className="no-slider row">
                                 { mensWear.map((product, index ) =>
                                     <ProductItem product={product} symbol={symbol}
-                                                 onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
-                                                 onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
-                                                 onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} /> )
+                                                 onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(product))}} key={index} /> )
                                 }
                             </div>
                         </TabPanel>

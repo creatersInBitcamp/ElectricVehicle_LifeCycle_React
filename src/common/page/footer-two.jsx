@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import { Link} from 'react-router-dom';
 
-import LogoImage from "../headers/common/logo"
+import {LogoImage} from "../../common/index"
 import {SlideUpDown} from "../../atomic/services/script";
 
-const FooterTwo = props =>{
+export const FooterTwo = props =>{
     useEffect(()=>{
         const contentwidth = window.innerWidth;
         if ((contentwidth) < 750) {
@@ -58,8 +58,7 @@ const FooterTwo = props =>{
                                             <li><Link to={`${process.env.PUBLIC_URL}/service`} >Map</Link></li>
                                             <li><Link to={`${process.env.PUBLIC_URL}/cart`} >cart</Link></li>
                                             <li><Link to={`${process.env.PUBLIC_URL}/pages/faq`} >FAQ</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/post/main`} >Post</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/board/main`} >Board</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/board/main/news`} >Board</Link></li>
                                         </ul>
                                     </div>
                                 </div>

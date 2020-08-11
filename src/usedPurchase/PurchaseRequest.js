@@ -3,7 +3,7 @@ import SimpleReactValidator from "simple-react-validator";
 import {Helmet} from "react-helmet";
 import Breadcrumb from "../common/breadcrumb";
 import {useSelector} from "react-redux";
-import {getCartTotal} from "../atomic/services";
+import {getCartTotal} from "../atomic/services/services";
 
 export const PurchaseRequest = props => {
     const [name, setName] = useState('')

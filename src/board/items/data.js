@@ -1,3 +1,18 @@
+/*import profile from "./imgs/thumb.jpeg";
+import profile2 from './imgs/thumb02.jpg'
+import profile3 from './imgs/thumb03.jpg'
+import profile4 from './imgs/hyejung.jpg'
+import profile5 from './imgs/sunghee.jpg'
+import profile6 from './imgs/sunghee2.jpg'
+import img from "./imgs/img_section/img01.jpg";
+import img02 from './imgs/img_section/img02.jpg'
+import img03 from './imgs/img_section/img03.jpg'
+import img04 from './imgs/img_section/img04.jpg'
+import img05 from './imgs/img_section/img05.jpg'
+import img06 from './imgs/img_section/img06.png'
+import img07 from './imgs/img_section/img07.png'*/
+
+
 export const posts =
 [
     {

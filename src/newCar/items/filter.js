@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
@@ -7,7 +7,8 @@ import { SlideToggle } from 'react-slide-toggle';
 import {getBrands, getColors, getMinMaxPrice} from '../../atomic/services/services';
 import {filterBrand, filterColor, filterPrice} from '../../common/items/filters'
 
-const Filter = () => {
+export const Filter = () => {
+    // const [openFilter, setOpenFilter] = useState(false)
 
     const { brands, colors, prices, filters } = useSelector(state=>({
         brands: getBrands(state.data.products),
@@ -20,12 +21,14 @@ const Filter = () => {
         document.querySelector(".collection-filter").style = "left: -365px";
     }
 
-    const clickBrandHandle = (event, brands) => {
+    const clickBrandHendle = (event, brands) => {
+
         const index = brands.indexOf(event.target.value);
         if (event.target.checked)
             brands.push(event.target.value); // push in array checked value
         else
             brands.splice(index, 1); // removed in array unchecked value
+
         dispatch(filterBrand(brands));
     }
 
@@ -39,9 +42,7 @@ const Filter = () => {
     }
 
     const filteredBrands = filters.brand;
-
     const dispatch = useDispatch()
-
     return (
         <div className="collection-filter-block">
             {/*brand filter start*/}
@@ -59,12 +60,7 @@ const Filter = () => {
                                 {brands.map((brand, index) => {
                                     return (
                                         <div className="custom-control custom-checkbox collection-filter-checkbox" key={index}>
-                                            <input type="checkbox"
-                                                   onClick={(e)=>clickBrandHandle(e,filteredBrands)}
-                                                   value={brand}
-                                                   defaultChecked={filteredBrands.includes(brand)}
-                                                   className="custom-control-input"
-                                                   id={brand} />
+                                            <input type="checkbox" onClick={(e)=>clickBrandHendle(e,filteredBrands)} value={brand} defaultChecked={filteredBrands.includes(brand)} className="custom-control-input" id={brand} />
                                             <label className="custom-control-label"
                                                    htmlFor={brand}>{brand}</label>
                                         </div> )
@@ -85,10 +81,7 @@ const Filter = () => {
                                 <ul>
                                     {colors.map((color, index) => {
                                         return (
-                                            <li className={color}
-                                                title={color}
-                                                onClick={(e) => colorHandle(e, color)}
-                                                key={index}/> )
+                                            <li className={color} title={color} onClick={(e) => colorHandle(e, color)} key={index}/> )
                                     })}
                                 </ul>
                             </div>
@@ -96,6 +89,7 @@ const Filter = () => {
                     </div>
                 )}
             </SlideToggle>
+
             {/*price filter start here */}
             <SlideToggle>
                 {({onToggle, setCollapsibleElement}) => (

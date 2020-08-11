@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
 
-import {getBestSeller} from "../atomic/services";
+import {getBestSeller} from "../atomic/services/services";
 // import {addToCart, addToWishlist, addToCompare, addToWishlistUnsafe, addToCompareUnsafe} from "../atomic/actions";
 import ProductItem from '../layouts/common/product-item';
 import {toast} from "react-toastify";

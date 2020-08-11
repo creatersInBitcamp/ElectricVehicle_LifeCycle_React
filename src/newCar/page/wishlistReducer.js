@@ -1,41 +1,42 @@
 import React from 'react';
 import {toast} from "react-toastify";
-import {addToCartUnsafe} from "../newCar/page";
+import {addToCartUnsafe} from "./cartReducer";
 
 
 /* type */
-const ADD_TO_USEDWISHLIST = 'ADD_TO_USEDWISHLIST'
-const REMOVE_FROM_USEDWISHLIST = 'REMOVE_FROM_USEDWISHLIST'
+const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
+const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
 
 
 /* action */
-export const addToUsedWishlist = (product) => (dispatch) => {
-    toast.success("Item Added to UsedWishlist");
-    dispatch(addToUsedWishlistUnsafe(product))
+export const addToWishlist = (product) => (dispatch) => {
+    toast.success("Item Added to Wishlist");
+    dispatch(addToWishlistUnsafe(product))
 
 }
-export const addToUsedWishlistUnsafe = (product) => ({
-    type: ADD_TO_USEDWISHLIST,
+export const addToWishlistUnsafe = (product) => ({
+    type: ADD_TO_WISHLIST,
     product
 });
-export const removeFromUsedWishlist = product_id => (dispatch) => {
-    toast.error("Item Removed from UsedWishlist");
+
+export const removeFromWishlist = product_id => (dispatch) => {
+    toast.error("Item Removed from Wishlist");
     dispatch({
-        type: REMOVE_FROM_USEDWISHLIST,
+        type: REMOVE_FROM_WISHLIST,
         product_id
     })
 };
-export const addToCartAndRemoveUsedWishlist = (product,qty) => (dispatch) => {
+export const addToCartAndRemoveWishlist = (product,qty) => (dispatch) => {
     toast.success("Item Added to Cart");
     dispatch(addToCartUnsafe(product, qty));
-    dispatch(removeFromUsedWishlist(product));
+    dispatch(removeFromWishlist(product));
 }
 
 
 /* reducer */
-const usedwishlistReducer = (state = {list: []}, action) => {
+export const wishlistReducer = (state = {list: []}, action) => {
     switch (action.type) {
-        case ADD_TO_USEDWISHLIST:
+        case ADD_TO_WISHLIST:
             const productId = action.product.id
             if (state.list.findIndex(product => product.id === productId) !== -1) {
                 const list = state.list.reduce((cartAcc, product) => {
@@ -53,7 +54,7 @@ const usedwishlistReducer = (state = {list: []}, action) => {
 
             return { ...state, list: [...state.list, action.product] }
 
-        case REMOVE_FROM_USEDWISHLIST:
+        case REMOVE_FROM_WISHLIST:
             return {
                 list: state.list.filter(id => id !== action.product_id)
             }
@@ -63,4 +64,4 @@ const usedwishlistReducer = (state = {list: []}, action) => {
     return state;
 }
 
-export default usedwishlistReducer
+export default wishlistReducer

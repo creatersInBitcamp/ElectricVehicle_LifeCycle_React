@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {filterSort} from '../../common/items/filters'
 import {getVisibleproducts} from '../../atomic/services/services';
 
-const FilterBar = props => {
+export const FilterBar = props => {
 
     //List Layout View
     const listLayout = () => {

@@ -2,11 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 
-import {getSpecialCollection} from '../../atomic/services/index'
+import {getSpecialCollection} from '../../atomic/services/services'
 import ProductItem from './special-product-item';
-import {addToCart,incrementQty,decrementQty,removeFromCart} from "../../cart/cartReducer";
-import {addToWishlist} from "../../wishlist/wishlistReducer";
-import {addToCompare} from "../../compare/compareReducer";
+import {addToCart,incrementQty,decrementQty,removeFromCart,addToWishlist,addToCompare} from "../../newCar/page";
 
 const Special = props => {
 

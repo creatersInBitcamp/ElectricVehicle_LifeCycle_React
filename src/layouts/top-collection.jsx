@@ -1,12 +1,10 @@
 import React from 'react';
 import Slider from 'react-slick';
 import {useDispatch, useSelector} from 'react-redux'
-import {getTrendingCollection} from '../atomic/services'
+import {getTrendingCollection} from '../atomic/services/services'
 import {Product4, Product5} from '../atomic/services/script'
 import ProductItem from './common/product-style-five';
-import {addToCart} from "../cart/cartReducer";
-import {addToWishlist} from "../wishlist/wishlistReducer";
-import {addToCompare} from "../compare/compareReducer";
+import {addToCart,addToWishlist,addToCompare} from "../newCar/page";
 
 const TopCollection = props => {
     const {type} = props

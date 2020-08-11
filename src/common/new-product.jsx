@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import {connect, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom'
 
-import {getBestSeller} from "../atomic/services";
+import {getBestSeller} from "../atomic/services/services";
 
 const NewProduct = () => {
     const {items, symbol} = useSelector(state => ({

@@ -26,8 +26,7 @@ import {ChargingStationMap,SightsMap,TableChargingStation,BookmarkMap} from "./m
 import MapService from './map/page/service'
 
 //board
-import ClassicBoardMain from "./board/page/classicBoard.main";
-import ClassicBoardDetails from "./board/page/classicBoard.details";
+import {BoardDetail, BoardInput, BoardMain} from "./board/";
 
 // Admin
 import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Profile,Reports} from './admin/page';
@@ -45,7 +44,6 @@ import MyAccount from "./user/myAccount";
 import { getAllProducts } from './common/items/product'
 import store from "./store";
 import aboutUs from "./common/about-us";
-import PostInput from "./board/page/postInput";
 
 
 const Root =()=> {
@@ -95,9 +93,9 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/service/table`} component={TableChargingStation} />
 
                                 {/*board*/}
-                                <Route path={`${process.env.PUBLIC_URL}/board/main/:category`} component={ClassicBoardMain}/>
-                                <Route path={`${process.env.PUBLIC_URL}/board/details/:postId`} component={ClassicBoardDetails}/>
-                                <Route path={`${process.env.PUBLIC_URL}/board/input/:category`} component={PostInput}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/main/:category`} component={BoardMain}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/details/:postId`} component={BoardDetail}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/input/:category`} component={BoardInput}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />

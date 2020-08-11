@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Breadcrumb from "../../common/breadcrumb";
 import Recent from "../items/recent";
 import Media from "../items/media";
+import {Link, useRouteMatch} from "react-router-dom";
 
 const initialState = [
     {
@@ -37,7 +38,8 @@ const initialState = [
 
 const ClassicBoardMain = () => {
         const [posts, setPosts] = useState([])
-
+        const match = useRouteMatch('/board/main/:category').params.category
+        console.log(match)
         useEffect(()=>{
             console.log('useEffect on')
             setPosts(initialState)
@@ -79,7 +81,9 @@ const ClassicBoardMain = () => {
                                 </div>
                             </div>
                             <div className="col-xl-9 col-lg-8 col-md-7 order-sec">
-                            <button>test </button>
+                            <Link to={`${process.env.PUBLIC_URL}/board/input/${match}`}>
+                                <button className="btn btn-solid">test</button>
+                            </Link>
                                 <div className="row blog-media">
                                     {posts.map( post => (<Media post={post} key={post.postId}/>))}
                                 </div>

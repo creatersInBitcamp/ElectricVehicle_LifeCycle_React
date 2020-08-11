@@ -114,7 +114,7 @@ const NavBar = () => {
                                 <li><Link
                                     to={`${process.env.PUBLIC_URL}/board/main/news`}>{translate('news')}</Link>
                                 </li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/board/user`}>{translate('userboard')}</Link>
+                                <li><Link to={`${process.env.PUBLIC_URL}/board/main/user`}>{translate('userboard')}</Link>
                                 </li>
                             </ul>
                         </li>

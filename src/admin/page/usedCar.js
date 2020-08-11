@@ -1,7 +1,5 @@
 import React from 'react'
 import {AdminBreadcrumb} from '../common'
-import data from '../../assets/data/listPages';
-import {Datatable} from '../item';
 
 const usedCarTypes = {REQUEST: 'usedCar/REQUEST'}
 const usedCarReducer = ( state={}, action ) => {
@@ -24,13 +22,7 @@ export const UsedCar = () => {
                                 </div>
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">
-                                        <Datatable
-                                            multiSelectOption={true}
-                                            myData={data}
-                                            pageSize={7}
-                                            pagination={false}
-                                            class="-striped -highlight"
-                                        />
+
                                     </div>
                                 </div>
                             </div>

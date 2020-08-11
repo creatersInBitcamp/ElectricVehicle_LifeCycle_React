@@ -1,7 +1,5 @@
 import React from 'react'
 import {AdminBreadcrumb} from '../common';
-import {Datatable} from '../item'
-import data from '../../assets/data/media';
 
 const communityTypes = {REQUEST: 'community/REQUEST'}
 const communityReducer = ( state={}, action ) => {
@@ -22,13 +20,6 @@ export const Community = () => {
                         </div>
                         <div className="card-body">
                             <div id="batchDelete" className="category-table media-table coupon-list-delete">
-                                <Datatable
-                                    multiSelectOption={true}
-                                    myData={data}
-                                    pageSize={10}
-                                    pagination={true}
-                                    class="-striped -highlight"
-                                />
                             </div>
                         </div>
                     </div>

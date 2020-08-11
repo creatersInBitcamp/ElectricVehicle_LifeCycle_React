@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Helmet} from 'react-helmet'
 import StickyBox from "react-sticky-box";
 import InputRange from "react-input-range";
 import { SlideToggle } from 'react-slide-toggle';

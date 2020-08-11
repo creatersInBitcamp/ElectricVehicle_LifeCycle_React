@@ -93,34 +93,25 @@ export const UsedWishlist = () => {
                                                             :item.pictures[0]} alt="" />
                                                     </Link>
                                                 </td>
-                                                <td><Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>{item.name}</Link>
-                                                    <div className="mobile-cart-content row">
-                                                        <div className="col-xs-3">
-                                                            <p>in stock</p>
-                                                        </div>
-                                                        <div className="col-xs-3">
-                                                            <h2 className="td-color">
-                                                                <span className="money">{symbol}{item.price}</span></h2>
-                                                        </div>
-                                                        <div className="col-xs-3">
-                                                            <h2 className="td-color">
-                                                                <a className="icon" onClick={()=>{dispatch(removeFromUsedWishlist(item))}}>
-                                                                    <i className="fa fa-times"/>
-                                                                </a>
-                                                            </h2>
-                                                        </div>
-                                                    </div>
+                                                <td>
+                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
+                                                        {item.name}
+                                                    </Link>
                                                 </td>
                                                 <td>
                                                     <div className="col-xs-3">
                                                         <h2 className="td-color">
-                                                            <span className="money">{symbol}{item.price}</span>
+                                                            <span className="money">
+                                                                {symbol}{item.price}
+                                                            </span>
                                                         </h2>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div className="col-xs-3">
-                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`} className="btn btn-solid">purchase request</Link>
+                                                        <Link className="btn btn-solid" to={`${process.env.PUBLIC_URL}/used-car/purchase`}>
+                                                            purchase request
+                                                        </Link>
                                                     </div>
                                                 </td>
                                                 <td>

@@ -77,12 +77,12 @@ export const productDetail = () => {
                                                     {item.variants?
                                                         item.variants.map((vari, index) =>
                                                             <div key={index}>
-                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0" />
+                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0" alt={""} />
                                                             </div>
                                                         ):
                                                         item.pictures.map((vari, index) =>
                                                             <div key={index}>
-                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0" />
+                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0"  alt={""} />
                                                             </div>
                                                         )}
                                                 </Slider>
@@ -231,7 +231,7 @@ export const productDetail = () => {
                                                             <div className="form-row">
                                                                 <h6>궁금한 점이 있다면 물어보세요!</h6>
                                                                 <div className="col-md-12">
-                                                                    <textarea className="form-control" placeholder="Wrire Your Question Here" id="exampleFormControlTextarea1" rows="6"/>
+                                                                    <textarea className="form-control" placeholder="Write Your Question Here" id="exampleFormControlTextarea1" rows="6"/>
                                                                 </div>
                                                                 <div className="col-md-12">
                                                                     <button className="btn btn-solid" type="submit">Submit YOur DetailContents</button>

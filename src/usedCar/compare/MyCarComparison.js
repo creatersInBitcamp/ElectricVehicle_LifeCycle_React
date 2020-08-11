@@ -121,10 +121,10 @@ export const MyCarComparison = () => {
                                     </div>
                                     <div className="detail-part">
                                         <div className="title-detail">
-                                            <h5>discription</h5>
+                                            <h5>description</h5>
                                         </div>
                                         <div className="inner-detail">
-                                            <p>shortdetail</p>
+                                            <p>shortDetail</p>
                                         </div>
                                     </div>
                                     <div className="detail-part">
@@ -161,7 +161,10 @@ export const MyCarComparison = () => {
                                             <button type="button" className="close-btn" onClick={()=>{dispatch(removeFromUsedCompare(item))}}>
                                                 <span aria-hidden="true">×</span>
                                             </button>
-                                            <div className="img-secton">
+                                            <div className="img-section">
+                                                <img src={item.variants?
+                                                    item.variants[0].images
+                                                    :item.pictures[0]} className="img-fluid" alt="" />
                                                 <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
                                                     <h5>{item.name}</h5>
                                                 </Link>
@@ -185,10 +188,10 @@ export const MyCarComparison = () => {
                                             </div>
                                             <div className="detail-part">
                                                 <div className="title-detail">
-                                                    <h5>discription</h5>
+                                                    <h5>description</h5>
                                                 </div>
                                                 <div className="inner-detail">
-                                                    <p>shortdetail</p>
+                                                    <p>shortDetail</p>
                                                 </div>
                                             </div>
                                             <div className="detail-part">

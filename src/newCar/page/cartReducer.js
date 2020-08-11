@@ -58,7 +58,7 @@ export const cartReducer = (state = {cart: []}, action) => {
                 return { ...state, cart }
             }
 
-            return { ...state, cart: [...state.cart, { ...action.product, qty: action.qty, sum: (action.product)*action.qty }] }
+            return { ...state, cart: [...state.cart, { ...action.product, qty: action.qty, sum: (action.product.price)*(action.qty) }] }
 
         case DECREMENT_QTY:
 
@@ -77,7 +77,7 @@ export const cartReducer = (state = {cart: []}, action) => {
                 return { ...state, cart }
             }
 
-            return { ...state, cart: [...state.cart, { ...action.product, qty: action.qty, sum: action.product.price*action.qty }] }
+            return { ...state, cart: [...state.cart, { ...action.product, qty: action.qty, sum: (action.product.price)*(action.qty) }] }
 
         case REMOVE_FROM_CART:
             return {

@@ -129,7 +129,7 @@ const SpecialProductItem = props => {
                     <Link to={`${process.env.PUBLIC_URL}/product-detail/product/${props.product.id}`}>
                         <h6>{props.product.name}</h6>
                     </Link>
-                    <h4>{props.symbol}{props.product.price - (props.product.price * props.product.discount / 100)}
+                    <h4>{props.symbol}{props.product.price - (props.product.price)}
                         <del><span className="money">{props.symbol}{props.product.price}</span></del>
                     </h4>
                 </div>

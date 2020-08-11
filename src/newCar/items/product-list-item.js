@@ -75,7 +75,7 @@ export const ProductListItem = props => {
                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`}>
                         <h6>{product.name}</h6>
                     </Link>
-                    <h4><span className="money">{symbol}{product.price}</span></h4>
+                    <h4><span className="money">{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h4>
                     {product.variants?
                         <ul className="color-variant">
                             {product.variants.map((vari, i) => {
@@ -100,7 +100,7 @@ export const ProductListItem = props => {
                                 <div className="col-lg-6 rtl-text">
                                     <div className="product-right">
                                         <h2> {product.name} </h2>
-                                        <h3><span className="money">{symbol}{product.price}</span></h3>
+                                        <h3><span className="money">{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h3>
                                         {product.variants?
                                             <ul className="color-variant">
                                                 {product.variants.map((vari, i) =>

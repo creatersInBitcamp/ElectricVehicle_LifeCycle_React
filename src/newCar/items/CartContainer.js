@@ -24,7 +24,7 @@ export const CartContainer = () => {
                     <div>
                         <li>
                             <div className="total">
-                                <h5>subtotal : <span>{symbol}{total}</span></h5>
+                                <h5>subtotal : <span>{total}{symbol}</span></h5>
                             </div>
                         </li>
                         <li>

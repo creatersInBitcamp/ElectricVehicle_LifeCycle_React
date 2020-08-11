@@ -102,7 +102,7 @@ export const UsedWishlist = () => {
                                                     <div className="col-xs-3">
                                                         <h2 className="td-color">
                                                             <span className="money">
-                                                                {symbol}{item.price}
+                                                                {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}
                                                             </span>
                                                         </h2>
                                                     </div>

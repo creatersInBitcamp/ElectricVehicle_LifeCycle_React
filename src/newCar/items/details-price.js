@@ -36,7 +36,7 @@ export const DetailsWithPrice = props => {
         <div className="col-lg-6 rtl-text">
             <div className="product-right">
                 <h2> {item.name} </h2>
-                <h3>{symbol}{item.price} </h3>
+                <h3>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol} </h3>
                 {item.variants?
                     <ul >
                         <Slider {...colorsnav} asNavFor={props.navOne} ref={slider => (slider3.current = slider)} className="color-variant">

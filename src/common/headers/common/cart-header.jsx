@@ -12,7 +12,7 @@ const CartHeader  = ({item, total, symbol, removeFromCart}) => (
                     <h4>{item.name}</h4>
                 </Link>
                 <h4>
-                    <span>{item.qty} x {symbol} {(item.price*item.discount/100)}</span>
+                    <span>{item.qty} x {(item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))}{symbol}</span>
                 </h4>
             </div>
         </div>

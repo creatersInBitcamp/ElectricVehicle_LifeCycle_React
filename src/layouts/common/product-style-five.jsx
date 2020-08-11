@@ -88,7 +88,7 @@ const ProductStyleFive = props => {
                     <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`}>
                         <h6>{product.name}</h6>
                     </Link>
-                    <h4>{symbol}{product.price-(product.price*product.discount/100)}</h4>
+                    <h4>{symbol}{product.price}</h4>
                     {product.variants?
                         <ul className="color-variant">
                             {product.variants.map((vari, i) => {
@@ -113,7 +113,7 @@ const ProductStyleFive = props => {
                                 <div className="col-lg-6 rtl-text">
                                     <div className="product-right">
                                         <h2> {product.name} </h2>
-                                        <h3>{symbol}{product.price-(product.price*product.discount/100)}
+                                        <h3>{symbol}{product.price-(product.price)}
                                             <del><span className="money">{symbol}{product.price}</span></del>
                                         </h3>
                                         {product.variants?

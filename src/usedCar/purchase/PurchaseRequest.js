@@ -77,11 +77,11 @@ export const PurchaseRequest = () => {
                                             </div>
                                             <ul className="qty">
                                                 {cartItems.map((item, index) => {
-                                                    return <li key={index}>{item.name}<span>{symbol}{item.price}</span></li> })
+                                                    return <li key={index}>{item.name}<span>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li> })
                                                 }
                                             </ul>
                                             <ul className="total">
-                                                <li>Total <span className="count">{symbol}{total}</span></li>
+                                                <li>Total <span className="count">{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li>
                                             </ul>
                                         </div>
                                         <button>구매요청</button>

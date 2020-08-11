@@ -73,7 +73,7 @@ export const Compare = () => {
                                                             item.variants[0].images
                                                             :item.pictures[0]} className="img-fluid" alt="" />
                                                         <h5>{item.name}</h5></Link>
-                                                    <h5><span className="money">{symbol}{item.price}</span></h5>
+                                                    <h5><span className="money">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h5>
                                                 </div>
                                                 <div className="detail-part">
                                                     <div className="title-detail">

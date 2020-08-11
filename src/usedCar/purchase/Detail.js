@@ -107,7 +107,7 @@ export const productDetail = () => {
                                             <div className="col-lg-6 rtl-text">
                                                 <div className="product-right">
                                                     <h2> {item.name} </h2>
-                                                    <h3>{symbol}{item.price} </h3>
+                                                    <h3>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol} </h3>
                                                     <div className="product-description border-product">
                                                         <div className="qty-box">
                                                             <MarketPrice/>

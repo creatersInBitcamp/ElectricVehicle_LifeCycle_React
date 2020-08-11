@@ -47,7 +47,7 @@ const Special = props => {
                                                         <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
                                                             <h6>{product[0].name}</h6>
                                                         </Link>
-                                                        <h4>{symbol}{product[0].price-(product[0].price*product[0].discount/100)}
+                                                        <h4>{symbol}{product[0].price}
                                                             <del><span className="money">{symbol}{product[0].price}</span></del>
                                                         </h4>
                                                     </div>
@@ -71,7 +71,7 @@ const Special = props => {
                                                         <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[1].id}`} >
                                                             <h6>{product[1].name}</h6>
                                                         </Link>
-                                                        <h4>{symbol}{product[1].price-(product[1].price*product[1].discount/100)}
+                                                        <h4>{symbol}{product[1].price}
                                                             <del><span className="money">{symbol}{product[1].price}</span></del>
                                                         </h4>
                                                     </div>
@@ -118,7 +118,7 @@ const Special = props => {
                                                         <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[3].id}`} >
                                                             <h6>{product[3].name}</h6>
                                                         </Link>
-                                                        <h4>{symbol}{product[3].price-(product[3].price*product[3].discount/100)}
+                                                        <h4>{symbol}{product[3].price}
                                                             <del><span className="money">{symbol}{product[3].price}</span></del>
                                                         </h4>
                                                     </div>
@@ -142,7 +142,7 @@ const Special = props => {
                                                         <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[4].id}`} >
                                                             <h6>{product[4].name}</h6>
                                                         </Link>
-                                                        <h4>{symbol}{product[4].price-(product[4].price*product[4].discount/100)}
+                                                        <h4>{symbol}{product[4].price}
                                                             <del><span className="money">{symbol}{product[4].price}</span></del>
                                                         </h4>
                                                     </div>

@@ -111,11 +111,11 @@ const HeaderOne = props =>{
 															<li><a href={null} onClick={() => changeLanguage('ko')}>Korea</a> </li>
 															<li><a href={null} onClick={() => changeLanguage('en')}>English</a> </li>
 														</ul>
-														<h6>currency</h6>
+														{/*<h6>currency</h6>
 														<ul className="list-inline">
 															<li><a href={null} onClick={()=>{dispatch(changeCurrency('￦'))}}>won</a> </li>
 															<li><a href={null} onClick={()=>{dispatch(changeCurrency('$'))}}>doller</a> </li>
-														</ul>
+														</ul>*/}
 													</div>
 												</li>
 												{/*Header Cart Component */}

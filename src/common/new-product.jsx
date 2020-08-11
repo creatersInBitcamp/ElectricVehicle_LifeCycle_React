@@ -27,7 +27,7 @@ const NewProduct = () => {
                                 <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`}><img className="img-fluid" src={`${product.variants[0].images}`} alt="" /></Link>
                                 <div className="media-body align-self-center">
                                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`}><h6>{product.name}</h6></Link>
-                                    <h4>{symbol}{(product.price)}</h4>
+                                    <h4>{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h4>
                                 </div>
                             </div>
                         )}

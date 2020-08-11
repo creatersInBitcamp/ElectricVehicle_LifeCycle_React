@@ -207,11 +207,11 @@ export const checkOut = () => {
                                                 </div>
                                                 <ul className="qty">
                                                     {cartItems.map((item, index) => {
-                                                        return <li key={index}>{item.name} × {item.qty} <span>{symbol} {item.sum}</span></li> })
+                                                        return <li key={index}>{item.name} × {item.qty} <span>{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li> })
                                                     }
                                                 </ul>
                                                 <ul className="sub-total">
-                                                    <li>Subtotal <span className="count">{symbol}{total}</span></li>
+                                                    <li>Subtotal <span className="count">{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li>
                                                     <li>Shipping <div className="shipping">
                                                         <div className="shopping-option">
                                                             <input type="checkbox" name="free-shipping" id="free-shipping" />
@@ -226,7 +226,7 @@ export const checkOut = () => {
                                                 </ul>
 
                                                 <ul className="total">
-                                                    <li>Total <span className="count">{symbol}{total}</span></li>
+                                                    <li>Total <span className="count">{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li>
                                                 </ul>
                                             </div>
 
@@ -252,7 +252,7 @@ export const checkOut = () => {
                                                 {(total !== 0)?
                                                     <div className="text-right">
                                                         {(state.payment === 'stripe')? <button type="button" className="btn-solid btn" onClick={() => StripeClick()} >Place Order</button>:
-                                                            <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
+                                                            <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
                                                     </div>
                                                     : ''}
                                             </div>

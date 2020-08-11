@@ -51,7 +51,7 @@ export const wishlist = () => {
                                                         </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
-                                                                <span className="money">{symbol}{item.price}</span></h2>
+                                                                <span className="money">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h2>
                                                         </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
@@ -68,7 +68,7 @@ export const wishlist = () => {
                                                 <td>
                                                     <div className="col-xs-3">
                                                         <h2 className="td-color">
-                                                            <span className="money">{symbol}{item.price}</span></h2>
+                                                            <span className="money">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h2>
                                                     </div>
                                                 </td>
                                                 <td >

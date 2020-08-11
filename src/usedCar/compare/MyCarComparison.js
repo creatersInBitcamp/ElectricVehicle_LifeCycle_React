@@ -168,7 +168,7 @@ export const MyCarComparison = () => {
                                                 <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
                                                     <h5>{item.name}</h5>
                                                 </Link>
-                                                <h5>{symbol}{item.price}</h5>
+                                                <h5>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h5>
                                             </div>
                                             <div className="detail-part">
                                                 <div className="title-detail">

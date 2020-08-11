@@ -64,7 +64,7 @@ export const CartComponent = () => {
                                                             </div>
                                                         </div>
                                                         <div className="col-xs-3">
-                                                            <h2 className="td-color">{symbol}{item.price}</h2>
+                                                            <h2 className="td-color">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h2>
                                                         </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
@@ -77,7 +77,7 @@ export const CartComponent = () => {
                                                 </td>
                                                 <td>
                                                     <div className="col-xs-3">
-                                                        <h2 className="td-color">{symbol}{item.price}</h2>
+                                                        <h2 className="td-color">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h2>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -107,7 +107,7 @@ export const CartComponent = () => {
                                                         </h2>
                                                     </div>
                                                 </td>
-                                                <td><h2 className="td-color">{symbol}{item.sum}</h2></td>
+                                                <td><h2 className="td-color">{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h2></td>
                                             </tr>
                                             </tbody> )
                                     })}
@@ -122,7 +122,7 @@ export const CartComponent = () => {
                                         </td>
                                         <td>
                                             <div className="col-xs-3">
-                                                <h2 className="td-color">{symbol} {total}</h2>
+                                                <h2 className="td-color">{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol} </h2>
                                             </div>
                                         </td>
                                     </tr>

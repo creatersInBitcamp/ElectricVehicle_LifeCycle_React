@@ -54,20 +54,22 @@ const ClassicBoardMain = () => {
         const match = useRouteMatch('/board/main/:category').params.category
         const [page, setPage] = useState(1)
         const [count, setCount] = useState(10)
-        const handleChange = (event, value) => {
-            setPage(value)
-        }
-        useEffect(()=>{
+        const postAxios = () => {
             axios.get(`http://localhost:8080/posts/pageall/${page}`)
                 .then((res) => {
-                   console.log(res.data)
                     setPosts(res.data.content)
                     setCount(res.data.totalPages)
                 })
                 .catch((error)=> {
                     console.log(error)
                 })
-            // setPosts(initialState)
+        }
+        const handleChange = (event, value) => {
+            setPage(value)
+            postAxios()
+        }
+        useEffect(()=>{
+            postAxios()
         }, [])
         return (
             <div>
@@ -98,7 +100,7 @@ const ClassicBoardMain = () => {
                                 <div className="row blog-media">
                                     <Container>
                                         <Row>
-                                            <Media posts={posts}/>
+                                            <Media posts={posts} />
                                         </Row>
                                         <Row>
                                             <Col/>
@@ -111,6 +113,7 @@ const ClassicBoardMain = () => {
                                         <Row>
                                            <Col md={{ span: 6, offset: 3 }}>
                                                 <Pagination
+                                                    size="large"
                                                     className={classes.pagination}
                                                     variant={"outlined"}
                                                     count={count}

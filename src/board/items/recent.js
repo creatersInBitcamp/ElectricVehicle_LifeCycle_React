@@ -1,18 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
+import axios from "axios";
 
-const Recent = ({posts}) => {
+const Recent = () => {
+    const [recents, setRecents] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:8080/posts/popular')
+            .then((res) => {
+                setRecents(res.data.content)
+            })
+            .catch((err) => {
+                console.log(err.status)
+            })
+    },[])
     return (
         <>
-            { posts.map( post => (
-                <li key={post.postId}>
+            { recents.map( recent => (
+                <li key={recent.postId}>
                     <div className="media">
-                        <Link to={`${process.env.PUBLIC_URL}/board/details/${post.postId}`}>
-                            <img className="img-fluid" src={post.img} alt="Generic placeholder image" />
+                        <Link to={`${process.env.PUBLIC_URL}/board/details/${recent.postId}`}>
+                            <img className="img-fluid" src={recent.img} alt="Generic placeholder image" />
                         </Link>
                         <div className="media-body align-self-center">
-                            <h6>{post.date}</h6>
-                            <p>{post.hits} hits</p>
+                            <h6>{recent.date}</h6>
+                            <p>{recent.hits} hits</p>
                         </div>
                     </div>
                 </li>

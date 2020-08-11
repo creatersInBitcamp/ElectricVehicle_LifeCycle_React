@@ -9,18 +9,19 @@ import axios from 'axios'
 
 const ClassicBoardDetails = () => {
         const [post, setPost] = useState({})
-        const match = useRouteMatch('/board/details/:postId')
+        const match = useRouteMatch('/board/details/:postId').params.postId
         useEffect(() => {
             setPost(
-                // axios.get(`http://localhost:8080/posts/getone/${match}`)
-                //     .then((res) => {
-                //         setPost(res.data)
-                //     })
-                //     .catch((error) => {
-                //         console.log(error)
-                //     })
+                axios.get(`http://localhost:8080/posts/getone/${match}`)
+                    .then((res) => {
+                        console.log(res.data)
+                        setPost(res.data)
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
             )
-        })
+        }, [])
 
         return (
             <div>
@@ -32,28 +33,39 @@ const ClassicBoardDetails = () => {
                             <div className="row">
                                 <div className="col-sm-12 blog-detail">
                                     {/*<img src={} className="img-fluid" alt=""/>*/}
-                                    <h3>title</h3>
+                                    <h3>{post.titie}</h3>
                                     <ul className="post-social">
                                         <Container>
                                             <Row>
                                                 <Col>
-                                                    <li>작성시간</li>
-                                                    <li>Posted By :작성자</li>
-                                                    <li><i className="fa fa-heart"/>  Hits</li>
-                                                    <li><i className="fa fa-comments"/> Comment</li>
+                                                    <li>{post.date}</li>
+                                                    <li>Posted By :{post.userName}</li>
+                                                    <li><i className="fa fa-heart"/> {post.recomendation} like </li>
+                                                    <li><i className="fa fa-comments"/> 0 Comment</li>
                                                 </Col>
                                                 <Col xs lg={2}>
-                                                    <button className="btn btn-solid" onClick={() => {alert('post 수정버튼')}}>수정</button>
+                                                    <button className="btn btn-solid" onClick={() => {alert('post 수정버튼')}}>수정</button><a>  </a>
                                                     <button className="btn btn-solid" onClick={() => {alert('post 삭제버튼')}}>삭제</button>
                                                 </Col>
                                             </Row>
                                         </Container>
                                     </ul>
                                     <div className="row">
-                                        <iframe src={"https://www.evpost.co.kr/wp/쏘울soul-ev-시승기-감성과-테크놀로지의-조화/"} width={1920} height={2000} sandbox></iframe>
-                                        {/*<iframe src={post.url} width={1920} height={2000} sandbox></iframe>*/}
+                                        <iframe src={post.link} width={1920} height={2000}/>
                                     </div>
                                 </div>
+                                <Container>
+                                    <Row>
+                                        <Col>
+                                            <button className="btn btn-solid">목록</button>
+                                        </Col>
+                                        <Col xs md={2}>
+                                            <button className="btn btn-solid">수정</button>
+                                            <a>  </a>
+                                            <button className="btn btn-solid">삭제</button>
+                                        </Col>
+                                    </Row>
+                                </Container>
                             </div>
                             <div className="row section-b-space">
                                 <div className="col-sm-12">

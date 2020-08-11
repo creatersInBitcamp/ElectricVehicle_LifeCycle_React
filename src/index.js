@@ -15,19 +15,14 @@ import Main from './layouts/main';
 import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar/page'
 
 //used car
-import {productDetail, PurchaseRequest, UsedPurchaseCollection} from "./usedPurchase";
-import {SalesForm} from "./usedSales";
-import {Scrapped} from "./scrapped";
-import {MyCarComparison} from "./usedCompare";
-import UsedWishlist from "./usedWishlist/UsedWishlist"
+import {UsedPurchaseCollection,productDetail,PurchaseRequest,MyCarComparison,SalesForm,UsedWishlist,Scrapped} from './usedCar'
 
 //map
 import {ChargingStationMap,SightsMap,TableChargingStation,BookmarkMap} from "./map/items";
 import MapService from './map/page/service'
 
 //board
-import ClassicBoardMain from "./board/page/classicBoard.main";
-import ClassicBoardDetails from "./board/page/classicBoard.details";
+import {BoardDetail, BoardInput, BoardMain} from "./board/";
 
 // Admin
 import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Profile,Reports} from './admin/page';
@@ -94,8 +89,9 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/service/table`} component={TableChargingStation} />
 
                                 {/*board*/}
-                                <Route path={`${process.env.PUBLIC_URL}/board/main`} component={ClassicBoardMain}/>
-                                <Route path={`${process.env.PUBLIC_URL}/board/details/:post`} component={ClassicBoardDetails}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/main/:category`} component={BoardMain}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/details/:postId`} component={BoardDetail}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/input/:category`} component={BoardInput}/>
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />

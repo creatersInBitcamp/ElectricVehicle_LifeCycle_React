@@ -10,7 +10,7 @@ import {DetailsWithPrice,DetailsTopTabs,ImageZoom,SmallImages} from "../items";
 import {addToCart} from "./cartReducer";
 import {addToCartUnsafe} from "./cartReducer";
 import {addToWishlist} from "./wishlistReducer";
-import Recent from "../../board/items/recent";
+import {Recent} from "../../board/items";
 
 const initinalState = [
         {
@@ -111,16 +111,7 @@ export const LeftSideBar = () => {
                                         <Slider className="offer-slider slide-1">
                                             <div className="theme-card">
                                                 <ul className="recent-blog">
-                                                    {
-                                                        posts.map(post => {
-                                                            if (post.postId < 5) {
-                                                                return (
-                                                                    <Recent post={post} key={post.postId}/>
-                                                                )
-                                                            }
-                                                            return null
-                                                        })
-                                                    }
+                                                    <Recent posts={posts} />
                                                 </ul>
                                             </div>
                                         </Slider>

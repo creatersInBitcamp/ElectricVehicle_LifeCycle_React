@@ -1,16 +1,69 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import Breadcrumb from '../common/breadcrumb';
-import {removeFromUsedWishlist} from './usedwishlistReducer'
+import {toast} from "react-toastify";
+import Breadcrumb from "../../common/breadcrumb";
 
-const UsedWishlist = () => {
+/* type */
+const ADD_TO_USED_WISHLIST = 'ADD_TO_USED_WISHLIST'
+const REMOVE_FROM_USED_WISHLIST = 'REMOVE_FROM_USED_WISHLIST'
+
+/* action */
+export const addToUsedWishlist = (product) => (dispatch) => {
+    toast.success("Item Added to UsedWishlist")
+    dispatch(addToUsedWishlistUnsafe(product))
+}
+export const addToUsedWishlistUnsafe = (product) => ({
+    type: ADD_TO_USED_WISHLIST,
+    product
+})
+export const removeFromUsedWishlist = product_id => (dispatch) => {
+    toast.error("Item Removed from UsedWishlist")
+    dispatch({
+        type: REMOVE_FROM_USED_WISHLIST,
+        product_id
+    })
+}
+
+/* reducer */
+export const usedWishlistReducer = (state = {list: []}, action) => {
+    switch (action.type) {
+        case ADD_TO_USED_WISHLIST:
+            const productId = action.product.id
+            if (state.list.findIndex(product => product.id === productId) !== -1) {
+                const list = state.list.reduce((cartAcc, product) => {
+                    if (product.id === productId) {
+                        cartAcc.push({ ...product })
+                    } else {
+                        cartAcc.push(product)
+                    }
+
+                    return cartAcc
+                }, [])
+
+                return { ...state, list }
+            }
+
+            return { ...state, list: [...state.list, action.product] }
+
+        case REMOVE_FROM_USED_WISHLIST:
+            return {
+                list: state.list.filter(id => id !== action.product_id)
+            }
+
+        default:
+    }
+    return state
+}
+
+export const UsedWishlist = () => {
     const {Items, symbol} = useSelector(state=>({
-        Items: state.usedwishlist.list,
+        Items: state.usedWishlist.list,
         symbol: state.data.symbol
     }))
 
     const dispatch = useDispatch()
+
     return <>
         <div>
             <Breadcrumb title={'Wishlist'} />
@@ -114,5 +167,4 @@ const UsedWishlist = () => {
         </div>
     </>
 }
-
-export default UsedWishlist
+export default usedWishlistReducer

@@ -6,7 +6,7 @@ import StickyBox from "react-sticky-box";
 import Slider from "react-slick";
 import {Link} from "react-router-dom";
 import {posts} from "../../board/items/data";
-import Recent from "../../board/items/recent";
+import {Recent} from "../../board/items";
 
 export const CollectionLeftSidebar = () => {
     const [layoutColumns, setLayoutColumns] = useState(3)
@@ -35,16 +35,7 @@ export const CollectionLeftSidebar = () => {
                                         <Slider className="offer-slider slide-1">
                                             <div className="theme-card">
                                                 <ul className="recent-blog">
-                                                    {
-                                                        posts.map(post => {
-                                                            if (post.postId < 5) {
-                                                                return (
-                                                                    <Recent post={post} key={post.postId}/>
-                                                                )
-                                                            }
-                                                            return null
-                                                        })
-                                                    }
+                                                    <Recent posts={posts} />
                                                 </ul>
                                             </div>
                                         </Slider>

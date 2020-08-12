@@ -47,7 +47,7 @@ const usedCompareReducer = (state = {items: []}, action) => {
 
         case REMOVE_FROM_USED_COMPARE:
             return {
-                items: state.items.filter(id => id !== action.product_id)
+                items: state.items.filter(id => id !== action.product_id.id)
             }
 
         default:

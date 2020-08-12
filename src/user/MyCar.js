@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Breadcrumb} from "../common";
 import {useDispatch, useSelector} from "react-redux";
-import {getVisibleproducts} from "../atomic/services/services";
+import {Breadcrumb} from "../common";
+import {Link} from "react-router-dom";
 
 /* type */
 const ADD_TO_MY_CAR = 'ADD_TO_MY_CAR'
@@ -51,10 +51,10 @@ export const myCarReducer = (state={list:[]}, action) => {
 
 export const MyCarPage = () => {
     const [openEdit,setOpenEdit] = useState(false)
-    const [selectItem,setSelectItem] = useState({})
+    const [targetId,setTargetId] = useState(0)
 
     const {products, myCars} = useSelector(state=>({
-        products: getVisibleproducts(state.data, state.filters),
+        products: state.data.products,
         myCars: state.myCar.list
     }))
 
@@ -88,9 +88,9 @@ export const MyCarPage = () => {
                                 </div>
                                 <div className="block-content">
                                     <ul>
-                                        <li><a href='#'>Account Info</a></li>
+                                        <li><Link to={"/pages/myaccount"}>Account Info</Link></li>
                                         <li><a href="#">Address Book</a></li>
-                                        <li className="active"><a href="#">My Car</a></li>
+                                        <li className="active"><Link to={"/pages/myCar"}>My Car</Link></li>
                                         <li><a href="#">My Orders</a></li>
                                         <li><a href="#">My Wishlist</a></li>
                                         <li><a href="#">Newsletter</a></li>
@@ -146,7 +146,7 @@ export const MyCarPage = () => {
                                                     </div>
                                                     <div className="row">
                                                         <div className="col-sm-6">
-                                                            <select>
+                                                            <select onChange={e=>setTargetId(e.target.value)}>
                                                                 <option value="default">차종을 선택해주세요.</option>
                                                                 {
                                                                     products.map((item,index)=>{
@@ -154,7 +154,17 @@ export const MyCarPage = () => {
                                                                     })
                                                                 }
                                                             </select>
-                                                            <button onClick={()=>dispatch(addToMyCar())}>추가</button>
+                                                            <button onClick={()=>dispatch(addToMyCar(products.find(x => x.id == targetId)))}>추가</button>
+                                                            <br/>
+                                                            <select onChange={e=>setTargetId(e.target.value)}>
+                                                                <option value="default">삭제할 차량을 선택해주세요.</option>
+                                                                {
+                                                                    myCars.map((item,index)=>{
+                                                                        return <option key={index} value={item.id}>{item.name}</option>
+                                                                    })
+                                                                }
+                                                            </select>
+                                                            <button onClick={()=>dispatch(removeFromMyCar(myCars.find(x => x.id == targetId)))}>삭제</button>
                                                         </div>
                                                         <div className="col-sm-6">
                                                             <select>
@@ -165,6 +175,7 @@ export const MyCarPage = () => {
                                                                     })
                                                                 }
                                                             </select>
+                                                            <button>선택</button>
                                                         </div>
                                                     </div>
                                             </div>
@@ -181,4 +192,4 @@ export const MyCarPage = () => {
     )
 }
 
-export default MyCarPage
+export default myCarReducer

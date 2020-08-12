@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
 
 export const TopBar = () => {
 
     const translate = useTranslate();
+    const [session, setSession] = useState(false)
+    const [userSession] = useState(sessionStorage.getItem("user"))
+
+    useEffect(() => {
+        userSession ? setSession(true) : setSession(false)
+    },[userSession])
+
+    const logout = (e) => {
+        e.preventDefault()
+        sessionStorage.clear()
+        window.location.reload()
+    }
 
     return <>
         <div className="top-header">
@@ -50,21 +62,39 @@ export const TopBar = () => {
                                     </li>
                                 </ul>
                             </li>
+                            {!session &&
                             <li className="onhover-dropdown mobile-account">
                                 <i className="fa fa-user" aria-hidden="true"/>
                                 {translate('my_account')}
                                 <ul className="onhover-show-div">
                                     <li>
-                                        <Link to={`${process.env.PUBLIC_URL}/pages/login`} data-lng="en">{translate('login')}</Link>
+                                        <Link to={`${process.env.PUBLIC_URL}/pages/login`}
+                                              data-lng="en">{translate('login')}</Link>
                                     </li>
                                     <li>
-                                        <Link to={`${process.env.PUBLIC_URL}/pages/register`} data-lng="en">{translate('register')}</Link>
-                                    </li>
-                                    <li>
-                                        <Link to={`${process.env.PUBLIC_URL}/pages/profile`} data-lng="en">{translate('myaccount')}</Link>
+                                        <Link to={`${process.env.PUBLIC_URL}/pages/register`}
+                                              data-lng="en">{translate('register')}</Link>
                                     </li>
                                 </ul>
                             </li>
+                            }
+                            {session &&
+                            <li className="onhover-dropdown mobile-account">
+                                <i className="fa fa-user" aria-hidden="true"/>
+                                {translate('my_account')}
+                                <ul className="onhover-show-div">
+                                    <li onClick={logout}>
+                                        <Link to={`${process.env.PUBLIC_URL}/`}
+                                              data-lng="en">{translate('logout')}</Link>
+                                    </li>
+
+                                    <li>
+                                        <Link to={`${process.env.PUBLIC_URL}/admin/userDetail`}
+                                              data-lng="en">{translate('myaccount')}</Link>
+                                    </li>
+                                </ul>
+                            </li>
+                            }
                         </ul>
                     </div>
                 </div>

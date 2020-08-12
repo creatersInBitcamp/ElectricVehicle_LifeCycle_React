@@ -179,14 +179,19 @@ export const ChargingStationMap = () =>{
         );
     }
 
-    function bookmark(info){
-        alert(JSON.stringify(info))
-        //정보를 db에 저장
-    }
-
-    function deleteBookmark(info){
-        alert(JSON.stringify(info))
-        //db에 저장된 정보 삭제
+    function insertBookmark(stationID){
+        const id = {
+            id : stationID,
+            charging : true
+        }
+        console.log(id)
+        axios.post('http://localhost:8080/bookmarks/insert',id)
+            .then((res)=>{
+                console.log("북마크 저장 성공")
+            })
+            .catch((err) => {
+                console.log("북마크 저장 실패")
+            })
     }
 
     return (
@@ -249,8 +254,7 @@ export const ChargingStationMap = () =>{
                                                                 <h4>관리부서: {selected.agencyName}</h4><br/>
                                                                 <h4>연락처: {selected.phone}</h4><br/>
                                                             </MDBCardText>
-                                                            <MDBBtn color="secondary" onClick={()=>bookmark(selected.chargingStationId)}>북마크</MDBBtn>
-                                                            <MDBBtn color="warning" onClick={()=>deleteBookmark(selected.chargingStationId)}>북마크삭제</MDBBtn>
+                                                            <MDBBtn color="secondary" onClick={()=>insertBookmark(selected.chargingStationId)}>북마크 저장</MDBBtn>
                                                         </MDBCardBody>
                                                     </MDBCard>
                                                 </MDBCol>

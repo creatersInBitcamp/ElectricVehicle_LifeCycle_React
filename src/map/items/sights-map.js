@@ -1,4 +1,4 @@
-import React,{useState,useCallback,useRef} from "react";
+import React, {useState, useCallback, useRef, useEffect} from "react";
 import { GoogleMap,useLoadScript,Marker,InfoWindow,} from "@react-google-maps/api";
 import usePlacesAutocomplete, {getGeocode,getLatLng,getZipCode} from "use-places-autocomplete";
 import Geocode from 'react-geocode'
@@ -6,7 +6,8 @@ import {Combobox,ComboboxInput, ComboboxPopover,ComboboxList, ComboboxOption,} f
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 import './map.css'
 import "@reach/combobox/styles.css";
-import myData from '../data/data-sights';
+// import myData from '../data/data-sights';
+import axios from "axios";
 
 const MAP_KEY = 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0';
 
@@ -38,6 +39,18 @@ export const SightsMap = () =>{
     const [selectedAddr, setSelectedAddr]= useState("")
     const [selectedPc,setSelectedPc] = useState("")
     const [infoShow, setInfoShow]= useState(false)
+    const [myData,setMyData] = useState([])
+
+    useEffect(()=>{
+        axios.get('http://localhost:8080/sights/getall')
+            .then((res)=>{
+                console.log(res.data)
+                setMyData(res.data)
+            })
+            .catch((err)=>{
+                console.log(err.status)
+            })
+    },[])
 
     const mapRef = useRef();
     const onMapLoad = useCallback((map) => {
@@ -167,15 +180,21 @@ export const SightsMap = () =>{
         );
     }
 
-    function bookmark(info){
-        alert(JSON.stringify(info))
-        //정보를 db에 저장
+    function insertBookmark(sightsID){
+        const id = {
+            id : sightsID,
+            charging : false
+        }
+        console.log(id)
+        axios.post('http://localhost:8080/bookmarks/insert',id)
+            .then((res)=>{
+                console.log("북마크 저장 성공")
+            })
+            .catch((err) => {
+                console.log("북마크 저장 실패")
+            })
     }
 
-    function deleteBookmark(info){
-        alert(JSON.stringify(info))
-        //db에 저장된 정보 삭제
-    }
     return (
         <>
             <div className="container">
@@ -207,7 +226,7 @@ export const SightsMap = () =>{
                                     myData.map((store, i) => (
                                         <Marker
                                             key={i}
-                                            position={{lat:store.x_value, lng:store.y_value}}
+                                            position={{lat:store.xvalue, lng:store.yvalue}}
                                             onClick={()=>setSelected(store)}
                                             icon={
                                                 { url : "https://image.flaticon.com/icons/svg/3198/3198482.svg",
@@ -218,9 +237,9 @@ export const SightsMap = () =>{
                                     ))
                                 }
                                 {
-                                    selected.x_value && (
+                                    selected.xvalue ? (
                                         <InfoWindow
-                                            position={{lat:selected.x_value, lng:selected.y_value}}
+                                            position={{lat:selected.xvalue, lng:selected.yvalue}}
                                             clickable={true}
                                             onCloseClick={()=>setSelected({})}
                                         >
@@ -230,20 +249,19 @@ export const SightsMap = () =>{
                                                         <MDBCardBody>
                                                             <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
                                                             <MDBCardText>
-                                                                <h4>지번주소: {selected.branch_address}</h4><br/>
-                                                                <h4>도로명주소: {selected.street_address}</h4><br/>
+                                                                <h4>지번주소: {selected.branchAddress}</h4><br/>
+                                                                <h4>도로명주소: {selected.streetAddress}</h4><br/>
                                                                 <h4>수용인원수: {selected.capacity}</h4><br/>
-                                                                <h4>주차가능수: {selected.parking_lot}</h4><br/>
+                                                                <h4>주차가능수: {selected.parkingLot}</h4><br/>
                                                                 <h4>관광지 정보: {selected.info}</h4><br/>
                                                             </MDBCardText>
-                                                            <MDBBtn color="secondary" onClick={()=>bookmark(selected.sights_id)}>북마크</MDBBtn>
-                                                            <MDBBtn color="warning" onClick={()=>deleteBookmark(selected.sights_id)}>북마크삭제</MDBBtn>
+                                                            <MDBBtn color="secondary" onClick={()=>insertBookmark(selected.sightsId)}>북마크</MDBBtn>
                                                         </MDBCardBody>
                                                     </MDBCard>
                                                 </MDBCol>
                                             </div>
                                         </InfoWindow>
-                                    )
+                                    ):null
                                 }
                                 {
                                     currentPosition.lat ?

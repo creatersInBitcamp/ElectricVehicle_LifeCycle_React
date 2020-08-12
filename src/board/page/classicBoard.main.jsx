@@ -66,6 +66,7 @@ const ClassicBoardMain = () => {
                 .catch((error)=> {
                     console.log(error)
                 })
+
         }
         // const result = posts.filter(post => post.category === `${match}`)
         const handleChange = (event, value) => {
@@ -74,7 +75,7 @@ const ClassicBoardMain = () => {
         }
         useEffect(()=>{
             postAxios()
-        }, [])
+        }, [match])
         return (
             <div>
                 <Breadcrumb title={'Board'}/>

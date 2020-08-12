@@ -6,9 +6,14 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
-
+const initUser = {
+    userId: 'tedd911',
+    userSeq: '301',
+    userName: '이형태'
+}
 const ClassicBoardDetails = ({history}) => {
         const [post, setPost] = useState({})
+        const [commentText, setCommentText] = useState("")
         const match = useRouteMatch('/board/details/:postId').params.postId
         useEffect(() => {
             setPost(
@@ -22,6 +27,22 @@ const ClassicBoardDetails = ({history}) => {
                     })
             )
         }, [])
+        const commentPush = () => {
+            const newComment = {
+                regDate: new Date().toLocaleString(),
+                comment: commentText,
+                user: initUser,
+                post: {postId: match}
+            }
+            console.log(newComment)
+            axios.post(`http://localhost:8080/comments/insert`, newComment)
+                .then((res)=>{
+                    console.log(res.status)
+                })
+                .catch((err)=> {
+                    console.log(err.status)
+                })
+        }
 
         return (
             <div>
@@ -44,8 +65,13 @@ const ClassicBoardDetails = ({history}) => {
                                                     <li><i className="fa fa-comments"/> 0 Comment</li>
                                                 </Col>
                                                 <Col xs lg={2}>
-                                                    <button className="btn btn-solid" onClick={() => {alert('post 수정버튼')}}>수정</button><a>  </a>
-                                                    <button className="btn btn-solid" onClick={(e) => {axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
+                                                    <button className="btn btn-solid" onClick={(e) => {
+                                                        e.preventDefault()
+
+                                                    }}>수정</button><a>  </a>
+                                                    <button className="btn btn-solid" onClick={(e) => {
+                                                        e.preventDefault()
+                                                        axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
                                                         .then((res) => {
                                                             history.push(`/board/main/${match}`)
                                                         })
@@ -73,36 +99,43 @@ const ClassicBoardDetails = ({history}) => {
                                     </Row>
                                 </Container>
                             </div>
-                            <div className="row section-b-space">
-                                <div className="col-sm-12">
-                                    <ul className="comment-section">
-                                        <Comment/>
-                                    </ul>
+                            { (post.comment) ?
+                                <Comment comment={post.comment}/>
+                                :
+                                <div className="row section-b-space">
+                                    <div className="col-sm-12">
+                                        <ul className="comment-section">
+                                                <li>
+                                                    <div className="media">
+                                                        <img src={`https://www.carparison.com.au/themes/front/images/user-profile.png`}
+                                                             alt="Generic placeholder image"/>
+                                                        <div className="media-body">
+                                                            <h6> 코멘트가 없습니다. </h6>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            }
                             <div className="row blog-contact">
                                 <div className="col-sm-12">
                                     <h2>Leave Your Comment</h2>
                                     <form className="theme-form">
                                         <div className="form-row">
                                             <div className="col-md-12">
-                                                <label htmlFor="name">Name</label>
-                                                <input type="text" className="form-control" id="name"
-                                                       placeholder="Enter Your name" required=""/>
-                                            </div>
-                                            <div className="col-md-12">
-                                                <label htmlFor="email">Email</label>
-                                                <input type="text" className="form-control" id="email"
-                                                       placeholder="Email"
-                                                       required=""/>
+                                                <label htmlFor="name">User Name : {initUser.userName}</label>
                                             </div>
                                             <div className="col-md-12">
                                                 <label htmlFor="exampleFormControlTextarea1">Comment</label>
                                                 <textarea className="form-control" placeholder="Write Your Comment"
-                                                          id="exampleFormControlTextarea1" rows="6"/>
+                                                          id="exampleFormControlTextarea1" rows="6" onChange={(e) => {setCommentText(e.target.value)}}/>
                                             </div>
                                             <div className="col-md-12">
-                                                <button className="btn btn-solid" type="submit">Post Comment</button>
+                                                <button className="btn btn-solid" onClick={(e) => {
+                                                    e.preventDefault()
+                                                    commentPush()
+                                                }}>Post Comment</button>
                                             </div>
                                         </div>
                                     </form>

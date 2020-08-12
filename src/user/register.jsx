@@ -34,9 +34,11 @@ export const Register = (props) =>  {
                     if(res.data === false) {
                         setIdOverlap(res.data)
                         setIdConfirm(!res.data)
+                        setMustId(false)
                     } else {
                         setIdOverlap(res.data)
                         setIdConfirm(!res.data)
+                        setMustId(false)
                     }
                 })
                 .catch((error)=>{
@@ -44,6 +46,7 @@ export const Register = (props) =>  {
                 })
         } else {
             setMustId('' === e.target.value)
+            setIdOverlap(false)
         }
 
     }

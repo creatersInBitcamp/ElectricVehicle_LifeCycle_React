@@ -15,7 +15,7 @@ const ClassicBoardDetails = ({history}) => {
         const [post, setPost] = useState({})
         const [commentText, setCommentText] = useState("")
         const match = useRouteMatch('/board/details/:postId').params.postId
-        useEffect(() => {
+        const reFresh = () => {
             setPost(
                 axios.get(`http://localhost:8080/posts/getone/${match}`)
                     .then((res) => {
@@ -26,6 +26,9 @@ const ClassicBoardDetails = ({history}) => {
                         console.log(error)
                     })
             )
+        }
+        useEffect(() => {
+            reFresh()
         }, [])
         const commentPush = () => {
             const newComment = {
@@ -38,6 +41,7 @@ const ClassicBoardDetails = ({history}) => {
             axios.post(`http://localhost:8080/comments/insert`, newComment)
                 .then((res)=>{
                     console.log(res.status)
+                    reFresh()
                 })
                 .catch((err)=> {
                     console.log(err.status)
@@ -99,8 +103,8 @@ const ClassicBoardDetails = ({history}) => {
                                     </Row>
                                 </Container>
                             </div>
-                            { (post.comment) ?
-                                <Comment comment={post.comment}/>
+                            { (post.comments) ?
+                                <Comment comments={post.comments}/>
                                 :
                                 <div className="row section-b-space">
                                     <div className="col-sm-12">
@@ -124,7 +128,7 @@ const ClassicBoardDetails = ({history}) => {
                                     <form className="theme-form">
                                         <div className="form-row">
                                             <div className="col-md-12">
-                                                <label htmlFor="name">User Name : {initUser.userName}</label>
+                                                <label htmlFor="name">User Name : {initUser.userId}</label>
                                             </div>
                                             <div className="col-md-12">
                                                 <label htmlFor="exampleFormControlTextarea1">Comment</label>

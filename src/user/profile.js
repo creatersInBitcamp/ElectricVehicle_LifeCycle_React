@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 
 import designer from '../assets/images/dashboard/designer.jpg';
-import {Tabset_profile} from '../admin/item';
-import {AdminBreadcrumb} from '../admin/common';
 import {Breadcrumb} from "../common";
 
 export const Profile = () => {

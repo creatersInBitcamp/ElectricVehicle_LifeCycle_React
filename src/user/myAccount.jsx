@@ -29,6 +29,7 @@ export const MyAccount = () => {
                                         <ul>
                                             <li className="active"><a href='#'>Account Info</a></li>
                                             <li><a href="#">Address Book</a></li>
+                                            <li><a href="/pages/myCar">My Car</a></li>
                                             <li><a href="#">My Orders</a></li>
                                             <li><a href="#">My Wishlist</a></li>
                                             <li><a href="#">Newsletter</a></li>

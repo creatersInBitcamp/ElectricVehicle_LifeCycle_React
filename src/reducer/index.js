@@ -10,6 +10,7 @@ import {usedWishlistReducer,usedCompareReducer} from "../usedCar"
 import { IntlReducer as Intl } from 'react-redux-multilingual'
 import {loginReducer} from "../user/login";
 import boardReducer from "../board/items/boardReducer";
+import {myCarReducer} from "../user/MyCar";
 
 
 const rootReducer = combineReducers({
@@ -24,10 +25,9 @@ const rootReducer = combineReducers({
         wishlist: wishlistReducer,
         compare: compareReducer,
         loginReducer,
-        usedwishlist : usedWishlistReducer,
-        usedcompare : usedCompareReducer,
-        usedWishlist : usedWishlistReducer,
-        usedCompare : usedCompareReducer,
+        usedWishlist: usedWishlistReducer,
+        usedCompare: usedCompareReducer,
+        myCar: myCarReducer,
         Intl
 });
 export default rootReducer

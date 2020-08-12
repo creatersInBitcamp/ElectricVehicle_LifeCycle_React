@@ -7,12 +7,12 @@ import translations from './atomic/constants/translations'
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import './index.scss';
 
-//common
+// Layouts
 import Layout from './App'
-import {Main,Search,Faq,aboutUs,getAllProducts,PageNotFound} from "./common"
+import Main from './layouts/main';
 
 //new car
-import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar'
+import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar/page'
 
 //used car
 import {UsedPurchaseCollection,productDetail,PurchaseRequest,MyCarComparison,SalesForm,UsedWishlist,Scrapped} from './usedCar'
@@ -25,13 +25,19 @@ import MapService from './map/page/service'
 import {BoardDetail, BoardInput, BoardMain} from "./board/";
 
 // Admin
-import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Profile,Reports} from './admin/page';
+import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Reports} from './admin/page';
+
+//common
+import Search from './common/items/search'
+import Faq from "./common/faq";
 
 //user
-import {ForgetPassword,Login,MyAccount,Register} from './user'
+import {Login, Register, ForgetPassword, MyAccount, Profile} from './user'
 
-
+import { getAllProducts } from './common/items/product'
 import store from "./store";
+import aboutUs from "./common/about-us";
+
 
 const Root =()=> {
     store.dispatch(getAllProducts());
@@ -47,15 +53,14 @@ const Root =()=> {
                                 <Route exact path={`${process.env.PUBLIC_URL}/`} component={Main}/>
 
                                 {/*common*/}
-                                <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/about-us`} component={aboutUs}/>
-
-                                {/*user*/}
                                 <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/forgot`} component={ForgetPassword}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/profile`} component={Profile}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/myaccount`} component={MyAccount}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/about-us`} component={aboutUs}/>
 
                                 {/*newcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>
@@ -95,7 +100,6 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/admin/notice`} component={Notice} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/users`} component={User} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/reports`} component={Reports} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/userDetail`} component={Profile} />
                             </Layout>
                         </Switch>
                     </ScrollContext>

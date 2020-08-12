@@ -61,10 +61,10 @@ export const Register = () =>  {
         setPasswordCheck(e.target.value)
     }
 
-    const onChangeSexChk = useCallback((e) => {
+    const onChangeSexChk = (e) => {
         setMustSex('성별' === e.target.value)
         setSex(e.target.value)
-    },[sex])
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()

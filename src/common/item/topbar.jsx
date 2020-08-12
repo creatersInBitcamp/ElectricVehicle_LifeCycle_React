@@ -61,7 +61,7 @@ export const TopBar = () => {
                                         <Link to={`${process.env.PUBLIC_URL}/pages/register`} data-lng="en">{translate('register')}</Link>
                                     </li>
                                     <li>
-                                        <Link to={`${process.env.PUBLIC_URL}/pages/myaccount`} data-lng="en">{translate('myaccount')}</Link>
+                                        <Link to={`${process.env.PUBLIC_URL}/pages/profile`} data-lng="en">{translate('myaccount')}</Link>
                                     </li>
                                 </ul>
                             </li>

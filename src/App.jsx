@@ -10,9 +10,11 @@ import {ToastContainer} from "react-toastify";
 const App = (props) => {
     const [admin,setAdmin] = useState(false);
     const result = useSelector(state=>state.loginReducer)
+
     useEffect(()=>{
         setAdmin(result.check)
     },[result])
+
     if(admin){
         return (
             <div className="page-wrapper">

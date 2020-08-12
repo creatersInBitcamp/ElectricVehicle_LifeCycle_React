@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {Breadcrumb,PostCode} from "../common";
 import {Link} from "react-router-dom";
 import axios from "axios"
@@ -27,16 +27,25 @@ export const Register = (props) =>  {
     const [mustSex, setMustSex] = useState(false)
 
     const onChangeIdChk = (e) => {
-        setUserId(e.target.value)
-        setMustId('' === e.target.value)
-        axios.get(`http://localhost:8080/user/check/${userId}`)
-            .then((res) => {
-                setIdOverlap(res.data) // 같은 아이디가 있으면 ture
-                setIdConfirm(!res.data) // 같은 아이디가 없으면 true
-            }).catch((error) => {
-            setIdOverlap(false)
-            setIdConfirm(true)
-        });
+        if(e.target.value !== ''){
+            setUserId(e.target.value)
+            axios.get(`http://localhost:8080/user/check/${e.target.value}`)
+                .then((res) => {
+                    if(res.data === false) {
+                        setIdOverlap(res.data)
+                        setIdConfirm(!res.data)
+                    } else {
+                        setIdOverlap(!res.data)
+                        setIdConfirm(res.data)
+                    }
+                })
+                .catch((error)=>{
+                    console.log(error)
+                })
+        } else {
+            setMustId('' === e.target.value)
+        }
+
     }
 
     const onChangePasswordChk = (e) => {
@@ -86,8 +95,9 @@ export const Register = (props) =>  {
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">아이디</label>
-                                                <input type="text" className="form-control"
+                                                <input type="text" className="form-control" id={"userIdJs"}
                                                        onChange={onChangeIdChk} placeholder="아이디" required="" />
+                                                <br/>
                                                 {idOverlap && <div style={{color: 'red'}}>중복된 아이디입니다.</div>}
                                                 {!mustId && idConfirm && <div style={{color: 'green'}}>가능한 아이디입니다.</div>}
                                                 {mustId && <div style={{color: 'red'}}>반드시 필요한 항목입니다.</div>}

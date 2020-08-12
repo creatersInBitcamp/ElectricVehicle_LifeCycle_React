@@ -1,21 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-import designer from '../../assets/images/dashboard/designer.jpg';
-import {Tabset_profile} from '../item';
-import {AdminBreadcrumb} from '../common';
+import designer from '../assets/images/dashboard/designer.jpg';
+import {Tabset_profile} from '../admin/item';
+import {AdminBreadcrumb} from '../admin/common';
+import Breadcrumb from "../common/breadcrumb";
 
-const profileTypes = {REQUEST: 'profile/REQUEST'}
-const profileReducer = ( state={}, action ) => {
-    switch (action.type) {
-        case profileTypes.REQUEST: return {...state, payload: action.payload}
-        default: return state
-    }
-}
+const Profile = () => {
+    const [userId, setUserId] = useState('')
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [birth, setBirth] = useState('')
+    const [addr, setAddr] = useState('')
 
-export const Profile = () => {
         return (
             <>
-                <AdminBreadcrumb title="Profile" parent="Settings" />
+                <Breadcrumb title={'Profile'}/>
                  <div className="container-fluid">
                 <div className="row">
                     <div className="col-xl-4">
@@ -23,19 +23,12 @@ export const Profile = () => {
                             <div className="card-body">
                                 <div className="profile-details text-center">
                                     <img src={designer} alt="" className="img-fluid img-90 rounded-circle blur-up lazyloaded" />
-                                    <h5 className="f-w-600 f-16 mb-0">John deo</h5>
-                                    <span>johndeo@gmail.com</span>
-                                    <div className="social">
-                                        <div className="form-group btn-showcase">
-                                            <button className="btn social-btn btn-fb d-inline-block"> <i className="fa fa-facebook"/></button>
-                                            <button className="btn social-btn btn-twitter d-inline-block"><i className="fa fa-google"/></button>
-                                            <button className="btn social-btn btn-google d-inline-block mr-0"><i className="fa fa-twitter"/></button>
-                                        </div>
-                                    </div>
+                                    <h5 className="f-w-600 f-16 mb-0">이름입니다.</h5>
+                                    <span>아이디입니다.</span>
                                 </div>
                                 <hr />
                                 <div className="project-status">
-                                    <h5 className="f-w-600 f-16">Employee Status</h5>
+                                    <h5 className="f-w-600 f-16">내 차</h5>
                                     <div className="media">
                                         <div className="media-body">
                                             <h6>Performance <span className="pull-right">80%</span></h6>
@@ -67,7 +60,40 @@ export const Profile = () => {
                     <div className="col-xl-8">
                         <div className="card profile-card">
                             <div className="card-body">
-                                <Tabset_profile />
+                                <div className="tab-pane fade show active">
+                                    <h5 className="f-w-600 f-16">마이페이지</h5>
+                                    <div className="table-responsive profile-table">
+                                        <table className="table table-responsive">
+                                            <tbody>
+                                            <tr>
+                                                <td>이름</td>
+                                                <td>John</td>
+                                            </tr>
+                                            <tr>
+                                                <td>이메일</td>
+                                                <td>johndeo@gmail.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>성별</td>
+                                                <td>Male</td>
+                                            </tr>
+                                            <tr>
+                                                <td>전화번호</td>
+                                                <td>2124821463</td>
+                                            </tr>
+                                            <tr>
+                                                <td>생년월일</td>
+                                                <td>Dec, 15 1993</td>
+                                            </tr>
+                                            <tr>
+                                                <td>주소</td>
+                                                <td>USA</td>
+                                            </tr>
+                                            <button>비밀번호 변경</button>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -77,4 +103,4 @@ export const Profile = () => {
         )
 }
 
-export default profileReducer
+export default Profile

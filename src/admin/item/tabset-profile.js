@@ -15,44 +15,41 @@ export const Tabset_profile = () => {
             <div>
                 <Tabs>
                     <TabList className="nav nav-tabs tab-coupon" >
-                        <Tab className="nav-link"><User className="mr-2" />Profile</Tab>
-                        <Tab className="nav-link"><Settings className="mr-2" />Contact</Tab>
+                        <Tab className="nav-link"><User className="mr-2" />내정보</Tab>
+                        <Tab className="nav-link"><Settings className="mr-2" />정보수정</Tab>
                     </TabList>
 
                     <TabPanel>
                         <div className="tab-pane fade show active">
-                            <h5 className="f-w-600 f-16">Profile</h5>
+                            <h5 className="f-w-600 f-16">마이페이지</h5>
                             <div className="table-responsive profile-table">
                                 <table className="table table-responsive">
                                     <tbody>
                                         <tr>
-                                            <td>First Name:</td>
+                                            <td>이름</td>
                                             <td>John</td>
                                         </tr>
                                         <tr>
-                                            <td>Last Name:</td>
-                                            <td>Deo</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Email:</td>
+                                            <td>이메일</td>
                                             <td>johndeo@gmail.com</td>
                                         </tr>
                                         <tr>
-                                            <td>Gender:</td>
+                                            <td>성별</td>
                                             <td>Male</td>
                                         </tr>
                                         <tr>
-                                            <td>Mobile Number:</td>
+                                            <td>전화번호</td>
                                             <td>2124821463</td>
                                         </tr>
                                         <tr>
-                                            <td>DOB:</td>
+                                            <td>생년월일</td>
                                             <td>Dec, 15 1993</td>
                                         </tr>
                                         <tr>
-                                            <td>Location:</td>
+                                            <td>주소</td>
                                             <td>USA</td>
                                         </tr>
+                                        <button>비밀번호 변경</button>
                                     </tbody>
                                 </table>
                             </div>

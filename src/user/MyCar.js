@@ -88,8 +88,7 @@ export const MyCarPage = () => {
                                 </div>
                                 <div className="block-content">
                                     <ul>
-                                        <li><Link to={"/pages/myaccount"}>Account Info</Link></li>
-                                        <li><a href="#">Address Book</a></li>
+                                        <li><Link to={"/pages/profile"}>Account Info</Link></li>
                                         <li className="active"><Link to={"/pages/myCar"}>My Car</Link></li>
                                         <li><a href="#">My Orders</a></li>
                                         <li><a href="#">My Wishlist</a></li>

@@ -28,7 +28,7 @@ import {BoardDetail, BoardInput, BoardMain} from "./board/";
 import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Reports} from './admin/page';
 
 //user
-import {ForgetPassword,Login,MyAccount,Register,MyCarPage} from './user'
+import {ForgetPassword,Login,MyAccount,Register,MyCarPage,Profile} from './user'
 
 
 import store from "./store";
@@ -55,7 +55,7 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/forgot`} component={ForgetPassword}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/myaccount`} component={MyAccount}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/profile`} component={MyAccount}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/myCar`} component={MyCarPage}/>
 
                                 {/*newcar*/}

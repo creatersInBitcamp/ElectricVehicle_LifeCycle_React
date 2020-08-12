@@ -11,33 +11,47 @@ const initUser = {
     userSeq: '301'
 }
 
-const PostInput = ({history}) => {
-    const match = useRouteMatch('/board/input/:category').params.category
+const PostUadate = ({history}) => {
+    const postId = useRouteMatch('/board/update/:postId').params.postId
     const [user, setUser] = useState(initUser)
-    const [title, setTitle] = useState("")
-    const [link, setLink] = useState("")
-    const [content, setContent] =useState("")
+    const [title, setTitle] = useState("test")
+    const [link, setLink] = useState("test")
+    const [img, setImg] = useState("test")
+    const [content, setContent] = useState("test")
     const [category, setCategory] = useState("")
     useEffect(() => {
-    setCategory(match)
-    },[match])
-    const onPostIn = (e) => {
+        axios.get(`http://localhost:8080/posts/getOne/${postId}`)
+            .then((res)=> {
+                console.log(res.data)
+                setLink(res.data.link)
+                setTitle(res.data.title)
+                setImg(res.data.img)
+                setContent(res.data.content)
+                setCategory(res.data.category)
+
+            })
+            .catch((err)=>{
+                console.log(err.status)
+            })
+        // setPostCategory(category)
+    },[])
+    const onUpdatePost = (e) => {
         e.preventDefault()
         const newPost = {
-           userName: user.name,
-           link : link,
-           title : title,
-           date : new Date().toLocaleString(),
-           img : 'https://www.skt-phone.co.kr/resource/images/visual-notice.png',
-           content : content,
-           category: category,
-           user : user,
+            userName: user.name,
+            link : link,
+            title : title,
+            date : new Date().toLocaleString(),
+            img : img,
+            content : content,
+            category: category,
+            user : user,
         }
         console.log(newPost)
-        axios.post('http://localhost:8080/posts/insert', newPost)
+        axios.post('http://localhost:8080/posts/update', newPost)
             .then((res) => {
                 console.log(res.statusText)
-                history.push(`/board/main/${match}`)
+                history.push(`/board/main/${category}`)
             })
             .catch((err) => {
                 console.log(err.status)
@@ -45,7 +59,7 @@ const PostInput = ({history}) => {
     }
     return (
         <>
-            <Breadcrumb title={`Board - Input ${match}`}/>
+            <Breadcrumb title={`Board - Update ${category}`}/>
             <section className="blog-detail-page section-b-space">
                 <div className="container">
                     <div className="row">
@@ -63,17 +77,22 @@ const PostInput = ({history}) => {
                                 <div className="form-row">
                                     <div className="col-md-12">
                                         <label htmlFor="title">제목</label>
-                                        <input type="text" className="form-control" id="title" onChange={(e) => {setTitle(e.target.value)}}
+                                        <input type="text" className="form-control" id="title" value={title} onChange={(e) => {setTitle(e.target.value)}}
                                                placeholder="Enter this title" />
                                     </div>
                                     <div className="col-md-12">
                                         <label htmlFor="link">link</label>
-                                        <input type="text" className="form-control" id="link" onChange={(e) => {setLink(e.target.value)}}
+                                        <input type="text" className="form-control" id="link" value={link} onChange={(e) => {setLink(e.target.value)}}
                                                placeholder="Link"/>
                                     </div>
                                     <div className="col-md-12">
+                                        <label htmlFor="image">image</label>
+                                        <input type="text" className="form-control" id="image" value={img} onChange={(e) => {setImg(e.target.value)}}
+                                               placeholder="Image"/>
+                                    </div>
+                                    <div className="col-md-12">
                                         <label htmlFor="content">내용</label>
-                                        <textarea className="form-control" placeholder="Write Your Content" id="content" onChange={(e) => {setContent(e.target.value)}}
+                                        <textarea className="form-control" placeholder="Write Your Content" id="content" value={content} onChange={(e) => {setContent(e.target.value)}}
                                                   rows="24"/>
                                     </div>
                                     <div className="col-md-12">
@@ -81,7 +100,7 @@ const PostInput = ({history}) => {
                                             <Row>
                                                 <Col/>
                                                 <Col xs lg={2}>
-                                                    <button className="btn btn-solid" onClick={onPostIn}>Post</button>
+                                                    <button className="btn btn-solid" onClick={onUpdatePost}>Update</button>
                                                     <button className="btn btn-solid" onClick={(e)=>{history.push(`/board/main/${category}`)}}>취소</button></Col>
                                             </Row>
                                         </Container>
@@ -96,4 +115,4 @@ const PostInput = ({history}) => {
     );
 };
 
-export default PostInput;
+export default PostUadate;

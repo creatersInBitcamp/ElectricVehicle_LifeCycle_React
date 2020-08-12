@@ -4,12 +4,12 @@ import {Provider} from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ScrollContext } from 'react-router-scroll-4';
 import translations from './atomic/constants/translations'
-import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
+import { IntlProvider } from 'react-redux-multilingual'
 import './index.scss';
 
 //common
 import Layout from './App'
-import {Main,Search,Faq,aboutUs,getAllProducts,PageNotFound} from "./common"
+import {Main,Search,Faq,aboutUs,getAllProducts} from "./common"
 
 //new car
 import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar'
@@ -22,7 +22,7 @@ import {ChargingStationMap,SightsMap,TableChargingStation,BookmarkMap} from "./m
 import MapService from './map/page/service'
 
 //board
-import {BoardDetail, BoardInput, BoardMain} from "./board/";
+import {BoardDetail, BoardInput, BoardMain, BoardUpdate} from "./board/";
 
 // Admin
 import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Reports} from './admin/page';
@@ -86,6 +86,8 @@ const Root =()=> {
                                 <Route path={`${process.env.PUBLIC_URL}/board/main/:category`} component={BoardMain}/>
                                 <Route path={`${process.env.PUBLIC_URL}/board/details/:postId`} component={BoardDetail}/>
                                 <Route path={`${process.env.PUBLIC_URL}/board/input/:category`} component={BoardInput}/>
+                                <Route path={`${process.env.PUBLIC_URL}/board/update/:postId`} component={BoardUpdate}/>
+
 
                                 {/*admin*/}
                                 <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />
@@ -108,5 +110,3 @@ const Root =()=> {
 }
 
 ReactDOM.render(<Root />, document.getElementById('root'));
-
-

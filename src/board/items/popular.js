@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const Popular = () => {
     const [populars, setPopulars] = useState([])
@@ -21,7 +22,7 @@ const Popular = () => {
                             <span>{popular.date}</span>
                         </div>
                         <div className="media-body align-self-center">
-                            <h6>{popular.content}</h6>
+                            <Link to={`${process.env.PUBLIC_URL}/board/details/${popular.postId}`}><h6>{popular.content}</h6></Link>
                             <p>{popular.hits} hits</p>
                         </div>
                     </div>

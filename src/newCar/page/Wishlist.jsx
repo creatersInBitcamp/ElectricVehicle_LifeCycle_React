@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import Breadcrumb from '../../common/breadcrumb';
+import {Breadcrumb} from '../../common';
 import {removeFromWishlist,addToCartAndRemoveWishlist} from './wishlistReducer'
 
 export const wishlist = () => {

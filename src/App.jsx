@@ -2,17 +2,14 @@ import React, {Component, useEffect, useState} from 'react';
 import {useSelector} from 'react-redux'
 
 // Custom Components
-import HeaderOne from './common/headers/header-one';
-import FooterTwo from "./common/footers/footer-two";
+import {HeaderOne,FooterTwo} from './common'
+import {Header,Footer,Sidebar} from "./admin/common";
 import MyChatBot from "./chatbot/chatbot";
-import {Sidebar} from "./admin/common";
-import {Footer} from "./admin/common";
-import {Header} from "./admin/common";
 import {ToastContainer} from "react-toastify";
 
 const App = (props) => {
     const [admin,setAdmin] = useState(false);
-    const result = useSelector(state=>state.adminCheckReducer)
+    const result = useSelector(state=>state.loginReducer)
     useEffect(()=>{
         setAdmin(result.check)
     },[result])

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {toast} from "react-toastify";
 import Slider from 'react-slick';
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from "../../common";
 import {MarketPrice} from "../item/MarketPrice";
 
 /* types */
@@ -25,7 +25,7 @@ export const removeFromUsedCompare = product_id => ({
 })
 
 /* reducer */
-export const usedCompareReducer = (state = {items: []}, action) => {
+const usedCompareReducer = (state = {items: []}, action) => {
     switch (action.type) {
         case ADD_TO_USED_COMPARE:
             const productId = action.product.id

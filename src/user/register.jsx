@@ -1,12 +1,11 @@
 import React, {useCallback, useState} from 'react';
-import Breadcrumb from "../common/breadcrumb";
-import PostCode from "../common/postCode";
+import {Breadcrumb,PostCode} from "../common";
 import {Link} from "react-router-dom";
 import axios from "axios"
 
 
 
-const Register = () =>  {
+export const Register = (props) =>  {
 
     const [userId, setUserId] = useState('')
     const [password, setPassword] = useState('')
@@ -31,27 +30,12 @@ const Register = () =>  {
         setUserId(e.target.value)
         setMustId('' === e.target.value)
         axios.get(`http://localhost:8080/user/check/${userId}`)
-            .then(res => {
+            .then((res) => {
                 setIdOverlap(res.data) // 같은 아이디가 있으면 ture
                 setIdConfirm(!res.data) // 같은 아이디가 없으면 true
-            }).catch(function (error) {
-            if (error.response) {
-                // 요청이 이루어졌으며 서버가 2xx의 범위를 벗어나는 상태 코드로 응답했습니다.
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            }
-            else if (error.request) {
-                // 요청이 이루어 졌으나 응답을 받지 못했습니다.
-                // `error.request`는 브라우저의 XMLHttpRequest 인스턴스 또는
-                // Node.js의 http.ClientRequest 인스턴스입니다.
-                console.log(error.request);
-            }
-            else {
-                // 오류를 발생시킨 요청을 설정하는 중에 문제가 발생했습니다.
-                console.log('Error', error.message);
-            }
-            console.log(error.config);
+            }).catch((error) => {
+            setIdOverlap(false)
+            setIdConfirm(true)
         });
     }
 
@@ -62,10 +46,10 @@ const Register = () =>  {
         setPasswordCheck(e.target.value)
     }
 
-    const onChangeSexChk = useCallback((e) => {
+    const onChangeSexChk = (e) => {
         setMustSex('성별' === e.target.value)
         setSex(e.target.value)
-    },[sex])
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -75,12 +59,12 @@ const Register = () =>  {
             name: name,
             ssn: year.concat("-",month,"-",day),
             sex: sex,
-            address: addr.concat(" ",addr2),
+            addr: addr.concat(" ",addr2),
         }
         console.log(userInfo)
         axios.post(`http://localhost:8080/user/register`, userInfo)
             .then(res =>{
-                if(res.data) alert("회원가입성공")
+                res.data ? props.history.push(`${process.env.PUBLIC_URL}/pages/login`) : alert("회원가입이 실패했습니다.")
                 console.log(res.data)
             })
             .catch(()=>{
@@ -170,8 +154,7 @@ const Register = () =>  {
                                             <div className="col-md-6">
                                                 <label htmlFor="email">주소</label>
                                                 <br/>
-                                                <PostCode setAddress={(addr)=>setAddr(addr)}/>
-                                                <br/>
+                                                <PostCode setAddress={(addr)=>(setAddr(addr))}/>
                                                 <br/>
                                                 <input type="text" value={addr} className="form-control"
                                                        placeholder="주소찾기로 검색해주세요." required="" readOnly/>
@@ -187,7 +170,9 @@ const Register = () =>  {
                                         <div className="form-row">
                                             <Link to={`${process.env.PUBLIC_URL}/pages/login`}>
                                                 <button type="submit" className="btn btn-solid" onClick={handleSubmit} >가입하기</button>
+                                                <button type="submit" className="btn btn-solid" >취소</button>
                                             </Link>
+
                                         </div>
                                     </form>
                                 </div>

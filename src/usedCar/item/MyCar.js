@@ -4,7 +4,7 @@ import Modal from 'react-responsive-modal';
 import {useDispatch, useSelector} from "react-redux";
 import {addToUsedCompare} from '../page/MyCarComparison'
 
-const MyCar = () => {
+export const MyCar = () => {
     const [open,setOpen] = useState(false)
     const [redirect,setRedirect] = useState(false)
     const [targetId,setTargetId] = useState(0)

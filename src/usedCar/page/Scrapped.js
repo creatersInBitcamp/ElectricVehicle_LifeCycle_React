@@ -1,7 +1,7 @@
 import React from "react";
 import ChatBot from 'react-simple-chatbot'
 import {ThemeProvider} from "styled-components";
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from '../../common';
 
 const theme = {
     background: '#f5f8fb',

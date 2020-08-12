@@ -19,16 +19,10 @@ export const ProductListItem = props => {
     };
 
     const onClickHandle = img =>{
-        setImage({ image : img} );
+        setImage(img);
     }
 
     const {product, symbol, onAddToCartClicked, onAddToWishlistClicked, onAddToCompareClicked} = props;
-
-
-    let RatingStars = []
-    for(var i = 0; i < product.rating; i++) {
-        RatingStars.push(<i className="fa fa-star" key={i}/>)
-    }
 
     return (
         <div className="product-box">
@@ -69,9 +63,6 @@ export const ProductListItem = props => {
             </div>
             <div className="product-detail">
                 <div>
-                    <div className="rating">
-                        {RatingStars}
-                    </div>
                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`}>
                         <h6>{product.name}</h6>
                     </Link>

@@ -3,12 +3,10 @@ import {useDispatch, useSelector} from "react-redux";
 import StickyBox from "react-sticky-box";
 import InputRange from "react-input-range";
 import { SlideToggle } from 'react-slide-toggle';
-import Breadcrumb from "../../common/breadcrumb";
-import NewProduct from "../../common/new-product";
 import FilterBar from "../item/filter-bar";
 import ProductListing from "../item/product-listing";
 import MyCar from "../item/MyCar";
-import {filterBrand, filterColor, filterPrice} from "../../common/items/filters";
+import {Breadcrumb,NewProduct,filterBrand, filterColor, filterPrice} from "../../common";
 import {getBrands, getColors, getMinMaxPrice} from "../../atomic/services/services";
 
 export const UsedPurchaseCollection = () => {

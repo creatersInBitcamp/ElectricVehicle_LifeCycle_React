@@ -2,7 +2,7 @@ import React from 'react';
 import {Helmet} from 'react-helmet'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from "../../common";
 import {getCartTotal} from "../../atomic/services/services";
 import {removeFromCart,decrementQty,incrementQty} from "./cartReducer"
 
@@ -132,7 +132,7 @@ export const CartComponent = () => {
                         </div>
                         <div className="row cart-buttons">
                             <div className="col-6">
-                                <Link to={`${process.env.PUBLIC_URL}/`} className="btn btn-solid">continue shopping</Link>
+                                <Link to={`${process.env.PUBLIC_URL}/new-car/collection`} className="btn btn-solid">continue shopping</Link>
                             </div>
                             <div className="col-6">
                                 <Link to={`${process.env.PUBLIC_URL}/checkout`} className="btn btn-solid">check out</Link>

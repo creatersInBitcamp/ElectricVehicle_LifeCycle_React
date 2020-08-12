@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Breadcrumb from "../../common/breadcrumb";
+import {Breadcrumb} from "../../common";
 
 export const SalesForm = () => {
     const [userName, setUserName] = useState('')

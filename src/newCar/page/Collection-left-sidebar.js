@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Helmet} from 'react-helmet'
-import Breadcrumb from "../../common/breadcrumb";
-import {Filter,FilterBar,ProductListing} from "../items";
+import {Breadcrumb} from "../../common";
+import {Filter,FilterBar,ProductListing} from "../index";
 import StickyBox from "react-sticky-box";
 import Slider from "react-slick";
 import {Link} from "react-router-dom";

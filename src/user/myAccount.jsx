@@ -35,7 +35,7 @@ export const MyAccount = () => {
                                             <li><a href="#">My Orders</a></li>
                                             <li><a href="#">My Wishlist</a></li>
                                             <li><a href="#">Newsletter</a></li>
-                                            <li><a href="#">My Account</a></li>
+                                            <li><a href="/pages/profile">My Account</a></li>
                                             <li><a href="#">Change Password</a></li>
                                             <li className="last"><a href="#">Log Out</a></li>
                                         </ul>

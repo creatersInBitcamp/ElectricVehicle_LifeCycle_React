@@ -26,7 +26,7 @@ const initialState = {
     product_details: []
 };
 /* reducer */
-export const productReducer = (state = initialState, action) => {
+const productReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_PRODUCTS:
             return { ...state,

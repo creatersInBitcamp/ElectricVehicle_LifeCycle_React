@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Breadcrumb from "../common/breadcrumb";
+import {Breadcrumb} from "../common";
 import emailjs from 'emailjs-com'
 
-const ForgetPassword = () => {
+export const ForgetPassword = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('1234')
     const sendEmail = (e) => {

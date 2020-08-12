@@ -1,5 +1,6 @@
 export {ForgetPassword} from './forget-password'
-export {Login} from './login'
+export {Login, default as loginReducer} from './login'
 export {MyAccount} from './myAccount'
 export {Register} from './register'
 export {MyCarPage} from './MyCar'
+export {Profile} from './profile'

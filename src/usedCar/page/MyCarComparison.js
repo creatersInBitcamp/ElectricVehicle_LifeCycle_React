@@ -25,7 +25,7 @@ export const removeFromUsedCompare = product_id => ({
 })
 
 /* reducer */
-export const usedCompareReducer = (state = {items: []}, action) => {
+const usedCompareReducer = (state = {items: []}, action) => {
     switch (action.type) {
         case ADD_TO_USED_COMPARE:
             const productId = action.product.id

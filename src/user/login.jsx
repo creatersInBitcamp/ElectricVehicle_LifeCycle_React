@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 const ADMIN_CHECK = 'ADMIN_CHECK'
 const loginAction = admin =>({type: ADMIN_CHECK, check: admin})
 
-const loginReducer = (state=false, action)=>{
+export const loginReducer = (state=false, action)=>{
     switch (action.type) {
         case ADMIN_CHECK: return {check: action.check}
         default: return state

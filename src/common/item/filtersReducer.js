@@ -24,13 +24,13 @@ export const filterSort = (sort_by) => ({
 });
 
 /* reducer */
-export const filtersReducerDefaultState = {
+const filtersReducerDefaultState = {
     brand: ["nike"],
     value: { min: 250, max: 5000 },
     sortBy: ""
 };
 
-export const filtersReducer = (state = filtersReducerDefaultState, action) => {
+const filtersReducer = (state = filtersReducerDefaultState, action) => {
     // console.log('Action Result');
     // console.log(action);
     switch (action.type) {

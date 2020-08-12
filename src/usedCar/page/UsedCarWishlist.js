@@ -26,7 +26,7 @@ export const removeFromUsedWishlist = product_id => (dispatch) => {
 }
 
 /* reducer */
-export const usedWishlistReducer = (state = {list: []}, action) => {
+const usedWishlistReducer = (state = {list: []}, action) => {
     switch (action.type) {
         case ADD_TO_USED_WISHLIST:
             const productId = action.product.id

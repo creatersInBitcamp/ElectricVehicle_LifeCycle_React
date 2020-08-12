@@ -2,9 +2,9 @@ import {combineReducers} from 'redux'
 import {datatableReducer, imageReducer, tabset_pageReducer, report_tableReducer, tabset_profileReducer} from "../admin/item"
 import {sidebarReducer, sidebarMenusReducer} from "../admin/common"
 import {communityReducer, elecCarReducer, reportsReducer, ordersReducer, userReducer, usedCarReducer, dashboardReducer, tabset_userReducer} from "../admin/page"
-import productReducer from '../common/items/product'
-import {cartReducer,wishlistReducer,compareReducer} from "../newCar/page";
-import filtersReducer from "../common/items/filters";
+import productReducer from '../common/item/productReducer'
+import filtersReducer from '../common/item/filtersReducer'
+import {cartReducer,wishlistReducer,compareReducer} from "../newCar";
 import {usedWishlistReducer,usedCompareReducer} from "../usedCar"
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {loginReducer} from "../user";

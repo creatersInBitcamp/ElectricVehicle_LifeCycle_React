@@ -3,9 +3,9 @@ import React, {useState} from 'react'
 import designer from '../assets/images/dashboard/designer.jpg';
 import {Tabset_profile} from '../admin/item';
 import {AdminBreadcrumb} from '../admin/common';
-import Breadcrumb from "../common/breadcrumb";
+import {Breadcrumb} from "../common";
 
-const Profile = () => {
+export const Profile = () => {
     const [userId, setUserId] = useState('')
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')

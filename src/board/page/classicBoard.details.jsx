@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { useRouteMatch } from 'react-router-dom'
+import {Link, useRouteMatch} from 'react-router-dom'
 import {Breadcrumb} from "../../common";
 import {Comment} from "../items";
 import Container from "react-bootstrap/Container";
@@ -15,9 +15,9 @@ const ClassicBoardDetails = ({history}) => {
         const [post, setPost] = useState({})
         const [commentText, setCommentText] = useState("")
         const match = useRouteMatch('/board/details/:postId').params.postId
-        useEffect(() => {
+        const reFresh = () => {
             setPost(
-                axios.get(`http://localhost:8080/posts/getone/${match}`)
+                axios.get(`http://localhost:8080/posts/getOne/${match}`)
                     .then((res) => {
                         console.log(res.data)
                         setPost(res.data)
@@ -26,7 +26,10 @@ const ClassicBoardDetails = ({history}) => {
                         console.log(error)
                     })
             )
-        }, [])
+        }
+        useEffect(() => {
+            reFresh()
+        }, [match])
         const commentPush = () => {
             const newComment = {
                 regDate: new Date().toLocaleString(),
@@ -38,6 +41,7 @@ const ClassicBoardDetails = ({history}) => {
             axios.post(`http://localhost:8080/comments/insert`, newComment)
                 .then((res)=>{
                     console.log(res.status)
+                    reFresh()
                 })
                 .catch((err)=> {
                     console.log(err.status)
@@ -65,10 +69,7 @@ const ClassicBoardDetails = ({history}) => {
                                                     <li><i className="fa fa-comments"/> 0 Comment</li>
                                                 </Col>
                                                 <Col xs lg={2}>
-                                                    <button className="btn btn-solid" onClick={(e) => {
-                                                        e.preventDefault()
-
-                                                    }}>수정</button><a>  </a>
+                                                    <Link to={`${process.env.PUBLIC_URL}/board/update/${post.postId}`}><button className="btn btn-solid">수정</button></Link><a>  </a>
                                                     <button className="btn btn-solid" onClick={(e) => {
                                                         e.preventDefault()
                                                         axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
@@ -83,7 +84,7 @@ const ClassicBoardDetails = ({history}) => {
                                         </Container>
                                     </ul>
                                     <div className="row">
-                                        <iframe src={post.link} width={1920} height={2000}/>
+                                        <iframe src={post.link} width={1920} height={1500}/>
                                     </div>
                                 </div>
                                 <Container>
@@ -99,8 +100,8 @@ const ClassicBoardDetails = ({history}) => {
                                     </Row>
                                 </Container>
                             </div>
-                            { (post.comment) ?
-                                <Comment comment={post.comment}/>
+                            { (post.comments) ?
+                                <Comment comments={post.comments}/>
                                 :
                                 <div className="row section-b-space">
                                     <div className="col-sm-12">
@@ -124,7 +125,7 @@ const ClassicBoardDetails = ({history}) => {
                                     <form className="theme-form">
                                         <div className="form-row">
                                             <div className="col-md-12">
-                                                <label htmlFor="name">User Name : {initUser.userName}</label>
+                                                <label htmlFor="name">User Name : {initUser.userId}</label>
                                             </div>
                                             <div className="col-md-12">
                                                 <label htmlFor="exampleFormControlTextarea1">Comment</label>

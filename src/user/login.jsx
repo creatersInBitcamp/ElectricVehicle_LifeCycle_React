@@ -31,7 +31,6 @@ export const Login = (props) => {
 
     const routeChange = (e) => {
         e.preventDefault()
-        console.log(!result.check)
         dispatch(loginAction(!result.check))
         props.history.push(`${process.env.PUBLIC_URL}/admin/dashboard`);
     }

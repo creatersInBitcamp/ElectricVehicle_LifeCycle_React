@@ -56,7 +56,8 @@ const usedCompareReducer = (state = {items: []}, action) => {
 }
 
 export const MyCarComparison = () => {
-    const {symbol, Items} = useSelector((state) => ({
+    const {myCar, symbol, Items} = useSelector((state) => ({
+        myCar: state.myCar.list,
         Items: state.usedCompare.items,
         symbol: state.data.symbol
     }))
@@ -107,50 +108,66 @@ export const MyCarComparison = () => {
                                     {/*<button type="button" className="close-btn" onClick={()=>{dispatch(removeFromCompare(item))}}>
                                         <span aria-hidden="true">×</span>
                                     </button>*/}
-                                    <div className="img-section">
-                                        <img className="img-fluid"
-                                             src="https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_410" alt=""/>
-                                    </div>
-                                    <div className="detail-part">
-                                        <div className="title-detail">
-                                            market price
-                                        </div>
-                                        <div className="inner-detail">
-                                            <MarketPrice/>
-                                        </div>
-                                    </div>
-                                    <div className="detail-part">
-                                        <div className="title-detail">
-                                            <h5>description</h5>
-                                        </div>
-                                        <div className="inner-detail">
-                                            <p>shortDetail</p>
-                                        </div>
-                                    </div>
-                                    <div className="detail-part">
-                                        <div className="title-detail">
-                                            <h5>Brand Name</h5>
-                                        </div>
-                                        <div className="inner-detail">
-                                            <p>tag</p>
-                                        </div>
-                                    </div>
-                                    <div className="detail-part">
-                                        <div className="title-detail">
-                                            <h5>size</h5>
-                                        </div>
-                                        <div className="inner-detail">
-                                            <p>size</p>
-                                        </div>
-                                    </div>
-                                    <div className="detail-part">
-                                        <div className="title-detail">
-                                            <h5>color</h5>
-                                        </div>
-                                        <div className="inner-detail">
-                                            <p>color</p>
-                                        </div>
-                                    </div>
+                                    {myCar.map((item) => {
+                                        return (
+                                            <>
+                                                <div className="img-section">
+                                                    <img className="img-fluid" src={item.variants?
+                                                        item.variants[0].images
+                                                        :item.pictures[0]} alt=""/>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>name</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.name}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        market price
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <MarketPrice/>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>description</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>shortDetail</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>Brand Name</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.tags}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>size</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.size}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>color</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.colors}</p>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )
+                                    })}
+
                                     {/*<div className="btn-part">
                                         <a className="btn btn-solid" onClick={()=>{dispatch(addToCart(item, 1))}}>add to cart</a>
                                     </div>*/}
@@ -216,14 +233,6 @@ export const MyCarComparison = () => {
                                                 </div>
                                                 <div className="inner-detail">
                                                     <p>{item.colors}</p>
-                                                </div>
-                                            </div>
-                                            <div className="detail-part">
-                                                <div className="title-detail">
-                                                    <h5>availability</h5>
-                                                </div>
-                                                <div className="inner-detail">
-                                                    <p>In stock</p>
                                                 </div>
                                             </div>
                                             <div className="btn-part">

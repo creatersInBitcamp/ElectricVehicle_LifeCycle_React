@@ -89,7 +89,7 @@ export const TopBar = () => {
                                     </li>
 
                                     <li>
-                                        <Link to={`${process.env.PUBLIC_URL}/pages/myaccount`}
+                                        <Link to={`${process.env.PUBLIC_URL}/admin/userDetail`}
                                               data-lng="en">{translate('myaccount')}</Link>
                                     </li>
                                 </ul>

@@ -17,7 +17,7 @@ const Media = ({posts}) => {
                         <div className="blog-right">
                             <div>
                                 <h6>{post.date}</h6>
-                                <Link to={`${process.env.PUBLIC_URL}/board/details/${post.postId}`} ><h4>{post.titie}</h4></Link>
+                                <Link to={`${process.env.PUBLIC_URL}/board/details/${post.postId}`} ><h4>{post.title}</h4></Link>
                                 <ul className="post-social">
                                     <li>Posted By : {post.userName}</li>
                                     <li><i className="fa fa-heart"/> {post.hits} Hits</li>

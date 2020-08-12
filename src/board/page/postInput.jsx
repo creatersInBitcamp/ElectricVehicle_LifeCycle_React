@@ -1,38 +1,51 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useRouteMatch} from 'react-router-dom'
 import Breadcrumb from "../../common/breadcrumb";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import axios from "axios";
 const initUser = {
     name: '이형태',
-    userId: 'tedd911'
+    userId: 'tedd911',
+    userSeq: '301'
 }
 
-const PostInput = () => {
+const PostInput = ({history}) => {
     const match = useRouteMatch('/board/input/:category').params.category
-    alert(match)
     const [user, setUser] = useState(initUser)
-    const [post, setPost] = useState({})
     const [title, setTitle] = useState("")
     const [link, setLink] = useState("")
     const [content, setContent] =useState("")
     const [category, setCategory] = useState("")
+    useEffect(() => {
+    setCategory(match)
+    },[match])
     const onPostIn = (e) => {
         e.preventDefault()
-        setCategory(match)
-        setPost({
-           title : title,
-           content : content,
+        const newPost = {
+           userName: user.name,
            link : link,
-           userId : user.userId,
-           category: category
-        })
-        alert(JSON.stringify(post))
+           title : title,
+           date : new Date().toLocaleString(),
+           img : 'https://www.skt-phone.co.kr/resource/images/visual-notice.png',
+           content : content,
+           category: category,
+           user : user,
+        }
+        console.log(newPost)
+        axios.post('http://localhost:8080/posts/insert', newPost)
+            .then((res) => {
+                console.log(res.statusText)
+                history.push(`/board/main/${match}`)
+            })
+            .catch((err) => {
+                console.log(err.status)
+            })
     }
     return (
         <>
-            <Breadcrumb title={'Board - Input'}/>
+            <Breadcrumb title={`Board - Input ${match}`}/>
             <section className="blog-detail-page section-b-space">
                 <div className="container">
                     <div className="row">

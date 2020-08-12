@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
 
-const ClassicBoardDetails = () => {
+const ClassicBoardDetails = ({history}) => {
         const [post, setPost] = useState({})
         const match = useRouteMatch('/board/details/:postId').params.postId
         useEffect(() => {
@@ -33,19 +33,25 @@ const ClassicBoardDetails = () => {
                             <div className="row">
                                 <div className="col-sm-12 blog-detail">
                                     {/*<img src={} className="img-fluid" alt=""/>*/}
-                                    <h3>{post.titie}</h3>
+                                    <h3>{post.title}</h3>
                                     <ul className="post-social">
                                         <Container>
                                             <Row>
                                                 <Col>
                                                     <li>{post.date}</li>
                                                     <li>Posted By :{post.userName}</li>
-                                                    <li><i className="fa fa-heart"/> {post.recomendation} like </li>
+                                                    <li><i className="fa fa-heart"/> {post.recommendation} like </li>
                                                     <li><i className="fa fa-comments"/> 0 Comment</li>
                                                 </Col>
                                                 <Col xs lg={2}>
                                                     <button className="btn btn-solid" onClick={() => {alert('post 수정버튼')}}>수정</button><a>  </a>
-                                                    <button className="btn btn-solid" onClick={() => {alert('post 삭제버튼')}}>삭제</button>
+                                                    <button className="btn btn-solid" onClick={(e) => {axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
+                                                        .then((res) => {
+                                                            history.push(`/board/main/${match}`)
+                                                        })
+                                                        .catch((err) => {
+                                                            console.log(err.status)
+                                                        }) }}>삭제</button>
                                                 </Col>
                                             </Row>
                                         </Container>

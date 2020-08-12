@@ -55,8 +55,11 @@ const ClassicBoardMain = () => {
         const [page, setPage] = useState(1)
         const [count, setCount] = useState(10)
         const postAxios = () => {
-            axios.get(`http://localhost:8080/posts/pageall/${page}`)
+                    console.log(page)
+                    console.log(match)
+            axios.get(`http://localhost:8080/posts/pages/${match}/${page}`)
                 .then((res) => {
+                    console.log(res.data)
                     setPosts(res.data.content)
                     setCount(res.data.totalPages)
                 })
@@ -64,6 +67,7 @@ const ClassicBoardMain = () => {
                     console.log(error)
                 })
         }
+        // const result = posts.filter(post => post.category === `${match}`)
         const handleChange = (event, value) => {
             setPage(value)
             postAxios()
@@ -84,13 +88,13 @@ const ClassicBoardMain = () => {
                                     <div className="theme-card">
                                         <h4>Recent Post</h4>
                                         <ul className="recent-blog">
-                                            <Recent posts={posts}/>
+                                            <Recent/>
                                         </ul>
                                     </div>
                                     <div className="theme-card">
                                         <h4>Popular Post</h4>
                                         <ul className="popular-blog">
-                                            <Popular posts={posts}/>
+                                            <Popular/>
                                         </ul>
                                     </div>
                                 </div>

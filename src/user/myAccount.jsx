@@ -1,10 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Breadcrumb} from "../common";
-import {Link, Switch, Route} from "react-router-dom";
-import {MyCarPage} from "./MyCar";
+import {Link} from "react-router-dom";
 import designer from "../assets/images/dashboard/designer.jpg";
 
 export const MyAccount = () => {
+
+    const [name, setName] = useState('')
+    const [userId, setUserId] = useState('')
+    const [email, setEmail] = useState('')
+    const [sex, setSex] = useState('')
+    const [number, setNumber] = useState('')
+    const [birth, setBirth] = useState('')
+    const [addr, setAddr] = useState('')
+    const [image, setImage] = useState('')
+    const [userSession,setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
+
+    useEffect(() => {
+        setName(userSession.name)
+        setUserId(userSession.userId)
+        setEmail(userSession.email)
+        setSex(userSession.sex)
+        setNumber(userSession.phoneNumber)
+        setBirth(userSession.birthDate)
+        setAddr(userSession.addr)
+        setImage(userSession.profileImage)
+    },[userSession])
 
     return (
 
@@ -51,9 +71,9 @@ export const MyAccount = () => {
                                                     <div className="card">
                                                         <div className="card-body">
                                                             <div className="profile-details text-center">
-                                                                <img src={designer} alt="" className="img-fluid img-90 rounded-circle blur-up lazyloaded" />
-                                                                <h5 className="f-w-600 f-16 mb-0">이름입니다.</h5>
-                                                                <span>아이디입니다.</span>
+                                                                <img src={image} alt="" className="img-fluid img-90 rounded-circle blur-up lazyloaded" />
+                                                                <h5 className="f-w-600 f-16 mb-0">{name}</h5>
+                                                                <span>ID : {userId}</span>
                                                             </div>
                                                             <hr />
                                                             <div className="project-status">
@@ -96,29 +116,28 @@ export const MyAccount = () => {
                                                                         <tbody>
                                                                         <tr>
                                                                             <td>이름</td>
-                                                                            <td>John</td>
+                                                                            <td>{name}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>이메일</td>
-                                                                            <td>johndeo@gmail.com</td>
+                                                                            <td>{email}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>성별</td>
-                                                                            <td>Male</td>
+                                                                            <td>{sex}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>전화번호</td>
-                                                                            <td>2124821463</td>
+                                                                            <td>{number}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>생년월일</td>
-                                                                            <td>Dec, 15 1993</td>
+                                                                            <td>{birth}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>주소</td>
-                                                                            <td>USA</td>
+                                                                            <td>{addr}</td>
                                                                         </tr>
-                                                                        <button>비밀번호 변경</button>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>

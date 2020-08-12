@@ -1,4 +1,4 @@
-import React,{useState,useCallback,useRef} from "react";
+import React, {useState, useCallback, useRef, useEffect} from "react";
 import { GoogleMap,useLoadScript,Marker,InfoWindow,} from "@react-google-maps/api";
 import usePlacesAutocomplete, {getGeocode,getLatLng,getZipCode} from "use-places-autocomplete";
 import Geocode from 'react-geocode'
@@ -6,7 +6,8 @@ import {Combobox,ComboboxInput, ComboboxPopover,ComboboxList, ComboboxOption,} f
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 import './map.css'
 import "@reach/combobox/styles.css";
-import myData from '../data/data-charging-station';
+import axios from "axios";
+// import myData from '../data/data-charging-station';
 
 const MAP_KEY = 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0';
 
@@ -38,6 +39,18 @@ export const ChargingStationMap = () =>{
     const [selectedAddr, setSelectedAddr]= useState("")
     const [selectedPc,setSelectedPc] = useState("")
     const [infoShow, setInfoShow]= useState(false)
+    const [myData,setMyData] = useState([])
+
+    useEffect(()=>{
+        axios.get('http://localhost:8080/chargingstations/getall')
+            .then((res)=>{
+                console.log(res.data)
+                setMyData(res.data)
+            })
+            .catch((err)=>{
+                console.log(err.status)
+            })
+    },[])
 
     const mapRef = useRef();
     const onMapLoad = useCallback((map) => {
@@ -207,7 +220,7 @@ export const ChargingStationMap = () =>{
                                     myData.map((store, i) => (
                                         <Marker
                                             key={i}
-                                            position={{lat:store.x_value, lng:store.y_value}}
+                                            position={{lat:store.xvalue, lng:store.yvalue}}
                                             onClick={()=>setSelected(store)}
                                             icon={{
                                                     url : "https://image.flaticon.com/icons/svg/3198/3198588.svg",
@@ -217,9 +230,9 @@ export const ChargingStationMap = () =>{
                                     ))
                                 }
                                 {
-                                    selected.x_value ? (
+                                    selected.xvalue ? (
                                         <InfoWindow
-                                            position={{lat:selected.x_value, lng:selected.y_value}}
+                                            position={{lat:selected.xvalue, lng:selected.yvalue}}
                                             clickable={true}
                                             onCloseClick={()=>setSelected({})}
                                         >
@@ -227,17 +240,17 @@ export const ChargingStationMap = () =>{
                                                 <MDBCol>
                                                     <MDBCard>
                                                         <MDBCardBody>
-                                                            <MDBCardTitle><h3>{selected.unit_name}</h3></MDBCardTitle><br/>
+                                                            <MDBCardTitle><h3>{selected.unitName}</h3></MDBCardTitle><br/>
                                                             <MDBCardText>
-                                                                <h4>충전기 타입: {selected.charger_type}</h4><br/>
-                                                                <h4>상태: {selected.charger_state}</h4><br/>
+                                                                <h4>충전기 타입: {selected.chargerType}</h4><br/>
+                                                                <h4>상태: {selected.chargerState}</h4><br/>
                                                                 <h4>주소: {selected.address}</h4><br/>
-                                                                <h4>운영시간: {selected.business_hours}</h4><br/>
-                                                                <h4>관리부서: {selected.agency_name}</h4><br/>
+                                                                <h4>운영시간: {selected.businessHours}</h4><br/>
+                                                                <h4>관리부서: {selected.agencyName}</h4><br/>
                                                                 <h4>연락처: {selected.phone}</h4><br/>
                                                             </MDBCardText>
-                                                            <MDBBtn color="secondary" onClick={()=>bookmark(selected.charging_station_id)}>북마크</MDBBtn>
-                                                            <MDBBtn color="warning" onClick={()=>deleteBookmark(selected.charging_station_id)}>북마크삭제</MDBBtn>
+                                                            <MDBBtn color="secondary" onClick={()=>bookmark(selected.chargingStationId)}>북마크</MDBBtn>
+                                                            <MDBBtn color="warning" onClick={()=>deleteBookmark(selected.chargingStationId)}>북마크삭제</MDBBtn>
                                                         </MDBCardBody>
                                                     </MDBCard>
                                                 </MDBCol>

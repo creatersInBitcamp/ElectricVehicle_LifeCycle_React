@@ -38,6 +38,7 @@ const PostUadate = ({history}) => {
     const onUpdatePost = (e) => {
         e.preventDefault()
         const newPost = {
+            postId: postId,
             userName: user.name,
             link : link,
             title : title,

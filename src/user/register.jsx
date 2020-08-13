@@ -10,6 +10,7 @@ export const Register = (props) =>  {
     const [userId, setUserId] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
     const [year, setYear] = useState('')
     const [month, setMonth] = useState('')
     const [day, setDay] = useState('')
@@ -69,9 +70,11 @@ export const Register = (props) =>  {
             userId: userId,
             password: password,
             name: name,
+            email: email,
             ssn: year.concat("-",month,"-",day),
             sex: sex,
             addr: addr.concat(" ",addr2),
+            registerDate: new Date().toLocaleDateString()
         }
         console.log(userInfo)
         axios.post(`http://localhost:8080/user/register`, userInfo)
@@ -130,6 +133,13 @@ export const Register = (props) =>  {
                                                 <label htmlFor="email">이름</label>
                                                 <input type="text" className="form-control"
                                                        onChange={(e)=>{setName(e.target.value)}} placeholder="이름" required="" />
+                                            </div>
+                                        </div>
+                                        <div className="form-row">
+                                            <div className="col-md-6">
+                                                <label htmlFor="email">이메일</label>
+                                                <input type="text" className="form-control"
+                                                       onChange={(e)=>{setEmail(e.target.value)}} placeholder="이메일" required="" />
                                             </div>
                                         </div>
                                         <div className="form-row">

@@ -19,6 +19,7 @@ export const MyAccount = () => {
         setName(userSession.name)
         setUserId(userSession.userId)
         setEmail(userSession.email)
+
         setSex(userSession.sex)
         setNumber(userSession.phoneNumber)
         setBirth(userSession.birthDate)
@@ -77,7 +78,7 @@ export const MyAccount = () => {
                                                             </div>
                                                             <hr />
                                                             <div className="project-status">
-                                                                <h5 className="f-w-600 f-16">내 차</h5>
+                                                                <h5 className="f-w-600 f-16">자기소개</h5>
                                                                 <div className="media">
                                                                     <div className="media-body">
                                                                         <h6>Performance <span className="pull-right">80%</span></h6>

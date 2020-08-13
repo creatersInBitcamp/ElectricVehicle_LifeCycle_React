@@ -200,7 +200,12 @@ export const BookmarkMap = () =>{
     }
 
     function setting(store){
-        setSelected(store.category)
+        /*if(store.place.category === 'station'){
+            setSelected(store.chargingStation)
+        }else if(store.place.category  === 'sights'){
+            setSelected(store.sights)
+        }*/
+        setSelected(store.place)
         setId(store.id)
     }
 
@@ -234,11 +239,11 @@ export const BookmarkMap = () =>{
                                 {
                                     myData.map((store,i)=>{
 
-                                        if(store.category.category === 'station'){
+                                        if(store.place.category === 'station'){
                                             return (
                                                 <Marker
                                                     key={i}
-                                                    position={{lat: store.category.xvalue, lng: store.category.yvalue}}
+                                                    position={{lat: store.place.xvalue, lng: store.place.yvalue}}
                                                     onClick={() => setting(store)}
                                                     icon={
                                                         {
@@ -249,11 +254,11 @@ export const BookmarkMap = () =>{
                                                 />
                                             )
                                         }
-                                        else if(store.category.category === 'sights'){
+                                        else if(store.place.category  === 'sights'){
                                             return(
                                                 <Marker
                                                     key={i}
-                                                    position={{lat:store.category.xvalue, lng:store.category.yvalue}}
+                                                    position={{lat:store.place.xvalue, lng:store.place.yvalue}}
                                                     onClick={()=>setting(store)}
                                                     icon={
                                                         { url : "https://image.flaticon.com/icons/svg/3198/3198482.svg",

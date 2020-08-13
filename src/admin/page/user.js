@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {AdminBreadcrumb} from '../common';
 import data from '../../assets/data/listUser';
 import {Datatable} from '../item'
+import Table from '../item/table'
 import axios from 'axios'
 import {useSelector,useDispatch} from "react-redux";
 
@@ -27,7 +28,7 @@ export const userThunk = () => (dispatch) => {
 export const User = () => {
     const dispatch = useDispatch()
     const [users, setUsers] = useState([])
-    const  user = useSelector(state=> state.list_userReducer)
+    const  user = useSelector(state=> state.userReducer)
 
     useEffect(()=>{
         /*dispatch(userThunk())*/
@@ -44,13 +45,7 @@ export const User = () => {
                         <div className="card-body">
                             <div className="clearfix"/>
                             <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
-                                <Datatable
-                                    multiSelectOption={true}
-                                    myData={data}
-                                    pageSize={10}
-                                    pagination={true}
-                                    class="-striped -highlight"
-                                />
+                                <Table/>
                             </div>
                         </div>
                     </div>

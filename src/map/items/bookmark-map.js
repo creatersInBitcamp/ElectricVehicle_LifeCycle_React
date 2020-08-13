@@ -42,7 +42,7 @@ export const BookmarkMap = () =>{
     const [id,setId] = useState(0)
 
     useEffect(()=>{
-        axios.get('http://localhost:8080/bookmarks/getallbookmark')
+        axios.get('http://localhost:8080/bookmarks/getall')
             .then((res)=>{
                 console.log(res.data)
                 setMyData(res.data)
@@ -185,7 +185,7 @@ export const BookmarkMap = () =>{
         axios.get(`http://localhost:8080/bookmarks/delete/${bookmarkID}`)
             .then((res)=>{
                 console.log("북마크 삭제 성공")
-                axios.get('http://localhost:8080/bookmarks/getallbookmark')
+                axios.get('http://localhost:8080/bookmarks/getall')
                     .then((res)=>{
                         console.log(res.data)
                         setMyData(res.data)
@@ -200,8 +200,12 @@ export const BookmarkMap = () =>{
     }
 
     function setting(store){
-        setSelected(store.category)
-        setId(store.id)
+        if(store.chargingStation != null){
+            setSelected(store.chargingStation)
+        }else if(store.sights != null){
+            setSelected(store.sights)
+        }
+        setId(store.bookmarkId)
     }
 
     return (
@@ -234,11 +238,11 @@ export const BookmarkMap = () =>{
                                 {
                                     myData.map((store,i)=>{
 
-                                        if(store.category.category === 'station'){
+                                        if(store.chargingStation != null){
                                             return (
                                                 <Marker
                                                     key={i}
-                                                    position={{lat: store.category.xvalue, lng: store.category.yvalue}}
+                                                    position={{lat: store.chargingStation.xvalue, lng: store.chargingStation.yvalue}}
                                                     onClick={() => setting(store)}
                                                     icon={
                                                         {
@@ -249,11 +253,11 @@ export const BookmarkMap = () =>{
                                                 />
                                             )
                                         }
-                                        else if(store.category.category === 'sights'){
+                                        else if(store.sights != null){
                                             return(
                                                 <Marker
                                                     key={i}
-                                                    position={{lat:store.category.xvalue, lng:store.category.yvalue}}
+                                                    position={{lat:store.sights.xvalue, lng:store.sights.yvalue}}
                                                     onClick={()=>setting(store)}
                                                     icon={
                                                         { url : "https://image.flaticon.com/icons/svg/3198/3198482.svg",

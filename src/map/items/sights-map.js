@@ -40,6 +40,7 @@ export const SightsMap = () =>{
     const [selectedPc,setSelectedPc] = useState("")
     const [infoShow, setInfoShow]= useState(false)
     const [myData,setMyData] = useState([])
+    const [btn,setBtn] = useState(true)
 
     useEffect(()=>{
         axios.get('http://localhost:8080/sights/getall')
@@ -237,11 +238,11 @@ export const SightsMap = () =>{
                                     ))
                                 }
                                 {
-                                    selected.xvalue ? (
-                                        <InfoWindow
+                                    (selected.xvalue && btn) ? (
+                                        (<InfoWindow
                                             position={{lat:selected.xvalue, lng:selected.yvalue}}
                                             clickable={true}
-                                            onCloseClick={()=>setSelected({})}
+                                            onCloseClick={()=> setSelected({})}
                                         >
                                             <div className="infowindow">
                                                 <MDBCol>
@@ -255,12 +256,41 @@ export const SightsMap = () =>{
                                                                 <h4>주차가능수: {selected.parkingLot}</h4><br/>
                                                                 <h4>관광지 정보: {selected.info}</h4><br/>
                                                             </MDBCardText>
-                                                            <MDBBtn color="secondary" onClick={()=>insertBookmark(selected.sightsId)}>북마크</MDBBtn>
+                                                            <MDBBtn color="secondary" onClick={()=>insertBookmark(selected.sightsId)}>북마크저장</MDBBtn>
                                                         </MDBCardBody>
                                                     </MDBCard>
                                                 </MDBCol>
                                             </div>
-                                        </InfoWindow>
+                                        </InfoWindow>)
+
+                                    ):null
+                                }
+                                {
+                                    (selected.xvalue && !btn) ? (
+                                        (
+                                            <InfoWindow
+                                                position={{lat:selected.xvalue, lng:selected.yvalue}}
+                                                clickable={true}
+                                                onCloseClick={()=>setSelected({})}
+                                            >
+                                                <div className="infowindow">
+                                                    <MDBCol>
+                                                        <MDBCard>
+                                                            <MDBCardBody>
+                                                                <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
+                                                                <MDBCardText>
+                                                                    <h4>지번주소: {selected.branchAddress}</h4><br/>
+                                                                    <h4>도로명주소: {selected.streetAddress}</h4><br/>
+                                                                    <h4>수용인원수: {selected.capacity}</h4><br/>
+                                                                    <h4>주차가능수: {selected.parkingLot}</h4><br/>
+                                                                    <h4>관광지 정보: {selected.info}</h4><br/>
+                                                                </MDBCardText>
+                                                                <img src={"https://image.flaticon.com/icons/svg/2876/2876727.svg"}/>
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                    </MDBCol>
+                                                </div>
+                                            </InfoWindow>)
                                     ):null
                                 }
                                 {

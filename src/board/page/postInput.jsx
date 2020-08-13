@@ -5,13 +5,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
-const initUser = {
-    name: '이형태',
-    userId: 'tedd911',
-    userSeq: '301'
-}
+const initUser = JSON.parse(sessionStorage.getItem('user'))
 
 const PostInput = ({history}) => {
+    console.log(initUser)
     const match = useRouteMatch('/board/input/:category').params.category
     const [user, setUser] = useState(initUser)
     const [title, setTitle] = useState("")

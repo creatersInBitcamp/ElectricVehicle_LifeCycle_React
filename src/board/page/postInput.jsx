@@ -5,18 +5,18 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
-const initUser = JSON.parse(sessionStorage.getItem('user'))
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const PostInput = ({history}) => {
-    console.log(initUser)
     const match = useRouteMatch('/board/input/:category').params.category
-    const [user, setUser] = useState(initUser)
+    const [user, setUser] = useState()
     const [title, setTitle] = useState("")
     const [link, setLink] = useState("")
     const [content, setContent] =useState("")
     const [category, setCategory] = useState("")
     useEffect(() => {
-    setCategory(match)
+        setCategory(match)
+        setUser(sessionUser)
     },[match])
     const onPostIn = (e) => {
         e.preventDefault()

@@ -6,13 +6,17 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
-const initUser = JSON.parse(sessionStorage.getItem('user'))
+import {size} from "underscore";
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const ClassicBoardDetails = ({history}) => {
+        const [user, setUser] = useState({userId: 'nologin'})
         const [post, setPost] = useState({})
         const [commentText, setCommentText] = useState("")
         const match = useRouteMatch('/board/details/:postId').params.postId
         const reFresh = () => {
+            console.log(sessionUser)
+            setUser(sessionUser)
             setPost(
                 axios.get(`http://localhost:8080/posts/getOne/${match}`)
                     .then((res) => {
@@ -31,7 +35,7 @@ const ClassicBoardDetails = ({history}) => {
             const newComment = {
                 regDate: new Date().toLocaleString(),
                 comment: commentText,
-                user: initUser,
+                user: user,
                 post: {postId: match}
             }
             console.log(newComment)
@@ -61,24 +65,25 @@ const ClassicBoardDetails = ({history}) => {
                                             <Row>
                                                 <Col>
                                                     <li>{post.date}</li>
-                                                    <li>Posted By :{post.userName}</li>
+                                                    <li>Posted By :{post.userId}</li>
                                                     <li><i className="fa fa-heart"/> {post.recommendation} like </li>
-                                                    <li><i className="fa fa-comments"/> 0 Comment</li>
+                                                    <li><i className="fa fa-comments"/> {size(post.comments)} Comment</li>
                                                 </Col>
                                                 <Col xs lg={2}>
-                                                    {(post.userName == initUser.name)?
+                                                    {(user !== null)?
                                                         <>
                                                         <Link to={`${process.env.PUBLIC_URL}/board/update/${post.postId}`}><button className="btn btn-solid">수정</button></Link>
                                                         <button className="btn btn-solid" onClick={(e) => {
                                                         e.preventDefault()
-                                                        axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
+                                                        axios.post(`http://localhost:8080/posts/delete/${post.postId}`)
                                                             .then((res) => {
                                                                 history.push(`/board/main/${match}`)
                                                             })
                                                             .catch((err) => {
                                                                 console.log(err.status)
                                                             }) }}>삭제</button>
-                                                        </>:
+                                                        </>
+                                                        :
                                                         ""}
                                                 </Col>
                                             </Row>
@@ -97,7 +102,7 @@ const ClassicBoardDetails = ({history}) => {
                                             }}>목록</button>
                                         </Col>
                                         <Col xs md={2}>
-                                            {(post.userName == initUser.name)?
+                                            {(user !== null)?
                                                 <>
                                                     <Link to={`${process.env.PUBLIC_URL}/board/update/${post.postId}`}><button className="btn btn-solid">수정</button></Link>
                                                     <button className="btn btn-solid" onClick={(e) => {
@@ -109,14 +114,15 @@ const ClassicBoardDetails = ({history}) => {
                                                             .catch((err) => {
                                                                 console.log(err.status)
                                                             }) }}>삭제</button>
-                                                </>:
+                                                </>
+                                                :
                                                 ""}
                                         </Col>
                                     </Row>
                                 </Container>
                             </div>
-                            { (post.comments) ?
-                                <Comment comments={post.comments}/>
+                            { (post.comments ) ?
+                                <Comment postId={post.postId} comments={post.comments}/>
                                 :
                                 <div className="row section-b-space">
                                     <div className="col-sm-12">
@@ -134,29 +140,35 @@ const ClassicBoardDetails = ({history}) => {
                                     </div>
                                 </div>
                             }
-                            <div className="row blog-contact">
-                                <div className="col-sm-12">
-                                    <h2>Leave Your Comment</h2>
-                                    <form className="theme-form">
-                                        <div className="form-row">
-                                            <div className="col-md-12">
-                                                <label htmlFor="name">User ID : {initUser.userId}</label>
+                            {(user !== null) ?
+                                <div className="row blog-contact">
+                                    <div className="col-sm-12">
+                                        <form className="theme-form">
+                                            <div className="form-row">
+                                                <div className="col-md-12">
+                                                    <label htmlFor="name">User ID : {user.userId}</label>
+                                                </div>
+                                                <div className="col-md-12">
+                                                    <label htmlFor="exampleFormControlTextarea1">Comment</label>
+                                                    <textarea className="form-control" placeholder="Write Your Comment"
+                                                              id="exampleFormControlTextarea1" rows="6"
+                                                              onChange={(e) => {
+                                                                  setCommentText(e.target.value)
+                                                              }}/>
+                                                </div>
+                                                <div className="col-md-12">
+                                                    <button className="btn btn-solid" onClick={
+                                                        (e) => {
+                                                            commentPush()
+                                                        }}>Post Comment
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div className="col-md-12">
-                                                <label htmlFor="exampleFormControlTextarea1">Comment</label>
-                                                <textarea className="form-control" placeholder="Write Your Comment"
-                                                          id="exampleFormControlTextarea1" rows="6" onChange={(e) => {setCommentText(e.target.value)}}/>
-                                            </div>
-                                            <div className="col-md-12">
-                                                <button className="btn btn-solid" onClick={(e) => {
-                                                    e.preventDefault()
-                                                    commentPush()
-                                                }}>Post Comment</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
+                                : ""
+                            }
                         </div>
                     </section>
                     </>

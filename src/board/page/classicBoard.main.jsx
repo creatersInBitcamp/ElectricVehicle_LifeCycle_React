@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const ClassicBoardMain = () => {
         const classes = useStyles()
         const [posts, setPosts] = useState([])
+        const [user, setUser] = useState(initialUser)
         const match = useRouteMatch('/board/main/:category').params.category
         const [page, setPage] = useState(1)
         const [count, setCount] = useState(10)
@@ -34,8 +35,6 @@ const ClassicBoardMain = () => {
         const [searchWord, setSearchWord] = useState("")
         const [search, setSearch] = useState(false)
         const postAxios = () => {
-                    console.log(page)
-                    console.log(match)
             axios.get(`http://localhost:8080/posts/pages/${match}/${page}`)
                 .then((res) => {
                     console.log(res.data)
@@ -131,9 +130,13 @@ const ClassicBoardMain = () => {
                                         <Row>
                                             <Col/>
                                             <Col xs lg={2}>
+                                                {(user !== null)?
                                                 <Link to={`${process.env.PUBLIC_URL}/board/input/${match}`}>
                                                     <button className="btn btn-solid">글쓰기</button>
                                                 </Link>
+                                                    :
+                                                <button className="btn btn-solid" onClick={(e)=>{alert('로그인이 필요합니다.')}}>글쓰기</button>
+                                                }
                                             </Col>
                                         </Row>
                                         <Row>

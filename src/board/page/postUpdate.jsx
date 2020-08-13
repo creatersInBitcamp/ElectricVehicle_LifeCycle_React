@@ -5,15 +5,11 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
-const initUser = {
-    name: '이형태',
-    userId: 'tedd911',
-    userSeq: '301'
-}
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const PostUadate = ({history}) => {
     const postId = useRouteMatch('/board/update/:postId').params.postId
-    const [user, setUser] = useState(initUser)
+    const [user, setUser] = useState(sessionUser)
     const [title, setTitle] = useState("test")
     const [link, setLink] = useState("test")
     const [img, setImg] = useState("test")

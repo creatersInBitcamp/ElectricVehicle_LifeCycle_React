@@ -3,8 +3,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
-
-const Comment = ({comments}) => {
+const user = JSON.parse(sessionStorage.getItem('user'))
+const Comment = ({comments, postId}) => {
 
     return (
         <>
@@ -31,12 +31,22 @@ const Comment = ({comments}) => {
                                                 <Col sm={2}>
                                                     <button onClick={(e)=>{
                                                         e.preventDefault()
-                                                        axios.get(`localhost:8080/comments/delete/${comment.commentId}`)
+                                                        const mail = {
+                                                            commentId: comment.commentId,
+                                                            userId: comment.userId,
+                                                            regDate: comment.regDate,
+                                                            comment: comment.comment,
+                                                            user: user,
+                                                            post: {postId: postId}
+                                                        }
+                                                        console.log(mail)
+                                                        axios.post(`http://localhost:8080/comments/delete/`, mail)
                                                             .then((res) => {
                                                                 console.log(res.status)
                                                             })
                                                             .catch((err)=> {
                                                                 console.log(err.status)
+                                                                alert('삭제 실패')
                                                             })
                                                     }}> 삭제 </button>
                                                 </Col>

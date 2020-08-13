@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Breadcrumb} from "../common";
 import {Link} from "react-router-dom";
+import Slider from "react-slick";
 
 /* type */
 const ADD_TO_MY_CAR = 'ADD_TO_MY_CAR'
 const REMOVE_FROM_MY_CAR = 'REMOVE_FROM_MY_CAR'
+const ADD_TO_FIRST_CAR = 'ADD_TO_FIRST_CAR'
+const REMOVE_FROM_FIRST_CAR = 'REMOVE_FROM_FIRST_CAR'
 
 /* action */
 const addToMyCar = (product) => (dispatch) => {
@@ -20,6 +23,19 @@ const removeFromMyCar = product_id => (dispatch) => {
         type: REMOVE_FROM_MY_CAR,
         product_id
     })
+}
+const addToFirstCar = (product) => ({
+    type: ADD_TO_FIRST_CAR,
+    product
+})
+const removeFromFirstCar = product_id => (dispatch) => {
+    dispatch({
+        type: REMOVE_FROM_FIRST_CAR,
+        product_id
+    })
+}
+const changeFirstCar = (product) => (dispatch) => {
+    dispatch(addToFirstCar(product))
 }
 
 /* reducer */
@@ -49,17 +65,64 @@ export const myCarReducer = (state={list:[]}, action) => {
     return state
 }
 
+export const firstCarReducer = (state={list:[]}, action) => {
+    switch (action.type) {
+        case ADD_TO_FIRST_CAR:
+            const productId = action.product.id
+            state.list = []
+            if (state.list.findIndex(product => product.id === productId) !== -1) {
+                const list = state.list.reduce((cartAcc, product) => {
+                    if (product.id === productId) {
+                        cartAcc.push({ ...product })
+                    } else {
+                        cartAcc.push(product)
+                    }
+                    return cartAcc
+                }, [])
+                return { ...state, list }
+            }
+            return { ...state, list: [...state.list, action.product] }
+
+        case REMOVE_FROM_FIRST_CAR:
+            return {
+                list: state.list.filter(id => id !== action.product_id)
+            }
+
+        default:
+    }
+    return state
+}
+
 export const MyCarPage = () => {
     const [openEdit,setOpenEdit] = useState(false)
     const [targetId,setTargetId] = useState(0)
+    const [state, setState] = useState({ nav1: null, nav2: null });
+    const slider1 = useRef();
+    const slider2 = useRef();
 
-    const {products, myCars} = useSelector(state=>({
+    useEffect(() => {
+        setState({
+            nav1: slider1.current,
+            nav2: slider2.current
+        })
+    }, [])
+
+    const {products, myCars, first} = useSelector(state=>({
         products: state.data.products,
-        myCars: state.myCar.list
+        myCars: state.myCar.list,
+        first: state.firstCar.list
     }))
 
     const onClickEdit = () => {
         setOpenEdit(true)
+    }
+
+    const setting = {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: true,
+        fade: true
     }
 
     const dispatch = useDispatch()
@@ -115,10 +178,16 @@ export const MyCarPage = () => {
                                                         <a onClick={onClickEdit}>Edit</a>
                                                     </div>
                                                     <div className="box-content">
-                                                        <img className="img-fluid"
-                                                             src="https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_410" 
-                                                             alt=""/>
-                                                        <h6>2019 테슬라 모델3</h6>
+                                                        <Slider {...setting} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
+                                                            {myCars.map((item,index)=>{
+                                                                return (
+                                                                    <div key={index}>
+                                                                        <img src={item.pictures[0]} className="img-fluid image_zoom_cls-0"  alt={""} />
+                                                                        <h4>{item.name}</h4>
+                                                                    </div>
+                                                                )
+                                                            })}
+                                                        </Slider>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,9 +198,18 @@ export const MyCarPage = () => {
                                                         <a onClick={onClickEdit}>Edit</a>
                                                     </div>
                                                     <div className="box-content">
-                                                        <p>
-                                                            You are currently not subscribed to any newsletter.
-                                                        </p>
+                                                        {
+                                                            first.length>0?
+
+                                                                first.map((item,index)=>{
+                                                                return (
+                                                                    <div key={index}>
+                                                                        <img src={item.pictures[0]} className="img-fluid image_zoom_cls-0"  alt={""} />
+                                                                        <h4>{item.name}</h4>
+                                                                    </div>
+                                                                )})
+                                                                : <h5>등록된 차량이 없습니다.</h5>
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,10 +241,13 @@ export const MyCarPage = () => {
                                                                     })
                                                                 }
                                                             </select>
-                                                            <button onClick={()=>dispatch(removeFromMyCar(myCars.find(x => x.id == targetId)))}>삭제</button>
+                                                            <button onClick={()=> {
+                                                                dispatch(removeFromMyCar(myCars.find(x => x.id == targetId)))
+                                                                dispatch(removeFromFirstCar(myCars.find(x => x.id == targetId)))
+                                                            }}>삭제</button>
                                                         </div>
                                                         <div className="col-sm-6">
-                                                            <select>
+                                                            <select onChange={e=>setTargetId(e.target.value)}>
                                                                 <option value="default">메인차량을 선택해주세요.</option>
                                                                 {
                                                                     myCars.map((item,index)=>{
@@ -174,7 +255,7 @@ export const MyCarPage = () => {
                                                                     })
                                                                 }
                                                             </select>
-                                                            <button>선택</button>
+                                                            <button onClick={()=>dispatch(changeFirstCar(myCars.find(x => x.id == targetId)))}>변경</button>
                                                         </div>
                                                     </div>
                                             </div>

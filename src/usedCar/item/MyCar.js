@@ -15,8 +15,8 @@ export const MyCar = () => {
         userSession ? setSession(true) : setSession(false)
     },[userSession])
 
-    const {myCar,items,products} = useSelector(state=>({
-        myCar: state.myCar.list,
+    const {first,items,products} = useSelector(state=>({
+        first: state.firstCar.list,
         items: state.usedWishlist.list,
         products: state.data.products
     }))
@@ -32,10 +32,10 @@ export const MyCar = () => {
     return <>
 
         {session ?
-            (myCar.length>0?
+            (first.length>0?
                 <div className="collection-filter-block">
                     <h2 style={{textAlign: "center", padding: "15px"}}>My Car</h2>
-                    {myCar.map((item) => {
+                    {first.map((item) => {
                         return (
                             <>
                                 <img className="img-fluid" src={item.variants?
@@ -81,7 +81,7 @@ export const MyCar = () => {
                             <div className="row">
                                 <div className="col-lg-6  col-xs-12">
                                     <div className="quick-view-img">
-                                        {myCar.map((item) => {
+                                        {first.map((item) => {
                                             return (
                                                 <>
                                                     <h2 style={{textAlign: "center"}}>{item.name}</h2>

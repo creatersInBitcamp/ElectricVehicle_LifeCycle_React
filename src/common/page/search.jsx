@@ -6,9 +6,6 @@ import {Breadcrumb} from '../../common/index';
 export const Search = ()=> {
     return (
         <div>
-            <Breadcrumb title={'Search'}/>
-
-
             {/*Search section*/}
             <section className="authentication-page section-b-space">
                 <div className="container">
@@ -20,7 +17,7 @@ export const Search = ()=> {
                                         <div className="input-group">
                                             <input type="text" className="form-control"
                                                    aria-label="Amount (to the nearest dollar)"
-                                                   placeholder="Search Products......" />
+                                                   placeholder="Search" />
                                             <div className="input-group-append">
                                                 <button className="btn btn-solid"><i
                                                     className="fa fa-search"/>Search
@@ -34,7 +31,6 @@ export const Search = ()=> {
                     </section>
                 </div>
             </section>
-
         </div>
     )
 }

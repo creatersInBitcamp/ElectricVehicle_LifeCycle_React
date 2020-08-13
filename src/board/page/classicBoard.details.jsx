@@ -6,11 +6,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
-const initUser = {
-    userId: 'tedd911',
-    userSeq: '301',
-    userName: '이형태'
-}
+const initUser = JSON.parse(sessionStorage.getItem('user'))
+
 const ClassicBoardDetails = ({history}) => {
         const [post, setPost] = useState({})
         const [commentText, setCommentText] = useState("")
@@ -69,16 +66,20 @@ const ClassicBoardDetails = ({history}) => {
                                                     <li><i className="fa fa-comments"/> 0 Comment</li>
                                                 </Col>
                                                 <Col xs lg={2}>
-                                                    <Link to={`${process.env.PUBLIC_URL}/board/update/${post.postId}`}><button className="btn btn-solid">수정</button></Link><a>  </a>
-                                                    <button className="btn btn-solid" onClick={(e) => {
+                                                    {(post.userName == initUser.name)?
+                                                        <>
+                                                        <Link to={`${process.env.PUBLIC_URL}/board/update/${post.postId}`}><button className="btn btn-solid">수정</button></Link>
+                                                        <button className="btn btn-solid" onClick={(e) => {
                                                         e.preventDefault()
                                                         axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
-                                                        .then((res) => {
-                                                            history.push(`/board/main/${match}`)
-                                                        })
-                                                        .catch((err) => {
-                                                            console.log(err.status)
-                                                        }) }}>삭제</button>
+                                                            .then((res) => {
+                                                                history.push(`/board/main/${match}`)
+                                                            })
+                                                            .catch((err) => {
+                                                                console.log(err.status)
+                                                            }) }}>삭제</button>
+                                                        </>:
+                                                        ""}
                                                 </Col>
                                             </Row>
                                         </Container>
@@ -90,12 +91,26 @@ const ClassicBoardDetails = ({history}) => {
                                 <Container>
                                     <Row>
                                         <Col>
-                                            <button className="btn btn-solid">목록</button>
+                                            <button className="btn btn-solid" onClick={(e) => {
+                                                e.preventDefault()
+                                                history.push(`/board/main/${post.category}`)
+                                            }}>목록</button>
                                         </Col>
                                         <Col xs md={2}>
-                                            <button className="btn btn-solid">수정</button>
-                                            <a>  </a>
-                                            <button className="btn btn-solid">삭제</button>
+                                            {(post.userName == initUser.name)?
+                                                <>
+                                                    <Link to={`${process.env.PUBLIC_URL}/board/update/${post.postId}`}><button className="btn btn-solid">수정</button></Link>
+                                                    <button className="btn btn-solid" onClick={(e) => {
+                                                        e.preventDefault()
+                                                        axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
+                                                            .then((res) => {
+                                                                history.push(`/board/main/${match}`)
+                                                            })
+                                                            .catch((err) => {
+                                                                console.log(err.status)
+                                                            }) }}>삭제</button>
+                                                </>:
+                                                ""}
                                         </Col>
                                     </Row>
                                 </Container>
@@ -125,7 +140,7 @@ const ClassicBoardDetails = ({history}) => {
                                     <form className="theme-form">
                                         <div className="form-row">
                                             <div className="col-md-12">
-                                                <label htmlFor="name">User Name : {initUser.userId}</label>
+                                                <label htmlFor="name">User ID : {initUser.userId}</label>
                                             </div>
                                             <div className="col-md-12">
                                                 <label htmlFor="exampleFormControlTextarea1">Comment</label>

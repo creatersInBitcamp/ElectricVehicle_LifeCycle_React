@@ -32,7 +32,7 @@ const ClassicBoardMain = () => {
         const [count, setCount] = useState(10)
         const [title, setTitle] = useState("검색조건")
         const [searchWord, setSearchWord] = useState("")
-        const [method,setMethod] = useState(()=>handleChange)
+        const [search, setSearch] = useState(false)
         const postAxios = () => {
                     console.log(page)
                     console.log(match)
@@ -46,17 +46,16 @@ const ClassicBoardMain = () => {
                     console.log(error)
                 })
         }
-        const handleChange = (event, value) => {
-            setPage(value)
-            postAxios()
-        }
-        const handleChange2 = (event, value) => {
+        const handleChange = (event, value) => { (search) ? searchFun(value) : generic(value) }
+        function searchFun(value){
             setPage(value)
             searchMethod()
         }
-        // useEffect(()=>{
-        //     postAxios()
-        // }, [match])
+        function generic(value){
+            setPage(value)
+            postAxios()
+        }
+        useEffect(()=>{(search) ? searchMethod() : postAxios()}, [match, page])
         const searchMethod = () => {
             axios.get(`http://localhost:8080/posts/search/${match}/${title}/${searchWord}/${page}`)
                 .then((res)=>{
@@ -71,8 +70,8 @@ const ClassicBoardMain = () => {
         const kepressChange = (event) =>{
             if (event.key === 'Enter') {
                 alert(`category: ${match},title: ${title},searchWord : ${searchWord}`)
+                setSearch(true)
                 searchMethod()
-                setMethod(()=>handleChange2)
             }
         }
         return (
@@ -145,7 +144,7 @@ const ClassicBoardMain = () => {
                                                     variant={"outlined"}
                                                     count={count}
                                                     page={page}
-                                                    onChange={method} />
+                                                    onChange={handleChange} />
                                            </Col>
                                         </Row>
                                         <Row>
@@ -154,7 +153,6 @@ const ClassicBoardMain = () => {
                                     {/*<MediaTable/>*/}
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </section>

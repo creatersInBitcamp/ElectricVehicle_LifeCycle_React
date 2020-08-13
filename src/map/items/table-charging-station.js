@@ -95,25 +95,8 @@ export const TableChargingStation = () => {
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="card">
-                                {/*<div className="card-header">
-                                    <h5>충전소 찾기</h5>
-                                </div>
-                                <input
-                                    size="large"
-                                    name="searchInput"
-                                    value={searchInput || ""}
-                                    onChange={handleChange}
-                                    // onKeyPress={kepressChange}
-                                    placeholder=" 검색어를 입력해주세요"
-                                />*/}
                                 <div className="card-body">
                                     <div id="batchDelete" className="transactions">
-                                        {/*<ReactTable
-                                            data={data}
-                                            columns={columns}
-                                            defaultPageSize={20}
-                                            showPagination={true}
-                                        />*/}
                                         <MaterialTable
                                             title="충전소 찾기"
                                             columns={columns}
@@ -183,36 +166,6 @@ export const TableChargingStation = () => {
                         </div>
                     </div>
                 </div>
-                {/*<Modal open={open} onClose={()=>setOpen(false)} center>
-                    <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
-                        <div>
-                            <div className="modal-body">
-                                <div>
-                                    <GoogleMap
-                                        id="map"
-                                        mapContainerStyle={mapContainerStyle}
-                                        zoom={14}
-                                        center={position}
-                                        options={options}
-                                        onLoad={onMapLoad}
-                                    >
-                                        <Marker
-                                            position={position}
-                                        />
-                                    </GoogleMap>
-                                </div>
-                                <div>
-                                    <br/>
-                                    <h3>이름 : {info.unit_name}</h3>
-                                    <h3>주소 : {info.address}</h3>
-                                    <h3>충전기 타입 : {info.charger_type}</h3>
-                                    <h3>충전기 상태 : {info.charger_state}</h3>
-                                    <h3>이용 시간 : {info.business_hours}</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Modal>*/}
             </>
         );
 }

@@ -190,6 +190,14 @@ export const SightsMap = () =>{
         axios.post('http://localhost:8080/bookmarks/insert',id)
             .then((res)=>{
                 console.log("북마크 저장 성공")
+                axios.get('http://localhost:8080/sights/getall')
+                    .then((res)=>{
+                        console.log(res.data)
+                        setMyData(res.data)
+                    })
+                    .catch((err)=>{
+                        console.log('에러 '+err.status)
+                    })
             })
             .catch((err) => {
                 console.log("북마크 저장 실패")
@@ -238,7 +246,7 @@ export const SightsMap = () =>{
                                     ))
                                 }
                                 {
-                                    (selected.xvalue && btn) ? (
+                                    (selected.xvalue && (selected.bookmarkList.length === 0)) ? (
                                         (<InfoWindow
                                             position={{lat:selected.xvalue, lng:selected.yvalue}}
                                             clickable={true}
@@ -266,7 +274,7 @@ export const SightsMap = () =>{
                                     ):null
                                 }
                                 {
-                                    (selected.xvalue && !btn) ? (
+                                    (selected.xvalue && (selected.bookmarkList.length !== 0)) ? (
                                         (
                                             <InfoWindow
                                                 position={{lat:selected.xvalue, lng:selected.yvalue}}
@@ -285,7 +293,7 @@ export const SightsMap = () =>{
                                                                     <h4>주차가능수: {selected.parkingLot}</h4><br/>
                                                                     <h4>관광지 정보: {selected.info}</h4><br/>
                                                                 </MDBCardText>
-                                                                <img src={"https://image.flaticon.com/icons/svg/2876/2876727.svg"}/>
+                                                                <img src={"https://image.flaticon.com/icons/svg/2876/2876727.svg"} width={40} height={40}/>
                                                             </MDBCardBody>
                                                         </MDBCard>
                                                     </MDBCol>

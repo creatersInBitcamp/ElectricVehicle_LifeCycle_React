@@ -67,7 +67,7 @@ export const MyCar = () => {
                 <div style={{textAlign: "center", padding: "15px"}}>
                     <button className="btn btn-solid">
                         <Link to={"/pages/login"}>
-                            로그인이 필요한 페이지 입니다.
+                            로그인이 필요한 서비스 입니다.
                         </Link>
                     </button>
                 </div>

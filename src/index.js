@@ -28,7 +28,7 @@ import {BoardDetail, BoardInput, BoardMain, BoardUpdate} from "./board/";
 import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Reports} from './admin/page';
 
 //user
-import {ForgetPassword,Login,MyAccount,Register,MyCarPage,Profile} from './user'
+import {ForgetPassword,Login,MyAccount,Register,MyCarPage} from './user'
 
 
 import store from "./store";
@@ -69,7 +69,7 @@ const Root =()=> {
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/product/:id`} component={productDetail}/>
-                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/purchase`} component={PurchaseRequest}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/purchase/request/:id`} component={PurchaseRequest}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/comparison/:id`} component={MyCarComparison}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/sales`} component={SalesForm}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/scrapped`} component={Scrapped}/>

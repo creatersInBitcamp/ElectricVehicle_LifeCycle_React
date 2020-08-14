@@ -22,8 +22,9 @@ const Media = ({posts}) => {
                                     <Link to={`${process.env.PUBLIC_URL}/board/details/${post.postId}`} ><h4>{post.title}</h4></Link>
                                     <ul className="post-social">
                                         <li>Posted By : {post.userId}</li>
-                                        <li><i className="fa fa-heart"/> {post.hits} hits</li>
-                                        <li><i className="fa fa-comments"/> {toString(post.comments.length)} Comment</li>
+                                        <li><i className="fa fa-heart"/> {post.recommendation} like</li>
+                                        <li><i className="fa fa-flag"/> {post.hits} hits</li>
+                                        <li><i className="fa fa-comments"/> {post.comments === undefined? 0 : post.comments.length} Comment</li>
                                     </ul>
                                     <p>{post.content}</p>
                                 </div>

@@ -1,6 +1,5 @@
 import React, {useEffect, useState,useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {MDBTable, MDBTableBody, MDBTableHead} from "mdbreact";
 import {Link, useRouteMatch} from 'react-router-dom';
 import Slider from 'react-slick';
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
@@ -113,7 +112,8 @@ export const productDetail = () => {
                                                         </div>
                                                     </div>
                                                     <div className="product-buttons" >
-                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`} className="btn btn-solid">purchase request</Link>
+                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.id}`}
+                                                              className="btn btn-solid" >purchase request</Link>
                                                     </div>
                                                     <div className="border-product">
                                                         <div className="product-icon">
@@ -211,20 +211,20 @@ export const productDetail = () => {
                                                     </TabPanel>
                                                     <TabPanel>
                                                         {/* 댓글 리스트 */}
-                                                        <MDBTable>
-                                                            <MDBTableHead>
+                                                        <table className={"table"}>
+                                                            <thead>
                                                                 <tr>
                                                                     <th>#</th>
                                                                     <th rowSpan={5}>댓글</th>
                                                                     <th>글쓴이</th>
                                                                 </tr>
-                                                            </MDBTableHead>
-                                                            <MDBTableBody>
+                                                            </thead>
+                                                            <tbody>
                                                                 <td>1</td>
                                                                 <td rowSpan={5}>test</td>
                                                                 <td>김수빈</td>
-                                                            </MDBTableBody>
-                                                        </MDBTable>
+                                                            </tbody>
+                                                        </table>
                                                         {/* 댓글 쓰기 */}
                                                         <form className="theme-form mt-4">
                                                             <div className="form-row">

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import StickyBox from "react-sticky-box";
 import InputRange from "react-input-range";
@@ -6,42 +6,48 @@ import { SlideToggle } from 'react-slide-toggle';
 import FilterBar from "../item/filter-bar";
 import ProductListing from "../item/product-listing";
 import MyCar from "../item/MyCar";
-import {Breadcrumb,NewProduct,filterBrand, filterColor, filterPrice} from "../../common";
-import {getBrands, getColors, getMinMaxPrice} from "../../atomic/services/services";
+import {Breadcrumb,NewProduct} from "../../common";
+import {filterPrice} from "../item/UsedFilterReducer"
+import {getMinMaxPrice} from "../../atomic/services/services";
+import {getAllProducts} from "../item/UsedProductReducer";
 
 export const UsedPurchaseCollection = () => {
     const [layoutColumns, setLayoutColumns] = useState(3)
     const LayoutViewClicked = columns => { setLayoutColumns(columns) }
-    const { brands, colors, prices, filters } = useSelector(state=>({
-        brands: getBrands(state.data.products),
-        colors: getColors(state.data.products),
-        prices: getMinMaxPrice(state.data.products),
-        filters: state.filters
+    const { prices, filters } = useSelector(state=>({
+        // ages: getAges(state.usedData.products),
+        // mileages: getMileages(state.usedData.products),
+        prices: getMinMaxPrice(state.usedData.products),
+        filters: state.usedFilters
     }))
+
+    useEffect(()=>{
+        getAllProducts()
+    })
 
     const closeFilter = () => {
         document.querySelector(".collection-filter").style = "left: -365px";
     }
 
-    const clickBrandHandle = (event, brands) => {
-        const index = brands.indexOf(event.target.value);
-        if (event.target.checked)
-            brands.push(event.target.value) // push in array checked value
-        else
-            brands.splice(index, 1) // removed in array unchecked value
-        dispatch(filterBrand(brands))
-    }
-
-    const colorHandle = (event, color) => {
-        const elems = document.querySelectorAll(".color-selector ul li");
-        [].forEach.call(elems, function(el) {
-            el.classList.remove("active")
-        })
-        event.target.classList.add('active')
-        dispatch(filterColor(color))
-    }
-
-    const filteredBrands = filters.brand
+    // const clickBrandHandle = (event, brands) => {
+    //     const index = brands.indexOf(event.target.value);
+    //     if (event.target.checked)
+    //         brands.push(event.target.value) // push in array checked value
+    //     else
+    //         brands.splice(index, 1) // removed in array unchecked value
+    //     dispatch(filterAge(ages))
+    // }
+    //
+    // const colorHandle = (event, mileages) => {
+    //     const elems = document.querySelectorAll(".color-selector ul li");
+    //     [].forEach.call(elems, function(el) {
+    //         el.classList.remove("active")
+    //     })
+    //     event.target.classList.add('active')
+    //     dispatch(filterMileage(mileages))
+    // }
+    //
+    // const filteredBrands = filters.brand
 
     const dispatch = useDispatch()
 
@@ -56,7 +62,7 @@ export const UsedPurchaseCollection = () => {
                                 <MyCar/>
                                 <div className="collection-filter-block">
                                     {/*brand filter start*/}
-                                    <div className="collection-mobile-back">
+                                    {/*<div className="collection-mobile-back">
                                         <span className="filter-back"
                                               onClick={(e) => closeFilter(e)} >
                                             <i className="fa fa-angle-left" aria-hidden="true"/>
@@ -69,38 +75,38 @@ export const UsedPurchaseCollection = () => {
                                                 <h3 className="collapse-block-title" onClick={onToggle}>brand</h3>
                                                 <div className="collection-collapse-block-content"  ref={setCollapsibleElement}>
                                                     <div className="collection-brand-filter">
-                                                        {brands.map((brand, index) => {
+                                                        {ages.map((age, index) => {
                                                             return (
                                                                 <div className="custom-control custom-checkbox collection-filter-checkbox" key={index}>
                                                                     <input type="checkbox"
                                                                            onClick={(e)=>clickBrandHandle(e,filteredBrands)}
-                                                                           value={brand}
-                                                                           defaultChecked={filteredBrands.includes(brand)}
+                                                                           value={age}
+                                                                           defaultChecked={filteredBrands.includes(age)}
                                                                            className="custom-control-input"
-                                                                           id={brand} />
+                                                                           id={age} />
                                                                     <label className="custom-control-label"
-                                                                           htmlFor={brand}>{brand}</label>
+                                                                           htmlFor={age}>{age}</label>
                                                                 </div> )
                                                         })}
                                                     </div>
                                                 </div>
                                             </div>
                                         )}
-                                    </SlideToggle>
+                                    </SlideToggle>*/}
 
                                     {/*color filter start here*/}
-                                    <SlideToggle>
+                                    {/*<SlideToggle>
                                         {({onToggle, setCollapsibleElement}) => (
                                             <div className="collection-collapse-block">
                                                 <h3 className="collapse-block-title" onClick={onToggle}>colors</h3>
                                                 <div className="collection-collapse-block-content" ref={setCollapsibleElement}>
                                                     <div className="color-selector">
                                                         <ul>
-                                                            {colors.map((color, index) => {
+                                                            {mileages.map((mileage, index) => {
                                                                 return (
-                                                                    <li className={color}
-                                                                        title={color}
-                                                                        onClick={(e) => colorHandle(e, color)}
+                                                                    <li className={mileage}
+                                                                        title={mileage}
+                                                                        onClick={(e) => colorHandle(e, mileage)}
                                                                         key={index}/> )
                                                             })}
                                                         </ul>
@@ -108,7 +114,7 @@ export const UsedPurchaseCollection = () => {
                                                 </div>
                                             </div>
                                         )}
-                                    </SlideToggle>
+                                    </SlideToggle>*/}
                                     {/*price filter start here */}
                                     <SlideToggle>
                                         {({onToggle, setCollapsibleElement}) => (

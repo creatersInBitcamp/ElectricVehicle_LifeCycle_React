@@ -1,9 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
+import axios from 'axios'
 
 export const TopBar = () => {
-
+    const contexts = {
+        user:'http://localhost:8080/user/csv',
+        ecar:"http://localhost:8080/electriccars/csv",
+        post:"http://localhost:8080/posts/readcsv",
+        sights:"http://localhost:8080/sights/csv",
+        charge:"http://localhost:8080/chargingstations/csv",
+        cars:"http://localhost:8080/cars/csv",
+        used:"http://localhost:8080/usedCars/csv",
+        electric: "http://localhost:8080/electriccars/csv",
+    }
     const translate = useTranslate();
     const [session, setSession] = useState(false)
     const [userSession] = useState(sessionStorage.getItem("user"))
@@ -17,6 +27,77 @@ export const TopBar = () => {
         sessionStorage.clear()
         window.location.reload()
     }
+    const onCSVuser = (e) => {
+        e.preventDefault()
+            axios.get(`${contexts.user}`)
+                .then((res)=>{
+                    console.log(`user 성공`)
+                })
+                .catch((err)=>{
+                    console.log(`${contexts.user}: err: ${err.status}`)
+                })
+    }
+    const onCSVpost = (e) => {
+        e.preventDefault()
+        axios.get(`${contexts.post}`)
+            .then((res)=>{
+                console.log(`post 성공`)
+            })
+            .catch((err)=>{
+                console.log(`${contexts.post}: err: ${err.status}`)
+            })
+    }
+    const onCSVsight = (e) => {
+        e.preventDefault()
+        axios.get(`${contexts.sights}`)
+            .then((res)=>{
+                console.log(`관광지 성공`)
+            })
+            .catch((err)=>{
+                console.log(`${contexts.sights}: err: ${err.status}`)
+            })
+    }
+    const onCSVcharge = (e) => {
+        e.preventDefault()
+        axios.get(`${contexts.charge}`)
+            .then((res)=>{
+                console.log(`충전소 성공`)
+            })
+            .catch((err)=>{
+                console.log(`${contexts.charge}: err: ${err.status}`)
+            })
+    }
+    const onCSVelectric = (e) => {
+        e.preventDefault()
+        axios.get(contexts.electric)
+            .then((res)=>{
+                console.log('전기차 성공')
+            })
+            .catch((err)=>{
+                console.log('전기차 실패')
+            })
+    }
+    const onCSVused = (e) => {
+        e.preventDefault()
+        axios.get(contexts.used)
+            .then((res)=>{
+                console.log('중고차 성공')
+            })
+            .catch((err)=>{
+                console.log('중고차 실패')
+            })
+    }
+    const onCSVnew = (e) => {
+        e.preventDefault()
+        axios.get(contexts.cars)
+            .then((res)=>{
+                console.log('신차 성공')
+            })
+            .catch((err)=>{
+                console.log('신차 실패')
+            })
+    }
+
 
     return <>
         <div className="top-header">
@@ -27,6 +108,15 @@ export const TopBar = () => {
                             <ul>
                                 <li>{translate('topbar_title', { theme_name: ' ElectricVehicle_LifeCycle' })}</li>
                                 <li><i className="fa fa-phone" aria-hidden="true"/>{translate('call_us')}:  123 - 456 - 7890</li>
+                                <li>
+                                    <button onClick={(e)=> {onCSVuser(e)}}>USER</button>
+                                    <button onClick={(e)=> {onCSVpost(e)}}>POST</button>
+                                    <button onClick={(e)=> {onCSVsight(e)}}>SIGHTS</button>
+                                    <button onClick={(e)=> {onCSVcharge(e)}}>CHARGE</button>
+                                    <button onClick={(e)=> {onCSVelectric(e)}}>Eelectric</button>
+                                    <button onClick={(e)=> {onCSVused(e)}}>UsedCar</button>
+                                    <button onClick={(e)=> {onCSVnew(e)}}>NewCar</button>
+                                </li>
                             </ul>
                         </div>
                     </div>

@@ -8,3 +8,5 @@ export {UsedWishlist, default as usedWishlistReducer} from './page/UsedCarWishli
 export {ProductItem} from './item/product-item'
 export {MyCar} from './item/MyCar'
 export {MarketPrice} from './item/MarketPrice'
+export {default as usedProductReducer} from './item/UsedProductReducer'
+export {default as usedFiltersReducer} from './item/UsedFilterReducer'

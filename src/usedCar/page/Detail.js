@@ -113,7 +113,8 @@ export const productDetail = () => {
                                                         </div>
                                                     </div>
                                                     <div className="product-buttons" >
-                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`} className="btn btn-solid">purchase request</Link>
+                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.id}`}
+                                                              className="btn btn-solid" >purchase request</Link>
                                                     </div>
                                                     <div className="border-product">
                                                         <div className="product-icon">

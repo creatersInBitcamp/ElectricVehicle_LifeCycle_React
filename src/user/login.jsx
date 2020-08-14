@@ -30,8 +30,14 @@ export const Login = (props) => {
             axios.post(`http://localhost:8080/user/login`, userInfo)
                 .then((res) => {
                     sessionStorage.setItem("user", JSON.stringify(res.data))
-                    res.status === 200 ? props.history.push(`${process.env.PUBLIC_URL}/`) : alert("아이디, 비밀번호를 확인하세요!")
-                    window.location.reload()
+                    if(res.data.grade === 0 || res.data.grade === 9 ) {
+                        res.status === 200 ? props.history.push(`${process.env.PUBLIC_URL}/`) : alert("아이디, 비밀번호를 확인하세요!")
+                        window.location.reload()
+                    } else {
+                        window.location.reload()
+                        alert("당신의 계정은 차단되었습니다.")
+                    }
+
                 })
                 .catch(() => {
                     alert('아이디, 비밀번호를 다시 확인하세요!')

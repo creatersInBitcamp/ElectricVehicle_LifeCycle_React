@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios'
 import {Breadcrumb} from "../common";
 import {Link} from "react-router-dom";
-import Button from "@material-ui/core/Button";
 import {useDispatch, useSelector} from "react-redux";
 
 const ADMIN_CHECK = 'ADMIN_CHECK'
@@ -20,20 +19,7 @@ export const Login = (props) => {
 
     const [userId, setUserid] = useState('')
     const [password, setPassword] = useState('')
-    const [adminCheck,setAdminCheck] = useState(false);
 
-    const result = useSelector(state => state.loginReducer)
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        setAdminCheck(result.check)
-    },[result])
-
-    const routeChange = (e) => {
-        e.preventDefault()
-        dispatch(loginAction(!result.check))
-        props.history.push(`${process.env.PUBLIC_URL}/admin/dashboard`);
-    }
     const login = (e) => {
         e.preventDefault()
         const userInfo = {
@@ -80,7 +66,6 @@ export const Login = (props) => {
                                                    placeholder="Password" required="" onChange={(e)=>{setPassword(e.target.value)}}/>
                                         </div>
                                         <button className="btn btn-solid" onClick={login}>로그인</button>
-                                        <Button onClick={routeChange}>Admin Login</Button>
                                     </form>
                                 </div>
                             </div>

@@ -3,9 +3,10 @@ import {Breadcrumb} from "../../common";
 import {useSelector} from "react-redux";
 import axios from "axios";
 
-const user = JSON.parse(sessionStorage.getItem('user'))
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 export const SalesForm = (props) => {
+    const [user,setUser] = useState(sessionUser)
     const [targetId,setTargetId] = useState(0)
     const [item,setItem] = useState([])
     const [userName, setUserName] = useState('')
@@ -30,7 +31,7 @@ export const SalesForm = (props) => {
             age: yy.concat("/",mm,"식"),
             mileage: mileage,
             electricCar: {eccarId: item},
-            user: {userSeq: user}
+            user: user
         }
         console.log(info)
         axios.post(`http://localhost:8080/usedCars/register`, info)

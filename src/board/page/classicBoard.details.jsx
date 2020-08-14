@@ -10,12 +10,11 @@ import {size} from "underscore";
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const ClassicBoardDetails = ({history}) => {
-        const [user, setUser] = useState({userId: 'nologin'})
+        const [user, setUser] = useState(sessionUser)
         const [post, setPost] = useState({})
         const [commentText, setCommentText] = useState("")
         const match = useRouteMatch('/board/details/:postId').params.postId
         const reFresh = () => {
-            console.log(sessionUser)
             setUser(sessionUser)
             setPost(
                 axios.get(`http://localhost:8080/posts/getOne/${match}`)
@@ -68,24 +67,7 @@ const ClassicBoardDetails = ({history}) => {
                                                     <li>{post.date}</li>
                                                     <li>Posted By :{post.userId}</li>
                                                     <li><i className="fa fa-heart"/> {post.recommendation} like </li>
-                                                    <li><i className="fa fa-comments"/> {size(post.comments)} Comment</li>
-                                                </Col>
-                                                <Col xs lg={2}>
-                                                    {(user !== null)?
-                                                        <>
-                                                        <Link to={`${process.env.PUBLIC_URL}/board/update/${post.postId}`}><button className="btn btn-solid">수정</button></Link>
-                                                        <button className="btn btn-solid" onClick={(e) => {
-                                                        e.preventDefault()
-                                                        axios.post(`http://localhost:8080/posts/delete/${post.postId}`)
-                                                            .then((res) => {
-                                                                history.push(`/board/main/${match}`)
-                                                            })
-                                                            .catch((err) => {
-                                                                console.log(err.status)
-                                                            }) }}>삭제</button>
-                                                        </>
-                                                        :
-                                                        ""}
+                                                    <li><i className="fa fa-comments"/> {post.comments === undefined? 0 : post.comments.length} Comment</li>
                                                 </Col>
                                             </Row>
                                         </Container>

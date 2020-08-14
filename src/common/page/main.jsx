@@ -60,7 +60,7 @@ export const Main = () => {
                             </Link>
                         </div>
                         <div className="col-md-6">
-                            <Link to={`${process.env.PUBLIC_URL}/post/main`}>
+                            <Link to={`${process.env.PUBLIC_URL}/board/main/news/1`}>
                                 <div className="collection-banner p-right text-center">
                                     <img src={communityimg} className="img-fluid" alt=""/>
                                     <div className="contain-banner">

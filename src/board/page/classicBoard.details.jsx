@@ -15,6 +15,13 @@ const ClassicBoardDetails = ({history}) => {
         const [commentText, setCommentText] = useState("")
         const match = useRouteMatch('/board/details/:postId').params.postId
         const reFresh = () => {
+            axios.post(`http://localhost:8080/user/refresh/${user.userSeq}`)
+                .then((res)=>{
+                    sessionStorage.setItem('user',res.data)
+                })
+                .catch((err)=>{
+                    console.log('sessionUser update 실패'+err.status)
+                })
             setUser(sessionUser)
             setPost(
                 axios.get(`http://localhost:8080/posts/getOne/${match}`)
@@ -29,7 +36,7 @@ const ClassicBoardDetails = ({history}) => {
         }
         useEffect(() => {
             reFresh()
-        }, [match])
+        }, [match, user])
         const commentPush = () => {
             const newComment = {
                 userId: user.userId,

@@ -30,7 +30,7 @@ export const SalesForm = (props) => {
             price: desiredPrice,
             age: yy.concat("/",mm,"식"),
             mileage: mileage,
-            electricCar: {eccarId: item},
+            electricCar: item,
             user: user
         }
         console.log(info)

@@ -13,13 +13,12 @@ export const MyAccount = () => {
     const [birth, setBirth] = useState('')
     const [addr, setAddr] = useState('')
     const [image, setImage] = useState('')
-    const [userSession,setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
+    const [userSession] = useState(JSON.parse(sessionStorage.getItem("user")))
 
     useEffect(() => {
         setName(userSession.name)
         setUserId(userSession.userId)
         setEmail(userSession.email)
-
         setSex(userSession.sex)
         setNumber(userSession.phoneNumber)
         setBirth(userSession.birthDate)

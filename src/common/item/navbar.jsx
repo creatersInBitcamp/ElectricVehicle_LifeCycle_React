@@ -2,9 +2,28 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
 import useComponentWillMount from "component-will-mount-hook/es6/useComponentWillMount";
+import {useDispatch, useSelector} from "react-redux";
 
-export const NavBar = () => {
+const ADMIN_CHECK = 'ADMIN_CHECK'
+const loginAction = admin =>({type: ADMIN_CHECK, check: admin})
+
+export const NavBar = (props) => {
+
     const [navClose, setNavClose] = useState({right: '0px'})
+    const [session] = useState(JSON.parse(sessionStorage.getItem("user")))
+    const [grade, setGrade] = useState(0)
+
+    useEffect(()=>{
+        if(session) setGrade(session.grade)
+    },[session])
+
+    const result = useSelector(state => state.loginReducer)
+    const dispatch = useDispatch()
+
+    const routeChange = (e) => {
+        e.preventDefault()
+        dispatch(loginAction(!result.check))
+    }
 
     useComponentWillMount(()=>{
         if (window.innerWidth < 750) {
@@ -53,6 +72,7 @@ export const NavBar = () => {
     }
 
     const translate = useTranslate();
+
     return <>
         <div>
             <div className="main-navbar">
@@ -124,6 +144,15 @@ export const NavBar = () => {
                                 <span className="sub-arrow"/>
                             </Link>
                         </li>
+                        {(grade === 9) &&
+                            <li onClick={routeChange}>
+                                <Link to={`${process.env.PUBLIC_URL}/admin/dashboard`} className="nav-link">
+                                    {translate('admin')}
+                                    <span className="sub-arrow"/>
+                                </Link>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>

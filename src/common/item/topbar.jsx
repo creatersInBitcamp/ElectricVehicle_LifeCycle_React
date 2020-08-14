@@ -11,7 +11,8 @@ export const TopBar = () => {
         sights:"http://localhost:8080/sights/csv",
         charge:"http://localhost:8080/chargingstations/csv",
         cars:"http://localhost:8080/cars/csv",
-        used:"http://localhost:8080/usedCars/csv"
+        used:"http://localhost:8080/usedCars/csv",
+        electric: "http://localhost:8080/electriccars/csv",
     }
     const translate = useTranslate();
     const [session, setSession] = useState(false)
@@ -66,6 +67,36 @@ export const TopBar = () => {
                 console.log(`${contexts.charge}: err: ${err.status}`)
             })
     }
+    const onCSVelectric = (e) => {
+        e.preventDefault()
+        axios.get(contexts.electric)
+            .then((res)=>{
+                console.log('전기차 성공')
+            })
+            .catch((err)=>{
+                console.log('전기차 실패')
+            })
+    }
+    const onCSVused = (e) => {
+        e.preventDefault()
+        axios.get(contexts.used)
+            .then((res)=>{
+                console.log('중고차 성공')
+            })
+            .catch((err)=>{
+                console.log('중고차 실패')
+            })
+    }
+    const onCSVnew = (e) => {
+        e.preventDefault()
+        axios.get(contexts.cars)
+            .then((res)=>{
+                console.log('신차 성공')
+            })
+            .catch((err)=>{
+                console.log('신차 실패')
+            })
+    }
 
 
     return <>
@@ -82,6 +113,9 @@ export const TopBar = () => {
                                     <button onClick={(e)=> {onCSVpost(e)}}>POST</button>
                                     <button onClick={(e)=> {onCSVsight(e)}}>SIGHTS</button>
                                     <button onClick={(e)=> {onCSVcharge(e)}}>CHARGE</button>
+                                    <button onClick={(e)=> {onCSVelectric(e)}}>Eelectric</button>
+                                    <button onClick={(e)=> {onCSVused(e)}}>UsedCar</button>
+                                    <button onClick={(e)=> {onCSVnew(e)}}>NewCar</button>
                                 </li>
                             </ul>
                         </div>

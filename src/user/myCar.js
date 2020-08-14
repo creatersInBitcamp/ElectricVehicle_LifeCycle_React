@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Breadcrumb} from "../common";
 import {Link} from "react-router-dom";
 import Slider from "react-slick";
+import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 
 /* type */
 const ADD_TO_MY_CAR = 'ADD_TO_MY_CAR'
@@ -171,6 +172,62 @@ export const MyCarPage = () => {
                                     </div>
                                     <div className="box-account box-info">
                                         <div className="row">
+                                            <div className="col-sm-12 col-lg-12">
+                                                <Tabs className="tab-content nav-material">
+                                                    <TabList className="nav nav-tabs nav-material">
+                                                        <Tab className="nav-item">
+                                                            <span className="nav-link active">
+                                                                    판매
+                                                                </span>
+                                                            <div className="material-border"/>
+                                                        </Tab>
+                                                        <Tab className="nav-item">
+                                                            <span className="nav-link active">
+                                                                    구매
+                                                                </span>
+                                                            <div className="material-border"/>
+                                                        </Tab>
+                                                    </TabList>
+                                                    <TabPanel className="tab-pane fade mt-4 show active">
+                                                        <table className="table table-striped mb-0">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>제목</th>
+                                                                <th>조회수</th>
+                                                                <th>댓글수</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>1</td>
+                                                                <td>1</td>
+                                                                <td>1</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </TabPanel>
+                                                    <TabPanel className="tab-pane fade mt-4 show active">
+                                                        <table className="table table-striped mb-0">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>제목</th>
+                                                                <th>조회수</th>
+                                                                <th>댓글수</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>1</td>
+                                                                <td>1</td>
+                                                                <td>1</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </TabPanel>
+                                                </Tabs>
+                                            </div>
+                                        </div>
+                                        <div className="row">
                                             <div className="col-sm-6">
                                                 <div className="box">
                                                     <div className="box-title">
@@ -260,7 +317,6 @@ export const MyCarPage = () => {
                                                     </div>
                                             </div>
                                         </div> : ''}
-
                                     </div>
                                 </div>
                             </div>

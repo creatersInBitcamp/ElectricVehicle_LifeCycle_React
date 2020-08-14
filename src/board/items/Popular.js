@@ -18,13 +18,9 @@ const Popular = () => {
             { populars.map(popular => (
                 <li key={popular.postId}>
                     <div className="media" >
-                        <div className="blog-date">
-                            <span>{popular.date}</span>
-                        </div>
-                        <div className="media-body align-self-center">
-                            <Link to={`${process.env.PUBLIC_URL}/board/details/${popular.postId}`}><h6>{popular.content}</h6></Link>
-                            <p>{popular.hits} hits</p>
-                        </div>
+                        <Link to={`${process.env.PUBLIC_URL}/board/details/${popular.postId}`}>
+                            <img className="img-fluid" src={popular.img} alt="Generic placeholder image" />
+                        </Link>
                     </div>
                 </li>
             ))}

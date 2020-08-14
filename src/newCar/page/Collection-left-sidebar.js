@@ -4,8 +4,6 @@ import {Breadcrumb} from "../../common";
 import {Filter,FilterBar,ProductListing} from "../index";
 import StickyBox from "react-sticky-box";
 import Slider from "react-slick";
-import {Link} from "react-router-dom";
-import {posts} from "../../board/items/data";
 import {Recent} from "../../board/items";
 
 export const CollectionLeftSidebar = () => {
@@ -35,7 +33,7 @@ export const CollectionLeftSidebar = () => {
                                         <Slider className="offer-slider slide-1">
                                             <div className="theme-card">
                                                 <ul className="recent-blog">
-                                                    <Recent posts={posts} />
+                                                    <Recent />
                                                 </ul>
                                             </div>
                                         </Slider>

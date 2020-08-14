@@ -6,15 +6,24 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
-import {size} from "underscore";
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const ClassicBoardDetails = ({history}) => {
         const [user, setUser] = useState(sessionUser)
         const [post, setPost] = useState({})
         const [commentText, setCommentText] = useState("")
+        const [recommend, setrecommend] = useState(false)
+        const [report, setReport] = useState(false)
         const match = useRouteMatch('/board/details/:postId').params.postId
+
         const reFresh = () => {
+            // axios.post(`http://localhost:8080/user/refresh/${user.userSeq}`)
+            //     .then((res)=>{
+            //         sessionStorage.setItem('user',res.data)
+            //     })
+            //     .catch((err)=>{
+            //         console.log('sessionUser update 실패'+err.status)
+            //     })
             setUser(sessionUser)
             setPost(
                 axios.get(`http://localhost:8080/posts/getOne/${match}`)
@@ -27,9 +36,11 @@ const ClassicBoardDetails = ({history}) => {
                     })
             )
         }
+
         useEffect(() => {
             reFresh()
-        }, [match])
+        }, [match, user, recommend, report])
+
         const commentPush = () => {
             const newComment = {
                 userId: user.userId,
@@ -49,6 +60,36 @@ const ClassicBoardDetails = ({history}) => {
                 })
         }
 
+        const onRecommend = () => {
+                axios.get(`http://localhost:8080/posts/recommend/${post.postId}`)
+                    .then((res)=>{
+                        setrecommend(res.data)
+                    })
+                    .catch((err)=>{
+                        console.log(err.status)
+                    })
+        }
+
+        const onReport = () => {
+            axios.get(`http://localhost:8080/posts/report/${post.postId}`)
+                .then((res)=>{
+                    setReport(res.data)
+                })
+                .catch((err)=>{
+                    console.log(err.status)
+                })
+        }
+
+        const onDelete = () => {
+                axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
+                    .then((res) => {
+                        history.push(`/board/main/${match}`)
+                    })
+                    .catch((err) => {
+                        console.log(err.status)
+                    })
+        }
+
         return (
             <div>
                 {/*Blog Details section*/}
@@ -66,8 +107,19 @@ const ClassicBoardDetails = ({history}) => {
                                                 <Col>
                                                     <li>{post.date}</li>
                                                     <li>Posted By :{post.userId}</li>
-                                                    <li><i className="fa fa-heart"/> {post.recommendation} like </li>
                                                     <li><i className="fa fa-comments"/> {post.comments === undefined? 0 : post.comments.length} Comment</li>
+                                                        {(recommend)?
+                                                            <li><button className="fa fa-thumbs-up">{post.recommendation} Like</button></li>
+                                                            :
+                                                            <li><button className="fa fa-thumbs-o-up" onClick={onRecommend}>{post.recommendation} Like</button></li>
+                                                        }
+                                                    {
+                                                        (report)?
+                                                            <li><button className="fa fa-thumbs-down">{post.report} Report</button></li>
+                                                            :
+                                                            <li><button className="fa fa-thumbs-o-down" onClick={onReport}>{post.report} Report</button></li>
+
+                                                    }
                                                 </Col>
                                             </Row>
                                         </Container>
@@ -88,18 +140,10 @@ const ClassicBoardDetails = ({history}) => {
                                             {(user !== null)?
                                                 <>
                                                     <Link to={`${process.env.PUBLIC_URL}/board/update/${post.postId}`}><button className="btn btn-solid">수정</button></Link>
-                                                    <button className="btn btn-solid" onClick={(e) => {
-                                                        e.preventDefault()
-                                                        axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
-                                                            .then((res) => {
-                                                                history.push(`/board/main/${match}`)
-                                                            })
-                                                            .catch((err) => {
-                                                                console.log(err.status)
-                                                            }) }}>삭제</button>
+                                                    <button className="btn btn-solid" onClick={onDelete}>삭제</button>
                                                 </>
                                                 :
-                                                ""}
+                                            ""}
                                         </Col>
                                     </Row>
                                 </Container>

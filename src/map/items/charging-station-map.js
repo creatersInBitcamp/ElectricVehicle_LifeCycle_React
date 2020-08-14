@@ -7,7 +7,10 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 
 import './map.css'
 import "@reach/combobox/styles.css";
 import axios from "axios";
+import {useSelector} from "react-redux";
 // import myData from '../data/data-charging-station';
+
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const MAP_KEY = 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0';
 
@@ -32,6 +35,7 @@ export const ChargingStationMap = () =>{
         libraries,
         region:'kr'
     });
+    const [user,setUser] = useState(sessionUser)
     const [ selected, setSelected ] = useState({});
     const [ currentPosition, setCurrentPosition ] = useState({});
     const [ searchLocation, setSearchLocation] = useState({})
@@ -182,7 +186,8 @@ export const ChargingStationMap = () =>{
     function insertBookmark(stationID){
         const id = {
             id : stationID,
-            charging : true
+            charging : true,
+            userSeq: user.userSeq,
         }
         console.log(id)
         axios.post('http://localhost:8080/bookmarks/insert',id)

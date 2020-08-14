@@ -9,6 +9,8 @@ import "@reach/combobox/styles.css";
 // import myData from '../data/data-sights';
 import axios from "axios";
 
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
+
 const MAP_KEY = 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0';
 
 const libraries = ["places"];
@@ -32,6 +34,7 @@ export const SightsMap = () =>{
         libraries,
         region:'kr'
     });
+    const [user,setUser] = useState(sessionUser)
     const [ selected, setSelected ] = useState({});
     const [ currentPosition, setCurrentPosition ] = useState({});
     const [ searchLocation, setSearchLocation] = useState({})
@@ -182,12 +185,13 @@ export const SightsMap = () =>{
     }
 
     function insertBookmark(sightsID){
-        const id = {
+        const info = {
             id : sightsID,
+            userSeq: user.userSeq,
             charging : false
         }
-        console.log(id)
-        axios.post('http://localhost:8080/bookmarks/insert',id)
+        console.log(info)
+        axios.post('http://localhost:8080/bookmarks/insert',info)
             .then((res)=>{
                 console.log("북마크 저장 성공")
                 axios.get('http://localhost:8080/sights/getall')

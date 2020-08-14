@@ -2,10 +2,12 @@ import React, {useState} from "react";
 import {Breadcrumb} from "../../common";
 import {useSelector} from "react-redux";
 import axios from "axios";
+import products from '../../atomic/api/eccar.json'
 
-const user = JSON.parse(sessionStorage.getItem('user'))
+const sessionuser = JSON.parse(sessionStorage.getItem('user'))
 
 export const SalesForm = (props) => {
+    const [user,setUser] = useState(sessionuser)
     const [targetId,setTargetId] = useState(0)
     const [item,setItem] = useState([])
     const [userName, setUserName] = useState('')
@@ -18,9 +20,9 @@ export const SalesForm = (props) => {
     const [carId,setCarId] = useState(0)
     const [carName,setCarName] = useState('')
 
-    const {products} = useSelector(state=>({
+    /*const {products} = useSelector(state=>({
         products: state.data.products
-    }))
+    }))*/
 
     const onClickSubmit = (e) => {
         e.preventDefault()
@@ -29,8 +31,8 @@ export const SalesForm = (props) => {
             price: desiredPrice,
             age: yy.concat("/",mm,"식"),
             mileage: mileage,
-            electricCar: {eccarId: item},
-            user: {userSeq: user}
+            eccarId: carId,
+            userSeq: user.userSeq
         }
         console.log(info)
         axios.post(`http://localhost:8080/usedCars/register`, info)

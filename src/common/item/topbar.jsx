@@ -30,7 +30,7 @@ export const TopBar = () => {
         e.preventDefault()
             axios.get(`${contexts.user}`)
                 .then((res)=>{
-                    console.log(`${contexts.user}`)
+                    console.log(`user 성공`)
                 })
                 .catch((err)=>{
                     console.log(`${contexts.user}: err: ${err.status}`)
@@ -40,7 +40,7 @@ export const TopBar = () => {
         e.preventDefault()
         axios.get(`${contexts.post}`)
             .then((res)=>{
-                console.log(`${contexts.post}`)
+                console.log(`post 성공`)
             })
             .catch((err)=>{
                 console.log(`${contexts.post}: err: ${err.status}`)
@@ -50,7 +50,7 @@ export const TopBar = () => {
         e.preventDefault()
         axios.get(`${contexts.sights}`)
             .then((res)=>{
-                console.log(`${contexts.sights}`)
+                console.log(`관광지 성공`)
             })
             .catch((err)=>{
                 console.log(`${contexts.sights}: err: ${err.status}`)
@@ -60,7 +60,7 @@ export const TopBar = () => {
         e.preventDefault()
         axios.get(`${contexts.charge}`)
             .then((res)=>{
-                console.log(`${contexts.charge}`)
+                console.log(`충전소 성공`)
             })
             .catch((err)=>{
                 console.log(`${contexts.charge}: err: ${err.status}`)

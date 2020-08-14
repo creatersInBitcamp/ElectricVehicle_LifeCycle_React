@@ -68,7 +68,6 @@ const ClassicBoardMain = () => {
         }
         const kepressChange = (event) =>{
             if (event.key === 'Enter') {
-                alert(`category: ${match},title: ${title},searchWord : ${searchWord}`)
                 setSearch(true)
                 searchMethod()
             }

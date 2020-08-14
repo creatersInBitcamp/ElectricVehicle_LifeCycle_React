@@ -5,7 +5,6 @@ import axios from 'axios'
 const Table = () => {
 
     const[data,setData] = useState([])
-    const[update, setUpdate] = useState([])
 
     useEffect(() => {
         axios.get(`http://localhost:8080/user/findAll`)
@@ -56,7 +55,6 @@ const Table = () => {
                                 const index = oldData.tableData.id;
                                 dataUpdate[index] = newData
                                 setData([...dataUpdate])
-                                setUpdate([...dataUpdate])
                                 resolve()
                                 axios.post(`http://localhost:8080/user/allUpdate`, [...dataUpdate])
                                     .then((res) => {

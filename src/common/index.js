@@ -15,6 +15,6 @@ export {filterBrand,filterColor,filterPrice,filterSort, default as filtersReduce
 export {LogoImage} from './item/logo'
 export {NavBar} from './item/navbar'
 export {NewProduct} from './item/new-product'
-export {PostCode} from './item/postCode'
+export {PostCode} from './item/PostCode'
 export {ThemeSettings} from './item/theme-settings'
 export {TopBar} from './item/topbar'

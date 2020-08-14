@@ -8,9 +8,8 @@ import {cartReducer,wishlistReducer,compareReducer} from "../newCar";
 import {usedWishlistReducer,usedCompareReducer} from "../usedCar"
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {firstCarReducer, loginReducer} from "../user";
-import boardReducer from "../board/items/boardReducer";
-import {myCarReducer} from "../user/myCar";
-
+import {boardReducer} from "../board/items";
+import {myCarReducer} from "../user";
 
 const rootReducer = combineReducers({
         boardReducer,

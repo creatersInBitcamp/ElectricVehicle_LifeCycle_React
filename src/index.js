@@ -28,7 +28,7 @@ import {BoardDetail, BoardInput, BoardMain, BoardUpdate} from "./board/";
 import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Reports} from './admin/page';
 
 //user
-import {ForgetPassword,Login,MyAccount,Register,MyCarPage,Profile} from './user'
+import {ForgetPassword,Login,MyAccount,Register,MyCarPage} from './user'
 
 
 import store from "./store";

@@ -5,7 +5,7 @@ import {communityReducer, elecCarReducer, reportsReducer, ordersReducer, userRed
 import productReducer from '../common/item/productReducer'
 import filtersReducer from '../common/item/filtersReducer'
 import {cartReducer,wishlistReducer,compareReducer} from "../newCar";
-import {usedWishlistReducer,usedCompareReducer} from "../usedCar"
+import {usedWishlistReducer, usedCompareReducer, usedProductReducer, usedFiltersReducer} from "../usedCar"
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {firstCarReducer, loginReducer} from "../user";
 import boardReducer from "../board/items/boardReducer";
@@ -18,8 +18,10 @@ const rootReducer = combineReducers({
         reportsReducer, report_tableReducer, ordersReducer, tabset_profileReducer,
         tabset_pageReducer, usedCarReducer, userReducer, tabset_userReducer, dashboardReducer,
         data: productReducer,
+        usedData: usedProductReducer,
         cartList: cartReducer,
         filters: filtersReducer,
+        usedFilters: usedFiltersReducer,
         wishlist: wishlistReducer,
         compare: compareReducer,
         loginReducer,

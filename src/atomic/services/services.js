@@ -13,6 +13,20 @@ export const getBrands = (products) => {
     //console.log(uniqueBrands)
     return uniqueBrands;
 }
+// export const getAges = (products) => {
+//     const uniqueAges = [];
+//     products.map((product, index) => {
+//         if (product.age) {
+//             product.age.map((age) => {
+//                 if (uniqueAges.indexOf(age) === -1) {
+//                     uniqueAges.push(age);
+//                 }
+//             })
+//         }
+//     })
+//     console.log(uniqueAges)
+//     return uniqueAges;
+// }
 
 // Get Unique Colors from Json Data
 export const getColors = (products) => {
@@ -29,6 +43,20 @@ export const getColors = (products) => {
     //console.log(uniqueBrands)
     return uniqueColors;
 }
+// export const getMileages = (products) => {
+//     const uniqueMileages = [];
+//     products.map((product, index) => {
+//         if(product.colors) {
+//             product.colors.map((mileage) => {
+//                 if (uniqueMileages.indexOf(mileage) === -1) {
+//                     uniqueMileages.push(mileage);
+//                 }
+//             })
+//         }
+//     })
+//     console.log(uniqueMileages)
+//     return uniqueMileages;
+// }
 
 // Get Minimum and Maximum Prices from Json Data
 export const getMinMaxPrice = (products) => {
@@ -78,6 +106,42 @@ export const getVisibleproducts = (data, { brand, color, value, sortBy }) => {
             return product2.id > product1.id ? -1 : 1;
         }
     });
+}
+export const getVisibleUsedProducts = (data, { value }) => {
+    return data.products.filter(product => {
+
+        // let ageMatch;
+        // if(product.ages)
+        //     ageMatch = product.ages.some(age => age.includes(age))
+        // else
+        //     ageMatch = true;
+        //
+        // let mileageMatch;
+        // if(mileage && product.mileages) {
+        //     mileageMatch = product.mileages.includes(mileage)
+        // }else{
+        //     mileageMatch = true;
+        // }
+
+        const startPriceMatch = typeof value.min !== 'number' || value.min <= product.price;
+        const endPriceMatch = typeof value.max !== 'number' || product.price <= value.max;
+
+        return startPriceMatch && endPriceMatch;
+    })/*.sort((product1, product2) => {
+        if (sortBy === 'HighToLow') {
+            return product2.price < product1.price ? -1 : 1;
+        } else if (sortBy === 'LowToHigh') {
+            return product2.price > product1.price ? -1 : 1;
+        } else if (sortBy === 'Newest') {
+            return product2.usedCarId < product1.usedCarId ? -1 : 1;
+        } else if (sortBy === 'AscOrder') {
+            return product1.carName.localeCompare(product2.carName);
+        } else if (sortBy === 'DescOrder') {
+            return product2.carName.localeCompare(product1.carName);
+        } else{
+            return product2.usedCarId > product1.usedCarId ? -1 : 1;
+        }
+    });*/
 }
 
 export const getCartTotal = cartItems => {

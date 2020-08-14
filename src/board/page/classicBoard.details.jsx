@@ -33,6 +33,7 @@ const ClassicBoardDetails = ({history}) => {
         }, [match])
         const commentPush = () => {
             const newComment = {
+                userId: user.userId,
                 regDate: new Date().toLocaleString(),
                 comment: commentText,
                 user: user,

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
-const user = JSON.parse(sessionStorage.getItem('user'))
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 const Comment = ({comments, postId}) => {
-
+    const [user, setUser] = useState(sessionUser)
     return (
         <>
             <div className="row section-b-space">
@@ -43,6 +43,7 @@ const Comment = ({comments, postId}) => {
                                                         axios.post(`http://localhost:8080/comments/delete/`, mail)
                                                             .then((res) => {
                                                                 console.log(res.status)
+                                                                window.location.reload()
                                                             })
                                                             .catch((err)=> {
                                                                 console.log(err.status)

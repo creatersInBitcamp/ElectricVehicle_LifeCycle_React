@@ -9,7 +9,7 @@ const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const PostInput = ({history}) => {
     const match = useRouteMatch('/board/input/:category').params.category
-    const [user, setUser] = useState()
+    const [user, setUser] = useState(sessionUser)
     const [title, setTitle] = useState("")
     const [link, setLink] = useState("")
     const [content, setContent] =useState("")
@@ -49,7 +49,7 @@ const PostInput = ({history}) => {
                         <div className="col-sm-12 blog-detail">
                             <ul className="post-social">
                                 <li>{new Date().toLocaleDateString()}</li>
-                                <li>Posted By : {user.name}</li>
+                                <li>Posted By : {user.userId}</li>
                             </ul>
                         </div>
                     </div>

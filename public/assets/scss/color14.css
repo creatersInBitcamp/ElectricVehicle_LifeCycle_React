@@ -5930,7 +5930,7 @@ footer p {
   }
 }
 /*=====================
-    21.Tab to top CSS start
+    21.TableChargingStation to top CSS start
 ==========================*/
 .tap-top {
   width: 50px;
@@ -5938,7 +5938,7 @@ footer p {
   border-radius: 100%;
   position: fixed;
   bottom: 50px;
-  right: 30px;
+  left: 30px;
   z-index: 8;
   display: none;
   color: #fff;
@@ -11880,7 +11880,7 @@ body.dark {
   background-clip: padding-box;
 }
 
-/* Style your items */
+/* Style your item */
 .my-masonry-grid_column > div {
   /* change div to reference your elements you put in <Masonry> */
   margin-bottom: 30px;
@@ -15957,7 +15957,7 @@ header .layout3-menu .main-navbar .nav-menu > li.mega-menu {
 
   .tap-top {
     bottom: 70px;
-    right: 20px;
+    left: 20px;
   }
 
   .footer-theme2 .footer-link li, .footer-theme2 .footer-link-b li {

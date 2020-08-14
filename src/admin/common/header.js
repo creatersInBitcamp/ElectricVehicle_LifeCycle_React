@@ -62,6 +62,7 @@ export const Header = () => {
     const logout = (e) => {
         e.preventDefault()
         dispatch(adminCheckAction(admin))
+        sessionStorage.clear()
     }
         return (
             <>

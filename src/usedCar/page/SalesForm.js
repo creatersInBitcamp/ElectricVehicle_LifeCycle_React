@@ -4,10 +4,10 @@ import {useSelector} from "react-redux";
 import axios from "axios";
 import products from '../../atomic/api/eccar.json'
 
-const sessionuser = JSON.parse(sessionStorage.getItem('user'))
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 export const SalesForm = (props) => {
-    const [user,setUser] = useState(sessionuser)
+    const [user,setUser] = useState(sessionUser)
     const [targetId,setTargetId] = useState(0)
     const [item,setItem] = useState([])
     const [userName, setUserName] = useState('')

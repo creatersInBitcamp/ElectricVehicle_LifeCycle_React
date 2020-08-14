@@ -29,6 +29,7 @@ const ClassicBoardDetails = ({history}) => {
             )
         }
         useEffect(() => {
+            axios.post('http://localhost:8080/user/')
             reFresh()
         }, [match])
         const commentPush = () => {

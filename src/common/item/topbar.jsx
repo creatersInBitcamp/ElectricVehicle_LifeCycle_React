@@ -1,9 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
+import axios from 'axios'
 
 export const TopBar = () => {
-
+    const contexts = [
+        {usr:'http://localhost:8080/user/csv'},
+        {ecar:"http://localhost:8080/electriccars/csv"},
+        {post:"http://localhost:8080/posts/readcsv"},
+        {sights:"http://localhost:8080/sights/csv"},
+        {charge:"http://localhost:8080/chargingstations/csv"},
+        {cars:"http://localhost:8080/cars/csv"},
+        {used:"http://localhost:8080/usedCars/csv"},
+    ]
     const translate = useTranslate();
     const [session, setSession] = useState(false)
     const [userSession] = useState(sessionStorage.getItem("user"))
@@ -17,6 +26,26 @@ export const TopBar = () => {
         sessionStorage.clear()
         window.location.reload()
     }
+    const onCSVuser = (e) => {
+        e.preventDefault()
+            axios.get(`${contexts.user}`)
+                .then((res)=>{
+                    console.log(`${contexts.user}`)
+                })
+                .catch((err)=>{
+                    console.log(`${contexts.user}: err: ${err.status}`)
+                })
+    }
+    const onCSVpost = (e) => {
+        e.preventDefault()
+        axios.get(`${contexts.post}`)
+            .then((res)=>{
+                console.log(`${contexts.post}`)
+            })
+            .catch((err)=>{
+                console.log(`${contexts.post}: err: ${err.status}`)
+            })
+    }
 
     return <>
         <div className="top-header">
@@ -27,6 +56,12 @@ export const TopBar = () => {
                             <ul>
                                 <li>{translate('topbar_title', { theme_name: ' ElectricVehicle_LifeCycle' })}</li>
                                 <li><i className="fa fa-phone" aria-hidden="true"/>{translate('call_us')}:  123 - 456 - 7890</li>
+                                <li>
+                                    <button onClick={(e)=> {onCSVuser(e)}}>USER</button>
+                                    <button onClick={(e)=> {onCSVpost(e)}}>POST</button>
+                                    <button onClick={(e)=> {onCSVsight(e)}}>SIGHTS</button>
+                                    <button onClick={(e)=> {onCSVcharge(e)}}>CHARGE</button>
+                                </li>
                             </ul>
                         </div>
                     </div>

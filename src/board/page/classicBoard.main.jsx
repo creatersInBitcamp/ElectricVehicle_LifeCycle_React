@@ -54,7 +54,7 @@ const ClassicBoardMain = () => {
             setPage(value)
             postAxios()
         }
-        useEffect(()=>{(search) ? searchMethod() : postAxios()}, [match, page])
+        useEffect(()=>{(search) ? searchMethod() : postAxios()} , [match, page])
         const searchMethod = () => {
             axios.get(`http://localhost:8080/posts/search/${match}/${title}/${searchWord}/${page}`)
                 .then((res)=>{

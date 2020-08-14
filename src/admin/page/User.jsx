@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {AdminBreadcrumb} from '../common';
 import data from '../../assets/data/listUser';
 import {Datatable} from '../item'
-import Table from '../item/table'
+import Table from '../item/Table'
 import axios from 'axios'
 import {useSelector,useDispatch} from "react-redux";
 

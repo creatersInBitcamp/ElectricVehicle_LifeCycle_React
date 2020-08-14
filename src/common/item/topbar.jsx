@@ -4,15 +4,15 @@ import { useTranslate  } from 'react-redux-multilingual'
 import axios from 'axios'
 
 export const TopBar = () => {
-    const contexts = [
-        {usr:'http://localhost:8080/user/csv'},
-        {ecar:"http://localhost:8080/electriccars/csv"},
-        {post:"http://localhost:8080/posts/readcsv"},
-        {sights:"http://localhost:8080/sights/csv"},
-        {charge:"http://localhost:8080/chargingstations/csv"},
-        {cars:"http://localhost:8080/cars/csv"},
-        {used:"http://localhost:8080/usedCars/csv"},
-    ]
+    const contexts = {
+        user:'http://localhost:8080/user/csv',
+        ecar:"http://localhost:8080/electriccars/csv",
+        post:"http://localhost:8080/posts/readcsv",
+        sights:"http://localhost:8080/sights/csv",
+        charge:"http://localhost:8080/chargingstations/csv",
+        cars:"http://localhost:8080/cars/csv",
+        used:"http://localhost:8080/usedCars/csv"
+    }
     const translate = useTranslate();
     const [session, setSession] = useState(false)
     const [userSession] = useState(sessionStorage.getItem("user"))
@@ -46,6 +46,27 @@ export const TopBar = () => {
                 console.log(`${contexts.post}: err: ${err.status}`)
             })
     }
+    const onCSVsight = (e) => {
+        e.preventDefault()
+        axios.get(`${contexts.sights}`)
+            .then((res)=>{
+                console.log(`${contexts.sights}`)
+            })
+            .catch((err)=>{
+                console.log(`${contexts.sights}: err: ${err.status}`)
+            })
+    }
+    const onCSVcharge = (e) => {
+        e.preventDefault()
+        axios.get(`${contexts.charge}`)
+            .then((res)=>{
+                console.log(`${contexts.charge}`)
+            })
+            .catch((err)=>{
+                console.log(`${contexts.charge}: err: ${err.status}`)
+            })
+    }
+
 
     return <>
         <div className="top-header">

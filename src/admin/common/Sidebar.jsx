@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
 
 // image import
@@ -15,6 +15,17 @@ const sidebarReducer = (state={}, action) => {
 }
 
 export const Sidebar =() => {
+    const [name, setName] = useState('')
+    const [image, setImage] = useState('')
+    const [session] = useState(JSON.parse(sessionStorage.getItem("user")))
+
+    useEffect(()=>{
+        if(session) {
+            setName(session.name)
+            setImage(session.profileImage)
+        }
+    },[session])
+
     return (
             <>
                 <div className="page-sidebar">
@@ -27,10 +38,10 @@ export const Sidebar =() => {
                     </div>
                     <div className="sidebar custom-scrollbar">
                         <div className="sidebar-user text-center">
-                            <div><img className="img-60 rounded-circle lazyloaded blur-up" src={man} alt="사진" />
+                            <div><img className="img-60 rounded-circle lazyloaded blur-up" src={image} alt="사진" />
                             </div>
-                            <h6 className="mt-3 f-14">곽 경 열</h6>
-                            <p> ADMIN 담당개발자 </p>
+                            <h6 className="mt-3 f-14">{name}</h6>
+                            <p> ADMIN 계정 </p>
                         </div>
                         <ul className="sidebar-menu">
                             <SidebarMenus/>

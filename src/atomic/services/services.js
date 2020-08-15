@@ -1,3 +1,5 @@
+import axios from 'axios'
+import {useState} from 'react'
 // Get Unique Brands from Json Data
 export const getBrands = (products) => {
     var uniqueBrands = [];
@@ -237,6 +239,21 @@ export const getWomensWear = products => {
     })
 
     return items.slice(0,8)
+}
+
+// Get Posts
+export const getPosts = () => {
+    const posts = []
+     axios.get('http://localhost:8080/posts/getall')
+        .then((res)=>{
+            console.log('getPosts axios 작동')
+            console.log(res.data)
+            res.data.slice(0,8)
+        })
+        .catch((err)=> {
+            console.log(err.status)
+        })
+    return posts
 }
 
 // Get Single Product

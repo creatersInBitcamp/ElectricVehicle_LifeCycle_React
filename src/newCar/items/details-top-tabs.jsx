@@ -3,7 +3,8 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.scss';
 import {Link} from 'react-router-dom'
 
-export const DetailsTopTabs = item => {
+export const DetailsTopTabs = props => {
+    const {item} = props
     return (
         <section className="tab-product m-0">
             <div className="row">
@@ -30,7 +31,7 @@ export const DetailsTopTabs = item => {
                                 <tbody>
                                 <tr>
                                     <th>passengersNumber :</th>
-                                    <td><h5>{item.passengerNumber}</h5></td>
+                                    <td>{item.passengersNumber}</td>
                                 </tr>
                                 <tr>
                                     <th>drivingMethod :</th>
@@ -136,7 +137,7 @@ export const DetailsTopTabs = item => {
                             <div className="mt-4 text-center">
                                 <div className="embed-responsive embed-responsive-16by9">
                                     <iframe
-                                            src={item.video}
+                                            src={`${item.video}`}
                                         allow="autoplay; encrypted-media"
                                         allowFullScreen/>
                                 </div>

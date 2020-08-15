@@ -27,6 +27,16 @@ export const DetailsTopTabs = props => {
                             </Tab>
                         </TabList>
                         <TabPanel className="tab-pane fade mt-4 show active">
+                            <p className="mt-4 p-0">
+                                {item.pictures.map((vari, index) =>
+                                    <div key={index}>
+                                        <img width={1000} height={300} src={`${vari}`} key={index} alt=""  className="img-fluid" />
+                                        <br/><br/>
+                                    </div>
+                                )}
+                            </p>
+                        </TabPanel>
+                        <TabPanel>
                             <table className="table table-striped mb-0">
                                 <tbody>
                                 <tr>
@@ -129,15 +139,10 @@ export const DetailsTopTabs = props => {
                             </table>
                         </TabPanel>
                         <TabPanel>
-                            <p className="mt-4 p-0">
-                                {item.shortDetails}
-                            </p>
-                        </TabPanel>
-                        <TabPanel>
                             <div className="mt-4 text-center">
                                 <div className="embed-responsive embed-responsive-16by9">
                                     <iframe
-                                            src={`${item.video}`}
+                                            src={item.video}
                                         allow="autoplay; encrypted-media"
                                         allowFullScreen/>
                                 </div>

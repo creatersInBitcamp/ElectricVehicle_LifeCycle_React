@@ -49,7 +49,9 @@ const SpecialProducts = () => {
                                                                         <Tab>충전소 지도</Tab>
                                                                         <Tab>관광지 지도</Tab>
                                                                         <Tab>충전소 검색</Tab>
-                                                                        <Tab>즐겨찾기</Tab>
+                                                                        {session?(
+                                                                            <Tab>즐겨찾기</Tab>
+                                                                        ):null}
                                                                     </TabList>
 
                                                                     <TabPanel>
@@ -67,15 +69,11 @@ const SpecialProducts = () => {
                                                                             <TableChargingStation/>
                                                                         </div>
                                                                     </TabPanel>
-                                                                    {session?(
-                                                                        <TabPanel>
-                                                                            <div className=" no-slider row">
-                                                                                <BookmarkMap/>
-                                                                            </div>
-                                                                        </TabPanel>
-                                                                    ):(
-                                                                        <span><h2>로그인이 필요한 페이지 입니다.</h2></span>
-                                                                    )}
+                                                                    <TabPanel>
+                                                                        <div className=" no-slider row">
+                                                                            <BookmarkMap/>
+                                                                        </div>
+                                                                    </TabPanel>
                                                                 </Tabs>
                                                             </div>
                                                         </section>

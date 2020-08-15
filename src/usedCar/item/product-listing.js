@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {getVisibleproducts} from '../../atomic/services/services';
+import {getVisibleUsedProducts} from '../../atomic/services/services';
 import {addToUsedWishlist} from '../page/UsedCarWishlist'
 import ProductItem from "./product-item";
+import {getAllProducts} from "./UsedProductReducer";
 
 const ProductListing = props => {
     const [limit, setLimit] = useState(5)
@@ -12,8 +13,8 @@ const ProductListing = props => {
     const [image,setImage] = useState('')
 
     const {products, symbol} = useSelector(state=>({
-        products: getVisibleproducts(state.data, state.filters),
-        symbol: state.data.symbol,
+        products: getVisibleUsedProducts(state.usedData, state.usedFilters),
+        symbol: state.usedData.symbol,
     }))
 
     /*useComponentWillMount(()=>{
@@ -54,12 +55,12 @@ const ProductListing = props => {
                         }
                     >
                         <div className="row">
-                            { products.slice(0, limit).map((product, index) =>
-                                <div className={`${props.colSize===3?'col-xl-3 col-md-6 col-grid-box':'col-lg-'+props.colSize}`} key={index}>
-                                    <ProductItem product={product} symbol={symbol}
-                                                 onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(product))}} key={index} />
-                                </div>)
-                            }
+
+                                <div className={`${props.colSize===3?'col-xl-3 col-md-6 col-grid-box':'col-lg-'+props.colSize}`}>
+                                    <ProductItem product={products} symbol={symbol}
+                                                 onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(products))}} />
+                                </div>
+
                         </div>
                     </InfiniteScroll>
                     :

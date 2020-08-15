@@ -14,12 +14,8 @@ export const ProductItem = props => {
         <div className="product-box">
             <div className="img-wrapper">
                 <div className="front">
-                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${product.id}`} >
-                        <img src={product.variants?
-                            image?image:product.variants[0].images
-                            :product.pictures[0]}
-                             className="img-fluid"
-                             alt="" />
+                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${product.eccarId}`} >
+                        <img src={product.img}/>
                     </Link>
                 </div>
                 <div className="cart-info cart-wrap">
@@ -33,7 +29,7 @@ export const ProductItem = props => {
                     <Link to={`${process.env.PUBLIC_URL}/used-car/product/${product.id}`}>
                         <h6>{product.name}</h6>
                     </Link>
-                    <h4>{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h4>
+                    <h4>{product.price}{symbol}</h4>
                 </div>
             </div>
         </div>

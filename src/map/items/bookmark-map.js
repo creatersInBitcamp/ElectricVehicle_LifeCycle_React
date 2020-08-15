@@ -7,6 +7,9 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 
 import './map.css'
 import "@reach/combobox/styles.css";
 import axios from "axios";
+import {useSelector} from "react-redux";
+
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const MAP_KEY = 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0';
 
@@ -31,6 +34,7 @@ export const BookmarkMap = () =>{
         libraries,
         region:'kr'
     });
+    const [user,setUser] = useState(sessionUser)
     const [ selected, setSelected ] = useState({});
     const [ currentPosition, setCurrentPosition ] = useState({});
     const [ searchLocation, setSearchLocation] = useState({})
@@ -40,9 +44,10 @@ export const BookmarkMap = () =>{
     const [infoShow, setInfoShow]= useState(false)
     const [myData,setMyData] = useState([])
     const [id,setId] = useState(0)
+    const userId = user.userSeq
 
     useEffect(()=>{
-        axios.get('http://localhost:8080/bookmarks/getallbookmark')
+        axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
             .then((res)=>{
                 console.log(res.data)
                 setMyData(res.data)
@@ -185,7 +190,7 @@ export const BookmarkMap = () =>{
         axios.get(`http://localhost:8080/bookmarks/delete/${bookmarkID}`)
             .then((res)=>{
                 console.log("북마크 삭제 성공")
-                axios.get('http://localhost:8080/bookmarks/getallbookmark')
+                axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
                     .then((res)=>{
                         console.log(res.data)
                         setMyData(res.data)

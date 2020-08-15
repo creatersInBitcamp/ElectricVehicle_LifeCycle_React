@@ -4,6 +4,7 @@ import {Breadcrumb} from "../../common";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {RefreshInfo} from '../items/index'
 import axios from "axios";
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -17,6 +18,8 @@ const PostInput = ({history}) => {
     useEffect(() => {
         setCategory(match)
         setUser(sessionUser)
+        console.log(user)
+        console.log(user.userSeq)
     },[match])
     const onPostIn = (e) => {
         e.preventDefault()
@@ -34,6 +37,7 @@ const PostInput = ({history}) => {
         axios.post('http://localhost:8080/posts/insert', newPost)
             .then((res) => {
                 console.log(res.statusText)
+                RefreshInfo()
                 history.push(`/board/main/${match}`)
             })
             .catch((err) => {

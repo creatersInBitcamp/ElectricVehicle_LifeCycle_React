@@ -34,11 +34,19 @@ export const Filter = () => {
 
     const colorHandle = (event, color) => {
         const elems = document.querySelectorAll(".color-selector ul li");
-        [].forEach.call(elems, function(el) {
-            el.classList.remove("active");
-        });
-        event.target.classList.add('active');
-        dispatch(filterColor(color))
+        if (!event.target.classList.contains('active')){
+            [].forEach.call(elems, function(el) {
+                el.classList.remove("active");
+            });
+            event.target.classList.add('active');
+            dispatch(filterColor(color))
+        }else {
+            [].forEach.call(elems, function(el) {
+                el.classList.remove("active");
+            });
+
+            dispatch(filterColor(null))
+        }
     }
 
     const filteredBrands = filters.brand;

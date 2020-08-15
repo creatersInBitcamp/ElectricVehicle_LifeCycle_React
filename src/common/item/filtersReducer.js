@@ -25,7 +25,7 @@ export const filterSort = (sort_by) => ({
 
 /* reducer */
 const filtersReducerDefaultState = {
-    brand: ["nike"],
+    brand: [],
     value: { min: 250, max: 5000 },
     sortBy: ""
 };

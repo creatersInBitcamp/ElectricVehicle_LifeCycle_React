@@ -28,20 +28,22 @@ export const ProductStyleFive = props => {
                 </div>
                 <div className="front">
                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} ><img
-                        width={320} height={200}
+                        // width={320} height={200}
                         src={product.variants?
                             image?image:product.variants[0].images
                             :product.img}
+                        className="img-fluid"
                         alt="" /></Link>
                 </div>
                 <div className="back">
                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} ><img
-                        width={320} height={200}
+                        // width={320} height={200}
                         src={
                             product.variants?
                                 image?image:product.variants[0].images
                                 :product.img
                         }
+                        className="img-fluid"
                         alt="" /></Link>
                 </div>
                 <div className="cart-box">

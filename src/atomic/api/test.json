@@ -5,7 +5,7 @@
     "yyyy": 2019,
     "modelName": "모델3",
     "trim": "RWD",
-    "brand": ["테슬라"],
+    "brand": "테슬라",
     "price": 5369,
     "fuel": "전기",
     "fuelEfficiency": "정보없음",
@@ -88,7 +88,7 @@
     "yyyy": 2019,
     "modelName": "모델3",
     "trim": "AWD Long Range",
-    "brand": ["테슬라"],
+    "brand": "테슬라",
     "price": 6369,
     "fuel": "전기",
     "fuelEfficiency": "정보없음",
@@ -117,16 +117,16 @@
     "img": "https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_410",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["white", "gray", "red", "blue", "black"],
+    "colors": ["gray", "white", "red", "blue", "black"],
     "sale": true,
     "variants": [
       {
-        "color": "white",
-        "images": "/assets/images/eccar/tesla/model3/white.png"
-      },
-      {
         "color": "gray",
         "images": "/assets/images/eccar/tesla/model3/gray.png"
+      },
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/model3/white.png"
       },
       {
         "color": "red",
@@ -171,7 +171,7 @@
     "yyyy": 2020,
     "modelName": "모델3",
     "trim": "AWD Performance",
-    "brand": ["테슬라"],
+    "brand": "테슬라",
     "price": 7369,
     "fuel": "전기",
     "fuelEfficiency": "정보없음",
@@ -200,9 +200,13 @@
     "img": "https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_410",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["white", "gray", "red", "blue", "black"],
+    "colors": ["red", "white", "gray", "blue", "black"],
     "sale": true,
     "variants": [
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/tesla/model3/red.png"
+      },
       {
         "color": "white",
         "images": "/assets/images/eccar/tesla/model3/white.png"
@@ -210,10 +214,6 @@
       {
         "color": "gray",
         "images": "/assets/images/eccar/tesla/model3/gray.png"
-      },
-      {
-        "color": "red",
-        "images": "/assets/images/eccar/tesla/model3/red.png"
       },
       {
         "color": "blue",
@@ -254,7 +254,7 @@
     "yyyy": 2020,
     "modelName": "e-트론",
     "trim": "55 quattro A/T",
-    "brand": ["아우디"],
+    "brand": "아우디",
     "price": 11700,
     "fuel": "전기",
     "fuelEfficiency": "자동3.0km/kWh(하이브리드)",
@@ -332,7 +332,7 @@
     "yyyy": 2019,
     "modelName": "모델X",
     "trim": "AWD Long Range",
-    "brand": ["테슬라"],
+    "brand": "테슬라",
     "price": 11599,
     "fuel": "전기",
     "fuelEfficiency": "CVT3.4km/kWh(정보없음)",
@@ -414,7 +414,7 @@
     "yyyy": 2019,
     "modelName": "모델X",
     "trim": "AWD Performance",
-    "brand": ["테슬라"],
+    "brand": "테슬라",
     "price": 13599,
     "fuel": "전기",
     "fuelEfficiency": "CVT3.4km/kWh(정보없음)",
@@ -443,16 +443,16 @@
     "img": "https://imgauto-phinf.pstatic.net/20200313_16/auto_1584061921235JIJPN_PNG/20200313101159_jbAeiURL.png?type=f567_410",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["white", "gray", "red", "blue", "black"],
+    "colors": ["gray", "white", "red", "blue", "black"],
     "sale": true,
     "variants": [
       {
-        "color": "white",
-        "images": "/assets/images/eccar/tesla/modelx/white.png"
-      },
-      {
         "color": "gray",
         "images": "/assets/images/eccar/tesla/modelx/gray.png"
+      },
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/modelx/white.png"
       },
       {
         "color": "red",
@@ -496,7 +496,7 @@
     "yyyy": 2019,
     "modelName": "모델S",
     "trim": "100D Long Range",
-    "brand": ["테슬라"],
+    "brand": "테슬라",
     "price": 10799,
     "fuel": "전기",
     "fuelEfficiency": "자동4.0km/kWh(정보없음)",
@@ -551,7 +551,7 @@
     ],
     "pictures": [
       "/assets/images/eccar/tesla/models/main.jpg",
-      "/assets/images/eccar/tesla/models/charging.jpg",
+      "/assets/images/eccar/tesla/models/charging.png",
       "/assets/images/eccar/tesla/models/1.jpg",
       "/assets/images/eccar/tesla/models/2.jpg",
       "/assets/images/eccar/tesla/models/3.jpg",
@@ -577,7 +577,7 @@
     "yyyy": 2019,
     "modelName": "모델S",
     "trim": "100D Performance",
-    "brand": ["테슬라"],
+    "brand": "테슬라",
     "price": 13299,
     "fuel": "전기",
     "fuelEfficiency": "자동4.0km/kWh(정보없음)",
@@ -606,16 +606,16 @@
     "img": "https://imgauto-phinf.pstatic.net/20190829_166/auto_1567064558410mY1hy_PNG/20190829164139_tPprbkux.png?type=f567_410",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["white", "gray", "red", "blue", "black"],
+    "colors": ["gray", "white", "red", "blue", "black"],
     "sale": true,
     "variants": [
       {
-        "color": "white",
-        "images": "/assets/images/eccar/tesla/models/white.png"
-      },
-      {
         "color": "gray",
         "images": "/assets/images/eccar/tesla/models/gray.png"
+      },
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/models/white.png"
       },
       {
         "color": "red",
@@ -632,7 +632,7 @@
     ],
     "pictures": [
       "/assets/images/eccar/tesla/models/main.jpg",
-      "/assets/images/eccar/tesla/models/charging.jpg",
+      "/assets/images/eccar/tesla/models/charging.png",
       "/assets/images/eccar/tesla/models/1.jpg",
       "/assets/images/eccar/tesla/models/2.jpg",
       "/assets/images/eccar/tesla/models/3.jpg",
@@ -658,7 +658,7 @@
     "yyyy": 2020,
     "modelName": "코나 일렉트릭",
     "trim": "모던",
-    "brand": ["현대"],
+    "brand": "현대",
     "price": 4690,
     "fuel": "전기",
     "fuelEfficiency": "자동5.6km/kWh(정보없음)",
@@ -733,7 +733,7 @@
     "yyyy": 2020,
     "modelName": "코나 일렉트릭",
     "trim": "프리미엄",
-    "brand": ["현대"],
+    "brand": "현대",
     "price": 4890,
     "fuel": "전기",
     "fuelEfficiency": "자동5.6km/kWh(정보없음)",
@@ -762,16 +762,16 @@
     "img": "https://imgauto-phinf.pstatic.net/20191231_177/auto_1577777636258yDIik_PNG/20191231163211_NwVkj9NK.png?type=f567_410",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["white", "gray", "red", "blue", "black"],
+    "colors": ["gray", "white", "red", "blue", "black"],
     "sale": true,
     "variants": [
       {
-        "color": "white",
-        "images": "/assets/images/eccar/hyundai/kona/white.png"
-      },
-      {
         "color": "gray",
         "images": "/assets/images/eccar/hyundai/kona/gray.png"
+      },
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/hyundai/kona/white.png"
       },
       {
         "color": "red",
@@ -808,7 +808,7 @@
     "yyyy": 2018,
     "modelName": "코나 일렉트릭",
     "trim": "모던",
-    "brand": ["현대"],
+    "brand": "현대",
     "price": 4650,
     "fuel": "전기",
     "fuelEfficiency": "자동5.6km/kWh(정보없음)",
@@ -883,7 +883,7 @@
     "yyyy": 2018,
     "modelName": "코나 일렉트릭",
     "trim": "프리미엄",
-    "brand": ["현대"],
+    "brand": "현대",
     "price": 4850,
     "fuel": "전기",
     "fuelEfficiency": "자동5.6km/kWh(정보없음)",
@@ -958,7 +958,7 @@
     "yyyy": 2020,
     "modelName": "e-208",
     "trim": "EV Allure",
-    "brand": ["푸조"],
+    "brand": "푸조",
     "price": 4100,
     "fuel": "전기",
     "fuelEfficiency": "CVT4.4km/kWh(정보없음)",
@@ -987,7 +987,7 @@
     "img": "https://imgauto-phinf.pstatic.net/20200722_81/auto_1595379180580GNgzE_PNG/20200722095248_3qwB9Gvo.png?type=f567_410",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["yellow","blue" ],
+    "colors": ["yellow","blue"],
     "sale": true,
     "variants": [
       {
@@ -1028,7 +1028,7 @@
     "yyyy": 2020,
     "modelName": "e-208",
     "trim": "EV Allure",
-    "brand": ["푸조"],
+    "brand": "푸조",
     "price": 4100,
     "fuel": "전기",
     "fuelEfficiency": "CVT4.4km/kWh(정보없음)",
@@ -1057,16 +1057,16 @@
     "img": "https://imgauto-phinf.pstatic.net/20200722_81/auto_1595379180580GNgzE_PNG/20200722095248_3qwB9Gvo.png?type=f567_410",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["yellow","blue" ],
+    "colors": ["blue","yellow" ],
     "sale": true,
     "variants": [
       {
-        "color": "yellow",
-        "images": "/assets/images/eccar/peoguot/e208/yellow.jpg"
-      },
-      {
         "color": "blue",
         "images": "/assets/images/eccar/peoguot/e208/blue.jpg"
+      },
+      {
+        "color": "yellow",
+        "images": "/assets/images/eccar/peoguot/e208/yellow.jpg"
       }
     ],
     "pictures": [
@@ -1098,7 +1098,7 @@
     "yyyy": 2020,
     "modelName": "EQC 400",
     "trim": "4MATIC",
-    "brand": ["벤츠"],
+    "brand": "벤츠",
     "price": 9550,
     "fuel": "전기",
     "fuelEfficiency": "자동3.2km/kWh(정보없음)",
@@ -1168,7 +1168,7 @@
     "yyyy": 2020,
     "modelName": "EQC 400",
     "trim": "Edition 1886",
-    "brand": ["벤츠"],
+    "brand": "벤츠",
     "price": 10140,
     "fuel": "전기",
     "fuelEfficiency": "자동3.2km/kWh(정보없음)",
@@ -1197,16 +1197,16 @@
     "img": "https://imgauto-phinf.pstatic.net/20191021_70/auto_1571632761146O1GeB_PNG/20191021133909_GJ9DQZtf.png?type=f567_410",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["gray", "white"],
+    "colors": ["white","gray" ],
     "sale": true,
     "variants": [
       {
-        "color": "gray",
-        "images": "/assets/images/eccar/banz/eqc/gray.jpg"
-      },
-      {
         "color": "white",
         "images": "/assets/images/eccar/banz/eqc/white.jpg"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/banz/eqc/gray.jpg"
       }
     ],
     "pictures": [
@@ -1238,7 +1238,7 @@
     "yyyy": 2020,
     "modelName": "트위지",
     "trim": "라이프(2인승)",
-    "brand": ["르노삼성"],
+    "brand": "르노삼성",
     "price": 1330,
     "fuel": "전기",
     "fuelEfficiency": "CVT7.9km/kWh(정보없음)",
@@ -1315,7 +1315,7 @@
     "yyyy": 2020,
     "modelName": "트위지",
     "trim": "인텐스(2인승)",
-    "brand": ["르노삼성"],
+    "brand": "르노삼성",
     "price": 1430,
     "fuel": "전기",
     "fuelEfficiency": "CVT7.9km/kWh(정보없음)",
@@ -1344,16 +1344,16 @@
     "img": "https://imgauto-phinf.pstatic.net/20200317_77/auto_1584430028711zbmc9_PNG/20200317162647_KFbkYOj0.png?type=f567_410",
     "boostingCharge": "AC3상(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["white", "orange", "blue", "black"],
+    "colors": ["orange", "white", "blue", "black"],
     "sale": true,
     "variants": [
       {
-        "color": "white",
-        "images": "/assets/images/eccar/samsung/twiz/white.png"
-      },
-      {
         "color": "orange",
         "images": "/assets/images/eccar/samsung/twiz/orange.png"
+      },
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/samsung/twiz/white.png"
       },
       {
         "color": "blue",
@@ -1392,7 +1392,7 @@
     "yyyy": 2019,
     "modelName": "트위지",
     "trim": "라이프(2인승)",
-    "brand": ["르노삼성"],
+    "brand": "르노삼성",
     "price": 1330,
     "fuel": "전기",
     "fuelEfficiency": "CVT7.9km/kWh(정보없음)",
@@ -1469,7 +1469,7 @@
     "yyyy": 2019,
     "modelName": "트위지",
     "trim": "인텐스(2인승)",
-    "brand": ["르노삼성"],
+    "brand": "르노삼성",
     "price": 1430,
     "fuel": "전기",
     "fuelEfficiency": "CVT7.9km/kWh(정보없음)",

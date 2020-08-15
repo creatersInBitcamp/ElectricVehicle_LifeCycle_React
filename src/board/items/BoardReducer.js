@@ -7,10 +7,12 @@ const RECEIVE_POST = 'RECEIVE_POST'
 // actions
 export const fetchPostsBegin = () => ({type: FETCH_POSTS_BEGIN })
 export const receivePosts = posts => ({type: RECEIVE_POSTS, posts})
-export const getAllPosts = () => {
-    return axios.get(`http://localhost:8080/posts/findall`)
+export const getAllPosts = () => dispatch => {
+    dispatch(fetchPostsBegin())
+    axios.get(`http://localhost:8080/posts/findall`)
         .then( res => {
-            receivePosts(res.data)
+            dispatch(receivePosts(res.data))
+            return res.data
         })
         .catch( error => {
             throw(error)

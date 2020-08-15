@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Breadcrumb} from "../common";
 import {Link} from "react-router-dom";
-import designer from "../assets/images/dashboard/designer.jpg";
+import {RefreshInfo} from '../board/items'
 
 export const MyAccount = () => {
-
     const [name, setName] = useState('')
     const [userId, setUserId] = useState('')
     const [email, setEmail] = useState('')
@@ -13,9 +12,16 @@ export const MyAccount = () => {
     const [birth, setBirth] = useState('')
     const [addr, setAddr] = useState('')
     const [image, setImage] = useState('')
-    const [userSession] = useState(JSON.parse(sessionStorage.getItem("user")))
-
+    const [posts, setPosts] = useState([])
+    const [comments, setComments] = useState([])
+    const [bookmarks, setBookmarks] = useState([])
+    const [useds, setUseds] = useState([])
+    const [userSession, setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
     useEffect(() => {
+        RefreshInfo()
+        setUserSession(JSON.parse(sessionStorage.getItem("user")))
+    },[])
+    useEffect(()=> {
         setName(userSession.name)
         setUserId(userSession.userId)
         setEmail(userSession.email)
@@ -24,7 +30,11 @@ export const MyAccount = () => {
         setBirth(userSession.birthDate)
         setAddr(userSession.addr)
         setImage(userSession.profileImage)
-    },[userSession])
+        setPosts(userSession.postList)
+        setComments(userSession.commentList)
+        setBookmarks(userSession.bookmarkList)
+        setUseds(userSession.usedCarList)
+    }, [userSession])
 
     return (
 
@@ -51,11 +61,14 @@ export const MyAccount = () => {
                                     <div className="block-content">
                                         <ul>
                                             <li className="active"><Link to={"/pages/profile"}>Account Info</Link></li>
-                                            <li><Link to={"/pages/myCar"}>My Car</Link></li>
-                                            <li><a href="#">My Orders</a></li>
-                                            <li><a href="#">My Wishlist</a></li>
-                                            <li><a href="#">Newsletter</a></li>
-                                            <li><Link to={"/pages/profile"}>My Account</Link></li>
+                                            <li><Link to={"/pages/myCar"}><i className="fa fa-car"/> My Car</Link></li>
+                                            <li><a href="#"><i className="fa fa-file-code-o"/> My Orders</a></li>
+                                            <li><a href="#"><i className="fa fa-list-alt"/> My Wishlist</a></li>
+                                            <li><a href="#"><i className="fa fa-clipboard"/> My Post {(posts !== undefined) ? posts.length : 0}</a></li>
+                                            <li><a href="#"><i className="fa fa-comment-o"/> My Comment {(comments !== undefined) ? comments.length : 0}</a></li>
+                                            <li><a href="#"><i className="fa fa-bookmark-o"/> My Bookmark {(bookmarks !== undefined) ? bookmarks.length : 0}</a></li>
+                                            <li><a href="#"><i className="fa fa-envelope-o"/> Newsletter</a></li>
+                                            <li><Link to={"/pages/profile"}><i className="fa fa-address-book"/> My Account</Link></li>
                                             <li><a href="#">Change Password</a></li>
                                             <li className="last"><a href="#">Log Out</a></li>
                                         </ul>

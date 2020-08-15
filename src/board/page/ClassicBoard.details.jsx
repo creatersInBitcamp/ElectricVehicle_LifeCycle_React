@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
+import {RefreshInfo} from '../items'
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const ClassicBoardDetails = ({history}) => {
@@ -53,6 +54,7 @@ const ClassicBoardDetails = ({history}) => {
             axios.post(`http://localhost:8080/comments/insert`, newComment)
                 .then((res)=>{
                     console.log(res.status)
+                    RefreshInfo()
                     reFresh()
                 })
                 .catch((err)=> {

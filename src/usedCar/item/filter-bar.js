@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {filterSort} from '../../common'
 import {getVisibleproducts} from '../../atomic/services/services';
+import axios from "axios";
 
 const FilterBar = props => {
     //List Layout View
@@ -41,17 +42,25 @@ const FilterBar = props => {
         }
         props.onLayoutViewClicked(colSize);
     }
-
-    const {products} = useSelector(state=>({
-        products: getVisibleproducts(state.data, state.filters)
-    }))
+    const [items,setItems] = useState([])
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/usedCars/getall`)
+            .then((res) => {
+                console.log(res.data)
+                setItems(res.data)
+            })
+            .catch(err => {
+                alert('axios error')
+                throw err
+            });
+    },[])
 
     const dispatch = useDispatch()
 
     return <>
         <div className="product-filter-content">
             <div className="search-count">
-                <h5>Showing Products 1-{products.length} Result</h5>
+                <h5>Showing Products 1-{items.length} Result</h5>
             </div>
             <div className="collection-view">
                 <ul>

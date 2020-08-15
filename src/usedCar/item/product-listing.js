@@ -14,16 +14,14 @@ const ProductListing = props => {
     const [image,setImage] = useState('')
     const [items,setItems] = useState([])
 
-    const {symbol} = useSelector(state=>({
-        symbol: state.usedData.symbol,
-    }))
+    const symbol = '만원'
 
     /*useComponentWillMount(()=>{
         fetchMoreItems()
     })*/
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/usedCars/getall`)
+        axios.get(`http://localhost:8080/usedCars/getAllCarInfo`)
             .then((res) => {
                 console.log(res.data)
                 setItems(res.data)

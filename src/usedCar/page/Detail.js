@@ -20,7 +20,7 @@ export const productDetail = () => {
         })
     }, [])
 
-    const match = useRouteMatch('/used-car/product/:id')
+    const match = useRouteMatch('/used-car/product/:eccarId')
     const {symbol, item} = useSelector((state) => {
         let productId = match.params.id
         return {

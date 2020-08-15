@@ -22,7 +22,7 @@ export const ProductListItem = props => {
         setImage(img);
     }
 
-    const {product, symbol, onAddToCartClicked, onAddToWishlistClicked, onAddToCompareClicked} = props;
+    const {product, symbol, onAddToCartClicked, onAddToWishlistClicked, onAddToCompareClicked, check} = props;
 
     return (
         <div className="product-box">
@@ -50,16 +50,23 @@ export const ProductListItem = props => {
                     <Link to={`${process.env.PUBLIC_URL}/new-car/compare`} title="Compare" onClick={onAddToCompareClicked}>
                         <i className="fa fa-refresh" aria-hidden="true"/></Link>
                 </div>
-                {product.variants?
-                    <ul className="product-thumb-list">
-                        {product.variants.map((vari, i) =>
-                            <li className={`grid_thumb_img ${(vari.images === image)?'active':''}`} key={i}>
-                                <a title="Add to Wishlist">
-                                    <img src={`${vari.images}`} onClick={() => onClickHandle(vari.images)} />
-                                </a>
-                            </li>)
-                        }
-                    </ul>:''}
+                {
+                    check ? (
+                        product.variants ?(
+                            <ul className="product-thumb-list">
+                                {
+                                    product.variants.map((vari, i) =>
+                                        <li className={`grid_thumb_img ${(vari.images === image) ? 'active' : ''}`} key={i}>
+                                                <a title="Add to Wishlist">
+                                                    <img src={`${vari.images}`} onClick={() => onClickHandle(vari.images)}/>
+                                                </a>
+                                        </li>)
+                                }
+                            </ul>
+                        ): ''
+                    )
+                    : null
+                }
 
             </div>
             <div className="product-detail">

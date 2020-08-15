@@ -1,32 +1,31 @@
 import axios from "axios";
 import {CHANGE_CURRENCY} from "../../common/item/currency";
 
-const _products = () => {
-    return axios.get(`http://localhost:8080/usedCars/getall`)
+const _products = []
+
+const test = () => dispatch => {
+    axios.get(`http://localhost:8080/usedCars/getall`)
         .then((res) => {
-            console.log(res.data)
-            return res.data
+            console.log(JSON.stringify(res.data))
+            _products.push(JSON.stringify(res.data))
+            alert('axios success')
         })
-        .catch(err => { throw err })
+        .catch(err => {
+            alert('axios error')
+            throw err
+        })
+    return _products
 }
-
-
-
-
-const TIMEOUT = 100
 
 const shop = {
-    getProducts: (cb, timeout) => setTimeout(() => cb(_products), timeout || TIMEOUT),
-    buyProducts: (payload, cb, timeout) => setTimeout(() => cb(), timeout || TIMEOUT)
+    getProducts: (cb, timeout) => setTimeout(() => cb(test()), timeout || 100),
+    buyProducts: (payload, cb, timeout) => setTimeout(() => cb(), timeout || 100)
 }
-
-
 
 /* types */
 const FETCH_PRODUCTS_BEGIN = 'FETCH_PRODUCTS_BEGIN'
 const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
 const FETCH_SINGLE_PRODUCT = 'FETCH_SINGLE_PRODUCT'
-
 
 /* actions */
 export const fetchProductsBegin = () => ({ type: FETCH_PRODUCTS_BEGIN })
@@ -35,7 +34,6 @@ export const getAllProducts = () => dispatch => {
     dispatch(fetchProductsBegin())
     shop.getProducts(products => {
         dispatch(receiveProducts(products))
-        console.log(products)
         return products
     })
 }

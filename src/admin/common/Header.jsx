@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { AlignLeft, Maximize2, Bell, MessageSquare, MoreHorizontal } from 'react-feather';
 
 //images
@@ -14,8 +14,14 @@ const adminCheckAction = admin =>({type: ADMIN_CHECK, check: admin})
 export const Header = () => {
     const [sidebar, setSidebar] = useState(true)
     const [rightSidebar, setRightSidebar] = useState(true)
-    const [navMenus, setNavMenus] = useState(false)
-    const [admin, setAdmin] = useState(false)
+    const [navMenus] = useState(false)
+    const [admin] = useState(false)
+    const [image, setImage] = useState('')
+    const [session] = useState(JSON.parse(sessionStorage.getItem("user")))
+
+    useEffect(()=>{
+        if(session){setImage(session.profileImage)}
+    },[session])
 
     const dispatch = useDispatch()
 
@@ -71,9 +77,7 @@ export const Header = () => {
                     <div className="main-header-right row">
                         <div className="main-header-left d-lg-none" >
                             <div className="logo-wrapper">
-                                <a href="index.html">
                                     <img className="blur-up lazyloaded" src={logo} alt="" />
-                                </a>
                             </div>
                         </div>
                         <div className="mobile-sidebar">
@@ -83,20 +87,16 @@ export const Header = () => {
                         </div>
                         <div className="nav-right col">
                             <ul className={"nav-notice " + (navMenus ? 'open' : '')}>
-                                <li><a onClick={goFull} className="text-dark" href="#!"><Maximize2 /></a></li>
-                                <li><a onClick={showRightSidebar}><MessageSquare /><span className="dot"/></a></li>
                                 <li className="onhover-dropdown">
                                     <div className="media align-items-center">
-                                        <img className="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src={man} alt="header-user" />
+                                        <img className="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src={image} alt="header-user" />
                                         <div className="dotted-animation"><span className="animate-circle"/><span className="main-circle"/></div>
+                                        <ul className="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
+                                            <li><Link to={`${process.env.PUBLIC_URL}/pages/profile`} ><i data-feather="user"/>프로필 변경</Link></li>
+                                            <li onClick={logout}><Link to={`${process.env.PUBLIC_URL}/`}><i data-feather="log-out"/>로그아웃</Link></li>
+                                        </ul>
                                     </div>
-                                    <ul className="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
-                                        <li><Link to={`${process.env.PUBLIC_URL}/settings/profile`} ><i data-feather="user"/>Edit Profile</Link></li>
-                                        <li><a><i data-feather="mail"/>Inbox</a></li>
-                                        <li><a><i data-feather="lock"/>Lock Screen</a></li>
-                                        <li><a><i data-feather="settings"/>Settings</a></li>
-                                        <li onClick={logout}><Link to={`${process.env.PUBLIC_URL}/`}><i data-feather="log-out"/>Logout</Link></li>
-                                    </ul>
+
                                 </li>
                             </ul>
                         </div>

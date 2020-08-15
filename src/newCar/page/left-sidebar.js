@@ -45,7 +45,7 @@ export const LeftSideBar = () => {
         fade: true
     };
     const productsnav = {
-        slidesToShow: 3,
+        slidesToShow: 2,
         swipeToSlide: true,
         arrows: false,
         dots: false,

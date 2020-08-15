@@ -165,7 +165,7 @@ export const getTrendingTagCollection = (products, type, tag) => {
 // Get Trending Collection
 export const getTrendingCollection = (products) => {
     const items = products.filter(product => {
-        return product.new === true;
+        return product.yyyy >2019;
     })
     return items.slice(0,8)
 }
@@ -189,7 +189,7 @@ export const getTopCollection = products => {
 // Get New Products
 export const getNewProducts = (products, type) => {
     const items = products.filter(product => {
-        return product.new === true && product.category === type;
+        return product.yyyy >2020;
     })
 
     return items.slice(0,8)
@@ -217,7 +217,7 @@ export const getBestSellerProducts = (products, type) => {
 // Get Best Seller
 export const getBestSeller = products => {
     const items = products.filter(product => {
-        return product.sale === true;
+        return product.sale === true && product.yyyy >2019;
     })
 
     return items.slice(0,8)

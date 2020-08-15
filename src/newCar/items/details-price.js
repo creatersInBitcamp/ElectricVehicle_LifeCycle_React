@@ -25,7 +25,7 @@ export const DetailsWithPrice = props => {
     const {symbol, item, addToCartClicked, BuynowClicked, addToWishlistClicked} = props
 
     const colorsnav = {
-        slidesToShow: 6,
+        slidesToShow: item.colors.length,
         swipeToSlide: true,
         arrows: false,
         dots: false,

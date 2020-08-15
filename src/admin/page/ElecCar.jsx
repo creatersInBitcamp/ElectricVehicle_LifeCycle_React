@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {AdminBreadcrumb} from '../common';
 import Modal from 'react-responsive-modal';
 import 'react-toastify/dist/ReactToastify.css';
-import carData from '../../atomic/constants/evdb_eccar.json'
-import {Datatable} from '../item';
+import axios from 'axios'
+import {Table} from '../item'
 
 const elecCarTypes = {REQUEST: 'elecCar/REQUEST'}
 const initialState = {
@@ -16,8 +16,35 @@ const elecCarReducer = ( state=initialState, action ) => {
 }
 
 export const ElecCar = () => {
+
     const [open, setOpen] = useState(false)
-    const [array, setArray] = useState(carData)
+    const [data, setDate] = useState([])
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/electriccars/getall`)
+            .then((res)=>{
+                setDate(res.data)
+            })
+    },[])
+
+    const columns = [
+        {
+            title:'자동차명', field:'carName'
+        },
+        {
+            title:'브랜드', field:'brand'
+        },
+        {
+            title:'가격(만원)', field:'price'
+        },
+        {
+            title:'급속충전', field:'boostingCharge'
+        },
+        {
+            title:'에너지효율', field: 'fuelEfficiency'
+        }
+    ]
+
     const onOpenModal = () => {
         setOpen(true)
     };
@@ -63,13 +90,7 @@ export const ElecCar = () => {
                                     </div>
                                     <div className="clearfix"/>
                                     <div id="basicScenario" className="product-physical">
-                                        <Datatable
-                                            multiSelectOption={false}
-                                            myData={array}
-                                            pageSize={10}
-                                            pagination={true}
-                                            class="-striped -highlight" 
-                                        />
+                                        <Table title={"전기 자동차"} columns={columns} data={data} setData={(d)=>setDate(d)}/>
                                     </div>
                                 </div>
                             </div>

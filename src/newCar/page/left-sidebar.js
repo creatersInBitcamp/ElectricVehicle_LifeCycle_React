@@ -29,9 +29,10 @@ export const LeftSideBar = () => {
     const match = useRouteMatch('/new-car/product/:eccarId')
 
     const {symbol, item} = useSelector((state) => {
-        let productId = match.params.id
+        let productId = match.params.eccarId
+        console.log(productId)
         return {
-            item: state.data.products.find(el => el.id == productId),
+            item: state.data.products.find(el => el.eccarId == productId),
             symbol: state.data.symbol
         }
     })

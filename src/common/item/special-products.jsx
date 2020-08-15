@@ -1,18 +1,35 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {useDispatch, useSelector} from 'react-redux'
-import {getBestSeller, getMensWear, getWomensWear} from '../../atomic/services/services'
+import {getBestSeller, getMensWear, getPosts, getWomensWear} from '../../atomic/services/services'
 import {ProductItem}from '../../usedCar'
+import {PostItem} from '../../board'
 import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
 import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
+import {receivePosts} from "../../board/items/BoardReducer";
+import axios from "axios";
 
 export const SpecialProducts = () => {
     const {bestSeller,mensWear,womensWear,symbol} = useSelector(state=>({
         bestSeller: getBestSeller(state.data.products),
         mensWear: getMensWear(state.data.products),
         womensWear: getWomensWear(state.data.products),
+        // posts: receivePosts(),
         symbol: state.data.symbol
     }))
+    useEffect(()=>{
+        axios.get('http://localhost:8080/posts/getall')
+            .then((res)=>{
+                console.log('getPosts axios 작동')
+                console.log(res.data)
+                setPosts(res.data.slice(0,8))
+            })
+            .catch((err)=> {
+                console.log(err.status)
+            })
+    }, [])
+    const [posts, setPosts] = useState([])
+    console.log(posts)
     const dispatch = useDispatch()
     return <>
         <div>
@@ -34,7 +51,7 @@ export const SpecialProducts = () => {
                                     <ProductListItem product={product} symbol={symbol}
                                                  onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
                                                  onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
-                                                 onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} /> )
+                                                 onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} check={false}/> )
                                 }
                             </div>
                         </TabPanel>
@@ -48,11 +65,12 @@ export const SpecialProducts = () => {
                         </TabPanel>
                         <TabPanel>
                             <div className=" no-slider row">
-                                { womensWear.map((product, index ) =>
-                                    <ProductItem product={product} symbol={symbol}
-                                                 onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
-                                                 onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
-                                                 onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} /> )
+                                { posts.map((post, index ) =>
+                                    // <ProductItem product={product} symbol={symbol}
+                                    //              onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
+                                    //              onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
+                                    //              onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} />
+                                                 <PostItem post={post} key={index}/>)
                                 }
                             </div>
                         </TabPanel>

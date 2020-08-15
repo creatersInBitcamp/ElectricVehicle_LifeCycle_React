@@ -6,8 +6,6 @@ export const ProductItem = props => {
     const [stock,setStock] = useState('InStock')
     const [quantity,setQuantity] = useState(1)
     const [image,setImage] = useState('')
-
-
     const {product, symbol, onAddToWishlistClicked} = props;
 
     return <>

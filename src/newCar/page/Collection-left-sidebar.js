@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import {Recent} from "../../board/items";
 
 export const CollectionLeftSidebar = () => {
-    const [layoutColumns, setLayoutColumns] = useState(3)
+    const [layoutColumns, setLayoutColumns] = useState(6)
     const LayoutViewClicked = columns => { setLayoutColumns(columns) }
     const openFilter = () => {
         document.querySelector(".collection-filter").style = "left: -15px";

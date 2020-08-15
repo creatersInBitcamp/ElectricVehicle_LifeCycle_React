@@ -124,7 +124,7 @@ export const PurchaseRequest = (props) => {
                                                     <div>Product <span> Price</span></div>
                                                 </div>
                                                 <ul className="qty">
-                                                    <li>{item.name}<span className="count">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li>
+                                                    <li>{item.carName}<span className="count">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li>
                                                 </ul>
                                             </div>
                                             <div className="text-right">

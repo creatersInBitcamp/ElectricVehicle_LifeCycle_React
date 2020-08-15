@@ -1,0 +1,806 @@
+[
+  {
+    "eccarId": 1,
+    "carName": "2019 테슬라 모델3 RWD",
+    "yyyy": 2019,
+    "modelName": "모델3",
+    "trim": "RWD",
+    "brand": ["테슬라"],
+    "price": 5369,
+    "fuel": "전기",
+    "fuelEfficiency": "정보없음",
+    "passengersNumber": "5인승",
+    "drivingMethod": "후륜구동",
+    "transmission": "자동1단",
+    "distanceDriven": "352km",
+    "energy": "50.0kWh",
+    "maximumOutput": "175.0Kw",
+    "maximumTorque": "375.0Nm",
+    "accelerationPerformance": "5.6초",
+    "length": "4694mm",
+    "width": "1849mm",
+    "height": "1443mm",
+    "wheelBase": "2875mm",
+    "frontDistance": "1580mm",
+    "backDistance": "1580mm",
+    "weight": "1645kg",
+    "frontWheel": "정보없음/정보없음/18inch",
+    "rearWheel": "정보없음/정보없음/18inch",
+    "frontSuspension": "더블위시본",
+    "rearSuspension": "멀티링크",
+    "frontBraking": "디스크",
+    "rearBraking": "디스크",
+    "steering": "랙앤피니언",
+    "img": "https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_410",
+    "boostingCharge": "DC콤보(급속)",
+    "slowCharging": "AC완속(7핀)",
+    "colors": ["white", "gray", "red", "blue", "black"],
+    "sale": true,
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/model3/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/tesla/model3/gray.png"
+      },
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/tesla/model3/red.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/tesla/model3/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/tesla/model3/black.png"
+      }
+    ],
+    "pictures": [
+      "/assets/images/eccar/tesla/model3/main.jpg",
+      "/assets/images/eccar/tesla/model3/charging.jpg",
+      "/assets/images/eccar/tesla/model3/1.jpg",
+      "/assets/images/eccar/tesla/model3/2.jpg",
+      "/assets/images/eccar/tesla/model3/3.jpg",
+      "/assets/images/eccar/tesla/model3/4.jpg",
+      "/assets/images/eccar/tesla/model3/5.jpg",
+      "/assets/images/eccar/tesla/model3/6.png",
+      "/assets/images/eccar/tesla/model3/7.jpg",
+      "/assets/images/eccar/tesla/model3/8.jpg",
+      "/assets/images/eccar/tesla/model3/9.jpg",
+      "/assets/images/eccar/tesla/model3/10.jpg",
+      "/assets/images/eccar/tesla/model3/11.jpg",
+      "/assets/images/eccar/tesla/model3/12.jpg",
+      "/assets/images/eccar/tesla/model3/13.jpg",
+      "/assets/images/eccar/tesla/model3/14.jpg",
+      "/assets/images/eccar/tesla/model3/15.jpg",
+      "/assets/images/eccar/tesla/model3/16.jpg"
+    ],
+    "shortDetails": "테슬라 모델 3(Tesla Model 3)는 2016년 3월 31일 테슬라에서 공개한 중형 전기 세단이다. 대한민국에서는 2019년 8월 13일에 공식 출시했다.\n\n미국 프리미엄 자동차 시장에서 2018년 말 이후 판매량 1위, 미국 캘리포니아 주(세계 최대 자동차 시장인 미국에서 가장 자동차가 많은 주)에서 2020년 1분기 판매량 1위[1]를 차지하고 있으며, 한국에서 2020년 3월 가장 많이 팔린 수입 자동차이다.",
+    "new": true,
+    "video" : "https://youtu.be/Q4VGQPk2Dl8"
+  },
+  {
+    "eccarId": 2,
+    "carName": "2019 테슬라 모델3 AWD Long Range",
+    "yyyy": 2019,
+    "modelName": "모델3",
+    "trim": "AWD Long Range",
+    "brand": ["테슬라"],
+    "price": 6369,
+    "fuel": "전기",
+    "fuelEfficiency": "정보없음",
+    "passengersNumber": "5인승",
+    "drivingMethod": "풀타임 4륜구동",
+    "transmission": "자동1단",
+    "distanceDriven": "415km",
+    "energy": "75.0kWh",
+    "maximumOutput": "233.0Kw",
+    "maximumTorque": "527.0Nm",
+    "accelerationPerformance": "3.4초",
+    "length": "4694mm",
+    "width": "1849mm",
+    "height": "1443mm",
+    "wheelBase": "2875mm",
+    "frontDistance": "1580mm",
+    "backDistance": "1580mm",
+    "weight": "1645kg",
+    "frontWheel": "정보없음/정보없음/18inch",
+    "rearWheel": "정보없음/정보없음/18inch",
+    "frontSuspension": "더블위시본",
+    "rearSuspension": "멀티링크",
+    "frontBraking": "디스크",
+    "rearBraking": "디스크",
+    "steering": "랙앤피니언",
+    "img": "https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_411",
+    "boostingCharge": "DC콤보(급속)",
+    "slowCharging": "AC완속(7핀)",
+    "colors": ["white", "gray", "red", "blue", "black"],
+    "sale": true,
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/model3/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/tesla/model3/gray.png"
+      },
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/tesla/model3/red.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/tesla/model3/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/tesla/model3/black.png"
+      }
+    ],
+    "pictures": [
+      "/assets/images/eccar/tesla/model3/main.jpg",
+      "/assets/images/eccar/tesla/model3/charging.jpg",
+      "/assets/images/eccar/tesla/model3/1.jpg",
+      "/assets/images/eccar/tesla/model3/2.jpg",
+      "/assets/images/eccar/tesla/model3/3.jpg",
+      "/assets/images/eccar/tesla/model3/4.jpg",
+      "/assets/images/eccar/tesla/model3/5.jpg",
+      "/assets/images/eccar/tesla/model3/6.png",
+      "/assets/images/eccar/tesla/model3/7.jpg",
+      "/assets/images/eccar/tesla/model3/8.jpg",
+      "/assets/images/eccar/tesla/model3/9.jpg",
+      "/assets/images/eccar/tesla/model3/10.jpg",
+      "/assets/images/eccar/tesla/model3/11.jpg",
+      "/assets/images/eccar/tesla/model3/12.jpg",
+      "/assets/images/eccar/tesla/model3/13.jpg",
+      "/assets/images/eccar/tesla/model3/14.jpg",
+      "/assets/images/eccar/tesla/model3/15.jpg",
+      "/assets/images/eccar/tesla/model3/16.jpg"
+    ],
+    "shortDetails": "테슬라 모델 3(Tesla Model 3)는 2016년 3월 31일 테슬라에서 공개한 중형 전기 세단이다. 대한민국에서는 2019년 8월 13일에 공식 출시했다.\n\n미국 프리미엄 자동차 시장에서 2018년 말 이후 판매량 1위, 미국 캘리포니아 주(세계 최대 자동차 시장인 미국에서 가장 자동차가 많은 주)에서 2020년 1분기 판매량 1위[1]를 차지하고 있으며, 한국에서 2020년 3월 가장 많이 팔린 수입 자동차이다.",
+    "new": true,
+    "video" : "https://youtu.be/Q4VGQPk2Dl8"
+},
+  {
+    "eccarId": 3,
+    "carName": "2020 테슬라 모델3 AWD Performance",
+    "yyyy": 2019,
+    "modelName": "모델3",
+    "trim": "AWD Performance",
+    "brand": ["테슬라"],
+    "price": 7369,
+    "fuel": "전기",
+    "fuelEfficiency": "정보없음",
+    "passengersNumber": "5인승",
+    "drivingMethod": "풀타임 4륜구동",
+    "transmission": "자동1단",
+    "distanceDriven": "446km",
+    "energy": "75.0kWh",
+    "maximumOutput": "261.0Kw",
+    "maximumTorque": "639.0Nm",
+    "accelerationPerformance": "4.6초",
+    "length": "4694mm",
+    "width": "1849mm",
+    "height": "1443mm",
+    "wheelBase": "2875mm",
+    "frontDistance": "1580mm",
+    "backDistance": "1580mm",
+    "weight": "1847kg",
+    "frontWheel": "정보없음/정보없음/20inch",
+    "rearWheel": "정보없음/정보없음/20inch",
+    "frontSuspension": "더블위시본",
+    "rearSuspension": "멀티링크",
+    "frontBraking": "디스크",
+    "rearBraking": "디스크",
+    "steering": "랙앤피니언",
+    "img": "https://imgauto-phinf.pstatic.net/20200205_218/auto_1580892688565gVui9_PNG/20200205175126_tJ5cbvuq.png?type=f567_412",
+    "boostingCharge": "DC콤보(급속)",
+    "slowCharging": "AC완속(7핀)",
+    "colors": ["white", "gray", "red", "blue", "black"],
+    "sale": true,
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/model3/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/tesla/model3/gray.png"
+      },
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/tesla/model3/red.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/tesla/model3/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/tesla/model3/black.png"
+      }
+    ],
+    "pictures": [
+      "/assets/images/eccar/tesla/model3/main.jpg",
+      "/assets/images/eccar/tesla/model3/charging.jpg",
+      "/assets/images/eccar/tesla/model3/1.jpg",
+      "/assets/images/eccar/tesla/model3/2.jpg",
+      "/assets/images/eccar/tesla/model3/3.jpg",
+      "/assets/images/eccar/tesla/model3/4.jpg",
+      "/assets/images/eccar/tesla/model3/5.jpg",
+      "/assets/images/eccar/tesla/model3/6.png",
+      "/assets/images/eccar/tesla/model3/7.jpg",
+      "/assets/images/eccar/tesla/model3/8.jpg",
+      "/assets/images/eccar/tesla/model3/9.jpg",
+      "/assets/images/eccar/tesla/model3/10.jpg",
+      "/assets/images/eccar/tesla/model3/11.jpg",
+      "/assets/images/eccar/tesla/model3/12.jpg",
+      "/assets/images/eccar/tesla/model3/13.jpg",
+      "/assets/images/eccar/tesla/model3/14.jpg",
+      "/assets/images/eccar/tesla/model3/15.jpg",
+      "/assets/images/eccar/tesla/model3/16.jpg"
+    ],
+    "shortDetails": "테슬라 모델 3(Tesla Model 3)는 2016년 3월 31일 테슬라에서 공개한 중형 전기 세단이다. 대한민국에서는 2019년 8월 13일에 공식 출시했다.\n\n미국 프리미엄 자동차 시장에서 2018년 말 이후 판매량 1위, 미국 캘리포니아 주(세계 최대 자동차 시장인 미국에서 가장 자동차가 많은 주)에서 2020년 1분기 판매량 1위[1]를 차지하고 있으며, 한국에서 2020년 3월 가장 많이 팔린 수입 자동차이다.",
+    "new": true,
+
+    "video" : "https://youtu.be/Q4VGQPk2Dl8"
+  },
+  {
+    "eccarId": 4,
+    "carName": "2020 아우디 e-트론 55 quattro A/T",
+    "yyyy": 2020,
+    "modelName": "e-트론",
+    "trim": "55 quattro A/T",
+    "brand": ["아우디"],
+    "price": 11700,
+    "fuel": "전기",
+    "fuelEfficiency": "자동3.0km/kWh(하이브리드)",
+    "passengersNumber": "5인승",
+    "drivingMethod": "풀타임4륜구동",
+    "transmission": "자동",
+    "distanceDriven": "307km",
+    "energy": "95.0kWh",
+    "maximumOutput": "265.0Kw",
+    "maximumTorque": "561.0Nm",
+    "accelerationPerformance": "6.6초",
+    "length": "4900mm",
+    "width": "1935mm",
+    "height": "1685mm",
+    "wheelBase": "2928mm",
+    "frontDistance": "1651mm",
+    "backDistance": "1651mm",
+    "weight": "2615kg",
+    "frontWheel": "255mm/50/20inch",
+    "rearWheel": "255mm/50/20inch",
+    "frontSuspension": "멀티링크",
+    "rearSuspension": "멀티링크",
+    "frontBraking": "V디스크",
+    "rearBraking": "V디스크",
+    "steering": "랙앤피니언",
+    "img": "https://imgauto-phinf.pstatic.net/20200701_162/auto_1593563668559Simnf_PNG/20200701093417_ZvaBdr1H.png?type=f567_410",
+    "boostingCharge": "DC콤보(급속)",
+    "slowCharging": "AC완속(5핀)",
+    "colors": ["white", "gray", "green", "blue", "black"],
+    "sale": true,
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/audi/etron/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/audi/etron/gray.png"
+      },
+      {
+        "color": "green",
+        "images": "/assets/images/eccar/audi/etron/green.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/audi/etron/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/audi/etron/black.png"
+      }
+    ],
+    "pictures": [
+      "/assets/images/eccar/audi/etron/main.jpg",
+      "/assets/images/eccar/audi/etron/charging.jpg",
+      "/assets/images/eccar/audi/etron/1.jpg",
+      "/assets/images/eccar/audi/etron/2.jpg",
+      "/assets/images/eccar/audi/etron/3.jpg",
+      "/assets/images/eccar/audi/etron/4.jpg",
+      "/assets/images/eccar/audi/etron/5.jpg",
+      "/assets/images/eccar/audi/etron/6.png",
+      "/assets/images/eccar/audi/etron/7.jpg",
+      "/assets/images/eccar/audi/etron/8.jpg",
+      "/assets/images/eccar/audi/etron/9.jpg",
+      "/assets/images/eccar/audi/etron/10.png",
+      "/assets/images/eccar/audi/etron/11.png"
+    ],
+    "shortDetails": "아우디에서 2018 LA 오토쇼에서 공개한 새로운 아우디의 브랜드이다. BMW i를 시작으로 벤츠가 EQ를, 그리고 아우디까지 전기차 모델 e-tron을 출시하면서 독일3사 모두 전기차 시장에 본격적으로 뛰어들기 시작했다. 아우디 e-tron 55 Quattro는 아우디의 첫번째 양산형 전기차로 사람들의 많은 기대를 받고 있다.",
+    "new": true,
+    "video" : "https://youtu.be/wyMSJhfkStU"
+  },
+  {
+    "eccarId": 5,
+    "carName": "2019 테슬라 모델X AWD Long Range",
+    "yyyy": 2019,
+    "modelName": "모델X",
+    "trim": "AWD Long Range",
+    "brand": ["테슬라"],
+    "price": 11599,
+    "fuel": "전기",
+    "fuelEfficiency": "CVT3.4km/kWh(정보없음)",
+    "passengersNumber": "7인승",
+    "drivingMethod": "풀타임4륜구동",
+    "transmission": "자동(CVT)",
+    "distanceDriven": "421km",
+    "energy": "100.0kWh",
+    "maximumOutput": "311.0Kw",
+    "maximumTorque": "660.0Nm",
+    "accelerationPerformance": "2.9초",
+    "length": "5050mm",
+    "width": "2000mm",
+    "height": "1625mm",
+    "wheelBase": "2965mm",
+    "frontDistance": "1661mm",
+    "backDistance": "1699mm",
+    "weight": "2459kg",
+    "frontWheel": "255mm/45/20inch",
+    "rearWheel": "275mm/45/20inch",
+    "frontSuspension": "더블위시본",
+    "rearSuspension": "멀티링크",
+    "frontBraking": "디스크",
+    "rearBraking": "디스크",
+    "steering": "랙앤피니언",
+    "img": "https://imgauto-phinf.pstatic.net/20200313_16/auto_1584061921235JIJPN_PNG/20200313101159_jbAeiURL.png?type=f567_410",
+    "boostingCharge": "DC콤보(급속)",
+    "slowCharging": "AC완속(7핀)",
+    "colors": ["white", "gray", "red", "blue", "black"],
+    "sale": true,
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/modelx/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/tesla/modelx/gray.png"
+      },
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/tesla/modelx/red.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/tesla/modelx/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/tesla/modelx/black.png"
+      }
+    ],
+    "pictures": [
+      "/assets/images/eccar/tesla/modelx/main.jpg",
+      "/assets/images/eccar/tesla/modelx/charging.jpg",
+      "/assets/images/eccar/tesla/modelx/1.jpg",
+      "/assets/images/eccar/tesla/modelx/2.jpg",
+      "/assets/images/eccar/tesla/modelx/3.jpg",
+      "/assets/images/eccar/tesla/modelx/4.jpg",
+      "/assets/images/eccar/tesla/modelx/5.jpg",
+      "/assets/images/eccar/tesla/modelx/6.jpg",
+      "/assets/images/eccar/tesla/modelx/7.jpg",
+      "/assets/images/eccar/tesla/modelx/8.jpg",
+      "/assets/images/eccar/tesla/modelx/9.jpg",
+      "/assets/images/eccar/tesla/modelx/10.jpg",
+      "/assets/images/eccar/tesla/modelx/11.jpg",
+      "/assets/images/eccar/tesla/modelx/12.jpg",
+      "/assets/images/eccar/tesla/modelx/13.jpg",
+      "/assets/images/eccar/tesla/modelx/14.jpg",
+      "/assets/images/eccar/tesla/modelx/15.jpg"
+    ],
+    "shortDetails": "5~7인승(기본 5인승, 옵션에 따라 6인승 및 7인승 선택 가능)에 팔콘 윙 도어를 탑재하여 좁은 공간에서도 편하게 내릴 수 있다. 또한 바이오 디펜스 모드 시스템을 갖춰 생화학 공격시 차량 안을 지킬 수 있다고 한다. \n다른 테슬라 자동차와 마찬가지로 스마트폰, 테블릿 pc처럼 수시로 OTA업데이트를 제공받으며, 카메라가 8개 달려 있어 오토파일럿 모드시 모든 카메라를 사용하고 4개 채널 블랙박스 기능이 제공되고 있다. 주행시 계기판에 사각지대를 포함한 주변 차량을 보여주는 기능을 제공한다.",
+    "new": true,
+    "video" : "https://youtu.be/cqJQFzkZsPI"
+  },
+  {
+    "eccarId": 6,
+    "carName": "2019 테슬라 모델X AWD Performance",
+    "yyyy": 2019,
+    "modelName": "모델X",
+    "trim": "AWD Performance",
+    "brand": ["테슬라"],
+    "price": 13599,
+    "fuel": "전기",
+    "fuelEfficiency": "CVT3.4km/kWh(정보없음)",
+    "passengersNumber": "7인승",
+    "drivingMethod": "풀타임4륜구동",
+    "transmission": "자동(CVT)",
+    "distanceDriven": "438km",
+    "energy": "100.0kWh",
+    "maximumOutput": "500.0Kw",
+    "maximumTorque": "967.0Nm",
+    "accelerationPerformance": "4.6초",
+    "length": "5050mm",
+    "width": "2000mm",
+    "height": "1625mm",
+    "wheelBase": "2965mm",
+    "frontDistance": "1661mm",
+    "backDistance": "1699mm",
+    "weight": "2605kg",
+    "frontWheel": "255mm/45/20inch",
+    "rearWheel": "275mm/45/20inch",
+    "frontSuspension": "더블위시본",
+    "rearSuspension": "멀티링크",
+    "frontBraking": "디스크",
+    "rearBraking": "디스크",
+    "steering": "랙앤피니언",
+    "img": "https://imgauto-phinf.pstatic.net/20200313_16/auto_1584061921235JIJPN_PNG/20200313101159_jbAeiURL.png?type=f567_410",
+    "boostingCharge": "DC콤보(급속)",
+    "slowCharging": "AC완속(7핀)",
+    "colors": ["white", "gray", "red", "blue", "black"],
+    "sale": true,
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/modelx/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/tesla/modelx/gray.png"
+      },
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/tesla/modelx/red.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/tesla/modelx/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/tesla/modelx/black.png"
+      }
+    ],
+    "pictures": [
+      "/assets/images/eccar/tesla/modelx/main.jpg",
+      "/assets/images/eccar/tesla/modelx/charging.jpg",
+      "/assets/images/eccar/tesla/modelx/1.jpg",
+      "/assets/images/eccar/tesla/modelx/2.jpg",
+      "/assets/images/eccar/tesla/modelx/3.jpg",
+      "/assets/images/eccar/tesla/modelx/4.jpg",
+      "/assets/images/eccar/tesla/modelx/5.jpg",
+      "/assets/images/eccar/tesla/modelx/6.jpg",
+      "/assets/images/eccar/tesla/modelx/7.jpg",
+      "/assets/images/eccar/tesla/modelx/8.jpg",
+      "/assets/images/eccar/tesla/modelx/9.jpg",
+      "/assets/images/eccar/tesla/modelx/10.jpg",
+      "/assets/images/eccar/tesla/modelx/11.jpg",
+      "/assets/images/eccar/tesla/modelx/12.jpg",
+      "/assets/images/eccar/tesla/modelx/13.jpg",
+      "/assets/images/eccar/tesla/modelx/14.jpg",
+      "/assets/images/eccar/tesla/modelx/15.jpg"
+    ],
+    "shortDetails": "5~7인승(기본 5인승, 옵션에 따라 6인승 및 7인승 선택 가능)에 팔콘 윙 도어를 탑재하여 좁은 공간에서도 편하게 내릴 수 있다. 또한 바이오 디펜스 모드 시스템을 갖춰 생화학 공격시 차량 안을 지킬 수 있다고 한다. \n다른 테슬라 자동차와 마찬가지로 스마트폰, 테블릿 pc처럼 수시로 OTA업데이트를 제공받으며, 카메라가 8개 달려 있어 오토파일럿 모드시 모든 카메라를 사용하고 4개 채널 블랙박스 기능이 제공되고 있다. 주행시 계기판에 사각지대를 포함한 주변 차량을 보여주는 기능을 제공한다.",
+    "new": true,
+    "video" : "https://youtu.be/cqJQFzkZsPI"
+  },
+  {
+    "eccarId": 7,
+    "carName": "2019 테슬라 모델S 100D Long Range",
+    "yyyy": 2019,
+    "modelName": "모델S",
+    "trim": "100D Long Range",
+    "brand": ["테슬라"],
+    "price": 10799,
+    "fuel": "전기",
+    "fuelEfficiency": "자동4.0km/kWh(정보없음)",
+    "passengersNumber": "5인승",
+    "drivingMethod": "풀타임4륜구동",
+    "transmission": "자동1단",
+    "distanceDriven": "480km",
+    "energy": "100.0kWh",
+    "maximumOutput": "350.0Kw",
+    "maximumTorque": "660.0Nm",
+    "accelerationPerformance": "2.6초",
+    "length": "4979mm",
+    "width": "1964mm",
+    "height": "1435mm",
+    "wheelBase": "2960mm",
+    "frontDistance": "1662mm",
+    "backDistance": "1700mm",
+    "weight": "2108kg",
+    "frontWheel": "245mm/45/19inch",
+    "rearWheel": "245mm/45/19inch",
+    "frontSuspension": "더블위시본",
+    "rearSuspension": "멀티링크",
+    "frontBraking": "V디스크",
+    "rearBraking": "V디스크",
+    "steering": "랙앤피니언",
+    "img": "https://imgauto-phinf.pstatic.net/20190829_166/auto_1567064558410mY1hy_PNG/20190829164139_tPprbkux.png?type=f567_410",
+    "boostingCharge": "DC콤보(급속)",
+    "slowCharging": "AC완속(7핀)",
+    "colors": ["white", "gray", "red", "blue", "black"],
+    "sale": true,
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/models/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/tesla/models/gray.png"
+      },
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/tesla/models/red.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/tesla/models/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/tesla/models/black.png"
+      }
+    ],
+    "pictures": [
+      "/assets/images/eccar/tesla/models/main.jpg",
+      "/assets/images/eccar/tesla/models/charging.jpg",
+      "/assets/images/eccar/tesla/models/1.jpg",
+      "/assets/images/eccar/tesla/models/2.jpg",
+      "/assets/images/eccar/tesla/models/3.jpg",
+      "/assets/images/eccar/tesla/models/4.jpg",
+      "/assets/images/eccar/tesla/models/5.jpg",
+      "/assets/images/eccar/tesla/models/6.jpg",
+      "/assets/images/eccar/tesla/models/7.jpg",
+      "/assets/images/eccar/tesla/models/8.jpg",
+      "/assets/images/eccar/tesla/models/9.jpg",
+      "/assets/images/eccar/tesla/models/10.jpg",
+      "/assets/images/eccar/tesla/models/11.jpg",
+      "/assets/images/eccar/tesla/models/12.jpg",
+      "/assets/images/eccar/tesla/models/13.jpg",
+      "/assets/images/eccar/tesla/models/14.jpg"
+    ],
+    "shortDetails": "테슬라가 2012년 출시한 대형 세단, 전기 패스트백이다. 이 시점에서 구매 가능한 신차 중 100 km/h에 가장 빨리 도달할 수 있는 자동차이며,[3] 친환경 자동차중 가장 긴 항속거리(647 km)로 처음으로 항속거리 400마일[4]을 넘어선 친환경 자동차의 기록을 가지게 되었다.\n\n2015년 이후 미국 대형 세단 세그먼트에서, 2017년 이후 유럽 대형차 시장에서 판매량에서 1위의 자리를 차지하고 있으며 이로 인하여 기존 자동차 회사들의 전기차 개발 붐을 이끌어 낸 자동차이다.[b]\n\n2019년 미국 자동차 잡지 모터트렌드는, 자동차 업계에서 가장 권위를 인정 받아온 상중에 하나인 \"연간 최고의 자동차\" 70대 중에서, 잡지역사 70년간(1949년 ~ 2019년 사이) 최고의 자동차로 2013년 모델 S를 선정하였다.[7] 2020년 미국의 최장수 비니지스 잡지인 포춘이 선정한 \"현시대 100개의 위대한 디자인\"에 아이폰, 구글검색엔진, 넷플릭스, 레고, 보잉 747 등과 더불어 18번째로 모델 S가 선정되었다.",
+    "new": true,
+    "video" : "https://youtu.be/_nQDU7HOStc"
+  },
+  {
+    "eccarId": 8,
+    "carName": "2019 테슬라 모델S 100D Performance",
+    "yyyy": 2019,
+    "modelName": "모델S",
+    "trim": "100D Performance",
+    "brand": ["테슬라"],
+    "price": 13299,
+    "fuel": "전기",
+    "fuelEfficiency": "자동4.0km/kWh(정보없음)",
+    "passengersNumber": "5인승",
+    "drivingMethod": "풀타임4륜구동",
+    "transmission": "자동1단",
+    "distanceDriven": "487km",
+    "energy": "100.0kWh",
+    "maximumOutput": "350.0Kw",
+    "maximumTorque": "660.0Nm",
+    "accelerationPerformance": "3.8초",
+    "length": "4979mm",
+    "width": "1964mm",
+    "height": "1435mm",
+    "wheelBase": "2960mm",
+    "frontDistance": "1662mm",
+    "backDistance": "1700mm",
+    "weight": "2108kg",
+    "frontWheel": "245mm/45/19inch",
+    "rearWheel": "245mm/45/19inch",
+    "frontSuspension": "더블위시본",
+    "rearSuspension": "멀티링크",
+    "frontBraking": "V디스크",
+    "rearBraking": "V디스크",
+    "steering": "랙앤피니언",
+    "img": "https://imgauto-phinf.pstatic.net/20190829_166/auto_1567064558410mY1hy_PNG/20190829164139_tPprbkux.png?type=f567_410",
+    "boostingCharge": "DC콤보(급속)",
+    "slowCharging": "AC완속(7핀)",
+    "colors": ["white", "gray", "red", "blue", "black"],
+    "sale": true,
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/models/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/tesla/models/gray.png"
+      },
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/tesla/models/red.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/tesla/models/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/tesla/models/black.png"
+      }
+    ],
+    "pictures": [
+      "/assets/images/eccar/tesla/models/main.jpg",
+      "/assets/images/eccar/tesla/models/charging.jpg",
+      "/assets/images/eccar/tesla/models/1.jpg",
+      "/assets/images/eccar/tesla/models/2.jpg",
+      "/assets/images/eccar/tesla/models/3.jpg",
+      "/assets/images/eccar/tesla/models/4.jpg",
+      "/assets/images/eccar/tesla/models/5.jpg",
+      "/assets/images/eccar/tesla/models/6.jpg",
+      "/assets/images/eccar/tesla/models/7.jpg",
+      "/assets/images/eccar/tesla/models/8.jpg",
+      "/assets/images/eccar/tesla/models/9.jpg",
+      "/assets/images/eccar/tesla/models/10.jpg",
+      "/assets/images/eccar/tesla/models/11.jpg",
+      "/assets/images/eccar/tesla/models/12.jpg",
+      "/assets/images/eccar/tesla/models/13.jpg",
+      "/assets/images/eccar/tesla/models/14.jpg"
+    ],
+    "shortDetails": "테슬라가 2012년 출시한 대형 세단, 전기 패스트백이다. 이 시점에서 구매 가능한 신차 중 100 km/h에 가장 빨리 도달할 수 있는 자동차이며,[3] 친환경 자동차중 가장 긴 항속거리(647 km)로 처음으로 항속거리 400마일[4]을 넘어선 친환경 자동차의 기록을 가지게 되었다.\n\n2015년 이후 미국 대형 세단 세그먼트에서, 2017년 이후 유럽 대형차 시장에서 판매량에서 1위의 자리를 차지하고 있으며 이로 인하여 기존 자동차 회사들의 전기차 개발 붐을 이끌어 낸 자동차이다.[b]\n\n2019년 미국 자동차 잡지 모터트렌드는, 자동차 업계에서 가장 권위를 인정 받아온 상중에 하나인 \"연간 최고의 자동차\" 70대 중에서, 잡지역사 70년간(1949년 ~ 2019년 사이) 최고의 자동차로 2013년 모델 S를 선정하였다.[7] 2020년 미국의 최장수 비니지스 잡지인 포춘이 선정한 \"현시대 100개의 위대한 디자인\"에 아이폰, 구글검색엔진, 넷플릭스, 레고, 보잉 747 등과 더불어 18번째로 모델 S가 선정되었다.",
+    "new": true,
+    "video" : "https://youtu.be/_nQDU7HOStc"
+  },
+  {
+    "eccarId": 9,
+    "carName": "2020 코나 일렉트릭 모던",
+    "yyyy": 2020,
+    "modelName": "코나 일렉트릭",
+    "trim": "모던",
+    "brand": ["현대"],
+    "price": 4690,
+    "fuel": "전기",
+    "fuelEfficiency": "자동5.6km/kWh(정보없음)",
+    "passengersNumber": "5인승",
+    "drivingMethod": "전륜구동",
+    "transmission": "자동1단",
+    "distanceDriven": "406km",
+    "energy": "64.0kWh",
+    "maximumOutput": "150.0Kw",
+    "maximumTorque": "395.0Nm",
+    "accelerationPerformance": "정보없음",
+    "length": "4180mm",
+    "width": "1800mm",
+    "height": "1570mm",
+    "wheelBase": "2600mm",
+    "frontDistance": "1564mm",
+    "backDistance": "1575mm",
+    "weight": "1685kg",
+    "frontWheel": "215mm/55/17inch",
+    "rearWheel": "215mm/55/17inch",
+    "frontSuspension": "맥퍼슨스트럿",
+    "rearSuspension": "멀티링크",
+    "frontBraking": "디스크",
+    "rearBraking": "디스크",
+    "steering": "랙앤피니언",
+    "img": "https://imgauto-phinf.pstatic.net/20191231_177/auto_1577777636258yDIik_PNG/20191231163211_NwVkj9NK.png?type=f567_410",
+    "boostingCharge": "DC콤보(급속)",
+    "slowCharging": "AC완속(5핀)",
+    "colors": ["white", "gray", "red", "blue", "black"],
+    "sale": true,
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/hyundai/cona/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/hyundai/cona/gray.png"
+      },
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/hyundai/cona/red.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/hyundai/cona/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/hyundai/cona/black.png"
+      }
+    ],
+    "pictures": [
+      "/assets/images/eccar/hyundai/cona/main.jpg",
+      "/assets/images/eccar/hyundai/cona/charging.png",
+      "/assets/images/eccar/hyundai/cona/charging2.jpg",
+      "/assets/images/eccar/hyundai/cona/1.png",
+      "/assets/images/eccar/hyundai/cona/2.png",
+      "/assets/images/eccar/hyundai/cona/3.jpg",
+      "/assets/images/eccar/hyundai/cona/4.jpg",
+      "/assets/images/eccar/hyundai/cona/5.png",
+      "/assets/images/eccar/hyundai/cona/6.jpg",
+      "/assets/images/eccar/hyundai/cona/7.jpg"
+    ],
+    "shortDetails": "누가? KONA!\nSUV의 새로운 발견\n유쾌한 퍼포먼스(하이브리드)\n",
+    "new": true,
+    "video" : "https://youtu.be/ZDuVVEGaodI"
+  },
+  {
+    "eccarId": 10,
+    "carName": "2020 코나 일렉트릭 프리미엄",
+    "yyyy": 2020,
+    "modelName": "코나 일렉트릭",
+    "trim": "프리미엄",
+    "brand": ["현대"],
+    "price": 4890,
+    "fuel": "전기",
+    "fuelEfficiency": "자동5.6km/kWh(정보없음)",
+    "passengersNumber": "5인승",
+    "drivingMethod": "전륜구동",
+    "transmission": "자동1단",
+    "distanceDriven": "406km",
+    "energy": "64.0kWh",
+    "maximumOutput": "150.0Kw",
+    "maximumTorque": "395.0Nm",
+    "accelerationPerformance": "정보없음",
+    "length": "4180mm",
+    "width": "1800mm",
+    "height": "1570mm",
+    "wheelBase": "2600mm",
+    "frontDistance": "1564mm",
+    "backDistance": "1575mm",
+    "weight": "1685kg",
+    "frontWheel": "215mm/55/17inch",
+    "rearWheel": "215mm/55/17inch",
+    "frontSuspension": "맥퍼슨스트럿",
+    "rearSuspension": "멀티링크",
+    "frontBraking": "디스크",
+    "rearBraking": "디스크",
+    "steering": "랙앤피니언",
+    "img": "https://imgauto-phinf.pstatic.net/20191231_177/auto_1577777636258yDIik_PNG/20191231163211_NwVkj9NK.png?type=f567_410",
+    "boostingCharge": "DC콤보(급속)",
+    "slowCharging": "AC완속(5핀)",
+    "colors": ["white", "gray", "red", "blue", "black"],
+    "sale": true,
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/hyundai/cona/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/hyundai/cona/gray.png"
+      },
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/hyundai/cona/red.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/hyundai/cona/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/hyundai/cona/black.png"
+      }
+    ],
+    "pictures": [
+      "/assets/images/eccar/hyundai/cona/main.jpg",
+      "/assets/images/eccar/hyundai/cona/charging.png",
+      "/assets/images/eccar/hyundai/cona/charging2.jpg",
+      "/assets/images/eccar/hyundai/cona/1.png",
+      "/assets/images/eccar/hyundai/cona/2.png",
+      "/assets/images/eccar/hyundai/cona/3.jpg",
+      "/assets/images/eccar/hyundai/cona/4.jpg",
+      "/assets/images/eccar/hyundai/cona/5.png",
+      "/assets/images/eccar/hyundai/cona/6.jpg",
+      "/assets/images/eccar/hyundai/cona/7.jpg"
+    ],
+    "shortDetails": "누가? KONA!\nSUV의 새로운 발견\n유쾌한 퍼포먼스(하이브리드)\n",
+    "new": true,
+    "video" : "https://youtu.be/ZDuVVEGaodI"
+  }
+]

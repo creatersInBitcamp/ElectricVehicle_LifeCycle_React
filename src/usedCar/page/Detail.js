@@ -50,7 +50,7 @@ export const productDetail = () => {
 
     return <>
         <div>
-            <Breadcrumb parent={'Product'} title={item.name} />
+            <Breadcrumb parent={'Product'} title={item.carName} />
             {(item)?
                 <section className="section-b-space">
                     <div className="collection-wrapper">
@@ -104,7 +104,7 @@ export const productDetail = () => {
                                             </div>
                                             <div className="col-lg-6 rtl-text">
                                                 <div className="product-right">
-                                                    <h2> {item.name} </h2>
+                                                    <h2> {item.carName} </h2>
                                                     <h3>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol} </h3>
                                                     <div className="product-description border-product">
                                                         <div className="qty-box">
@@ -112,7 +112,7 @@ export const productDetail = () => {
                                                         </div>
                                                     </div>
                                                     <div className="product-buttons" >
-                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.id}`}
+                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.eccarId}`}
                                                               className="btn btn-solid" >purchase request</Link>
                                                     </div>
                                                     <div className="border-product">

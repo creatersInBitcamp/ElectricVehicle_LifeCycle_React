@@ -240,7 +240,7 @@ export const MyCarPage = () => {
                                                                 return (
                                                                     <div key={index}>
                                                                         <img src={item.pictures[0]} className="img-fluid image_zoom_cls-0"  alt={""} />
-                                                                        <h4>{item.name}</h4>
+                                                                        <h4>{item.carName}</h4>
                                                                     </div>
                                                                 )
                                                             })}
@@ -262,7 +262,7 @@ export const MyCarPage = () => {
                                                                 return (
                                                                     <div key={index}>
                                                                         <img src={item.pictures[0]} className="img-fluid image_zoom_cls-0"  alt={""} />
-                                                                        <h4>{item.name}</h4>
+                                                                        <h4>{item.carName}</h4>
                                                                     </div>
                                                                 )})
                                                                 : <h5>등록된 차량이 없습니다.</h5>
@@ -284,23 +284,23 @@ export const MyCarPage = () => {
                                                                 <option value="default">차종을 선택해주세요.</option>
                                                                 {
                                                                     products.map((item,index)=>{
-                                                                        return <option key={index} value={item.id}>{item.name}</option>
+                                                                        return <option key={index} value={item.eccarId}>{item.carName}</option>
                                                                     })
                                                                 }
                                                             </select>
-                                                            <button onClick={()=>dispatch(addToMyCar(products.find(x => x.id == targetId)))}>추가</button>
+                                                            <button onClick={()=>dispatch(addToMyCar(products.find(x => x.eccarId == targetId)))}>추가</button>
                                                             <br/>
                                                             <select onChange={e=>setTargetId(e.target.value)}>
                                                                 <option value="default">삭제할 차량을 선택해주세요.</option>
                                                                 {
                                                                     myCars.map((item,index)=>{
-                                                                        return <option key={index} value={item.id}>{item.name}</option>
+                                                                        return <option key={index} value={item.eccarId}>{item.carName}</option>
                                                                     })
                                                                 }
                                                             </select>
                                                             <button onClick={()=> {
-                                                                dispatch(removeFromMyCar(myCars.find(x => x.id == targetId)))
-                                                                dispatch(removeFromFirstCar(myCars.find(x => x.id == targetId)))
+                                                                dispatch(removeFromMyCar(myCars.find(x => x.eccarId == targetId)))
+                                                                dispatch(removeFromFirstCar(myCars.find(x => x.eccarId == targetId)))
                                                             }}>삭제</button>
                                                         </div>
                                                         <div className="col-sm-6">
@@ -308,11 +308,11 @@ export const MyCarPage = () => {
                                                                 <option value="default">메인차량을 선택해주세요.</option>
                                                                 {
                                                                     myCars.map((item,index)=>{
-                                                                        return <option key={index} value={item.id}>{item.name}</option>
+                                                                        return <option key={index} value={item.targetId}>{item.carName}</option>
                                                                     })
                                                                 }
                                                             </select>
-                                                            <button onClick={()=>dispatch(changeFirstCar(myCars.find(x => x.id == targetId)))}>변경</button>
+                                                            <button onClick={()=>dispatch(changeFirstCar(myCars.find(x => x.targetId == targetId)))}>변경</button>
                                                         </div>
                                                     </div>
                                             </div>

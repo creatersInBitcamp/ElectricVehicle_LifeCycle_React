@@ -24,22 +24,22 @@ export const ProductStyleFive = props => {
         <div className="product-box product-wrap">
             <div className="img-wrapper">
                 <div className="lable-block">
-                    {(product.new === true)? <span className="lable3">new</span> : ''}
+                    {(product.yyyy > 2019)? <span className="lable3">new</span> : ''}
                 </div>
                 <div className="front">
-                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`} ><img
+                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} ><img
                         src={product.variants?
                             image?image:product.variants[0].images
-                            :product.pictures[0]}
+                            :product.img}
                         className="img-fluid"
                         alt="" /></Link>
                 </div>
                 <div className="back">
-                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`} ><img
+                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} ><img
                         src={
                             product.variants?
                                 image?image:product.variants[0].images
-                                :product.pictures[0]
+                                :product.img
                         }
                         className="img-fluid"
                         alt="" /></Link>
@@ -61,8 +61,8 @@ export const ProductStyleFive = props => {
             </div>
             <div className="product-detail  text-center">
                 <div>
-                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`}>
-                        <h6>{product.name}</h6>
+                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}>
+                        <h6>{product.carName}</h6>
                     </Link>
                     <h4>{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h4>
                     {product.variants?
@@ -83,12 +83,12 @@ export const ProductStyleFive = props => {
                                     <div className="quick-view-img">
                                         <img src={product.variants?
                                             image?image:product.variants[0].images
-                                            :product.pictures[0]} alt="" className="img-fluid" />
+                                            :product.img} alt="" className="img-fluid" />
                                     </div>
                                 </div>
                                 <div className="col-lg-6 rtl-text">
                                     <div className="product-right">
-                                        <h2> {product.name} </h2>
+                                        <h2> {product.carName} </h2>
                                         <h3><span className="money">{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span>
                                         </h3>
                                         {product.variants?
@@ -103,7 +103,7 @@ export const ProductStyleFive = props => {
                                         </div>
                                         <div className="product-buttons">
                                             <button  className="btn btn-solid" onClick={()=>onAddToCartClicked(product, quantity)} >add to cart</button>
-                                            <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`} className="btn btn-solid">view detail</Link>
+                                            <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} className="btn btn-solid">view detail</Link>
                                         </div>
                                     </div>
                                 </div>

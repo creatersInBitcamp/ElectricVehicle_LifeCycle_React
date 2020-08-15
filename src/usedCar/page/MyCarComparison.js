@@ -221,14 +221,6 @@ export const MyCarComparison = () => {
                                             </div>
                                             <div className="detail-part">
                                                 <div className="title-detail">
-                                                    <h5>size</h5>
-                                                </div>
-                                                <div className="inner-detail">
-                                                    <p>{item.size}</p>
-                                                </div>
-                                            </div>
-                                            <div className="detail-part">
-                                                <div className="title-detail">
                                                     <h5>color</h5>
                                                 </div>
                                                 <div className="inner-detail">

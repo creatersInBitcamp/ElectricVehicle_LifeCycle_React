@@ -60,7 +60,11 @@ export const Filter = () => {
                                 {brands.map((brand, index) => {
                                     return (
                                         <div className="custom-control custom-checkbox collection-filter-checkbox" key={index}>
-                                            <input type="checkbox" onClick={(e)=>clickBrandHendle(e,filteredBrands)} value={brand} defaultChecked={filteredBrands.includes(brand)} className="custom-control-input" id={brand} />
+                                            <input className="custom-control-input"
+                                                   type="checkbox"
+                                                   onClick={(e)=>clickBrandHendle(e,filteredBrands)}
+                                                   value={brand} defaultChecked={filteredBrands.includes(brand)} id={brand}
+                                            />
                                             <label className="custom-control-label"
                                                    htmlFor={brand}>{brand}</label>
                                         </div> )
@@ -81,7 +85,8 @@ export const Filter = () => {
                                 <ul>
                                     {colors.map((color, index) => {
                                         return (
-                                            <li className={color} title={color} onClick={(e) => colorHandle(e, color)} key={index}/> )
+                                            <li className={color} title={color}
+                                                onClick={(e) => colorHandle(e, color)} key={index}/> )
                                     })}
                                 </ul>
                             </div>

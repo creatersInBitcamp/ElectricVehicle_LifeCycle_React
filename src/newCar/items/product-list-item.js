@@ -28,10 +28,11 @@ export const ProductListItem = props => {
         <div className="product-box">
             <div className="img-wrapper">
                 <div className="front">
-                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`} ><img
+                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} ><img
                         src={product.variants?
-                            image?image:product.variants[0].images
-                            :product.pictures[0]}
+                                image?image
+                                    :product.variants[0].images
+                            :product.img}
                         className="img-fluid"
                         alt="" /></Link>
                 </div>
@@ -63,8 +64,8 @@ export const ProductListItem = props => {
             </div>
             <div className="product-detail">
                 <div>
-                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`}>
-                        <h6>{product.name}</h6>
+                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}>
+                        <h6>{product.carName}</h6>
                     </Link>
                     <h4><span className="money">{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h4>
                     {product.variants?
@@ -85,12 +86,12 @@ export const ProductListItem = props => {
                                     <div className="quick-view-img">
                                         <img src={product.variants?
                                             image?image:product.variants[0].images
-                                            :product.pictures[0]} alt="" className="img-fluid" />
+                                            :product.img} alt="" className="img-fluid" />
                                     </div>
                                 </div>
                                 <div className="col-lg-6 rtl-text">
                                     <div className="product-right">
-                                        <h2> {product.name} </h2>
+                                        <h2> {product.carName} </h2>
                                         <h3><span className="money">{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h3>
                                         {product.variants?
                                             <ul className="color-variant">
@@ -104,7 +105,7 @@ export const ProductListItem = props => {
                                         </div>
                                         <div className="product-buttons">
                                             <button  className="btn btn-solid" onClick={() => onAddToCartClicked(product, quantity)} >add to cart</button>
-                                            <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.id}`} className="btn btn-solid">view detail</Link>
+                                            <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} className="btn btn-solid">view detail</Link>
                                         </div>
                                     </div>
                                 </div>

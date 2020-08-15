@@ -26,7 +26,7 @@ export const LeftSideBar = () => {
 
     const { nav1, nav2 } = state;
 
-    const match = useRouteMatch('/new-car/product/:id')
+    const match = useRouteMatch('/new-car/product/:eccarId')
 
     const {symbol, item} = useSelector((state) => {
         let productId = match.params.id
@@ -57,7 +57,7 @@ export const LeftSideBar = () => {
     const dispatch = useDispatch()
     return <>
         <div>
-            <Breadcrumb parent={'Product'} title={item.name} />
+            <Breadcrumb parent={'Product'} title={item.carName} />
 
             {/*Section Start*/}
             {(item)?
@@ -90,17 +90,11 @@ export const LeftSideBar = () => {
                                         <div className="row">
                                             <div className="col-lg-6 product-thumbnail">
                                                 <Slider {...products} asNavFor={nav2} ref={slider => (slider1.current = slider)} className="product-slick">
-                                                    {item.variants?
-                                                        item.variants.map((vari, index) =>
-                                                            <div key={index}>
-                                                                <ImageZoom image={vari.images} />
-                                                            </div>
-                                                        ):
-                                                        item.pictures.map((vari, index) =>
-                                                            <div key={index}>
-                                                                <ImageZoom image={vari} />
-                                                            </div>
-                                                        )}
+                                                    {item.variants.map((vari, index) =>
+                                                        <div key={index}>
+                                                            <ImageZoom image={vari.images} />
+                                                        </div>
+                                                    )}
                                                 </Slider>
                                                 <SmallImages item={item} settings={productsnav} navOne={nav1} />
                                             </div>

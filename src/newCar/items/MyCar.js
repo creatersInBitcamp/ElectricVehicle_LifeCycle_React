@@ -40,8 +40,8 @@ export const MyCar = () => {
                                 <>
                                     <img className="img-fluid" src={item.variants?
                                         item.variants[0].images
-                                        :item.pictures[0]} alt=""/>
-                                    <h5 style={{textAlign: "center"}}>{item.name}</h5>
+                                        :item.img} alt=""/>
+                                    <h5 style={{textAlign: "center"}}>{item.carName}</h5>
                                 </>
                             )
                         })}
@@ -89,7 +89,7 @@ export const MyCar = () => {
                                                 <h3 style={{textAlign: "center"}}>{item.name}</h3>
                                                 <img className="img-fluid" src={item.variants?
                                                     item.variants[0].images
-                                                    :item.pictures[0]} alt=""/>
+                                                    :item.img} alt=""/>
                                             </>
                                         )
                                     })}
@@ -106,29 +106,29 @@ export const MyCar = () => {
                                                         <option value="default">차종을 선택해주세요.</option>
                                                         {
                                                             products.map((item,index)=>{
-                                                                return <option key={index} value={item.id}>{item.name}</option>
+                                                                return <option key={index} value={item.eccarId}>{item.carName}</option>
                                                             })
                                                         }
                                                     </select>
-                                                    <button onClick={()=>dispatch(addToMyCar(products.find(x => x.id == targetId)))}>추가</button>
+                                                    <button onClick={()=>dispatch(addToMyCar(products.find(x => x.eccarId == targetId)))}>추가</button>
                                                     <br/>
                                                     <br/>
                                                     <select onChange={e=>setTargetId(e.target.value)}>
                                                         <option value="default">삭제할 차량을 선택해주세요.</option>
                                                         {
                                                             myCar.map((item,index)=>{
-                                                                return <option key={index} value={item.id}>{item.name}</option>
+                                                                return <option key={index} value={item.eccarId}>{item.carName}</option>
                                                             })
                                                         }
                                                     </select>
-                                                    <button onClick={()=>dispatch(removeFromMyCar(myCar.find(x => x.id == targetId)))}>삭제</button>
+                                                    <button onClick={()=>dispatch(removeFromMyCar(myCar.find(x => x.eccarId == targetId)))}>삭제</button>
                                                     <br/>
                                                     <br/>
                                                     <select>
                                                         <option value="default">메인차량을 선택해주세요.</option>
                                                         {
                                                             myCar.map((item,index)=>{
-                                                                return <option key={index} value={item.id}>{item.name}</option>
+                                                                return <option key={index} value={item.eccarId}>{item.carName}</option>
                                                             })
                                                         }
                                                     </select>

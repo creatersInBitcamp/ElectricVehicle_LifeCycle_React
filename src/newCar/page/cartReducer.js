@@ -43,10 +43,10 @@ export const decrementQty = productId => (dispatch) => {
 export const cartReducer = (state = {cart: []}, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            const productId = action.product.id
-            if (state.cart.findIndex(product => product.id === productId) !== -1) {
+            const productId = action.product.eccarId
+            if (state.cart.findIndex(product => product.eccarId === productId) !== -1) {
                 const cart = state.cart.reduce((cartAcc, product) => {
-                    if (product.id === productId) {
+                    if (product.eccarId === productId) {
                         cartAcc.push({ ...product, qty: product.qty+1, sum: (product.price)*(product.qty+1) }) // Increment qty
                     } else {
                         cartAcc.push(product)
@@ -62,9 +62,9 @@ export const cartReducer = (state = {cart: []}, action) => {
 
         case DECREMENT_QTY:
 
-            if (state.cart.findIndex(product => product.id === action.productId) !== -1) {
+            if (state.cart.findIndex(product => product.eccarId === action.productId) !== -1) {
                 const cart = state.cart.reduce((cartAcc, product) => {
-                    if (product.id === action.productId && product.qty > 1) {
+                    if (product.eccarId === action.productId && product.qty > 1) {
                         //console.log('price: '+product.price+'Qty: '+product.qty)
                         cartAcc.push({ ...product, qty: product.qty-1, sum: (product.price)*(product.qty-1) }) // Decrement qty
                     } else {
@@ -81,7 +81,7 @@ export const cartReducer = (state = {cart: []}, action) => {
 
         case REMOVE_FROM_CART:
             return {
-                cart: state.cart.filter(item => item.id !== action.product_id.id)
+                cart: state.cart.filter(item => item.eccarId !== action.product_id.id)
             }
 
         default:

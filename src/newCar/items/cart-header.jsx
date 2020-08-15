@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom'
 export const CartHeader  = ({item, total, symbol, removeFromCart}) => (
     <li >
         <div className="media">
-            <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>
-                <img alt="" className="mr-3" src={`${item.pictures[0]}`} />
+            <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.eccarId}`}>
+                <img alt="" className="mr-3" src={`${item.img}`} />
             </Link>
             <div className="media-body">
-                <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>
-                    <h4>{item.name}</h4>
+                <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.eccarId}`}>
+                    <h4>{item.carName}</h4>
                 </Link>
                 <h4>
                     <span>{item.qty} x {(item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))}{symbol}</span>

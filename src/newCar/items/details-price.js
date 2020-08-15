@@ -35,7 +35,7 @@ export const DetailsWithPrice = props => {
     return (
         <div className="col-lg-6 rtl-text">
             <div className="product-right">
-                <h2> {item.name} </h2>
+                <h2> {item.carName} </h2>
                 <h3>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol} </h3>
                 {item.variants?
                     <ul >

@@ -68,11 +68,11 @@ export const Compare = () => {
                                                     <span aria-hidden="true">×</span>
                                                 </button>
                                                 <div className="img-secton">
-                                                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>
+                                                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${Items.eccarId}`}>
                                                         <img src={item.variants?
                                                             item.variants[0].images
-                                                            :item.pictures[0]} className="img-fluid" alt="" />
-                                                        <h5>{item.name}</h5></Link>
+                                                            :item.img} className="img-fluid" alt="" />
+                                                        <h5>{item.carName}</h5></Link>
                                                     <h5><span className="money">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h5>
                                                 </div>
                                                 <div className="detail-part">
@@ -88,15 +88,7 @@ export const Compare = () => {
                                                         <h5>Brand Name</h5>
                                                     </div>
                                                     <div className="inner-detail">
-                                                        <p>{item.tags}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>size</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.size}</p>
+                                                        <p>{item.brand}</p>
                                                     </div>
                                                 </div>
                                                 <div className="detail-part">

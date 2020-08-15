@@ -37,10 +37,10 @@ export const addToCartAndRemoveWishlist = (product,qty) => (dispatch) => {
 export const wishlistReducer = (state = {list: []}, action) => {
     switch (action.type) {
         case ADD_TO_WISHLIST:
-            const productId = action.product.id
-            if (state.list.findIndex(product => product.id === productId) !== -1) {
+            const productId = action.product.eccarId
+            if (state.list.findIndex(product => product.eccarId === productId) !== -1) {
                 const list = state.list.reduce((cartAcc, product) => {
-                    if (product.id === productId) {
+                    if (product.eccarId === productId) {
                         cartAcc.push({ ...product })
                     } else {
                         cartAcc.push(product)

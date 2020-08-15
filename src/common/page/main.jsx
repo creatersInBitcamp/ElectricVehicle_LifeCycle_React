@@ -76,7 +76,7 @@ export const Main = () => {
                 </div>
             </section>
             {/*collection banner end*/}
-            <TopCollection type={'women'} />
+            <TopCollection />
             {/*Parallax banner*/}
             <section className="p-0">
                 <div className="full-banner parallax-banner1 parallax text-center p-left">

@@ -26,10 +26,10 @@ export const ProductItem = props => {
             </div>
             <div className="product-detail">
                 <div>
-                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${product.id}`}>
+                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${product.eccarId}`}>
                         <h6>{product.name}</h6>
                     </Link>
-                    <h4>{product.price}{symbol}</h4>
+                    <h4>{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h4>
                 </div>
             </div>
         </div>

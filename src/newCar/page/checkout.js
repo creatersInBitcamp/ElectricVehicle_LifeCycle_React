@@ -207,7 +207,7 @@ export const checkOut = () => {
                                                 </div>
                                                 <ul className="qty">
                                                     {cartItems.map((item, index) => {
-                                                        return <li key={index}>{item.name} × {item.qty} <span>{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li> })
+                                                        return <li key={index}>{item.carName} × {item.qty} <span>{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li> })
                                                     }
                                                 </ul>
                                                 <ul className="sub-total">

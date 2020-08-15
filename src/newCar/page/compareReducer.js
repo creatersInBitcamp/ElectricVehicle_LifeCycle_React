@@ -24,10 +24,10 @@ export const removeFromCompare = product_id => ({
 export const compareReducer = (state = {items: []}, action) => {
     switch (action.type) {
         case ADD_TO_COMPARE:
-            const productId = action.product.id
-            if (state.items.findIndex(product => product.id === productId) !== -1) {
+            const productId = action.product.eccarId
+            if (state.items.findIndex(product => product.eccarId === productId) !== -1) {
                 const items = state.items.reduce((cartAcc, product) => {
-                    if (product.id === productId) {
+                    if (product.eccarId === productId) {
                         cartAcc.push({ ...product })
                     } else {
                         cartAcc.push(product)

@@ -1,7 +1,8 @@
 /**
  * Mocking client-server processing
  */
-import _products from './data.json'
+// import _products from './data.json'
+import _products from './test.json'
 
 const TIMEOUT = 100
 

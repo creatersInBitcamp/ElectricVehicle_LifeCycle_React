@@ -38,13 +38,13 @@ export const wishlist = () => {
                                             <tbody key={index}>
                                             <tr>
                                                 <td>
-                                                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>
+                                                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.eccarId}`}>
                                                         <img src={item.variants?
                                                             item.variants[0].images
-                                                            :item.pictures[0]} alt="item" />
+                                                            :item.img} alt="item" />
                                                     </Link>
                                                 </td>
-                                                <td><Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.id}`}>{item.name}</Link>
+                                                <td><Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.eccarId}`}>{item.carName}</Link>
                                                     <div className="mobile-cart-content row">
                                                         <div className="col-xs-3">
                                                             <p>in stock</p>

@@ -35,7 +35,29 @@
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(7핀)",
     "color": "흰, 검, 회, 파, 빨",
-    "eol": 0
+    "eol": 0,
+    "pictures": ["/assets/images/eccar/tesla/model3/main.jpg","/assets/images/eccar/tesla/model3/charging.jpg", "/assets/images/eccar/tesla/model3/2.jpg", "/assets/images/eccar/tesla/model3/3.jpg", "/assets/images/eccar/tesla/model3/4.jpg", "/assets/images/eccar/tesla/model3/5.jpg", "/assets/images/eccar/tesla/model3/6.jpg", "/assets/images/eccar/tesla/model3/7.jpg", "/assets/images/eccar/tesla/model3/8.jpg", "/assets/images/eccar/tesla/model3/9.jpg", "/assets/images/eccar/tesla/model3/10.jpg", "/assets/images/eccar/tesla/model3/11.jpg", "/assets/images/eccar/tesla/model3/12.jpg", "/assets/images/eccar/tesla/model3/13.jpg", "/assets/images/eccar/tesla/model3/14.jpg", "/assets/images/eccar/tesla/model3/15.jpg", "/assets/images/eccar/tesla/model3/16.jpg"],
+    "variants": [
+      {
+        "color": "white",
+        "images": "/assets/images/eccar/tesla/model3/white.png"
+      },
+      {
+        "color": "gray",
+        "images": "/assets/images/eccar/tesla/model3/gray.png"
+      },
+      {
+        "color": "red",
+        "images": "/assets/images/eccar/tesla/model3/red.png"
+      },
+      {
+        "color": "blue",
+        "images": "/assets/images/eccar/tesla/model3/blue.png"
+      },
+      {
+        "color": "black",
+        "images": "/assets/images/eccar/tesla/model3/black.png"
+      }]
   },
   {
     "eccarId": 2,

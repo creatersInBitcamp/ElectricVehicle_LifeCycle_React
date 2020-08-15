@@ -46,12 +46,12 @@ class orderSuccess extends Component {
                                                 <div className="col-3">
                                                     <img src={item.variants?
                                                         item.variants[0].images
-                                                        :item.pictures[0]} alt="" className="img-fluid" />
+                                                        :item.img} alt="" className="img-fluid" />
                                                 </div>
                                                 <div className="col-3 order_detail">
                                                     <div>
                                                         <h4>product name</h4>
-                                                        <h5>{item.name}</h5>
+                                                        <h5>{item.carName}</h5>
                                                     </div>
                                                 </div>
                                                 <div className="col-3 order_detail">

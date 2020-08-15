@@ -109,8 +109,8 @@ export const HeaderOne = props =>{
 														</ul>
 														{/*<h6>currency</h6>
 														<ul className="list-inline">
-															<li><a href={null} onClick={()=>{dispatch(changeCurrency('￦'))}}>won</a> </li>
-															<li><a href={null} onClick={()=>{dispatch(changeCurrency('$'))}}>doller</a> </li>
+															<li><a href={null} onClick={()=>{dispatch(changeCurrency('만원'))}}>won</a> </li>
+															<li><a href={null} onClick={()=>{dispatch(changeCurrency('만￦'))}}>doller</a> </li>
 														</ul>*/}
 													</div>
 												</li>

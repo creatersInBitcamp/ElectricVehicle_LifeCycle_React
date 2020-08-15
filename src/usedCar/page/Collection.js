@@ -19,8 +19,6 @@ export const UsedPurchaseCollection = () => {
                         <div className="col-sm-3 collection-filter">
                             <StickyBox offsetTop={20} offsetBottom={20}>
                                 <MyCar/>
-                                <Filter/>
-                                <NewProduct/>
                             </StickyBox>
                         </div>
                         <div className="collection-content col">

@@ -6,14 +6,15 @@ import {getVisibleUsedProducts} from '../../atomic/services/services';
 import {addToUsedWishlist} from '../page/UsedCarWishlist'
 import ProductItem from "./product-item";
 import {getAllProducts} from "./UsedProductReducer";
+import axios from "axios";
 
 const ProductListing = props => {
     const [limit, setLimit] = useState(5)
     const [hasMoreItems, setHasMoreItems] = useState(true)
     const [image,setImage] = useState('')
+    const [items,setItems] = useState([])
 
-    const {products, symbol} = useSelector(state=>({
-        products: getVisibleUsedProducts(state.usedData, state.usedFilters),
+    const {symbol} = useSelector(state=>({
         symbol: state.usedData.symbol,
     }))
 
@@ -22,11 +23,20 @@ const ProductListing = props => {
     })*/
 
     useEffect(()=>{
-        fetchMoreItems()
-    })
+        axios.get(`http://localhost:8080/usedCars/getall`)
+            .then((res) => {
+                console.log(res.data)
+                setItems(res.data)
+            })
+            .catch(err => {
+                alert('axios error')
+                throw err
+            });
+        fetchMoreItems();
+    },[])
 
     const fetchMoreItems = () =>{
-        if (limit >= products.length) {
+        if (limit >= items.length) {
             setHasMoreItems(false)
             return
         }
@@ -42,7 +52,7 @@ const ProductListing = props => {
     return <>
         <div className="product-wrapper-grid">
             <div className="container-fluid">
-                {products.length > 0 ?
+                {items.length > 0 ?
                     <InfiniteScroll
                         dataLength={limit} //This is important field to render the next data
                         next={fetchMoreItems}
@@ -55,12 +65,12 @@ const ProductListing = props => {
                         }
                     >
                         <div className="row">
-
+                            { items.slice(0, limit).map((item, index) =>
                                 <div className={`${props.colSize===3?'col-xl-3 col-md-6 col-grid-box':'col-lg-'+props.colSize}`}>
-                                    <ProductItem product={products} symbol={symbol}
-                                                 onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(products))}} />
-                                </div>
-
+                                    <ProductItem product={item} symbol={symbol}
+                                                 onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(item))}} />
+                                </div>)
+                            }
                         </div>
                     </InfiniteScroll>
                     :

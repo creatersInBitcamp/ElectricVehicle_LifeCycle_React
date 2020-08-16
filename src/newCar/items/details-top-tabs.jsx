@@ -28,12 +28,16 @@ export const DetailsTopTabs = props => {
                         </TabList>
                         <TabPanel className="tab-pane fade mt-4 show active">
                             <p className="mt-4 p-0">
-                                {item.pictures.map((vari, index) =>
-                                    <div key={index}>
-                                        <img width={1000} height={300} src={`${vari}`} key={index} alt=""  className="img-fluid" />
-                                        <br/><br/>
-                                    </div>
-                                )}
+                                {item.pictures.map((vari, index) =>{
+                                    if(vari !== ""){
+                                        return (
+                                            <div key={index}>
+                                                <img width={1000} height={300} src={`${vari}`} key={index} alt=""  className="img-fluid" />
+                                                <br/><br/>
+                                            </div>
+                                        )
+                                    }
+                                })}
                             </p>
                         </TabPanel>
                         <TabPanel>

@@ -24,7 +24,7 @@ export const ProductStyleFive = props => {
         <div className="product-box product-wrap">
             <div className="img-wrapper">
                 <div className="lable-block">
-                    {(product.yyyy > 2019)? <span className="lable3">new</span> : ''}
+                    {(product.new)? <span className="lable3">new</span> : ''}
                 </div>
                 <div className="front">
                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} ><img

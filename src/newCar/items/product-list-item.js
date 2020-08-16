@@ -27,6 +27,9 @@ export const ProductListItem = props => {
     return (
         <div className="product-box">
             <div className="img-wrapper">
+                <div className="lable-block">
+                    {(product.new)? <span className="lable3">new</span> : ''}
+                </div>
                 <div className="front">
                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} ><img
                         src={product.variants?

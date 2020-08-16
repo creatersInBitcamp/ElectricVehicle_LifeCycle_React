@@ -79,7 +79,7 @@
       "/assets/images/eccar/tesla/model3/16.jpg"
     ],
     "shortDetails": "TESLA Model 3.\n‘지속 가능한 이동수단으로의 세계적 전환을 앞당긴다’",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/i8horkJjxco"
   },
   {
@@ -157,7 +157,7 @@
       "/assets/images/eccar/audi/etron/11.jpg"
     ],
     "shortDetails": "아우디, 새로운 전기차의 시대를 열다\n아우디만의 직관적 디자인, 아우디만의 놀라운 퍼포먼스, 그리고 아우디의 끊임없는 혁신으로 완성하다. 아우디 e-트론은 새로운 시대의 일상 주행에 적합한 스포티하고 안전한 동반자입니다.",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/wyMSJhfkStU"
   },
   {
@@ -232,7 +232,7 @@
       "/assets/images/eccar/hyundai/kona/7.jpg"
     ],
     "shortDetails": "KONA Electric\n누가? KONA!\nSUV의 새로운 발견\n새로운 모빌리티 라이프의 즐거움\n",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/ZDuVVEGaodI"
   },
   {
@@ -301,8 +301,8 @@
       "/assets/images/eccar/peoguot/e208/13.jpg",
       "/assets/images/eccar/peoguot/e208/14.jpg"
     ],
-    "shortDetails": "NEW PEUGEOT e-208은 100% 전기 파워트레인이 탑재되어 있어 운전자에게  활기차고 즐거운 주행 경험을 선사합니다. \n\n2020 유럽 올해의 차 수상에 빛나는, 완벽하게 설계된 도심형 전기자동차 NEW PEUGEOT e-208을 만나보세요! ",
-    "new": true,
+    "shortDetails": "New PEUGEOT e-208은 100% 전기 파워트레인이 탑재되어 있어 운전자에게  활기차고 즐거운 주행 경험을 선사합니다. \n\n2020 유럽 올해의 차 수상에 빛나는, 완벽하게 설계된 도심형 전기자동차 New PEUGEOT e-208을 만나보세요! ",
+    "New": true,
     "video" : "https://www.youtube.com/embed/GX_gK6TTLgw"
   },
   {
@@ -371,8 +371,8 @@
       "/assets/images/eccar/banz/eqc/9.jpg",
       "/assets/images/eccar/banz/eqc/10.jpg"
     ],
-    "shortDetails": "The all-new EQC.\n전기 자동차의 오늘은 바로 메르세데스-벤츠입니다.\n #switchtoEQ #BeAGameChanger",
-    "new": true,
+    "shortDetails": "The all-New EQC.\n전기 자동차의 오늘은 바로 메르세데스-벤츠입니다.\n #switchtoEQ #BeAGameChanger",
+    "New": true,
     "video" : "https://www.youtube.com/embed/bwqC1p6ggbU"
   },
   {
@@ -449,7 +449,7 @@
       "/assets/images/eccar/samsung/twiz/14.jpg"
     ],
     "shortDetails": "트위지,\n이동의 수단을 넘어선 혁신\n상상의 미래가 아닌 현실\n지금껏 경험하지 못한 새로운 경험을 선사합니다.\nRenault TWIZY",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/VulX8VmWlKE"
   },
   {
@@ -531,7 +531,7 @@
       "/assets/images/eccar/tesla/modelx/15.jpg"
     ],
     "shortDetails": "Safety? \nWith TESLA Model X",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/fOXoGcR6IdM"
   },
   {
@@ -600,7 +600,7 @@
       "/assets/images/eccar/samsung/sm3ze/10.jpg"
     ],
     "shortDetails": "HELLO TOMORROW\n100% 전기의 힘으로 내일을 향해 달리다.\n르노삼성자동차의 e-Technology가 100% 에코 드라이빙을 선사합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/rg-I6JbjArE"
   },
   {
@@ -682,7 +682,7 @@
       "/assets/images/eccar/kia/soulbooster/15.jpg"
     ],
     "shortDetails": "2021 Soul EV\n1회 충전 주행거리 386km의 효율적인 쏘울로 더 즐거운 EV라이프",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/MN2bgchVlv8"
   },
   {
@@ -742,7 +742,7 @@
       "/assets/images/eccar/hyundai/porter2/8.jpg"
     ],
     "shortDetails": "PORTER2 Electric\n새로운 친환경 EV 트럭\n도심에서 탁월한 운송능력을 발휘하는 포터II 일렉트릭은 충전도 쉬울 뿐 아니라 경제성까지 겸비한 새로운 친환경 EV 트럭입니다.",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/lYFPY1WFPFo"
   },
   {
@@ -823,7 +823,7 @@
       "/assets/images/eccar/tesla/models/14.jpg"
     ],
     "shortDetails": "TESLA Model S.\nRevolutionize Your Commute",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/XB2g7-HgE_g"
   },
   {
@@ -901,7 +901,7 @@
       "/assets/images/eccar/chevrolet/bolt/10.jpg"
     ],
     "shortDetails": "태생부터 순수 전기차, BOLT EV",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/NriLUfaWdMw"
   },
   {
@@ -969,7 +969,7 @@
       "/assets/images/eccar/kia/niro/9.jpg"
     ],
     "shortDetails": "니로가 이룬 또 한번의 혁신.\n니로 EV가 스마트하게 앞서갑니다",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/WMcFIVKSlDg"
   },
   {
@@ -1029,7 +1029,7 @@
       "/assets/images/eccar/kia/bongo3/9.jpg"
     ],
     "shortDetails": "최상의 경제성과 편리함을 제공하는\n스마트 성공 파트너, Bongo Ⅲ EV",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/Hk-obloC8Dw"
   },
   {
@@ -1105,7 +1105,7 @@
       "/assets/images/eccar/hyundai/ioniq/11.jpg"
     ],
     "shortDetails": "IONIQ Electric\n도시를 가장 잘 이해하는 전기차의 기준\n쉴 틈 없이 움직이는 활동적인 사람에게도, 꼼꼼히 따지는 영리한 사람에게도,\n도시에 최적화된 아이오닉 일렉트릭은 가장 합리적인 선택지를 제공합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/gq94T4oardY"
   },
   {
@@ -1172,7 +1172,7 @@
       "/assets/images/eccar/cammsys/cevoc/7.jpg"
     ],
     "shortDetails": "대한민국 최초의 자체개발 초소형 전기차 CEVO-C! 감각적인 디자인에 경제력까지 갖춘 2인승 초소형 전기 자동차를 CEVO에서 확인하세요!",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/1SvOE-up_e4"
   },
   {
@@ -1251,7 +1251,7 @@
       "/assets/images/eccar/jaguar/ipace/7.jpg"
     ],
     "shortDetails": "I‑PACE.\n 차세대 전기차 기술과 디자인에 대한 재규어의 열정이 어우러져 배기 가스 배출이 없는 놀라운 전기차가 탄생했습니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/L_qIh5J2OsY"
   },
   {
@@ -1328,8 +1328,8 @@
       "/assets/images/eccar/bmw/i3/9.jpg",
       "/assets/images/eccar/bmw/i3/10.jpg"
     ],
-    "shortDetails": "즐겨라. 내일의 시선으로.\nTHE NEW BMW i3.",
-    "new": false,
+    "shortDetails": "즐겨라. 내일의 시선으로.\nTHE New BMW i3.",
+    "New": false,
     "video" : "https://www.youtube.com/embed/Zhl47si3IJM"
   },
   {
@@ -1410,7 +1410,7 @@
       "/assets/images/eccar/nissan/leaf/9.jpg"
     ],
     "shortDetails": "2020 Nissan LEAF\nYou don't need sky to soar.\nThere's never been a better time to go electric.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/VxhoYtiGzjI"
   },
   {
@@ -1493,7 +1493,7 @@
       "/assets/images/eccar/tesla/model3/16.jpg"
     ],
     "shortDetails": "TESLA Model 3.\n‘지속 가능한 이동수단으로의 세계적 전환을 앞당긴다’",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/i8horkJjxco"
 },
   {
@@ -1568,7 +1568,7 @@
       "/assets/images/eccar/hyundai/kona/7.jpg"
     ],
     "shortDetails": "KONA Electric\n누가? KONA!\nSUV의 새로운 발견\n새로운 모빌리티 라이프의 즐거움\n",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/ZDuVVEGaodI"
   },
   {
@@ -1651,7 +1651,7 @@
       "/assets/images/eccar/tesla/model3/16.jpg"
     ],
     "shortDetails": "TESLA Model 3.\n‘지속 가능한 이동수단으로의 세계적 전환을 앞당긴다’",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/i8horkJjxco"
   },
   {
@@ -1729,7 +1729,7 @@
       "/assets/images/eccar/chevrolet/bolt/10.jpg"
     ],
     "shortDetails": "태생부터 순수 전기차, BOLT EV",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/NriLUfaWdMw"
   },
   {
@@ -1806,8 +1806,8 @@
       "/assets/images/eccar/bmw/i3/9.jpg",
       "/assets/images/eccar/bmw/i3/10.jpg"
     ],
-    "shortDetails": "즐겨라. 내일의 시선으로.\nTHE NEW BMW i3.",
-    "new": false,
+    "shortDetails": "즐겨라. 내일의 시선으로.\nTHE New BMW i3.",
+    "New": false,
     "video" : "https://www.youtube.com/embed/Zhl47si3IJM"
   },
   {
@@ -1876,8 +1876,8 @@
       "/assets/images/eccar/peoguot/e208/13.jpg",
       "/assets/images/eccar/peoguot/e208/14.jpg"
     ],
-    "shortDetails": "NEW PEUGEOT e-208은 100% 전기 파워트레인이 탑재되어 있어 운전자에게  활기차고 즐거운 주행 경험을 선사합니다. \n\n2020 유럽 올해의 차 수상에 빛나는, 완벽하게 설계된 도심형 전기자동차 NEW PEUGEOT e-208을 만나보세요! ",
-    "new": true,
+    "shortDetails": "New PEUGEOT e-208은 100% 전기 파워트레인이 탑재되어 있어 운전자에게  활기차고 즐거운 주행 경험을 선사합니다. \n\n2020 유럽 올해의 차 수상에 빛나는, 완벽하게 설계된 도심형 전기자동차 New PEUGEOT e-208을 만나보세요! ",
+    "New": true,
     "video" : "https://www.youtube.com/embed/GX_gK6TTLgw"
   },
   {
@@ -1959,7 +1959,7 @@
       "/assets/images/eccar/tesla/modelx/15.jpg"
     ],
     "shortDetails": "Safety? \nWith TESLA Model X",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/fOXoGcR6IdM"
   },
   {
@@ -2038,7 +2038,7 @@
       "/assets/images/eccar/jaguar/ipace/7.jpg"
     ],
     "shortDetails": "I‑PACE.\n 차세대 전기차 기술과 디자인에 대한 재규어의 열정이 어우러져 배기 가스 배출이 없는 놀라운 전기차가 탄생했습니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/L_qIh5J2OsY"
   },
   {
@@ -2107,8 +2107,8 @@
       "/assets/images/eccar/banz/eqc/9.jpg",
       "/assets/images/eccar/banz/eqc/10.jpg"
     ],
-    "shortDetails": "The all-new EQC.\n전기 자동차의 오늘은 바로 메르세데스-벤츠입니다.\n #switchtoEQ #BeAGameChanger",
-    "new": true,
+    "shortDetails": "The all-New EQC.\n전기 자동차의 오늘은 바로 메르세데스-벤츠입니다.\n #switchtoEQ #BeAGameChanger",
+    "New": true,
     "video" : "https://www.youtube.com/embed/bwqC1p6ggbU"
   },
   {
@@ -2189,7 +2189,7 @@
       "/assets/images/eccar/tesla/models/14.jpg"
     ],
     "shortDetails": "TESLA Model S.\nRevolutionize Your Commute",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/VMpYEQkfLw8"
   },
   {
@@ -2270,7 +2270,7 @@
       "/assets/images/eccar/nissan/leaf/9.jpg"
     ],
     "shortDetails": "2020 Nissan LEAF\nYou don't need sky to soar.\nThere's never been a better time to go electric.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/VxhoYtiGzjI"
   },
   {
@@ -2347,7 +2347,7 @@
       "/assets/images/eccar/samsung/twiz/14.jpg"
     ],
     "shortDetails": "트위지,\n이동의 수단을 넘어선 혁신\n상상의 미래가 아닌 현실\n지금껏 경험하지 못한 새로운 경험을 선사합니다.\nRenault TWIZY",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/VulX8VmWlKE"
   },
   {
@@ -2416,7 +2416,7 @@
       "/assets/images/eccar/samsung/sm3ze/10.jpg"
     ],
     "shortDetails": "HELLO TOMORROW\n100% 전기의 힘으로 내일을 향해 달리다.\n르노삼성자동차의 e-Technology가 100% 에코 드라이빙을 선사합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/rg-I6JbjArE"
   },
   {
@@ -2498,7 +2498,7 @@
       "/assets/images/eccar/kia/soulbooster/15.jpg"
     ],
     "shortDetails": "2021 Soul EV\n1회 충전 주행거리 386km의 효율적인 쏘울로 더 즐거운 EV라이프",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/MN2bgchVlv8"
   },
   {
@@ -2558,7 +2558,7 @@
       "/assets/images/eccar/hyundai/porter2/8.jpg"
     ],
     "shortDetails": "PORTER2 Electric\n새로운 친환경 EV 트럭\n도심에서 탁월한 운송능력을 발휘하는 포터II 일렉트릭은 충전도 쉬울 뿐 아니라 경제성까지 겸비한 새로운 친환경 EV 트럭입니다.",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/lYFPY1WFPFo"
   },
   {
@@ -2635,8 +2635,8 @@
       "/assets/images/eccar/bmw/i3/9.jpg",
       "/assets/images/eccar/bmw/i3/10.jpg"
     ],
-    "shortDetails": "즐겨라. 내일의 시선으로.\nTHE NEW BMW i3.",
-    "new": false,
+    "shortDetails": "즐겨라. 내일의 시선으로.\nTHE New BMW i3.",
+    "New": false,
     "video" : "https://www.youtube.com/embed/Zhl47si3IJM"
   },
   {
@@ -2714,7 +2714,7 @@
       "/assets/images/eccar/chevrolet/bolt/10.jpg"
     ],
     "shortDetails": "태생부터 순수 전기차, BOLT EV",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/NriLUfaWdMw"
   },
   {
@@ -2782,7 +2782,7 @@
       "/assets/images/eccar/kia/niro/9.jpg"
     ],
     "shortDetails": "니로가 이룬 또 한번의 혁신.\n니로 EV가 스마트하게 앞서갑니다",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/WMcFIVKSlDg"
   },
   {
@@ -2842,7 +2842,7 @@
       "/assets/images/eccar/kia/bongo3/9.jpg"
     ],
     "shortDetails": "최상의 경제성과 편리함을 제공하는\n스마트 성공 파트너, Bongo Ⅲ EV",
-    "new": true,
+    "New": true,
     "video" : "https://www.youtube.com/embed/Hk-obloC8Dw"
   },
   {
@@ -2918,7 +2918,7 @@
       "/assets/images/eccar/hyundai/ioniq/11.jpg"
     ],
     "shortDetails": "IONIQ Electric\n도시를 가장 잘 이해하는 전기차의 기준\n쉴 틈 없이 움직이는 활동적인 사람에게도, 꼼꼼히 따지는 영리한 사람에게도,\n도시에 최적화된 아이오닉 일렉트릭은 가장 합리적인 선택지를 제공합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/gq94T4oardY"
   },
   {
@@ -2998,7 +2998,7 @@
       "/assets/images/eccar/jaguar/ipace/7.jpg"
     ],
     "shortDetails": "I‑PACE.\n 차세대 전기차 기술과 디자인에 대한 재규어의 열정이 어우러져 배기 가스 배출이 없는 놀라운 전기차가 탄생했습니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/L_qIh5J2OsY"
   },
   {
@@ -3075,8 +3075,8 @@
       "/assets/images/eccar/bmw/i3/9.jpg",
       "/assets/images/eccar/bmw/i3/10.jpg"
     ],
-    "shortDetails": "즐겨라. 내일의 시선으로.\nTHE NEW BMW i3.",
-    "new": false,
+    "shortDetails": "즐겨라. 내일의 시선으로.\nTHE New BMW i3.",
+    "New": false,
     "video" : "https://www.youtube.com/embed/Zhl47si3IJM"
   },
 
@@ -3115,28 +3115,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190527_46/auto_1558936355161td9B0_PNG/20190527145232_Q5UHVKPu.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["red", "black","white", "gray", "blue"],
+    "colors": ["white"],
     "sale": false,
     "variants": [
       {
-        "color": "red",
-        "images": "/assets/images/eccar/chevrolet/bolt/red.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/chevrolet/bolt/black.jpg"
-      },
-      {
         "color": "white",
-        "images": "/assets/images/eccar/chevrolet/bolt/white.jpg"
-      },
-      {
-        "color": "gray",
-        "images": "/assets/images/eccar/chevrolet/bolt/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/chevrolet/bolt/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190527_46/auto_1558936355161td9B0_PNG/20190527145232_Q5UHVKPu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -3155,7 +3139,7 @@
       "/assets/images/eccar/chevrolet/bolt/10.jpg"
     ],
     "shortDetails": "태생부터 순수 전기차, BOLT EV",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/NriLUfaWdMw"
   },
   {
@@ -3193,28 +3177,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190927_111/auto_1569574605133xxntg_PNG/20190927175643_lcn4NORl.png?type=f567_410",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["white", "gray", "red", "blue", "black"],
+    "colors": ["red"],
     "sale": false,
     "variants": [
       {
-        "color": "white",
-        "images": "/assets/images/eccar/hyundai/kona/white.jpg"
-      },
-      {
-        "color": "gray",
-        "images": "/assets/images/eccar/hyundai/kona/gray.jpg"
-      },
-      {
         "color": "red",
-        "images": "/assets/images/eccar/hyundai/kona/red.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/hyundai/kona/blue.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/hyundai/kona/black.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190927_111/auto_1569574605133xxntg_PNG/20190927175643_lcn4NORl.png?type=f567_410"
       }
     ],
     "pictures": [
@@ -3230,7 +3198,7 @@
       "/assets/images/eccar/hyundai/kona/7.jpg"
     ],
     "shortDetails": "KONA Electric\n누가? KONA!\nSUV의 새로운 발견\n새로운 모빌리티 라이프의 즐거움\n",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/ZDuVVEGaodI"
   },
   {
@@ -3268,28 +3236,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190927_111/auto_1569574605133xxntg_PNG/20190927175643_lcn4NORl.png?type=f567_410",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["white", "gray", "red", "blue", "black"],
+    "colors": ["red"],
     "sale": false,
     "variants": [
       {
-        "color": "white",
-        "images": "/assets/images/eccar/hyundai/kona/white.jpg"
-      },
-      {
-        "color": "gray",
-        "images": "/assets/images/eccar/hyundai/kona/gray.jpg"
-      },
-      {
         "color": "red",
-        "images": "/assets/images/eccar/hyundai/kona/red.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/hyundai/kona/blue.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/hyundai/kona/black.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190927_111/auto_1569574605133xxntg_PNG/20190927175643_lcn4NORl.png?type=f567_410"
       }
     ],
     "pictures": [
@@ -3305,7 +3257,7 @@
       "/assets/images/eccar/hyundai/kona/7.jpg"
     ],
     "shortDetails": "KONA Electric\n누가? KONA!\nSUV의 새로운 발견\n새로운 모빌리티 라이프의 즐거움\n",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/ZDuVVEGaodI"
   },
   {
@@ -3343,21 +3295,9 @@
     "img": "https://imgauto-phinf.pstatic.net/20191204_241/auto_1575452308554hFt1m_PNG/20191204183825_k9rjDN0r.png?type=f567_410",
     "boostingCharge": "AC3상(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["white", "orange", "blue", "black"],
+    "colors": ["black"],
     "sale": false,
     "variants": [
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/samsung/twiz/white.jpg"
-      },
-      {
-        "color": "orange",
-        "images": "/assets/images/eccar/samsung/twiz/orange.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/samsung/twiz/blue.jpg"
-      },
       {
         "color": "black",
         "images": "/assets/images/eccar/samsung/twiz/black.jpg"
@@ -3382,7 +3322,7 @@
       "/assets/images/eccar/samsung/twiz/14.jpg"
     ],
     "shortDetails": "트위지,\n이동의 수단을 넘어선 혁신\n상상의 미래가 아닌 현실\n지금껏 경험하지 못한 새로운 경험을 선사합니다.\nRenault TWIZY",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/VulX8VmWlKE"
   },
   {
@@ -3420,21 +3360,9 @@
     "img": "https://imgauto-phinf.pstatic.net/20191204_241/auto_1575452308554hFt1m_PNG/20191204183825_k9rjDN0r.png?type=f567_410",
     "boostingCharge": "AC3상(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["white", "orange", "blue", "black"],
+    "colors": ["black"],
     "sale": false,
     "variants": [
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/samsung/twiz/white.jpg"
-      },
-      {
-        "color": "orange",
-        "images": "/assets/images/eccar/samsung/twiz/orange.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/samsung/twiz/blue.jpg"
-      },
       {
         "color": "black",
         "images": "/assets/images/eccar/samsung/twiz/black.jpg"
@@ -3459,7 +3387,7 @@
       "/assets/images/eccar/samsung/twiz/14.jpg"
     ],
     "shortDetails": "트위지,\n이동의 수단을 넘어선 혁신\n상상의 미래가 아닌 현실\n지금껏 경험하지 못한 새로운 경험을 선사합니다.\nRenault TWIZY",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/VulX8VmWlKE"
   },
   {
@@ -3497,20 +3425,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190827_51/auto_1566912967583mnh7v_PNG/20190827223603_k2ZAnZ3j.png?type=f567_410",
     "boostingCharge": "AC3상(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["gray","white","black"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
         "color": "gray",
-        "images": "/assets/images/eccar/samsung/sm3ze/gray.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/samsung/sm3ze/white.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/samsung/sm3ze/black.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190827_51/auto_1566912967583mnh7v_PNG/20190827223603_k2ZAnZ3j.png?type=f567_410"
       }
     ],
     "pictures": [
@@ -3528,7 +3448,7 @@
       "/assets/images/eccar/samsung/sm3ze/10.jpg"
     ],
     "shortDetails": "HELLO TOMORROW\n100% 전기의 힘으로 내일을 향해 달리다.\n르노삼성자동차의 e-Technology가 100% 에코 드라이빙을 선사합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/rg-I6JbjArE"
   },
   {
@@ -3566,20 +3486,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190827_51/auto_1566912967583mnh7v_PNG/20190827223603_k2ZAnZ3j.png?type=f567_410",
     "boostingCharge": "AC3상(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["gray","white","black"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
         "color": "gray",
-        "images": "/assets/images/eccar/samsung/sm3ze/gray.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/samsung/sm3ze/white.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/samsung/sm3ze/black.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190827_51/auto_1566912967583mnh7v_PNG/20190827223603_k2ZAnZ3j.png?type=f567_410"
       }
     ],
     "pictures": [
@@ -3597,7 +3509,7 @@
       "/assets/images/eccar/samsung/sm3ze/10.jpg"
     ],
     "shortDetails": "HELLO TOMORROW\n100% 전기의 힘으로 내일을 향해 달리다.\n르노삼성자동차의 e-Technology가 100% 에코 드라이빙을 선사합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/rg-I6JbjArE"
   },
   {
@@ -3635,20 +3547,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190827_40/auto_1566912958312jU2Ic_PNG/20190827223555_wvXdUtSQ.png?type=f567_410",
     "boostingCharge": "AC3상(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["gray","white","black"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
         "color": "gray",
-        "images": "/assets/images/eccar/samsung/sm3ze/gray.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/samsung/sm3ze/white.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/samsung/sm3ze/black.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190827_51/auto_1566912967583mnh7v_PNG/20190827223603_k2ZAnZ3j.png?type=f567_410"
       }
     ],
     "pictures": [
@@ -3666,7 +3570,7 @@
       "/assets/images/eccar/samsung/sm3ze/10.jpg"
     ],
     "shortDetails": "HELLO TOMORROW\n100% 전기의 힘으로 내일을 향해 달리다.\n르노삼성자동차의 e-Technology가 100% 에코 드라이빙을 선사합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/rg-I6JbjArE"
   },
   {
@@ -3704,20 +3608,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190827_40/auto_1566912958312jU2Ic_PNG/20190827223555_wvXdUtSQ.png?type=f567_410",
     "boostingCharge": "AC3상(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["gray","white","black"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
         "color": "gray",
-        "images": "/assets/images/eccar/samsung/sm3ze/gray.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/samsung/sm3ze/white.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/samsung/sm3ze/black.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190827_51/auto_1566912967583mnh7v_PNG/20190827223603_k2ZAnZ3j.png?type=f567_410"
       }
     ],
     "pictures": [
@@ -3735,7 +3631,7 @@
       "/assets/images/eccar/samsung/sm3ze/10.jpg"
     ],
     "shortDetails": "HELLO TOMORROW\n100% 전기의 힘으로 내일을 향해 달리다.\n르노삼성자동차의 e-Technology가 100% 에코 드라이빙을 선사합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/rg-I6JbjArE"
   },
   {
@@ -3773,20 +3669,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20150528_40/auto_1432797368180NOm3w_PNG/20150528161532_l1Ou1iPx.png?type=f508_367",
     "boostingCharge": "AC3상(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["gray","white","black"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
         "color": "gray",
-        "images": "/assets/images/eccar/samsung/sm3ze/gray.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/samsung/sm3ze/white.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/samsung/sm3ze/black.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190827_51/auto_1566912967583mnh7v_PNG/20190827223603_k2ZAnZ3j.png?type=f567_410"
       }
     ],
     "pictures": [
@@ -3804,7 +3692,7 @@
       "/assets/images/eccar/samsung/sm3ze/10.jpg"
     ],
     "shortDetails": "HELLO TOMORROW\n100% 전기의 힘으로 내일을 향해 달리다.\n르노삼성자동차의 e-Technology가 100% 에코 드라이빙을 선사합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/rg-I6JbjArE"
   },
   {
@@ -3842,20 +3730,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20130928_32/auto_1380295203663P4Nsz_PNG/20130928002001_TBqqUGGP.png?type=f567_410",
     "boostingCharge": "AC3상(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["gray","white","black"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
         "color": "gray",
-        "images": "/assets/images/eccar/samsung/sm3ze/gray.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/samsung/sm3ze/white.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/samsung/sm3ze/black.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190827_51/auto_1566912967583mnh7v_PNG/20190827223603_k2ZAnZ3j.png?type=f567_410"
       }
     ],
     "pictures": [
@@ -3873,7 +3753,7 @@
       "/assets/images/eccar/samsung/sm3ze/10.jpg"
     ],
     "shortDetails": "HELLO TOMORROW\n100% 전기의 힘으로 내일을 향해 달리다.\n르노삼성자동차의 e-Technology가 100% 에코 드라이빙을 선사합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/rg-I6JbjArE"
   },
   {
@@ -3911,20 +3791,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20130928_32/auto_1380295203663P4Nsz_PNG/20130928002001_TBqqUGGP.png?type=f567_410",
     "boostingCharge": "AC3상(급속)",
     "slowCharging": "AC완속(7핀)",
-    "colors": ["gray","white","black"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
         "color": "gray",
-        "images": "/assets/images/eccar/samsung/sm3ze/gray.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/samsung/sm3ze/white.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/samsung/sm3ze/black.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190827_51/auto_1566912967583mnh7v_PNG/20190827223603_k2ZAnZ3j.png?type=f567_410"
       }
     ],
     "pictures": [
@@ -3942,7 +3814,7 @@
       "/assets/images/eccar/samsung/sm3ze/10.jpg"
     ],
     "shortDetails": "HELLO TOMORROW\n100% 전기의 힘으로 내일을 향해 달리다.\n르노삼성자동차의 e-Technology가 100% 에코 드라이빙을 선사합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/rg-I6JbjArE"
   },
   {
@@ -3980,28 +3852,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190114_2/auto_1547455104187G6Edv_PNG/20190114173822_vzZONH7N.png?type=f508_367",
     "boostingCharge": "DC차데모(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["blue","gray","red","white","yellow"],
+    "colors": ["blue"],
     "sale": false,
     "variants": [
       {
         "color": "blue",
-        "images": "/assets/images/eccar/kia/soulbooster/blue.jpg"
-      },
-      {
-        "color": "gray",
-        "images": "/assets/images/eccar/kia/soulbooster/gray.jpg"
-      },
-      {
-        "color": "red",
-        "images": "/assets/images/eccar/kia/soulbooster/red.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/kia/soulbooster/white.jpg"
-      },
-      {
-        "color": "yellow",
-        "images": "/assets/images/eccar/kia/soulbooster/yellow.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190114_2/auto_1547455104187G6Edv_PNG/20190114173822_vzZONH7N.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -4024,7 +3880,7 @@
       "/assets/images/eccar/kia/soulbooster/15.jpg"
     ],
     "shortDetails": "2021 Soul EV\n1회 충전 주행거리 386km의 효율적인 쏘울로 더 즐거운 EV라이프",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/MN2bgchVlv8"
   },
   {
@@ -4062,28 +3918,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190114_2/auto_1547455104187G6Edv_PNG/20190114173822_vzZONH7N.png?type=f508_367",
     "boostingCharge": "DC차데모(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["blue","gray","red","white","yellow"],
+    "colors": ["blue"],
     "sale": false,
     "variants": [
       {
         "color": "blue",
-        "images": "/assets/images/eccar/kia/soulbooster/blue.jpg"
-      },
-      {
-        "color": "gray",
-        "images": "/assets/images/eccar/kia/soulbooster/gray.jpg"
-      },
-      {
-        "color": "red",
-        "images": "/assets/images/eccar/kia/soulbooster/red.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/kia/soulbooster/white.jpg"
-      },
-      {
-        "color": "yellow",
-        "images": "/assets/images/eccar/kia/soulbooster/yellow.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190114_2/auto_1547455104187G6Edv_PNG/20190114173822_vzZONH7N.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -4106,7 +3946,7 @@
       "/assets/images/eccar/kia/soulbooster/15.jpg"
     ],
     "shortDetails": "2021 Soul EV\n1회 충전 주행거리 386km의 효율적인 쏘울로 더 즐거운 EV라이프",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/MN2bgchVlv8"
   },
   {
@@ -4172,7 +4012,7 @@
       "/assets/images/eccar/kia/soulbooster/15.jpg"
     ],
     "shortDetails": "2021 Soul EV\n1회 충전 주행거리 386km의 효율적인 쏘울로 더 즐거운 EV라이프",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/6bMwa_JVtYs"
   },
   {
@@ -4238,7 +4078,7 @@
       "/assets/images/eccar/kia/soulbooster/15.jpg"
     ],
     "shortDetails": "2021 Soul EV\n1회 충전 주행거리 386km의 효율적인 쏘울로 더 즐거운 EV라이프",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/6bMwa_JVtYs"
   },
   {
@@ -4304,7 +4144,7 @@
       "/assets/images/eccar/kia/soulbooster/15.jpg"
     ],
     "shortDetails": "2021 Soul EV\n1회 충전 주행거리 386km의 효율적인 쏘울로 더 즐거운 EV라이프",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/6bMwa_JVtYs"
   },
   {
@@ -4342,28 +4182,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190527_46/auto_1558936355161td9B0_PNG/20190527145232_Q5UHVKPu.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["red", "black","white", "gray", "blue"],
+    "colors": ["white"],
     "sale": false,
     "variants": [
       {
-        "color": "red",
-        "images": "/assets/images/eccar/chevrolet/bolt/red.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/chevrolet/bolt/black.jpg"
-      },
-      {
         "color": "white",
-        "images": "/assets/images/eccar/chevrolet/bolt/white.jpg"
-      },
-      {
-        "color": "gray",
-        "images": "/assets/images/eccar/chevrolet/bolt/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/chevrolet/bolt/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190527_46/auto_1558936355161td9B0_PNG/20190527145232_Q5UHVKPu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -4382,7 +4206,7 @@
       "/assets/images/eccar/chevrolet/bolt/10.jpg"
     ],
     "shortDetails": "태생부터 순수 전기차, BOLT EV",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/NriLUfaWdMw"
   },
   {
@@ -4420,28 +4244,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20190527_46/auto_1558936355161td9B0_PNG/20190527145232_Q5UHVKPu.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["red", "black","white", "gray", "blue"],
+    "colors": ["white"],
     "sale": false,
     "variants": [
       {
-        "color": "red",
-        "images": "/assets/images/eccar/chevrolet/bolt/red.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/chevrolet/bolt/black.jpg"
-      },
-      {
         "color": "white",
-        "images": "/assets/images/eccar/chevrolet/bolt/white.jpg"
-      },
-      {
-        "color": "gray",
-        "images": "/assets/images/eccar/chevrolet/bolt/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/chevrolet/bolt/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190527_46/auto_1558936355161td9B0_PNG/20190527145232_Q5UHVKPu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -4460,7 +4268,7 @@
       "/assets/images/eccar/chevrolet/bolt/10.jpg"
     ],
     "shortDetails": "태생부터 순수 전기차, BOLT EV",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/NriLUfaWdMw"
   },
   {
@@ -4498,28 +4306,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20180115_106/auto_1515995975424OiOXM_PNG/20180115145929_TIZex9ok.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["red", "black","white", "gray", "blue"],
+    "colors": ["white"],
     "sale": false,
     "variants": [
       {
-        "color": "red",
-        "images": "/assets/images/eccar/chevrolet/bolt/red.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/chevrolet/bolt/black.jpg"
-      },
-      {
         "color": "white",
-        "images": "/assets/images/eccar/chevrolet/bolt/white.jpg"
-      },
-      {
-        "color": "gray",
-        "images": "/assets/images/eccar/chevrolet/bolt/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/chevrolet/bolt/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190527_46/auto_1558936355161td9B0_PNG/20190527145232_Q5UHVKPu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -4538,7 +4330,7 @@
       "/assets/images/eccar/chevrolet/bolt/10.jpg"
     ],
     "shortDetails": "태생부터 순수 전기차, BOLT EV",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/NriLUfaWdMw"
   },
   {
@@ -4576,28 +4368,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20180115_106/auto_1515995975424OiOXM_PNG/20180115145929_TIZex9ok.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["red", "black","white", "gray", "blue"],
+    "colors": ["white"],
     "sale": false,
     "variants": [
       {
-        "color": "red",
-        "images": "/assets/images/eccar/chevrolet/bolt/red.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/chevrolet/bolt/black.jpg"
-      },
-      {
         "color": "white",
-        "images": "/assets/images/eccar/chevrolet/bolt/white.jpg"
-      },
-      {
-        "color": "gray",
-        "images": "/assets/images/eccar/chevrolet/bolt/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/chevrolet/bolt/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190527_46/auto_1558936355161td9B0_PNG/20190527145232_Q5UHVKPu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -4616,7 +4392,7 @@
       "/assets/images/eccar/chevrolet/bolt/10.jpg"
     ],
     "shortDetails": "태생부터 순수 전기차, BOLT EV",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/NriLUfaWdMw"
   },
   {
@@ -4654,28 +4430,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20180115_106/auto_1515995975424OiOXM_PNG/20180115145929_TIZex9ok.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["red", "black","white", "gray", "blue"],
+    "colors": ["white"],
     "sale": false,
     "variants": [
       {
-        "color": "red",
-        "images": "/assets/images/eccar/chevrolet/bolt/red.jpg"
-      },
-      {
-        "color": "black",
-        "images": "/assets/images/eccar/chevrolet/bolt/black.jpg"
-      },
-      {
         "color": "white",
-        "images": "/assets/images/eccar/chevrolet/bolt/white.jpg"
-      },
-      {
-        "color": "gray",
-        "images": "/assets/images/eccar/chevrolet/bolt/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/chevrolet/bolt/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20190527_46/auto_1558936355161td9B0_PNG/20190527145232_Q5UHVKPu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -4694,7 +4454,7 @@
       "/assets/images/eccar/chevrolet/bolt/10.jpg"
     ],
     "shortDetails": "태생부터 순수 전기차, BOLT EV",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/NriLUfaWdMw"
   },
   {
@@ -4756,7 +4516,7 @@
       "/assets/images/eccar/chevrolet/bolt/10.jpg"
     ],
     "shortDetails": "사랑받는 경차의 세계 공통어,SPARK",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/_uHwYsexULI"
   },
   {
@@ -4794,24 +4554,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20180321_106/auto_1521603179258kMKAg_PNG/20180321123222_VYSFoBhu.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["black","white", "gray", "blue"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
-        "color": "black",
-        "images": "/assets/images/eccar/hyundai/ioniq/black.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/hyundai/ioniq/white.jpg"
-      },
-      {
         "color": "gray",
-        "images": "/assets/images/eccar/hyundai/ioniq/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/hyundai/ioniq/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20180321_106/auto_1521603179258kMKAg_PNG/20180321123222_VYSFoBhu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -4832,7 +4580,7 @@
       "/assets/images/eccar/hyundai/ioniq/11.jpg"
     ],
     "shortDetails": "IONIQ Electric\n도시를 가장 잘 이해하는 전기차의 기준\n쉴 틈 없이 움직이는 활동적인 사람에게도, 꼼꼼히 따지는 영리한 사람에게도,\n도시에 최적화된 아이오닉 일렉트릭은 가장 합리적인 선택지를 제공합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/gq94T4oardY"
   },
   {
@@ -4870,24 +4618,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20180321_106/auto_1521603179258kMKAg_PNG/20180321123222_VYSFoBhu.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["black","white", "gray", "blue"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
-        "color": "black",
-        "images": "/assets/images/eccar/hyundai/ioniq/black.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/hyundai/ioniq/white.jpg"
-      },
-      {
         "color": "gray",
-        "images": "/assets/images/eccar/hyundai/ioniq/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/hyundai/ioniq/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20180321_106/auto_1521603179258kMKAg_PNG/20180321123222_VYSFoBhu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -4908,7 +4644,7 @@
       "/assets/images/eccar/hyundai/ioniq/11.jpg"
     ],
     "shortDetails": "IONIQ Electric\n도시를 가장 잘 이해하는 전기차의 기준\n쉴 틈 없이 움직이는 활동적인 사람에게도, 꼼꼼히 따지는 영리한 사람에게도,\n도시에 최적화된 아이오닉 일렉트릭은 가장 합리적인 선택지를 제공합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/gq94T4oardY"
   },
   {
@@ -4946,24 +4682,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20160224_289/auto_1456290606803snlTi_PNG/20160224141000_v2YFsJeZ.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["black","white", "gray", "blue"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
-        "color": "black",
-        "images": "/assets/images/eccar/hyundai/ioniq/black.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/hyundai/ioniq/white.jpg"
-      },
-      {
         "color": "gray",
-        "images": "/assets/images/eccar/hyundai/ioniq/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/hyundai/ioniq/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20180321_106/auto_1521603179258kMKAg_PNG/20180321123222_VYSFoBhu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -4984,7 +4708,7 @@
       "/assets/images/eccar/hyundai/ioniq/11.jpg"
     ],
     "shortDetails": "IONIQ Electric\n도시를 가장 잘 이해하는 전기차의 기준\n쉴 틈 없이 움직이는 활동적인 사람에게도, 꼼꼼히 따지는 영리한 사람에게도,\n도시에 최적화된 아이오닉 일렉트릭은 가장 합리적인 선택지를 제공합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/gq94T4oardY"
   },
   {
@@ -5022,24 +4746,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20160224_289/auto_1456290606803snlTi_PNG/20160224141000_v2YFsJeZ.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["black","white", "gray", "blue"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
-        "color": "black",
-        "images": "/assets/images/eccar/hyundai/ioniq/black.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/hyundai/ioniq/white.jpg"
-      },
-      {
         "color": "gray",
-        "images": "/assets/images/eccar/hyundai/ioniq/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/hyundai/ioniq/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20180321_106/auto_1521603179258kMKAg_PNG/20180321123222_VYSFoBhu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -5060,7 +4772,7 @@
       "/assets/images/eccar/hyundai/ioniq/11.jpg"
     ],
     "shortDetails": "IONIQ Electric\n도시를 가장 잘 이해하는 전기차의 기준\n쉴 틈 없이 움직이는 활동적인 사람에게도, 꼼꼼히 따지는 영리한 사람에게도,\n도시에 최적화된 아이오닉 일렉트릭은 가장 합리적인 선택지를 제공합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/gq94T4oardY"
   },
   {
@@ -5098,24 +4810,12 @@
     "img": "https://imgauto-phinf.pstatic.net/20160224_289/auto_1456290606803snlTi_PNG/20160224141000_v2YFsJeZ.png?type=f508_367",
     "boostingCharge": "DC콤보(급속)",
     "slowCharging": "AC완속(5핀)",
-    "colors": ["black","white", "gray", "blue"],
+    "colors": ["gray"],
     "sale": false,
     "variants": [
       {
-        "color": "black",
-        "images": "/assets/images/eccar/hyundai/ioniq/black.jpg"
-      },
-      {
-        "color": "white",
-        "images": "/assets/images/eccar/hyundai/ioniq/white.jpg"
-      },
-      {
         "color": "gray",
-        "images": "/assets/images/eccar/hyundai/ioniq/gray.jpg"
-      },
-      {
-        "color": "blue",
-        "images": "/assets/images/eccar/hyundai/ioniq/blue.jpg"
+        "images": "https://imgauto-phinf.pstatic.net/20180321_106/auto_1521603179258kMKAg_PNG/20180321123222_VYSFoBhu.png?type=f508_367"
       }
     ],
     "pictures": [
@@ -5136,7 +4836,7 @@
       "/assets/images/eccar/hyundai/ioniq/11.jpg"
     ],
     "shortDetails": "IONIQ Electric\n도시를 가장 잘 이해하는 전기차의 기준\n쉴 틈 없이 움직이는 활동적인 사람에게도, 꼼꼼히 따지는 영리한 사람에게도,\n도시에 최적화된 아이오닉 일렉트릭은 가장 합리적인 선택지를 제공합니다.",
-    "new": false,
+    "New": false,
     "video" : "https://www.youtube.com/embed/gq94T4oardY"
   }
 ]

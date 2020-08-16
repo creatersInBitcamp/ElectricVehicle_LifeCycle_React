@@ -1,6 +1,6 @@
 import shop from "../../atomic/api/shop";
 import {CHANGE_CURRENCY} from "./currency";
-
+import axios from "axios";
 
 /* types */
 const FETCH_PRODUCTS_BEGIN = 'FETCH_PRODUCTS_BEGIN'

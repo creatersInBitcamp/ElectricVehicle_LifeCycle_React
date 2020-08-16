@@ -215,7 +215,7 @@ export const getBestSellerProducts = (products, type) => {
 // Get Best Seller
 export const getBestSeller = products => {
     const items = products.filter(product => {
-        return product.sale === true && product.yyyy >2019;
+        return product.sale === true && product.yyyy >2018;
     })
 
     return items.slice(0,8)

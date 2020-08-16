@@ -6,6 +6,7 @@ import useComponentWillMount from 'component-will-mount-hook'
 import {addToCart,addToWishlist,addToCompare} from '../index'
 import {getVisibleproducts} from '../../atomic/services/services';
 import {ProductListItem} from "../index";
+import {getAllProducts} from "../../common";
 
 export const ProductListing = props => {
     const [limit, setLimit] = useState(5)

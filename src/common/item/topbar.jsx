@@ -6,13 +6,13 @@ import axios from 'axios'
 export const TopBar = () => {
     const contexts = {
         user:'http://localhost:8080/user/csv',
-        ecar:"http://localhost:8080/electriccars/csv",
         post:"http://localhost:8080/posts/readcsv",
         sights:"http://localhost:8080/sights/csv",
         charge:"http://localhost:8080/chargingstations/csv",
         cars:"http://localhost:8080/cars/csv",
         used:"http://localhost:8080/usedCars/csv",
         electric: "http://localhost:8080/electriccars/csv",
+        variants : "http://localhost:8080/variants/csv"
     }
     const translate = useTranslate();
     const [session, setSession] = useState(false)
@@ -67,14 +67,14 @@ export const TopBar = () => {
                 console.log(`${contexts.charge}: err: ${err.status}`)
             })
     }
-    const onCSVelectric = (e) => {
+    const onCSVcar = (e) => {
         e.preventDefault()
-        axios.get(contexts.electric)
+        axios.get(contexts.cars)
             .then((res)=>{
-                console.log('전기차 성공')
+                console.log('차 성공')
             })
             .catch((err)=>{
-                console.log('전기차 실패')
+                console.log('차 실패')
             })
     }
     const onCSVused = (e) => {
@@ -89,12 +89,22 @@ export const TopBar = () => {
     }
     const onCSVnew = (e) => {
         e.preventDefault()
-        axios.get(contexts.cars)
+        axios.get(contexts.electric)
             .then((res)=>{
                 console.log('신차 성공')
             })
             .catch((err)=>{
                 console.log('신차 실패')
+            })
+    }
+    const onCSVvariants = (e) => {
+        e.preventDefault()
+        axios.get(contexts.variants)
+            .then((res)=>{
+                console.log('variants 성공')
+            })
+            .catch((err)=>{
+                console.log('variants 실패')
             })
     }
 
@@ -113,9 +123,10 @@ export const TopBar = () => {
                                     <button onClick={(e)=> {onCSVpost(e)}}>POST</button>
                                     <button onClick={(e)=> {onCSVsight(e)}}>SIGHTS</button>
                                     <button onClick={(e)=> {onCSVcharge(e)}}>CHARGE</button>
-                                    <button onClick={(e)=> {onCSVelectric(e)}}>Eelectric</button>
+                                    <button onClick={(e)=> {onCSVcar(e)}}>car</button>
                                     <button onClick={(e)=> {onCSVused(e)}}>UsedCar</button>
                                     <button onClick={(e)=> {onCSVnew(e)}}>NewCar</button>
+                                    <button onClick={(e)=> {onCSVvariants(e)}}>Variants</button>
                                 </li>
                             </ul>
                         </div>

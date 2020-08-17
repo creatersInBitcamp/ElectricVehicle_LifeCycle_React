@@ -90,7 +90,7 @@ export const ElecCar = () => {
                                     </div>
                                     <div className="clearfix"/>
                                     <div id="basicScenario" className="product-physical">
-                                        <Table title={"전기 자동차"} columns={columns} data={data} setData={(d)=>setDate(d)}/>
+                                        <Table title={"전기 자동차"} columns={columns} data={data}/>
                                     </div>
                                 </div>
                             </div>

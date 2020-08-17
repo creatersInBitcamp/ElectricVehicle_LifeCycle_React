@@ -7,8 +7,6 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 
 import './map.css'
 import "@reach/combobox/styles.css";
 import axios from "axios";
-import {useSelector} from "react-redux";
-// import myData from '../data/data-charging-station';
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -267,7 +265,11 @@ export const ChargingStationMap = () =>{
                                                                 <h4>관리부서: {selected.agencyName}</h4><br/>
                                                                 <h4>연락처: {selected.phone}</h4><br/>
                                                             </MDBCardText>
-                                                            <MDBBtn color="secondary" onClick={()=>insertBookmark(selected.chargingStationId)}>북마크 저장</MDBBtn>
+                                                            {
+                                                                sessionUser?
+                                                                    <MDBBtn color="secondary" onClick={()=>insertBookmark(selected.chargingStationId)}>북마크 저장</MDBBtn>
+                                                                    :null
+                                                            }
                                                         </MDBCardBody>
                                                     </MDBCard>
                                                 </MDBCol>

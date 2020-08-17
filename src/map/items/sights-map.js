@@ -6,7 +6,6 @@ import {Combobox,ComboboxInput, ComboboxPopover,ComboboxList, ComboboxOption,} f
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 import './map.css'
 import "@reach/combobox/styles.css";
-// import myData from '../data/data-sights';
 import axios from "axios";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
@@ -268,7 +267,11 @@ export const SightsMap = () =>{
                                                                 <h4>주차가능수: {selected.parkingLot}</h4><br/>
                                                                 <h4>관광지 정보: {selected.info}</h4><br/>
                                                             </MDBCardText>
-                                                            <MDBBtn color="secondary" onClick={()=>insertBookmark(selected.sightsId)}>북마크저장</MDBBtn>
+                                                            {
+                                                                sessionUser?
+                                                                    <MDBBtn color="secondary" onClick={()=>insertBookmark(selected.sightsId)}>북마크저장</MDBBtn>
+                                                                    :null
+                                                            }
                                                         </MDBCardBody>
                                                     </MDBCard>
                                                 </MDBCol>

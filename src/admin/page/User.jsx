@@ -49,6 +49,25 @@ export const User = () => {
             title:'차단일자', field:'banDate', editable: 'never'
         }
     ]
+    const editable = {
+        onRowUpdate: (newData, oldData) =>
+            new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    const dataUpdate = [...data]
+                    const index = oldData.tableData.id;
+                    dataUpdate[index] = newData
+                    setData([...dataUpdate])
+                    resolve()
+                    axios.post(`http://localhost:8080/user/allUpdate`, [...dataUpdate])
+                            .then((res) => {
+                            })
+                            .catch(() => {
+                                alert("통신실패")
+                            })
+
+                }, 1000)
+            })
+    }
         return (
             <>
                 <AdminBreadcrumb title="사용자 현황" parent="Users" />
@@ -60,7 +79,7 @@ export const User = () => {
                         <div className="card-body">
                             <div className="clearfix"/>
                             <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
-                                <Table title={"사용자"} data={data} columns={columns} setData={(d)=>setData(d)} />
+                                <Table title={"사용자"} data={data} columns={columns} editable={editable} />
                             </div>
                         </div>
                     </div>

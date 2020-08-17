@@ -105,7 +105,7 @@ export const Register = (props) =>  {
                                                        onChange={onChangeIdChk} placeholder="아이디" required="" />
                                                 <br/>
                                                 {idOverlap && <div style={{color: 'red'}}>중복된 아이디입니다.</div>}
-                                                {!mustId && idConfirm && <div style={{color: 'green'}}>가능한 아이디입니다.</div>}
+                                                {!mustId && idConfirm && <div style={{color: 'green'}}>멋진 아이디네요.</div>}
                                                 {mustId && <div style={{color: 'red'}}>반드시 필요한 항목입니다.</div>}
                                                 <br/>
                                             </div>

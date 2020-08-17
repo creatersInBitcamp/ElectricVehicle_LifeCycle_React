@@ -42,17 +42,28 @@ export const SightsMap = () =>{
     const [selectedPc,setSelectedPc] = useState("")
     const [infoShow, setInfoShow]= useState(false)
     const [myData,setMyData] = useState([])
-    const [btn,setBtn] = useState(true)
 
     useEffect(()=>{
-        axios.get('http://localhost:8080/sights/getall')
-            .then((res)=>{
-                console.log(res.data)
-                setMyData(res.data)
-            })
-            .catch((err)=>{
-                console.log(err.status)
-            })
+        sessionUser?(
+            axios.get(`http://localhost:8080/sights/getall/${user.userSeq}`)
+                .then((res)=>{
+                    console.log(res.data)
+                    setMyData(res.data)
+                })
+                .catch((err)=>{
+                    console.log(err.status)
+                })
+        ):(
+            axios.get(`http://localhost:8080/sights/getall`)
+                .then((res)=>{
+                    console.log(res.data)
+                    setMyData(res.data)
+                })
+                .catch((err)=>{
+                    console.log(err.status)
+                })
+        )
+
     },[])
 
     const mapRef = useRef();
@@ -186,14 +197,14 @@ export const SightsMap = () =>{
     function insertBookmark(sightsID){
         const info = {
             id : sightsID,
-            userSeq: user.userSeq,
-            charging : false
+            charging : false,
+            userId: user.userSeq
         }
         console.log(info)
         axios.post('http://localhost:8080/bookmarks/insert',info)
             .then((res)=>{
                 console.log("북마크 저장 성공")
-                axios.get('http://localhost:8080/sights/getall')
+                axios.get(`http://localhost:8080/sights/getall/${user.userSeq}`)
                     .then((res)=>{
                         console.log(res.data)
                         setMyData(res.data)
@@ -249,7 +260,7 @@ export const SightsMap = () =>{
                                     ))
                                 }
                                 {
-                                    (selected.xvalue && (selected.bookmarkList.length === 0)) ? (
+                                    (selected.xvalue && (sessionUser)) ? (
                                         (<InfoWindow
                                             position={{lat:selected.xvalue, lng:selected.yvalue}}
                                             clickable={true}
@@ -268,9 +279,9 @@ export const SightsMap = () =>{
                                                                 <h4>관광지 정보: {selected.info}</h4><br/>
                                                             </MDBCardText>
                                                             {
-                                                                sessionUser?
-                                                                    <MDBBtn color="secondary" onClick={()=>insertBookmark(selected.sightsId)}>북마크저장</MDBBtn>
-                                                                    :null
+                                                                (selected.bookmarkList) && (sessionUser.userSeq === selected.userSeq)?
+                                                                    <img src={"https://image.flaticon.com/icons/svg/2876/2876727.svg"} width={40} height={40}/>
+                                                                    :<MDBBtn color="secondary" onClick={()=>insertBookmark(selected.sightsId)}>북마크저장</MDBBtn>
                                                             }
                                                         </MDBCardBody>
                                                     </MDBCard>
@@ -281,7 +292,7 @@ export const SightsMap = () =>{
                                     ):null
                                 }
                                 {
-                                    (selected.xvalue && (selected.bookmarkList.length !== 0)) ? (
+                                    (selected.xvalue && (!sessionUser)) ? (
                                         (
                                             <InfoWindow
                                                 position={{lat:selected.xvalue, lng:selected.yvalue}}
@@ -300,7 +311,6 @@ export const SightsMap = () =>{
                                                                     <h4>주차가능수: {selected.parkingLot}</h4><br/>
                                                                     <h4>관광지 정보: {selected.info}</h4><br/>
                                                                 </MDBCardText>
-                                                                <img src={"https://image.flaticon.com/icons/svg/2876/2876727.svg"} width={40} height={40}/>
                                                             </MDBCardBody>
                                                         </MDBCard>
                                                     </MDBCol>

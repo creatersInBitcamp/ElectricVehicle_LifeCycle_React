@@ -44,14 +44,26 @@ export const ChargingStationMap = () =>{
     const [myData,setMyData] = useState([])
 
     useEffect(()=>{
-        axios.get('http://localhost:8080/chargingstations/getall')
-            .then((res)=>{
-                console.log(res.data)
-                setMyData(res.data)
-            })
-            .catch((err)=>{
-                console.log(err.status)
-            })
+        sessionUser?(
+            axios.get(`http://localhost:8080/chargingstations/getall/${user.userSeq}`)
+                .then((res)=>{
+                    console.log(res.data)
+                    setMyData(res.data)
+                })
+                .catch((err)=>{
+                    console.log(err.status)
+                })
+        ):(
+            axios.get(`http://localhost:8080/chargingstations/getall`)
+                .then((res)=>{
+                    console.log(res.data)
+                    setMyData(res.data)
+                })
+                .catch((err)=>{
+                    console.log(err.status)
+                })
+        )
+
     },[])
 
     const mapRef = useRef();
@@ -185,15 +197,16 @@ export const ChargingStationMap = () =>{
         const id = {
             id : stationID,
             charging : true,
-            userSeq: user.userSeq,
+            userId: user.userSeq,
         }
         console.log(id)
         axios.post('http://localhost:8080/bookmarks/insert',id)
             .then((res)=>{
                 console.log("북마크 저장 성공")
-                axios.get('http://localhost:8080/chargingstations/getall')
+                axios.get(`http://localhost:8080/chargingstations/getall/${user.userSeq}`)
                     .then((res)=>{
                         console.log(res.data)
+
                         setMyData(res.data)
                     })
                     .catch((err)=>{
@@ -246,7 +259,7 @@ export const ChargingStationMap = () =>{
                                     ))
                                 }
                                 {
-                                    (selected.xvalue && (selected.bookmarkList.length === 0)) ? (
+                                    (selected.xvalue && (sessionUser)) ? (
                                         <InfoWindow
                                             position={{lat:selected.xvalue, lng:selected.yvalue}}
                                             clickable={true}
@@ -266,9 +279,10 @@ export const ChargingStationMap = () =>{
                                                                 <h4>연락처: {selected.phone}</h4><br/>
                                                             </MDBCardText>
                                                             {
-                                                                sessionUser?
-                                                                    <MDBBtn color="secondary" onClick={()=>insertBookmark(selected.chargingStationId)}>북마크 저장</MDBBtn>
-                                                                    :null
+                                                                (selected.bookmarkList) && (sessionUser.userSeq === selected.userSeq)?
+                                                                    <img src={"https://image.flaticon.com/icons/svg/2876/2876727.svg"} width={40} height={40}/>
+                                                                    :<MDBBtn color="secondary" onClick={()=>insertBookmark(selected.chargingStationId)}>북마크 저장</MDBBtn>
+
                                                             }
                                                         </MDBCardBody>
                                                     </MDBCard>
@@ -278,7 +292,7 @@ export const ChargingStationMap = () =>{
                                     ) :null
                                 }
                                 {
-                                    (selected.xvalue && (selected.bookmarkList.length !== 0)) ? (
+                                    (selected.xvalue && (!sessionUser)) ? (
                                         (
                                             <InfoWindow
                                                 position={{lat:selected.xvalue, lng:selected.yvalue}}
@@ -298,7 +312,6 @@ export const ChargingStationMap = () =>{
                                                                     <h4>관리부서: {selected.agencyName}</h4><br/>
                                                                     <h4>연락처: {selected.phone}</h4><br/>
                                                                 </MDBCardText>
-                                                                <img src={"https://image.flaticon.com/icons/svg/2876/2876727.svg"} width={40} height={40}/>
                                                             </MDBCardBody>
                                                         </MDBCard>
                                                     </MDBCol>

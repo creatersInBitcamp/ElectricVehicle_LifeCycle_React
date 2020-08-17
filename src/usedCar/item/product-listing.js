@@ -2,35 +2,21 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {getVisibleUsedProducts} from '../../atomic/services/services';
 import {addToUsedWishlist} from '../page/UsedCarWishlist'
 import ProductItem from "./product-item";
-import {getAllProducts} from "./UsedProductReducer";
-import axios from "axios";
+import {usedCars} from "./UsedProductReducer";
 
 const ProductListing = props => {
-    const [limit, setLimit] = useState(5)
+    const [limit, setLimit] = useState(10)
     const [hasMoreItems, setHasMoreItems] = useState(true)
-    const [image,setImage] = useState('')
     const [items,setItems] = useState([])
 
-    const symbol = '만원'
-
-    /*useComponentWillMount(()=>{
-        fetchMoreItems()
-    })*/
+    const {symbol} = useSelector(state => ({
+        symbol: state.usedData.symbol,
+    }))
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/usedCars/getAllCarInfo`)
-            .then((res) => {
-                console.log(res.data)
-                setItems(res.data)
-            })
-            .catch(err => {
-                alert('axios error')
-                throw err
-            });
-        fetchMoreItems();
+        usedCars().then(r => setItems(r))
     },[])
 
     const fetchMoreItems = () =>{
@@ -41,13 +27,13 @@ const ProductListing = props => {
         // a fake async api call
         setTimeout(() => {
             setLimit(limit+5)
-        }, 3000)
+        }, 1000)
     }
 
     const dispatch = useDispatch()
 
-
     return <>
+        {console.log(items)}
         <div className="product-wrapper-grid">
             <div className="container-fluid">
                 {items.length > 0 ?

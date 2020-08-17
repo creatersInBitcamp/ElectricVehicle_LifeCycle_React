@@ -32,9 +32,11 @@ import {ForgetPassword,Login,MyAccount,Register,MyCarPage} from './user'
 
 
 import store from "./store";
+import {getAllUsedProducts} from "./usedCar/item/UsedProductReducer";
 
-const Root =()=> {
+const Root = () => {
     store.dispatch(getAllProducts());
+    store.dispatch(getAllUsedProducts());
     console.log(store.getState())
     return (
         <Provider store={store}>
@@ -68,9 +70,9 @@ const Root =()=> {
 
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>
-                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/product/:eccarId`} component={productDetail}/>
-                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/purchase/request/:eccarId`} component={PurchaseRequest}/>
-                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/comparison/:eccarId`} component={MyCarComparison}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/product/:usedCarId`} component={productDetail}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/purchase/request/:usedCarId`} component={PurchaseRequest}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/comparison/:usedCarId`} component={MyCarComparison}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/sales`} component={SalesForm}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/scrapped`} component={Scrapped}/>
                                 <Route path={`${process.env.PUBLIC_URL}/used-car/wishlist`} component={UsedWishlist}/>

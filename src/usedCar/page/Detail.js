@@ -7,11 +7,18 @@ import '../../common/index.scss';
 import {Breadcrumb} from "../../common";
 import {MyCar,MarketPrice} from "../index";
 import {addToUsedWishlist} from "./UsedCarWishlist";
+import {usedCars} from "../item/UsedProductReducer";
 
 export const productDetail = () => {
     const [state, setState] = useState({ nav1: null, nav2: null });
+    const [items,setItems] = useState([])
+
     const slider1 = useRef();
     const slider2 = useRef();
+
+    useEffect(()=>{
+        usedCars().then(r => setItems(r))
+    },[])
 
     useEffect(() => {
         setState({
@@ -20,14 +27,15 @@ export const productDetail = () => {
         })
     }, [])
 
-    const match = useRouteMatch('/used-car/product/:eccarId')
-    const {symbol, item} = useSelector((state) => {
-        let productId = match.params.id
+    const match = useRouteMatch('/used-car/product/:usedCarId')
+    const {symbol, item} = useSelector((state)=>{
+        let productId = match.params.usedCarId
         return {
-            item: state.data.products.find(el => el.id == productId),
-            symbol: state.data.symbol
+            item: items.find(el => el.usedCarId == productId),
+            symbol: state.usedData.symbol
         }
     })
+
     const products = {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -50,7 +58,8 @@ export const productDetail = () => {
 
     return <>
         <div>
-            <Breadcrumb parent={'Product'} title={item.carName} />
+            {console.log(item)}
+            <Breadcrumb parent={'Product'} title={typeof item} />
             {(item)?
                 <section className="section-b-space">
                     <div className="collection-wrapper">
@@ -72,32 +81,18 @@ export const productDetail = () => {
                                         <div className="row">
                                             <div className="col-lg-6 product-thumbnail">
                                                 <Slider {...products} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
-                                                    {item.variants?
-                                                        item.variants.map((vari, index) =>
-                                                            <div key={index}>
-                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0" alt={""} />
-                                                            </div>
-                                                        ):
-                                                        item.pictures.map((vari, index) =>
-                                                            <div key={index}>
-                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0"  alt={""} />
-                                                            </div>
-                                                        )}
+                                                    <img src={item.img.img1} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                    <img src={item.img.img2} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                    <img src={item.img.img3} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                    <img src={item.img.img4} className="img-fluid image_zoom_cls-0" alt={""} />
                                                 </Slider>
                                                 <div className="row">
                                                     <div className="col-12 p-0">
                                                         <Slider {...productsNav} asNavFor={state.nav1} ref={slider => (state.nav2 = slider)} className="slider-nav">
-                                                            {item.variants?
-                                                                item.variants.map((vari, index) =>
-                                                                    <div key={index}>
-                                                                        <img src={`${vari.images}`} key={index} alt=""  className="img-fluid" />
-                                                                    </div>
-                                                                ):
-                                                                item.pictures.map((vari, index) =>
-                                                                    <div key={index}>
-                                                                        <img src={`${vari}`} key={index} alt=""  className="img-fluid" />
-                                                                    </div>
-                                                                )}
+                                                            <img src={`${item.img.img1}`} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                            <img src={`${item.img.img2}`} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                            <img src={`${item.img.img3}`} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                            <img src={`${item.img.img4}`} className="img-fluid image_zoom_cls-0" alt={""} />
                                                         </Slider>
                                                     </div>
                                                 </div>
@@ -112,7 +107,7 @@ export const productDetail = () => {
                                                         </div>
                                                     </div>
                                                     <div className="product-buttons" >
-                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.eccarId}`}
+                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.usedCarId}`}
                                                               className="btn btn-solid" >purchase request</Link>
                                                     </div>
                                                     <div className="border-product">
@@ -154,13 +149,6 @@ export const productDetail = () => {
                                                             <span className="nav-link" >
                                                                 <i className="icofont icofont-contacts"/>
                                                                 Chart
-                                                            </span>
-                                                            <div className="material-border"/>
-                                                        </Tab>
-                                                        <Tab className="nav-item">
-                                                            <span className="nav-link" >
-                                                                <i className="icofont icofont-contacts"/>
-                                                                Write Comments
                                                             </span>
                                                             <div className="material-border"/>
                                                         </Tab>
@@ -208,35 +196,6 @@ export const productDetail = () => {
                                                         <div className="mt-4 text-center">
                                                             <MarketPrice/>
                                                         </div>
-                                                    </TabPanel>
-                                                    <TabPanel>
-                                                        {/* 댓글 리스트 */}
-                                                        <table className={"table"}>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th rowSpan={5}>댓글</th>
-                                                                    <th>글쓴이</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <td>1</td>
-                                                                <td rowSpan={5}>test</td>
-                                                                <td>김수빈</td>
-                                                            </tbody>
-                                                        </table>
-                                                        {/* 댓글 쓰기 */}
-                                                        <form className="theme-form mt-4">
-                                                            <div className="form-row">
-                                                                <h6>궁금한 점이 있다면 물어보세요!</h6>
-                                                                <div className="col-md-12">
-                                                                    <textarea className="form-control" placeholder="Write Your Question Here" id="exampleFormControlTextarea1" rows="6"/>
-                                                                </div>
-                                                                <div className="col-md-12">
-                                                                    <button className="btn btn-solid" type="submit">Submit YOur DetailContents</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
                                                     </TabPanel>
                                                 </Tabs>
                                             </div>

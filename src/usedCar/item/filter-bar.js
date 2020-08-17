@@ -1,10 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {filterSort} from '../../common'
-import {getVisibleproducts} from '../../atomic/services/services';
-import axios from "axios";
+import {usedCars} from "./UsedProductReducer";
 
-const FilterBar = props => {
+const FilterBar = ({onLayoutViewClicked}) => {
+    const [items,setItems] = useState([])
+
+    useEffect(()=>{
+        usedCars().then(r => setItems(r))
+    },[])
+
     //List Layout View
     const listLayout = () => {
         document.querySelector(".collection-grid-view").style = "opacity:0";
@@ -40,20 +45,8 @@ const FilterBar = props => {
                 el.classList.add('col-lg-'+colSize);
             })
         }
-        props.onLayoutViewClicked(colSize);
+        onLayoutViewClicked(colSize);
     }
-    const [items,setItems] = useState([])
-    useEffect(()=>{
-        axios.get(`http://localhost:8080/usedCars/getall`)
-            .then((res) => {
-                console.log(res.data)
-                setItems(res.data)
-            })
-            .catch(err => {
-                alert('axios error')
-                throw err
-            });
-    },[])
 
     const dispatch = useDispatch()
 

@@ -107,8 +107,8 @@ export const HeaderOne = props =>{
 															<li><a href={null} onClick={() => changeLanguage('ko')}>Korea</a> </li>
 															<li><a href={null} onClick={() => changeLanguage('en')}>English</a> </li>
 														</ul>
-														{/*<h6>currency</h6>
-														<ul className="list-inline">
+														<h6>currency</h6>
+														{/*<ul className="list-inline">
 															<li><a href={null} onClick={()=>{dispatch(changeCurrency('만원'))}}>won</a> </li>
 															<li><a href={null} onClick={()=>{dispatch(changeCurrency('만￦'))}}>doller</a> </li>
 														</ul>*/}

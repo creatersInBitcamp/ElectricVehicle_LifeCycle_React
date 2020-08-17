@@ -4,6 +4,7 @@ import Modal from 'react-responsive-modal';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import {Table} from '../item'
+import http from "../item/http";
 
 const elecCarTypes = {REQUEST: 'elecCar/REQUEST'}
 const initialState = {
@@ -19,6 +20,7 @@ export const ElecCar = () => {
 
     const [open, setOpen] = useState(false)
     const [data, setDate] = useState([])
+    const [files, setFile] = useState(undefined)
 
     useEffect(()=>{
         axios.get(`http://localhost:8080/electriccars/getall`)
@@ -52,6 +54,39 @@ export const ElecCar = () => {
     const onCloseModal = () => {
         setOpen(false)
     };
+
+    const addFile = (e) => {
+        setFile(e.target.files[0])
+    }
+    const uploadService = (files) => {
+        let formData = new FormData();
+        formData.append("file", files)
+        return http.post("/user/uploadFile", formData, {})
+    }
+
+    const saveFile = (e) => {
+        e.preventDefault()
+        console.log(files)
+        uploadService(files)
+            .then((res) => {
+            })
+            .catch((err)=>{
+                throw err
+            })
+
+
+
+        /*axios.post(`http://localhost:8080/user/addCar`, files)
+            .then((res)=>{
+                console.log(res.data)
+            })
+            .catch((err)=>{
+                console.log(err)
+                throw err
+            })*/
+        setOpen(false)
+    }
+
         return (
             <>
                 <AdminBreadcrumb title="전기차" parent="Physical" />
@@ -73,17 +108,13 @@ export const ElecCar = () => {
                                             <div className="modal-body">
                                                 <form>
                                                     <div className="form-group">
-                                                        <label htmlFor="recipient-name" className="col-form-label" >Category Name :</label>
-                                                        <input type="text" className="form-control" />
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label htmlFor="message-text" className="col-form-label">Category Image :</label>
-                                                        <input className="form-control" id="validationCustom02" type="file" />
+                                                        <label htmlFor="message-text" className="col-form-label">CSV 파일 :</label>
+                                                        <input className="form-control" id="validationCustom02" type="file" onChange={addFile} />
                                                     </div>
                                                 </form>
                                             </div>
                                             <div className="modal-footer">
-                                                <button type="button" className="btn btn-primary" onClick={() => onCloseModal('VaryingMdo')}>Save</button>
+                                                <button type="button" className="btn btn-primary" onClick={saveFile}>Save</button>
                                                 <button type="button" className="btn btn-secondary" onClick={() => onCloseModal('VaryingMdo')}>Close</button>
                                             </div>
                                         </Modal>

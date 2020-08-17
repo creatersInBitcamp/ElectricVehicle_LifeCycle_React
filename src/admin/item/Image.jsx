@@ -18,7 +18,7 @@ export const Image = () => {
     const uploadService = file => {
         let formData = new FormData();
         formData.append("file", file)
-        return http.post("/", formData, {})
+        return http.post("/imgUpload", formData, {})
     }
 
     const upload = () => {

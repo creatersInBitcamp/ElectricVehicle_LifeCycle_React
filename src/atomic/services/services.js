@@ -1,5 +1,4 @@
 import axios from 'axios'
-import {useState} from 'react'
 // Get Unique Brands from Json Data
 export const getBrands = (products) => {
     var uniqueBrands = [];
@@ -13,20 +12,6 @@ export const getBrands = (products) => {
     //console.log(uniqueBrands)
     return uniqueBrands;
 }
-/*export const getAges = (products) => {
-    const uniqueAges = [];
-    products.map((product, index) => {
-        if (product.age) {
-            product.age.map((age) => {
-                if (uniqueAges.indexOf(age) === -1) {
-                    uniqueAges.push(age);
-                }
-            })
-        }
-    })
-    console.log(uniqueAges)
-    return uniqueAges;
-}*/
 
 // Get Unique Colors from Json Data
 export const getColors = (products) => {
@@ -43,24 +28,20 @@ export const getColors = (products) => {
     //console.log(uniqueBrands)
     return uniqueColors;
 }
-/*export const getMileages = (products) => {
-    const uniqueMileages = [];
-    products.map((product, index) => {
-        if(product.colors) {
-            product.colors.map((mileage) => {
-                if (uniqueMileages.indexOf(mileage) === -1) {
-                    uniqueMileages.push(mileage);
-                }
-            })
-        }
-    })
-    console.log(uniqueMileages)
-    return uniqueMileages;
-}*/
-
 // Get Minimum and Maximum Prices from Json Data
 export const getMinMaxPrice = (products) => {
     let min = 100, max = 15000;
+
+    products.map((product, index) => {
+        let v = product.price;
+        min = (v < min) ? v : min;
+        max = (v > max) ? v : max;
+    })
+
+    return {'min':min, 'max':max};
+}
+export const getMinMaxUsedPrice = (products) => {
+    let min = 100, max = 10000;
 
     products.map((product, index) => {
         let v = product.price;

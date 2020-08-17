@@ -1,11 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 
-export const ProductItem = props => {
-    const [open,setOpen] = useState(false)
-    const [stock,setStock] = useState('InStock')
-    const [quantity,setQuantity] = useState(1)
-    const [image,setImage] = useState('')
+export const ProductItem = (props) => {
     const {product, symbol, onAddToWishlistClicked} = props;
 
     return <>
@@ -13,7 +9,7 @@ export const ProductItem = props => {
             <div className="img-wrapper">
                 <div className="front">
                     <Link to={`${process.env.PUBLIC_URL}/used-car/product/${product.usedCarId}`}>
-                        <img src={product.usedCar.img.img1} className={"img-fluid"}/>
+                        <img src={product.img.img1} className={"img-fluid"}/>
                     </Link>
                 </div>
                 <div className="cart-info cart-wrap">
@@ -25,7 +21,7 @@ export const ProductItem = props => {
             <div className="product-detail">
                 <div>
                     <Link to={`${process.env.PUBLIC_URL}/used-car/product/${product.usedCarId}`}>
-                        <h6>{product.age}</h6>
+                        <h6>{product.carName}&nbsp;{product.age}</h6>
                     </Link>
                     <h4>{product.price}{symbol}</h4>
                 </div>

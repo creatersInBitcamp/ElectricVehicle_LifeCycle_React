@@ -12,11 +12,6 @@ const noticeReducer = ( state={}, action ) => {
 
 export const Notice = () => {
 
-    const [picture, setPicture] = useState([])
-
-    const getPicture = (picture) => {
-        setPicture(picture)
-    }
         return (
             <>
                 <AdminBreadcrumb title="공지사항" parent="Menu" />

@@ -1,14 +1,14 @@
 /* types */
-const FILTER_AGE = 'FILTER_AGE'
+const FILTER_BRAND = 'FILTER_BRAND'
 const FILTER_MILEAGE = 'FILTER_MILEAGE'
 const FILTER_PRICE = 'FILTER_PRICE'
 const SORT_BY = 'SORT_BY'
 
 
 /* actions */
-export const filterAge = (age) => ({
-    type: FILTER_AGE,
-    age
+export const filterBrand = (brand) => ({
+    type: FILTER_BRAND,
+    brand
 });
 export const filterMileage = (mileage) => ({
     type: FILTER_MILEAGE,
@@ -24,21 +24,19 @@ export const filterSort = (sort_by) => ({
 });
 
 /* reducer */
-const filtersReducerDefaultState = {
+export const filtersReducerDefaultState = {
     brand: ["르노삼성"],
-    value: { min: 250, max: 3000 },
+    value: { min: 100, max: 5000 },
     sortBy: ""
 };
 
 const usedFiltersReducer = (state = filtersReducerDefaultState, action) => {
-    // console.log('Action Result');
-    // console.log(action);
     switch (action.type) {
-        case FILTER_AGE:
+        case FILTER_BRAND:
             return {
                 ...state,
-                age: action.age
-            };
+                brand: action.brand
+            }
         case FILTER_MILEAGE:
             return {
                 ...state,

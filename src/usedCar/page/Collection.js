@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import StickyBox from "react-sticky-box";
 import FilterBar from "../item/filter-bar";
 import ProductListing from "../item/product-listing";
 import Filter from "../item/Filter"
 import MyCar from "../item/MyCar";
-import {Breadcrumb,NewProduct} from "../../common";
+import {Breadcrumb} from "../../common";
 
 export const UsedPurchaseCollection = () => {
     const [layoutColumns, setLayoutColumns] = useState(3)
@@ -19,6 +19,7 @@ export const UsedPurchaseCollection = () => {
                         <div className="col-sm-3 collection-filter">
                             <StickyBox offsetTop={20} offsetBottom={20}>
                                 <MyCar/>
+                                <Filter/>
                             </StickyBox>
                         </div>
                         <div className="collection-content col">
@@ -31,7 +32,7 @@ export const UsedPurchaseCollection = () => {
                                                     <div className="container-fluid p-0">
                                                         <div className="row">
                                                             <div className="col-12">
-                                                                <FilterBar onLayoutViewClicked={(columns) => LayoutViewClicked(columns)}/>
+                                                                <FilterBar onLayoutViewClicked={(columns) => LayoutViewClicked(columns)} />
                                                             </div>
                                                         </div>
                                                     </div>

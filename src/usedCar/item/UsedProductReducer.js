@@ -1,25 +1,19 @@
 import axios from "axios";
 import {CHANGE_CURRENCY} from "../../common/item/currency";
 
-
-
-const test = () => {
-    let _products = []
-    axios.get(`http://localhost:8080/usedCars/getall`)
-        .then((res) => {
-            console.log(res.data)
-            alert('axios success')
-            _products.push(res.data)
+export const usedCars = () => {
+    return axios.get(`http://localhost:8080/usedCars/carInfo`)
+        .then((res)=> {
+            return res.data
         })
         .catch(err => {
             alert('axios error')
             throw err
         })
-    return _products
 }
 
 const shop = {
-    getProducts: (cb, timeout) => setTimeout(() => cb(test()), timeout || 100),
+    getProducts: (cb, timeout) => setTimeout(() => cb(usedCars()), timeout || 100),
     buyProducts: (payload, cb, timeout) => setTimeout(() => cb(), timeout || 100)
 }
 
@@ -35,6 +29,7 @@ export const getAllUsedProducts = () => dispatch => {
     dispatch(fetchProductsBegin())
     shop.getProducts(products => {
         dispatch(receiveProducts(products))
+        console.log(products)
         return products
     })
 }
@@ -44,7 +39,8 @@ const initialState = {
     products: [],
     symbol: '만원',
     product_details: []
-};
+}
+
 /* reducer */
 const usedProductReducer = (state = initialState, action) => {
     switch (action.type) {

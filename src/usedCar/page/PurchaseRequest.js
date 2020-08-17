@@ -1,19 +1,31 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import axios from "axios";
 import {useRouteMatch} from 'react-router-dom';
 import {Breadcrumb} from "../../common";
-
-const sessionUser = JSON.parse(sessionStorage.getItem('user'))
+import {usedCars} from "../item/UsedProductReducer";
 
 export const PurchaseRequest = (props) => {
-    const [user,setUser] = useState(sessionUser)
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [address, setAddress] = useState('')
     const [agreement, setAgreement] = useState('')
     const [submitted,setSubmitted] = useState(false)
+    const [items,setItems] = useState([])
+
+    useEffect(()=>{
+        usedCars().then(r => setItems(r))
+    },[])
+
+    const match = useRouteMatch('/used-car/purchase/request/:usedCarId')
+    const {symbol, item} = useSelector((state)=>{
+        let productId = match.params.usedCarId
+        return {
+            item: items.find(el => el.usedCarId == productId),
+            symbol: state.usedData.symbol
+        }
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -24,7 +36,7 @@ export const PurchaseRequest = (props) => {
                 buyerPhoneNumber: phone,
                 buyerEmail: email,
                 buyerAddr: address,
-                usedCar: item.eccarId
+                usedCarId: item.usedCarId
             }
             console.log(info)
             axios.post(`http://localhost:8080/sales/register`, info)
@@ -36,17 +48,6 @@ export const PurchaseRequest = (props) => {
                 })
         }
     }
-
-    const match = useRouteMatch('/used-car/purchase/request/:id')
-    const {item, symbol} = useSelector(state => {
-        let productId = match.params.id
-        return {
-            item: state.data.products.find(el => el.id == productId),
-            symbol: state.data.symbol
-        }
-    })
-
-
 
     return <>
         <Breadcrumb  title={'checkout request'}/>

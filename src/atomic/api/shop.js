@@ -42,10 +42,11 @@ const elccar = () => {
     let picture16=[];
     let picture17=[];
     let picture18=[];
-    axios.get(`http://localhost:8080/electriccars/getall`)
+    axios.get(`http://localhost:8080/electriccars/findall`)
         .then((res) => {
-            first.push(res.data)
-            first.map((product)=>{
+            products.push(res.data)
+            console.log(products)
+            /*first.map((product)=>{
                 product.map((item,i)=>{
                     second = item
                     color1.push(item.color1)
@@ -80,7 +81,7 @@ const elccar = () => {
                     products.push(second)
                 })
                 console.log(products)
-            })
+            })*/
         })
         .catch(err => {
             alert('axios error')

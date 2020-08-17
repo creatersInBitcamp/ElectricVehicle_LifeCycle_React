@@ -1,31 +1,58 @@
 import React, {useState} from 'react';
-import ImageUploader from 'react-images-upload'
+import http from "./http";
 
-const imageTypes = {REQUEST: 'image/REQUEST'}
-const imageRequest = action => ({type: imageTypes.REQUEST, payload: action.payload})
 const imageReducer = ( state={}, action ) => {
     switch (action.type) {
-        case imageTypes.REQUEST: return {...state, payload: action.payload}
         default: return state
     }
 }
 
-export const Image = ({getPicture}) => {
-    const [image, setImage] = useState([])
-    const onDrop = (pictureFiles, pictureBase64) => {
-        setImage(pictureFiles)
-        getPicture(image)
+export const Image = () => {
+    const[content, setContent] = useState(undefined)
+    const[img, setImg] = useState(undefined)
+    const[message, setMessage] = useState('')
+
+    const addFile = e => {
+        setContent(e.target.files[0]);
+    };
+    const uploadService = file => {
+        let formData = new FormData();
+        formData.append("file", file)
+        return http.post("/", formData, {})
     }
-        return (
-            <ImageUploader
-            label={'jpg, jpeg, png, gif 파일만 가능'}
-            withIcon={true}
-            buttonText='이미지를 선택하세요'
-            onChange={onDrop}
-            withPreview={true}
-            imgExtension={['.jpg','.jpeg', '.gif','.png']}
-            />
-        )
+
+    const upload = () => {
+        let currentFile = content
+        setImg(currentFile)
+
+        uploadService(currentFile, e =>{})
+            .then((res)=>{
+                setMessage(res.data)
+            })
+            .catch(()=>{
+                setMessage("파일업로드 실패")
+                setImg(undefined)
+            })
+        setContent(undefined)
+    }
+
+
+    return (
+        <>
+                {img ? (
+                    <>
+                        <img src={img.filePath} alt="" />
+                        <h3>{img.fileName}</h3>
+                    </>
+                ) : (
+                    ""
+                )}
+                <input type="file" onChange={addFile} />
+                <button type="button" onClick={upload}>Upload</button>
+
+        </>
+
+    )
 }
 
 export default imageReducer

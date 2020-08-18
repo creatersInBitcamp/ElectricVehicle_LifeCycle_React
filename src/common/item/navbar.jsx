@@ -70,6 +70,9 @@ export const NavBar = (props) => {
             e.target.nextElementSibling.classList.add('opensubmenu')
         }
     }
+    const loginRequired = () => {
+
+    }
 
     const translate = useTranslate();
 
@@ -103,13 +106,19 @@ export const NavBar = (props) => {
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/used-car/collection`}>{translate('used_car_purchase')}</Link>
+                                <li>
+                                    <Link to={`${process.env.PUBLIC_URL}/used-car/collection`}>{translate('used_car_purchase')}</Link>
                                 </li>
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/used-car/sales`}>{translate('used_car_sales')}</Link>
+                                <li>
+                                    {
+                                        session ?
+                                            <Link to={`${process.env.PUBLIC_URL}/used-car/sales`} onClick={loginRequired}>{translate('used_car_sales')}</Link>
+                                            :
+                                            <Link to={`${process.env.PUBLIC_URL}/pages/login`} onClick={()=>alert(`로그인이 필요한 서비스입니다.`)}>{translate('used_car_sales')}</Link>
+                                    }
                                 </li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/scrapped`}>{translate('scrapped')}</Link>
+                                <li>
+                                    <Link to={`${process.env.PUBLIC_URL}/scrapped`}>{translate('scrapped')}</Link>
                                 </li>
                             </ul>
                         </li>

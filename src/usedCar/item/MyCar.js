@@ -37,7 +37,7 @@ export const MyCar = () => {
     return <>
 
         {session ?
-            (first ?
+            (first.length > 0 ?
                 <div className="collection-filter-block">
                     <h2 style={{textAlign: "center", padding: "15px"}}>My Car</h2>
                     {first.map((item) => {

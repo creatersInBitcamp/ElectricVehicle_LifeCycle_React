@@ -80,7 +80,7 @@ export const MyAccount = () => {
                                 <div className="dashboard-right">
                                     <div className="dashboard">
                                         <div className="container-fluid">
-                                             
+
                                             <div className="row">
                                                 <div className="col-xl-4">
                                                     <div className="card">

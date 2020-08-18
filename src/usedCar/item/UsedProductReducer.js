@@ -18,22 +18,22 @@ const shop = {
 }
 
 /* types */
-const FETCH_PRODUCTS_BEGIN = 'FETCH_PRODUCTS_BEGIN'
-const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
-const FETCH_SINGLE_PRODUCT = 'FETCH_SINGLE_PRODUCT'
+const FETCH_USED_PRODUCTS_BEGIN = 'FETCH_USED_PRODUCTS_BEGIN'
+const RECEIVE_USED_PRODUCTS = 'RECEIVE_USED_PRODUCTS'
+const FETCH_SINGLE_USED_PRODUCT = 'FETCH_SINGLE_USED_PRODUCT'
 
 /* actions */
-export const fetchProductsBegin = () => ({ type: FETCH_PRODUCTS_BEGIN })
-export const receiveProducts = products => ({ type: RECEIVE_PRODUCTS, products })
+export const fetchProductsBegin = () => ({ type: FETCH_USED_PRODUCTS_BEGIN })
+export const receiveProducts = products => ({ type: RECEIVE_USED_PRODUCTS, products })
 export const getAllUsedProducts = () => dispatch => {
     dispatch(fetchProductsBegin())
-    shop.getProducts(products => {
-        dispatch(receiveProducts(products))
-        console.log(products)
-        return products
+    shop.getProducts(usedProducts => {
+        dispatch(receiveProducts(usedProducts))
+        console.log(usedProducts)
+        return usedProducts
     })
 }
-export const fetchSingleProduct = productId => ({ type: FETCH_SINGLE_PRODUCT, productId })
+export const fetchSingleProduct = productId => ({ type: FETCH_SINGLE_USED_PRODUCT, productId })
 
 const initialState = {
     products: [],
@@ -44,10 +44,10 @@ const initialState = {
 /* reducer */
 const usedProductReducer = (state = initialState, action) => {
     switch (action.type) {
-        case RECEIVE_PRODUCTS:
+        case RECEIVE_USED_PRODUCTS:
             return { ...state,
                 products: action.products };
-        case FETCH_SINGLE_PRODUCT:
+        case FETCH_SINGLE_USED_PRODUCT:
             if (state.products.findIndex(product => product.id === action.productId) !== -1) {
                 const singleItem = state.products.reduce((itemAcc, product) => {
                     return product

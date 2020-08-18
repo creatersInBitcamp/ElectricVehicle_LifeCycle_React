@@ -1,22 +1,30 @@
 import React, {useEffect, useState} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {useDispatch, useSelector} from 'react-redux'
-import {getBestSeller, getSpecialUsed, getPosts, getWomensWear} from '../../atomic/services/services'
+import {getBestSeller, getSpecialUsed, getWomensWear} from '../../atomic/services/services'
 import {ProductItem}from '../../usedCar'
 import {PostItem} from '../../board'
 import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
 import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
 import {receivePosts} from "../../board/items/BoardReducer";
 import axios from "axios";
+import {usedCars} from "../../usedCar/item/UsedProductReducer";
 
 export const SpecialProducts = () => {
-    const {bestSeller,usedCar,womensWear,symbol} = useSelector(state=>({
+    const [items,setItems] = useState([])
+    const {bestSeller,womensWear,symbol} = useSelector(state=>({
         bestSeller: getBestSeller(state.data.products),
-        usedCar: getSpecialUsed(state.usedData.products),
         womensWear: getWomensWear(state.data.products),
         // posts: receivePosts(),
         symbol: state.data.symbol
     }))
+
+    useEffect(()=>{
+        usedCars().then(r => setItems(r))
+    },[])
+
+    const usedCar = getSpecialUsed(items)
+
     useEffect(()=>{
         axios.get('http://localhost:8080/posts/getall')
             .then((res)=>{
@@ -59,7 +67,7 @@ export const SpecialProducts = () => {
                             <div className="no-slider row">
                                 { usedCar.map((product, index ) =>
                                     <ProductItem product={product} symbol={symbol}
-                                                 onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(product))}} key={index} /> )
+                                                 onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(items))}} key={index} /> )
                                 }
                             </div>
                         </TabPanel>

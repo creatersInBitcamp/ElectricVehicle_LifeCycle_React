@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Breadcrumb} from "../../common";
 import {useSelector} from "react-redux";
 import axios from "axios";
-import products from '../../atomic/api/eccar.json'
+// import products from '../../atomic/api/eccar.json'
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -40,14 +40,14 @@ export const SalesForm = (props) => {
                 alert('통신실패')
             })
     }
-    const onClickSelect = (e) => {
-        e.preventDefault()
-        let product = products.find(x => x.eccarId == targetId)
-        setItem(product)
-        setCarId(targetId)
-        setCarName(product.carName)
-        console.log(product)
-    }
+    // const onClickSelect = (e) => {
+    //     e.preventDefault()
+    //     let product = products.find(x => x.eccarId == targetId)
+    //     setItem(product)
+    //     setCarId(targetId)
+    //     setCarName(product.carName)
+    //     console.log(product)
+    // }
 
     return <>
         <Breadcrumb title={'Selling Used Car'}/>
@@ -63,13 +63,13 @@ export const SalesForm = (props) => {
                                         <label htmlFor="car-type">차종</label>
                                         <select onChange={(e)=>setTargetId(e.target.value)}>
                                             <option value="default">차종을 선택해주세요.</option>
-                                            {
+                                            {/*{
                                                 products.map((item,index)=>{
                                                     return <option key={index} value={item.eccarId}>{item.carName}</option>
                                                 })
-                                            }
+                                            }*/}
                                         </select>&nbsp;
-                                        <button className="btn btn-solid" onClick={onClickSelect}>선택</button>
+                                        <button className="btn btn-solid" onClick={{/*onClickSelect*/}}>선택</button>
                                     </div>
                                     <div className="col">
                                         <label htmlFor="car-type">차종</label>

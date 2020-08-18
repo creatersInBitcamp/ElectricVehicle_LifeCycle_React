@@ -1,7 +1,7 @@
 import axios from 'axios'
 // Get Unique Brands from Json Data
 export const getBrands = (products) => {
-    var uniqueBrands = [];
+    const uniqueBrands = [];
     products.map((product, index) => {
         if (product.brand) {
             if (uniqueBrands.indexOf(product.brand) === -1) {
@@ -9,7 +9,18 @@ export const getBrands = (products) => {
             }
         }
     })
-    //console.log(uniqueBrands)
+    console.log(uniqueBrands)
+    return uniqueBrands;
+}
+export const getUsedBrands = (products) => {
+    const uniqueBrands = [];
+    products.map((product, index) => {
+        if (product.brand) {
+            if (uniqueBrands.indexOf(product.brand) === -1) {
+                uniqueBrands.push(product.brand);
+        }
+    })
+    console.log(uniqueBrands)
     return uniqueBrands;
 }
 
@@ -41,10 +52,11 @@ export const getMinMaxPrice = (products) => {
     return {'min':min, 'max':max};
 }
 export const getMinMaxUsedPrice = (products) => {
-    let min = 100, max = 10000;
+    let min = 100, max = 5000;
 
     products.map((product, index) => {
-        let v = product.price;
+        let price = product.price.replace(",","")
+        let v = parseInt(price)
         min = (v < min) ? v : min;
         max = (v > max) ? v : max;
     })
@@ -203,9 +215,9 @@ export const getBestSeller = products => {
 }
 
 // Get Mens Wear
-export const getMensWear = products => {
+export const getSpecialUsed = products => {
     const items = products.filter(product => {
-        return product.sale === true;
+        return product.yyyy >= 2019;
     })
 
     return items.slice(0,8)

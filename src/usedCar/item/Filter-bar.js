@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux'
-import {filterSort} from '../../common'
+import {filterSort} from '../../newCar'
 import {usedCars} from "./UsedProductReducer";
 
 const FilterBar = ({onLayoutViewClicked}) => {

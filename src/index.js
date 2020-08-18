@@ -9,13 +9,13 @@ import './index.scss';
 
 //common
 import Layout from './App'
-import {Main,Search,Faq,aboutUs,getAllProducts} from "./common"
+import {Main,Search,Faq,aboutUs} from "./common"
 
 //new car
-import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar'
+import {wishlist, CartComponent, checkOut, Compare, CollectionLeftSidebar, LeftSideBar, getAllProducts} from './newCar'
 
 //used car
-import {UsedPurchaseCollection,productDetail,PurchaseRequest,MyCarComparison,SalesForm,UsedWishlist,Scrapped} from './usedCar'
+import {UsedPurchaseCollection,productDetail,PurchaseRequest,MyCarComparison,SalesForm,UsedWishlist,Scrapped,} from './usedCar'
 
 //map
 import {ChargingStationMap,SightsMap,TableChargingStation,BookmarkMap} from "./map/items";

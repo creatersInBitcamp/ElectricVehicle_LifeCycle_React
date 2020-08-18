@@ -5,7 +5,7 @@ import 'react-input-range/lib/css/index.css';
 import { SlideToggle } from 'react-slide-toggle';
 
 import {getBrands, getColors, getMinMaxPrice} from '../../atomic/services/services';
-import {filterBrand, filterColor, filterPrice} from '../../common'
+import {filterBrand, filterColor, filterPrice} from '../../newCar'
 
 export const Filter = () => {
     // const [openFilter, setOpenFilter] = useState(false)

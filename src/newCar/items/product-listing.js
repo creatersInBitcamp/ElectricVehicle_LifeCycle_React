@@ -2,24 +2,28 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import useComponentWillMount from 'component-will-mount-hook'
 import {addToCart,addToWishlist,addToCompare} from '../index'
 import {getVisibleproducts} from '../../atomic/services/services';
 import {ProductListItem} from "../index";
-import {getAllProducts} from "../../common";
+import {elecCars} from "./productReducer";
 
 export const ProductListing = props => {
     const [limit, setLimit] = useState(5)
     const [hasMoreItems, setHasMoreItems] = useState(true)
+    const [items,setItems] = useState([])
+    const [filter,setFiller] = useState()
 
     const {products, symbol} = useSelector(state=>({
         products: getVisibleproducts(state.data, state.filters),
         symbol: state.data.symbol,
     }))
+/*
+    useEffect(()=>{
+        elecCars().then(r => setItems(r))
+    },[])
 
-    /*useComponentWillMount(()=>{
-        fetchMoreItems()
-    })*/
+    const products = getVisibleproducts(items, state.filters)*/
+
 
     useEffect(()=>{
         fetchMoreItems()

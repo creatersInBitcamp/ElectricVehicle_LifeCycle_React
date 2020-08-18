@@ -1,6 +1,5 @@
-import shop from "../../atomic/api/shop";
-import {CHANGE_CURRENCY} from "./currency";
-import axios from "axios";
+import shops from "../../atomic/api/shop";
+import {CHANGE_CURRENCY} from "../../common/item/currency";
 
 /* types */
 const FETCH_PRODUCTS_BEGIN = 'FETCH_PRODUCTS_BEGIN'
@@ -13,11 +12,15 @@ export const fetchProductsBegin = () => ({ type: FETCH_PRODUCTS_BEGIN })
 export const receiveProducts = products => ({ type: RECEIVE_PRODUCTS, products })
 export const getAllProducts = () => dispatch => {
     dispatch(fetchProductsBegin())
-    shop.getProducts(products => {
+    shops.getProducts(products => {
+        console.log(products)
         dispatch(receiveProducts(products))
         return products
     })
+
 }
+
+
 export const fetchSingleProduct = productId => ({ type: FETCH_SINGLE_PRODUCT, productId })
 
 const initialState = {

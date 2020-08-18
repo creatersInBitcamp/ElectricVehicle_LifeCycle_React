@@ -41,7 +41,7 @@ export const Image = () => {
         <>
                 {img ? (
                     <>
-                        <img src={img.filePath} alt="" />
+                        <img src={img} alt="" />
                         <h3>{img.fileName}</h3>
                     </>
                 ) : (

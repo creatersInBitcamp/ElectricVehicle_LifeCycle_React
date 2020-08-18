@@ -35,8 +35,8 @@ import store from "./store";
 import {getAllUsedProducts} from "./usedCar/item/UsedProductReducer";
 
 const Root = () => {
-    store.dispatch(getAllProducts());
-    store.dispatch(getAllUsedProducts());
+    // store.dispatch(getAllProducts());
+    // store.dispatch(getAllUsedProducts());
     console.log(store.getState())
     return (
         <Provider store={store}>

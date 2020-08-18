@@ -44,8 +44,8 @@ export const FilterBar = props => {
     }
 
     const {products, filters} = useSelector(state=>({
-        // products: getVisibleproducts(state.data, state.filters),
-        // filters: state.filters
+        products: getVisibleproducts(state.data, state.filters),
+        filters: state.filters
     }))
 
     const dispatch = useDispatch()

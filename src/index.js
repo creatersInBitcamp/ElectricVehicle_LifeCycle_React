@@ -9,10 +9,10 @@ import './index.scss';
 
 //common
 import Layout from './App'
-import {Main,Search,Faq,aboutUs,getAllProducts} from "./common"
+import {Main,Search,Faq,aboutUs} from "./common"
 
 //new car
-import {wishlist,CartComponent,checkOut,Compare,CollectionLeftSidebar,LeftSideBar} from './newCar'
+import {wishlist, CartComponent, checkOut, Compare, CollectionLeftSidebar, LeftSideBar, getAllProducts} from './newCar'
 
 //used car
 import {UsedPurchaseCollection,productDetail,PurchaseRequest,MyCarComparison,SalesForm,UsedWishlist,Scrapped,updateDetail} from './usedCar'
@@ -35,8 +35,8 @@ import store from "./store";
 import {getAllUsedProducts} from "./usedCar/item/UsedProductReducer";
 
 const Root = () => {
-    // store.dispatch(getAllProducts());
-    // store.dispatch(getAllUsedProducts());
+    store.dispatch(getAllProducts());
+    store.dispatch(getAllUsedProducts());
     console.log(store.getState())
     return (
         <Provider store={store}>

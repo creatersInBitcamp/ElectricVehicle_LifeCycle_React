@@ -8,7 +8,6 @@ import {addToCart,addToWishlist,addToCompare} from "../../newCar";
 export const TopCollection = () => {
     const {items,symbol} = useSelector((state)=>({
         items: getTrendingCollection(state.data.products),
-        // items: state.data.products,
         symbol: state.data.symbol
     }))
     let properties = {

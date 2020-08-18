@@ -1,37 +1,5 @@
-// import shop from "../../atomic/api/shop";
-import {CHANGE_CURRENCY} from "./currency";
-import axios from "axios";
-import {useEffect} from "react";
-
-const elccar = () => {
-    // axios.get(`http://localhost:8080/electriccars/findall`)
-    //     .then((res) => {
-    //         console.log(res.data)
-    //         return res.data
-    //     })
-    //     .catch(err => {
-    //         alert('axios error')
-    //         throw err
-    //     })
-}
-
-// const TIMEOUT = 100
-
-// const elecCar = {
-//     getProducts: (cb, timeout) => setTimeout(() => cb(elccar()), timeout || TIMEOUT),
-//     buyProducts: (payload, cb, timeout) => setTimeout(() => cb(), timeout || TIMEOUT)
-// }
-let electric = []
-    axios.get(`http://localhost:8080/electriccars/findall`)
-        .then((res) => {
-            console.log(res.data)
-            electric = res.data
-        })
-        .catch(err => {
-            alert('axios error')
-            throw err
-        })
-
+import shops from "../../atomic/api/shop";
+import {CHANGE_CURRENCY} from "../../common/item/currency";
 
 /* types */
 const FETCH_PRODUCTS_BEGIN = 'FETCH_PRODUCTS_BEGIN'
@@ -44,13 +12,14 @@ export const fetchProductsBegin = () => ({ type: FETCH_PRODUCTS_BEGIN })
 export const receiveProducts = electrics => ({ type: RECEIVE_PRODUCTS, electrics })
 export const getAllProducts = () => dispatch => {
     dispatch(fetchProductsBegin())
-    console.log(electric)
-    electric.getProducts(electrics => {
-        dispatch(receiveProducts(electrics))
-        console.log(electrics)
-        return electrics
+    shops.getProducts(products => {
+        console.log(products)
+        dispatch(receiveProducts(products))
+        return products
     })
 }
+
+
 export const fetchSingleProduct = productId => ({ type: FETCH_SINGLE_PRODUCT, productId })
 
 const initialState = {

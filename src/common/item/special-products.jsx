@@ -9,11 +9,10 @@ import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
 import axios from "axios";
 import {usedCars} from "../../usedCar/item/UsedProductReducer";
 
-export const SpecialProducts = () => {
+export const SpecialProducts = props => {
     const [items,setItems] = useState([])
     const {bestSeller,womensWear,symbol} = useSelector(state=>({
         bestSeller: getBestSeller(state.data.products),
-        womensWear: getWomensWear(state.data.products),
         // posts: receivePosts(),
         symbol: state.data.symbol
     }))

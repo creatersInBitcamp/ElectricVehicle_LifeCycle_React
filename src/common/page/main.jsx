@@ -8,18 +8,8 @@ import communityimg from '../../assets/images/mainPage/community.jpg'
 
 // Import custom item
 import {TopCollection,SpecialProducts} from '../index';
-import {getBestSeller, getSpecialUsed, getTrendingCollection} from "../../atomic/services/services";
-import {elecCars} from "../../newCar/items/productReducer";
 
 export const Main = () => {
-/*    const [items,setItems] = useState([])
-
-    useEffect(()=>{
-        elecCars().then(r => setItems(r))
-    },[])
-
-    const bestSeller = getBestSeller(items)
-    const trend = getTrendingCollection(items)*/
 
     useEffect(()=>{
         document.getElementById("color").setAttribute("href", `#` );

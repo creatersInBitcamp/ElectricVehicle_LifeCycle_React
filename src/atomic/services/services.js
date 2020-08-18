@@ -9,7 +9,6 @@ export const getBrands = (products) => {
             }
         }
     })
-    console.log(uniqueBrands)
     return uniqueBrands;
 }
 export const getUsedBrands = (products) => {
@@ -37,7 +36,6 @@ export const getColors = (products) => {
             })
         }
     })
-    //console.log(uniqueBrands)
     return uniqueColors;
 }
 // Get Minimum and Maximum Prices from Json Data

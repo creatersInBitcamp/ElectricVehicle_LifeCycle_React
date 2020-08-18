@@ -11,8 +11,8 @@ import {usedCars} from "../../usedCar/item/UsedProductReducer";
 
 export const SpecialProducts = props => {
     const [items,setItems] = useState([])
-    const {bestSeller,womensWear,symbol} = useSelector(state=>({
-        bestSeller: getBestSeller(state.data.products),
+    const {elecCar,symbol} = useSelector(state=>({
+        elecCar: getBestSeller(state.data.products),
         // posts: receivePosts(),
         symbol: state.data.symbol
     }))
@@ -52,7 +52,7 @@ export const SpecialProducts = props => {
                         </TabList>
                         <TabPanel>
                             <div className="no-slider row">
-                                { bestSeller.map((product, index ) =>
+                                { elecCar.map((product, index ) =>
                                     <ProductListItem product={product} symbol={symbol}
                                                  onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
                                                  onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}

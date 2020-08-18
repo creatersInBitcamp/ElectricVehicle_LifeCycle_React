@@ -44,6 +44,7 @@ export const TopCollection = () => {
 
     const dispatch = useDispatch()
     return <>
+
         <div>
             {/*Paragraph*/}
             <div className="title1  section-t-space">
@@ -56,8 +57,10 @@ export const TopCollection = () => {
                     <div className="row">
                         <div className="col">
                             <Slider {...properties} className="product-4 product-m no-arrow">
-                                { items.map((product, index ) =>
+                                {
+                                    items.map((product, index ) =>
                                     <div key={index}>
+                                        {console.log(product)}
                                         <ProductStyleFive product={product} symbol={symbol}
                                                      onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
                                                      onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}

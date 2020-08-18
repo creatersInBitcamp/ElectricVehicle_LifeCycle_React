@@ -15,7 +15,7 @@ export const getAllProducts = () => dispatch => {
         console.log(products)
         dispatch(receiveProducts(products))
         return products
-    }
+    })
 }
 
 

@@ -15,7 +15,7 @@ import {Main,Search,Faq,aboutUs} from "./common"
 import {wishlist, CartComponent, checkOut, Compare, CollectionLeftSidebar, LeftSideBar, getAllProducts} from './newCar'
 
 //used car
-import {UsedPurchaseCollection,productDetail,PurchaseRequest,MyCarComparison,SalesForm,UsedWishlist,Scrapped,} from './usedCar'
+import {UsedPurchaseCollection,productDetail,PurchaseRequest,MyCarComparison,SalesForm,UsedWishlist,Scrapped,updateDetail} from './usedCar'
 
 //map
 import {ChargingStationMap,SightsMap,TableChargingStation,BookmarkMap} from "./map/items";
@@ -71,6 +71,7 @@ const Root = () => {
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/product/:usedCarId`} component={productDetail}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/used-car/product/update/:usedCarId`} component={updateDetail}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/purchase/request/:usedCarId`} component={PurchaseRequest}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/comparison/:usedCarId`} component={MyCarComparison}/>
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/sales`} component={SalesForm}/>

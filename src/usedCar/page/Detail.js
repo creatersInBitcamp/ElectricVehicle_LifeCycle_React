@@ -9,7 +9,10 @@ import {MyCar,MarketPrice} from "../index";
 import {addToUsedWishlist} from "./UsedCarWishlist";
 import {usedCars} from "../item/UsedProductReducer";
 
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
+
 export const productDetail = () => {
+    const [user,setUser] = useState(sessionUser)
     const [state, setState] = useState({ nav1: null, nav2: null });
     const [items,setItems] = useState([])
 
@@ -201,6 +204,15 @@ export const productDetail = () => {
                                             </div>
                                         </div>
                                     </section>
+                                    {user.userSeq === item.user.userSeq ?
+                                        <div className="text-right">
+                                            <Link to={`${process.env.PUBLIC_URL}/used-car/product/update/${item.usedCarId}`}>
+                                                <button className="btn-solid btn">수정</button>&nbsp;
+                                            </Link>
+                                            <button className="btn-solid btn">삭제</button>
+                                        </div>
+                                        :''
+                                    }
                                 </div>
                             </div>
                         </div>

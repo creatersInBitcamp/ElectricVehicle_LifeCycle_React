@@ -110,7 +110,7 @@ export const MyCar = () => {
                                                             })
                                                         }
                                                     </select>
-                                                    <button onClick={()=>dispatch(addToMyCar(products.find(x => x.eccarId == targetId)))}>추가</button>
+                                                    <button onClick={()=>dispatch(addToMyCar(products.find(x => x.eccarId === targetId)))}>추가</button>
                                                     <br/>
                                                     <br/>
                                                     <select onChange={e=>setTargetId(e.target.value)}>
@@ -121,7 +121,7 @@ export const MyCar = () => {
                                                             })
                                                         }
                                                     </select>
-                                                    <button onClick={()=>dispatch(removeFromMyCar(myCar.find(x => x.eccarId == targetId)))}>삭제</button>
+                                                    <button onClick={()=>dispatch(removeFromMyCar(myCar.find(x => x.eccarId === targetId)))}>삭제</button>
                                                     <br/>
                                                     <br/>
                                                     <select>

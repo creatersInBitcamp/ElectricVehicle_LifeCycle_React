@@ -6,7 +6,6 @@ import {ProductItem}from '../../usedCar'
 import {PostItem} from '../../board'
 import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
 import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
-import {receivePosts} from "../../board/items/BoardReducer";
 import axios from "axios";
 import {usedCars} from "../../usedCar/item/UsedProductReducer";
 
@@ -36,7 +35,6 @@ export const SpecialProducts = props => {
             })
     }, [])
     const [posts, setPosts] = useState([])
-    console.log(posts)
     const dispatch = useDispatch()
     return <>
         <div>

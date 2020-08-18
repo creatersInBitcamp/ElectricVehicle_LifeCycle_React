@@ -10,3 +10,4 @@ export {MyCarComparison, default as usedCompareReducer} from './page/MyCarCompar
 export {UsedWishlist, default as usedWishlistReducer} from './page/UsedCarWishlist'
 export {default as usedProductReducer} from './item/UsedProductReducer'
 export {Filter, default as usedFiltersReducer} from './item/Filter'
+export {default as updateDetail} from './page/UpdateDetail'

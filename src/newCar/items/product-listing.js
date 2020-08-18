@@ -10,13 +10,12 @@ import {elecCars} from "./productReducer";
 export const ProductListing = props => {
     const [limit, setLimit] = useState(5)
     const [hasMoreItems, setHasMoreItems] = useState(true)
-    const [items,setItems] = useState([])
-    const [filter,setFiller] = useState()
 
     const {products, symbol} = useSelector(state=>({
         products: getVisibleproducts(state.data, state.filters),
         symbol: state.data.symbol,
     }))
+
 /*
     useEffect(()=>{
         elecCars().then(r => setItems(r))
@@ -46,7 +45,7 @@ export const ProductListing = props => {
         <div>
             <div className="product-wrapper-grid">
                 <div className="container-fluid">
-                    {products.length > 0 ?
+                    {/*{products.length > 0 ?*/}
                         <InfiniteScroll
                             dataLength={limit} //This is important field to render the next data
                             next={fetchMoreItems}

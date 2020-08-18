@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getUsedBrands, getMinMaxUsedPrice} from "../../atomic/services/services";
+import {getMinMaxUsedPrice} from "../../atomic/services/services";
 import { SlideToggle } from 'react-slide-toggle';
 import InputRange from "react-input-range";
 import {usedCars} from "./UsedProductReducer";
@@ -22,8 +22,8 @@ const filterSort = (sort_by) => ({
     sort_by
 });
 
-const filtersReducerDefaultState = {
-    brand: ["르노삼성"],
+export const filtersReducerDefaultState = {
+    usedBrand: ["르노삼성"],
     value: { min: 100, max: 5000 },
     sortBy: ""
 };
@@ -33,7 +33,7 @@ const usedFiltersReducer = (state = filtersReducerDefaultState, action) => {
         case FILTER_BRAND:
             return {
                 ...state,
-                brand: action.brand
+                usedBrand: action.brand
             }
         case FILTER_PRICE:
             return {
@@ -58,17 +58,31 @@ export const Filter = () => {
         usedCars().then(r => setItems(r))
     },[])
 
-    const { filters } = useSelector(state=>({
-        filters: state.usedFilters
+    const { usedFilters } = useSelector(state=>({
+        usedFilters: state.usedFilters
     }))
 
     const prices = getMinMaxUsedPrice(items)
-    const brands = getUsedBrands(items)
-    const filteredBrands = filters.brand
+
+    const filteredBrands = usedFilters.usedBrand
 
     const closeFilter = () => {
         document.querySelector(".collection-filter").style = "left: -365px";
     }
+
+    const getUsedBrands = (products) => {
+        const uniqueBrands = [];
+        products.map((product, index) => {
+            if (product.usedBrand) {
+                if (uniqueBrands.indexOf(product.usedBrand) === -1) {
+                    uniqueBrands.push(product.usedBrand);
+                }
+            }
+        })
+        console.log(uniqueBrands)
+        return uniqueBrands;
+    }
+    const brands = getUsedBrands(items)
 
     const clickBrandHandle = (event, brands) => (dispatch) => {
         const index = brands.indexOf(event.target.value);
@@ -103,7 +117,7 @@ export const Filter = () => {
                                             <input type="checkbox"
                                                    onClick={(e)=>clickBrandHandle(e,filteredBrands)}
                                                    value={brand}
-                                                   defaultChecked={filteredBrands.includes(brand)}
+                                                   defaultChecked={getUsedBrands(items).includes(brand)}
                                                    className="custom-control-input"
                                                    id={brand} />
                                             <label className="custom-control-label"
@@ -127,7 +141,7 @@ export const Filter = () => {
                                     <InputRange
                                         maxValue={prices.max}
                                         minValue={prices.min}
-                                        value={filters.value}
+                                        value={usedFilters.value}
                                         onChange={value => dispatch(filterPrice({ value }))} />
                                 </div>
                             </div>

@@ -1,5 +1,6 @@
 import shops from "../../atomic/api/shop";
-import {CHANGE_CURRENCY} from "../../common";
+import {CHANGE_CURRENCY} from "../../common/item/currency";
+
 /* types */
 const FETCH_PRODUCTS_BEGIN = 'FETCH_PRODUCTS_BEGIN'
 const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'

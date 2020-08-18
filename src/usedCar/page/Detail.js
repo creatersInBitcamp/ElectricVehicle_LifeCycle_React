@@ -1,17 +1,18 @@
 import React, {useEffect, useState,useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useRouteMatch} from 'react-router-dom';
+import axios from "axios";
 import Slider from 'react-slick';
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import '../../common/index.scss';
-import {Breadcrumb} from "../../common";
+import {Breadcrumb, NewProduct} from "../../common";
 import {MyCar,MarketPrice} from "../index";
 import {addToUsedWishlist} from "./UsedCarWishlist";
 import {usedCars} from "../item/UsedProductReducer";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
-export const productDetail = () => {
+export const productDetail = (props) => {
     const [user,setUser] = useState(sessionUser)
     const [state, setState] = useState({ nav1: null, nav2: null });
     const [items,setItems] = useState([])
@@ -57,6 +58,18 @@ export const productDetail = () => {
         document.getElementById("filter").style.left = "-365px";
     }
 
+    const onClickDelete = () => {
+        if (window.confirm('삭제하시겠습니까?')) {
+            axios.get(`http://localhost:8080/usedCars/delete/${item.usedCarId}`)
+                .then(alert('삭제되었습니다.'), props.history.push(`${process.env.PUBLIC_URL}/used-car/collection`))
+                .catch(()=>{
+                    alert('취소되었습니다.')
+                })
+        } else {
+
+        }
+    }
+
     const dispatch = useDispatch()
 
     return <>
@@ -76,8 +89,7 @@ export const productDetail = () => {
                                         </span>
                                     </div>
                                     <MyCar/>
-                                    {/* post */}
-                                    {/* video */}
+                                    <NewProduct/>
                                 </div>
                                 <div className="col-lg-9 col-sm-12 col-xs-12">
                                     <div className="">
@@ -121,10 +133,7 @@ export const productDetail = () => {
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    <div className="border-product">
-                                                        <h6 className="product-title">product details</h6>
-                                                        <p>{item.shortDetails}</p>
-                                                    </div>
+                                                    <div className="border-product"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -137,13 +146,6 @@ export const productDetail = () => {
                                                         <Tab className="nav-item">
                                                             <span className="nav-link active">
                                                                 <i className="icofont icofont-ui-home"/>
-                                                                Description
-                                                            </span>
-                                                            <div className="material-border"/>
-                                                        </Tab>
-                                                        <Tab className="nav-item">
-                                                            <span className="nav-link" >
-                                                                <i className="icofont icofont-man-in-glasses"/>
                                                                 Details
                                                             </span>
                                                             <div className="material-border"/>
@@ -160,40 +162,31 @@ export const productDetail = () => {
                                                         <table className="table table-striped mb-0">
                                                             <tbody>
                                                             <tr>
-                                                                <th>Ideal For :</th>
-                                                                <td>Women's</td>
+                                                                <th>브랜드 :</th>
+                                                                <td>{item.brand}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Pattern :</th>
-                                                                <td>Embroidered</td>
+                                                                <th>연형 :</th>
+                                                                <td>{item.yyyy}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Dress Fabric :</th>
-                                                                <td>Silk</td>
+                                                                <th>모델명 :</th>
+                                                                <td>{item.modelName}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Type :</th>
-                                                                <td>Ghagra, Choli, Dupatta Set</td>
+                                                                <th>트림 :</th>
+                                                                <td>{item.trim}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Neck :</th>
-                                                                <td>Round Neck</td>
+                                                                <th>연식 :</th>
+                                                                <td>{item.age}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Sleeve :</th>
-                                                                <td>3/4 Sleeve</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Work :</th>
-                                                                <td>N/A</td>
+                                                                <th>주행거리 :</th>
+                                                                <td>{item.mileage}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
-                                                    </TabPanel>
-                                                    <TabPanel>
-                                                        <p className="mt-4 p-0">
-                                                            판매자의 말
-                                                        </p>
                                                     </TabPanel>
                                                     <TabPanel>
                                                         <div className="mt-4 text-center">
@@ -209,7 +202,7 @@ export const productDetail = () => {
                                             <Link to={`${process.env.PUBLIC_URL}/used-car/product/update/${item.usedCarId}`}>
                                                 <button className="btn-solid btn">수정</button>&nbsp;
                                             </Link>
-                                            <button className="btn-solid btn">삭제</button>
+                                            <button onClick={onClickDelete} className="btn-solid btn">삭제</button>
                                         </div>
                                         :''
                                     }

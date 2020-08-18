@@ -253,14 +253,17 @@ export const MyCarPage = () => {
                                                     </div>
                                                     <div className="box-content">
                                                         <Slider {...setting} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
-                                                            {myCars.map((item,index)=>{
-                                                                return (
-                                                                    <div key={index}>
-                                                                        <img src={item.img} className="img-fluid image_zoom_cls-0"  alt={""} />
-                                                                        <h4>{item.carName}</h4>
-                                                                    </div>
-                                                                )
-                                                            })}
+                                                            {
+                                                                myCars.length > 0 ?
+                                                                    myCars.map((item,index)=>{
+                                                                    return (
+                                                                        <div key={index}>
+                                                                            <img src={item.img} className="img-fluid image_zoom_cls-0"  alt={""} />
+                                                                            <h4>{item.carName}</h4>
+                                                                        </div>
+                                                                    )})
+                                                                    : <h5>등록된 차량이 없습니다.</h5>
+                                                            }
                                                         </Slider>
                                                     </div>
                                                 </div>

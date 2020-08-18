@@ -4,7 +4,7 @@ import FilterBar from "../item/Filter-bar";
 import ProductListing from "../item/Product-listing";
 import {Filter} from "..";
 import MyCar from "../item/MyCar";
-import {Breadcrumb} from "../../common";
+import {Breadcrumb, NewProduct} from "../../common";
 
 export const UsedPurchaseCollection = () => {
     const [layoutColumns, setLayoutColumns] = useState(3)
@@ -20,6 +20,7 @@ export const UsedPurchaseCollection = () => {
                             <StickyBox offsetTop={20} offsetBottom={20}>
                                 <MyCar/>
                                 <Filter/>
+                                <NewProduct/>
                             </StickyBox>
                         </div>
                         <div className="collection-content col">

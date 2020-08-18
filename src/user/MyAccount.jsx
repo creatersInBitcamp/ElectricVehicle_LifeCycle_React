@@ -16,6 +16,7 @@ export const MyAccount = () => {
     const [comments, setComments] = useState([])
     const [bookmarks, setBookmarks] = useState([])
     const [useds, setUseds] = useState([])
+    const [purchase, setPurchase] = useState([])
     const [userSession, setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
     useEffect(() => {
         RefreshInfo()
@@ -34,6 +35,7 @@ export const MyAccount = () => {
         setComments(userSession.commentList)
         setBookmarks(userSession.bookmarkList)
         setUseds(userSession.usedCarList)
+        setPurchase(userSession.purchasesList)
     }, [userSession])
 
     return (
@@ -61,13 +63,12 @@ export const MyAccount = () => {
                                     <div className="block-content">
                                         <ul>
                                             <li className="active"><Link to={"/pages/profile"}>Account Info</Link></li>
-                                            <li><Link to={"/pages/myCar"}><i className="fa fa-car"/> My Car</Link></li>
-                                            <li><a href="#"><i className="fa fa-file-code-o"/> My Orders</a></li>
+                                            <li><Link to={"/pages/myCar"}><i className="fa fa-car"/> My Car {(useds !== undefined)? useds.length : ""}</Link></li>
+                                            <li><a href="#"><i className="fa fa-file-code-o"/> My Orders {(purchase !== undefined) ? purchase.length : ""}</a></li>
                                             <li><a href="#"><i className="fa fa-list-alt"/> My Wishlist</a></li>
-                                            <li><a href="#"><i className="fa fa-clipboard"/> My Post {(posts !== undefined) ? posts.length : 0}</a></li>
-                                            <li><a href="#"><i className="fa fa-comment-o"/> My Comment {(comments !== undefined) ? comments.length : 0}</a></li>
-                                            <li><a href="#"><i className="fa fa-bookmark-o"/> My Bookmark {(bookmarks !== undefined) ? bookmarks.length : 0}</a></li>
-                                            <li><a href="#"><i className="fa fa-envelope-o"/> Newsletter</a></li>
+                                            <li><a href="#"><i className="fa fa-clipboard"/> My Post {(posts !== undefined) ? posts.length : ""}</a></li>
+                                            <li><a href="#"><i className="fa fa-comment-o"/> My Comment {(comments !== undefined) ? comments.length : ""}</a></li>
+                                            <li><a href="#"><i className="fa fa-bookmark-o"/> My Bookmark {(bookmarks !== undefined) ? bookmarks.length : ""}</a></li>
                                             <li><Link to={"/pages/profile"}><i className="fa fa-address-book"/> My Account</Link></li>
                                             <li><a href="#">Change Password</a></li>
                                             <li className="last"><a href="#">Log Out</a></li>
@@ -79,6 +80,7 @@ export const MyAccount = () => {
                                 <div className="dashboard-right">
                                     <div className="dashboard">
                                         <div className="container-fluid">
+                                             
                                             <div className="row">
                                                 <div className="col-xl-4">
                                                     <div className="card">

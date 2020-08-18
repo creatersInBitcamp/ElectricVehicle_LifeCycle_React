@@ -66,7 +66,7 @@ const Root = () => {
                                 <Route path={`${process.env.PUBLIC_URL}/new-car/compare`} component={Compare}/>
                                 <Route path={`${process.env.PUBLIC_URL}/new-car/wishlist`} component={wishlist}/>
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={CartComponent}/>
-                                <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
+                                <Route path={`${process.env.PUBLIC_URL}/checkout/:eccarId`} component={checkOut}/>
 
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>

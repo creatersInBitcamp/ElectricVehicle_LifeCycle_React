@@ -24,7 +24,7 @@ export const ElecCar = () => {
     const [files, setFile] = useState(undefined)
 
     useEffect(()=>{
-        setDate(getAllProducts())
+        // setDate(getAllProducts())
     },[])
 
     const columns = [

@@ -197,7 +197,7 @@ export const productDetail = (props) => {
                                             </div>
                                         </div>
                                     </section>
-                                    {user.userSeq === item.user.userSeq ?
+                                    { user === null || (user.userSeq === item.user.userSeq) ?
                                         <div className="text-right">
                                             <Link to={`${process.env.PUBLIC_URL}/used-car/product/update/${item.usedCarId}`}>
                                                 <button className="btn-solid btn">수정</button>&nbsp;

@@ -9,7 +9,7 @@ const FETCH_SINGLE_PRODUCT = 'FETCH_SINGLE_PRODUCT'
 
 /* actions */
 export const fetchProductsBegin = () => ({ type: FETCH_PRODUCTS_BEGIN })
-export const receiveProducts = electrics => ({ type: RECEIVE_PRODUCTS, electrics })
+export const receiveProducts = products => ({ type: RECEIVE_PRODUCTS, products })
 export const getAllProducts = () => dispatch => {
     dispatch(fetchProductsBegin())
     shops.getProducts(products => {
@@ -18,7 +18,6 @@ export const getAllProducts = () => dispatch => {
         return products
     })
 }
-
 
 export const fetchSingleProduct = productId => ({ type: FETCH_SINGLE_PRODUCT, productId })
 
@@ -31,8 +30,9 @@ const initialState = {
 const productReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_PRODUCTS:
+            console.log(action)
             return { ...state,
-                products: action.products };
+                products: action.products};
         case FETCH_SINGLE_PRODUCT:
             if (state.products.findIndex(product => product.eccarId === action.productId) !== -1) {
                 const singleItem = state.products.reduce((itemAcc, product) => {

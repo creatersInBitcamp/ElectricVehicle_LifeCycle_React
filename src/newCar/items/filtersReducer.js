@@ -25,14 +25,12 @@ export const filterSort = (sort_by) => ({
 
 /* reducer */
 const filtersReducerDefaultState = {
-    brand: [],
-    value: { min: 250, max: 5000 },
+    brand: ["테슬라"],
+    value: { min: 100, max: 15000 },
     sortBy: ""
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
-    // console.log('Action Result');
-    // console.log(action);
     switch (action.type) {
         case FILTER_BRAND:
             return {

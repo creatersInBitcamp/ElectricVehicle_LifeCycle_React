@@ -124,9 +124,9 @@ export const TopBar = () => {
                                     <button onClick={(e)=> {onCSVsight(e)}}>SIGHTS</button>
                                     <button onClick={(e)=> {onCSVcharge(e)}}>CHARGE</button>
                                     <button onClick={(e)=> {onCSVcar(e)}}>car</button>
-                                    <button onClick={(e)=> {onCSVused(e)}}>UsedCar</button>
-                                    <button onClick={(e)=> {onCSVnew(e)}}>NewCar</button>
                                     <button onClick={(e)=> {onCSVvariants(e)}}>Variants</button>
+                                    <button onClick={(e)=> {onCSVnew(e)}}>NewCar</button>
+                                    <button onClick={(e)=> {onCSVused(e)}}>UsedCar</button>
                                 </li>
                             </ul>
                         </div>

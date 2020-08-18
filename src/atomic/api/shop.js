@@ -16,8 +16,7 @@ import axios from "axios";
 
 export const elecCars = () => {
     let products=[]
-    let result=[]
-    axios.get(`http://localhost:8080/electriccars/findall`)
+    axios.get(`http://localhost:8080/electriccars/getall`)
         .then((res) => {
             // console.log(res.data)
             for(let i=0; i<69;i++){
@@ -29,8 +28,6 @@ export const elecCars = () => {
             console.log('신차 에러')
             throw err
         })
-    result = products
-    console.log(result)
     return products
 }
 

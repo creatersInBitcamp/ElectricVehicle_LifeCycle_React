@@ -51,6 +51,7 @@ const changeFirstCar = (product) => (dispatch) => {
 export const myCarReducer = (state={list:[]}, action) => {
     switch (action.type) {
         case ADD_TO_MY_CAR:
+            console.log(action)
             const productId = action.product.eccarId
             if (state.list.findIndex(product => product.eccarId === productId) !== -1) {
                 const list = state.list.reduce((cartAcc, product) => {

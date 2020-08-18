@@ -11,9 +11,11 @@ export const Image = () => {
     const[content, setContent] = useState(undefined)
     const[img, setImg] = useState(undefined)
     const[message, setMessage] = useState('')
+    const[url, setUrl] = useState(undefined)
 
     const addFile = e => {
         setContent(e.target.files[0]);
+        setUrl(URL.createObjectURL(e.target.files[0]))
     };
     const uploadService = file => {
         let formData = new FormData();
@@ -34,15 +36,16 @@ export const Image = () => {
                 setImg(undefined)
             })
         setContent(undefined)
+        setUrl(undefined)
     }
 
 
     return (
         <>
-                {img ? (
+                {url ? (
                     <>
-                        <img src={img} alt="" />
-                        <h3>{img.fileName}</h3>
+                        <h2>미리보기</h2>
+                        <img src={url} alt="" />
                     </>
                 ) : (
                     ""

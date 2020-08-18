@@ -1,20 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {useDispatch, useSelector} from 'react-redux'
-import {getBestSeller, getMensWear, getPosts, getWomensWear} from '../../atomic/services/services'
+import {getBestSeller, getMensWear} from '../../atomic/services/services'
 import {ProductItem}from '../../usedCar'
 import {PostItem} from '../../board'
 import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
 import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
-import {receivePosts} from "../../board/items/BoardReducer";
 import axios from "axios";
 
 export const SpecialProducts = () => {
-    const {bestSeller,mensWear,womensWear,symbol} = useSelector(state=>({
+    const {bestSeller,mensWear,symbol} = useSelector(state=>({
         bestSeller: getBestSeller(state.data.products),
         mensWear: getMensWear(state.data.products),
-        womensWear: getWomensWear(state.data.products),
-        // posts: receivePosts(),
         symbol: state.data.symbol
     }))
     useEffect(()=>{
@@ -29,7 +26,6 @@ export const SpecialProducts = () => {
             })
     }, [])
     const [posts, setPosts] = useState([])
-    console.log(posts)
     const dispatch = useDispatch()
     return <>
         <div>

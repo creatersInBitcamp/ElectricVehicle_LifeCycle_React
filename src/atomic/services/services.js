@@ -18,6 +18,7 @@ export const getUsedBrands = (products) => {
         if (product.brand) {
             if (uniqueBrands.indexOf(product.brand) === -1) {
                 uniqueBrands.push(product.brand);
+            }
         }
     })
     console.log(uniqueBrands)

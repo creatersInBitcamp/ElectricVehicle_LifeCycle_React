@@ -71,9 +71,6 @@ export const ElecCar = () => {
             .catch((err)=>{
                 throw err
             })
-
-
-
         /*axios.post(`http://localhost:8080/user/addCar`, files)
             .then((res)=>{
                 console.log(res.data)

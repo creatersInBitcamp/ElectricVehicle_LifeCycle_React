@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {AdminBreadcrumb} from '../common';
 import {Table} from '../item'
 import axios from "axios";
+import {Line} from "react-chartjs-2";
+import {buyOption} from "../../atomic/constants/chartData";
 const userReducer = ( state= {}, action ) => {
     switch (action.type) {
         default: return state
@@ -75,6 +77,12 @@ export const User = () => {
                     <div className="card">
                         <div className="card-header">
                             <h5>사용자 정보</h5>
+                        </div>
+                        <div className="col-sm-12">
+                            <div className="card">
+                                <div className="card-body sell-graph">
+                                </div>
+                            </div>
                         </div>
                         <div className="card-body">
                             <div className="clearfix"/>

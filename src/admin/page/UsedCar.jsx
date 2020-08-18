@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {AdminBreadcrumb} from '../common'
 import axios from "axios";
 import {Table} from "../item";
+import CsvDownload from 'react-json-to-csv'
 
 const usedCarTypes = {REQUEST: 'usedCar/REQUEST'}
 const usedCarReducer = ( state={}, action ) => {
@@ -51,6 +52,23 @@ export const UsedCar = () => {
                                 <div className="card-header">
                                     <h5>중고차 관리</h5>
                                 </div>
+                                <CsvDownload data={data}
+                                             filename="usedCar.csv"
+                                             style={{ //pass other props, like styles
+                                                 boxShadow:"inset 0px 1px 0px 0px #e184f3",
+                                                 background:"linear-gradient(to bottom, #c123de 5%, #a20dbd 100%)",
+                                                 backgroundColor:"#10ae13",
+                                                 borderRadius:"6px",
+                                                 border:"1px solid #a511c0",
+                                                 display:"inline-block",
+                                                 cursor:"pointer","color":"#ffffff",
+                                                 fontSize:"15px",
+                                                 fontWeight:"bold",
+                                                 padding:"6px 24px",
+                                                 textDecoration:"none",
+                                                 textShadow:"0px 1px 0px #9b14b3"
+                                             }}
+                                >중고차 데이터 다운로드</CsvDownload>
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">
                                         <Table title={"중고차현황"} data={data} columns={columns} />

@@ -1,93 +1,67 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet'
-import {connect, useDispatch, useSelector} from 'react-redux'
-import {useHistory} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import {useHistory, useRouteMatch} from 'react-router-dom'
 import PaypalExpressBtn from 'react-paypal-express-checkout';
-import SimpleReactValidator from 'simple-react-validator';
 
 import {Breadcrumb} from "../../common";
-import {removeFromWishlist} from './wishlistReducer'
 import {getCartTotal} from "../../atomic/services/services";
+import axios from "axios";
 
 /* type */
 export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
 export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS'
 export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
-
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 
 export const checkOut = () => {
-    const [state,setState] = useState({
-        payment:'stripe',
-        first_name:'',
-        last_name:'',
-        phone:'',
-        email:'',
-        country:'',
-        address:'',
-        city:'',
-        state:'',
-        pincode:'',
-        create_account: ''
+    console.log(sessionUser)
+    const [method, setMethod] = useState('구매상담')
+    const [color, setColor] = useState('색상 선택')
+    const [newCar, setNewCar] = useState({
+        eccarId: '1',
+        carName: '차 이름',
+        price: '가격'
     })
+    const eccarId = useRouteMatch('/checkout/:eccarId').params.eccarId
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/electriccars/getone/${eccarId}`)
+            .then((res)=>{
+                console.log(res.data)
+                setNewCar(res.data)
+            })
+            .catch((err)=>{
+                console.log(err.status)
+            })
+    }, [eccarId])
 
-    const validator = new SimpleReactValidator();
-
-    const setStateFromInput = (event) => {
-        var obj = {};
-        obj[event.target.name] = event.target.value;
-        setState(obj);
-
-    }
-
-    const setStateFromCheckbox = (event) => {
-        var obj = {};
-        obj[event.target.name] = event.target.checked;
-        setState(obj);
-
-        if(!validator.fieldValid(event.target.name))
-        {
-            validator.showMessages();
+    const onPurchaseCar = () => {
+        const newPurchase = {
+            purchasingMethod: method,
+            purchaseTime: new Date().toLocaleString(),
+            purchasePrice:newCar.price,
+            color: color,
+            userSeq:sessionUser.userSeq,
+            eccarId:newCar.eccarId
         }
+        console.log(newPurchase)
+        axios.post(`http://localhost:8080/purchases/insert`, newPurchase)
+            .then((res)=>{
+                console.log('신차 구매 axios 성공')
+                history.push('/pages/profile')
+            })
+            .catch((err)=>{
+                console.log(`신차 구매 axios 실패 : ${err.status}`)
+            })
     }
 
     const checkhandle = (value) => {
-        setState({
-            payment: value
-        })
+        setMethod(value)
     }
 
     const history = useHistory()
     const dispatch = useDispatch()
-
-    const StripeClick = () => {
-
-        if (validator.allValid()) {
-            alert('You submitted the form and stuff!');
-
-            var handler = (window).StripeCheckout.configure({
-                key: 'pk_test_glxk17KhP7poKIawsaSgKtsL',
-                locale: 'auto',
-                token: (token) => {
-                    console.log(token)
-                    history.push({
-                        pathname: '/order-success',
-                        state: { payment: token, items: cartItems, orderTotal: total, symbol: symbol }
-                    })
-                }
-            });
-            handler.open({
-                name: 'Multikart',
-                description: 'Online Fashion Store',
-                amount: this.amount * 100
-            })
-        } else {
-            validator.showMessages();
-            // rerender to show messages for the first time
-            this.forceUpdate();
-        }
-    }
-
 
     const {cartItems, symbol, total} = useSelector((state) => ({
         cartItems: state.cartList.cart,
@@ -124,8 +98,8 @@ export const checkOut = () => {
 
             {/*SEO Support*/}
             <Helmet>
-                <title>MultiKart | CheckOut Page</title>
-                <meta name="description" content="Multikart – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Multikart Bootstrap 4 Template will help you run multiple businesses." />
+                <title>EV | CheckOut Page</title>
+                <meta name="description" content="" />
             </Helmet>
             {/*SEO Support End */}
 
@@ -142,60 +116,41 @@ export const checkOut = () => {
                                             <h3>Billing Details</h3>
                                         </div>
                                         <div className="row check-out">
-                                            <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                                                <div className="field-label">First Name</div>
-                                                <input type="text" name="first_name" value={state.first_name} onChange={setStateFromInput} />
-                                                {validator.message('first_name', state.first_name, 'required|alpha')}
-                                            </div>
-                                            <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                                                <div className="field-label">Last Name</div>
-                                                <input type="text" name="last_name" value={state.last_name} onChange={setStateFromInput} />
-                                                {validator.message('last_name', state.last_name, 'required|alpha')}
-                                            </div>
-                                            <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                                                <div className="field-label">Phone</div>
-                                                <input type="text" name="phone"  value={state.phone} onChange={setStateFromInput} />
-                                                {validator.message('phone', state.phone, 'required|phone')}
-                                            </div>
-                                            <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                                                <div className="field-label">Email Address</div>
-                                                <input type="text" name="email" value={state.email} onChange={setStateFromInput} />
-                                                {validator.message('email', state.email, 'required|email')}
+                                            <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                                                <div className="field-label">주문자</div>
+                                                <input type="text" name="first_name" value={sessionUser.name} />
+                                                {/*{validator.message('first_name', state.first_name, 'required|alpha')}*/}
                                             </div>
                                             <div className="form-group col-md-12 col-sm-12 col-xs-12">
-                                                <div className="field-label">Country</div>
-                                                <select name="country" value={state.country} onChange={setStateFromInput}>
-                                                    <option>India</option>
-                                                    <option>South Africa</option>
-                                                    <option>United State</option>
-                                                    <option>Australia</option>
+                                                <div className="field-label">주문자 전화번호</div>
+                                                <input type="text" name="phone"  value={sessionUser.phoneNumber} />
+                                                {/*{validator.message('phone', state.phone, 'required|phone')}*/}
+                                            </div>
+                                            <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                                                <div className="field-label">Email Address</div>
+                                                <input type="text" name="email" value={sessionUser.email} />
+                                                {/*{validator.message('email', state.email, 'required|email')}*/}
+                                            </div>
+                                            <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                                                <div className="field-label">Color</div>
+                                                <select name="color" value={color} onChange={e => {setColor(e.target.value)}}>
+                                                    <option>{color}</option>
+                                                    <option>{newCar.color1}</option>
+                                                    <option>{newCar.color2}</option>
+                                                    <option>{newCar.color3}</option>
+                                                    <option>{newCar.color4}</option>
+                                                    <option>{newCar.color5}</option>
+                                                    <option>{newCar.color6}</option>
                                                 </select>
-                                                {validator.message('country', state.country, 'required')}
                                             </div>
                                             <div className="form-group col-md-12 col-sm-12 col-xs-12">
                                                 <div className="field-label">Address</div>
-                                                <input type="text" name="address" value={state.address} onChange={setStateFromInput} placeholder="Street address" />
-                                                {validator.message('address', state.address, 'required|min:20|max:120')}
-                                            </div>
-                                            <div className="form-group col-md-12 col-sm-12 col-xs-12">
-                                                <div className="field-label">Town/City</div>
-                                                <input type="text" name="city" value={state.city} onChange={setStateFromInput} />
-                                                {validator.message('city', state.city, 'required|alpha')}
-                                            </div>
-                                            <div className="form-group col-md-12 col-sm-6 col-xs-12">
-                                                <div className="field-label">State / County</div>
-                                                <input type="text" name="state" value={state.state} onChange={setStateFromInput} />
-                                                {validator.message('state', state.state, 'required|alpha')}
-                                            </div>
-                                            <div className="form-group col-md-12 col-sm-6 col-xs-12">
-                                                <div className="field-label">Postal Code</div>
-                                                <input type="text" name="pincode" value={state.spincode} onChange={setStateFromInput} />
-                                                {validator.message('pincode', state.pincode, 'required|integer')}
+                                                <input type="text" name="address" value={sessionUser.addr} placeholder="Street address" />
+                                                {/*{validator.message('address', state.address, 'required|min:20|max:120')}*/}
                                             </div>
                                             <div className="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <input type="checkbox" name="create_account" id="account-option"  checked={state.create_account} onChange={setStateFromCheckbox}/>
+                                                <input type="checkbox" name="create_account" id="account-option" />
                                                 &ensp; <label htmlFor="account-option">Create An Account?</label>
-                                                {validator.message('checkbox', state.create_account, 'create_account')}
                                             </div>
                                         </div>
                                     </div>
@@ -203,30 +158,14 @@ export const checkOut = () => {
                                         <div className="checkout-details">
                                             <div className="order-box">
                                                 <div className="title-box">
-                                                    <div>Product <span> Total</span></div>
+                                                    <li><img src={newCar.img} className="img-fluid image_zoom_cls-0"/></li>
+                                                    <div>Product <span> Price</span></div>
                                                 </div>
                                                 <ul className="qty">
-                                                    {cartItems.map((item, index) => {
-                                                        return <li key={index}>{item.carName} × {item.qty} <span>{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li> })
-                                                    }
-                                                </ul>
-                                                <ul className="sub-total">
-                                                    <li>Subtotal <span className="count">{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li>
-                                                    <li>Shipping <div className="shipping">
-                                                        <div className="shopping-option">
-                                                            <input type="checkbox" name="free-shipping" id="free-shipping" />
-                                                            <label htmlFor="free-shipping">Free Shipping</label>
-                                                        </div>
-                                                        <div className="shopping-option">
-                                                            <input type="checkbox" name="local-pickup" id="local-pickup" />
-                                                            <label htmlFor="local-pickup">Local Pickup</label>
-                                                        </div>
-                                                    </div>
-                                                    </li>
-                                                </ul>
-
-                                                <ul className="total">
-                                                    <li>Total <span className="count">{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li>
+                                                    <li> {newCar.carName} <span>{newCar.price} 만원</span></li>
+                                                    {/*{cartItems.map((item, index) => {*/}
+                                                    {/*    return <li key={index}>{item.carName} × {item.qty} <span>{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li> })*/}
+                                                    {/*}*/}
                                                 </ul>
                                             </div>
 
@@ -236,14 +175,14 @@ export const checkOut = () => {
                                                         <ul>
                                                             <li>
                                                                 <div className="radio-option stripe">
-                                                                    <input type="radio" name="payment-group" id="payment-2" defaultChecked={true} onClick={() => checkhandle('stripe')} />
-                                                                    <label htmlFor="payment-2">Stripe</label>
+                                                                    <input type="radio" name="payment-group" id="payment-2" defaultChecked={true} onClick={() => checkhandle('구매상담')} />
+                                                                    <label htmlFor="payment-2">구매상담</label>
                                                                 </div>
                                                             </li>
                                                             <li>
                                                                 <div className="radio-option paypal">
-                                                                    <input type="radio" name="payment-group" id="payment-1" onClick={() => checkhandle('paypal')} />
-                                                                    <label htmlFor="payment-1">PayPal<span className="image"><img src={`${process.env.PUBLIC_URL}/assets/images/paypal.png`} alt=""/></span></label>
+                                                                    <input type="radio" name="payment-group" id="payment-1" onClick={() => checkhandle('페이팔')} />
+                                                                    <label htmlFor="payment-1">페이팔<span className="image"><img src={`${process.env.PUBLIC_URL}/assets/images/paypal.png`} alt=""/></span></label>
                                                                 </div>
                                                             </li>
                                                         </ul>
@@ -251,7 +190,7 @@ export const checkOut = () => {
                                                 </div>
                                                 {(total !== 0)?
                                                     <div className="text-right">
-                                                        {(state.payment === 'stripe')? <button type="button" className="btn-solid btn" onClick={() => StripeClick()} >Place Order</button>:
+                                                        {(method === '구매상담')? <button type="button" className="btn-solid btn" onClick={() => onPurchaseCar()} >Place Order</button>:
                                                             <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
                                                     </div>
                                                     : ''}

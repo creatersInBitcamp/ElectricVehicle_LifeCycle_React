@@ -2,23 +2,27 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import useComponentWillMount from 'component-will-mount-hook'
 import {addToCart,addToWishlist,addToCompare} from '../index'
 import {getVisibleproducts} from '../../atomic/services/services';
 import {ProductListItem} from "../index";
-import {getAllProducts} from "../../common";
+import {elecCars} from "./productReducer";
 
 export const ProductListing = props => {
     const [limit, setLimit] = useState(5)
     const [hasMoreItems, setHasMoreItems] = useState(true)
+
     const {products, symbol} = useSelector(state=>({
-        // products: getVisibleproducts(state.data, state.filters),
-        // symbol: state.data.symbol,
+        products: getVisibleproducts(state.data, state.filters),
+        symbol: state.data.symbol,
     }))
 
-    /*useComponentWillMount(()=>{
-        fetchMoreItems()
-    })*/
+/*
+    useEffect(()=>{
+        elecCars().then(r => setItems(r))
+    },[])
+
+    const products = getVisibleproducts(items, state.filters)*/
+
 
     useEffect(()=>{
         fetchMoreItems()
@@ -54,14 +58,14 @@ export const ProductListing = props => {
                             }
                         >
                             <div className="row">
-                                {/*{ products.slice(0, limit).map((product, index) =>*/}
-                                {/*    <div className={`${props.colSize===3?'col-xl-3 col-md-6 col-grid-box':'col-lg-'+props.colSize}`} key={index}>*/}
-                                {/*    <ProductListItem product={product} symbol={symbol}*/}
-                                {/*                     onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}*/}
-                                {/*                     onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}*/}
-                                {/*                     onAddToCartClicked={()=>dispatch(addToCart(product,1))} key={index} check={true}/>*/}
-                                {/*    </div>)*/}
-                                {/*}*/}
+                                { products.slice(0, limit).map((product, index) =>
+                                    <div className={`${props.colSize===3?'col-xl-3 col-md-6 col-grid-box':'col-lg-'+props.colSize}`} key={index}>
+                                    <ProductListItem product={product} symbol={symbol}
+                                                     onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
+                                                     onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
+                                                     onAddToCartClicked={()=>dispatch(addToCart(product,1))} key={index} check={true}/>
+                                    </div>)
+                                }
                             </div>
                         </InfiniteScroll>
                         :

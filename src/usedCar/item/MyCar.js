@@ -3,6 +3,7 @@ import {Link, Redirect} from 'react-router-dom'
 import Modal from 'react-responsive-modal';
 import {useDispatch, useSelector} from "react-redux";
 import {addToUsedCompare} from '../page/MyCarComparison'
+import {usedCars} from "./UsedProductReducer";
 
 export const MyCar = () => {
     const [open,setOpen] = useState(false)
@@ -10,15 +11,19 @@ export const MyCar = () => {
     const [targetId,setTargetId] = useState(0)
     const [session, setSession] = useState(false)
     const [userSession] = useState(sessionStorage.getItem("user"))
+    const [items,setItems] = useState([])
 
     useEffect(() => {
         userSession ? setSession(true) : setSession(false)
     },[userSession])
 
-    const {first,items,products} = useSelector(state=>({
+    useEffect(()=>{
+        usedCars().then(r => setItems(r))
+    },[])
+
+    const {first,wishItems} = useSelector(state=>({
         first: state.firstCar.list,
-        items: state.usedWishlist.list,
-        products: state.data.products
+        wishItems: state.usedWishlist.list
     }))
 
     const renderRedirect = () => {
@@ -32,16 +37,14 @@ export const MyCar = () => {
     return <>
 
         {session ?
-            (first.length>0?
+            (first ?
                 <div className="collection-filter-block">
                     <h2 style={{textAlign: "center", padding: "15px"}}>My Car</h2>
                     {first.map((item) => {
                         return (
                             <>
-                                <img className="img-fluid" src={item.variants?
-                                    item.variants[0].images
-                                    :item.pictures[0]} alt=""/>
-                                <h5 style={{textAlign: "center"}}>{item.name}</h5>
+                                <img className="img-fluid" src={item.img} alt=""/>
+                                <h5 style={{textAlign: "center"}}>{item.carName}</h5>
                             </>
                         )
                     })}
@@ -84,10 +87,8 @@ export const MyCar = () => {
                                         {first.map((item) => {
                                             return (
                                                 <>
-                                                    <h2 style={{textAlign: "center"}}>{item.name}</h2>
-                                                    <img className="img-fluid" src={item.variants?
-                                                        item.variants[0].images
-                                                        :item.pictures[0]} alt=""/>
+                                                    <h2 style={{textAlign: "center"}}>{item.carName}</h2>
+                                                    <img className="img-fluid" src={item.img} alt=""/>
                                                 </>
                                             )
                                         })}
@@ -102,8 +103,8 @@ export const MyCar = () => {
                                                 <select onChange={e=>setTargetId(e.target.value)}>
                                                     <option value="default">상품을 선택해주세요.</option>
                                                     {
-                                                        items.map((item,index)=>{
-                                                            return <option key={index} value={item.id}>{item.name}</option>
+                                                        wishItems.map((item,index)=>{
+                                                            return <option key={index} value={item.usedCarId}>{item.carName}</option>
                                                         })
                                                     }
                                                 </select>
@@ -113,7 +114,7 @@ export const MyCar = () => {
                                                             type={'button'}
                                                             onClick={()=>{
                                                                 setRedirect(true);
-                                                                dispatch(addToUsedCompare(products.find(x => x.id == targetId)));
+                                                                dispatch(addToUsedCompare(items.find(x => x.usedCarId == targetId)));
                                                             }}>
                                                         비교하기
                                                     </button>

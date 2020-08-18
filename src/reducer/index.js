@@ -1,15 +1,14 @@
 import {combineReducers} from 'redux'
+import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {datatableReducer, imageReducer, tabset_pageReducer, report_tableReducer, tabset_profileReducer} from "../admin/item"
 import {sidebarReducer, sidebarMenusReducer} from "../admin/common"
 import {communityReducer, elecCarReducer, reportsReducer, ordersReducer, userReducer, usedCarReducer, dashboardReducer, tabset_userReducer} from "../admin/page"
-import productReducer from '../common/item/productReducer'
-import filtersReducer from '../common/item/filtersReducer'
-import {cartReducer,wishlistReducer,compareReducer} from "../newCar";
+import {cartReducer,wishlistReducer,compareReducer/*,productReducer,filtersReducer*/} from "../newCar";
+import productReducer from "../newCar/items/productReducer";
+import filtersReducer from "../newCar/items/filtersReducer";
 import {usedWishlistReducer, usedCompareReducer, usedProductReducer, usedFiltersReducer} from "../usedCar"
-import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
-import {firstCarReducer, loginReducer} from "../user";
+import {firstCarReducer, loginReducer, myCarReducer} from "../user";
 import {boardReducer} from "../board/items";
-import {myCarReducer} from "../user";
 
 const rootReducer = combineReducers({
         boardReducer,

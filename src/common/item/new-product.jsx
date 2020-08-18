@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 import {getBestSeller} from "../../atomic/services/services";
 
-export const NewProduct = () => {
+const NewProduct = () => {
     const {items, symbol} = useSelector(state => ({
         items: getBestSeller(state.data.products),
         symbol: state.data.symbol

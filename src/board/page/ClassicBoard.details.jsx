@@ -43,6 +43,7 @@ const ClassicBoardDetails = ({history}) => {
         }, [match, user, recommend, report])
 
         const commentPush = () => {
+            console.log(user)
             const newComment = {
                 userId: user.userId,
                 regDate: new Date().toLocaleString(),
@@ -54,8 +55,8 @@ const ClassicBoardDetails = ({history}) => {
             axios.post(`http://localhost:8080/comments/insert`, newComment)
                 .then((res)=>{
                     console.log(res.status)
-                    RefreshInfo()
                     reFresh()
+                    RefreshInfo()
                 })
                 .catch((err)=> {
                     console.log(err.status)

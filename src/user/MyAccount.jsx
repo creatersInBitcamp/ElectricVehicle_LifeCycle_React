@@ -2,8 +2,40 @@ import React, {useEffect, useState} from 'react';
 import {Breadcrumb} from "../common";
 import {Link} from "react-router-dom";
 import {RefreshInfo} from '../board/items'
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`vertical-tabpanel-${index}`}
+            aria-labelledby={`vertical-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box p={3}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
+
+function a11yProps(index) {
+    return {
+        id: `vertical-tab-${index}`,
+        'aria-controls': `vertical-tabpanel-${index}`,
+    };
+}
 
 export const MyAccount = () => {
+    const [value, setValue] = useState(0)
     const [name, setName] = useState('')
     const [userId, setUserId] = useState('')
     const [email, setEmail] = useState('')
@@ -38,6 +70,9 @@ export const MyAccount = () => {
         setPurchase(userSession.purchasesList)
     }, [userSession])
 
+    const handleChange = (e, newValue) => {
+        setValue(newValue)
+    }
     return (
 
             <div>
@@ -75,92 +110,126 @@ export const MyAccount = () => {
                                         </ul>
                                     </div>
                                 </div>
+                                <Tabs
+                                    orientation="vertical"
+                                    variant="scrollable"
+                                    value={value}
+                                    onChange={handleChange}
+                                    aria-label="Vertical tabs example"
+                                >
+                                    <Tab label="My Account" {...a11yProps(0)} />
+                                    <Tab label="My Car" {...a11yProps(1)} />
+                                    <Tab label="My Wishlist" {...a11yProps(2)} />
+                                    <Tab label="My Post" {...a11yProps(3)} />
+                                    <Tab label="My Comment" {...a11yProps(4)} />
+                                    <Tab label="My Bookmark" {...a11yProps(5)} />
+                                    <Tab label="Change Password" {...a11yProps(6)} />
+                                </Tabs>
                             </div>
                             <div className="col-lg-9">
                                 <div className="dashboard-right">
                                     <div className="dashboard">
                                         <div className="container-fluid">
-
-                                            <div className="row">
-                                                <div className="col-xl-4">
-                                                    <div className="card">
-                                                        <div className="card-body">
-                                                            <div className="profile-details text-center">
-                                                                <img src={image} alt="" className="img-fluid img-90 rounded-circle blur-up lazyloaded" />
-                                                                <h5 className="f-w-600 f-16 mb-0">{name}</h5>
-                                                                <span>ID : {userId}</span>
+                                                <TabPanel value={value} index={0}>
+                                                 <div className="row">
+                                                    <div className="col-xl-4">
+                                                        <div className="card">
+                                                            <div className="card-body">
+                                                                <div className="profile-details text-center">
+                                                                    <img src={image} alt="" className="img-fluid img-90 rounded-circle blur-up lazyloaded" />
+                                                                    <h5 className="f-w-600 f-16 mb-0">{name}</h5>
+                                                                    <span>ID : {userId}</span>
+                                                                </div>
+                                                                <hr />
+                                                                <div className="project-status">
+                                                                    <h5 className="f-w-600 f-16">자기소개</h5>
+                                                                    <div className="media">
+                                                                        <div className="media-body">
+                                                                            <h6>Performance <span className="pull-right">80%</span></h6>
+                                                                            <div className="progress sm-progress-bar">
+                                                                                <div className="progress-bar bg-primary" role="progressbar" style={{width: '90%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="media">
+                                                                        <div className="media-body">
+                                                                            <h6>Overtime <span className="pull-right">60%</span></h6>
+                                                                            <div className="progress sm-progress-bar">
+                                                                                <div className="progress-bar bg-secondary" role="progressbar" style={{width: '60%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="media">
+                                                                        <div className="media-body">
+                                                                            <h6>Leaves taken <span className="pull-right">50%</span></h6>
+                                                                            <div className="progress sm-progress-bar">
+                                                                                <div className="progress-bar bg-danger" role="progressbar" style={{width: '50%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <hr />
-                                                            <div className="project-status">
-                                                                <h5 className="f-w-600 f-16">자기소개</h5>
-                                                                <div className="media">
-                                                                    <div className="media-body">
-                                                                        <h6>Performance <span className="pull-right">80%</span></h6>
-                                                                        <div className="progress sm-progress-bar">
-                                                                            <div className="progress-bar bg-primary" role="progressbar" style={{width: '90%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="media">
-                                                                    <div className="media-body">
-                                                                        <h6>Overtime <span className="pull-right">60%</span></h6>
-                                                                        <div className="progress sm-progress-bar">
-                                                                            <div className="progress-bar bg-secondary" role="progressbar" style={{width: '60%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="media">
-                                                                    <div className="media-body">
-                                                                        <h6>Leaves taken <span className="pull-right">50%</span></h6>
-                                                                        <div className="progress sm-progress-bar">
-                                                                            <div className="progress-bar bg-danger" role="progressbar" style={{width: '50%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
-                                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-xl-8">
+                                                        <div className="card profile-card">
+                                                            <div className="card-body">
+                                                                <div className="tab-pane fade show active">
+                                                                    <h5 className="f-w-600 f-16">마이페이지</h5>
+                                                                    <div className="table-responsive profile-table">
+                                                                        <table className="table table-responsive">
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td>이름</td>
+                                                                                <td>{name}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>이메일</td>
+                                                                                <td>{email}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>성별</td>
+                                                                                <td>{sex}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>전화번호</td>
+                                                                                <td>{number}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>생년월일</td>
+                                                                                <td>{birth}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>주소</td>
+                                                                                <td>{addr}</td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="col-xl-8">
-                                                    <div className="card profile-card">
-                                                        <div className="card-body">
-                                                            <div className="tab-pane fade show active">
-                                                                <h5 className="f-w-600 f-16">마이페이지</h5>
-                                                                <div className="table-responsive profile-table">
-                                                                    <table className="table table-responsive">
-                                                                        <tbody>
-                                                                        <tr>
-                                                                            <td>이름</td>
-                                                                            <td>{name}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>이메일</td>
-                                                                            <td>{email}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>성별</td>
-                                                                            <td>{sex}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>전화번호</td>
-                                                                            <td>{number}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>생년월일</td>
-                                                                            <td>{birth}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>주소</td>
-                                                                            <td>{addr}</td>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                 </div>
+                                                </TabPanel>
+                                                <TabPanel value={value} index={1}>
+                                                    Item Two
+                                                </TabPanel>
+                                                <TabPanel value={value} index={2}>
+                                                    Item Three
+                                                </TabPanel>
+                                                <TabPanel value={value} index={3}>
+                                                    Item Four
+                                                </TabPanel>
+                                                <TabPanel value={value} index={4}>
+                                                    Item Five
+                                                </TabPanel>
+                                                <TabPanel value={value} index={5}>
+                                                    Item Six
+                                                </TabPanel>
+                                                <TabPanel value={value} index={6}>
+                                                    Item Seven
+                                                </TabPanel>
                                         </div>
                                     </div>
                                 </div>

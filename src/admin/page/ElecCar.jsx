@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import {Table} from '../item'
 import http from "../item/http";
+import {getAllProducts} from "../../common";
 
 const elecCarTypes = {REQUEST: 'elecCar/REQUEST'}
 const initialState = {
@@ -23,10 +24,7 @@ export const ElecCar = () => {
     const [files, setFile] = useState(undefined)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/electriccars/getall`)
-            .then((res)=>{
-                setDate(res.data)
-            })
+        setDate(getAllProducts())
     },[])
 
     const columns = [

@@ -11,7 +11,6 @@ import {getAllProducts} from "../../common";
 export const ProductListing = props => {
     const [limit, setLimit] = useState(5)
     const [hasMoreItems, setHasMoreItems] = useState(true)
-
     const {products, symbol} = useSelector(state=>({
         products: getVisibleproducts(state.data, state.filters),
         symbol: state.data.symbol,

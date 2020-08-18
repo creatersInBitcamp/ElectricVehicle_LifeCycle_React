@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import StickyBox from "react-sticky-box";
-import FilterBar from "../item/filter-bar";
-import ProductListing from "../item/product-listing";
-import Filter from "../item/Filter"
+import FilterBar from "../item/Filter-bar";
+import ProductListing from "../item/Product-listing";
+import {Filter} from "..";
 import MyCar from "../item/MyCar";
 import {Breadcrumb} from "../../common";
 

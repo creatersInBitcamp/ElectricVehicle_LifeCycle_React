@@ -1,30 +1,76 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getBrands, getMinMaxUsedPrice} from "../../atomic/services/services";
-import {filterBrand, filterPrice} from "./UsedFilterReducer";
+import {getUsedBrands, getMinMaxUsedPrice} from "../../atomic/services/services";
 import { SlideToggle } from 'react-slide-toggle';
 import InputRange from "react-input-range";
 import {usedCars} from "./UsedProductReducer";
 
-const Filter = () => {
-    const [items,setItems] = useState([])
+const FILTER_BRAND = 'FILTER_BRAND'
+const FILTER_PRICE = 'FILTER_PRICE'
+const SORT_BY = 'SORT_BY'
 
-    const { filters } = useSelector(state=>({
-        filters: state.usedFilters
-    }))
+const filterBrand = (brand) => ({
+    type: FILTER_BRAND,
+    brand
+});
+const filterPrice = (value) => ({
+    type: FILTER_PRICE,
+    value
+});
+const filterSort = (sort_by) => ({
+    type: SORT_BY,
+    sort_by
+});
+
+const filtersReducerDefaultState = {
+    brand: ["르노삼성"],
+    value: { min: 100, max: 5000 },
+    sortBy: ""
+};
+
+const usedFiltersReducer = (state = filtersReducerDefaultState, action) => {
+    switch (action.type) {
+        case FILTER_BRAND:
+            return {
+                ...state,
+                brand: action.brand
+            }
+        case FILTER_PRICE:
+            return {
+                ...state,
+                value: {min: action.value.value.min, max: action.value.value.max }
+            };
+
+        case SORT_BY:
+            return {
+                ...state,
+                sortBy: action.sort_by
+            };
+        default:
+            return state;
+    }
+}
+
+export const Filter = () => {
+    const [items,setItems] = useState([])
 
     useEffect(()=>{
         usedCars().then(r => setItems(r))
     },[])
 
+    const { filters } = useSelector(state=>({
+        filters: state.usedFilters
+    }))
+
     const prices = getMinMaxUsedPrice(items)
-    const brands = getBrands(items)
+    const brands = getUsedBrands(items)
+    const filteredBrands = filters.brand
 
     const closeFilter = () => {
         document.querySelector(".collection-filter").style = "left: -365px";
     }
 
-    const clickBrandHandle = (event, brands) => {
+    const clickBrandHandle = (event, brands) => (dispatch) => {
         const index = brands.indexOf(event.target.value);
         if (event.target.checked)
             brands.push(event.target.value) // push in array checked value
@@ -32,8 +78,6 @@ const Filter = () => {
             brands.splice(index, 1) // removed in array unchecked value
         dispatch(filterBrand(brands))
     }
-
-    const filteredBrands = filters.brand
 
     const dispatch = useDispatch()
 
@@ -94,4 +138,4 @@ const Filter = () => {
         </div>
     </>
 }
-export default Filter
+export default usedFiltersReducer

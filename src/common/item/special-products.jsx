@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {useDispatch, useSelector} from 'react-redux'
-import {getBestSeller, getMensWear} from '../../atomic/services/services'
+import {getBestSeller, getSpecialUsed, getPosts, getWomensWear} from '../../atomic/services/services'
 import {ProductItem}from '../../usedCar'
 import {PostItem} from '../../board'
 import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
@@ -9,9 +9,11 @@ import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
 import axios from "axios";
 
 export const SpecialProducts = () => {
-    const {bestSeller,mensWear,symbol} = useSelector(state=>({
+    const {bestSeller,usedCar,womensWear,symbol} = useSelector(state=>({
         bestSeller: getBestSeller(state.data.products),
-        mensWear: getMensWear(state.data.products),
+        usedCar: getSpecialUsed(state.usedData.products),
+        womensWear: getWomensWear(state.data.products),
+        // posts: receivePosts(),
         symbol: state.data.symbol
     }))
     useEffect(()=>{
@@ -53,7 +55,7 @@ export const SpecialProducts = () => {
                         </TabPanel>
                         <TabPanel>
                             <div className="no-slider row">
-                                { mensWear.map((product, index ) =>
+                                { usedCar.map((product, index ) =>
                                     <ProductItem product={product} symbol={symbol}
                                                  onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(product))}} key={index} /> )
                                 }

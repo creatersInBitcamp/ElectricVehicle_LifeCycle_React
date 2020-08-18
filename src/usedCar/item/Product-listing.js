@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {addToUsedWishlist} from '../page/UsedCarWishlist'
-import ProductItem from "./product-item";
+import ProductItem from "./Product-item";
 import {usedCars} from "./UsedProductReducer";
 
 const ProductListing = props => {

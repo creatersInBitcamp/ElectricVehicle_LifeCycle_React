@@ -7,7 +7,7 @@ export const usedCars = () => {
             return res.data
         })
         .catch(err => {
-            alert('axios error')
+            alert('usedCar axios error')
             throw err
         })
 }

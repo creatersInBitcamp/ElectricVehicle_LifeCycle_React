@@ -15,10 +15,11 @@ export default {
 import axios from "axios";
 
 export const elecCars = () => {
-    const products=[]
+    let products=[]
+    let result=[]
     axios.get(`http://localhost:8080/electriccars/findall`)
         .then((res) => {
-            console.log(res.data.length)
+            // console.log(res.data)
             for(let i=0; i<69;i++){
                 products.push(res.data.shift())
             }
@@ -28,8 +29,8 @@ export const elecCars = () => {
             console.log('신차 에러')
             throw err
         })
-
-    console.log(products)
+    result = products
+    console.log(result)
     return products
 }
 

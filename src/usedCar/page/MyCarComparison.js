@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {toast} from "react-toastify";
 import Slider from 'react-slick';
 import {Breadcrumb} from "../../common";
-import {MarketPrice} from "../item/MarketPrice";
+import {MarketPrice} from "..";
 
 /* types */
 const ADD_TO_USED_COMPARE = 'ADD_TO_USED_COMPARE'
@@ -28,10 +28,11 @@ export const removeFromUsedCompare = product_id => ({
 const usedCompareReducer = (state = {items: []}, action) => {
     switch (action.type) {
         case ADD_TO_USED_COMPARE:
-            const productId = action.product.id
-            if (state.items.findIndex(product => product.id === productId) !== -1) {
+            const productId = action.product.usedCarId
+            state.items = []
+            if (state.items.findIndex(product => product.usedCarId === productId) !== -1) {
                 const items = state.items.reduce((cartAcc, product) => {
-                    if (product.id === productId) {
+                    if (product.usedCarId === productId) {
                         cartAcc.push({ ...product })
                     } else {
                         cartAcc.push(product)
@@ -179,20 +180,49 @@ export const MyCarComparison = () => {
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                             <div className="img-section">
-                                                <img src={item.variants?
-                                                    item.variants[0].images
-                                                    :item.pictures[0]} className="img-fluid" alt="" />
-                                                <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
-                                                    <h5>{item.name}</h5>
+                                                <img src={item.img.img1} className="img-fluid" alt="" />
+                                                <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.usedCarId}`}>
+                                                    <h5>{item.carName}</h5>
                                                 </Link>
-                                                <h5>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h5>
                                             </div>
                                             <div className="detail-part">
                                                 <div className="title-detail">
-                                                    <h5>name</h5>
+                                                    <h5>Brand Name</h5>
                                                 </div>
                                                 <div className="inner-detail">
-                                                    <p>{item.name}</p>
+                                                    <p>{item.brand}</p>
+                                                </div>
+                                            </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    <h5>Trim</h5>
+                                                </div>
+                                                <div className="inner-detail">
+                                                    <p>{item.trim}</p>
+                                                </div>
+                                            </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    <h5>Age</h5>
+                                                </div>
+                                                <div className="inner-detail">
+                                                    <p>{item.yyyy}년형 {item.age}</p>
+                                                </div>
+                                            </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    <h5>mileage</h5>
+                                                </div>
+                                                <div className="inner-detail">
+                                                    <p>{item.mileage}</p>
+                                                </div>
+                                            </div>
+                                            <div className="detail-part">
+                                                <div className="title-detail">
+                                                    <h5>Price</h5>
+                                                </div>
+                                                <div className="inner-detail">
+                                                    <p>{item.price}{symbol}</p>
                                                 </div>
                                             </div>
                                             <div className="detail-part">
@@ -203,33 +233,9 @@ export const MyCarComparison = () => {
                                                     <MarketPrice/>
                                                 </div>
                                             </div>
-                                            <div className="detail-part">
-                                                <div className="title-detail">
-                                                    <h5>description</h5>
-                                                </div>
-                                                <div className="inner-detail">
-                                                    <p>shortDetail</p>
-                                                </div>
-                                            </div>
-                                            <div className="detail-part">
-                                                <div className="title-detail">
-                                                    <h5>Brand Name</h5>
-                                                </div>
-                                                <div className="inner-detail">
-                                                    <p>{item.tags}</p>
-                                                </div>
-                                            </div>
-                                            <div className="detail-part">
-                                                <div className="title-detail">
-                                                    <h5>color</h5>
-                                                </div>
-                                                <div className="inner-detail">
-                                                    <p>{item.colors}</p>
-                                                </div>
-                                            </div>
                                             <div className="btn-part">
                                                 <a className="btn btn-solid">
-                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`}>
+                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.usedCarId}`}>
                                                         purchase request
                                                     </Link>
                                                 </a>

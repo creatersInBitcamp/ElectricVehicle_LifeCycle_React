@@ -10,6 +10,8 @@ const ADD_TO_MY_CAR = 'ADD_TO_MY_CAR'
 const REMOVE_FROM_MY_CAR = 'REMOVE_FROM_MY_CAR'
 const ADD_TO_FIRST_CAR = 'ADD_TO_FIRST_CAR'
 const REMOVE_FROM_FIRST_CAR = 'REMOVE_FROM_FIRST_CAR'
+const REMOVE_ALL_CAR = 'REMOVE_ALL_CAR'
+const REMOVE_ALL_FIRST_CAR = 'REMOVE_ALL_FIRST_CAR'
 
 /* action */
 const addToMyCar = (product) => (dispatch) => {
@@ -25,6 +27,9 @@ const removeFromMyCar = product_id => (dispatch) => {
         product_id
     })
 }
+const removeAllCar = () => ({
+    type: REMOVE_ALL_CAR
+})
 const addToFirstCar = (product) => ({
     type: ADD_TO_FIRST_CAR,
     product
@@ -35,6 +40,9 @@ const removeFromFirstCar = product_id => (dispatch) => {
         product_id
     })
 }
+const removeAllFirstCar = () => ({
+    type: REMOVE_ALL_FIRST_CAR
+})
 const changeFirstCar = (product) => (dispatch) => {
     dispatch(addToFirstCar(product))
 }
@@ -43,10 +51,10 @@ const changeFirstCar = (product) => (dispatch) => {
 export const myCarReducer = (state={list:[]}, action) => {
     switch (action.type) {
         case ADD_TO_MY_CAR:
-            const productId = action.product.id
-            if (state.list.findIndex(product => product.id === productId) !== -1) {
+            const productId = action.product.eccarId
+            if (state.list.findIndex(product => product.eccarId === productId) !== -1) {
                 const list = state.list.reduce((cartAcc, product) => {
-                    if (product.id === productId) {
+                    if (product.eccarId === productId) {
                         cartAcc.push({ ...product })
                     } else {
                         cartAcc.push(product)
@@ -57,6 +65,10 @@ export const myCarReducer = (state={list:[]}, action) => {
             }
             return { ...state, list: [...state.list, action.product] }
 
+        case REMOVE_ALL_CAR:
+            return {
+                list: []
+            }
         case REMOVE_FROM_MY_CAR:
             return {
                 list: state.list.filter(id => id !== action.product_id)
@@ -69,11 +81,11 @@ export const myCarReducer = (state={list:[]}, action) => {
 export const firstCarReducer = (state={list:[]}, action) => {
     switch (action.type) {
         case ADD_TO_FIRST_CAR:
-            const productId = action.product.id
+            const productId = action.product.eccarId
             state.list = []
-            if (state.list.findIndex(product => product.id === productId) !== -1) {
+            if (state.list.findIndex(product => product.eccarId === productId) !== -1) {
                 const list = state.list.reduce((cartAcc, product) => {
-                    if (product.id === productId) {
+                    if (product.eccarId === productId) {
                         cartAcc.push({ ...product })
                     } else {
                         cartAcc.push(product)
@@ -87,6 +99,11 @@ export const firstCarReducer = (state={list:[]}, action) => {
         case REMOVE_FROM_FIRST_CAR:
             return {
                 list: state.list.filter(id => id !== action.product_id)
+            }
+
+        case REMOVE_ALL_FIRST_CAR:
+            return {
+                list: []
             }
 
         default:
@@ -239,7 +256,7 @@ export const MyCarPage = () => {
                                                             {myCars.map((item,index)=>{
                                                                 return (
                                                                     <div key={index}>
-                                                                        <img src={item.pictures[0]} className="img-fluid image_zoom_cls-0"  alt={""} />
+                                                                        <img src={item.img} className="img-fluid image_zoom_cls-0"  alt={""} />
                                                                         <h4>{item.carName}</h4>
                                                                     </div>
                                                                 )
@@ -261,7 +278,7 @@ export const MyCarPage = () => {
                                                                 first.map((item,index)=>{
                                                                 return (
                                                                     <div key={index}>
-                                                                        <img src={item.pictures[0]} className="img-fluid image_zoom_cls-0"  alt={""} />
+                                                                        <img src={item.img} className="img-fluid image_zoom_cls-0"  alt={""} />
                                                                         <h4>{item.carName}</h4>
                                                                     </div>
                                                                 )})
@@ -302,17 +319,19 @@ export const MyCarPage = () => {
                                                                 dispatch(removeFromMyCar(myCars.find(x => x.eccarId == targetId)))
                                                                 dispatch(removeFromFirstCar(myCars.find(x => x.eccarId == targetId)))
                                                             }}>삭제</button>
+                                                            <button onClick={()=>dispatch(removeAllCar())}>전체삭제</button>
                                                         </div>
                                                         <div className="col-sm-6">
                                                             <select onChange={e=>setTargetId(e.target.value)}>
                                                                 <option value="default">메인차량을 선택해주세요.</option>
                                                                 {
                                                                     myCars.map((item,index)=>{
-                                                                        return <option key={index} value={item.targetId}>{item.carName}</option>
+                                                                        return <option key={index} value={item.eccarId}>{item.carName}</option>
                                                                     })
                                                                 }
                                                             </select>
-                                                            <button onClick={()=>dispatch(changeFirstCar(myCars.find(x => x.targetId == targetId)))}>변경</button>
+                                                            <button onClick={()=>dispatch(changeFirstCar(myCars.find(x => x.eccarId == targetId)))}>변경</button>
+                                                            <button onClick={()=>dispatch(removeAllFirstCar())}>전체삭제</button>
                                                         </div>
                                                     </div>
                                             </div>

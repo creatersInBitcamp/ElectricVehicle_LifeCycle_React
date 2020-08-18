@@ -7,6 +7,7 @@ import {Breadcrumb} from "../../common";
 /* type */
 const ADD_TO_USED_WISHLIST = 'ADD_TO_USED_WISHLIST'
 const REMOVE_FROM_USED_WISHLIST = 'REMOVE_FROM_USED_WISHLIST'
+const REMOVE_ALL_USED_WISHLIST = 'REMOVE_ALL_USED_WISHLIST'
 
 /* action */
 export const addToUsedWishlist = (product) => (dispatch) => {
@@ -24,15 +25,18 @@ export const removeFromUsedWishlist = product_id => (dispatch) => {
         product_id
     })
 }
+export const removeAllUsedWishlist = () => ({
+    type: REMOVE_ALL_USED_WISHLIST
+})
 
 /* reducer */
 const usedWishlistReducer = (state = {list: []}, action) => {
     switch (action.type) {
         case ADD_TO_USED_WISHLIST:
-            const productId = action.product.id
-            if (state.list.findIndex(product => product.id === productId) !== -1) {
+            const productId = action.product.usedCarId
+            if (state.list.findIndex(product => product.usedCarId === productId) !== -1) {
                 const list = state.list.reduce((cartAcc, product) => {
-                    if (product.id === productId) {
+                    if (product.usedCarId === productId) {
                         cartAcc.push({ ...product })
                     } else {
                         cartAcc.push(product)
@@ -49,6 +53,11 @@ const usedWishlistReducer = (state = {list: []}, action) => {
         case REMOVE_FROM_USED_WISHLIST:
             return {
                 list: state.list.filter(id => id !== action.product_id)
+            }
+
+        case REMOVE_ALL_USED_WISHLIST:
+            return {
+                list: []
             }
 
         default:
@@ -87,15 +96,13 @@ export const UsedWishlist = () => {
                                             <tbody key={index}>
                                             <tr>
                                                 <td>
-                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
-                                                        <img src={item.variants?
-                                                            item.variants[0].images
-                                                            :item.pictures[0]} alt="" />
+                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.usedCarId}`}>
+                                                        <img src={item.img.img1} alt="" />
                                                     </Link>
                                                 </td>
                                                 <td>
-                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.id}`}>
-                                                        {item.name}
+                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/product/${item.usedCarId}`}>
+                                                        {item.carName}
                                                     </Link>
                                                 </td>
                                                 <td>
@@ -109,7 +116,7 @@ export const UsedWishlist = () => {
                                                 </td>
                                                 <td>
                                                     <div className="col-xs-3">
-                                                        <Link className="btn btn-solid" to={`${process.env.PUBLIC_URL}/used-car/purchase`}>
+                                                        <Link className="btn btn-solid" to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.usedCarId}`}>
                                                             purchase request
                                                         </Link>
                                                     </div>

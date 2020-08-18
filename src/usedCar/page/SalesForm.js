@@ -17,9 +17,9 @@ export const SalesForm = (props) => {
     const [carId,setCarId] = useState(0)
     const [carName,setCarName] = useState('')
 
-    /*const {products} = useSelector(state=>({
+    const {products} = useSelector(state=>({
         products: state.data.products
-    }))*/
+    }))
 
     const onClickSubmit = (e) => {
         e.preventDefault()
@@ -40,14 +40,14 @@ export const SalesForm = (props) => {
                 alert('통신실패')
             })
     }
-    // const onClickSelect = (e) => {
-    //     e.preventDefault()
-    //     let product = products.find(x => x.eccarId == targetId)
-    //     setItem(product)
-    //     setCarId(targetId)
-    //     setCarName(product.carName)
-    //     console.log(product)
-    // }
+    const onClickSelect = (e) => {
+        e.preventDefault()
+        let product = products.find(x => x.eccarId == targetId)
+        setItem(product)
+        setCarId(targetId)
+        setCarName(product.carName)
+        console.log(product)
+    }
 
     return <>
         <Breadcrumb title={'Selling Used Car'}/>
@@ -63,13 +63,13 @@ export const SalesForm = (props) => {
                                         <label htmlFor="car-type">차종</label>
                                         <select onChange={(e)=>setTargetId(e.target.value)}>
                                             <option value="default">차종을 선택해주세요.</option>
-                                            {/*{
+                                            {
                                                 products.map((item,index)=>{
                                                     return <option key={index} value={item.eccarId}>{item.carName}</option>
                                                 })
-                                            }*/}
+                                            }
                                         </select>&nbsp;
-                                        <button className="btn btn-solid" onClick={{/*onClickSelect*/}}>선택</button>
+                                        <button className="btn btn-solid" onClick={onClickSelect}>선택</button>
                                     </div>
                                     <div className="col">
                                         <label htmlFor="car-type">차종</label>

@@ -3,17 +3,8 @@ import {Link} from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 export const ProductStyleFive = props => {
-    const [open,setOpen] = useState(false)
-    const [stock,setStock] = useState('InStock')
-    const [quantity,setQuantity] = useState(1)
     const [image,setImage] = useState('')
 
-    const onOpenModal = () => {
-        setOpen(true)
-    };
-    const onCloseModal = () => {
-        setOpen(false)
-    };
     const onClickHandle = (img) => {
         setImage(img)
     }
@@ -21,10 +12,11 @@ export const ProductStyleFive = props => {
     const {product, symbol, onAddToCartClicked, onAddToWishlistClicked, onAddToCompareClicked} = props;
 
     return <>
+        {console.log(product)}
         <div className="product-box product-wrap">
             <div className="img-wrapper">
                 <div className="lable-block">
-                    {(product.new)? <span className="lable3">new</span> : ''}
+                    {(product.yyyy>2020)? <span className="lable3">new</span> : ''}
                 </div>
                 <div className="front">
                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} ><img
@@ -53,10 +45,6 @@ export const ProductStyleFive = props => {
                     <a title="Add to Wishlist" onClick={onAddToWishlistClicked} >
                         <i className="fa fa-heart" aria-hidden="true"/>
                     </a>
-                    <a data-toggle="modal"
-                       data-target="#quick-view"
-                       title="Quick View"
-                       onClick={onOpenModal} ><i className="fa fa-search" aria-hidden="true"/></a>
                     <Link to={`${process.env.PUBLIC_URL}/new-car/compare`} title="Compare" onClick={onAddToCompareClicked}>
                         <i className="fa fa-refresh" aria-hidden="true"/></Link>
                 </div>
@@ -76,44 +64,6 @@ export const ProductStyleFive = props => {
                         </ul>:''}
                 </div>
             </div>
-            <Modal open={open} onClose={onCloseModal} center>
-                <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
-                    <div className="modal-content quick-view-modal">
-                        <div className="modal-body">
-                            <div className="row">
-                                <div className="col-lg-6  col-xs-12">
-                                    <div className="quick-view-img">
-                                        <img src={product.variants?
-                                            image?image:product.variants[0].images
-                                            :product.img} alt="" className="img-fluid" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-6 rtl-text">
-                                    <div className="product-right">
-                                        <h2> {product.carName} </h2>
-                                        <h3><span className="money">{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span>
-                                        </h3>
-                                        {product.variants?
-                                            <ul className="color-variant">
-                                                {product.variants.map((vari, i) =>
-                                                    <li className={vari.color} key={i} title={vari.color} onClick={()=>onClickHandle(vari.images)}/>)
-                                                }
-                                            </ul>:''}
-                                        <div className="border-product">
-                                            <h6 className="product-title">product details</h6>
-                                            <p>{props.product.shortDetails}</p>
-                                        </div>
-                                        <div className="product-buttons">
-                                            <button  className="btn btn-solid" onClick={()=>onAddToCartClicked(product, quantity)} >add to cart</button>
-                                            <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} className="btn btn-solid">view detail</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Modal>
         </div>
     </>
 }

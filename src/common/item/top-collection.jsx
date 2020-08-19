@@ -1,16 +1,16 @@
 import React from 'react';
 import Slider from 'react-slick';
 import {useDispatch, useSelector} from 'react-redux'
-import {getTrendingCollection} from '../../atomic/services/services'
+import {getNewProducts} from '../../atomic/services/services'
 import {ProductStyleFive} from '../index';
 import {addToCart,addToWishlist,addToCompare} from "../../newCar";
 
 export const TopCollection = () => {
     const {items,symbol} = useSelector((state)=>({
-        items: getTrendingCollection(state.data.products),
+        items: getNewProducts(state.data.products),
         symbol: state.data.symbol
     }))
-    
+
     let properties = {
         infinite: true,
         speed: 200,
@@ -49,8 +49,8 @@ export const TopCollection = () => {
         <div>
             {/*Paragraph*/}
             <div className="title1  section-t-space">
-                <h4>most</h4>
-                <h2 className="title-inner1">popular</h2>
+                <h4>New</h4>
+                <h2 className="title-inner1">Electric Cars</h2>
             </div>
             {/*Paragraph End*/}
             <section className="section-b-space p-t-0">

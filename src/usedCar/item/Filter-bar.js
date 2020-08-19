@@ -1,10 +1,11 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {filterSort} from '../../newCar'
+import {getVisibleUsedProducts} from "../../atomic/services/services";
 
 const FilterBar = ({onLayoutViewClicked}) => {
     const {items} = useSelector((state) => ({
-        items: state.usedData.products
+        items: getVisibleUsedProducts(state.usedData, state.filters)
     }))
 
     //List Layout View

@@ -3,6 +3,7 @@ import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import Slider from "react-slick";
 import {useDispatch, useSelector} from "react-redux";
 import MyUsedTrading from "./UsedTradingTable";
+import {usedCars} from "../usedCar/item/UsedProductReducer";
 
 /* type */
 const ADD_TO_MY_CAR = 'ADD_TO_MY_CAR'
@@ -111,7 +112,7 @@ export const firstCarReducer = (state={list:[]}, action) => {
     return state
 }
 
-export const MyCarRegister = () => {
+export const MyCarRegister = ({used}) => {
     const [openEdit,setOpenEdit] = useState(false)
     const [targetId,setTargetId] = useState(0)
     const [state, setState] = useState({ nav1: null, nav2: null });
@@ -150,11 +151,7 @@ export const MyCarRegister = () => {
             <h2>My Car</h2>
         </div>
         <div className="box-account box-info">
-            <div className="row">
-                <div className="col-sm-12 col-lg-12">
-                    <MyUsedTrading/>
-                </div>
-            </div>
+            {console.log(used)}
             <div className="row">
                 <div className="col-sm-6">
                     <div className="box">
@@ -249,7 +246,12 @@ export const MyCarRegister = () => {
                             </div>
                         </div>
                     </div>
-                </div> : ''}
+                </div> : ''}<br/><br/>
+            <div className="row">
+                <div className="col-sm-12 col-lg-12">
+                    <MyUsedTrading used={used}/>
+                </div>
+            </div>
         </div>
     </>
 }

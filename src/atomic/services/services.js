@@ -146,10 +146,17 @@ export const getTopCollection = products => {
 }
 
 // Get New Products
-export const getNewProducts = (products, type) => {
+export const getNewProducts = (products) => {
     const items = products.filter(product => {
         return product.yyyy >2020;
     })
+    const aitems = (products.filter(product=>{
+        return product.yyyy >2019 && product.yyyy<2021
+    }))
+    let size = aitems.length
+    for(let i=0; i<size;i++){
+        items.push(aitems.shift())
+    }
 
     return items.slice(0,8)
 }

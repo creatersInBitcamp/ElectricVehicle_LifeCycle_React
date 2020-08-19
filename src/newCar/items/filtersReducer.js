@@ -3,6 +3,7 @@ const FILTER_BRAND = 'FILTER_BRAND'
 const FILTER_COLOR = 'FILTER_COLOR'
 const FILTER_PRICE = 'FILTER_PRICE'
 const SORT_BY = 'SORT_BY'
+const CLEAR_FILTER = 'CLEAR_FILTER'
 
 
 /* actions */
@@ -22,10 +23,13 @@ export const filterSort = (sort_by) => ({
     type: SORT_BY,
     sort_by
 });
+export const clearfilter=()=>({
+    type : CLEAR_FILTER
+})
 
 /* reducer */
 const filtersReducerDefaultState = {
-    brand: ["테슬라"],
+    brand: [],
     value: { min: 100, max: 20000 },
     sortBy: ""
 };
@@ -52,6 +56,13 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
                 ...state,
                 sortBy: action.sort_by
             };
+        case CLEAR_FILTER:
+            return{
+                brand:[],
+                value: [],
+                color: [],
+                sortBy: ''
+            }
         default:
             return state;
     }

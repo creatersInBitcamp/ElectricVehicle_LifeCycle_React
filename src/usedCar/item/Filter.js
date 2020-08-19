@@ -1,17 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getBrands, getMinMaxPrice} from "../../atomic/services/services";
-import {filterBrand, filterPrice} from '../../newCar'
+import {filterBrand, filterColor, filterPrice} from '../../newCar'
 import { SlideToggle } from 'react-slide-toggle';
 import InputRange from "react-input-range";
 
 const Filter = () => {
+    const [value,setValue] = useState({ min: 100, max: 3500 })
     const { brands, prices, filters } = useSelector(state=>({
         brands: getBrands(state.usedData.products),
         prices: getMinMaxPrice(state.usedData.products),
         filters: state.filters
     }))
-
+    useEffect(()=>{
+        dispatch(filterPrice({value}))
+    },[])
     const closeFilter = () => {
         document.querySelector(".collection-filter").style = "left: -365px";
     }
@@ -47,12 +50,13 @@ const Filter = () => {
                         <div className="collection-collapse-block-content"  ref={setCollapsibleElement}>
                             <div className="collection-brand-filter">
                                 {brands.map((brand, index) => {
+                                    filteredBrands.includes(brand)
                                     return (
                                         <div className="custom-control custom-checkbox collection-filter-checkbox" key={index}>
                                             <input type="checkbox"
                                                    onClick={(e)=>clickBrandHandle(e,filteredBrands)}
                                                    value={brand}
-                                                   defaultChecked={filteredBrands.includes(brand)}
+                                                   defaultChecked={true}
                                                    className="custom-control-input"
                                                    id={brand} />
                                             <label className="custom-control-label"

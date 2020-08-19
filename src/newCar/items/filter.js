@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
@@ -9,7 +9,6 @@ import {filterBrand, filterColor, filterPrice} from '../../newCar'
 
 export const Filter = () => {
     // const [openFilter, setOpenFilter] = useState(false)
-
     const { brands, colors, prices, filters } = useSelector(state=>({
         brands: getBrands(state.data.products),
         colors: getColors(state.data.products),
@@ -17,6 +16,14 @@ export const Filter = () => {
         filters: state.filters
     }))
 
+    const [value,setValue] = useState({ min: 100, max: 20000 })
+    const [filteredBrands,setFilteredBrands] = useState(filters.brand);
+
+    useEffect(()=>{
+        dispatch(filterColor(null))
+        dispatch(filterPrice({value}))
+        dispatch(filterBrand(brands))
+    },[])
     const closeFilter = () => {
         document.querySelector(".collection-filter").style = "left: -365px";
     }
@@ -49,7 +56,6 @@ export const Filter = () => {
         }
     }
 
-    const filteredBrands = filters.brand;
     const dispatch = useDispatch()
     return (
         <div className="collection-filter-block">
@@ -66,12 +72,13 @@ export const Filter = () => {
                         <div className="collection-collapse-block-content"  ref={setCollapsibleElement}>
                             <div className="collection-brand-filter">
                                 {brands.map((brand, index) => {
+                                    filteredBrands.includes(brand)
                                     return (
                                         <div className="custom-control custom-checkbox collection-filter-checkbox" key={index}>
                                             <input className="custom-control-input"
                                                    type="checkbox"
                                                    onClick={(e)=>clickBrandHendle(e,filteredBrands)}
-                                                   value={brand} defaultChecked={filteredBrands.includes(brand)} id={brand}
+                                                   value={brand} defaultChecked={true} id={brand}
                                             />
                                             <label className="custom-control-label"
                                                    htmlFor={brand}>{brand}</label>

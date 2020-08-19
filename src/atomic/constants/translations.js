@@ -256,7 +256,7 @@ var module = {
             users: '사용자 통계',
             reports: '보고서 통계',
             userDetail: '사용자 관리',
-            myaccount: '마이페이지',
+            mypage: '마이페이지',
             news: '전기차 소식',
             userboard: '유저 게시판'
         }

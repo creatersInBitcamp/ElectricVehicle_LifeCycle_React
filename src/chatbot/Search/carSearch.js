@@ -3,13 +3,13 @@ import axios from "axios";
 
 const CarSearch = (props) => {
 
-    const [carSearch, setCarSearch] = useState('')
+    const [searchWord, setCarSearch] = useState('')
     const [result, setresult] = useState([])
 
     useEffect(()=>{
         const { steps } = props;
         setCarSearch(steps.carSearch.value)
-        axios.get('http://localhost:5000/car/carSearch/'+ carSearch)
+        axios.get(`http://localhost:8080/cars/carSearch/${searchWord}`)
             .then( response => {
                 console.log(response.data)
                 response.data.forEach(item => {result.push({

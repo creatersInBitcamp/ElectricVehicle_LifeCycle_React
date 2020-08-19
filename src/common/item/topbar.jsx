@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
 import axios from 'axios'
+import {clearWishlist} from "../../newCar/page/wishlistReducer";
 
 export const TopBar = () => {
     const contexts = {
@@ -24,6 +25,7 @@ export const TopBar = () => {
 
     const logout = (e) => {
         e.preventDefault()
+        clearWishlist()
         sessionStorage.clear()
         window.location.reload()
     }

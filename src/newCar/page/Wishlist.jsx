@@ -1,18 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Breadcrumb} from '../../common';
 import {removeFromWishlist,addToCartAndRemoveWishlist} from './wishlistReducer'
 
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
+
 export const wishlist = () => {
+    const [user,setUser] = useState(sessionUser)
+
     const {Items, symbol} = useSelector(state=>({
         Items: state.wishlist.list,
         symbol: state.data.symbol
     }))
-
-    // const changeQty = e => {
-    //     this.setState({ quantity: parseInt(e.target.value) })
-    // }
 
     const dispatch = useDispatch()
     return <>
@@ -29,7 +29,6 @@ export const wishlist = () => {
                                         <th scope="col">image</th>
                                         <th scope="col">product name</th>
                                         <th scope="col">price</th>
-                                        <th scope="col">availability</th>
                                         <th scope="col">action</th>
                                     </tr>
                                     </thead>
@@ -46,9 +45,6 @@ export const wishlist = () => {
                                                 </td>
                                                 <td><Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.eccarId}`}>{item.carName}</Link>
                                                     <div className="mobile-cart-content row">
-                                                        <div className="col-xs-3">
-                                                            <p>in stock</p>
-                                                        </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
                                                                 <span className="money">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h2>
@@ -69,11 +65,6 @@ export const wishlist = () => {
                                                     <div className="col-xs-3">
                                                         <h2 className="td-color">
                                                             <span className="money">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h2>
-                                                    </div>
-                                                </td>
-                                                <td >
-                                                    <div className="col-xs-3">
-                                                        <p>in stock</p>
                                                     </div>
                                                 </td>
                                                 <td>

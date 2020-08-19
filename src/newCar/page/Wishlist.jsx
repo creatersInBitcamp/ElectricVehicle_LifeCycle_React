@@ -97,7 +97,6 @@ export const wishlist = () => {
                         <div className="row wishlist-buttons">
                             <div className="col-12">
                                 <Link to={`${process.env.PUBLIC_URL}/new-car/collection`} className="btn btn-solid">continue shopping</Link>
-                                <Link to={`${process.env.PUBLIC_URL}/checkout`} className="btn btn-solid">check out</Link>
                             </div>
                         </div>
                     </div>

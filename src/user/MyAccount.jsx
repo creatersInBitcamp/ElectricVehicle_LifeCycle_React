@@ -43,7 +43,7 @@ export const MyAccount = () => {
     const [posts, setPosts] = useState([])
     const [comments, setComments] = useState([])
     const [bookmarks, setBookmarks] = useState([])
-    const [useds, setUseds] = useState([])
+    const [used, setUsed] = useState([])
     const [purchase, setPurchase] = useState([])
     const [userSession, setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
     useEffect(() => {
@@ -54,7 +54,7 @@ export const MyAccount = () => {
         setPosts(userSession.postList)
         setComments(userSession.commentList)
         setBookmarks(userSession.bookmarkList)
-        setUseds(userSession.usedCarList)
+        setUsed(userSession.usedCarList)
         setPurchase(userSession.purchasesList)
     }, [userSession])
 
@@ -109,7 +109,7 @@ export const MyAccount = () => {
                                                     <MyAccount2 user={userSession} />
                                                 </TabPanel>
                                                 <TabPanel value={value} index={1}>
-                                                    <MyCarRegister/>
+                                                    <MyCarRegister used={used}/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={2}>
                                                     <MyPost posts={posts}/>

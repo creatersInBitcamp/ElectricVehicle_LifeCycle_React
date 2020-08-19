@@ -29,7 +29,7 @@ const Comment = ({comments, postId}) => {
                 </div>
                                                 </Col>
                                                 <Col sm={2}>
-                                                    <button onClick={(e)=>{
+                                                    <button className="fa fa-close" onClick={(e)=>{
                                                         e.preventDefault()
                                                         const mail = {
                                                             commentId: comment.commentId,
@@ -49,7 +49,7 @@ const Comment = ({comments, postId}) => {
                                                                 console.log(err.status)
                                                                 alert('삭제 실패')
                                                             })
-                                                    }}> 삭제 </button>
+                                                    }}/>
                                                 </Col>
                                             </Row>
                                         </Container>

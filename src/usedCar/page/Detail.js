@@ -26,6 +26,8 @@ export const productDetail = (props) => {
         })
     }, [])
 
+    const { nav1, nav2 } = state;
+
     const match = useRouteMatch('/used-car/product/:usedCarId')
     const {symbol, item} = useSelector((state)=>{
         let productId = match.params.usedCarId
@@ -69,8 +71,7 @@ export const productDetail = (props) => {
 
     return <>
         <div>
-            {console.log(item)}
-            <Breadcrumb parent={'Product'} title={typeof item} />
+            <Breadcrumb parent={'Product'} title={item.carName} />
             {(item)?
                 <section className="section-b-space">
                     <div className="collection-wrapper">
@@ -90,7 +91,7 @@ export const productDetail = (props) => {
                                     <div className="">
                                         <div className="row">
                                             <div className="col-lg-6 product-thumbnail">
-                                                <Slider {...products} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
+                                                <Slider {...products} asNavFor={nav2} ref={slider => (slider1.current = slider)} className="product-slick">
                                                     <img src={item.img.img1} className="img-fluid image_zoom_cls-0" alt={""} />
                                                     <img src={item.img.img2} className="img-fluid image_zoom_cls-0" alt={""} />
                                                     <img src={item.img.img3} className="img-fluid image_zoom_cls-0" alt={""} />
@@ -98,7 +99,7 @@ export const productDetail = (props) => {
                                                 </Slider>
                                                 <div className="row">
                                                     <div className="col-12 p-0">
-                                                        <Slider {...productsNav} asNavFor={state.nav1} ref={slider => (state.nav2 = slider)} className="slider-nav">
+                                                        <Slider {...productsNav} asNavFor={nav1} ref={slider => (slider2.current = slider)} className="slider-nav">
                                                             <img src={`${item.img.img1}`} className="img-fluid image_zoom_cls-0" alt={""} />
                                                             <img src={`${item.img.img2}`} className="img-fluid image_zoom_cls-0" alt={""} />
                                                             <img src={`${item.img.img3}`} className="img-fluid image_zoom_cls-0" alt={""} />

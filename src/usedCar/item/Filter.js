@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getBrands, getMinMaxUsedPrice} from "../../atomic/services/services";
+import {getBrands, getMinMaxPrice} from "../../atomic/services/services";
 import {filterBrand, filterPrice} from '../../newCar'
 import { SlideToggle } from 'react-slide-toggle';
 import InputRange from "react-input-range";
@@ -8,24 +8,26 @@ import InputRange from "react-input-range";
 const Filter = () => {
     const { brands, prices, filters } = useSelector(state=>({
         brands: getBrands(state.usedData.products),
-        prices: getMinMaxUsedPrice(state.usedData.products),
+        prices: getMinMaxPrice(state.usedData.products),
         filters: state.filters
     }))
-    const filteredBrands = filters.brand;
 
     const closeFilter = () => {
         document.querySelector(".collection-filter").style = "left: -365px";
     }
 
-    const clickBrandHandle = (event, brands) => (dispatch) => {
+    const clickBrandHandle = (event, brands) => {
+
         const index = brands.indexOf(event.target.value);
         if (event.target.checked)
-            brands.push(event.target.value) // push in array checked value
+            brands.push(event.target.value); // push in array checked value
         else
-            brands.splice(index, 1) // removed in array unchecked value
-        dispatch(filterBrand(brands))
+            brands.splice(index, 1); // removed in array unchecked value
+
+        dispatch(filterBrand(brands));
     }
 
+    const filteredBrands = filters.brand;
     const dispatch = useDispatch()
 
     return <>
@@ -72,7 +74,7 @@ const Filter = () => {
                             <div className="collection-brand-filter">
                                 <div className="custom-control custom-checkbox collection-filter-checkbox">
                                     <InputRange
-                                        maxValue={prices.max}
+                                        maxValue={prices.max-11500}
                                         minValue={prices.min}
                                         value={filters.value}
                                         onChange={value => dispatch(filterPrice({ value }))} />

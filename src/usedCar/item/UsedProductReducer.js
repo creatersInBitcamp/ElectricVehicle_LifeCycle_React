@@ -5,7 +5,9 @@ export const usedCars = () => {
     let products = []
     axios.get(`http://localhost:8080/usedCars/carInfo`)
         .then((res)=> {
-            for (let i=0; i<262; i++) {
+            console.log(typeof res.data)
+            let s = res.data.length
+            for (let i=0; i<s; i++) {
                 products.push(res.data.shift())
             }
         })

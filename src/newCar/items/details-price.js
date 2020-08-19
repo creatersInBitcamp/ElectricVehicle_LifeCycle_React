@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom'
 import Slider from 'react-slick';
-import Modal from 'react-responsive-modal';
 
+const user = JSON.parse(sessionStorage.getItem('user'))
 
 export const DetailsWithPrice = props => {
     const [state, setState] = useState({
@@ -22,7 +22,7 @@ export const DetailsWithPrice = props => {
 
     const { open, quantity, stock, nav3 } = state;
 
-    const {symbol, item, addToCartClicked, BuynowClicked, addToWishlistClicked} = props
+    const {symbol, item, addToCartClicked, match, BuynowClicked, addToWishlistClicked} = props
 
     const colorsnav = {
         slidesToShow: item.colors.length,
@@ -50,7 +50,12 @@ export const DetailsWithPrice = props => {
                 </div>
                 <div className="product-buttons" >
                     <a className="btn btn-solid" onClick={() => addToCartClicked(item, quantity)}>add to cart</a>
-                    <Link to={`${process.env.PUBLIC_URL}/checkout`} className="btn btn-solid" onClick={() => BuynowClicked(item, quantity)} >buy now</Link>
+                    {
+                        (user) ?
+                    <Link to={`${process.env.PUBLIC_URL}/checkout/${match}`} className="btn btn-solid">buy now</Link>
+                            :
+                    <Link to={`${process.env.PUBLIC_URL}/pages/login`} className="btn btn-solid">로그인이 필요합니다.</Link>
+                    }
                 </div>
                 <div className="border-product">
                     <div className="product-icon">

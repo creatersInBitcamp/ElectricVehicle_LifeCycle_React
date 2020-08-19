@@ -162,7 +162,7 @@ export const NavBar = (props) => {
                                 </Link>
                             </li>
                         }
-                        <button onClick={clearfilter}>필터클리어</button>
+                        {/*<button onClick={clearfilter}>필터클리어</button>*/}
 
                     </ul>
                 </div>

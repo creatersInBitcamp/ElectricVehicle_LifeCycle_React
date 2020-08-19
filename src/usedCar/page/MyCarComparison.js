@@ -192,7 +192,7 @@ export const MyCarComparison = () => {
                                             </div>
                                             <div className="detail-part">
                                                 <div className="title-detail">
-                                                    <h5>Brand Name</h5>
+                                                    <h5>Name</h5>
                                                 </div>
                                                 <div className="inner-detail">
                                                     <p>{item.carName}</p>

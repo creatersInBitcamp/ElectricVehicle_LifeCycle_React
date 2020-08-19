@@ -11,18 +11,6 @@ export const getBrands = (products) => {
     })
     return uniqueBrands;
 }
-export const getUsedBrands = (products) => {
-    const uniqueBrands = [];
-    products.map((product, index) => {
-        if (product.brand) {
-            if (uniqueBrands.indexOf(product.brand) === -1) {
-                uniqueBrands.push(product.brand);
-            }
-        }
-    })
-    console.log(uniqueBrands)
-    return uniqueBrands;
-}
 
 // Get Unique Colors from Json Data
 export const getColors = (products) => {
@@ -44,18 +32,6 @@ export const getMinMaxPrice = (products) => {
 
     products.map((product, index) => {
         let v = product.price;
-        min = (v < min) ? v : min;
-        max = (v > max) ? v : max;
-    })
-
-    return {'min':min, 'max':max};
-}
-export const getMinMaxUsedPrice = (products) => {
-    let min = 100, max = 5000;
-
-    products.map((product, index) => {
-        let price = product.price.replace(",","")
-        let v = parseInt(price)
         min = (v < min) ? v : min;
         max = (v > max) ? v : max;
     })

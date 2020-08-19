@@ -7,6 +7,7 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 
 import './map.css'
 import "@reach/combobox/styles.css";
 import axios from "axios";
+import {useSelector} from "react-redux";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -27,7 +28,7 @@ const center = {
     lng: 128.075400
 };
 
-export const ChargingStationMap = () =>{
+export const ChargingStationMap = props =>{
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: MAP_KEY,
         libraries,
@@ -43,16 +44,30 @@ export const ChargingStationMap = () =>{
     const [infoShow, setInfoShow]= useState(false)
     const [myData,setMyData] = useState([])
 
+
     useEffect(()=>{
+        {console.log(props.first[0])}
         sessionUser?(
-            axios.get(`http://localhost:8080/chargingstations/getall/${user.userSeq}`)
-                .then((res)=>{
-                    console.log(res.data)
-                    setMyData(res.data)
-                })
-                .catch((err)=>{
-                    console.log(err.status)
-                })
+            props.first.length>0?(
+                axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${user.userSeq}`)
+                    .then((res)=>{
+                        console.log(res.data)
+                        setMyData(res.data)
+                    })
+                    .catch((err)=>{
+                        console.log('charging-staion-axios-error')
+                    })
+            ):(
+                axios.get(`http://localhost:8080/chargingstations/getall/${user.userSeq}`)
+                    .then((res)=>{
+                        console.log(res.data)
+                        setMyData(res.data)
+                    })
+                    .catch((err)=>{
+                        console.log(err.status)
+                    })
+            )
+
         ):(
             axios.get(`http://localhost:8080/chargingstations/getall`)
                 .then((res)=>{
@@ -65,6 +80,7 @@ export const ChargingStationMap = () =>{
         )
 
     },[])
+
 
     const mapRef = useRef();
     const onMapLoad = useCallback((map) => {
@@ -203,15 +219,25 @@ export const ChargingStationMap = () =>{
         axios.post('http://localhost:8080/bookmarks/insert',id)
             .then((res)=>{
                 console.log("북마크 저장 성공")
-                axios.get(`http://localhost:8080/chargingstations/getall/${user.userSeq}`)
-                    .then((res)=>{
-                        console.log(res.data)
-
-                        setMyData(res.data)
-                    })
-                    .catch((err)=>{
-                        console.log('에러 '+err.status)
-                    })
+                props.first.length>0?(
+                    axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${user.userSeq}`)
+                        .then((res)=>{
+                            console.log(res.data)
+                            setMyData(res.data)
+                        })
+                        .catch((err)=>{
+                            console.log('charging-staion-axios-error')
+                        })
+                ):(
+                    axios.get(`http://localhost:8080/chargingstations/getall/${user.userSeq}`)
+                        .then((res)=>{
+                            console.log(res.data)
+                            setMyData(res.data)
+                        })
+                        .catch((err)=>{
+                            console.log(err.status)
+                        })
+                )
             })
             .catch((err) => {
                 console.log("북마크 저장 실패")

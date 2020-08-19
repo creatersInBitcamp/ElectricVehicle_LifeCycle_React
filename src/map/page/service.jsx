@@ -24,6 +24,11 @@ const SpecialProducts = () => {
         console.log(result.check)
     },[result])
 
+    const {products, myCars, first} = useSelector(state=>({
+        products: state.data.products,
+        myCars: state.myCar.list,
+        first: state.firstCar.list
+    }))
 
     return (
         (!admin)?(
@@ -57,7 +62,7 @@ const SpecialProducts = () => {
 
                                                                     <TabPanel>
                                                                         <div className="no-slider row">
-                                                                            <ChargingStationMap/>
+                                                                            <ChargingStationMap first={first}/>
                                                                         </div>
                                                                     </TabPanel>
                                                                     <TabPanel>

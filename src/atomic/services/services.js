@@ -40,7 +40,7 @@ export const getColors = (products) => {
 }
 // Get Minimum and Maximum Prices from Json Data
 export const getMinMaxPrice = (products) => {
-    let min = 100, max = 15000;
+    let min = 100, max = 20000;
 
     products.map((product, index) => {
         let v = product.price;

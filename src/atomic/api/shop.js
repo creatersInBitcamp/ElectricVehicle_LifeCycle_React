@@ -8,7 +8,8 @@ export const elecCars = () => {
     axios.get(`http://localhost:8080/electriccars/getall`)
         .then((res) => {
             // console.log(res.data)
-            for(let i=0; i<69;i++){
+            let size = res.data.length
+            for(let i=0; i<size;i++){
                 products.push(res.data.shift())
             }
             // products.push(res.data)

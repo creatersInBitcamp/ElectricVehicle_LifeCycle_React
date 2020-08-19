@@ -74,7 +74,7 @@ const Filter = () => {
                             <div className="collection-brand-filter">
                                 <div className="custom-control custom-checkbox collection-filter-checkbox">
                                     <InputRange
-                                        maxValue={prices.max-11500}
+                                        maxValue={prices.max-16500}
                                         minValue={prices.min}
                                         value={filters.value}
                                         onChange={value => dispatch(filterPrice({ value }))} />

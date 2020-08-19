@@ -113,7 +113,7 @@ export const MyCar = props => {
                                             <h6 className="product-title">관심상품</h6>
                                             <form>
                                                 <select onChange={e=>setTargetId(e.target.value)}>
-                                                    <option value="default">상품을 선택해주세요.</option>
+                                                    <option value={0}>상품을 선택해주세요.</option>
                                                     {
                                                         wishItems.map((item,index)=>{
                                                             return <option key={index} value={item.usedCarId}>{item.carName}</option>

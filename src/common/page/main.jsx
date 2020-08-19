@@ -24,7 +24,7 @@ export const Main = () => {
             <section className="p-0">
                 <Slider className="slide-1 home-slider" >
                     <div>
-                        <div className="home home2 text-center">
+                        <div className="home home1 text-center">
                             <div className="container">
                                 <div className="row">
                                     <div className="col">

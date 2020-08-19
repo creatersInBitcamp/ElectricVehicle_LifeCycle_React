@@ -11,7 +11,7 @@ const FareSearch =(props)=> {
         const { steps } = props;
         setStartName(steps.startName.value)
         setArriveName(steps.arriveName.value)
-        axios.get('http://localhost:5000/fare/search/'+ startName+"/"+arriveName)
+        axios.get(`http://localhost:8080/fare/search/${startName}/${arriveName}`)
             .then( response => {
                 response.data.forEach(item => {result.push({
                     startName: item.startName,

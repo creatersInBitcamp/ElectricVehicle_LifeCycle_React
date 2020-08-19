@@ -10,6 +10,7 @@ export const TopCollection = () => {
         items: getTrendingCollection(state.data.products),
         symbol: state.data.symbol
     }))
+    
     let properties = {
         infinite: true,
         speed: 200,

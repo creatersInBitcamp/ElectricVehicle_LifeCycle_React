@@ -31,35 +31,47 @@ const updateDetail = (props) => {
             })
     },[])
 
-
-
     const onClickSelect = (e) => {
         e.preventDefault()
-        let product = products.find(x => x.eccarId == targetId)
-        setItem(product)
-        setCarId(targetId)
-        setCarName(product.carName)
-        console.log(product)
+
+        if (targetId == 0) {
+            e.preventDefault()
+            alert('차종을 선택하세요.')
+            setCarId(0)
+            setCarName('')
+        } else {
+            let product = products.find(x => x.eccarId == targetId)
+            setItem(product)
+            setCarId(targetId)
+            setCarName(product.carName)
+            console.log(product)
+        }
+
     }
 
     const onClickSubmit = (e) => {
         e.preventDefault()
-        const info = {
-            usedCarId: usedCarId,
-            eccarId: carId,
-            age: age,
-            price: desiredPrice,
-            mileage: mileage
+
+        if (carId !== 0) {
+            const info = {
+                usedCarId: usedCarId,
+                eccarId: carId,
+                age: age ? age : contents.age,
+                price: desiredPrice ? desiredPrice : contents.price,
+                mileage: mileage ? mileage : contents.mileage
+            }
+            axios.post(`http://localhost:8080/usedCars/update`,info)
+                .then(alert('수정이 완료되었습니다.'), props.history.push(`${process.env.PUBLIC_URL}/used-car/collection`))
+                .catch(()=>{
+                    alert('통신실패')
+                })
+        } else {
+            alert('차종을 선택해주세요.')
         }
-        axios.post(`http://localhost:8080/usedCars/update`,info)
-            .then(alert('수정이 완료되었습니다.'), props.history.push(`${process.env.PUBLIC_URL}/used-car/collection`))
-            .catch(()=>{
-                alert('통신실패')
-            })
+
     }
 
     return <>
-        {console.log(contents)}
         <section className="register-page section-b-space">
             <div className="container">
                 <div className="col-lg-12">
@@ -69,10 +81,10 @@ const updateDetail = (props) => {
                     <div className="col">
                         <label htmlFor="car-type">차종</label>
                         <select onChange={(e)=>setTargetId(e.target.value)}>
-                            <option value="default">차종을 선택해주세요.</option>
+                            <option value={0}>차종을 선택해주세요.</option>
                             {
                                 products.map((item,index)=>{
-                                    return <option defaultChecked={contents.eccarId} key={index} value={item.eccarId}>{item.carName}</option>
+                                    return <option key={index} value={item.eccarId}>{item.carName}</option>
                                 })
                             }
                         </select>&nbsp;
@@ -89,7 +101,7 @@ const updateDetail = (props) => {
                         <label htmlFor="review">희망가격(단위: 만원)</label>
                         <input type="text"
                                className="form-control"
-                               required=""
+                               required="required"
                                defaultValue={contents.price}
                                onChange={(e) => { setDesiredPrice(e.target.value) }} />
                     </div>
@@ -100,7 +112,7 @@ const updateDetail = (props) => {
                         <label htmlFor="email">등록연월</label>
                             <input type="text"
                                    className="form-control"
-                                   required=""
+                                   required="required"
                                    defaultValue={contents.age}
                                    onChange={(e) => { setAge(e.target.value) }} />
 

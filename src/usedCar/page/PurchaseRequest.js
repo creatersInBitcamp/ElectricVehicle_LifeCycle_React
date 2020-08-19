@@ -64,8 +64,9 @@ export const PurchaseRequest = (props) => {
                                                        name="name"
                                                        value={name}
                                                        onChange={ (e) => { setName(e.target.value) } } />
-                                                { submitted && !name &&
-                                                <div style={{color:"red"}}>입력 필수입니다.</div>
+                                                {
+                                                    submitted && !name &&
+                                                    <div style={{color:"red"}}>입력 필수입니다.</div>
                                                 }
                                             </div>
 
@@ -75,8 +76,9 @@ export const PurchaseRequest = (props) => {
                                                        name="phone"
                                                        value={phone}
                                                        onChange={ (e) => { setPhone(e.target.value) } } />
-                                                { submitted && !phone &&
-                                                <div style={{color:"red"}}>입력 필수입니다.</div>
+                                                {
+                                                    submitted && !phone &&
+                                                    <div style={{color:"red"}}>입력 필수입니다.</div>
                                                 }
                                             </div>
                                             <div className="form-group col-md-6 col-sm-6 col-xs-12">
@@ -85,8 +87,9 @@ export const PurchaseRequest = (props) => {
                                                        name="email"
                                                        value={email}
                                                        onChange={ (e) => { setEmail(e.target.value) } } />
-                                                { submitted && !email &&
-                                                <div style={{color:"red"}}>입력 필수입니다.</div>
+                                                {
+                                                    submitted && !email &&
+                                                    <div style={{color:"red"}}>입력 필수입니다.</div>
                                                 }
                                             </div>
                                             <div className="form-group col-md-12 col-sm-12 col-xs-12">
@@ -96,8 +99,9 @@ export const PurchaseRequest = (props) => {
                                                        value={address}
                                                        onChange={ (e) => { setAddress(e.target.value) } }
                                                        placeholder="Street address" />
-                                                { submitted && !address &&
-                                                <div style={{color:"red"}}>입력 필수입니다.</div>
+                                                {
+                                                    submitted && !address &&
+                                                    <div style={{color:"red"}}>입력 필수입니다.</div>
                                                 }
                                             </div>
                                             <div className="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -106,8 +110,9 @@ export const PurchaseRequest = (props) => {
                                                        checked={agreement}
                                                        onChange={(e) => {setAgreement(true)}}/>
                                                 &ensp; <label htmlFor="account-option">Do you agree to provide personal information to third parties?</label>
-                                                { submitted && !agreement &&
-                                                <div style={{color:"red"}}>체크 필수입니다.</div>
+                                                {
+                                                    submitted && !agreement &&
+                                                    <div style={{color:"red"}}>체크 필수입니다.</div>
                                                 }
                                             </div>
                                         </div>

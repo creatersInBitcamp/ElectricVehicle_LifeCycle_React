@@ -16,37 +16,52 @@ export const SalesForm = (props) => {
     const [mileage, setMileage] = useState('')
     const [carId,setCarId] = useState(0)
     const [carName,setCarName] = useState('')
+    const [submitted,setSubmitted] = useState(false)
 
     const {products} = useSelector(state=>({
         products: state.data.products
     }))
 
-    const onClickSubmit = (e) => {
-        e.preventDefault()
-        console.log(typeof item)
-        const info = {
-            price: desiredPrice,
-            age: yy.concat("/",mm,"식"),
-            mileage: mileage,
-            eccarId: carId,
-            userSeq: user.userSeq
-        }
-        console.log(info)
-        axios.post(`http://localhost:8080/usedCars/register`, info)
-            .then(res => {
-                res.data ? props.history.push(`${process.env.PUBLIC_URL}/`) : alert('등록 실패')
-            })
-            .catch(()=>{
-                alert('통신실패')
-            })
-    }
+
     const onClickSelect = (e) => {
         e.preventDefault()
-        let product = products.find(x => x.eccarId == targetId)
-        setItem(product)
-        setCarId(targetId)
-        setCarName(product.carName)
-        console.log(product)
+        if (targetId == 0) {
+            e.preventDefault()
+            alert('차종을 선택하세요.')
+            setCarId(0)
+            setCarName('')
+        } else {
+            let product = products.find(x => x.eccarId == targetId)
+            setItem(product)
+            setCarId(targetId)
+            setCarName(product.carName)
+            console.log(product)
+        }
+
+    }
+    const onClickSubmit = (e) => {
+        e.preventDefault()
+        setSubmitted(true)
+        if(desiredPrice && mm && yy && mileage && carId) {
+            const info = {
+                price: desiredPrice,
+                age: yy.concat("/",mm,"식"),
+                mileage: mileage,
+                eccarId: carId,
+                userSeq: user.userSeq
+            }
+            console.log(info)
+            axios.post(`http://localhost:8080/usedCars/register`, info)
+                .then(res => {
+                    res.data ? props.history.push(`${process.env.PUBLIC_URL}/`) : alert('등록 실패')
+                })
+                .catch(()=>{
+                    alert('통신실패')
+                })
+        } else {
+            alert('차종을 선택해주세요.')
+        }
+
     }
 
     return <>
@@ -62,7 +77,7 @@ export const SalesForm = (props) => {
                                     <div className="col">
                                         <label htmlFor="car-type">차종</label>
                                         <select onChange={(e)=>setTargetId(e.target.value)}>
-                                            <option value="default">차종을 선택해주세요.</option>
+                                            <option value={0}>차종을 선택해주세요.</option>
                                             {
                                                 products.map((item,index)=>{
                                                     return <option key={index} value={item.eccarId}>{item.carName}</option>
@@ -70,6 +85,10 @@ export const SalesForm = (props) => {
                                             }
                                         </select>&nbsp;
                                         <button className="btn btn-solid" onClick={onClickSelect}>선택</button>
+                                        {
+                                            submitted && !carId &&
+                                            <div style={{color:"red"}}>선택 필수입니다.</div>
+                                        }
                                     </div>
                                     <div className="col">
                                         <label htmlFor="car-type">차종</label>
@@ -83,9 +102,12 @@ export const SalesForm = (props) => {
                                         <input type="text"
                                                className="form-control"
                                                placeholder="Desired Price"
-                                               required=""
-                                               value={desiredPrice}
+                                               required="required"
                                                onChange={(e) => { setDesiredPrice(e.target.value) }} />
+                                        {
+                                            submitted && !desiredPrice &&
+                                            <div style={{color:"red"}}>입력 필수입니다.</div>
+                                        }
                                     </div>
                                 </div>
                                 <br/><br/>
@@ -96,15 +118,17 @@ export const SalesForm = (props) => {
                                             <input type="text"
                                                    className="form-control col-6"
                                                    placeholder="YY"
-                                                   required=""
-                                                   value={yy}
+                                                   required="required"
                                                    onChange={(e) => { setYy(e.target.value) }} />
                                             <input type="text"
                                                    className="form-control col-6"
                                                    placeholder="MM"
-                                                   required=""
-                                                   value={mm}
+                                                   required="required"
                                                    onChange={(e) => { setMm(e.target.value) }} />
+                                            {
+                                                submitted && !yy && !mm &&
+                                                <div style={{color:"red"}}>입력 필수입니다.</div>
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -115,9 +139,12 @@ export const SalesForm = (props) => {
                                         <input type="text"
                                                className="form-control"
                                                placeholder="Mileage"
-                                               required=""
-                                               value={mileage}
+                                               required="required"
                                                onChange={(e) => { setMileage(e.target.value) }} />
+                                        {
+                                            submitted && !mileage &&
+                                            <div style={{color:"red"}}>입력 필수입니다.</div>
+                                        }
                                     </div>
                                 </div>
                                 <br/>

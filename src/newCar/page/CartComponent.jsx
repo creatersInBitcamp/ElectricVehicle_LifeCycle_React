@@ -37,7 +37,6 @@ export const CartComponent = () => {
                                         <th scope="col">image</th>
                                         <th scope="col">product name</th>
                                         <th scope="col">price</th>
-                                        <th scope="col">total</th>
                                     </tr>
                                     </thead>
                                     {cartItems.map((item, index) => {
@@ -57,7 +56,6 @@ export const CartComponent = () => {
                                                         <h2 className="td-color">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h2>
                                                     </div>
                                                 </td>
-                                                <td><h2 className="td-color">{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h2></td>
                                                 <td>
                                                     <div className="col-xs-3">
                                                         <h2 className="td-color">

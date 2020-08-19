@@ -2,14 +2,18 @@ import axios from "axios";
 import {CHANGE_CURRENCY} from "../../common/item/currency";
 
 export const usedCars = () => {
-    return axios.get(`http://localhost:8080/usedCars/carInfo`)
+    let products = []
+    axios.get(`http://localhost:8080/usedCars/carInfo`)
         .then((res)=> {
-            return res.data
+            for (let i=0; i<262; i++) {
+                products.push(res.data.shift())
+            }
         })
         .catch(err => {
             alert('usedCar axios error')
             throw err
         })
+    return products
 }
 
 const shop = {

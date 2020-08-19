@@ -1,88 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getMinMaxUsedPrice} from "../../atomic/services/services";
+import {getBrands, getMinMaxUsedPrice} from "../../atomic/services/services";
+import {filterBrand, filterPrice} from '../../newCar'
 import { SlideToggle } from 'react-slide-toggle';
 import InputRange from "react-input-range";
-import {usedCars} from "./UsedProductReducer";
 
-const FILTER_BRAND = 'FILTER_BRAND'
-const FILTER_PRICE = 'FILTER_PRICE'
-const SORT_BY = 'SORT_BY'
-
-const filterBrand = (brand) => ({
-    type: FILTER_BRAND,
-    brand
-});
-const filterPrice = (value) => ({
-    type: FILTER_PRICE,
-    value
-});
-const filterSort = (sort_by) => ({
-    type: SORT_BY,
-    sort_by
-});
-
-export const filtersReducerDefaultState = {
-    usedBrand: ["르노삼성"],
-    value: { min: 100, max: 5000 },
-    sortBy: ""
-};
-
-const usedFiltersReducer = (state = filtersReducerDefaultState, action) => {
-    switch (action.type) {
-        case FILTER_BRAND:
-            return {
-                ...state,
-                usedBrand: action.brand
-            }
-        case FILTER_PRICE:
-            return {
-                ...state,
-                value: {min: action.value.value.min, max: action.value.value.max }
-            };
-
-        case SORT_BY:
-            return {
-                ...state,
-                sortBy: action.sort_by
-            };
-        default:
-            return state;
-    }
-}
-
-export const Filter = () => {
-    const [items,setItems] = useState([])
-
-    useEffect(()=>{
-        usedCars().then(r => setItems(r))
-    },[])
-
-    const { usedFilters } = useSelector(state=>({
-        usedFilters: state.usedFilters
+const Filter = () => {
+    const { brands, prices, filters } = useSelector(state=>({
+        brands: getBrands(state.usedData.products),
+        prices: getMinMaxUsedPrice(state.usedData.products),
+        filters: state.filters
     }))
-
-    const prices = getMinMaxUsedPrice(items)
-
-    const filteredBrands = usedFilters.usedBrand
+    const filteredBrands = filters.brand;
 
     const closeFilter = () => {
         document.querySelector(".collection-filter").style = "left: -365px";
     }
-
-    const getUsedBrands = (products) => {
-        const uniqueBrands = [];
-        products.map((product, index) => {
-            if (product.usedBrand) {
-                if (uniqueBrands.indexOf(product.usedBrand) === -1) {
-                    uniqueBrands.push(product.usedBrand);
-                }
-            }
-        })
-        console.log(uniqueBrands)
-        return uniqueBrands;
-    }
-    const brands = getUsedBrands(items)
 
     const clickBrandHandle = (event, brands) => (dispatch) => {
         const index = brands.indexOf(event.target.value);
@@ -117,7 +50,7 @@ export const Filter = () => {
                                             <input type="checkbox"
                                                    onClick={(e)=>clickBrandHandle(e,filteredBrands)}
                                                    value={brand}
-                                                   defaultChecked={getUsedBrands(items).includes(brand)}
+                                                   defaultChecked={filteredBrands.includes(brand)}
                                                    className="custom-control-input"
                                                    id={brand} />
                                             <label className="custom-control-label"
@@ -141,7 +74,7 @@ export const Filter = () => {
                                     <InputRange
                                         maxValue={prices.max}
                                         minValue={prices.min}
-                                        value={usedFilters.value}
+                                        value={filters.value}
                                         onChange={value => dispatch(filterPrice({ value }))} />
                                 </div>
                             </div>
@@ -152,4 +85,4 @@ export const Filter = () => {
         </div>
     </>
 }
-export default usedFiltersReducer
+export default Filter

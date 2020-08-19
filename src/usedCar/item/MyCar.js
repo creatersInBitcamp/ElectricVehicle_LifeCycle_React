@@ -11,15 +11,14 @@ export const MyCar = () => {
     const [targetId,setTargetId] = useState(0)
     const [session, setSession] = useState(false)
     const [userSession] = useState(sessionStorage.getItem("user"))
-    const [items,setItems] = useState([])
+    const {items} = useSelector((state) => ({
+        items: state.usedData.products
+    }))
 
     useEffect(() => {
         userSession ? setSession(true) : setSession(false)
     },[userSession])
 
-    useEffect(()=>{
-        usedCars().then(r => setItems(r))
-    },[])
 
     const {first,wishItems} = useSelector(state=>({
         first: state.firstCar.list,

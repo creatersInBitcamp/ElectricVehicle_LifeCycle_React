@@ -99,27 +99,20 @@ export const getVisibleproducts = (data, { brand, color, value, sortBy }) => {
         }
     });
 }
-export const getVisibleUsedProducts = (data, { value }) => {
+export const getVisibleUsedProducts = (data, { brand, value, sortBy }) => {
     return data.products.filter(product => {
 
-        /*let ageMatch;
-        if(product.ages)
-            ageMatch = product.ages.some(age => age.includes(age))
+        let brandMatch;
+        if(product.brand)
+            brandMatch = brand.includes(product.brand)
         else
-            ageMatch = true;
-
-        let mileageMatch;
-        if(mileage && product.mileages) {
-            mileageMatch = product.mileages.includes(mileage)
-        }else{
-            mileageMatch = true;
-        }*/
+            brandMatch = true;
 
         const startPriceMatch = typeof value.min !== 'number' || value.min <= product.price;
         const endPriceMatch = typeof value.max !== 'number' || product.price <= value.max;
 
-        return startPriceMatch && endPriceMatch;
-    })/*.sort((product1, product2) => {
+        return startPriceMatch && endPriceMatch && brandMatch;
+    }).sort((product1, product2) => {
         if (sortBy === 'HighToLow') {
             return product2.price < product1.price ? -1 : 1;
         } else if (sortBy === 'LowToHigh') {
@@ -133,7 +126,7 @@ export const getVisibleUsedProducts = (data, { value }) => {
         } else{
             return product2.usedCarId > product1.usedCarId ? -1 : 1;
         }
-    });*/
+    });
 }
 
 export const getCartTotal = cartItems => {

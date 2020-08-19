@@ -4,20 +4,20 @@ import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {addToUsedWishlist} from '../page/UsedCarWishlist'
 import ProductItem from "./Product-item";
-import {usedCars} from "./UsedProductReducer";
+import {getVisibleUsedProducts} from "../../atomic/services/services";
 
 const ProductListing = props => {
-    const [limit, setLimit] = useState(10)
+    const [limit, setLimit] = useState(5)
     const [hasMoreItems, setHasMoreItems] = useState(true)
-    const [items,setItems] = useState([])
 
-    const {symbol} = useSelector(state => ({
+    const {symbol,items} = useSelector(state => ({
         symbol: state.usedData.symbol,
+        items: getVisibleUsedProducts(state.usedData,state.filters)
     }))
 
     useEffect(()=>{
-        usedCars().then(r => setItems(r))
-    },[])
+        fetchMoreItems()
+    })
 
     const fetchMoreItems = () =>{
         if (limit >= items.length) {
@@ -27,7 +27,7 @@ const ProductListing = props => {
         // a fake async api call
         setTimeout(() => {
             setLimit(limit+5)
-        }, 1000)
+        }, 3000)
     }
 
     const dispatch = useDispatch()

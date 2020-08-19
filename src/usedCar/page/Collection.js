@@ -20,7 +20,7 @@ export const UsedPurchaseCollection = () => {
                             <StickyBox offsetTop={20} offsetBottom={20}>
                                 <MyCar/>
                                 <Filter/>
-                                {/*<NewProduct/>*/}
+                                <NewProduct/>
                             </StickyBox>
                         </div>
                         <div className="collection-content col">

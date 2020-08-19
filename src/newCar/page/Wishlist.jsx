@@ -7,7 +7,6 @@ import {removeFromWishlist,addToCartAndRemoveWishlist} from './wishlistReducer'
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 export const wishlist = () => {
-    const [user,setUser] = useState(sessionUser)
 
     const {Items, symbol} = useSelector(state=>({
         Items: state.wishlist.list,

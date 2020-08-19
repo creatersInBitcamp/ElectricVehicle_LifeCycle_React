@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import MyAccount2 from "./MyAccount2";
 import MyPost from "./MyPost";
 import MyComment from "./MyComment";
+import {MyCarRegister} from "./MyCarRegister";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -108,7 +109,7 @@ export const MyAccount = () => {
                                                     <MyAccount2 user={userSession} />
                                                 </TabPanel>
                                                 <TabPanel value={value} index={1}>
-                                                    My CAR
+                                                    <MyCarRegister/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={2}>
                                                     <MyPost posts={posts}/>

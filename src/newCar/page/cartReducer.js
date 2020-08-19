@@ -7,6 +7,7 @@ const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const INCREMENT_QTY = 'INCREMENT_QTY'
 const DECREMENT_QTY = 'DECREMENT_QTY'
+const CLEAR_CART = 'CLEAR_CART'
 
 /* actions */
 export const addToCart = (product,qty) => (dispatch) => {
@@ -38,6 +39,9 @@ export const decrementQty = productId => (dispatch) => {
         type: DECREMENT_QTY,
         productId})
 }
+export const clearCart = () => ({
+    type : CLEAR_CART
+})
 
 /* reducer */
 export const cartReducer = (state = {cart: []}, action) => {
@@ -82,6 +86,10 @@ export const cartReducer = (state = {cart: []}, action) => {
         case REMOVE_FROM_CART:
             return {
                 cart: state.cart.filter(item => item.eccarId !== action.product_id.eccarId)
+            }
+        case CLEAR_CART:
+            return {
+                cart : []
             }
 
         default:

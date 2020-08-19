@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import MyAccount2 from "./MyAccount2";
+import MyPost from "./MyPost";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -114,7 +115,7 @@ export const MyAccount = () => {
                                                     My WishList
                                                 </TabPanel>
                                                 <TabPanel value={value} index={3}>
-                                                    My Post
+                                                    <MyPost posts={posts}/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={4}>
                                                     My Comment

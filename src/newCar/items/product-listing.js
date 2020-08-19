@@ -45,7 +45,7 @@ export const ProductListing = props => {
         <div>
             <div className="product-wrapper-grid">
                 <div className="container-fluid">
-                    {/*{products.length > 0 ?*/}
+                    {products.length > 0 ?
                         <InfiniteScroll
                             dataLength={limit} //This is important field to render the next data
                             next={fetchMoreItems}

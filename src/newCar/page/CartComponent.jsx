@@ -19,8 +19,8 @@ export const CartComponent = () => {
         <div>
             {/*SEO Support*/}
             <Helmet>
-                <title>MultiKart | Cart List Page</title>
-                <meta name="description" content="Multikart – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Multikart Bootstrap 4 Template will help you run multiple businesses." />
+                <title>EV | Cart List Page</title>
+                <meta name="description" content="EV" />
             </Helmet>
             {/*SEO Support End */}
 
@@ -37,8 +37,6 @@ export const CartComponent = () => {
                                         <th scope="col">image</th>
                                         <th scope="col">product name</th>
                                         <th scope="col">price</th>
-                                        <th scope="col">quantity</th>
-                                        <th scope="col">action</th>
                                         <th scope="col">total</th>
                                     </tr>
                                     </thead>
@@ -53,51 +51,13 @@ export const CartComponent = () => {
                                                             :item.img} alt="" />
                                                     </Link>
                                                 </td>
-                                                <td><Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.eccarId}`}>{item.carName}</Link>
-                                                    <div className="mobile-cart-content row">
-                                                        <div className="col-xs-3">
-                                                            <div className="qty-box">
-                                                                <div className="input-group">
-                                                                    <input type="text" name="quantity"
-                                                                           className="form-control input-number" defaultValue={item.qty} />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-xs-3">
-                                                            <h2 className="td-color">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h2>
-                                                        </div>
-                                                        <div className="col-xs-3">
-                                                            <h2 className="td-color">
-                                                                <a className="icon" onClick={()=>{dispatch(removeFromCart(item))}}>
-                                                                    <i className="icon-close"/>
-                                                                </a>
-                                                            </h2>
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                <td><Link to={`${process.env.PUBLIC_URL}/new-car/product/${item.eccarId}`}>{item.carName}</Link>                                              </td>
                                                 <td>
                                                     <div className="col-xs-3">
                                                         <h2 className="td-color">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h2>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div className="qty-box">
-                                                        <div className="input-group">
-                                                            <span className="input-group-prepend">
-                                                                <button type="button" className="btn quantity-left-minus" onClick={()=>{dispatch(decrementQty(item.eccarId))}} data-type="minus" data-field="">
-                                                                 <i className="fa fa-angle-left"/>
-                                                                </button>
-                                                            </span>
-                                                            <input type="text" name="quantity" value={item.qty} readOnly={true} className="form-control input-number" />
-
-                                                            <span className="input-group-prepend">
-                                                            <button className="btn quantity-right-plus" onClick={()=>{dispatch(incrementQty(item, 1))}}  data-type="plus" disabled={(item.qty >= item.stock)? true : false}>
-                                                            <i className="fa fa-angle-right"/>
-                                                            </button>
-                                                           </span>
-                                                        </div>
-                                                    </div>{(item.qty >= item.stock)? 'out of Stock' : ''}
-                                                </td>
+                                                <td><h2 className="td-color">{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h2></td>
                                                 <td>
                                                     <div className="col-xs-3">
                                                         <h2 className="td-color">
@@ -107,7 +67,6 @@ export const CartComponent = () => {
                                                         </h2>
                                                     </div>
                                                 </td>
-                                                <td><h2 className="td-color">{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h2></td>
                                             </tr>
                                             </tbody> )
                                     })}
@@ -135,7 +94,11 @@ export const CartComponent = () => {
                                 <Link to={`${process.env.PUBLIC_URL}/new-car/collection`} className="btn btn-solid">continue shopping</Link>
                             </div>
                             <div className="col-6">
-                                <Link to={`${process.env.PUBLIC_URL}/checkout`} className="btn btn-solid">check out</Link>
+                                {(cartItems.length > 1 )?
+                                    <button className="btn btn-solid" onClick={()=>alert('주문은 한 대의 차량만 가능합니다.')}>주문 요청 제한</button>
+                                    :
+                                <Link to={`${process.env.PUBLIC_URL}/checkout/${cartItems[0].eccarId}`} className="btn btn-solid">check out</Link>
+                                }
                             </div>
                         </div>
                     </div>

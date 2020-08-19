@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 import {Table} from "../admin/item";
 
-
-const MyPost = ({posts}) => {
-
+const MyUsedTrading = ({posts}) => {
     const columns = [
         {
             title:'아이디', field:'postId', editable: 'never'
@@ -31,7 +29,6 @@ const MyPost = ({posts}) => {
         <>
             <Table title="My Post" columns={columns} data={posts}/>
         </>
-    );
-};
-
-export default MyPost;
+    )
+}
+export default MyUsedTrading

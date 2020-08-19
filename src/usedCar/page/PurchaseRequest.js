@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import axios from "axios";
 import {useRouteMatch} from 'react-router-dom';
 import {Breadcrumb} from "../../common";
-import {usedCars} from "../item/UsedProductReducer";
 
 export const PurchaseRequest = (props) => {
     const [name, setName] = useState('')
@@ -12,17 +11,12 @@ export const PurchaseRequest = (props) => {
     const [address, setAddress] = useState('')
     const [agreement, setAgreement] = useState('')
     const [submitted,setSubmitted] = useState(false)
-    const [items,setItems] = useState([])
-
-    useEffect(()=>{
-        usedCars().then(r => setItems(r))
-    },[])
 
     const match = useRouteMatch('/used-car/purchase/request/:usedCarId')
     const {symbol, item} = useSelector((state)=>{
         let productId = match.params.usedCarId
         return {
-            item: items.find(el => el.usedCarId == productId),
+            item: state.usedData.products.find(el => el.usedCarId == productId),
             symbol: state.usedData.symbol
         }
     })

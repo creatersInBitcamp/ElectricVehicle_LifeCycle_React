@@ -6,7 +6,7 @@ import {communityReducer, elecCarReducer, reportsReducer, ordersReducer, userRed
 import {cartReducer,wishlistReducer,compareReducer/*,productReducer,filtersReducer*/} from "../newCar";
 import productReducer from "../newCar/items/productReducer";
 import filtersReducer from "../newCar/items/filtersReducer";
-import {usedWishlistReducer, usedCompareReducer, usedProductReducer, usedFiltersReducer} from "../usedCar"
+import {usedWishlistReducer, usedCompareReducer, usedProductReducer} from "../usedCar"
 import {firstCarReducer, loginReducer, myCarReducer} from "../user";
 import {boardReducer} from "../board/items";
 
@@ -20,7 +20,6 @@ const rootReducer = combineReducers({
         usedData: usedProductReducer,
         cartList: cartReducer,
         filters: filtersReducer,
-        usedFilters: usedFiltersReducer,
         wishlist: wishlistReducer,
         compare: compareReducer,
         loginReducer,

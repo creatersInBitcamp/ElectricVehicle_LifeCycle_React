@@ -15,14 +15,9 @@ const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 export const productDetail = (props) => {
     const [user,setUser] = useState(sessionUser)
     const [state, setState] = useState({ nav1: null, nav2: null });
-    const [items,setItems] = useState([])
 
     const slider1 = useRef();
     const slider2 = useRef();
-
-    useEffect(()=>{
-        usedCars().then(r => setItems(r))
-    },[])
 
     useEffect(() => {
         setState({
@@ -35,7 +30,7 @@ export const productDetail = (props) => {
     const {symbol, item} = useSelector((state)=>{
         let productId = match.params.usedCarId
         return {
-            item: items.find(el => el.usedCarId == productId),
+            item: state.usedData.products.find(el => el.usedCarId == productId),
             symbol: state.usedData.symbol
         }
     })

@@ -10,18 +10,13 @@ import axios from "axios";
 import {usedCars} from "../../usedCar/item/UsedProductReducer";
 
 export const SpecialProducts = props => {
-    const [items,setItems] = useState([])
-    const {elecCar,symbol} = useSelector(state=>({
+    const {elecCar,usedCar,symbol} = useSelector(state=>({
         elecCar: getBestSeller(state.data.products),
+        usedCar: getSpecialUsed(state.usedData.products),
         // posts: receivePosts(),
         symbol: state.data.symbol
     }))
 
-    useEffect(()=>{
-        usedCars().then(r => setItems(r))
-    },[])
-
-    const usedCar = getSpecialUsed(items)
 
     useEffect(()=>{
         axios.get('http://localhost:8080/posts/getall')
@@ -64,7 +59,7 @@ export const SpecialProducts = props => {
                             <div className="no-slider row">
                                 { usedCar.map((product, index ) =>
                                     <ProductItem product={product} symbol={symbol}
-                                                 onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(items))}} key={index} /> )
+                                                 onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(product))}} key={index} /> )
                                 }
                             </div>
                         </TabPanel>

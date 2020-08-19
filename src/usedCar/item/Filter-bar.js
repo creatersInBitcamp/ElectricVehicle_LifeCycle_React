@@ -1,14 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux'
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux'
 import {filterSort} from '../../newCar'
-import {usedCars} from "./UsedProductReducer";
 
 const FilterBar = ({onLayoutViewClicked}) => {
-    const [items,setItems] = useState([])
-
-    useEffect(()=>{
-        usedCars().then(r => setItems(r))
-    },[])
+    const {items} = useSelector((state) => ({
+        items: state.usedData.products
+    }))
 
     //List Layout View
     const listLayout = () => {

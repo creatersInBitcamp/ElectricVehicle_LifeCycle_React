@@ -12,7 +12,7 @@ export const CartHeader  = ({item, total, symbol, removeFromCart}) => (
                     <h4>{item.carName}</h4>
                 </Link>
                 <h4>
-                    <span>{item.qty} x {(item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))}{symbol}</span>
+                    <span>{(item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))}{symbol}</span>
                 </h4>
             </div>
         </div>

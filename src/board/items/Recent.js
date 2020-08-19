@@ -5,7 +5,7 @@ import axios from "axios";
 const Recent = () => {
     const [recents, setRecents] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:8080/posts/popular')
+        axios.get('http://localhost:8080/posts/recent')
             .then((res) => {
                 setRecents(res.data.content)
             })
@@ -17,15 +17,9 @@ const Recent = () => {
         <>
             { recents.map( recent => (
                 <li key={recent.postId}>
-                    <div className="media">
                         <Link to={`${process.env.PUBLIC_URL}/board/details/${recent.postId}`}>
                             <img className="img-fluid" src={recent.img} alt="Generic placeholder image" />
                         </Link>
-                        <div className="media-body align-self-center">
-                            <h6>{recent.date}</h6>
-                            <p>{recent.hits} hits</p>
-                        </div>
-                    </div>
                 </li>
             ) )}
         </>

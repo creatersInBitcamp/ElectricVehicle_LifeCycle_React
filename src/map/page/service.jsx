@@ -5,13 +5,14 @@ import {Breadcrumb} from "../../common";
 import {AdminBreadcrumb} from "../../admin/common"
 import {useSelector} from "react-redux";
 import StickyBox from "react-sticky-box";
-import {MyCar} from "../../newCar";
+import {MyCar} from "../../usedCar";
 import {Link} from "react-router-dom";
 
 const SpecialProducts = () => {
     const [admin,setAdmin] = useState(false);
     const result = useSelector(state=>state.loginReducer)
     const [session, setSession] = useState(false)
+    const [check, setCheck] = useState('지도')
     const [userSession] = useState(sessionStorage.getItem("user"))
 
     useEffect(() => {
@@ -33,7 +34,7 @@ const SpecialProducts = () => {
                             <div className="row">
                                 <div className="col-sm-3 collection-filter">
                                     <StickyBox offsetTop={20} offsetBottom={20}>
-                                        <MyCar/>
+                                        <MyCar check={check}/>
                                     </StickyBox>
                                 </div>
                                 <div className="collection-content col">

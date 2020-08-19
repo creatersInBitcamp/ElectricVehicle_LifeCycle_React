@@ -29,19 +29,7 @@ const MyPost = ({posts}) => {
     ]
     return (
         <>
-            <div className="container-fluid bulk-cate">
-                <div className="card">
-                    <div className="card-header">
-                        <h5>My Post</h5>
-                    </div>
-                    <div className="card-body">
-                        <div id="batchDelete" className="category-table media-table coupon-list-delete">
-                            <Table title="My Post" columns={columns} data={posts}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Table title="My Post" columns={columns} data={posts}/>
         </>
     );
 };

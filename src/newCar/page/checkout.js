@@ -188,12 +188,10 @@ export const checkOut = () => {
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                {(total !== 0)?
                                                     <div className="text-right">
                                                         {(method === '구매상담')? <button type="button" className="btn-solid btn" onClick={() => onPurchaseCar()} >Place Order</button>:
                                                             <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
                                                     </div>
-                                                    : ''}
                                             </div>
                                         </div>
                                     </div>

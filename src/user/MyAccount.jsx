@@ -8,6 +8,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import MyAccount2 from "./MyAccount2";
 import MyPost from "./MyPost";
+import MyComment from "./MyComment";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -105,7 +106,6 @@ export const MyAccount = () => {
                                     <div className="dashboard">
                                         <div className="container-fluid">
                                                 <TabPanel value={value} index={0}>
-                                                    My Account
                                                     <MyAccount2 user={userSession} />
                                                 </TabPanel>
                                                 <TabPanel value={value} index={1}>
@@ -118,7 +118,7 @@ export const MyAccount = () => {
                                                     <MyPost posts={posts}/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={4}>
-                                                    My Comment
+                                                    <MyComment comments={comments}/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={5}>
                                                     My bookmark

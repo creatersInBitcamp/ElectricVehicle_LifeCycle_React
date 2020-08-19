@@ -32,7 +32,7 @@ export const LeftSideBar = () => {
         let productId = match.params.eccarId
         console.log(productId)
         return {
-            item: state.data.products.find(el => el.eccarId == productId),
+            item: state.data.products.find(el => el.eccarId === productId),
             symbol: state.data.symbol
         }
     })
@@ -99,7 +99,8 @@ export const LeftSideBar = () => {
                                                 </Slider>
                                                 <SmallImages item={item} settings={productsnav} navOne={nav1} />
                                             </div>
-                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart(item,1))} BuynowClicked={()=>dispatch(addToCartUnsafe(item,1))} addToWishlistClicked={()=>dispatch(addToWishlist(item))} />
+                                            <DetailsWithPrice symbol={symbol} item={item} navOne={nav1} addToCartClicked={()=>dispatch(addToCart(item,1))} match={match.params.eccarId}
+                                                              BuynowClicked={()=>dispatch(addToCartUnsafe(item,1))} addToWishlistClicked={()=>dispatch(addToWishlist(item))} />
                                         </div>
                                     </div>
                                     <DetailsTopTabs item={item} />

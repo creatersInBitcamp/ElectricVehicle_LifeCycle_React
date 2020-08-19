@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addToUsedCompare} from '../page/MyCarComparison'
 import {usedCars} from "./UsedProductReducer";
 
-export const MyCar = () => {
+export const MyCar = props => {
     const [open,setOpen] = useState(false)
     const [redirect,setRedirect] = useState(false)
     const [targetId,setTargetId] = useState(0)
@@ -47,9 +47,22 @@ export const MyCar = () => {
                             </>
                         )
                     })}
-                    <div style={{textAlign: "center", padding: "15px"}}>
-                        <button onClick={()=>setOpen(true)} className="btn btn-solid">비교하기</button>
-                    </div>
+                    {
+                        props.check === '지도'?(
+                                <div style={{textAlign: "center", padding: "15px"}}>
+                                    <button className="btn btn-solid">
+                                        <Link to={"/pages/myCar"}>
+                                            내 차 변경하기
+                                        </Link>
+                                    </button>
+                                </div>
+                        )
+                        :(
+                            <div style={{textAlign: "center", padding: "15px"}}>
+                                <button onClick={()=>setOpen(true)} className="btn btn-solid">비교하기</button>
+                            </div>
+                        )
+                    }
                 </div>
                 :
                 <div className="collection-filter-block">

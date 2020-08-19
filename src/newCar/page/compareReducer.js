@@ -4,6 +4,7 @@ import {toast} from "react-toastify";
 /* types */
 const ADD_TO_COMPARE = 'ADD_TO_COMPARE'
 const REMOVE_FROM_COMPARE = 'REMOVE_FROM_COMPARE'
+const CLEAR_COMPARE = 'CLEAR_COMPARE'
 
 /* actions */
 export const addToCompare = (product) => (dispatch) => {
@@ -19,6 +20,9 @@ export const removeFromCompare = product_id => ({
     type: REMOVE_FROM_COMPARE,
     product_id
 });
+export const clearCompare = () =>({
+    type: CLEAR_COMPARE
+})
 
 /* reducer */
 export const compareReducer = (state = {items: []}, action) => {
@@ -45,7 +49,10 @@ export const compareReducer = (state = {items: []}, action) => {
             return {
                 items: state.items.filter(id => id !== action.product_id)
             }
-
+        case CLEAR_COMPARE:
+            return {
+                items: []
+            }
         default:
     }
     return state;

@@ -29,7 +29,6 @@ export const CartContainer = () => {
                         <li>
                             <div className="buttons">
                                 <Link to={`${process.env.PUBLIC_URL}/cart`} className="view-cart">view cart</Link>
-                                <Link to={`${process.env.PUBLIC_URL}/checkout`} className="checkout">checkout</Link>
                             </div>
                         </li></div>
                     :

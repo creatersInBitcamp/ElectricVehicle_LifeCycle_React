@@ -9,6 +9,7 @@ import {MarketPrice} from "..";
 /* types */
 const ADD_TO_USED_COMPARE = 'ADD_TO_USED_COMPARE'
 const REMOVE_FROM_USED_COMPARE = 'REMOVE_FROM_USED_COMPARE'
+const CLEAR_USED_COMPARE = 'CLEAR_USED_COMPARE'
 
 /* actions */
 export const addToUsedCompare = (product) => (dispatch) => {
@@ -22,6 +23,9 @@ export const addToUsedCompareUnsafe= (product) => ({
 export const removeFromUsedCompare = product_id => ({
     type: REMOVE_FROM_USED_COMPARE,
     product_id
+})
+export const clearUsedCompare = ()=>({
+    type: CLEAR_USED_COMPARE
 })
 
 /* reducer */
@@ -50,7 +54,10 @@ const usedCompareReducer = (state = {items: []}, action) => {
             return {
                 items: state.items.filter(id => id !== action.product_id)
             }
-
+        case CLEAR_USED_COMPARE:
+            return {
+                items: []
+            }
         default:
     }
     return state;

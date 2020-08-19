@@ -6,6 +6,7 @@ import {addToCartUnsafe} from "./cartReducer";
 /* type */
 const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
 const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
+const CLEAR_WISHLIST = 'CLEAR_WISHLIST'
 
 
 /* action */
@@ -31,7 +32,9 @@ export const addToCartAndRemoveWishlist = (product,qty) => (dispatch) => {
     dispatch(addToCartUnsafe(product, qty));
     dispatch(removeFromWishlist(product));
 }
-
+export const clearWishlist = ()=>({
+    type: CLEAR_WISHLIST
+})
 
 /* reducer */
 export const wishlistReducer = (state = {list: []}, action) => {
@@ -57,6 +60,10 @@ export const wishlistReducer = (state = {list: []}, action) => {
         case REMOVE_FROM_WISHLIST:
             return {
                 list: state.list.filter(id => id !== action.product_id)
+            }
+        case CLEAR_WISHLIST:
+            return {
+                list: []
             }
 
         default:

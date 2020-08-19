@@ -93,11 +93,10 @@ export const MyAccount = () => {
                                         >
                                             <Tab label="My Account" {...a11yProps(0)} />
                                             <Tab label="My Car" {...a11yProps(1)} />
-                                            <Tab label="My Wishlist" {...a11yProps(2)} />
-                                            <Tab label="My Post" {...a11yProps(3)} />
-                                            <Tab label="My Comment" {...a11yProps(4)} />
-                                            <Tab label="My Bookmark" {...a11yProps(5)} />
-                                            <Tab label="Change Password" {...a11yProps(6)} />
+                                            <Tab label="My Post" {...a11yProps(2)} />
+                                            <Tab label="My Comment" {...a11yProps(3)} />
+                                            <Tab label="My Bookmark" {...a11yProps(4)} />
+                                            <Tab label="Change Password" {...a11yProps(5)} />
                                         </Tabs>
                                     </div>
                                 </div>
@@ -113,18 +112,15 @@ export const MyAccount = () => {
                                                     <MyCarRegister/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={2}>
-                                                    My WishList
-                                                </TabPanel>
-                                                <TabPanel value={value} index={3}>
                                                     <MyPost posts={posts}/>
                                                 </TabPanel>
-                                                <TabPanel value={value} index={4}>
+                                                <TabPanel value={value} index={3}>
                                                     <MyComment comments={comments}/>
                                                 </TabPanel>
-                                                <TabPanel value={value} index={5}>
+                                                <TabPanel value={value} index={4}>
                                                     My bookmark
                                                 </TabPanel>
-                                                <TabPanel value={value} index={6}>
+                                                <TabPanel value={value} index={5}>
                                                     Change password
                                                 </TabPanel>
                                         </div>

@@ -2,6 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
 import axios from 'axios'
+import {clearWishlist} from "../../newCar/page/wishlistReducer";
+import {useDispatch} from "react-redux";
+import {removeAllUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
+import {clearCart} from "../../newCar/page/cartReducer";
+import {clearCompare} from "../../newCar/page/compareReducer";
+import {clearUsedCompare, removeFromUsedCompare} from "../../usedCar/page/MyCarComparison";
 
 export const TopBar = () => {
     const contexts = {
@@ -22,8 +28,14 @@ export const TopBar = () => {
         userSession ? setSession(true) : setSession(false)
     },[userSession])
 
+    const dispatch = useDispatch()
     const logout = (e) => {
         e.preventDefault()
+        dispatch(clearWishlist())
+        dispatch(removeAllUsedWishlist())
+        dispatch(clearCart())
+        dispatch(clearUsedCompare())
+        dispatch(clearCompare())
         sessionStorage.clear()
         window.location.reload()
     }
@@ -166,7 +178,7 @@ export const TopBar = () => {
                             {!session &&
                             <li className="onhover-dropdown mobile-account">
                                 <i className="fa fa-user" aria-hidden="true"/>
-                                {translate('my_account')}
+                                {translate('login')}
                                 <ul className="onhover-show-div">
                                     <li>
                                         <Link to={`${process.env.PUBLIC_URL}/pages/login`}
@@ -191,7 +203,7 @@ export const TopBar = () => {
 
                                     <li>
                                         <Link to={`${process.env.PUBLIC_URL}/admin/userDetail`}
-                                              data-lng="en">{translate('myaccount')}</Link>
+                                              data-lng="en">{translate('mypage')}</Link>
                                     </li>
                                 </ul>
                             </li>

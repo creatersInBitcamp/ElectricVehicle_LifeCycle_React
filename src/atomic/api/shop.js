@@ -2,8 +2,9 @@
 import _products from './test.json'
 */
 import axios from "axios";
+import {receiveProducts} from "../../newCar";
 
-export const elecCars = () => {
+export const elecCars = () => (dispatch) => {
     let products=[]
     axios.get(`http://localhost:8080/electriccars/getall`)
         .then((res) => {
@@ -12,13 +13,14 @@ export const elecCars = () => {
             for(let i=0; i<size;i++){
                 products.push(res.data.shift())
             }
+            dispatch(receiveProducts(products))
             // products.push(res.data)
         })
         .catch(err => {
             console.log('신차 에러')
             throw err
         })
-    return products
+    // return products
 }
 
 const TIMEOUT = 100

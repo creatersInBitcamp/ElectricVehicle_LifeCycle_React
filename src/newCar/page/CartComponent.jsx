@@ -37,6 +37,7 @@ export const CartComponent = () => {
                                         <th scope="col">image</th>
                                         <th scope="col">product name</th>
                                         <th scope="col">price</th>
+                                        <th scope="col">delete</th>
                                     </tr>
                                     </thead>
                                     {cartItems.map((item, index) => {

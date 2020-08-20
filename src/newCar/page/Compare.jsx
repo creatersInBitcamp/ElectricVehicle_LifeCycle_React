@@ -8,7 +8,6 @@ import {removeFromCompare} from './compareReducer'
 
 /* component */
 export const Compare = () => {
-    // const [quantity, setQuantity] = useState('')
     const {Items, symbol} = useSelector(state=>({
         Items: state.compare.items,
         symbol: state.data.symbol
@@ -21,8 +20,6 @@ export const Compare = () => {
         speed: 300,
         slidesToShow: 4,
         slidesToScroll: 1,
-        // autoplay: true,
-        // autoplaySpeed: 3000,
         responsive: [
             {
                 breakpoint: 1200,
@@ -48,10 +45,6 @@ export const Compare = () => {
         ]
     };
 
-    // const changeQty = e => {
-    //     setQuantity(parseInt(e.target.value))
-    // }
-
     return <>
         <div>
             <Breadcrumb title={'Compare'} />
@@ -69,34 +62,215 @@ export const Compare = () => {
                                                 </button>
                                                 <div className="img-secton">
                                                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${Items.eccarId}`}>
-                                                        <img src={item.variants?
-                                                            item.variants[0].images
-                                                            :item.img} className="img-fluid" alt="" />
-                                                        <h5>{item.carName}</h5></Link>
-                                                    <h5><span className="money">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h5>
+                                                        <img src={item.img} className="img-fluid" alt="" />
+                                                    </Link>
                                                 </div>
                                                 <div className="detail-part">
                                                     <div className="title-detail">
-                                                        <h5>discription</h5>
+                                                        <h5>car name</h5>
                                                     </div>
                                                     <div className="inner-detail">
-                                                        <p>{item.shortDetails}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>Brand Name</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.brand}</p>
+                                                        <h5>{item.carName}</h5>
                                                     </div>
                                                 </div>
                                                 <div className="detail-part">
                                                     <div className="title-detail">
-                                                        <h5>color</h5>
+                                                        <h5>price</h5>
                                                     </div>
                                                     <div className="inner-detail">
-                                                        <p>{item.colors}</p>
+                                                        <h5><span className="money">{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></h5>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>passengersNumber</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.passengersNumber}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>drivingMethod</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.drivingMethod}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>transmission</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.transmission}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>distanceDriven</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.distanceDriven}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>energy</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.energy}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>maximumOutput</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.maximumOutput}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>maximumTorque</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.maximumTorque}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>accelerationPerformance</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.accelerationPerformance}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>length</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.length}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>width</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.width}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>height</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.height}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>wheelBase</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.wheelBase}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>frontDistance</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.frontDistance}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>backDistance</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.backDistance}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>weight</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.weight}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>frontWheel</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.frontWheel}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>rearWheel</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.rearWheel}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>frontSuspension</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.frontSuspension}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>rearSuspension</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.rearSuspension}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>frontBraking</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.frontBraking}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>rearBraking</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.rearBraking}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>steering</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.steering}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>boostingCharge</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.boostingCharge}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="detail-part">
+                                                    <div className="title-detail">
+                                                        <h5>slowCharging</h5>
+                                                    </div>
+                                                    <div className="inner-detail">
+                                                        <p>{item.slowCharging}</p>
                                                     </div>
                                                 </div>
                                                 <div className="btn-part">
@@ -106,6 +280,12 @@ export const Compare = () => {
                                         </div>
                                     )}
                                 </Slider>
+                                <br/><br/>
+                                <div className="row cart-buttons">
+                                    <div className="col-6">
+                                        <Link to={`${process.env.PUBLIC_URL}/new-car/collection`} className="btn btn-solid">continue shopping</Link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

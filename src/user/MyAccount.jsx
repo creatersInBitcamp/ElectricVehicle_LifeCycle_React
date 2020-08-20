@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Breadcrumb} from "../common";
-import {Link} from "react-router-dom";
+import {Link, useRouteMatch} from "react-router-dom";
 import {RefreshInfo} from '../board/items'
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -39,17 +39,22 @@ function a11yProps(index) {
 }
 
 export const MyAccount = () => {
-    const [value, setValue] = useState(0)
+    const match = useRouteMatch('/pages/profile/:index').params.index
+
+    const [value, setValue] = useState(match)
     const [posts, setPosts] = useState([])
     const [comments, setComments] = useState([])
     const [bookmarks, setBookmarks] = useState([])
     const [used, setUsed] = useState([])
     const [purchase, setPurchase] = useState([])
     const [userSession, setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
+
+
     useEffect(() => {
         RefreshInfo()
         setUserSession(JSON.parse(sessionStorage.getItem("user")))
-    },[])
+        setValue(match)
+    },[value])
     useEffect(()=> {
         setPosts(userSession.postList)
         setComments(userSession.commentList)
@@ -62,8 +67,8 @@ export const MyAccount = () => {
         setValue(newValue)
     }
     return (
-
             <div>
+                {console.log(value)}
                 <Breadcrumb title={'MyAccount'}/>
                 
                 

@@ -26,11 +26,6 @@ export const TableChargingStation = () => {
         libraries,
         region:'kr'
     });
-    const [searchInput, setSearchInput] = useState("")
-    const [data,setData] = useState(myData)
-    const [open,setOpen] = useState(false)
-    const [position,setPosition] = useState({})
-    const [info,setInfo] = useState({})
     const [selectedRow, setSelectedRow] = useState(null);
     const [myData,setMyData] = useState([])
 

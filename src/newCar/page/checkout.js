@@ -162,7 +162,7 @@ export const checkOut = () => {
                                                     <div>Product <span> Price</span></div>
                                                 </div>
                                                 <ul className="qty">
-                                                    <li> {newCar.carName} <span>{newCar.price} 만원</span></li>
+                                                    <li> {newCar.carName} <span>{newCar.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 만원</span></li>
                                                     {/*{cartItems.map((item, index) => {*/}
                                                     {/*    return <li key={index}>{item.carName} × {item.qty} <span>{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li> })*/}
                                                     {/*}*/}

@@ -51,7 +51,7 @@ export const MyCar = props => {
                         props.check === '지도'?(
                                 <div style={{textAlign: "center", padding: "15px"}}>
                                     <button className="btn btn-solid">
-                                        <Link to={"/pages/myCar"}>
+                                        <Link to={"/pages/profile/mycar"}>
                                             내 차 변경하기
                                         </Link>
                                     </button>
@@ -69,7 +69,7 @@ export const MyCar = props => {
                     <h2 style={{textAlign: "center", padding: "15px"}}>My Car</h2>
                     <div style={{textAlign: "center", padding: "15px"}}>
                         <button className="btn btn-solid">
-                            <Link to={"/pages/myCar"}>
+                            <Link to={"/pages/profile/mycar"}>
                                 내 차 등록하기
                             </Link>
                         </button>

@@ -31,16 +31,7 @@ const Comment = ({comments, postId}) => {
                                                 <Col sm={2}>
                                                     <button className="fa fa-close" onClick={(e)=>{
                                                         e.preventDefault()
-                                                        const mail = {
-                                                            commentId: comment.commentId,
-                                                            userId: comment.userId,
-                                                            regDate: comment.regDate,
-                                                            comment: comment.comment,
-                                                            user: user,
-                                                            post: {postId: postId}
-                                                        }
-                                                        console.log(mail)
-                                                        axios.post(`http://localhost:8080/comments/delete/`, mail)
+                                                        axios.get(`http://localhost:8080/comments/delete/${comment.commentId}`)
                                                             .then((res) => {
                                                                 console.log(res.status)
                                                                 window.location.reload()

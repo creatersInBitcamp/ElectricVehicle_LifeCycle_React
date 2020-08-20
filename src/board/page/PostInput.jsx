@@ -19,7 +19,6 @@ const PostInput = ({history}) => {
         setCategory(match)
         setUser(sessionUser)
         console.log(user)
-        console.log(user.userSeq)
     },[match])
     const onPostIn = (e) => {
         e.preventDefault()
@@ -31,7 +30,7 @@ const PostInput = ({history}) => {
            img : 'https://www.skt-phone.co.kr/resource/images/visual-notice.png',
            content : content,
            category: category,
-           user : user,
+           userSeq : user.userSeq,
         }
         console.log(newPost)
         axios.post('http://localhost:8080/posts/insert', newPost)

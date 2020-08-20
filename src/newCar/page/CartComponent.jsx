@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Breadcrumb} from "../../common";
 import {getCartTotal} from "../../atomic/services/services";
-import {removeFromCart,decrementQty,incrementQty} from "./cartReducer"
+import {removeFromCart} from "./cartReducer"
 
 export const CartComponent = () => {
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const CartComponent = () => {
         symbol: state.data.symbol,
         total: getCartTotal(state.cartList.cart)
     }))
-
+    const session = sessionStorage.getItem('user')
     return <>
         <div>
             {/*SEO Support*/}
@@ -96,7 +96,10 @@ export const CartComponent = () => {
                                 {(cartItems.length > 1 )?
                                     <button className="btn btn-solid" onClick={()=>alert('주문은 한 대의 차량만 가능합니다.')}>주문 요청 제한</button>
                                     :
+                                    (session)?
                                 <Link to={`${process.env.PUBLIC_URL}/checkout/${cartItems[0].eccarId}`} className="btn btn-solid">check out</Link>
+                                        :
+                                <Link to={`${process.env.PUBLIC_URL}/pages/login`} className="btn btn-solid" onClick={(e)=>{alert('로그인이 필요합니다.')}}>check out</Link>
                                 }
                             </div>
                         </div>

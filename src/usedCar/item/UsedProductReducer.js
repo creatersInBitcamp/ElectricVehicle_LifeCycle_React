@@ -1,7 +1,7 @@
 import axios from "axios";
 import {CHANGE_CURRENCY} from "../../common/item/currency";
 
-export const usedCars = () => {
+export const usedCars = () => (dispatch) =>{
     let products = []
     axios.get(`http://localhost:8080/usedCars/carInfo`)
         .then((res)=> {
@@ -10,6 +10,7 @@ export const usedCars = () => {
             for (let i=0; i<s; i++) {
                 products.push(res.data.shift())
             }
+            dispatch(receiveUsedProducts(products))
         })
         .catch(err => {
             alert('usedCar axios error')
@@ -30,14 +31,15 @@ const FETCH_SINGLE_USED_PRODUCT = 'FETCH_SINGLE_USED_PRODUCT'
 
 /* actions */
 export const fetchProductsBegin = () => ({ type: FETCH_USED_PRODUCTS_BEGIN })
-export const receiveProducts = products => ({ type: RECEIVE_USED_PRODUCTS, products })
+export const receiveUsedProducts = products => ({ type: RECEIVE_USED_PRODUCTS, products })
 export const getAllUsedProducts = () => dispatch => {
     dispatch(fetchProductsBegin())
-    shop.getProducts(usedProducts => {
+    dispatch(usedCars())
+    /*shop.getProducts(usedProducts => {
         dispatch(receiveProducts(usedProducts))
         console.log(usedProducts)
         return usedProducts
-    })
+    })*/
 }
 export const fetchSingleProduct = productId => ({ type: FETCH_SINGLE_USED_PRODUCT, productId })
 

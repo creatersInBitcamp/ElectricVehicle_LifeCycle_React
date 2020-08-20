@@ -24,9 +24,7 @@ const SpecialProducts = () => {
         console.log(result.check)
     },[result])
 
-    const {products, myCars, first} = useSelector(state=>({
-        products: state.data.products,
-        myCars: state.myCar.list,
+    const {first} = useSelector(state=>({
         first: state.firstCar.list
     }))
 

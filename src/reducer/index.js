@@ -9,6 +9,7 @@ import filtersReducer from "../newCar/items/filtersReducer";
 import {usedWishlistReducer, usedCompareReducer, usedProductReducer} from "../usedCar"
 import {firstCarReducer, loginReducer, myCarReducer} from "../user";
 import {boardReducer} from "../board/items";
+import {stationReducer} from "../map/items";
 
 const rootReducer = combineReducers({
         boardReducer,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
         usedCompare: usedCompareReducer,
         myCar: myCarReducer,
         firstCar: firstCarReducer,
+        stationData : stationReducer,
         Intl
 });
 export default rootReducer

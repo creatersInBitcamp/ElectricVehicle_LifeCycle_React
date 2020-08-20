@@ -7,7 +7,8 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 
 import './map.css'
 import "@reach/combobox/styles.css";
 import axios from "axios";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {stationMapRequest} from "./stationReducer";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -28,6 +29,75 @@ const center = {
     lng: 128.075400
 };
 
+export const userThunk = (props) => (dispatch)=>{
+    sessionUser?(
+        props.first.length>0?(
+            axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
+                .then((res)=>{
+                    console.log(res.data)
+                    dispatch(stationMapRequest(res.data))
+                    // setMyData(res.data)
+                })
+                .catch((err)=>{
+                    console.log('charging-staion-axios-error')
+                })
+        ):(
+            axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
+                .then((res)=>{
+                    console.log(res.data)
+                    dispatch(stationMapRequest(res.data))
+                    // setMyData(res.data)
+                })
+                .catch((err)=>{
+                    console.log(err.status)
+                })
+        )
+
+    ):(
+        axios.get(`http://localhost:8080/chargingstations/getall`)
+            .then((res)=>{
+                console.log(res.data)
+                // setMyData(res.data)
+                dispatch(stationMapRequest(res.data))
+            })
+            .catch((err)=>{
+                console.log(err.status)
+            })
+    )
+
+}
+
+export const useAnotherThunk = (id,props) => (dispatch) => {
+    axios.post('http://localhost:8080/bookmarks/insert',id)
+        .then((res)=>{
+            console.log("북마크 저장 성공")
+            props.first.length>0?(
+                axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
+                    .then((res)=>{
+                        console.log(res.data)
+                        dispatch(stationMapRequest(res.data))
+                        // setMyData(res.data)
+                    })
+                    .catch((err)=>{
+                        console.log('charging-staion-axios-error')
+                    })
+            ):(
+                axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
+                    .then((res)=>{
+                        console.log(res.data)
+                        dispatch(stationMapRequest(res.data))
+                        // setMyData(res.data)
+                    })
+                    .catch((err)=>{
+                        console.log(err.status)
+                    })
+            )
+        })
+        .catch((err) => {
+            console.log("북마크 저장 실패")
+        })
+}
+
 export const ChargingStationMap = props =>{
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: MAP_KEY,
@@ -42,43 +112,17 @@ export const ChargingStationMap = props =>{
     const [selectedAddr, setSelectedAddr]= useState("")
     const [selectedPc,setSelectedPc] = useState("")
     const [infoShow, setInfoShow]= useState(false)
-    const [myData,setMyData] = useState([])
+    // const [myData,setMyData] = useState([])
 
+    const {myData} = useSelector((state)=>({
+        myData : state.stationData.myData
+    }))
+
+    const dispatch = useDispatch()
 
     useEffect(()=>{
         {console.log(props.first[0])}
-        sessionUser?(
-            props.first.length>0?(
-                axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${user.userSeq}`)
-                    .then((res)=>{
-                        console.log(res.data)
-                        setMyData(res.data)
-                    })
-                    .catch((err)=>{
-                        console.log('charging-staion-axios-error')
-                    })
-            ):(
-                axios.get(`http://localhost:8080/chargingstations/getall/${user.userSeq}`)
-                    .then((res)=>{
-                        console.log(res.data)
-                        setMyData(res.data)
-                    })
-                    .catch((err)=>{
-                        console.log(err.status)
-                    })
-            )
-
-        ):(
-            axios.get(`http://localhost:8080/chargingstations/getall`)
-                .then((res)=>{
-                    console.log(res.data)
-                    setMyData(res.data)
-                })
-                .catch((err)=>{
-                    console.log(err.status)
-                })
-        )
-
+        dispatch(userThunk(props))
     },[])
 
 
@@ -216,32 +260,7 @@ export const ChargingStationMap = props =>{
             userId: user.userSeq,
         }
         console.log(id)
-        axios.post('http://localhost:8080/bookmarks/insert',id)
-            .then((res)=>{
-                console.log("북마크 저장 성공")
-                props.first.length>0?(
-                    axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${user.userSeq}`)
-                        .then((res)=>{
-                            console.log(res.data)
-                            setMyData(res.data)
-                        })
-                        .catch((err)=>{
-                            console.log('charging-staion-axios-error')
-                        })
-                ):(
-                    axios.get(`http://localhost:8080/chargingstations/getall/${user.userSeq}`)
-                        .then((res)=>{
-                            console.log(res.data)
-                            setMyData(res.data)
-                        })
-                        .catch((err)=>{
-                            console.log(err.status)
-                        })
-                )
-            })
-            .catch((err) => {
-                console.log("북마크 저장 실패")
-            })
+        dispatch(useAnotherThunk(id,props))
     }
 
     return (

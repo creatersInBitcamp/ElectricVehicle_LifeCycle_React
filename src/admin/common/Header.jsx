@@ -6,6 +6,11 @@ import logo from '../../assets/images/dashboard/08.png'
 import man from "../../assets/images/dashboard/man.png";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {clearWishlist} from "../../newCar/page/wishlistReducer";
+import {removeAllUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
+import {clearCart} from "../../newCar/page/cartReducer";
+import {clearUsedCompare} from "../../usedCar/page/MyCarComparison";
+import {clearCompare} from "../../newCar/page/compareReducer";
 
 
 const ADMIN_CHECK = 'ADMIN_CHECK'
@@ -67,6 +72,11 @@ export const Header = () => {
     }
     const logout = (e) => {
         e.preventDefault()
+        dispatch(clearWishlist())
+        dispatch(removeAllUsedWishlist())
+        dispatch(clearCart())
+        dispatch(clearUsedCompare())
+        dispatch(clearCompare())
         dispatch(adminCheckAction(admin))
         sessionStorage.clear()
     }

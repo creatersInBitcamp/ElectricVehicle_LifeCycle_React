@@ -27,7 +27,7 @@ export const Image = () => {
         let currentFile = content
         setImg(currentFile)
 
-        uploadService(currentFile, e =>{})
+        uploadService(currentFile)
             .then((res)=>{
                 setMessage(res.data)
             })

@@ -8,19 +8,16 @@ export const elecCars = () => (dispatch) => {
     let products=[]
     axios.get(`http://localhost:8080/electriccars/getall`)
         .then((res) => {
-            // console.log(res.data)
             let size = res.data.length
             for(let i=0; i<size;i++){
                 products.push(res.data.shift())
             }
             dispatch(receiveProducts(products))
-            // products.push(res.data)
         })
         .catch(err => {
             console.log('신차 에러')
             throw err
         })
-    // return products
 }
 
 const TIMEOUT = 100

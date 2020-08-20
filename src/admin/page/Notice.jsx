@@ -1,6 +1,9 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {AdminBreadcrumb} from '../common';
-import {Image} from '../item'
+import {Image, Table} from '../item'
+import {useSelector} from "react-redux";
+import axios from "axios";
+import {Link} from "react-router-dom";
 
 const noticeTypes = {REQUEST: 'notice/REQUEST'}
 const noticeReducer = ( state={}, action ) => {
@@ -10,8 +13,58 @@ const noticeReducer = ( state={}, action ) => {
     }
 }
 
-export const Notice = () => {
+const columns = [
+    {title:'ID', field:'postId', editable: 'never'},
+    {title:'제목', field:'title', editable: 'never'},
+    {title:'추천', field:'recommendation', editable: 'never'},
+    {title:'신고', field:'report', editable: 'never'},
+    {title:'조회', field:'hits', editable: 'never'},
+    {title:'작성일자', field:'date', editable: 'never'}
+]
 
+export const Notice = () => {
+    const [data, setData] = useState([])
+    useEffect(()=>{
+        axios.get('http://localhost:8080/posts/notice/notice')
+            .then((res)=>{
+                setData(res.data)
+            })
+            .catch((err)=>{
+                console.log(err.status)
+            })
+    },[])
+
+    const editable = {
+        onRowUpdate: (newData, oldData) =>
+            new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    const dataUpdate = [...data]
+                    const index = oldData.tableData.id;
+                    dataUpdate[index] = newData
+                    setData([...dataUpdate])
+                    resolve()
+                    axios.post(`http://localhost:8080/posts/allUpdate`, [...dataUpdate])
+                        .then((res) => {
+                        })
+                        .catch(() => {
+                            alert("통신실패")
+                        })
+                }, 1000)
+            }),
+        onDelete: (oldData) =>
+            new Promise((resolve) =>{
+                setTimeout(()=>{
+                    resolve()
+                    axios.get(`http://localhost:8080/posts/delete/${oldData.postId}`)
+                        .then((res)=>{
+                            console.log(res.status)
+                        })
+                        .catch((err)=>{
+                            console.log(err.status)
+                        })
+                }, 1000)
+            })
+    }
         return (
             <>
                 <AdminBreadcrumb title="공지사항" parent="Menu" />
@@ -20,12 +73,27 @@ export const Notice = () => {
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5>공지사항</h5>
+                                    <h5>배너 교체</h5>
                                 </div>
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">
                                     </div>
                                     <Image/>
+                                </div>
+                            </div>
+                            <div className="card">
+                                <div className="card-header">
+                                    <Link to={`${process.env.PUBLIC_URL}/board/input/notice`}><button className="btn btn-solid">글쓰기</button></Link>
+                                </div>
+                                <div className="card-body">
+                                    <div id="batchDelete" className="category-table order-table coupon-list-delete">
+                                        <Table
+                                         title={"공지사항"}
+                                         columns={columns}
+                                         data={data}
+                                         editable={editable}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -3,32 +3,24 @@ import axios from "axios";
 
 const CarSearch = (props) => {
 
-    const [searchWord, setCarSearch] = useState('')
+    const [searchWord, setSearchWord] = useState('')
     const [result, setresult] = useState([])
 
     useEffect(()=>{
         const { steps } = props;
-        setCarSearch(steps.carSearch.value)
+        setSearchWord(steps.carSearch.value)
         axios.get(`http://localhost:8080/cars/carSearch/${searchWord}`)
             .then( response => {
-                console.log(response.data)
-                response.data.forEach(item => {result.push({
-                    carName: item.carName,
-                    price: item.price,
-                    employee: item.employee,
-                    img: item.img
-                })})
-                console.log(result)
+                setresult(response.data)
             } ) // SUCCESS
             .catch( response => { console.log(response); } );
-    })
+    },[searchWord])
 
     return ((result.length !== 0)?
             <div>
                 {result.map((item,index) =>{
                     return(
                         <div key={index}>
-                            <img src={item.img}/>
                             <h3>{item.carName}</h3>
                             <p>{item.employee}</p>
                             <h4>가격: {item.price}</h4>

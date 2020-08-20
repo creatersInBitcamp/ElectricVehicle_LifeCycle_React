@@ -13,25 +13,15 @@ const FareSearch =(props)=> {
         setArriveName(steps.arriveName.value)
         axios.get(`http://localhost:8080/fare/search/${startName}/${arriveName}`)
             .then( response => {
-                response.data.forEach(item => {result.push({
-                    startName: item.startName,
-                    arriveName: item.arriveName,
-                    typeOne: item.typeOne,
-                    typeTwo: item.typeTwo,
-                    typeThree: item.typeThree,
-                    typeFour: item.typeFour,
-                    typeFive: item.typeFive,
-                    typeLightCar: item.typeLightCar
-                })})
+                setresult(response.data)
             }) // SUCCESS
             .catch( response => { console.log(response); } ); // ERROR
-    }
-)
+    },[startName])
 
 
 return (result.length !== 0)?
         <div>
-            {this.state.result.map((item,index) =>{
+            {result.map((item,index) =>{
                 return<div key={index} style={{textAlign: 'center', marginTop: 20}}>
                     <p>출발지: {item.startName} → 도착지: {item.arriveName} </p>
                     <p>1종: {item.typeOne}</p>

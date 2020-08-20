@@ -86,7 +86,7 @@ const ClassicBoardDetails = ({history}) => {
         const onDelete = () => {
                 axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
                     .then((res) => {
-                        history.push(`/board/main/${match}`)
+                        history.push(`/board/main/${post.category}`)
                     })
                     .catch((err) => {
                         console.log(err.status)

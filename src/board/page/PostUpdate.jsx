@@ -42,7 +42,7 @@ const PostUadate = ({history}) => {
             img : img,
             content : content,
             category: category,
-            user : user,
+            userSeq : user.userSeq,
         }
         console.log(newPost)
         axios.post('http://localhost:8080/posts/update', newPost)
@@ -56,7 +56,7 @@ const PostUadate = ({history}) => {
     }
     return (
         <>
-            <Breadcrumb title={`Board - Update ${category}`}/>
+            <Breadcrumb title={`Board - Update ${category} ${postId}`}/>
             <section className="blog-detail-page section-b-space">
                 <div className="container">
                     <div className="row">

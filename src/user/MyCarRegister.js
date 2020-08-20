@@ -4,6 +4,9 @@ import Slider from "react-slick";
 import {useDispatch, useSelector} from "react-redux";
 import MyUsedTrading from "./UsedTradingTable";
 import {usedCars} from "../usedCar/item/UsedProductReducer";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 /* type */
 const ADD_TO_MY_CAR = 'ADD_TO_MY_CAR'
@@ -146,113 +149,121 @@ export const MyCarRegister = ({used}) => {
 
     const dispatch = useDispatch()
 
-    return <>
-        <div className="page-title">
-            <h2>My Car</h2>
-        </div>
-        <div className="box-account box-info">
-            {console.log(used)}
-            <div className="row">
-                <div className="col-sm-6">
-                    <div className="box">
-                        <div className="box-title">
-                            <h3>내 차 정보</h3>
-                            <a onClick={onClickEdit}>Edit</a>
-                        </div>
-                        <div className="box-content">
-                            <Slider {...setting} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
-                                {
-                                    myCars.length > 0 ?
-                                        myCars.map((item,index)=>{
-                                            return (
-                                                <div key={index}>
-                                                    <img src={item.img} className="img-fluid image_zoom_cls-0"  alt={""} />
-                                                    <h4>{item.carName}</h4>
-                                                </div>
-                                            )})
-                                        : <h5>등록된 차량이 없습니다.</h5>
-                                }
-                            </Slider>
-                        </div>
+    return<>
+        <Container>
+            <Row>
+                <Col/>
+                <Col xs={10}>
+                    <div className="page-title">
+                        <h2>My Car</h2>
                     </div>
-                </div>
-                <div className="col-sm-6">
-                    <div className="box">
-                        <div className="box-title">
-                            <h3>메인 차</h3>
-                            <a onClick={onClickEdit}>Edit</a>
-                        </div>
-                        <div className="box-content">
-                            {
-                                first.length>0?
-
-                                    first.map((item,index)=>{
-                                        return (
-                                            <div key={index}>
-                                                <img src={item.img} className="img-fluid image_zoom_cls-0"  alt={""} />
-                                                <h4>{item.carName}</h4>
-                                            </div>
-                                        )})
-                                    : <h5>등록된 차량이 없습니다.</h5>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {openEdit?
-                <div>
-                    <div className="box">
-                        <div className="box-title">
-                            <h3>변경하기</h3>
-                            <a href="/pages/faq">전기차 등록요청</a>
-                        </div>
+                    <div className="box-account box-info">
+                        {console.log(used)}
                         <div className="row">
                             <div className="col-sm-6">
-                                <select onChange={e=>setTargetId(e.target.value)}>
-                                    <option value="default">차종을 선택해주세요.</option>
-                                    {
-                                        products.map((item,index)=>{
-                                            return <option key={index} value={item.eccarId}>{item.carName}</option>
-                                        })
-                                    }
-                                </select>
-                                <button onClick={()=>dispatch(addToMyCar(products.find(x => x.eccarId == targetId)))}>추가</button>
-                                <br/>
-                                <select onChange={e=>setTargetId(e.target.value)}>
-                                    <option value="default">삭제할 차량을 선택해주세요.</option>
-                                    {
-                                        myCars.map((item,index)=>{
-                                            return <option key={index} value={item.eccarId}>{item.carName}</option>
-                                        })
-                                    }
-                                </select>
-                                <button onClick={()=> {
-                                    dispatch(removeFromMyCar(myCars.find(x => x.eccarId == targetId)))
-                                    dispatch(removeFromFirstCar(myCars.find(x => x.eccarId == targetId)))
-                                }}>삭제</button>
-                                <button onClick={()=>dispatch(removeAllCar())}>전체삭제</button>
+                                <div className="box">
+                                    <div className="box-title">
+                                        <h3>내 차 정보</h3>
+                                        <a onClick={onClickEdit}>Edit</a>
+                                    </div>
+                                    <div className="box-content">
+                                        <Slider {...setting} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
+                                            {
+                                                myCars.length > 0 ?
+                                                    myCars.map((item,index)=>{
+                                                        return (
+                                                            <div key={index}>
+                                                                <img src={item.img} className="img-fluid image_zoom_cls-0"  alt={""} />
+                                                                <h4>{item.carName}</h4>
+                                                            </div>
+                                                        )})
+                                                    : <h5>등록된 차량이 없습니다.</h5>
+                                            }
+                                        </Slider>
+                                    </div>
+                                </div>
                             </div>
                             <div className="col-sm-6">
-                                <select onChange={e=>setTargetId(e.target.value)}>
-                                    <option value="default">메인차량을 선택해주세요.</option>
-                                    {
-                                        myCars.map((item,index)=>{
-                                            return <option key={index} value={item.eccarId}>{item.carName}</option>
-                                        })
-                                    }
-                                </select>
-                                <button onClick={()=>dispatch(changeFirstCar(myCars.find(x => x.eccarId == targetId)))}>변경</button>
-                                <button onClick={()=>dispatch(removeAllFirstCar())}>전체삭제</button>
+                                <div className="box">
+                                    <div className="box-title">
+                                        <h3>메인 차</h3>
+                                        <a onClick={onClickEdit}>Edit</a>
+                                    </div>
+                                    <div className="box-content">
+                                        {
+                                            first.length>0?
+
+                                                first.map((item,index)=>{
+                                                    return (
+                                                        <div key={index}>
+                                                            <img src={item.img} className="img-fluid image_zoom_cls-0"  alt={""} />
+                                                            <h4>{item.carName}</h4>
+                                                        </div>
+                                                    )})
+                                                : <h5>등록된 차량이 없습니다.</h5>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {openEdit?
+                            <div>
+                                <div className="box">
+                                    <div className="box-title">
+                                        <h3>변경하기</h3>
+                                        <a href="/pages/faq">전기차 등록요청</a>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-sm-6">
+                                            <select onChange={e=>setTargetId(e.target.value)}>
+                                                <option value="default">차종을 선택해주세요.</option>
+                                                {
+                                                    products.map((item,index)=>{
+                                                        return <option key={index} value={item.eccarId}>{item.carName}</option>
+                                                    })
+                                                }
+                                            </select>
+                                            <button onClick={()=>dispatch(addToMyCar(products.find(x => x.eccarId == targetId)))}>추가</button>
+                                            <br/>
+                                            <select onChange={e=>setTargetId(e.target.value)}>
+                                                <option value="default">삭제할 차량을 선택해주세요.</option>
+                                                {
+                                                    myCars.map((item,index)=>{
+                                                        return <option key={index} value={item.eccarId}>{item.carName}</option>
+                                                    })
+                                                }
+                                            </select>
+                                            <button onClick={()=> {
+                                                dispatch(removeFromMyCar(myCars.find(x => x.eccarId == targetId)))
+                                                dispatch(removeFromFirstCar(myCars.find(x => x.eccarId == targetId)))
+                                            }}>삭제</button>
+                                            <button onClick={()=>dispatch(removeAllCar())}>전체삭제</button>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <select onChange={e=>setTargetId(e.target.value)}>
+                                                <option value="default">메인차량을 선택해주세요.</option>
+                                                {
+                                                    myCars.map((item,index)=>{
+                                                        return <option key={index} value={item.eccarId}>{item.carName}</option>
+                                                    })
+                                                }
+                                            </select>
+                                            <button onClick={()=>dispatch(changeFirstCar(myCars.find(x => x.eccarId == targetId)))}>변경</button>
+                                            <button onClick={()=>dispatch(removeAllFirstCar())}>전체삭제</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> : ''}<br/><br/>
+                        <div className="row">
+                            <div className="col-sm-12 col-lg-12">
+                                <MyUsedTrading used={used}/>
                             </div>
                         </div>
                     </div>
-                </div> : ''}<br/><br/>
-            <div className="row">
-                <div className="col-sm-12 col-lg-12">
-                    <MyUsedTrading used={used}/>
-                </div>
-            </div>
-        </div>
+                </Col>
+                <Col/>
+            </Row>
+        </Container>
     </>
 }
 export default myCarReducer

@@ -3,6 +3,8 @@ import 'react-table/react-table.css';
 import MaterialTable from 'material-table';
 import {GoogleMap,Marker, useLoadScript} from "@react-google-maps/api";
 import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {stationRequest} from "./stationReducer";
 
 const MAP_KEY = 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0';
 
@@ -16,8 +18,15 @@ const options = {
     zoomControl: true,
 };
 
-function Capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+export const userThunk = () => (dispatch)=>{
+    axios.get('http://localhost:8080/chargingstations/getall')
+        .then((res)=>{
+            dispatch(stationRequest(res.data))
+            // setMyData(res.data)
+        })
+        .catch((err)=>{
+            console.log(err.status)
+        })
 }
 
 export const TableChargingStation = () => {
@@ -27,16 +36,14 @@ export const TableChargingStation = () => {
         region:'kr'
     });
     const [selectedRow, setSelectedRow] = useState(null);
-    const [myData,setMyData] = useState([])
+    // const [myData,setMyData] = useState([])
+    const {myData} = useSelector((state)=>({
+        myData : state.stationData.myData
+    }))
 
+    const dispatch = useDispatch()
     useEffect(()=>{
-        axios.get('http://localhost:8080/chargingstations/getall')
-            .then((res)=>{
-                setMyData(res.data)
-            })
-            .catch((err)=>{
-                console.log(err.status)
-            })
+        dispatch(userThunk())
     },[])
 
     const mapRef = useRef();

@@ -41,7 +41,7 @@ function a11yProps(index) {
 export const MyAccount = () => {
     // const match = useRouteMatch('/pages/profile/:index').params.index
 
-    const [value, setValue] = useState(1)
+    const [value, setValue] = useState(0)
     const [posts, setPosts] = useState([])
     const [comments, setComments] = useState([])
     const [bookmarks, setBookmarks] = useState([])

@@ -126,7 +126,7 @@ export const MyCar = props => {
                                                             type={'button'}
                                                             onClick={()=>{
                                                                 setRedirect(true);
-                                                                dispatch(addToUsedCompare(items.find(x => x.usedCarId == targetId)));
+                                                                dispatch(addToUsedCompare(items.find(x => x.usedCarId == targetId)))
                                                             }}>
                                                         비교하기
                                                     </button>

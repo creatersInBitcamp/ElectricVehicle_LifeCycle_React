@@ -114,7 +114,7 @@ export const productDetail = (props) => {
                                                     <h3>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol} </h3>
                                                     <div className="product-description border-product">
                                                         <div className="qty-box">
-                                                            <MarketPrice/>
+                                                            <MarketPrice product={item}/>
                                                         </div>
                                                     </div>
                                                     <div className="product-buttons" >
@@ -186,7 +186,7 @@ export const productDetail = (props) => {
                                                     </TabPanel>
                                                     <TabPanel>
                                                         <div className="mt-4 text-center">
-                                                            <MarketPrice/>
+                                                            <MarketPrice product={item}/>
                                                         </div>
                                                     </TabPanel>
                                                 </Tabs>

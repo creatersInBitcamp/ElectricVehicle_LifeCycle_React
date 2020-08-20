@@ -175,7 +175,7 @@ export const MyCarComparison = () => {
                                                         market price
                                                     </div>
                                                     <div className="inner-detail">
-                                                        <MarketPrice/>
+                                                        {/*<MarketPrice/>*/}
                                                     </div>
                                                 </div>
                                             </>
@@ -250,7 +250,7 @@ export const MyCarComparison = () => {
                                                     market price
                                                 </div>
                                                 <div className="inner-detail">
-                                                    <MarketPrice/>
+                                                    {/*<MarketPrice/>*/}
                                                 </div>
                                             </div>
                                             <div className="btn-part">

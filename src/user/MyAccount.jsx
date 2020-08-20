@@ -39,9 +39,9 @@ function a11yProps(index) {
 }
 
 export const MyAccount = () => {
-    const match = useRouteMatch('/pages/profile/:index').params.index
+    // const match = useRouteMatch('/pages/profile/:index').params.index
 
-    const [value, setValue] = useState(match)
+    const [value, setValue] = useState(1)
     const [posts, setPosts] = useState([])
     const [comments, setComments] = useState([])
     const [bookmarks, setBookmarks] = useState([])
@@ -53,7 +53,7 @@ export const MyAccount = () => {
     useEffect(() => {
         RefreshInfo()
         setUserSession(JSON.parse(sessionStorage.getItem("user")))
-        setValue(match)
+        // setValue(match)
     },[value])
     useEffect(()=> {
         setPosts(userSession.postList)

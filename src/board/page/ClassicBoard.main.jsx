@@ -130,10 +130,10 @@ const ClassicBoardMain = () => {
                                             <Col/>
                                             <Col xs lg={2}>
                                                 {(user !== null)?
-                                                <Link to={`${process.env.PUBLIC_URL}/board/input/${match}`}>
-                                                    <button className="btn btn-solid">글쓰기</button>
-                                                </Link>
+                                                    (match !== 'notice')?
+                                                        <Link to={`${process.env.PUBLIC_URL}/board/input/${match}`}><button className="btn btn-solid">글쓰기</button></Link>:""
                                                     :
+                                                    (match === 'notice')? "":
                                                 <button className="btn btn-solid" onClick={(e)=>{alert('로그인이 필요합니다.')}}>글쓰기</button>
                                                 }
                                             </Col>

@@ -128,6 +128,7 @@ const ClassicBoardDetails = ({history}) => {
                                         </Container>
                                     </ul>
                                     <div className="row">
+                                        <p>{post.content}</p>
                                         <iframe src={post.link} width={1920} height={1500}/>
                                     </div>
                                 </div>

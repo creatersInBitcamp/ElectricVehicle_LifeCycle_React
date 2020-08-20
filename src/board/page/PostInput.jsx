@@ -13,6 +13,7 @@ const PostInput = ({history}) => {
     const [user, setUser] = useState(sessionUser)
     const [title, setTitle] = useState("")
     const [link, setLink] = useState("")
+    const [img, setImg] = useState("https://www.skt-phone.co.kr/resource/images/visual-notice.png")
     const [content, setContent] =useState("")
     const [category, setCategory] = useState("")
     useEffect(() => {
@@ -20,24 +21,38 @@ const PostInput = ({history}) => {
         setUser(sessionUser)
         console.log(user)
     },[match])
+
+    const newPost = {
+        userName: user.name,
+        link : link,
+        title : title,
+        date : new Date().toLocaleString(),
+        img : img,
+        content : content,
+        category: category,
+        userSeq : user.userSeq,
+    }
+
     const onPostIn = (e) => {
         e.preventDefault()
-        const newPost = {
-           userName: user.name,
-           link : link,
-           title : title,
-           date : new Date().toLocaleString(),
-           img : 'https://www.skt-phone.co.kr/resource/images/visual-notice.png',
-           content : content,
-           category: category,
-           userSeq : user.userSeq,
-        }
         console.log(newPost)
         axios.post('http://localhost:8080/posts/insert', newPost)
             .then((res) => {
                 console.log(res.statusText)
                 RefreshInfo()
                 history.push(`/board/main/${match}`)
+            })
+            .catch((err) => {
+                console.log(err.status)
+            })
+    }
+
+    const onNotice = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:8080/posts/insert', newPost)
+            .then((res) => {
+                console.log(res.statusText)
+                history.push(`/admin/notice`)
             })
             .catch((err) => {
                 console.log(err.status)
@@ -72,6 +87,11 @@ const PostInput = ({history}) => {
                                                placeholder="Link"/>
                                     </div>
                                     <div className="col-md-12">
+                                        <label htmlFor="link">image</label>
+                                        <input type="text" className="form-control" id="img" onChange={(e) => {setImg(e.target.value)}}
+                                               placeholder="img"/>
+                                    </div>
+                                    <div className="col-md-12">
                                         <label htmlFor="content">내용</label>
                                         <textarea className="form-control" placeholder="Write Your Content" id="content" onChange={(e) => {setContent(e.target.value)}}
                                                   rows="24"/>
@@ -80,9 +100,17 @@ const PostInput = ({history}) => {
                                         <Container>
                                             <Row>
                                                 <Col/>
-                                                <Col xs lg={2}>
-                                                    <button className="btn btn-solid" onClick={onPostIn}>Post</button>
-                                                    <button className="btn btn-solid" onClick={(e)=>{history.push(`/board/main/${category}`)}}>취소</button></Col>
+                                                    {(category === 'notice')?
+                                                        <Col xs lg={2}>
+                                                            <button className="btn btn-solid" onClick={onNotice}>공지사항</button>
+                                                            <button className="btn btn-solid" onClick={(e)=>{history.push(`/admin/notice`)}}>취소</button>
+                                                        </Col>
+                                                        :
+                                                        <Col xs lg={2}>
+                                                            <button className="btn btn-solid" onClick={onPostIn}>Post</button>
+                                                            <button className="btn btn-solid" onClick={(e)=>{history.push(`/board/main/${category}`)}}>취소</button>
+                                                        </Col>
+                                                    }
                                             </Row>
                                         </Container>
                                     </div>

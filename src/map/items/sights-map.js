@@ -289,7 +289,7 @@ export const SightsMap = () =>{
                                                         <MDBCardBody>
                                                             <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
                                                             <MDBCardText>
-                                                                <h4>지번주소: {selected.branchAddress}</h4><br/>
+                                                                <h4>지번주소: {selected.address}</h4><br/>
                                                                 <h4>도로명주소: {selected.streetAddress}</h4><br/>
                                                                 <h4>수용인원수: {selected.capacity}</h4><br/>
                                                                 <h4>주차가능수: {selected.parkingLot}</h4><br/>
@@ -322,7 +322,7 @@ export const SightsMap = () =>{
                                                             <MDBCardBody>
                                                                 <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
                                                                 <MDBCardText>
-                                                                    <h4>지번주소: {selected.branchAddress}</h4><br/>
+                                                                    <h4>지번주소: {selected.address}</h4><br/>
                                                                     <h4>도로명주소: {selected.streetAddress}</h4><br/>
                                                                     <h4>수용인원수: {selected.capacity}</h4><br/>
                                                                     <h4>주차가능수: {selected.parkingLot}</h4><br/>

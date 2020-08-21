@@ -286,7 +286,7 @@ export const BookmarkMap = () =>{
                                                     <MDBCol>
                                                         <MDBCard>
                                                             <MDBCardBody>
-                                                                <MDBCardTitle><h3>{selected.unitName}</h3></MDBCardTitle><br/>
+                                                                <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
                                                                 <MDBCardText>
                                                                     <h4>충전기 타입: {selected.chargerType}</h4><br/>
                                                                     <h4>상태: {selected.chargerState}</h4><br/>
@@ -316,7 +316,7 @@ export const BookmarkMap = () =>{
                                                         <MDBCardBody>
                                                             <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
                                                             <MDBCardText>
-                                                                <h4>지번주소: {selected.branchAddress}</h4><br/>
+                                                                <h4>지번주소: {selected.address}</h4><br/>
                                                                 <h4>도로명주소: {selected.streetAddress}</h4><br/>
                                                                 <h4>수용인원수: {selected.capacity}</h4><br/>
                                                                 <h4>주차가능수: {selected.parkingLot}</h4><br/>

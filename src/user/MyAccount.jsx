@@ -10,6 +10,7 @@ import MyAccount2 from "./MyAccount2";
 import MyPost from "./MyPost";
 import MyComment from "./MyComment";
 import {MyCarRegister} from "./MyCarRegister";
+import TableBookmark from "../map/items/table-bookmark";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -123,7 +124,7 @@ export const MyAccount = () => {
                                                     <MyComment comments={comments}/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={4}>
-                                                    My bookmark
+                                                    <TableBookmark/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={5}>
                                                     Change password

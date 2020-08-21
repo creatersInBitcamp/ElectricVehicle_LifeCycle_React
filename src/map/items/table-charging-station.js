@@ -53,7 +53,7 @@ export const TableChargingStation = () => {
 
     const columns=[
         { title: '충전기 타입', field: 'chargerType', defaultGroupOrder: 0 },
-        { title: '충전소 이름', field: 'unitName' },
+        { title: '충전소 이름', field: 'name' },
         { title: '주소', field: 'address' },
         // { title: '운영시간', field: 'businessHours'},
         // { title: '충전기 상태', field: 'chargerState'}
@@ -121,7 +121,7 @@ export const TableChargingStation = () => {
                                                                 </div>
                                                                 <div>
                                                                     <br/>
-                                                                    <h3>이름 : {rowData.unitName}</h3>
+                                                                    <h3>이름 : {rowData.name}</h3>
                                                                     <h3>주소 : {rowData.address}</h3>
                                                                     <h3>충전기 타입 : {rowData.chargerType}</h3>
                                                                     <h3>충전기 상태 : {rowData.chargerState}</h3>

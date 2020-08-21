@@ -4,7 +4,7 @@ const FILTER_COLOR = 'FILTER_COLOR'
 const FILTER_PRICE = 'FILTER_PRICE'
 const SORT_BY = 'SORT_BY'
 const CLEAR_FILTER = 'CLEAR_FILTER'
-
+const FILTER_SEARCHWORD = 'FILTER_SEARCHWORD'
 
 /* actions */
 export const filterBrand = (brand) => ({
@@ -26,12 +26,14 @@ export const filterSort = (sort_by) => ({
 export const clearfilter=()=>({
     type : CLEAR_FILTER
 })
+export const filterSearchWord = (searchWord) => ({type: FILTER_SEARCHWORD, searchWord})
 
 /* reducer */
 const filtersReducerDefaultState = {
     brand: [],
     value: { min: 100, max: 20000 },
-    sortBy: ""
+    sortBy: "",
+    searchWord: []
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
@@ -62,6 +64,11 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
                 value: [],
                 color: [],
                 sortBy: ''
+            }
+        case FILTER_SEARCHWORD:
+            return {
+                ...state,
+                searchWord: []
             }
         default:
             return state;

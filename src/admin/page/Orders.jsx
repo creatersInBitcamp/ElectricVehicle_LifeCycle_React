@@ -1,5 +1,7 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {AdminBreadcrumb} from '../common';
+import Table from "../item/Table";
+import axios from 'axios'
 
 const ordersTypes = {REQUEST: 'orders/REQUEST'}
 const ordersReducer = ( state, action ) => {
@@ -10,6 +12,26 @@ const ordersReducer = ( state, action ) => {
 }
 
 export const Orders = () => {
+    const [data, setData] = useState([])
+    //purchasingMethod, purchaseTime, purchasePrice, color, userSeq, eccarId;
+    const columns = [
+        {title:'OrderID', field:'orderId'},
+        {title:'주문자', field: 'userId'},
+        {title:'차량명', field:'carName'},
+        {title:'색상', field:'color'},
+        {title:'방식', field:'purchasingMethod'},
+        {title:'가격', field:'purchasePrice'},
+        {title:'요청시간', field:'purchaseTime'},
+    ]
+    useEffect(()=>{
+        axios.get('http://localhost:8080/purchases/getall')
+            .then((res)=>{
+                setData(res.data)
+            })
+            .catch((err)=>{
+                console.log(err.status)
+            })
+    },[])
         return (
             <>
                 <AdminBreadcrumb title="판매현황" parent="Sales" />
@@ -22,7 +44,7 @@ export const Orders = () => {
                                     <h5>주문</h5>
                                 </div>
                                 <div className="card-body order-datatable">
-
+                                    <Table title={"주문요청"} columns={columns} data={data}/>
                                 </div>
                             </div>
                         </div>

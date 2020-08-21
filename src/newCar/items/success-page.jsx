@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 class orderSuccess extends Component {
 
     constructor (props) {
@@ -25,7 +24,7 @@ class orderSuccess extends Component {
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="success-text">
-                                        <i className="fa fa-check-circle" aria-hidden="true"></i>
+                                        <i className="fa fa-check-circle" aria-hidden="true"/>
                                         <h2>thank you</h2>
                                         <p>Payment Is Has Been Received Order Placed Successfully</p>
                                         <p>Transaction ID: {(payment.paymentID)?payment.paymentID:payment.id}</p>
@@ -56,12 +55,6 @@ class orderSuccess extends Component {
                                                 </div>
                                                 <div className="col-3 order_detail">
                                                     <div>
-                                                        <h4>quantity</h4>
-                                                        <h5>{item.qty}</h5>
-                                                    </div>
-                                                </div>
-                                                <div className="col-3 order_detail">
-                                                    <div>
                                                         <h4>price</h4>
                                                         <h5>{symbol}{item.sum}</h5>
                                                     </div>
@@ -85,13 +78,13 @@ class orderSuccess extends Component {
                                         <div className="col-sm-6">
                                             <h4>summery</h4>
                                             <ul className="order-detail">
-                                                {(payment.paymentID)?
+                                                {(payment)?
                                                     <div>
                                                         <li>payer ID: {payment.payerID}</li>
                                                         <li>payment ID: {payment.paymentID}</li>
                                                         <li>payment Token: {payment.paymentToken}</li></div>
                                                     :
-                                                    <li>Order ID: {payment.id}</li> }
+                                                    <li>Order ID: {payment.orderId}</li> }
 
                                                 <li>Order Date: {CheckDate}</li>
                                                 <li>Order Total: {symbol}{orderTotal}</li>
@@ -109,8 +102,7 @@ class orderSuccess extends Component {
 
                                         <div className="col-sm-12 payment-mode">
                                             <h4>payment method</h4>
-                                            <p>Pay on Delivery (Cash/Card). Cash on delivery (COD) available. Card/Net
-                                                banking acceptance subject to device availability.</p>
+                                            <p>{payment.purchasingMethod}</p>
                                         </div>
                                         <div className="col-md-12">
                                             <div className="delivery-sec">

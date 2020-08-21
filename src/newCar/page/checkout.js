@@ -16,7 +16,6 @@ const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 
 export const checkOut = () => {
-    console.log(sessionUser)
     const [method, setMethod] = useState('구매상담')
     const [color, setColor] = useState('색상 선택')
     const [newCar, setNewCar] = useState({
@@ -49,7 +48,10 @@ export const checkOut = () => {
         axios.post(`http://localhost:8080/purchases/insert`, newPurchase)
             .then((res)=>{
                 console.log('신차 구매 axios 성공')
-                history.push('/pages/profile')
+                history.push({
+                    pathname: '/order-success',
+                    state: { payment: sessionUser, items: newCar, orderTotal: newCar.price, symbol: symbol }
+                })
             })
             .catch((err)=>{
                 console.log(`신차 구매 axios 실패 : ${err.status}`)
@@ -189,7 +191,9 @@ export const checkOut = () => {
                                                     </div>
                                                 </div>
                                                     <div className="text-right">
-                                                        {(method === '구매상담')? <button type="button" className="btn-solid btn" onClick={() => onPurchaseCar()} >Place Order</button>:
+                                                        {(method === '구매상담')?
+                                                            <button type="button" className="btn-solid btn" onClick={() => onPurchaseCar()} >Place Order</button>
+                                                            :
                                                             <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
                                                     </div>
                                             </div>

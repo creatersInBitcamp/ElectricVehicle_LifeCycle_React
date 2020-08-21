@@ -20,7 +20,6 @@ export const ProductStyleFive = props => {
                 </div>
                 <div className="front">
                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} ><img
-                        // width={320} height={200}
                         src={product.variants?
                             image?image:product.variants[0].images
                             :product.img}
@@ -29,7 +28,6 @@ export const ProductStyleFive = props => {
                 </div>
                 <div className="back">
                     <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`} ><img
-                        // width={320} height={200}
                         src={
                             product.variants?
                                 image?image:product.variants[0].images
@@ -39,7 +37,7 @@ export const ProductStyleFive = props => {
                         alt="" /></Link>
                 </div>
                 <div className="cart-box">
-                    <button title="Add to cart" onClick={()=>onAddToCartClicked(product, 1)}>
+                    <button title="Add to cart" onClick={()=>onAddToCartClicked(product)}>
                         <i className="fa fa-shopping-cart" aria-hidden="true"/>
                     </button>
                     <a title="Add to Wishlist" onClick={onAddToWishlistClicked} >

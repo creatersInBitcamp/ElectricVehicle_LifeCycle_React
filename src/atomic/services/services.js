@@ -61,9 +61,9 @@ export const getVisibleproducts = (data, { brand, color, value, sortBy }) => {
         return product.sale === true && brandMatch && colorMatch && startPriceMatch && endPriceMatch;
     }).sort((product1, product2) => {
         if (sortBy === 'HighToLow') {
-            return product2.price < product1.price ? -1 : 1;
+            return parseInt(product2.price) < parseInt(product1.price) ? -1 : 1;
         } else if (sortBy === 'LowToHigh') {
-            return product2.price > product1.price ? -1 : 1;
+            return parseInt(product2.price) > parseInt(product1.price) ? -1 : 1;
         } else if (sortBy === 'Newest') {
             return product2.eccarId < product1.eccarId ? -1 : 1;
         } else if (sortBy === 'AscOrder') {

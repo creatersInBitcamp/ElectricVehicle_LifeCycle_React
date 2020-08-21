@@ -161,6 +161,21 @@ export const getNewProducts = (products) => {
     return items.slice(0,8)
 }
 
+// Get three New Products
+export const getThreeNewProducts = (products) => {
+    const items = products.filter(product => {
+        if(product.yyyy >2020){
+            return product;
+        }
+    })
+    let size = items.length
+    for(let i=0; i<size;i++){
+        if (items[i].modelName !== items[i+1].modelName){
+        }
+    }
+    return items.slice(0,8)
+}
+
 // Get Related Items
 export const getRelatedItems = (products, type) => {
     const items = products.filter(product => {

@@ -3,11 +3,11 @@ import Slider from 'react-slick';
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom'
 
-import {getBestSeller} from "../../atomic/services/services";
+import {getNewProducts} from "../../atomic/services/services";
 
 const NewProduct = () => {
     const {items, symbol} = useSelector(state => ({
-        items: getBestSeller(state.data.products),
+        items: getNewProducts(state.data.products),
         symbol: state.data.symbol
     }))
 
@@ -24,9 +24,12 @@ const NewProduct = () => {
                     <div key={index}>
                         {products.map((product, i) =>
                             <div className="media" key={i}>
-                                <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}><img className="img-fluid" src={`${product.variants[0].images}`} alt="" /></Link>
+                                <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}><img className="img-fluid" src={`${product.img}`} alt="" /></Link>
                                 <div className="media-body align-self-center">
-                                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}><h6>{product.carName}</h6></Link>
+                                    <h4>{product.yyyy}</h4><br/>
+                                    {/*<Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}><h5>{product.yyyy}</h5></Link><br/>*/}
+                                    {/*<Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}><h7>{product.brand}</h7></Link><br/>*/}
+                                    <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}><h5>{product.modelName}</h5></Link>
                                     <h4>{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h4>
                                 </div>
                             </div>

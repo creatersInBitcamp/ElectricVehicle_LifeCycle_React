@@ -16,7 +16,7 @@ export const Orders = () => {
     //purchasingMethod, purchaseTime, purchasePrice, color, userSeq, eccarId;
     const columns = [
         {title:'OrderID', field:'orderId'},
-        {title:'주문자', field: 'userId'},
+        {title:'주문자', field: 'userName'},
         {title:'차량명', field:'carName'},
         {title:'색상', field:'color'},
         {title:'방식', field:'purchasingMethod'},

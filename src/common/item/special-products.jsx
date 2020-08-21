@@ -7,13 +7,11 @@ import {PostItem} from '../../board'
 import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
 import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
 import axios from "axios";
-import {usedCars} from "../../usedCar/item/UsedProductReducer";
 
 export const SpecialProducts = props => {
     const {elecCar,usedCar,symbol} = useSelector(state=>({
         elecCar: getBestSeller(state.data.products),
         usedCar: getSpecialUsed(state.usedData.products),
-        // posts: receivePosts(),
         symbol: state.data.symbol
     }))
 
@@ -51,7 +49,7 @@ export const SpecialProducts = props => {
                                     <ProductListItem product={product} symbol={symbol}
                                                  onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
                                                  onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
-                                                 onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} check={false}/> )
+                                                 onAddToCartClicked={()=>{dispatch(addToCart(product))}} key={index} check={false}/> )
                                 }
                             </div>
                         </TabPanel>
@@ -66,11 +64,7 @@ export const SpecialProducts = props => {
                         <TabPanel>
                             <div className=" no-slider row">
                                 { posts.map((post, index ) =>
-                                    // <ProductItem product={product} symbol={symbol}
-                                    //              onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
-                                    //              onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
-                                    //              onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} />
-                                                 <PostItem post={post} key={index}/>)
+                                    <PostItem post={post} key={index}/>)
                                 }
                             </div>
                         </TabPanel>

@@ -7,7 +7,7 @@ import {useDispatch} from "react-redux";
 import {removeAllUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
 import {clearCart} from "../../newCar/page/cartReducer";
 import {clearCompare} from "../../newCar/page/compareReducer";
-import {clearUsedCompare, removeFromUsedCompare} from "../../usedCar/page/MyCarComparison";
+import {clearUsedCompare} from "../../usedCar/page/MyCarComparison";
 
 export const TopBar = () => {
     const contexts = {
@@ -18,7 +18,8 @@ export const TopBar = () => {
         cars:"http://localhost:8080/cars/csv",
         used:"http://localhost:8080/usedCars/csv",
         electric: "http://localhost:8080/electriccars/csv",
-        variants : "http://localhost:8080/variants/csv"
+        variants : "http://localhost:8080/variants/csv",
+        fare : "http://localhost:8080/fare/csv"
     }
     const translate = useTranslate();
     const [session, setSession] = useState(false)
@@ -119,6 +120,16 @@ export const TopBar = () => {
                 console.log('variants 실패')
             })
     }
+    const onCSVfare = (e) => {
+        e.preventDefault()
+        axios.get(contexts.fare)
+            .then((res)=>{
+                console.log('fare 성공')
+            })
+            .catch((err)=>{
+                console.log('fare 실패')
+            })
+    }
 
 
     return <>
@@ -139,6 +150,7 @@ export const TopBar = () => {
                                     <button onClick={(e)=> {onCSVnew(e)}}>NewCar</button>
                                     <button onClick={(e)=> {onCSVvariants(e)}}>Variants</button>
                                     <button onClick={(e)=> {onCSVused(e)}}>UsedCar</button>
+                                    <button onClick={(e)=> {onCSVfare(e)}}>fare</button>
                                 </li>
                             </ul>
                         </div>

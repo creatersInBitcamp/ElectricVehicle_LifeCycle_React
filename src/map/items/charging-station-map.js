@@ -121,7 +121,6 @@ export const ChargingStationMap = props =>{
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        {console.log(props.first[0])}
         dispatch(userThunk(props))
     },[])
 
@@ -314,7 +313,7 @@ export const ChargingStationMap = props =>{
                                                 <MDBCol>
                                                     <MDBCard>
                                                         <MDBCardBody>
-                                                            <MDBCardTitle><h3>{selected.unitName}</h3></MDBCardTitle><br/>
+                                                            <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
                                                             <MDBCardText>
                                                                 <h4>충전기 타입: {selected.chargerType}</h4><br/>
                                                                 <h4>상태: {selected.chargerState}</h4><br/>
@@ -348,7 +347,7 @@ export const ChargingStationMap = props =>{
                                                     <MDBCol>
                                                         <MDBCard>
                                                             <MDBCardBody>
-                                                                <MDBCardTitle><h3>{selected.unitName}</h3></MDBCardTitle><br/>
+                                                                <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
                                                                 <MDBCardText>
                                                                     <h4>충전기 타입: {selected.chargerType}</h4><br/>
                                                                     <h4>상태: {selected.chargerState}</h4><br/>

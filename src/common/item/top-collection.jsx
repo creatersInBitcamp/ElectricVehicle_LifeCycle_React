@@ -65,7 +65,7 @@ export const TopCollection = () => {
                                         <ProductStyleFive product={product} symbol={symbol}
                                                      onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
                                                      onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
-                                                     onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} />
+                                                     onAddToCartClicked={()=>{dispatch(addToCart(product))}} key={index} />
                                     </div>)
                                 }
                             </Slider>

@@ -34,7 +34,6 @@ export const SalesForm = (props) => {
             setItem(product)
             setCarId(targetId)
             setCarName(product.carName)
-            console.log(product)
         }
 
     }
@@ -50,7 +49,6 @@ export const SalesForm = (props) => {
                 eccarId: carId,
                 userSeq: user.userSeq
             }
-            console.log(info)
             axios.post(`http://localhost:8080/usedCars/register`, info)
                 .then(res => {
                     res.data ? props.history.push(`${process.env.PUBLIC_URL}/`) : alert('등록 실패')

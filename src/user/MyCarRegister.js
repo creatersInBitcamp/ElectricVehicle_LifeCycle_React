@@ -132,17 +132,21 @@ export const MyCarRegister = ({used}) => {
         })
     }, [])
 
-    let usedNew = used.find(x=>x.usedCarSalesList)
+    let usedNew = []
+
+    let test = () => {
+        if (used.length > 0){
+            usedNew = used.find(x=>x.usedCarSalesList)
+            return usedNew.usedCarSalesList
+        } else {
+            return usedNew
+        }
+    }
     useEffect(()=>{
 
         axios.get(`http://localhost:8080/usedCars/getDetail/${usedNew.usedCarId}`)
             .then((res)=>{
-                console.log(res.data)
-                console.log(product)
                 setProduct(res.data)
-            })
-            .catch(()=>{
-                alert('product fail')
             })
     },[])
 
@@ -175,9 +179,6 @@ export const MyCarRegister = ({used}) => {
         },
         {
             title:'가격', field:'price', editable: 'never'
-        },
-        {
-            title:'구매요청', field: '', editable: 'never'
         }
     ]
     const purchaseColumns = [
@@ -201,6 +202,8 @@ export const MyCarRegister = ({used}) => {
     const dispatch = useDispatch()
 
     return<>
+        {console.log(usedNew)}
+        {console.log(used)}
         <Container>
             <Row>
                 <Col/>
@@ -323,7 +326,7 @@ export const MyCarRegister = ({used}) => {
                                         <Table title={null} columns={saleColumns} data={product}/>
                                     </TabPanel>
                                     <TabPanel className="tab-pane fade mt-4 show active">
-                                        <Table title={null} columns={purchaseColumns} data={usedNew.usedCarSalesList}/>
+                                        <Table title={null} columns={purchaseColumns} data={test()}/>
                                     </TabPanel>
                                 </Tabs>
                             </div>

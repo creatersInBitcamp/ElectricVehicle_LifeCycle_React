@@ -113,9 +113,6 @@ export const MyCarComparison = () => {
                         <div className="col-12">
                             <Slider {...settings} className="slide-4">
                                 <div className="compare-part">
-                                    {/*<button type="button" className="close-btn" onClick={()=>{dispatch(removeFromCompare(item))}}>
-                                        <span aria-hidden="true">×</span>
-                                    </button>*/}
                                     {first.map((item) => {
                                         return (
                                             <>
@@ -175,16 +172,12 @@ export const MyCarComparison = () => {
                                                         market price
                                                     </div>
                                                     <div className="inner-detail">
-                                                        {/*<MarketPrice/>*/}
+                                                        <MarketPrice product={item}/>
                                                     </div>
                                                 </div>
                                             </>
                                         )
                                     })}
-
-                                    {/*<div className="btn-part">
-                                        <a className="btn btn-solid" onClick={()=>{dispatch(addToCart(item, 1))}}>add to cart</a>
-                                    </div>*/}
                                 </div>
                                 {Items.map((item,index) =>
                                     <div key={index}>
@@ -250,7 +243,7 @@ export const MyCarComparison = () => {
                                                     market price
                                                 </div>
                                                 <div className="inner-detail">
-                                                    {/*<MarketPrice/>*/}
+                                                    <MarketPrice product={item}/>
                                                 </div>
                                             </div>
                                             <div className="btn-part">

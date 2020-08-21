@@ -5,7 +5,6 @@ export const usedCars = () => (dispatch) =>{
     let products = []
     axios.get(`http://localhost:8080/usedCars/carInfo`)
         .then((res)=> {
-            console.log(typeof res.data)
             let s = res.data.length
             for (let i=0; i<s; i++) {
                 products.push(res.data.shift())
@@ -19,11 +18,6 @@ export const usedCars = () => (dispatch) =>{
     return products
 }
 
-const shop = {
-    getProducts: (cb, timeout) => setTimeout(() => cb(usedCars()), timeout || 100),
-    buyProducts: (payload, cb, timeout) => setTimeout(() => cb(), timeout || 100)
-}
-
 /* types */
 const FETCH_USED_PRODUCTS_BEGIN = 'FETCH_USED_PRODUCTS_BEGIN'
 const RECEIVE_USED_PRODUCTS = 'RECEIVE_USED_PRODUCTS'
@@ -35,11 +29,6 @@ export const receiveUsedProducts = products => ({ type: RECEIVE_USED_PRODUCTS, p
 export const getAllUsedProducts = () => dispatch => {
     dispatch(fetchProductsBegin())
     dispatch(usedCars())
-    /*shop.getProducts(usedProducts => {
-        dispatch(receiveProducts(usedProducts))
-        console.log(usedProducts)
-        return usedProducts
-    })*/
 }
 export const fetchSingleProduct = productId => ({ type: FETCH_SINGLE_USED_PRODUCT, productId })
 

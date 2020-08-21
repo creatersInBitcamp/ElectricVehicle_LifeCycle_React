@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { Scatter } from "react-chartjs-2";
-import { MDBContainer } from "mdbreact";
 import {useSelector} from "react-redux";
 
 export const MarketPrice = ({product}) => {
@@ -19,7 +18,6 @@ export const MarketPrice = ({product}) => {
         Items.map((item,index) => {
             box.push({x: (item.age).replace("/","").replace("식",""), y: item.price})
         })
-        console.log(box)
         return box
     }
 
@@ -80,19 +78,16 @@ export const MarketPrice = ({product}) => {
             },
             tooltips: {
                 callbacks: {
-                    label: function (tooltipItems,data) {
+                    label: function (tooltipItems) {
                         return tooltipItems.yLabel+'만원'
                     }
                 }
             }
         }
-
     }
 
     return <>
-        <MDBContainer>
-            <Scatter data={state.data} options={state.options} />
-        </MDBContainer>
+        <Scatter data={state.data} options={state.options} />
     </>
 
 }

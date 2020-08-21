@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
 import useComponentWillMount from "component-will-mount-hook/es6/useComponentWillMount";
 import {useDispatch, useSelector} from "react-redux";
-import {clearfilter} from "../../newCar/items/filtersReducer";
 
 const ADMIN_CHECK = 'ADMIN_CHECK'
 const loginAction = admin =>({type: ADMIN_CHECK, check: admin})
@@ -52,11 +51,11 @@ export const NavBar = (props) => {
         setNavClose({right: '-410px'})
     }
 
-    // const onMouseEnterHandler = () => {
-    //     if (window.innerWidth > 1199) {
-    //         document.querySelector("#main-menu").classList.add("hover-unset");
-    //     }
-    // }
+/*    const onMouseEnterHandler = () => {
+        if (window.innerWidth > 1199) {
+            document.querySelector("#main-menu").classList.add("hover-unset");
+        }
+    }*/
 
     const handleSubmenu = e => {
         if (e.target.classList.contains('sub-arrow'))

@@ -65,7 +65,7 @@ export const getVisibleproducts = (data, { brand, color, value, sortBy }) => {
         } else if (sortBy === 'LowToHigh') {
             return parseInt(product2.price) > parseInt(product1.price) ? -1 : 1;
         } else if (sortBy === 'Newest') {
-            return product2.eccarId < product1.eccarId ? -1 : 1;
+            return parseInt(product2.date) < parseInt(product1.date) ? -1 : 1;
         } else if (sortBy === 'AscOrder') {
             return product1.carName.localeCompare(product2.carName);
         } else if (sortBy === 'DescOrder') {
@@ -90,11 +90,11 @@ export const getVisibleUsedProducts = (data, { brand, value, sortBy }) => {
         return startPriceMatch && endPriceMatch && brandMatch;
     }).sort((product1, product2) => {
         if (sortBy === 'HighToLow') {
-            return product2.price < product1.price ? -1 : 1;
+            return parseInt(product2.price) < parseInt(product1.price) ? -1 : 1;
         } else if (sortBy === 'LowToHigh') {
-            return product2.price > product1.price ? -1 : 1;
+            return parseInt(product2.price) > parseInt(product1.price) ? -1 : 1;
         } else if (sortBy === 'Newest') {
-            return product2.usedCarId < product1.usedCarId ? -1 : 1;
+            return product2.yyyy < product1.yyyy ? -1 : 1;
         } else if (sortBy === 'AscOrder') {
             return product1.carName.localeCompare(product2.carName);
         } else if (sortBy === 'DescOrder') {

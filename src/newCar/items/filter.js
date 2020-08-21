@@ -5,7 +5,7 @@ import 'react-input-range/lib/css/index.css';
 import { SlideToggle } from 'react-slide-toggle';
 
 import {getBrands, getColors, getMinMaxPrice} from '../../atomic/services/services';
-import {filterBrand, filterColor, filterPrice} from '../../newCar'
+import {filterBrand, filterColor, filterPrice,filterSort} from '../../newCar'
 
 export const Filter = () => {
     // const [openFilter, setOpenFilter] = useState(false)
@@ -23,6 +23,7 @@ export const Filter = () => {
         dispatch(filterColor(null))
         dispatch(filterPrice({value}))
         dispatch(filterBrand(brands))
+        dispatch(filterSort(''))
     },[])
     const closeFilter = () => {
         document.querySelector(".collection-filter").style = "left: -365px";

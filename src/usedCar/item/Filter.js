@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getBrands, getMinMaxPrice} from "../../atomic/services/services";
-import {filterBrand, filterColor, filterPrice} from '../../newCar'
+import {filterBrand, filterPrice, filterSort} from '../../newCar'
 import { SlideToggle } from 'react-slide-toggle';
 import InputRange from "react-input-range";
 
@@ -14,6 +14,8 @@ const Filter = () => {
     }))
     useEffect(()=>{
         dispatch(filterPrice({value}))
+        dispatch(filterBrand(brands))
+        dispatch(filterSort(''))
     },[])
     const closeFilter = () => {
         document.querySelector(".collection-filter").style = "left: -365px";

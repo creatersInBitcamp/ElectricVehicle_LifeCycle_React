@@ -20,7 +20,6 @@ export const SpecialProducts = props => {
         axios.get('http://localhost:8080/posts/getall')
             .then((res)=>{
                 console.log('getPosts axios 작동')
-                console.log(res.data)
                 setPosts(res.data.slice(0,8))
             })
             .catch((err)=> {

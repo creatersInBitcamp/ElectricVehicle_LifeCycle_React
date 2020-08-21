@@ -30,7 +30,6 @@ export const LeftSidebar = () => {
 
     const {symbol, item} = useSelector((state) => {
         let productId = match.params.eccarId
-        console.log(productId)
         return {
             item: state.data.products.find(el => el.eccarId == productId),
             symbol: state.data.symbol
@@ -57,7 +56,6 @@ export const LeftSidebar = () => {
     }
     const dispatch = useDispatch()
     return <>
-        {console.log(item)}
         <div>
             <Breadcrumb parent={'Product'} title={item.carName} />
 

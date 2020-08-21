@@ -24,7 +24,7 @@ const NewProduct = () => {
                     <div key={index}>
                         {products.map((product, i) =>
                             <div className="media" key={i}>
-                                <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}><img className="img-fluid" src={`${product.img}`} alt="" /></Link>
+                                <Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}><img height={50} width={200} className="img-fluid" src={`${product.variants[0].images}`} alt="" /></Link>
                                 <div className="media-body align-self-center">
                                     <h4>{product.yyyy}</h4><br/>
                                     {/*<Link to={`${process.env.PUBLIC_URL}/new-car/product/${product.eccarId}`}><h5>{product.yyyy}</h5></Link><br/>*/}

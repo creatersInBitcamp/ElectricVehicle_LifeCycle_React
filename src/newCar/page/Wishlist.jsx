@@ -53,7 +53,7 @@ export const wishlist = () => {
                                                                 <a className="icon" onClick={()=>{dispatch(removeFromWishlist(item))}}>
                                                                     <i className="fa fa-times"/>
                                                                 </a>
-                                                                <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveWishlist(item, 1))}}>
+                                                                <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveWishlist(item))}}>
                                                                     <i className="fa fa-shopping-cart"/>
                                                                 </a>
                                                             </h2>
@@ -72,7 +72,7 @@ export const wishlist = () => {
                                                             <a className="icon" onClick={()=>{dispatch(removeFromWishlist(item))}}>
                                                                 <i className="fa fa-times"/>
                                                             </a>
-                                                            <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveWishlist(item, 1))}}>
+                                                            <a className="cart" onClick={()=>{dispatch(addToCartAndRemoveWishlist(item))}}>
                                                                 <i className="fa fa-shopping-cart"/>
                                                             </a>
                                                         </h2>

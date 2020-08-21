@@ -27,9 +27,9 @@ export const removeFromWishlist = product_id => (dispatch) => {
         product_id
     })
 };
-export const addToCartAndRemoveWishlist = (product,qty) => (dispatch) => {
+export const addToCartAndRemoveWishlist = (product) => (dispatch) => {
     toast.success("Item Added to Cart");
-    dispatch(addToCartUnsafe(product, qty));
+    dispatch(addToCartUnsafe(product));
     dispatch(removeFromWishlist(product));
 }
 export const clearWishlist = ()=>({

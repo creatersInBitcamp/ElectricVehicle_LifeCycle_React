@@ -121,7 +121,6 @@ export const ChargingStationMap = props =>{
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        {console.log(props.first[0])}
         dispatch(userThunk(props))
     },[])
 

@@ -79,6 +79,7 @@ export const Header = () => {
         dispatch(clearCompare())
         dispatch(adminCheckAction(admin))
         sessionStorage.clear()
+        window.location.reload()
     }
         return (
             <>

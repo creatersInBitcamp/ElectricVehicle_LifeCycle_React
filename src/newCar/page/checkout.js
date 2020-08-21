@@ -3,10 +3,11 @@ import {Helmet} from 'react-helmet'
 import {useDispatch, useSelector} from 'react-redux'
 import {useHistory, useRouteMatch} from 'react-router-dom'
 import PaypalExpressBtn from 'react-paypal-express-checkout';
-
-import {Breadcrumb} from "../../common";
+import kakaopay from '../../assets/images/icon/payment_icon_yellow_large.png'
+import {Breadcrumb, payment} from "../../common";
 import {getCartTotal} from "../../atomic/services/services";
 import axios from "axios";
+import KakaoPay from "../../common/item/kakaoPay";
 
 /* type */
 export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
@@ -94,6 +95,53 @@ export const checkOut = () => {
         production: 'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
     }
 
+    const kapi = 'https://kapi.kakao.com/v1/payment/ready'
+    const item_name = '초코파이';
+    const quantity = 1;
+    const total_amount = 2200;
+    const vat_amount = 200;
+    const tax_free_amount = 0;
+
+    const approval_url = 'http://localhost:3000/success';
+    const fail_url = 'http://localhost:3000/fail';
+    const cancel_url = 'http://localhost:3000/cancel';
+
+    // set data
+    const data = [
+        'cid=TC0ONETIME',
+        'partner_order_id=partner_order_id',
+        'partner_user_id=partner_user_id',
+        `item_name=${item_name}`,
+        `quantity=${quantity}`,
+        `total_amount=${total_amount}`,
+        `vat_amount=${vat_amount}`,
+        `tax_free_amount=${tax_free_amount}`,
+        `approval_url=${approval_url}`,
+        `fail_url=${fail_url}`,
+        `cancel_url=${cancel_url}`
+    ].join('&');
+    const headers = {
+        headers:{'Authorization':'KakaoAK 1e5be5d5088ae90530133cd882d3aa2f','Content-type':'application/x-www-form-urlencoded;charset=utf-8'}
+    }
+    const onKakaoPay = () => {
+        alert('카카오 페이로 결제')
+        axios.post(kapi, data, headers)
+            .then((res)=>{
+                return {
+                    statusCode:301,
+                    headers: {
+                        'Cache-Control':'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0',
+                        Location: res.data.next_redirect_pc_url
+                    },
+                    body:''
+                }
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+    }
 
     return (
         <div>
@@ -195,6 +243,7 @@ export const checkOut = () => {
                                                             <button type="button" className="btn-solid btn" onClick={() => onPurchaseCar()} >Place Order</button>
                                                             :
                                                             <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
+                                                            <img src={kakaopay} onClick={KakaoPay}/>
                                                     </div>
                                             </div>
                                         </div>

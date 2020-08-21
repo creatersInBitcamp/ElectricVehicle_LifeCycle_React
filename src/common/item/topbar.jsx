@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
 import axios from 'axios'
-import {clearWishlist} from "../../newCar/page/wishlistReducer";
+import {clearWishlist} from "../../newCar/page/WishlistReducer";
 import {useDispatch} from "react-redux";
 import {removeAllUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
-import {clearCart} from "../../newCar/page/cartReducer";
-import {clearCompare} from "../../newCar/page/compareReducer";
+import {clearCart} from "../../newCar/page/CartReducer";
+import {clearCompare} from "../../newCar/page/CompareReducer";
 import {clearUsedCompare} from "../../usedCar/page/MyCarComparison";
 
 export const TopBar = () => {

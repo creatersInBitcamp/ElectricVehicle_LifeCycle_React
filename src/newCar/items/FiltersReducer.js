@@ -36,7 +36,7 @@ const filtersReducerDefaultState = {
     searchWord: []
 };
 
-const filtersReducer = (state = filtersReducerDefaultState, action) => {
+const FiltersReducer = (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
         case FILTER_BRAND:
             return {
@@ -75,4 +75,4 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
     }
 }
 
-export default filtersReducer;
+export default FiltersReducer;

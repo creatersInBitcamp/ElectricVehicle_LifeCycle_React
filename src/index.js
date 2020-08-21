@@ -7,19 +7,19 @@ import translations from './atomic/constants/translations'
 import { IntlProvider } from 'react-redux-multilingual'
 import './index.scss';
 
-//common
 import Layout from './App'
+
+//common
 import {Main,Search,Faq,aboutUs} from "./common"
 
 //new car
-import {wishlist, CartComponent, checkOut, Compare, CollectionLeftSidebar, LeftSideBar, getAllProducts} from './newCar'
+import {wishlist, CartComponent, checkout, Compare, CollectionLeftSidebar, LeftSidebar} from './newCar'
 
 //used car
 import {UsedPurchaseCollection,productDetail,PurchaseRequest,MyCarComparison,SalesForm,UsedWishlist,Scrapped,updateDetail} from './usedCar'
 
 //map
-import {ChargingStationMap,SightsMap,TableChargingStation,BookmarkMap} from "./map/items";
-import MapService from './map/page/service'
+import {MapChargingStation,MapSights,TableChargingStation,MapBookmark,Service} from "./map";
 
 //board
 import {BoardDetail, BoardInput, BoardMain, BoardUpdate} from "./board/";
@@ -32,6 +32,7 @@ import {ForgetPassword, Login, MyAccount, MyCarRegister, Register} from './user'
 
 
 import store from "./store";
+import {getAllProducts} from './newCar/items/ProductReducer'
 import {getAllUsedProducts} from "./usedCar/item/UsedProductReducer";
 import orderSuccess from "./newCar/items/success-page";
 
@@ -64,11 +65,11 @@ const Root = () => {
 
                                 {/*newcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/new-car/collection`} component={CollectionLeftSidebar}/>
-                                <Route exact path={`${process.env.PUBLIC_URL}/new-car/product/:eccarId`} component={LeftSideBar}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/new-car/product/:eccarId`} component={LeftSidebar}/>
                                 <Route path={`${process.env.PUBLIC_URL}/new-car/compare`} component={Compare}/>
                                 <Route path={`${process.env.PUBLIC_URL}/new-car/wishlist`} component={wishlist}/>
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={CartComponent}/>
-                                <Route path={`${process.env.PUBLIC_URL}/checkout/:eccarId`} component={checkOut}/>
+                                <Route path={`${process.env.PUBLIC_URL}/checkout/:eccarId`} component={checkout}/>
 
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>
@@ -81,10 +82,10 @@ const Root = () => {
                                 <Route path={`${process.env.PUBLIC_URL}/used-car/wishlist`} component={UsedWishlist}/>
 
                                 {/*map*/}
-                                <Route exact path={`${process.env.PUBLIC_URL}/service`} component={MapService}/>
-                                <Route exact path={`${process.env.PUBLIC_URL}/service/map/chargingstation`} component={ChargingStationMap} />
-                                <Route exact path={`${process.env.PUBLIC_URL}/service/map/sights`} component={SightsMap} />
-                                <Route exact path={`${process.env.PUBLIC_URL}/service/map/bookmark`} component={BookmarkMap} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/service`} component={Service}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/service/map/chargingstation`} component={MapChargingStation} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/service/map/sights`} component={MapSights} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/service/map/bookmark`} component={MapBookmark} />
                                 <Route exact path={`${process.env.PUBLIC_URL}/service/table`} component={TableChargingStation} />
 
                                 {/*board*/}

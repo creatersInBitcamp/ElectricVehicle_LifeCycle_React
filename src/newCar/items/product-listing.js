@@ -5,7 +5,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import {addToCart,addToWishlist,addToCompare} from '../index'
 import {getVisibleproducts} from '../../atomic/services/services';
 import {ProductListItem} from "../index";
-import {elecCars} from "./productReducer";
 
 export const ProductListing = props => {
     const [limit, setLimit] = useState(5)
@@ -15,14 +14,6 @@ export const ProductListing = props => {
         products: getVisibleproducts(state.data, state.filters),
         symbol: state.data.symbol,
     }))
-
-/*
-    useEffect(()=>{
-        elecCars().then(r => setItems(r))
-    },[])
-
-    const products = getVisibleproducts(items, state.filters)*/
-
 
     useEffect(()=>{
         fetchMoreItems()
@@ -36,7 +27,7 @@ export const ProductListing = props => {
         // a fake async api call
         setTimeout(() => {
             setLimit(limit+5);
-        }, 3000);
+        }, 1500);
     }
 
 

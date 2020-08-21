@@ -1,6 +1,6 @@
 import React from 'react';
 import {toast} from "react-toastify";
-import {addToCartUnsafe} from "./cartReducer";
+import {addToCartUnsafe} from "./CartReducer";
 
 
 /* type */
@@ -37,7 +37,7 @@ export const clearWishlist = ()=>({
 })
 
 /* reducer */
-export const wishlistReducer = (state = {list: []}, action) => {
+export const WishlistReducer = (state = {list: []}, action) => {
     switch (action.type) {
         case ADD_TO_WISHLIST:
             const productId = action.product.eccarId
@@ -71,4 +71,4 @@ export const wishlistReducer = (state = {list: []}, action) => {
     return state;
 }
 
-export default wishlistReducer
+export default WishlistReducer

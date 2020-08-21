@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import {ChargingStationMap,SightsMap,TableChargingStation,BookmarkMap} from "../items";
+import {MapChargingStation,MapSights,TableChargingStation,MapBookmark} from "../index";
 import {Breadcrumb} from "../../common";
 import {AdminBreadcrumb} from "../../admin/common"
 import {useSelector} from "react-redux";
 import StickyBox from "react-sticky-box";
 import {MyCar} from "../../usedCar";
-import {Link} from "react-router-dom";
-import AdminChargingStationTable from "../items/adminTable";
+import AdminChargingStationTable from "../items/TableAdmin";
 
-const SpecialProducts = () => {
+export const Service = () => {
     const [admin,setAdmin] = useState(false);
     const result = useSelector(state=>state.loginReducer)
     const [session, setSession] = useState(false)
@@ -61,12 +60,12 @@ const SpecialProducts = () => {
 
                                                                     <TabPanel>
                                                                         <div className="no-slider row">
-                                                                            <ChargingStationMap first={first}/>
+                                                                            <MapChargingStation first={first}/>
                                                                         </div>
                                                                     </TabPanel>
                                                                     <TabPanel>
                                                                         <div className="no-slider row">
-                                                                            <SightsMap/>
+                                                                            <MapSights/>
                                                                         </div>
                                                                     </TabPanel>
                                                                     <TabPanel>
@@ -76,7 +75,7 @@ const SpecialProducts = () => {
                                                                     </TabPanel>
                                                                     <TabPanel>
                                                                         <div className=" no-slider row">
-                                                                            <BookmarkMap/>
+                                                                            <MapBookmark/>
                                                                         </div>
                                                                     </TabPanel>
                                                                 </Tabs>
@@ -112,5 +111,4 @@ const SpecialProducts = () => {
 
 }
 
-export default SpecialProducts
-
+export default Service

@@ -10,7 +10,7 @@ import MyAccount2 from "./MyAccount2";
 import MyPost from "./MyPost";
 import MyComment from "./MyComment";
 import {MyCarRegister} from "./MyCarRegister";
-import TableBookmark from "../map/items/table-bookmark";
+import TableBookmark from "../map/items/TableBookmark";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;

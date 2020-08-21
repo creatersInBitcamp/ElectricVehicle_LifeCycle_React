@@ -4,7 +4,7 @@ import MaterialTable from 'material-table';
 import {GoogleMap,Marker, useLoadScript} from "@react-google-maps/api";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import {stationRequest} from "./stationReducer";
+import {stationRequest} from "./StationReducer";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 

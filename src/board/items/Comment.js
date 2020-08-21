@@ -4,8 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
-const Comment = ({comments, postId}) => {
-    const [user, setUser] = useState(sessionUser)
+const Comment = ({comments}) => {
     return (
         <>
             <div className="row section-b-space">

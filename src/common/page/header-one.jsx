@@ -1,20 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import { IntlActions } from 'react-redux-multilingual'
 import Pace from 'react-pace-progress'
-import useComponentWillMount from 'component-will-mount-hook'
+import axios from 'axios'
 
 // Import custom item
 import store from "../../store";
 import {NavBar,TopBar,LogoImage,changeCurrency} from "../index";
 import {CartContainer} from "../../newCar";
 import {useDispatch} from "react-redux";
+import ListGroup from "react-bootstrap/ListGroup";
+import ListGroupItem from "react-bootstrap/ListGroupItem";
 
 export const HeaderOne = props =>{
 	const [isLoading, setIsLoading] = useState(false)
 	const [open, setOpen] = useState(false)
-	/*useComponentWillMount(()=> {
+	const [searchWord, setSearchWord] = useState('')
+	const [searchResult, setSearchResult] = useState([])
 
-	});*/
 	useEffect(() => {
 		setTimeout(function() {
 			document.querySelector(".loader-wrapper").style = "display: none";
@@ -25,6 +27,21 @@ export const HeaderOne = props =>{
 			window.removeEventListener('scroll', handleScroll)
 		}
 	},[])
+
+	const onChangeSearch = (e) => {
+		if(e.target.value !== '') {
+			setSearchWord(e.target.value)
+			axios.get(`http://localhost:8080/electriccars/search/${searchWord}`)
+				.then((res)=>{
+					setSearchResult(res.data)
+				})
+				.catch((err)=>{
+					console.log(err.status)
+				})
+		} else {
+			setSearchWord('')
+		}
+	}
 
 	const handleScroll = () => {
 		let number = window.pageXOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -119,10 +136,32 @@ export const HeaderOne = props =>{
 								<div className="col-xl-12">
 									<form>
 										<div className="form-group">
-											<input type="text" className="form-control" id="exampleInputPassword1" placeholder="Search a Product" />
+											<input type="text" className="form-control" id="exampleInputPassword1" value={searchWord}
+												   placeholder="Search here"
+												   onChange={onChangeSearch}
+
+											/>
 										</div>
 										<button type="submit" className="btn btn-primary"><i className="fa fa-search"/></button>
 									</form>
+								</div>
+								<div className="col-xl-12">
+									{
+										(searchResult !== undefined)?
+											<ListGroup>
+												{
+													searchResult.map( item => (
+													<ListGroupItem key={item.eccarId}>
+														<img src={item.img} className="img-30" alt=""/>
+														<p>{item.carName}</p>
+													</ListGroupItem>
+														)
+												)}
+											</ListGroup>
+										:
+											""
+									}
+
 								</div>
 							</div>
 						</div>

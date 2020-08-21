@@ -3,7 +3,6 @@ import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import Slider from "react-slick";
 import {useDispatch, useSelector} from "react-redux";
 import MyUsedTrading from "./UsedTradingTable";
-import {usedCars} from "../usedCar/item/UsedProductReducer";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

@@ -25,7 +25,7 @@ export const clearCompare = () =>({
 })
 
 /* reducer */
-export const compareReducer = (state = {items: []}, action) => {
+export const CompareReducer = (state = {items: []}, action) => {
     switch (action.type) {
         case ADD_TO_COMPARE:
             const productId = action.product.eccarId
@@ -58,4 +58,4 @@ export const compareReducer = (state = {items: []}, action) => {
     return state;
 }
 
-export default compareReducer
+export default CompareReducer

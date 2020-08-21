@@ -7,8 +7,8 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 
 import './map.css'
 import "@reach/combobox/styles.css";
 import axios from "axios";
+import {sightsMapRequest, stationMapRequest} from "./StationReducer";
 import {useDispatch, useSelector} from "react-redux";
-import {stationMapRequest} from "./stationReducer";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -25,80 +25,54 @@ const options = {
     zoomControl: true,
 };
 const center = {
-    lat: 36.582921,
-    lng: 128.075400
+    lat: 36.8728622,
+    lng: 128.0718825
 };
 
-export const userThunk = (props) => (dispatch)=>{
+export const userThunk = () => (dispatch)=>{
     sessionUser?(
-        props.first.length>0?(
-            axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
-                .then((res)=>{
-                    console.log(res.data)
-                    dispatch(stationMapRequest(res.data))
-                    // setMyData(res.data)
-                })
-                .catch((err)=>{
-                    console.log('charging-staion-axios-error')
-                })
-        ):(
-            axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
-                .then((res)=>{
-                    console.log(res.data)
-                    dispatch(stationMapRequest(res.data))
-                    // setMyData(res.data)
-                })
-                .catch((err)=>{
-                    console.log(err.status)
-                })
-        )
-
-    ):(
-        axios.get(`http://localhost:8080/chargingstations/getall`)
+        axios.get(`http://localhost:8080/sights/getall/${sessionUser.userSeq}`)
             .then((res)=>{
                 console.log(res.data)
+                dispatch(sightsMapRequest(res.data))
                 // setMyData(res.data)
-                dispatch(stationMapRequest(res.data))
+            })
+            .catch((err)=>{
+                console.log(err.status)
+            })
+    ):(
+        axios.get(`http://localhost:8080/sights/getall`)
+            .then((res)=>{
+                console.log(res.data)
+                dispatch(sightsMapRequest(res.data))
+                // setMyData(res.data)
             })
             .catch((err)=>{
                 console.log(err.status)
             })
     )
-
 }
 
-export const useAnotherThunk = (id,props) => (dispatch) => {
-    axios.post('http://localhost:8080/bookmarks/insert',id)
+export const useAnotherThunk = (info) => (dispatch) => {
+    axios.post('http://localhost:8080/bookmarks/insert',info)
         .then((res)=>{
             console.log("북마크 저장 성공")
-            props.first.length>0?(
-                axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
-                    .then((res)=>{
-                        console.log(res.data)
-                        dispatch(stationMapRequest(res.data))
-                        // setMyData(res.data)
-                    })
-                    .catch((err)=>{
-                        console.log('charging-staion-axios-error')
-                    })
-            ):(
-                axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
-                    .then((res)=>{
-                        console.log(res.data)
-                        dispatch(stationMapRequest(res.data))
-                        // setMyData(res.data)
-                    })
-                    .catch((err)=>{
-                        console.log(err.status)
-                    })
-            )
+            axios.get(`http://localhost:8080/sights/getall/${sessionUser.userSeq}`)
+                .then((res)=>{
+                    console.log(res.data)
+                    dispatch(sightsMapRequest(res.data))
+                    // setMyData(res.data)
+                })
+                .catch((err)=>{
+                    console.log('에러 '+err.status)
+                })
         })
         .catch((err) => {
             console.log("북마크 저장 실패")
         })
 }
 
-export const ChargingStationMap = props =>{
+export const MapSights = () =>{
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: MAP_KEY,
         libraries,
@@ -121,16 +95,15 @@ export const ChargingStationMap = props =>{
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        dispatch(userThunk(props))
+        dispatch(userThunk())
     },[])
-
 
     const mapRef = useRef();
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
     }, []);
 
-    const panTo = useCallback(({ lat, lng }) => { //( panTo )의 경우 :  변경 사항이 지도의 너비와 높이보다 작 으면 전환이 부드럽게 움직입니다
+    const panTo = useCallback(({ lat, lng }) => {
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
     }, []);
@@ -203,8 +176,8 @@ export const ChargingStationMap = props =>{
             clearSuggestions,
         } = usePlacesAutocomplete({
             requestOptions: {
-                location: { lat: () => 36.582921, lng: () => 128.075400 },// 검색할때의 이 지점에서부터 찾는다
-                radius: 200 * 1000,//검색 반경
+                location: { lat: () => 37.553818, lng: () => 126.886020 },
+                radius: 200 * 1000,
             },
         });
 
@@ -218,6 +191,7 @@ export const ChargingStationMap = props =>{
 
             try {
                 const results = await getGeocode({ address });
+                // console.log(results[0]) formatted address, compo 전부 가져옴
                 const { lat, lng } = await getLatLng(results[0]);
                 const postal_code = await getZipCode(results[0],false)
                 panTo({ lat, lng });
@@ -252,14 +226,13 @@ export const ChargingStationMap = props =>{
         );
     }
 
-    function insertBookmark(stationID){
-        const id = {
-            id : stationID,
-            charging : true,
-            userId: user.userSeq,
+    function insertBookmark(sightsID){
+        const info = {
+            id : sightsID,
+            charging : false,
+            userId: user.userSeq
         }
-        console.log(id)
-        dispatch(useAnotherThunk(id,props))
+        dispatch(useAnotherThunk(info))
     }
 
     return (
@@ -295,19 +268,20 @@ export const ChargingStationMap = props =>{
                                             key={i}
                                             position={{lat:store.xvalue, lng:store.yvalue}}
                                             onClick={()=>setSelected(store)}
-                                            icon={{
-                                                    url : "https://image.flaticon.com/icons/svg/3198/3198588.svg",
-                                                    scaledSize : new window.google.maps.Size(40,40)
-                                            }}
+                                            icon={
+                                                { url : "https://image.flaticon.com/icons/svg/3198/3198482.svg",
+                                                    scaledSize : new window.google.maps.Size(40,40)}
+                                            }
+
                                         />
                                     ))
                                 }
                                 {
                                     (selected.xvalue && (sessionUser)) ? (
-                                        <InfoWindow
+                                        (<InfoWindow
                                             position={{lat:selected.xvalue, lng:selected.yvalue}}
                                             clickable={true}
-                                            onCloseClick={()=>setSelected({})}
+                                            onCloseClick={()=> setSelected({})}
                                         >
                                             <div className="infowindow">
                                                 <MDBCol>
@@ -315,25 +289,24 @@ export const ChargingStationMap = props =>{
                                                         <MDBCardBody>
                                                             <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
                                                             <MDBCardText>
-                                                                <h4>충전기 타입: {selected.chargerType}</h4><br/>
-                                                                <h4>상태: {selected.chargerState}</h4><br/>
-                                                                <h4>주소: {selected.address}</h4><br/>
-                                                                <h4>운영시간: {selected.businessHours}</h4><br/>
-                                                                <h4>관리부서: {selected.agencyName}</h4><br/>
-                                                                <h4>연락처: {selected.phone}</h4><br/>
+                                                                <h4>지번주소: {selected.address}</h4><br/>
+                                                                <h4>도로명주소: {selected.streetAddress}</h4><br/>
+                                                                <h4>수용인원수: {selected.capacity}</h4><br/>
+                                                                <h4>주차가능수: {selected.parkingLot}</h4><br/>
+                                                                <h4>관광지 정보: {selected.info}</h4><br/>
                                                             </MDBCardText>
                                                             {
                                                                 (selected.bookmarkList) && (sessionUser.userSeq === selected.userSeq)?
                                                                     <img src={"https://image.flaticon.com/icons/svg/2876/2876727.svg"} width={40} height={40}/>
-                                                                    :<MDBBtn color="secondary" onClick={()=>insertBookmark(selected.chargingStationId)}>북마크 저장</MDBBtn>
-
+                                                                    :<MDBBtn color="secondary" onClick={()=>insertBookmark(selected.sightsId)}>북마크저장</MDBBtn>
                                                             }
                                                         </MDBCardBody>
                                                     </MDBCard>
                                                 </MDBCol>
                                             </div>
-                                        </InfoWindow>
-                                    ) :null
+                                        </InfoWindow>)
+
+                                    ):null
                                 }
                                 {
                                     (selected.xvalue && (!sessionUser)) ? (
@@ -349,12 +322,11 @@ export const ChargingStationMap = props =>{
                                                             <MDBCardBody>
                                                                 <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
                                                                 <MDBCardText>
-                                                                    <h4>충전기 타입: {selected.chargerType}</h4><br/>
-                                                                    <h4>상태: {selected.chargerState}</h4><br/>
-                                                                    <h4>주소: {selected.address}</h4><br/>
-                                                                    <h4>운영시간: {selected.businessHours}</h4><br/>
-                                                                    <h4>관리부서: {selected.agencyName}</h4><br/>
-                                                                    <h4>연락처: {selected.phone}</h4><br/>
+                                                                    <h4>지번주소: {selected.address}</h4><br/>
+                                                                    <h4>도로명주소: {selected.streetAddress}</h4><br/>
+                                                                    <h4>수용인원수: {selected.capacity}</h4><br/>
+                                                                    <h4>주차가능수: {selected.parkingLot}</h4><br/>
+                                                                    <h4>관광지 정보: {selected.info}</h4><br/>
                                                                 </MDBCardText>
                                                             </MDBCardBody>
                                                         </MDBCard>
@@ -373,8 +345,8 @@ export const ChargingStationMap = props =>{
                                                 setInfoShow(true)
                                             }}
                                             icon={{
-                                                    url : "https://image.flaticon.com/icons/svg/3198/3198517.svg",
-                                                    scaledSize : new window.google.maps.Size(40,40)
+                                                url : "https://image.flaticon.com/icons/svg/3198/3198517.svg",
+                                                scaledSize : new window.google.maps.Size(40,40)
                                             }}
                                         />
                                         :null
@@ -424,9 +396,9 @@ export const ChargingStationMap = props =>{
                                                     <MDBCard>
                                                         <MDBCardBody>
                                                             <MDBCardText>
-                                                                <h3>우편번호</h3><br/>
+                                                                <h3><span>우편번호 </span></h3><br/>
                                                                 <h4>{selectedPc} </h4><br/>
-                                                                <h3>주소</h3><br/>
+                                                                <h3><span>주소</span></h3><br/>
                                                                 <h4>{selectedAddr} </h4>
                                                             </MDBCardText>
                                                         </MDBCardBody>
@@ -445,4 +417,4 @@ export const ChargingStationMap = props =>{
     );
 }
 
-export default ChargingStationMap
+export default MapSights

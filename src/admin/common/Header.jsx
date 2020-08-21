@@ -6,11 +6,11 @@ import logo from '../../assets/images/dashboard/08.png'
 import man from "../../assets/images/dashboard/man.png";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {clearWishlist} from "../../newCar/page/wishlistReducer";
+import {clearWishlist} from "../../newCar/page/WishlistReducer";
 import {removeAllUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
-import {clearCart} from "../../newCar/page/cartReducer";
+import {clearCart} from "../../newCar/page/CartReducer";
 import {clearUsedCompare} from "../../usedCar/page/MyCarComparison";
-import {clearCompare} from "../../newCar/page/compareReducer";
+import {clearCompare} from "../../newCar/page/CompareReducer";
 
 
 const ADMIN_CHECK = 'ADMIN_CHECK'

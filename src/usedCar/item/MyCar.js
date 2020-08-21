@@ -3,7 +3,6 @@ import {Link, Redirect} from 'react-router-dom'
 import Modal from 'react-responsive-modal';
 import {useDispatch, useSelector} from "react-redux";
 import {addToUsedCompare} from '../page/MyCarComparison'
-import {usedCars} from "./UsedProductReducer";
 
 export const MyCar = props => {
     const [open,setOpen] = useState(false)

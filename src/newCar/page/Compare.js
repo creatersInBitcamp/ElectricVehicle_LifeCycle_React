@@ -3,8 +3,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Slider from 'react-slick';
 import {Breadcrumb} from '../../common';
-import {addToCart} from "./cartReducer";
-import {removeFromCompare} from './compareReducer'
+import {addToCart} from "./CartReducer";
+import {removeFromCompare} from './CompareReducer'
 
 /* component */
 export const Compare = () => {

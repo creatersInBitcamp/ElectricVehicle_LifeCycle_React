@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Breadcrumb} from '../../common';
-import {removeFromWishlist,addToCartAndRemoveWishlist} from './wishlistReducer'
+import {removeFromWishlist,addToCartAndRemoveWishlist} from './WishlistReducer'
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 

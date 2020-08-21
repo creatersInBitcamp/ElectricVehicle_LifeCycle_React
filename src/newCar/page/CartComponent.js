@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Breadcrumb} from "../../common";
 import {getCartTotal} from "../../atomic/services/services";
-import {removeFromCart} from "./cartReducer"
+import {removeFromCart} from "./CartReducer"
 
 export const CartComponent = () => {
     const dispatch = useDispatch();

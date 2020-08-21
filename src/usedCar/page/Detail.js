@@ -8,7 +8,6 @@ import '../../common/index.scss';
 import {Breadcrumb, NewProduct} from "../../common";
 import {MyCar,MarketPrice} from "../index";
 import {addToUsedWishlist} from "./UsedCarWishlist";
-import {usedCars} from "../item/UsedProductReducer";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 

@@ -15,7 +15,7 @@ export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 
-export const checkOut = () => {
+export const checkout = () => {
     console.log(sessionUser)
     const [method, setMethod] = useState('구매상담')
     const [color, setColor] = useState('색상 선택')
@@ -255,4 +255,4 @@ export const checkOut = () => {
     )
 }
 
-export default checkOut
+export default checkout

@@ -1,11 +1,13 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
-import Slider from "react-slick";
 import {useDispatch, useSelector} from "react-redux";
-import MyUsedTrading from "./UsedTradingTable";
+import {Link} from "react-router-dom";
+import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
+import Slider from "react-slick";
+import {Table} from "../admin/item";
 
 /* type */
 const ADD_TO_MY_CAR = 'ADD_TO_MY_CAR'
@@ -117,7 +119,9 @@ export const firstCarReducer = (state={list:[]}, action) => {
 export const MyCarRegister = ({used}) => {
     const [openEdit,setOpenEdit] = useState(false)
     const [targetId,setTargetId] = useState(0)
-    const [state, setState] = useState({ nav1: null, nav2: null });
+    const [state, setState] = useState({ nav1: null, nav2: null })
+    const [product,setProduct] = useState([])
+
     const slider1 = useRef();
     const slider2 = useRef();
 
@@ -128,15 +132,25 @@ export const MyCarRegister = ({used}) => {
         })
     }, [])
 
+    let usedNew = used.find(x=>x.usedCarSalesList)
+    useEffect(()=>{
+
+        axios.get(`http://localhost:8080/usedCars/getDetail/${usedNew.usedCarId}`)
+            .then((res)=>{
+                console.log(res.data)
+                console.log(product)
+                setProduct(res.data)
+            })
+            .catch(()=>{
+                alert('product fail')
+            })
+    },[])
+
     const {products, myCars, first} = useSelector(state=>({
         products: state.data.products,
         myCars: state.myCar.list,
         first: state.firstCar.list
     }))
-
-    const onClickEdit = () => {
-        setOpenEdit(true)
-    }
 
     const setting = {
         slidesToShow: 1,
@@ -145,6 +159,44 @@ export const MyCarRegister = ({used}) => {
         arrows: true,
         fade: true
     }
+
+    const saleColumns = [
+        {
+            title:'매물번호', field:'usedCarId', editable: 'never'
+        },
+        {
+            title:'품명', field: 'carName', editable: 'never'
+        },
+        {
+            title:'연식', field:'age', editable: 'never'
+        },
+        {
+            title:'주행거리', field:'mileage', editable: 'never'
+        },
+        {
+            title:'가격', field:'price', editable: 'never'
+        },
+        {
+            title:'구매요청', field: '', editable: 'never'
+        }
+    ]
+    const purchaseColumns = [
+        {
+            title:'차종', field:'carName', editable: 'never'
+        },
+        {
+            title:'이름', field: 'buyerName', editable: 'never'
+        },
+        {
+            title:'이메일', field:'buyerEmail', editable: 'never'
+        },
+        {
+            title:'지역', field:'buyerAddr', editable: 'never'
+        },
+        {
+            title:'전화번호', field:'buyerPhoneNumber', editable: 'never'
+        }
+    ]
 
     const dispatch = useDispatch()
 
@@ -157,13 +209,12 @@ export const MyCarRegister = ({used}) => {
                         <h2>My Car</h2>
                     </div>
                     <div className="box-account box-info">
-                        {console.log(used)}
                         <div className="row">
                             <div className="col-sm-6">
                                 <div className="box">
                                     <div className="box-title">
                                         <h3>내 차 정보</h3>
-                                        <a onClick={onClickEdit}>Edit</a>
+                                        <a onClick={() => { setOpenEdit(true) }}>Edit</a>
                                     </div>
                                     <div className="box-content">
                                         <Slider {...setting} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
@@ -186,7 +237,7 @@ export const MyCarRegister = ({used}) => {
                                 <div className="box">
                                     <div className="box-title">
                                         <h3>메인 차</h3>
-                                        <a onClick={onClickEdit}>Edit</a>
+                                        <a onClick={() => { setOpenEdit(true) }}>Edit</a>
                                     </div>
                                     <div className="box-content">
                                         {
@@ -210,7 +261,7 @@ export const MyCarRegister = ({used}) => {
                                 <div className="box">
                                     <div className="box-title">
                                         <h3>변경하기</h3>
-                                        <a href="/pages/faq">전기차 등록요청</a>
+                                        <Link to={'/pages/faq'}>전기차 등록요청</Link>
                                     </div>
                                     <div className="row">
                                         <div className="col-sm-6">
@@ -255,7 +306,26 @@ export const MyCarRegister = ({used}) => {
                             </div> : ''}<br/><br/>
                         <div className="row">
                             <div className="col-sm-12 col-lg-12">
-                                <MyUsedTrading used={used}/>
+                                <Tabs className="tab-content nav-material">
+                                    <TabList className="nav nav-tabs nav-material">
+                                        <Tab className="nav-item">
+                                            <span className="nav-link active">
+                                                판매
+                                            </span>
+                                        </Tab>
+                                        <Tab className="nav-item">
+                                            <span className="nav-link active">
+                                                구매요청
+                                            </span>
+                                        </Tab>
+                                    </TabList>
+                                    <TabPanel className="tab-pane fade mt-4 show active">
+                                        <Table title={null} columns={saleColumns} data={product}/>
+                                    </TabPanel>
+                                    <TabPanel className="tab-pane fade mt-4 show active">
+                                        <Table title={null} columns={purchaseColumns} data={usedNew.usedCarSalesList}/>
+                                    </TabPanel>
+                                </Tabs>
                             </div>
                         </div>
                     </div>

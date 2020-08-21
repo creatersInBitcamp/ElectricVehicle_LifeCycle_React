@@ -30,6 +30,7 @@ export const PurchaseRequest = (props) => {
                 buyerPhoneNumber: phone,
                 buyerEmail: email,
                 buyerAddr: address,
+                carName: item.carName,
                 usedCarId: item.usedCarId
             }
             console.log(info)
@@ -45,7 +46,6 @@ export const PurchaseRequest = (props) => {
 
     return <>
         <Breadcrumb  title={'checkout request'}/>
-
         {(item)?
             <section className="section-b-space">
                 <div className="container padding-cls">

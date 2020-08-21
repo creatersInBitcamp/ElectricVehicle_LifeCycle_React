@@ -33,7 +33,6 @@ const ProductListing = props => {
     const dispatch = useDispatch()
 
     return <>
-        {console.log(items)}
         <div className="product-wrapper-grid">
             <div className="container-fluid">
                 {items.length > 0 ?

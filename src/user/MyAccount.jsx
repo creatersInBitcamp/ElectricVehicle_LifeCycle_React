@@ -11,6 +11,7 @@ import MyPost from "./MyPost";
 import MyComment from "./MyComment";
 import {MyCarRegister} from "./MyCarRegister";
 import TableBookmark from "../map/items/TableBookmark";
+import MyOrder from "./MyOrder";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -98,11 +99,12 @@ export const MyAccount = () => {
                                             aria-label="Vertical tabs example"
                                         >
                                             <Tab label="My Account" {...a11yProps(0)} />
-                                            <Tab label="My Car" {...a11yProps(1)} />
-                                            <Tab label="My Post" {...a11yProps(2)} />
-                                            <Tab label="My Comment" {...a11yProps(3)} />
-                                            <Tab label="My Bookmark" {...a11yProps(4)} />
-                                            <Tab label="Change Password" {...a11yProps(5)} />
+                                            <Tab label="My Order" {...a11yProps(1)} />
+                                            <Tab label="My Car" {...a11yProps(2)} />
+                                            <Tab label="My Post" {...a11yProps(3)} />
+                                            <Tab label="My Comment" {...a11yProps(4)} />
+                                            <Tab label="My Bookmark" {...a11yProps(5)} />
+                                            <Tab label="Change Password" {...a11yProps(6)} />
                                         </Tabs>
                                     </div>
                                 </div>
@@ -115,18 +117,21 @@ export const MyAccount = () => {
                                                     <MyAccount2 user={userSession} />
                                                 </TabPanel>
                                                 <TabPanel value={value} index={1}>
-                                                    <MyCarRegister used={used}/>
+                                                    <MyOrder/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={2}>
-                                                    <MyPost posts={posts}/>
+                                                    <MyCarRegister used={used}/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={3}>
-                                                    <MyComment comments={comments}/>
+                                                    <MyPost posts={posts}/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={4}>
-                                                    <TableBookmark/>
+                                                    <MyComment comments={comments}/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={5}>
+                                                    <TableBookmark/>
+                                                </TabPanel>
+                                                <TabPanel value={value} index={6}>
                                                     Change password
                                                 </TabPanel>
                                         </div>

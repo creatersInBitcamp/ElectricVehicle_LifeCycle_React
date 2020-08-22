@@ -7,8 +7,7 @@ import Col from "react-bootstrap/Col";
 
 function PaymentResult({ history }) {
     const { location } = history;
-    const { search } = location;
-    const query = queryString.parse(search);
+    const query = queryString.parse(location.state.query);
 
     const { merchant_uid, error_msg, imp_uid } = query;
     const isSuccessed = getIsSuccessed();

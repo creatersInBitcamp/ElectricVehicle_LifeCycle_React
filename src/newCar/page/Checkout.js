@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {useHistory, useRouteMatch} from 'react-router-dom'
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 import {Breadcrumb} from "../../common";
 import {getCartTotal} from "../../atomic/services/services";
 import axios from "axios";
 import Payment from "../../common/payment/PaymentForm";
+import {clearCart} from "./CartReducer";
 
 /* type */
 export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
@@ -24,6 +25,11 @@ export const checkout = () => {
         price: '가격'
     })
     const eccarId = useRouteMatch('/checkout/:eccarId').params.eccarId
+    const totalprice = newCar.price*10000
+
+    const history = useHistory()
+    const dispatch = useDispatch()
+
     useEffect(()=>{
         axios.get(`http://localhost:8080/electriccars/getone/${eccarId}`)
             .then((res)=>{
@@ -38,6 +44,7 @@ export const checkout = () => {
     const onPurchaseCar = () => {
         const newPurchase = {
             purchasingMethod: method,
+            merchant_uid: '',
             purchaseTime: new Date().toLocaleString(),
             purchasePrice:newCar.price,
             color: color,
@@ -47,7 +54,9 @@ export const checkout = () => {
         console.log(newPurchase)
         axios.post(`http://localhost:8080/purchases/insert`, newPurchase)
             .then((res)=>{
-                console.log('신차 구매 axios 성공')
+                alert('구매상담신청 성공')
+                dispatch(clearCart())
+                history.push('/')
 
             })
             .catch((err)=>{
@@ -59,7 +68,6 @@ export const checkout = () => {
         setMethod(value)
     }
 
-    const history = useHistory()
 
     const {cartItems, symbol, total} = useSelector((state) => ({
         cartItems: state.cartList.cart,
@@ -89,6 +97,8 @@ export const checkout = () => {
         sandbox:    'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
         production: 'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
     }
+    const today = new Date()
+    today.setDate(today.getDate()+3)
     const purchaseData = {
         pg: 'kakaopay',                           // PG사
         pay_method: 'card',                           // 결제수단
@@ -100,6 +110,11 @@ export const checkout = () => {
         buyer_email: sessionUser.email,               // 구매자 이메일
         buyer_addr: sessionUser.addr,                    // 구매자 주소
         buyer_postcode: '06018',                      // 구매자 우편번호
+        item: newCar,
+        color: color,
+        userSeq:sessionUser.userSeq,
+        date : new Date().toLocaleString(),
+        deliveryDate : today.toLocaleDateString()
     }
 
 
@@ -146,11 +161,11 @@ export const checkout = () => {
                                                 <select name="color" value={color} onChange={e => {setColor(e.target.value)}}>
                                                     <option>{color}</option>
                                                     <option>{newCar.color1}</option>
-                                                    <option>{newCar.color2}</option>
-                                                    <option>{newCar.color3}</option>
-                                                    <option>{newCar.color4}</option>
-                                                    <option>{newCar.color5}</option>
-                                                    <option>{newCar.color6}</option>
+                                                    {newCar.color2?<option>{newCar.color2}</option>:null}
+                                                    {newCar.color3?<option>{newCar.color3}</option>:null}
+                                                    {newCar.color4?<option>{newCar.color4}</option>:null}
+                                                    {newCar.color5?<option>{newCar.color5}</option>:null}
+                                                    {newCar.color6?<option>{newCar.color6}</option>:null}
                                                 </select>
                                             </div>
                                             <div className="form-group col-md-12 col-sm-12 col-xs-12">
@@ -158,10 +173,10 @@ export const checkout = () => {
                                                 <input type="text" name="address" value={sessionUser.addr} placeholder="Street address" />
                                                 {/*{validator.message('address', state.address, 'required|min:20|max:120')}*/}
                                             </div>
-                                            <div className="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            {/*<div className="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <input type="checkbox" name="create_account" id="account-option" />
                                                 &ensp; <label htmlFor="account-option">Create An Account?</label>
-                                            </div>
+                                            </div>*/}
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-sm-12 col-xs-12">
@@ -172,7 +187,7 @@ export const checkout = () => {
                                                     <div>Product <span> Price</span></div>
                                                 </div>
                                                 <ul className="qty">
-                                                    <li> {newCar.carName} <span>{newCar.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 만원</span></li>
+                                                    <li> {newCar.carName} <span>{totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span></li>
                                                     {/*{cartItems.map((item, index) => {*/}
                                                     {/*    return <li key={index}>{item.carName} <span>{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li> })*/}
                                                     {/*}*/}
@@ -217,7 +232,7 @@ export const checkout = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="row section-t-space">
+                                {/*<div className="row section-t-space">
                                     <div className="col-lg-6">
                                         <div className="stripe-section">
                                             <h5>stripe js example</h5>
@@ -266,7 +281,7 @@ export const checkout = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*/}
                             </form>
                         </div>
                     </div>

@@ -55,9 +55,6 @@ const Root = () => {
                                 <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/about-us`} component={aboutUs}/>
-                                <Route path={`${process.env.PUBLIC_URL}/payment/`} component={PaymentForm}/>
-                                <Route path={`${process.env.PUBLIC_URL}/payment/result`} component={PaymentResult}/>
-                                <Route path={`${process.env.PUBLIC_URL}/order-success`} component={OrderSuccess}/>
 
                                 {/*user*/}
                                 <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
@@ -73,6 +70,9 @@ const Root = () => {
                                 <Route path={`${process.env.PUBLIC_URL}/new-car/wishlist`} component={wishlist}/>
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={CartComponent}/>
                                 <Route path={`${process.env.PUBLIC_URL}/checkout/:eccarId`} component={checkout}/>
+                                <Route path={`${process.env.PUBLIC_URL}/payment/`} component={PaymentForm}/>
+                                <Route path={`${process.env.PUBLIC_URL}/payment/result`} component={PaymentResult}/>
+                                <Route path={`${process.env.PUBLIC_URL}/order-success`} component={OrderSuccess}/>
 
                                 {/*usedcar*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/used-car/collection`} component={UsedPurchaseCollection}/>

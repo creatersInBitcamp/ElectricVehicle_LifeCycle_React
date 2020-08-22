@@ -1,19 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {AdminBreadcrumb} from '../common';
+import order from '../../atomic/constants/convertcsv.json'
 import { Navigation, Box, MessageSquare, Users, Briefcase, CreditCard, ShoppingCart, Calendar } from 'react-feather';
 import CountUp from 'react-countup';
-import { Chart } from "react-google-charts";
 import { Bar, Line } from 'react-chartjs-2';
-import {
-    lineOptions, 
-    buyOption, 
-} from '../../atomic/constants/chartData'
-import user2 from '../../assets/images/dashboard/user2.jpg';
-import user1 from '../../assets/images/dashboard/user1.jpg';
-import man from '../../assets/images/dashboard/man.png';
-import user from '../../assets/images/dashboard/user.png';
-import designer from '../../assets/images/dashboard/designer.jpg'
-
+import {lineOptions, buyOption,} from '../../atomic/constants/chartData'
+import axios from 'axios'
 
 const dashboardTypes = {REQUEST: 'dashboard/REQUEST'}
 const dashboardReducer = ( state={}, action ) => {
@@ -25,25 +17,107 @@ const dashboardReducer = ( state={}, action ) => {
 
 export const Dashboard = () => {
 
-        const lineData = {
-            labels: ['100', '200', '300', '400', '500', '600', '700', '800'],
-            datasets: [
-                {
-                    lagend: 'none',
-                    data: [2.5, 3, 3, 0.9, 1.3, 1.8, 3.8, 1.5],
-                    borderColor: "#ff8084",
-                    backgroundColor: "#ff8084",
-                    borderWidth: 2
-                },
-                {
-                    lagend: 'none',
-                    data: [3.8, 1.8, 4.3, 2.3, 3.6, 2.8, 2.8, 2.8],
-                    borderColor: "#a5a5a5",
-                    backgroundColor: "#a5a5a5",
-                    borderWidth: 2
-                }
-            ]
-        };
+    const [userCount, setUserCount] = useState(0)
+    const [usedCarCount, setUsedCarCount] = useState(0)
+    const [sellCount, setSellCount] = useState(0)
+    const [sales, setSales] = useState(0)
+    const [monthSalesChatData,setMonthSalesChatData] = useState([])
+    const [brandCar, setBrandCar] = useState({})
+    const [brandCarData, setBrandCarData] = useState({})
+
+    const makeColors = () => {
+        let r = Math.floor(Math.random() * 255)
+        let g = Math.floor(Math.random() * 255)
+        let b = Math.floor(Math.random() * 255)
+        return "rgb(" + r + "," + g + "," + b + ")"
+    }
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/user/count`)
+            .then((res)=>{
+                setUserCount(res.data)
+            })
+        axios.get(`http://localhost:8080/usedCars/count`)
+            .then((res)=>{
+                setUsedCarCount(res.data)
+            })
+        axios.get(`http://localhost:8080/user/findBrandCar`)
+            .then((res)=>{
+                setBrandCar(res.data)
+            })
+    },[])
+
+    // 매출 및 판매 현황
+    useEffect(()=>{
+
+        const orderKeys = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"]
+        const intOnly = []
+        const price = []
+        for(let i in order){
+            intOnly.push(order[i].slice(2))
+            price.push(order[i][1])
+        }
+
+        let sales = 0
+        let count = 0
+        let sum = 0
+        let all = 0
+        const monthSales = []
+
+        for(let i=0; i<12; i++){
+            for(let j in intOnly){
+                sum += intOnly[j][i]
+            }
+            count += sum
+            setSellCount(count)
+        }
+        const total = []
+        for(let j in intOnly){
+            for(let i=0; i<12; i++){
+                all += intOnly[j][i]
+            }
+        // 총 판매 차량수
+            total.push(all)
+        }
+
+        for(let i in total){
+            sales += (total[i]*price[i])
+            monthSales.push(sales)
+        }
+        setSales(sales)
+        // 월별 매출
+        setMonthSalesChatData({
+                labels: orderKeys,
+                datasets:[
+                    {
+                        data: monthSales,
+                        borderColor: "#13c9ca",
+                    },
+                ],
+            }
+
+        )
+        // 브랜드별 차량 수드
+        const carBrandKey = []
+        const carBrandValues = []
+        const brandColor = []
+
+        for(let i in brandCar){
+            carBrandKey.push(brandCar[i].BRAND)
+            carBrandValues.push(brandCar[i].COUNT)
+            brandColor.push(makeColors())
+        }
+        setBrandCarData(
+            {
+                labels: carBrandKey,
+                datasets:[
+                    {
+                        data: carBrandValues,
+                        backgroundColor: brandColor
+                    },
+                ],
+            }
+        )
+    },[userCount, brandCar])
 
         const buyData = {
             labels: ["", "10", "20", "30", "40", "50"],
@@ -63,57 +137,7 @@ export const Dashboard = () => {
                 data: [0, 30, 40, 10, 86, 40],
             }]
         }
-        const LineOptions = {
-            hAxis: {
-                textPosition: 'none', baselineColor: 'transparent',
-                gridlineColor: 'transparent',
-            },
-            vAxis: {
-                textPosition: 'none', baselineColor: 'transparent',
-                gridlineColor: 'transparent',
-            },
-            colors: ['#ff8084'],
-            legend: 'none',
-        }
-        const LineOptions1 = {
-            hAxis: {
-                textPosition: 'none', baselineColor: 'transparent',
-                gridlineColor: 'transparent',
-            },
-            vAxis: {
-                textPosition: 'none', baselineColor: 'transparent',
-                gridlineColor: 'transparent',
-            },
-            colors: ['#13c9ca'],
-            chartArea: { left: 0, top: 0, width: '100%', height: '100%' },
-            legend: 'none',
-        }
-        const LineOptions2 = {
-            hAxis: {
-                textPosition: 'none', baselineColor: 'transparent',
-                gridlineColor: 'transparent',
-            },
-            vAxis: {
-                textPosition: 'none', baselineColor: 'transparent',
-                gridlineColor: 'transparent',
-            },
-            colors: ['#f5ce8a'],
-            chartArea: { left: 0, top: 0, width: '100%', height: '100%' },
-            legend: 'none',
-        }
-        const LineOptions3 = {
-            hAxis: {
-                textPosition: 'none', baselineColor: 'transparent',
-                gridlineColor: 'transparent',
-            },
-            vAxis: {
-                textPosition: 'none', baselineColor: 'transparent',
-                gridlineColor: 'transparent',
-            },
-            colors: ['#a5a5a5'],
-            chartArea: { left: 0, top: 0, width: '100%', height: '100%' },
-            legend: 'none',
-        }
+
         return (
 
             <>
@@ -125,10 +149,10 @@ export const Dashboard = () => {
                                 <div className="bg-warning card-body">
                                     <div className="media static-top-widget row">
                                         <div className="icons-widgets col-4">
-                                            <div className="align-self-center text-center"><Navigation className="font-warning" /></div>
+                                            <div className="align-self-center text-center"><CreditCard className="font-danger" /></div>
                                         </div>
-                                        <div className="media-body col-8"><span className="m-0">총 매출</span>
-                                            <h3 className="mb-0">$ <CountUp className="counter" end={6659} /><small> This Month</small></h3>
+                                        <div className="media-body col-15"><span className="m-0">총 매출</span>
+                                            <h3 className="mb-0"> <CountUp className="counter" end={sales} /> <small>만원</small></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +166,7 @@ export const Dashboard = () => {
                                             <div className="align-self-center text-center"><Box className="font-secondary" /></div>
                                         </div>
                                         <div className="media-body col-8"><span className="m-0">판매 차량 수</span>
-                                            <h3 className="mb-0">$ <CountUp className="counter" end={9856} /><small> This Month</small></h3>
+                                            <h3 className="mb-0"> <CountUp className="counter" end={sellCount} /> 대</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -153,10 +177,10 @@ export const Dashboard = () => {
                                 <div className="bg-primary card-body">
                                     <div className="media static-top-widget row">
                                         <div className="icons-widgets col-4">
-                                            <div className="align-self-center text-center"><MessageSquare className="font-primary" /></div>
+                                            <div className="align-self-center text-center"><ShoppingCart className="font-primary" /></div>
                                         </div>
                                         <div className="media-body col-8"><span className="m-0">보유 중고차</span>
-                                            <h3 className="mb-0">$ <CountUp className="counter" end={893} /><small> This Month</small></h3>
+                                            <h3 className="mb-0"> <CountUp className="counter" end={usedCarCount} /> 대</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +194,7 @@ export const Dashboard = () => {
                                             <div className="align-self-center text-center"><Users className="font-danger" /></div>
                                         </div>
                                         <div className="media-body col-8"><span className="m-0">총 회원 수</span>
-                                            <h3 className="mb-0">$ <CountUp className="counter" end={45631} /><small> This Month</small></h3>
+                                            <h3 className="mb-0"><CountUp className="counter" end={userCount} /> 명</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -179,11 +203,12 @@ export const Dashboard = () => {
                         <div className="col-xl-6 xl-100">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5>Market Value</h5>
+                                    <h5>월별 매출현황</h5>
                                 </div>
                                 <div className="card-body">
                                     <div className="market-chart">
-                                        <Bar data={lineData} options={lineOptions} width={778} height={308} />
+                                        <Line data={monthSalesChatData} options={{
+                                            dragData: true, dragDataRound: 0, legend:{ display: false}}} />
                                     </div>
                                 </div>
                             </div>
@@ -191,7 +216,7 @@ export const Dashboard = () => {
                         <div className="col-xl-6 xl-100">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5>Latest Orders</h5>
+                                    <h5>인기 차종</h5>
                                 </div>
                                 <div className="card-body">
                                     <div className="user-status table-responsive latest-order-table">
@@ -242,440 +267,21 @@ export const Dashboard = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xl-3 col-md-6 xl-50">
-                            <div className="card order-graph sales-carousel">
-                                <div className="card-header">
-                                    <h6>Total Sales</h6>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <div className="small-chartjs">
-                                                <div className="flot-chart-placeholder" id="simple-line-chart-sparkline-3">
-                                                    <Chart
-                                                        height={'60px'}
-                                                        chartType="LineChart"
-                                                        loader={<div>Loading Chart</div>}
-                                                        data={[
-                                                            ['x', 'time'],
-                                                            [0, 20],
-                                                            [1, 5],
-                                                            [2, 120],
-                                                            [3, 10],
-                                                            [4, 140],
-                                                            [5, 15]
-                                                        ]}
-                                                        options={LineOptions}
-                                                        legend_toggle
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-6">
-                                            <div className="value-graph">
-                                                <h3>42% <span><i className="fa fa-angle-up font-primary"/></span></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-body">
-                                    <div className="media">
-                                        <div className="media-body">
-                                            <span>Sales Last Month</span>
-                                            <h2 className="mb-0">9054</h2>
-                                            <p>0.25% <span><i className="fa fa-angle-up"/></span></p>
-                                            <h5 className="f-w-600 f-16">Gross sales of August</h5>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                                        </div>
-                                        <div className="bg-primary b-r-8">
-                                            <div className="small-box">
-                                                <Briefcase />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-xl-3 col-md-6 xl-50">
-                            <div className="card order-graph sales-carousel">
-                                <div className="card-header">
-                                    <h6>Total purchase</h6>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <div className="small-chartjs">
-                                                <div className="flot-chart-placeholder" id="simple-line-chart-sparkline">
-                                                    <Chart
-                                                        height={'60px'}
-                                                        chartType="LineChart"
-                                                        loader={<div>Loading Chart</div>}
-                                                        data={[
-                                                            ['x', 'time'],
-                                                            [0, 85],
-                                                            [1, 83],
-                                                            [2, 90],
-                                                            [3, 70],
-                                                            [4, 85],
-                                                            [5, 60],
-                                                            [6, 65],
-                                                            [7, 63],
-                                                            [8, 68],
-                                                            [9, 68],
-                                                            [10, 65],
-                                                            [11, 40],
-                                                            [12, 60],
-                                                            [13, 75],
-                                                            [14, 70],
-                                                            [15, 90]
-                                                        ]}
-                                                        options={LineOptions1}
-                                                        legend_toggle
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-6">
-                                            <div className="value-graph">
-                                                <h3>20% <span><i className="fa fa-angle-up font-secondary"/></span></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-body">
-                                    <div className="media">
-                                        <div className="media-body">
-                                            <span>Monthly Purchase</span>
-                                            <h2 className="mb-0">2154</h2>
-                                            <p>0.13% <span><i className="fa fa-angle-up"/></span></p>
-                                            <h5 className="f-w-600 f-16">Avg Gross purchase</h5>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                                        </div>
-                                        <div className="bg-secondary b-r-8">
-                                            <div className="small-box">
-                                                <CreditCard />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-xl-3 col-md-6 xl-50">
-                            <div className="card order-graph sales-carousel">
-                                <div className="card-header">
-                                    <h6>Total cash transaction</h6>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <div className="small-chartjs">
-                                                <div className="flot-chart-placeholder" id="simple-line-chart-sparkline-2">
-                                                    <Chart
-                                                        height={'60px'}
-                                                        chartType="LineChart"
-                                                        loader={<div>Loading Chart</div>}
-                                                        data={[
-                                                            ['x', 'time'],
-                                                            [0, 85],
-                                                            [1, 83],
-                                                            [2, 90],
-                                                            [3, 70],
-                                                            [4, 85],
-                                                            [5, 60],
-                                                            [6, 65],
-                                                            [7, 63],
-                                                            [8, 68],
-                                                            [9, 68],
-                                                            [10, 65],
-                                                            [11, 40],
-                                                            [12, 60],
-                                                            [13, 75],
-                                                            [14, 70],
-                                                            [15, 90]
-                                                        ]}
-                                                        options={LineOptions2}
-                                                        legend_toggle
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-6">
-                                            <div className="value-graph">
-                                                <h3>28% <span><i className="fa fa-angle-up font-warning"/></span></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-body">
-                                    <div className="media">
-                                        <div className="media-body">
-                                            <span>Cash on hand</span>
-                                            <h2 className="mb-0">4672</h2>
-                                            <p>0.8% <span><i className="fa fa-angle-up"/></span></p>
-                                            <h5 className="f-w-600 f-16">Details about cash</h5>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                                        </div>
-                                        <div className="bg-warning b-r-8">
-                                            <div className="small-box">
-                                                <ShoppingCart />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-xl-3 col-md-6 xl-50">
-                            <div className="card order-graph sales-carousel">
-                                <div className="card-header">
-                                    <h6>Daily Deposits</h6>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <div className="small-chartjs">
-                                                <div className="flot-chart-placeholder" id="simple-line-chart-sparkline-1">
-                                                    <Chart
-                                                        height={'60px'}
-                                                        chartType="LineChart"
-                                                        loader={<div>Loading Chart</div>}
-                                                        data={[
-                                                            ['x', 'time'],
-                                                            [0, 85],
-                                                            [1, 83],
-                                                            [2, 90],
-                                                            [3, 70],
-                                                            [4, 85],
-                                                            [5, 60],
-                                                            [6, 65],
-                                                            [7, 63],
-                                                            [8, 68],
-                                                            [9, 68],
-                                                            [10, 65],
-                                                            [11, 40],
-                                                            [12, 60],
-                                                            [13, 75],
-                                                            [14, 70],
-                                                            [15, 90]
-                                                        ]}
-                                                        options={LineOptions3}
-                                                        legend_toggle
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-6">
-                                            <div className="value-graph">
-                                                <h3>75% <span><i className="fa fa-angle-up font-danger"/></span></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-body">
-                                    <div className="media">
-                                        <div className="media-body">
-                                            <span>Security Deposits</span>
-                                            <h2 className="mb-0">5782</h2>
-                                            <p>0.25% <span><i className="fa fa-angle-up"/></span></p>
-                                            <h5 className="f-w-600 f-16">Gross sales of June</h5>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                                        </div>
-                                        <div className="bg-danger b-r-8">
-                                            <div className="small-box">
-                                                <Calendar />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5>Buy / Sell</h5>
+                                    <h5>신차 브랜드별 차량 수</h5>
                                 </div>
                                 <div className="card-body sell-graph">
-                                    <Line data={buyData} options={buyOption} width={700} height={350} />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-xl-6 xl-100">
-                            <div className="card height-equal">
-                                <div className="card-header">
-                                    <h5>Products Cart</h5>
-                                </div>
-                                <div className="card-body">
-                                    <div className="user-status table-responsive products-table">
-                                        <table className="table table-bordernone mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Details</th>
-                                                    <th scope="col">Quantity</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Simply dummy text of the printing</td>
-                                                    <td className="digits">1</td>
-                                                    <td className="font-primary">Pending</td>
-                                                    <td className="digits">$6523</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Long established</td>
-                                                    <td className="digits">5</td>
-                                                    <td className="font-secondary">Cancle</td>
-                                                    <td className="digits">$6523</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>sometimes by accident</td>
-                                                    <td className="digits">10</td>
-                                                    <td className="font-secondary">Cancle</td>
-                                                    <td className="digits">$6523</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>classical Latin literature</td>
-                                                    <td className="digits">9</td>
-                                                    <td className="font-primary">Return</td>
-                                                    <td className="digits">$6523</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>keep the site on the Internet</td>
-                                                    <td className="digits">8</td>
-                                                    <td className="font-primary">Pending</td>
-                                                    <td className="digits">$6523</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Molestiae consequatur</td>
-                                                    <td className="digits">3</td>
-                                                    <td className="font-secondary">Cancle</td>
-                                                    <td className="digits">$6523</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Pain can procure</td>
-                                                    <td className="digits">8</td>
-                                                    <td className="font-primary">Return</td>
-                                                    <td className="digits">$6523</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-xl-6 xl-100">
-                            <div className="card height-equal">
-                                <div className="card-header">
-                                    <h5>Empolyee Status</h5>
-                                </div>
-                                <div className="card-body">
-                                    <div className="user-status table-responsive products-table">
-                                        <table className="table table-bordernone mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Designation</th>
-                                                    <th scope="col">Skill Level</th>
-                                                    <th scope="col">Experience</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td className="bd-t-none u-s-tb">
-                                                        <div className="align-middle image-sm-size"><img className="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src={user2} alt="" data-original-title="" title="" />
-                                                            <div className="d-inline-block">
-                                                                <h6>John Deo <span className="text-muted digits">(14+ Online)</span></h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Designer</td>
-                                                    <td>
-                                                        <div className="progress-showcase">
-                                                            <div className="progress" style={{ height: 8 }}>
-                                                                <div className="progress-bar bg-primary" style={{ width: 30 }} role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="digits">2 Year</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="bd-t-none u-s-tb">
-                                                        <div className="align-middle image-sm-size"><img className="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src={user1} alt="" data-original-title="" title="" />
-                                                            <div className="d-inline-block">
-                                                                <h6>Holio Mako <span className="text-muted digits">(250+ Online)</span></h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Developer</td>
-                                                    <td>
-                                                        <div className="progress-showcase">
-                                                            <div className="progress" style={{ height: 8 }}>
-                                                                <div className="progress-bar bg-secondary" style={{ width: 70 }} role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="digits">3 Year</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="bd-t-none u-s-tb">
-                                                        <div className="align-middle image-sm-size"><img className="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src={man} alt="" data-original-title="" title="" />
-                                                            <div className="d-inline-block">
-                                                                <h6>Mohsib lara<span className="text-muted digits">(99+ Online)</span></h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Tester</td>
-                                                    <td>
-                                                        <div className="progress-showcase">
-                                                            <div className="progress" style={{ height: 8 }}>
-                                                                <div className="progress-bar bg-primary" style={{ width: 60 }} role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="digits">5 Month</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="bd-t-none u-s-tb">
-                                                        <div className="align-middle image-sm-size"><img className="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src={user} alt="" data-original-title="" title="" />
-                                                            <div className="d-inline-block">
-                                                                <h6>Hileri Soli <span className="text-muted digits">(150+ Online)</span></h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Designer</td>
-                                                    <td>
-                                                        <div className="progress-showcase">
-                                                            <div className="progress" style={{ height: 8 }}>
-                                                                <div className="progress-bar bg-secondary" style={{ width: 30 }} role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="digits">3 Month</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="bd-t-none u-s-tb">
-                                                        <div className="align-middle image-sm-size"><img className="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src={designer} alt="" data-original-title="" title="" />
-                                                            <div className="d-inline-block">
-                                                                <h6>Pusiz bia <span className="text-muted digits">(14+ Online)</span></h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Designer</td>
-                                                    <td>
-                                                        <div className="progress-showcase">
-                                                            <div className="progress" style={{ height: 8 }}>
-                                                                <div className="progress-bar bg-primary" role="progressbar" style={{ width: 90 }} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="digits">5 Year</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
+                                    <Bar data={brandCarData} options={{
+                                        dragData: true, dragDataRound: 0, legend:{ display: false}}} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </>
-
         )
-
 }
-// javascript:void(0)
 
 export default dashboardReducer

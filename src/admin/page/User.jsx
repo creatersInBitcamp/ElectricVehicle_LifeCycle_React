@@ -1,9 +1,8 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import {AdminBreadcrumb} from '../common';
 import {Table} from '../item'
 import {Bar, Doughnut} from "react-chartjs-2";
 import axios from "axios";
-import {lineOptions} from "../../atomic/constants/chartData";
 const userReducer = ( state= {}, action ) => {
     switch (action.type) {
         default: return state

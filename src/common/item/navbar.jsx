@@ -91,14 +91,9 @@ export const NavBar = (props) => {
                             </div>
                         </li>
                         <li>
-                            <Link to={`${process.env.PUBLIC_URL}/new-car/collection`} className="nav-link" >
+                            <Link to={`${process.env.PUBLIC_URL}/new-car/collection`}>
                                 {translate('new_car')}
-                                <span className="sub-arrow"/>
                             </Link>
-                            <ul className="nav-submenu">
-                                <li><Link to={`${process.env.PUBLIC_URL}/new-car/collection`}>{translate('new_car_purchase')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/checkout`}>{translate('checkout')}</Link></li>
-                            </ul>
                         </li>
                         <li>
                             <Link to={`${process.env.PUBLIC_URL}/used-car/collection`} className="nav-link" >
@@ -123,13 +118,9 @@ export const NavBar = (props) => {
                             </ul>
                         </li>
                         <li>
-                            <Link to={`${process.env.PUBLIC_URL}/service`} className="nav-link">
+                            <Link to={`${process.env.PUBLIC_URL}/service`}>
                                 {translate('map')}
-                                <span className="sub-arrow"/>
                             </Link>
-                            <ul className="nav-submenu">
-                                <li><Link to={`${process.env.PUBLIC_URL}/service`}>{translate('map')}</Link></li>
-                            </ul>
                         </li>
                         <li>
                             <Link to={`${process.env.PUBLIC_URL}/board/main/news`} className="nav-link">
@@ -148,16 +139,14 @@ export const NavBar = (props) => {
                             </ul>
                         </li>
                         <li>
-                            <Link to={`${process.env.PUBLIC_URL}/pages/about-us`} className="nav-link">
+                            <Link to={`${process.env.PUBLIC_URL}/pages/about-us`}>
                                 {translate('about_us')}
-                                <span className="sub-arrow"/>
                             </Link>
                         </li>
                         {(grade === 9) &&
                             <li onClick={routeChange}>
-                                <Link to={`${process.env.PUBLIC_URL}/admin/dashboard`} className="nav-link">
+                                <Link to={`${process.env.PUBLIC_URL}/admin/dashboard`}>
                                     {translate('admin')}
-                                    <span className="sub-arrow"/>
                                 </Link>
                             </li>
                         }

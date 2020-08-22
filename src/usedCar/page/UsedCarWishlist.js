@@ -41,13 +41,10 @@ const usedWishlistReducer = (state = {list: []}, action) => {
                     } else {
                         cartAcc.push(product)
                     }
-
                     return cartAcc
                 }, [])
-
                 return { ...state, list }
             }
-
             return { ...state, list: [...state.list, action.product] }
 
         case REMOVE_FROM_USED_WISHLIST:

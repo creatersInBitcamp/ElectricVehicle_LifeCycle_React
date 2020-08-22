@@ -29,7 +29,7 @@ export const clearCart = () => ({
 })
 
 /* reducer */
-export const cartReducer = (state = {cart: []}, action) => {
+export const CartReducer = (state = {cart: []}, action) => {
     switch (action.type) {
         case ADD_TO_CART:
             const productId = action.product.eccarId
@@ -63,4 +63,4 @@ export const cartReducer = (state = {cart: []}, action) => {
     return state;
 }
 
-export default cartReducer
+export default CartReducer

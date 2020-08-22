@@ -1,40 +1,39 @@
 import React, {useEffect, useState} from "react";
-import {Link, Redirect} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import Modal from 'react-responsive-modal';
 import {useDispatch, useSelector} from "react-redux";
 import {addToUsedCompare} from '../page/MyCarComparison'
-import {usedCars} from "./UsedProductReducer";
 
 export const MyCar = props => {
     const [open,setOpen] = useState(false)
-    const [redirect,setRedirect] = useState(false)
     const [targetId,setTargetId] = useState(0)
     const [session, setSession] = useState(false)
     const [userSession] = useState(sessionStorage.getItem("user"))
-    const {items} = useSelector((state) => ({
-        items: state.usedData.products
+
+    const {items,first,wishItems} = useSelector((state) => ({
+        items: state.usedData.products,
+        first: state.firstCar.list,
+        wishItems: state.usedWishlist.list
     }))
 
     useEffect(() => {
         userSession ? setSession(true) : setSession(false)
     },[userSession])
 
-
-    const {first,wishItems} = useSelector(state=>({
-        first: state.firstCar.list,
-        wishItems: state.usedWishlist.list
-    }))
-
     const renderRedirect = () => {
-        if(redirect===true && targetId!==0){
-            return <Redirect to={`${process.env.PUBLIC_URL}/used-car/comparison/${targetId}`} />
+        if (targetId !== 0) {
+            dispatch(addToUsedCompare(items.find(x => x.usedCarId == targetId)))
+            history.push(`${process.env.PUBLIC_URL}/used-car/comparison/${targetId}`)
+        } else if (targetId === 0) {
+
         }
     }
 
     const dispatch = useDispatch()
 
-    return <>
+    const history = useHistory()
 
+    return <>
         {session ?
             (first.length > 0 ?
                 <div className="collection-filter-block">
@@ -112,7 +111,7 @@ export const MyCar = props => {
                                         <div className="border-product">
                                             <h6 className="product-title">관심상품</h6>
                                             <form>
-                                                <select onChange={e=>setTargetId(e.target.value)}>
+                                                <select onChange={(e)=>setTargetId(e.target.value)}>
                                                     <option value={0}>상품을 선택해주세요.</option>
                                                     {
                                                         wishItems.map((item,index)=>{
@@ -121,13 +120,9 @@ export const MyCar = props => {
                                                     }
                                                 </select>
                                                 <div className="product-buttons">
-                                                    {renderRedirect()}
                                                     <button className="btn btn-solid"
                                                             type={'button'}
-                                                            onClick={()=>{
-                                                                setRedirect(true);
-                                                                dispatch(addToUsedCompare(items.find(x => x.usedCarId == targetId)))
-                                                            }}>
+                                                            onClick={()=>renderRedirect()}>
                                                         비교하기
                                                     </button>
                                                 </div>
@@ -140,10 +135,6 @@ export const MyCar = props => {
                     </div>
                 </div>
             </Modal>
-
-
-
-        
     </>
 }
 export default MyCar

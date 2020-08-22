@@ -12,7 +12,6 @@ export const ProductStyleFive = props => {
     const {product, symbol, onAddToCartClicked, onAddToWishlistClicked, onAddToCompareClicked} = props;
 
     return <>
-        {console.log(product)}
         <div className="product-box product-wrap">
             <div className="img-wrapper">
                 <div className="lable-block">

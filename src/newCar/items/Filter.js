@@ -17,7 +17,6 @@ export const Filter = () => {
     }))
 
     const [value,setValue] = useState({ min: 100, max: 20000 })
-    const [filteredBrands,setFilteredBrands] = useState(filters.brand);
 
     useEffect(()=>{
         dispatch(filterColor(null))
@@ -30,8 +29,8 @@ export const Filter = () => {
     }
 
     const clickBrandHendle = (event, brands) => {
-
         const index = brands.indexOf(event.target.value);
+        console.log(event.target.checked)
         if (event.target.checked)
             brands.push(event.target.value); // push in array checked value
         else
@@ -39,6 +38,7 @@ export const Filter = () => {
 
         dispatch(filterBrand(brands));
     }
+
 
     const colorHandle = (event, color) => {
         const elems = document.querySelectorAll(".color-selector ul li");
@@ -57,6 +57,7 @@ export const Filter = () => {
         }
     }
 
+    const filteredBrands = filters.brand;
     const dispatch = useDispatch()
     return (
         <div className="collection-filter-block">
@@ -73,7 +74,7 @@ export const Filter = () => {
                         <div className="collection-collapse-block-content"  ref={setCollapsibleElement}>
                             <div className="collection-brand-filter">
                                 {brands.map((brand, index) => {
-                                    filteredBrands.includes(brand)
+                                    // filteredBrands.includes(brand)
                                     return (
                                         <div className="custom-control custom-checkbox collection-filter-checkbox" key={index}>
                                             <input className="custom-control-input"

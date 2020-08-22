@@ -8,12 +8,11 @@ import '../../common/index.scss';
 import {Breadcrumb, NewProduct} from "../../common";
 import {MyCar,MarketPrice} from "../index";
 import {addToUsedWishlist} from "./UsedCarWishlist";
-import {usedCars} from "../item/UsedProductReducer";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 export const productDetail = (props) => {
-    const [user,setUser] = useState(sessionUser)
+    const [user] = useState(sessionUser)
     const [state, setState] = useState({ nav1: null, nav2: null });
 
     const slider1 = useRef();
@@ -77,7 +76,6 @@ export const productDetail = (props) => {
                     <div className="collection-wrapper">
                         <div className="container">
                             <div className="row">
-
                                 <div className="col-sm-3 collection-filter" id="filter">
                                     <div  className="collection-mobile-back pl-5">
                                         <span onClick={backClick}  className="filter-back">

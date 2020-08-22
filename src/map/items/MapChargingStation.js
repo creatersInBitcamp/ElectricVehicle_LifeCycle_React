@@ -7,7 +7,8 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 
 import './map.css'
 import "@reach/combobox/styles.css";
 import axios from "axios";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {stationMapRequest} from "./StationReducer";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -24,11 +25,80 @@ const options = {
     zoomControl: true,
 };
 const center = {
-    lat: 36.8728622,
-    lng: 128.0718825
+    lat: 36.582921,
+    lng: 128.075400
 };
 
-export const BookmarkMap = () =>{
+export const userThunk = (props) => (dispatch)=>{
+    sessionUser?(
+        props.first.length>0?(
+            axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
+                .then((res)=>{
+                    console.log(res.data)
+                    dispatch(stationMapRequest(res.data))
+                    // setMyData(res.data)
+                })
+                .catch((err)=>{
+                    console.log('charging-staion-axios-error')
+                })
+        ):(
+            axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
+                .then((res)=>{
+                    console.log(res.data)
+                    dispatch(stationMapRequest(res.data))
+                    // setMyData(res.data)
+                })
+                .catch((err)=>{
+                    console.log(err.status)
+                })
+        )
+
+    ):(
+        axios.get(`http://localhost:8080/chargingstations/getall`)
+            .then((res)=>{
+                console.log(res.data)
+                // setMyData(res.data)
+                dispatch(stationMapRequest(res.data))
+            })
+            .catch((err)=>{
+                console.log(err.status)
+            })
+    )
+
+}
+
+export const useAnotherThunk = (id,props) => (dispatch) => {
+    axios.post('http://localhost:8080/bookmarks/insert',id)
+        .then((res)=>{
+            console.log("북마크 저장 성공")
+            props.first.length>0?(
+                axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
+                    .then((res)=>{
+                        console.log(res.data)
+                        dispatch(stationMapRequest(res.data))
+                        // setMyData(res.data)
+                    })
+                    .catch((err)=>{
+                        console.log('charging-staion-axios-error')
+                    })
+            ):(
+                axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
+                    .then((res)=>{
+                        console.log(res.data)
+                        dispatch(stationMapRequest(res.data))
+                        // setMyData(res.data)
+                    })
+                    .catch((err)=>{
+                        console.log(err.status)
+                    })
+            )
+        })
+        .catch((err) => {
+            console.log("북마크 저장 실패")
+        })
+}
+
+export const MapChargingStation = props =>{
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: MAP_KEY,
         libraries,
@@ -42,27 +112,25 @@ export const BookmarkMap = () =>{
     const [selectedAddr, setSelectedAddr]= useState("")
     const [selectedPc,setSelectedPc] = useState("")
     const [infoShow, setInfoShow]= useState(false)
-    const [myData,setMyData] = useState([])
-    const [id,setId] = useState(0)
-    const userId = user.userSeq
+    // const [myData,setMyData] = useState([])
+
+    const {myData} = useSelector((state)=>({
+        myData : state.stationData.myData
+    }))
+
+    const dispatch = useDispatch()
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
-            .then((res)=>{
-                console.log(res.data)
-                setMyData(res.data)
-            })
-            .catch((err)=>{
-                console.log(err.status)
-            })
+        dispatch(userThunk(props))
     },[])
+
 
     const mapRef = useRef();
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
     }, []);
 
-    const panTo = useCallback(({ lat, lng }) => {
+    const panTo = useCallback(({ lat, lng }) => { //( panTo )의 경우 :  변경 사항이 지도의 너비와 높이보다 작 으면 전환이 부드럽게 움직입니다
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
     }, []);
@@ -135,8 +203,8 @@ export const BookmarkMap = () =>{
             clearSuggestions,
         } = usePlacesAutocomplete({
             requestOptions: {
-                location: { lat: () => 37.553818, lng: () => 126.886020 },
-                radius: 200 * 1000,
+                location: { lat: () => 36.582921, lng: () => 128.075400 },// 검색할때의 이 지점에서부터 찾는다
+                radius: 200 * 1000,//검색 반경
             },
         });
 
@@ -150,10 +218,10 @@ export const BookmarkMap = () =>{
 
             try {
                 const results = await getGeocode({ address });
-                // console.log(results[0]) formatted address, compo 전부 가져옴
                 const { lat, lng } = await getLatLng(results[0]);
                 const postal_code = await getZipCode(results[0],false)
                 panTo({ lat, lng });
+                setSelectedAddr(address)
                 setSelectedPc(postal_code)
                 setSearchLocation({ lat, lng });
             } catch (error) {
@@ -184,34 +252,14 @@ export const BookmarkMap = () =>{
         );
     }
 
-
-    function deleteBookmark(bookmarkID){
-        console.log(bookmarkID)
-        axios.get(`http://localhost:8080/bookmarks/delete/${bookmarkID}`)
-            .then((res)=>{
-                console.log("북마크 삭제 성공")
-                axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
-                    .then((res)=>{
-                        console.log(res.data)
-                        setMyData(res.data)
-                    })
-                    .catch((err)=>{
-                        console.log(err.status)
-                    })
-            })
-            .catch((err) => {
-                console.log("북마크 삭제 실패")
-            })
-    }
-
-    function setting(store){
-        /*if(store.place.category === 'station'){
-            setSelected(store.chargingStation)
-        }else if(store.place.category  === 'sights'){
-            setSelected(store.sights)
-        }*/
-        setSelected(store.place)
-        setId(store.id)
+    function insertBookmark(stationID){
+        const id = {
+            id : stationID,
+            charging : true,
+            userId: user.userSeq,
+        }
+        console.log(id)
+        dispatch(useAnotherThunk(id,props))
     }
 
     return (
@@ -242,40 +290,53 @@ export const BookmarkMap = () =>{
                                 onLoad={onMapLoad}
                             >
                                 {
-                                    myData.map((store,i)=>{
-
-                                        if(store.place.category === 'station'){
-                                            return (
-                                                <Marker
-                                                    key={i}
-                                                    position={{lat: store.place.xvalue, lng: store.place.yvalue}}
-                                                    onClick={() => setting(store)}
-                                                    icon={
-                                                        {
-                                                            url: "https://image.flaticon.com/icons/svg/3198/3198588.svg",
-                                                            scaledSize: new window.google.maps.Size(40, 40)
-                                                        }
-                                                    }
-                                                />
-                                            )
-                                        }
-                                        else if(store.place.category  === 'sights'){
-                                            return(
-                                                <Marker
-                                                    key={i}
-                                                    position={{lat:store.place.xvalue, lng:store.place.yvalue}}
-                                                    onClick={()=>setting(store)}
-                                                    icon={
-                                                        { url : "https://image.flaticon.com/icons/svg/3198/3198482.svg",
-                                                            scaledSize : new window.google.maps.Size(40,40)}
-                                                    }
-
-                                                />)
-                                        }
-                                    })
+                                    myData.map((store, i) => (
+                                        <Marker
+                                            key={i}
+                                            position={{lat:store.xvalue, lng:store.yvalue}}
+                                            onClick={()=>setSelected(store)}
+                                            icon={{
+                                                    url : "https://image.flaticon.com/icons/svg/3198/3198588.svg",
+                                                    scaledSize : new window.google.maps.Size(40,40)
+                                            }}
+                                        />
+                                    ))
                                 }
                                 {
-                                    selected.category === 'station' ?
+                                    (selected.xvalue && (sessionUser)) ? (
+                                        <InfoWindow
+                                            position={{lat:selected.xvalue, lng:selected.yvalue}}
+                                            clickable={true}
+                                            onCloseClick={()=>setSelected({})}
+                                        >
+                                            <div className="infowindow">
+                                                <MDBCol>
+                                                    <MDBCard>
+                                                        <MDBCardBody>
+                                                            <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
+                                                            <MDBCardText>
+                                                                <h4>충전기 타입: {selected.chargerType}</h4><br/>
+                                                                <h4>상태: {selected.chargerState}</h4><br/>
+                                                                <h4>주소: {selected.address}</h4><br/>
+                                                                <h4>운영시간: {selected.businessHours}</h4><br/>
+                                                                <h4>관리부서: {selected.agencyName}</h4><br/>
+                                                                <h4>연락처: {selected.phone}</h4><br/>
+                                                            </MDBCardText>
+                                                            {
+                                                                (selected.bookmarkList) && (sessionUser.userSeq === selected.userSeq)?
+                                                                    <img src={"https://image.flaticon.com/icons/svg/2876/2876727.svg"} width={40} height={40}/>
+                                                                    :<MDBBtn color="secondary" onClick={()=>insertBookmark(selected.chargingStationId)}>북마크 저장</MDBBtn>
+
+                                                            }
+                                                        </MDBCardBody>
+                                                    </MDBCard>
+                                                </MDBCol>
+                                            </div>
+                                        </InfoWindow>
+                                    ) :null
+                                }
+                                {
+                                    (selected.xvalue && (!sessionUser)) ? (
                                         (
                                             <InfoWindow
                                                 position={{lat:selected.xvalue, lng:selected.yvalue}}
@@ -295,39 +356,11 @@ export const BookmarkMap = () =>{
                                                                     <h4>관리부서: {selected.agencyName}</h4><br/>
                                                                     <h4>연락처: {selected.phone}</h4><br/>
                                                                 </MDBCardText>
-                                                                <MDBBtn color="warning" onClick={()=>deleteBookmark(id)}>북마크삭제</MDBBtn>
                                                             </MDBCardBody>
                                                         </MDBCard>
                                                     </MDBCol>
                                                 </div>
                                             </InfoWindow>)
-                                        : null
-                                }
-                                {
-                                    selected.category === 'sights' ? (
-                                        <InfoWindow
-                                            position={{lat:selected.xvalue, lng:selected.yvalue}}
-                                            clickable={true}
-                                            onCloseClick={()=>setSelected({})}
-                                        >
-                                            <div className="infowindow">
-                                                <MDBCol>
-                                                    <MDBCard>
-                                                        <MDBCardBody>
-                                                            <MDBCardTitle><h3>{selected.name}</h3></MDBCardTitle><br/>
-                                                            <MDBCardText>
-                                                                <h4>지번주소: {selected.address}</h4><br/>
-                                                                <h4>도로명주소: {selected.streetAddress}</h4><br/>
-                                                                <h4>수용인원수: {selected.capacity}</h4><br/>
-                                                                <h4>주차가능수: {selected.parkingLot}</h4><br/>
-                                                                <h4>관광지 정보: {selected.info}</h4><br/>
-                                                            </MDBCardText>
-                                                            <MDBBtn color="warning" onClick={()=>deleteBookmark(id)}>북마크삭제</MDBBtn>
-                                                        </MDBCardBody>
-                                                    </MDBCard>
-                                                </MDBCol>
-                                            </div>
-                                        </InfoWindow>
                                     ):null
                                 }
                                 {
@@ -340,8 +373,8 @@ export const BookmarkMap = () =>{
                                                 setInfoShow(true)
                                             }}
                                             icon={{
-                                                url : "https://image.flaticon.com/icons/svg/3198/3198517.svg",
-                                                scaledSize : new window.google.maps.Size(40,40)
+                                                    url : "https://image.flaticon.com/icons/svg/3198/3198517.svg",
+                                                    scaledSize : new window.google.maps.Size(40,40)
                                             }}
                                         />
                                         :null
@@ -363,9 +396,9 @@ export const BookmarkMap = () =>{
                                         :null
                                 }
                                 {
-                                    markers.map((marker) => (
+                                    markers.map((marker,i) => (
                                         <Marker
-                                            key={`${marker.lat}-${marker.lng}`}
+                                            key={i}
                                             position={{ lat: marker.lat, lng: marker.lng }}
                                             onClick={() => {
                                                 geocode(marker)
@@ -391,9 +424,9 @@ export const BookmarkMap = () =>{
                                                     <MDBCard>
                                                         <MDBCardBody>
                                                             <MDBCardText>
-                                                                <h3><span>우편번호 </span></h3><br/>
+                                                                <h3>우편번호</h3><br/>
                                                                 <h4>{selectedPc} </h4><br/>
-                                                                <h3><span>주소</span></h3><br/>
+                                                                <h3>주소</h3><br/>
                                                                 <h4>{selectedAddr} </h4>
                                                             </MDBCardText>
                                                         </MDBCardBody>
@@ -412,4 +445,4 @@ export const BookmarkMap = () =>{
     );
 }
 
-export default BookmarkMap
+export default MapChargingStation

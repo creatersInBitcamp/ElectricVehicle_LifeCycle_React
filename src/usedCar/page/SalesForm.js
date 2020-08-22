@@ -2,12 +2,11 @@ import React, {useState} from "react";
 import {Breadcrumb} from "../../common";
 import {useSelector} from "react-redux";
 import axios from "axios";
-// import products from '../../atomic/api/eccar.json'
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 export const SalesForm = (props) => {
-    const [user,setUser] = useState(sessionUser)
+    const [user] = useState(sessionUser)
     const [targetId,setTargetId] = useState(0)
     const [item,setItem] = useState([])
     const [desiredPrice, setDesiredPrice] = useState('')
@@ -35,7 +34,6 @@ export const SalesForm = (props) => {
             setItem(product)
             setCarId(targetId)
             setCarName(product.carName)
-            console.log(product)
         }
 
     }
@@ -51,7 +49,6 @@ export const SalesForm = (props) => {
                 eccarId: carId,
                 userSeq: user.userSeq
             }
-            console.log(info)
             axios.post(`http://localhost:8080/usedCars/register`, info)
                 .then(res => {
                     res.data ? props.history.push(`${process.env.PUBLIC_URL}/`) : alert('등록 실패')
@@ -62,7 +59,6 @@ export const SalesForm = (props) => {
         } else {
             alert('차종을 선택해주세요.')
         }
-
     }
 
     return <>

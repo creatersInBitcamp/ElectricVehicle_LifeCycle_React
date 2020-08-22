@@ -7,12 +7,12 @@ import { useRouteMatch } from 'react-router-dom';
 // import custom Components
 import {Breadcrumb} from "../../common";
 import {DetailsWithPrice,DetailsTopTabs,ImageZoom,SmallImages} from "../index";
-import {addToCart} from "./cartReducer";
-import {addToCartUnsafe} from "./cartReducer";
-import {addToWishlist} from "./wishlistReducer";
+import {addToCart} from "./CartReducer";
+import {addToCartUnsafe} from "./CartReducer";
+import {addToWishlist} from "./WishlistReducer";
 import {Recent} from "../../board/items";
 
-export const LeftSideBar = () => {
+export const LeftSidebar = () => {
     const [state, setState] = useState({ nav1: null, nav2: null });
     const slider1 = useRef();
     const slider2 = useRef();
@@ -30,7 +30,6 @@ export const LeftSideBar = () => {
 
     const {symbol, item} = useSelector((state) => {
         let productId = match.params.eccarId
-        console.log(productId)
         return {
             item: state.data.products.find(el => el.eccarId == productId),
             symbol: state.data.symbol
@@ -57,7 +56,6 @@ export const LeftSideBar = () => {
     }
     const dispatch = useDispatch()
     return <>
-        {console.log(item)}
         <div>
             <Breadcrumb parent={'Product'} title={item.carName} />
 
@@ -115,4 +113,4 @@ export const LeftSideBar = () => {
     </>
 }
 
-export default LeftSideBar
+export default LeftSidebar

@@ -6,38 +6,40 @@ import { SlideToggle } from 'react-slide-toggle';
 import InputRange from "react-input-range";
 
 const Filter = () => {
-    const [value,setValue] = useState({ min: 100, max: 3500 })
+    const [value] = useState({ min: 100, max: 3500 })
+
     const { brands, prices, filters } = useSelector(state=>({
         brands: getBrands(state.usedData.products),
         prices: getMinMaxPrice(state.usedData.products),
         filters: state.filters
     }))
+
     useEffect(()=>{
         dispatch(filterPrice({value}))
         dispatch(filterBrand(brands))
         dispatch(filterSort(''))
     },[])
-    const closeFilter = () => {
-        document.querySelector(".collection-filter").style = "left: -365px";
-    }
+
+    const closeFilter = () => { document.querySelector(".collection-filter").style = "left: -365px"; }
 
     const clickBrandHandle = (event, brands) => {
-
         const index = brands.indexOf(event.target.value);
+
         if (event.target.checked)
-            brands.push(event.target.value); // push in array checked value
+            brands.push(event.target.value);
         else
-            brands.splice(index, 1); // removed in array unchecked value
+            brands.splice(index, 1);
 
         dispatch(filterBrand(brands));
     }
 
     const filteredBrands = filters.brand;
+
     const dispatch = useDispatch()
 
     return <>
         <div className="collection-filter-block">
-            {/*brand filter start*/}
+            {/* brand filter */}
             <div className="collection-mobile-back">
                 <span className="filter-back"
                       onClick={(e) => closeFilter(e)} >
@@ -71,7 +73,7 @@ const Filter = () => {
                 )}
             </SlideToggle>
 
-            {/*price filter start here */}
+            {/* price filter */}
             <SlideToggle>
                 {({onToggle, setCollapsibleElement}) => (
                     <div className="collection-collapse-block open">

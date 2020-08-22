@@ -121,28 +121,23 @@ export const checkOut = () => {
         `cancel_url=${cancel_url}`
     ].join('&');
     const headers = {
-        headers:{'Authorization':'KakaoAK 1e5be5d5088ae90530133cd882d3aa2f','Content-type':'application/x-www-form-urlencoded;charset=utf-8'}
+        headers:{'Authorization':'KakaoAK 1e5be5d5088ae90530133cd882d3aa2f','Content-type':'application/x-www-form-urlencoded'}
     }
     const onKakaoPay = () => {
         alert('카카오 페이로 결제')
         axios.post(kapi, data, headers)
             .then((res)=>{
-                return {
-                    statusCode:301,
-                    headers: {
-                        'Cache-Control':'no-cache, no-store, must-revalidate',
-                        'Pragma': 'no-cache',
-                        'Expires': '0',
-                        Location: res.data.next_redirect_pc_url
-                    },
-                    body:''
-                }
-            })
+                history.push(`${res.data.next_redirect_pc_url}`)
+                })
             .catch((err)=>{
                 console.log(err)
             })
     }
 
+
+    const onNaverPay = () => {
+
+    }
     return (
         <div>
 
@@ -243,7 +238,7 @@ export const checkOut = () => {
                                                             <button type="button" className="btn-solid btn" onClick={() => onPurchaseCar()} >Place Order</button>
                                                             :
                                                             <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
-                                                            <img src={kakaopay} onClick={KakaoPay}/>
+                                                            <img src={kakaopay} onClick={onKakaoPay}/>
                                                     </div>
                                             </div>
                                         </div>

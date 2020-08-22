@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import {Table} from '../item'
 import http from "../item/http";
-import {getAllProducts} from "../../common";
+import {getAllProducts} from "../../newCar/items/ProductReducer";
 
 const elecCarTypes = {REQUEST: 'elecCar/REQUEST'}
 const initialState = {
@@ -24,7 +24,14 @@ export const ElecCar = () => {
     const [files, setFile] = useState(undefined)
 
     useEffect(()=>{
-        // setDate(getAllProducts())
+        axios.get('http://localhost:8080/electriccars/getall')
+            .then((res)=>{
+                console.log(res.data)
+                setDate(res.data)
+            })
+            .catch((err)=>{
+                console.log(err.status)
+            })
     },[])
 
     const columns = [
@@ -59,7 +66,7 @@ export const ElecCar = () => {
     const uploadService = (files) => {
         let formData = new FormData();
         formData.append("file", files)
-        return http.post("/user/uploadFile", formData, {})
+        return http.post("/electriccars/uploadFile", formData, {})
     }
 
     const saveFile = (e) => {
@@ -67,6 +74,14 @@ export const ElecCar = () => {
         console.log(files)
         uploadService(files)
             .then((res) => {
+                axios.get('http://localhost:8080/electriccars/getall')
+                    .then((res)=>{
+                        console.log(res.data)
+                        setDate(res.data)
+                    })
+                    .catch((err)=>{
+                        console.log(err.status)
+                    })
             })
             .catch((err)=>{
                 throw err
@@ -116,7 +131,7 @@ export const ElecCar = () => {
                                     </div>
                                     <div className="clearfix"/>
                                     <div id="basicScenario" className="product-physical">
-                                        <Table title={"전기 자동차"} columns={columns} data={data}/>
+                                        <Table title={"전기 자동차"} columns={columns} data={data} />
                                     </div>
                                 </div>
                             </div>

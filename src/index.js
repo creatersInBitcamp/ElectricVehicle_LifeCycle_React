@@ -32,8 +32,10 @@ import {ForgetPassword, Login, MyAccount, MyCarRegister, Register} from './user'
 
 
 import store from "./store";
-import {getAllProducts} from './newCar/items/ProductReducer'
 import {getAllUsedProducts} from "./usedCar/item/UsedProductReducer";
+import PaymentForm from "./common/payment/PaymentForm";
+import PaymentResult from "./common/payment/PaymentResult";
+import {getAllProducts} from "./newCar/items/ProductReducer";
 
 const Root = () => {
     store.dispatch(getAllProducts());
@@ -53,6 +55,8 @@ const Root = () => {
                                 <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/about-us`} component={aboutUs}/>
+                                <Route path={`${process.env.PUBLIC_URL}/payment/`} component={PaymentForm}/>
+                                <Route path={`${process.env.PUBLIC_URL}/payment/result`} component={PaymentResult}/>
                                 <Route path={`${process.env.PUBLIC_URL}/order-success`} component={OrderSuccess}/>
 
                                 {/*user*/}

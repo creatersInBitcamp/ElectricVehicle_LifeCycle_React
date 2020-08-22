@@ -18,13 +18,6 @@ const ClassicBoardDetails = ({history}) => {
         const match = useRouteMatch('/board/details/:postId').params.postId
 
         const reFresh = () => {
-            // axios.post(`http://localhost:8080/user/refresh/${user.userSeq}`)
-            //     .then((res)=>{
-            //         sessionStorage.setItem('user',res.data)
-            //     })
-            //     .catch((err)=>{
-            //         console.log('sessionUser update 실패'+err.status)
-            //     })
             setUser(sessionUser)
             setPost(
                 axios.get(`http://localhost:8080/posts/getOne/${match}`)
@@ -153,7 +146,7 @@ const ClassicBoardDetails = ({history}) => {
                                 </Container>
                             </div>
                             { (post.comments ) ?
-                                <Comment postId={post.postId} comments={post.comments}/>
+                                <Comment comments={post.comments}/>
                                 :
                                 <div className="row section-b-space">
                                     <div className="col-sm-12">
@@ -188,11 +181,7 @@ const ClassicBoardDetails = ({history}) => {
                                                               }}/>
                                                 </div>
                                                 <div className="col-md-12">
-                                                    <button className="btn btn-solid" onClick={
-                                                        (e) => {
-                                                            commentPush()
-                                                        }}>Post Comment
-                                                    </button>
+                                                    <button className="btn btn-solid" onClick={(e) => {commentPush()}}>Post Comment</button>
                                                 </div>
                                             </div>
                                         </form>

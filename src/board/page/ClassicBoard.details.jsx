@@ -15,6 +15,7 @@ const ClassicBoardDetails = ({history}) => {
         const [commentText, setCommentText] = useState("")
         const [recommend, setrecommend] = useState(false)
         const [report, setReport] = useState(false)
+        const [linkOpen, setLinkOpen] = useState(false)
         const match = useRouteMatch('/board/details/:postId').params.postId
 
         const reFresh = () => {
@@ -95,7 +96,6 @@ const ClassicBoardDetails = ({history}) => {
                         <div className="container">
                             <div className="row">
                                 <div className="col-sm-12 blog-detail">
-                                    {/*<img src={} className="img-fluid" alt=""/>*/}
                                     <h3>{post.title}</h3>
                                     <ul className="post-social">
                                         <Container>
@@ -121,8 +121,26 @@ const ClassicBoardDetails = ({history}) => {
                                         </Container>
                                     </ul>
                                     <div className="row">
-                                        <p>{post.content}</p>
-                                        <iframe src={post.link} width={1920} height={1500}/>
+                                        <Container>
+                                            <div className="row">
+                                                <img src={post.img} className="img-fluid" alt=""/>
+                                            </div>
+                                            <div className="row">
+                                                <p>{post.content}</p>
+                                            </div>
+                                            <div className="row">
+                                                {(linkOpen)?
+                                                    <>
+                                                        <button className="btn btn-outline-danger" onClick={()=>setLinkOpen(false)}> 링크 닫기 </button>
+                                                        <iframe src={post.link} width={1920} height={1500}/>
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <button className="btn btn-google" onClick={()=>setLinkOpen(true)}> 링크 보기 </button>
+                                                    </>
+                                                }
+                                            </div>
+                                        </Container>
                                     </div>
                                 </div>
                                 <Container>

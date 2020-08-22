@@ -1,4 +1,4 @@
-import shops, {elecCars} from "../../atomic/api/shop";
+import {elecCars} from "../../atomic/api/shop";
 import {CHANGE_CURRENCY} from "../../common/item/currency";
 
 /* types */

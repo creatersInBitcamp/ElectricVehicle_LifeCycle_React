@@ -39,7 +39,7 @@ const KakaoPay = async () => {
 
     const pc_url = req.data.next_redirect_pc_url; // get pc url
 
-    return {
+    const response = {
         statusCode: 301, // redirect
         headers: {
             'Cache-Control': 'no-cache, no-store, must-revalidate',
@@ -49,5 +49,7 @@ const KakaoPay = async () => {
         },
         body: ''
     };
+
+    return response;
 };
 export default KakaoPay

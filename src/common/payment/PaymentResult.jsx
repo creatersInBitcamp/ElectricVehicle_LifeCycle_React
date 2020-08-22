@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Button } from 'antd';
-import Icon from '@ant-design/icons'
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function PaymentResult({ history }) {
     const { location } = history;
@@ -24,92 +24,34 @@ function PaymentResult({ history }) {
     const resultType = isSuccessed ? '성공' : '실패';
     const colorType = isSuccessed ? '#52c41a' : '#f5222d';
     return (
-        <Wrapper>
-            <Container colorType={colorType}>
-                <Icon type={iconType} theme="filled" />
-                <p>{`결제에 ${resultType}하였습니다`}</p>
-                <ul>
-                    <li>
-                        <span>주문번호</span>
-                        <span>{merchant_uid}</span>
-                    </li>
-                    {isSuccessed  ? (
-                        <li>
-                            <span>아임포트 번호</span>
-                            <span>{imp_uid}</span>
-                        </li>
-                    ) : (
-                        <li>
-                            <span>에러 메시지</span>
-                            <span>{error_msg}</span>
-                        </li>
-                    )}
-                </ul>
-                <Button size="large" onClick={() => history.push('/')}>
-                    <Icon type="arrow-left" />
-                    돌아가기
-                </Button>
-            </Container>
-        </Wrapper>
+                        <Container>
+                            <Row>
+                                <Col md={{ span:8, offset:3 }}>
+                                    <Row>
+                                        <h1>{`결제에 ${resultType}하였습니다`}</h1>
+                                    </Row>
+                                    <Row>
+                                        <h2>주문번호 : </h2><h3> {merchant_uid} </h3>
+                                    </Row>
+                                    <Row>
+                                        {isSuccessed  ? (
+                                            <h2>아임포트 번호 : {imp_uid}</h2>
+                                        ) : (
+                                            <h2>에러 메시지{error_msg}</h2>
+                                        )}
+                                    </Row>
+                                    <Row>
+                                        <Col md={{ span:6, offset:3 }}>
+                                        <button className="btn btn-google" size="large" onClick={() => history.push('/')}>
+                                            돌아가기
+                                        </button>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                            </Row>
+                        </Container>
+
     );
 }
-
-const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`;
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #fff;
-  border-radius: 4px;
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  right: 2rem;
-  bottom: 2rem;
-  padding: 2rem;
-  > .anticon {
-    font-size: 10rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: ${props => props.colorType};
-  }
-  p {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
-  ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 3rem;
-    li {
-      display: flex;
-      line-height: 2;
-      span:first-child {
-        width: 8rem;
-        color: #888;
-      }
-      span:last-child {
-        width: calc(100% - 8rem);
-        color: #333;
-      }
-    }
-  }
-  button, button:hover {
-    border-color: ${props => props.colorType};
-    color: ${props => props.colorType};
-  }
-  button:hover {
-    opacity: 0.7;
-  }
-`;
 
 export default withRouter(PaymentResult);

@@ -1,6 +1,6 @@
 export {Service} from './page/Service'
 export {MapChargingStation} from './items/MapChargingStation'
 export {MapSights} from './items/MapSights'
-export {TableChargingStation} from './items/table-charging-station'
+export {TableChargingStation} from './items/TableChargingStation'
 export {MapBookmark} from './items/MapBookmark'
 export {stationRequest, default as StationReducer } from './items/StationReducer'

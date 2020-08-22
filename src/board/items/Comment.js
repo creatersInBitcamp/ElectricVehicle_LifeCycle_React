@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
-const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 const Comment = ({comments}) => {
     return (
         <>
@@ -16,8 +15,7 @@ const Comment = ({comments}) => {
                     <ul className="comment-section">
                             <li >
                                 <div className="media">
-                                    <img src={`https://www.carparison.com.au/themes/front/images/user-profile.png`}
-                                         alt="Generic placeholder image"/>
+                                    <img src={comment.userProfile} alt="Generic placeholder image"/>
                                     <div className="media-body">
                                                     <h6>{comment.userId} <span>( {comment.regDate} )</span></h6>
                                                     <p> { comment.comment } </p>

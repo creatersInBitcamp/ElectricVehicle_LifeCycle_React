@@ -226,6 +226,7 @@
     ]
   },
   "devDependencies": {
+    "@material-ui/icons": "^4.9.1",
     "babel-eslint": "^9.0.0",
     "node-sass": "^4.13.0",
     "react-useragent": "^1.1.2",

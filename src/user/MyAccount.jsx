@@ -70,10 +70,7 @@ export const MyAccount = () => {
     }
     return (
             <div>
-                {console.log(value)}
                 <Breadcrumb title={'MyAccount'}/>
-                
-                
                 {/*Dashboard section*/}
                 <section className="section-b-space">
                     <div className="container">

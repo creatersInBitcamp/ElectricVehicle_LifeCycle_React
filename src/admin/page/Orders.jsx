@@ -35,7 +35,7 @@ export const Orders = () => {
             })
     },[])
 
-    // 구매 수 차트 데이터
+    // 차량별 구매 차트 데이터
     const [carChartData, setCarChartData] = useState({})
     const [orderData, setOrderData] = useState(order[0].slice(2))
     const [totalChartData, setTotalChartData] = useState({})
@@ -49,33 +49,6 @@ export const Orders = () => {
         let b = Math.floor(Math.random() * 255)
         return "rgb(" + r + "," + g + "," + b + ")"
     }
-
-    useEffect(()=>{
-
-        const orderKeys = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"]
-        const intOnly = []
-        for(let i in order){
-            intOnly.push(order[i].slice(2))
-        }
-        const total = []
-        let sum = 0
-        for(let i=0; i<12; i++){
-            for(let j in intOnly){
-                sum += intOnly[j][i]
-            }
-            total.push(sum)
-        }
-        setTotalChartData({
-                labels: orderKeys,
-                datasets:[
-                    {
-                        data: total,
-                        borderColor: "#13c9ca",
-                    },
-                ],
-            }
-        )
-    },[])
 
     useEffect(()=>{
         for(let i in order){
@@ -106,6 +79,34 @@ export const Orders = () => {
             })
     },[orderData])
 
+    // 월별 전체 구매 차트
+    useEffect(()=>{
+
+        const orderKeys = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"]
+        const intOnly = []
+        for(let i in order){
+            intOnly.push(order[i].slice(2))
+        }
+        const total = []
+        let sum = 0
+        for(let i=0; i<12; i++){
+            for(let j in intOnly){
+                sum += intOnly[j][i]
+            }
+            total.push(sum)
+        }
+        setTotalChartData({
+                labels: orderKeys,
+                datasets:[
+                    {
+                        data: total,
+                        borderColor: "#13c9ca",
+                    },
+                ],
+            }
+        )
+    },[])
+
         return (
             <>
                 <AdminBreadcrumb title="판매현황" parent="Sales" />
@@ -115,7 +116,7 @@ export const Orders = () => {
                             <div className="col-xl-6 xl-100">
                                 <div className="card">
                                     <div className="card-header">
-                                        <h5>2019년 전체현황</h5>
+                                        <h5>월별 판매량</h5>
                                     </div>
                                     <div className="card-body">
                                         <div className="card-body sell-graph">

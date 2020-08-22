@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet'
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {useHistory, useRouteMatch} from 'react-router-dom'
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 import {Breadcrumb} from "../../common";
@@ -48,10 +48,7 @@ export const checkout = () => {
         axios.post(`http://localhost:8080/purchases/insert`, newPurchase)
             .then((res)=>{
                 console.log('신차 구매 axios 성공')
-                history.push({
-                    pathname: '/order-success',
-                    state: { payment: sessionUser, items: newCar, orderTotal: newCar.price, symbol: symbol }
-                })
+
             })
             .catch((err)=>{
                 console.log(`신차 구매 axios 실패 : ${err.status}`)
@@ -63,7 +60,6 @@ export const checkout = () => {
     }
 
     const history = useHistory()
-    const dispatch = useDispatch()
 
     const {cartItems, symbol, total} = useSelector((state) => ({
         cartItems: state.cartList.cart,

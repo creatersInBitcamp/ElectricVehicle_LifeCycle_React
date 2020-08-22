@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import Slider from "react-slick";
 import {Table} from "../admin/item";
+import {RefreshInfo} from "../board/items";
 
 /* type */
 const ADD_TO_MY_CAR = 'ADD_TO_MY_CAR'
@@ -16,15 +17,47 @@ const ADD_TO_FIRST_CAR = 'ADD_TO_FIRST_CAR'
 const REMOVE_FROM_FIRST_CAR = 'REMOVE_FROM_FIRST_CAR'
 const REMOVE_ALL_CAR = 'REMOVE_ALL_CAR'
 const REMOVE_ALL_FIRST_CAR = 'REMOVE_ALL_FIRST_CAR'
+const RECEIVE_MY_CARS = 'RECEIVE_MY_CARS'
 
 /* action */
-const addToMyCar = (product) => (dispatch) => {
-    dispatch(addToMyCarUnsafe(product))
+const addToMyCar = ({product,user}) => (dispatch) => {
+    const info = {
+        price: null,
+        age: null,
+        mileage: null,
+        sale: false,
+        eccarId: product,
+        userSeq: user
+    }
+    axios.post(`http://localhost:8080/usedCars/register`, info)
+        .then((res)=>{
+            console.log(info)
+            console.log(res.data)
+        })
+        .catch((err)=>{ throw err })
+    axios.get(`http://localhost:8080/electriccars/getone/${info.eccarId}`)
+        .then((res)=>{
+            console.log(product)
+            dispatch(addToMyCarUnsafe(res.data,user))
+        })
+        .catch((err)=>{ throw err })
 }
 const addToMyCarUnsafe = (product) => ({
     type: ADD_TO_MY_CAR,
     product
 })
+const receiveMyCar = myCars => ({
+    type: RECEIVE_MY_CARS,
+    myCars
+})
+export const getAllMyCar = (user) => dispatch => {
+    axios.get(`http://localhost:8080/usedCars/getAllMyCar/${user}`)
+        .then((res)=>{
+            console.log(res.data)
+            dispatch(receiveMyCar(res.data))
+        })
+        .catch(()=>{})
+}
 const removeFromMyCar = product_id => (dispatch) => {
     dispatch({
         type: REMOVE_FROM_MY_CAR,
@@ -51,8 +84,12 @@ const changeFirstCar = (product) => (dispatch) => {
     dispatch(addToFirstCar(product))
 }
 
+const initialState = {
+    list: []
+}
+
 /* reducer */
-export const myCarReducer = (state={list:[]}, action) => {
+export const myCarReducer = (state=initialState, action) => {
     switch (action.type) {
         case ADD_TO_MY_CAR:
             console.log(action)
@@ -70,11 +107,20 @@ export const myCarReducer = (state={list:[]}, action) => {
             }
             return { ...state, list: [...state.list, action.product] }
 
+        case RECEIVE_MY_CARS:
+            return { ...state,
+                list: action.myCars
+            }
+
         case REMOVE_ALL_CAR:
             return {
                 list: []
             }
+
         case REMOVE_FROM_MY_CAR:
+            axios.get(`http://localhost:8080/usedCars/deleteMyCar/${action.product_id}`)
+                .then((res)=> res.data)
+                .catch(()=> alert(`삭제 실패`))
             return {
                 list: state.list.filter(id => id !== action.product_id)
             }
@@ -82,6 +128,8 @@ export const myCarReducer = (state={list:[]}, action) => {
     }
     return state
 }
+
+
 
 export const firstCarReducer = (state={list:[]}, action) => {
     switch (action.type) {
@@ -116,14 +164,49 @@ export const firstCarReducer = (state={list:[]}, action) => {
     return state
 }
 
-export const MyCarRegister = ({used}) => {
+export const MyCarRegister = () => {
     const [openEdit,setOpenEdit] = useState(false)
     const [targetId,setTargetId] = useState(0)
     const [state, setState] = useState({ nav1: null, nav2: null })
     const [product,setProduct] = useState([])
+    const [value, setValue] = useState(0)
+    const [used, setUsed] = useState([])
+    let [result,setResult] = useState([])
+    const [myCar,setMyCar] = useState([])
+    const [userSession, setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
 
     const slider1 = useRef();
     const slider2 = useRef();
+
+    useEffect(() => {
+        RefreshInfo()
+        setUserSession(JSON.parse(sessionStorage.getItem("user")))
+        // setValue(match)
+    },[value])
+
+
+    useEffect(()=> {
+        setUsed(userSession.usedCarList)
+        let usedNew = []
+        if (used.length > 0){
+            usedNew = used.find(x=>x.usedCarSalesList)
+            axios.get(`http://localhost:8080/usedCars/getDetail/${usedNew.usedCarId}`)
+                .then((res)=>{
+                    setProduct(res.data)
+                })
+            setResult(usedNew.usedCarSalesList)
+        } else {
+            setResult(usedNew)
+        }
+        axios.get(`http://localhost:8080/usedCars/getAllMyCar/${userSession.userSeq}`)
+            .then((res)=>{
+                console.log(res.data)
+                setMyCar(res.data)
+                dispatch(receiveMyCar(res.data))
+            })
+            .catch(()=>{})
+        // setMyCar(getAllMyCar(userSession.userSeq))
+    }, [userSession])
 
     useEffect(() => {
         setState({
@@ -131,24 +214,6 @@ export const MyCarRegister = ({used}) => {
             nav2: slider2.current
         })
     }, [])
-
-    let usedNew = []
-
-    let test = () => {
-        if (used.length > 0){
-            usedNew = used.find(x=>x.usedCarSalesList)
-            return usedNew.usedCarSalesList
-        } else {
-            return usedNew
-        }
-    }
-    useEffect(()=>{
-
-        axios.get(`http://localhost:8080/usedCars/getDetail/${usedNew.usedCarId}`)
-            .then((res)=>{
-                setProduct(res.data)
-            })
-    },[])
 
     const {products, myCars, first} = useSelector(state=>({
         products: state.data.products,
@@ -201,9 +266,8 @@ export const MyCarRegister = ({used}) => {
 
     const dispatch = useDispatch()
 
-    return<>
-        {console.log(usedNew)}
-        {console.log(used)}
+    return <>
+        {console.log(myCar)}
         <Container>
             <Row>
                 <Col/>
@@ -222,11 +286,11 @@ export const MyCarRegister = ({used}) => {
                                     <div className="box-content">
                                         <Slider {...setting} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
                                             {
-                                                myCars.length > 0 ?
-                                                    myCars.map((item,index)=>{
+                                                myCar.length > 0 ?
+                                                    myCar.map((item,index)=>{
                                                         return (
                                                             <div key={index}>
-                                                                <img src={item.img} className="img-fluid image_zoom_cls-0"  alt={""} />
+                                                                <img src={item.img.img1} className="img-fluid image_zoom_cls-0"  alt={""} />
                                                                 <h4>{item.carName}</h4>
                                                             </div>
                                                         )})
@@ -276,19 +340,19 @@ export const MyCarRegister = ({used}) => {
                                                     })
                                                 }
                                             </select>
-                                            <button onClick={()=>dispatch(addToMyCar(products.find(x => x.eccarId == targetId)))}>추가</button>
+                                            <button onClick={()=>dispatch(addToMyCar({product: targetId, user: userSession.userSeq}))}>추가</button>
                                             <br/>
                                             <select onChange={e=>setTargetId(e.target.value)}>
                                                 <option value="default">삭제할 차량을 선택해주세요.</option>
                                                 {
-                                                    myCars.map((item,index)=>{
-                                                        return <option key={index} value={item.eccarId}>{item.carName}</option>
+                                                    myCar.map((item,index)=>{
+                                                        return <option key={index} value={item.usedCarId}>{item.carName}</option>
                                                     })
                                                 }
                                             </select>
                                             <button onClick={()=> {
-                                                dispatch(removeFromMyCar(myCars.find(x => x.eccarId == targetId)))
-                                                dispatch(removeFromFirstCar(myCars.find(x => x.eccarId == targetId)))
+                                                dispatch(removeFromMyCar(myCars.find(x => x.usedCarId == targetId).usedCarId))
+                                                dispatch(removeFromFirstCar(myCars.find(x => x.usedCarId == targetId)))
                                             }}>삭제</button>
                                             <button onClick={()=>dispatch(removeAllCar())}>전체삭제</button>
                                         </div>
@@ -297,11 +361,11 @@ export const MyCarRegister = ({used}) => {
                                                 <option value="default">메인차량을 선택해주세요.</option>
                                                 {
                                                     myCars.map((item,index)=>{
-                                                        return <option key={index} value={item.eccarId}>{item.carName}</option>
+                                                        return <option key={index} value={item.usedCarId}>{item.carName}</option>
                                                     })
                                                 }
                                             </select>
-                                            <button onClick={()=>dispatch(changeFirstCar(myCars.find(x => x.eccarId == targetId)))}>변경</button>
+                                            <button onClick={()=>dispatch(changeFirstCar(myCars.find(x => x.usedCarId == targetId)))}>변경</button>
                                             <button onClick={()=>dispatch(removeAllFirstCar())}>전체삭제</button>
                                         </div>
                                     </div>
@@ -326,7 +390,7 @@ export const MyCarRegister = ({used}) => {
                                         <Table title={null} columns={saleColumns} data={product}/>
                                     </TabPanel>
                                     <TabPanel className="tab-pane fade mt-4 show active">
-                                        <Table title={null} columns={purchaseColumns} data={test()}/>
+                                        <Table title={null} columns={purchaseColumns} data={result}/>
                                     </TabPanel>
                                 </Tabs>
                             </div>

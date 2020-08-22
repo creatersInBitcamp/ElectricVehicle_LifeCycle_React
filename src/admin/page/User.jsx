@@ -159,40 +159,38 @@ export const User = () => {
                 <AdminBreadcrumb title="사용자 현황" parent="Users" />
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-sm-12">
-
-                                </div>
-                                <div className="col-xl-6 xl-100">
-                                    <div className="card">
-                                        <div className="card-header">
-                                            <h5>사용자 연령분포</h5>
-                                        </div>
-                                        <div className="card-body">
-                                            <div className="market-chart">
-                                                <Bar data={ageChartData} options={{
-                                                    dragData: true, dragDataRound: 0, legend:{ display: false}}} />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-xl-6 xl-100">
-                                    <div className="card">
-                                        <div className="card-header">
-                                            <h5>사용자 성비</h5>
-                                        </div>
-                                        <div className="card-body">
-                                            <div className="user-status table-responsive latest-order-table">
-                                                <Doughnut data={sexChartData} options={{dragData: true, dragDataRound: 0}}/>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div className="col-sm-12"/>
+                        <div className="col-xl-6 xl-100">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h5>사용자 연령분포</h5>
                                 </div>
                                 <div className="card-body">
-                                    <div className="clearfix"/>
-                                    <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
-                                        <Table title={"사용자"} data={data} columns={columns} editable={editable} />
+                                    <div className="market-chart">
+                                        <Bar data={ageChartData} options={{
+                                            dragData: true, dragDataRound: 0, legend:{ display: false}}} />
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="col-xl-6 xl-100">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h5>사용자 성비</h5>
+                                </div>
+                                <div className="card-body">
+                                    <div className="user-status table-responsive latest-order-table">
+                                        <Doughnut data={sexChartData} options={{dragData: true, dragDataRound: 0}}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="card-body">
+                            <div className="clearfix"/>
+                            <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
+                                <Table title={"사용자"} data={data} columns={columns} editable={editable} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </>

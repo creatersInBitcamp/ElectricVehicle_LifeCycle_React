@@ -18,10 +18,6 @@ const options = {
     zoomControl: true,
 };
 
-export const userThunk = () => (dispatch)=>{
-
-}
-
 export const AdminChargingStationTable = () => {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: MAP_KEY,
@@ -69,16 +65,23 @@ export const AdminChargingStationTable = () => {
                     resolve();
                     let chargingStation = {
                         name : newData.name,
+                        chargerId : "1",
                         chargerTypeID : newData.chargerTypeID,
                         chargerType : newData.chargerType,
                         chargerState : newData.chargerState,
                         address : newData.address,
-                        xValue : newData.xValue,
-                        yvalue : newData.yvalue
+                        xvalue : newData.xvalue,
+                        yvalue : newData.yvalue,
+                        businessHours : "24시간 이용가능",
+                        agencyName : "환경부",
+                        phone : "1661-9408",
+                        updateDate : "",
+                        boostingCharge : "급속(50kW)",
+                        category : "station"
                     }
                     axios.post(`http://localhost:8080/chargingstations/insert`, chargingStation)
                         .then((res) => {
-                            alert("add 성공")
+                            window.location.reload()
                         })
                         .catch(() => {
                             alert("통신실패")
@@ -97,6 +100,7 @@ export const AdminChargingStationTable = () => {
                     resolve()
                     axios.post(`http://localhost:8080/chargingstations/allUpdate`, [...dataUpdate])
                         .then((res) => {
+                            window.location.reload()
                         })
                         .catch(() => {
                             alert("통신실패")
@@ -110,12 +114,13 @@ export const AdminChargingStationTable = () => {
                     const dataDelete = [...myData];
                     const index = oldData.tableData.id;
                     const chargingStationId = oldData.chargingStationId
+                    console.log(chargingStationId)
                     dataDelete.splice(index, 1);
                     setMyData([...dataDelete]);
                     resolve()
                     axios.get(`http://localhost:8080/chargingstations/delete/${chargingStationId}`)
                         .then((res) => {
-                            alert("delete 성공")
+                            window.location.reload()
                         })
                         .catch(() => {
                             alert("통신실패")

@@ -3,12 +3,10 @@ import {Helmet} from 'react-helmet'
 import {useDispatch, useSelector} from 'react-redux'
 import {useHistory, useRouteMatch} from 'react-router-dom'
 import PaypalExpressBtn from 'react-paypal-express-checkout';
-import kakaopay from '../../assets/images/icon/payment_icon_yellow_large.png'
-import {Breadcrumb, payment} from "../../common";
+import {Breadcrumb} from "../../common";
 import {getCartTotal} from "../../atomic/services/services";
 import axios from "axios";
-import KakaoPay from "../../common/item/kakaoPay";
-import PaymentForm from "../../common/payment/PaymentForm";
+import Payment from "../../common/payment/PaymentForm";
 
 /* type */
 export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
@@ -95,7 +93,18 @@ export const checkout = () => {
         sandbox:    'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
         production: 'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
     }
-
+    const purchaseData = {
+        pg: 'kakaopay',                           // PG사
+        pay_method: 'card',                           // 결제수단
+        merchant_uid: `mid_${new Date().getTime()}`,   // 주문번호
+        amount: newCar.price,                                 // 결제금액
+        name: newCar.carName,                  // 주문명
+        buyer_name: sessionUser.name,                           // 구매자 이름
+        buyer_tel: sessionUser.phoneNumber,                     // 구매자 전화번호
+        buyer_email: sessionUser.email,               // 구매자 이메일
+        buyer_addr: sessionUser.addr,                    // 구매자 주소
+        buyer_postcode: '06018',                      // 구매자 우편번호
+    }
 
 
     return (
@@ -185,6 +194,12 @@ export const checkout = () => {
                                                                 </div>
                                                             </li>
                                                             <li>
+                                                                <div className="radio-option stripe">
+                                                                    <input type="radio" name="payment-group" id="payment-3" onClick={() => checkhandle('카카오페이')} />
+                                                                    <label htmlFor="payment-3">카카오페이</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
                                                                 <div className="radio-option paypal">
                                                                     <input type="radio" name="payment-group" id="payment-1" onClick={() => checkhandle('페이팔')} />
                                                                     <label htmlFor="payment-1">페이팔<span className="image"><img src={`${process.env.PUBLIC_URL}/assets/images/paypal.png`} alt=""/></span></label>
@@ -197,9 +212,10 @@ export const checkout = () => {
                                                         {(method === '구매상담')?
                                                             <button type="button" className="btn-solid btn" onClick={() => onPurchaseCar()} >Place Order</button>
                                                             :
+                                                            (method === '카카오페이')?
+                                                                <Payment data={purchaseData}/>
+                                                                :
                                                             <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
-                                                            <img src={kakaopay}/>
-                                                            <PaymentForm />
                                                     </div>
                                             </div>
                                         </div>

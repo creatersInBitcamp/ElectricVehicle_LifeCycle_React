@@ -3,7 +3,7 @@ import {AdminBreadcrumb} from '../common';
 import order from '../../atomic/constants/convertcsv.json'
 import { Navigation, Box, MessageSquare, Users, Briefcase, CreditCard, ShoppingCart, Calendar } from 'react-feather';
 import CountUp from 'react-countup';
-import { Bar, Line } from 'react-chartjs-2';
+import {Bar, Doughnut, Line} from 'react-chartjs-2';
 import {lineOptions, buyOption,} from '../../atomic/constants/chartData'
 import axios from 'axios'
 
@@ -26,6 +26,7 @@ export const Dashboard = () => {
     const [brandCarData, setBrandCarData] = useState({})
     const [usedBrandCar, setUsedBrandCar] = useState({})
     const [usedBrandCarData, setUsedBrandCarData] = useState({})
+    const [popular, setPopular] = useState([])
 
     const makeColors = () => {
         let r = Math.floor(Math.random() * 255)
@@ -58,9 +59,11 @@ export const Dashboard = () => {
         const orderKeys = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"]
         const intOnly = []
         const price = []
+        const name = []
         for(let i in order){
             intOnly.push(order[i].slice(2))
             price.push(order[i][1])
+            name.push(order[i][0])
         }
 
         let sales = 0
@@ -76,6 +79,7 @@ export const Dashboard = () => {
             count += sum
             setSellCount(count)
         }
+
         const total = []
         for(let j in intOnly){
             for(let i=0; i<12; i++){
@@ -102,6 +106,23 @@ export const Dashboard = () => {
             }
 
         )
+        const popularColr = []
+        for(let i in name){
+            popularColr.push(makeColors())
+        }
+
+        setPopular({
+                labels: name,
+                datasets:[
+                    {
+                        data: total,
+                        backgroundColor: popularColr
+                    },
+                ],
+            }
+
+        )
+
         // 신차 브랜드별 차량 수드
         const carBrandKey = []
         const carBrandValues = []
@@ -146,25 +167,6 @@ export const Dashboard = () => {
             }
         )
     },[userCount, brandCar, usedBrandCar])
-
-        const buyData = {
-            labels: ["", "10", "20", "30", "40", "50"],
-            datasets: [{
-                backgroundColor: "transparent",
-                borderColor: "#13c9ca",
-                data: [20, 5, 80, 10, 100, 15],
-            },
-            {
-                backgroundColor: "transparent",
-                borderColor: "#a5a5a5",
-                data: [0, 50, 20, 70, 30, 27],
-            },
-            {
-                backgroundColor: "transparent",
-                borderColor: "#ff8084",
-                data: [0, 30, 40, 10, 86, 40],
-            }]
-        }
 
         return (
 
@@ -244,53 +246,14 @@ export const Dashboard = () => {
                         <div className="col-xl-6 xl-100">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5>인기 차종</h5>
+                                    <h5>차량별 누적 판매수</h5>
                                 </div>
                                 <div className="card-body">
                                     <div className="user-status table-responsive latest-order-table">
-                                        <table className="table table-bordernone">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Order ID</th>
-                                                    <th scope="col">Order Total</th>
-                                                    <th scope="col">Payment Method</th>
-                                                    <th scope="col">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td className="digits">$120.00</td>
-                                                    <td className="font-danger">Bank Transfers</td>
-                                                    <td className="digits">On Way</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td className="digits">$90.00</td>
-                                                    <td className="font-secondary">Ewallets</td>
-                                                    <td className="digits">Delivered</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td className="digits">$240.00</td>
-                                                    <td className="font-warning">Cash</td>
-                                                    <td className="digits">Delivered</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td className="digits">$120.00</td>
-                                                    <td className="font-primary">Direct Deposit</td>
-                                                    <td className="digits">$6523</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td className="digits">$50.00</td>
-                                                    <td className="font-primary">Bank Transfers</td>
-                                                    <td className="digits">Delivered</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <a className="btn btn-primary">주문현황 더보기</a>
+                                        <div className="market-chart">
+                                            <Bar data={popular} options={{
+                                                dragData: true, dragDataRound: 0, legend:{ display: false}}} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>

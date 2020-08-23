@@ -139,6 +139,11 @@ export const productDetail = (props) => {
                                                     <TabList className="nav nav-tabs nav-material">
                                                         <Tab className="nav-item">
                                                             <span className="nav-link active">
+                                                                <i className="icofont icofont-ui-home"/>Description</span>
+                                                            <div className="material-border"/>
+                                                        </Tab>
+                                                        <Tab className="nav-item">
+                                                            <span className="nav-link active">
                                                                 <i className="icofont icofont-ui-home"/>
                                                                 Details
                                                             </span>
@@ -152,6 +157,20 @@ export const productDetail = (props) => {
                                                             <div className="material-border"/>
                                                         </Tab>
                                                     </TabList>
+                                                    <TabPanel className="tab-pane fade mt-4 show active">
+                                                        <p className="mt-4 p-0">
+                                                            {item.pictures.map((vari, index) =>{
+                                                                if(vari !== ""){
+                                                                    return (
+                                                                        <div key={index}>
+                                                                            <img width={1000} height={300} src={`${vari}`} key={index} alt=""  className="img-fluid" />
+                                                                            <br/><br/>
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                            })}
+                                                        </p>
+                                                    </TabPanel>
                                                     <TabPanel className="tab-pane fade mt-4 show active">
                                                         <table className="table table-striped mb-0">
                                                             <tbody>

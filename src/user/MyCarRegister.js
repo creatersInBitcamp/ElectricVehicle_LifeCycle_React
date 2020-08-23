@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -11,16 +10,21 @@ import {Table} from "../admin/item";
 import {RefreshInfo} from "../board/items";
 
 /* type */
+const RECEIVE_MY_CARS = 'RECEIVE_MY_CARS'
 const ADD_TO_MY_CAR = 'ADD_TO_MY_CAR'
 const REMOVE_FROM_MY_CAR = 'REMOVE_FROM_MY_CAR'
+const REMOVE_ALL_CAR = 'REMOVE_ALL_CAR'
+
+const RECEIVE_FIRST_CAR = 'RECEIVE_FIRST_CAR'
 const ADD_TO_FIRST_CAR = 'ADD_TO_FIRST_CAR'
 const REMOVE_FROM_FIRST_CAR = 'REMOVE_FROM_FIRST_CAR'
-const REMOVE_ALL_CAR = 'REMOVE_ALL_CAR'
 const REMOVE_ALL_FIRST_CAR = 'REMOVE_ALL_FIRST_CAR'
-const RECEIVE_MY_CARS = 'RECEIVE_MY_CARS'
-const RECEIVE_FIRST_CAR = 'RECEIVE_FIRST_CAR'
 
 /* action */
+const receiveMyCar = myCars => ({
+    type: RECEIVE_MY_CARS,
+    myCars
+})
 const addToMyCar = ({product,user}) => (dispatch) => {
     const info = {
         price: null,
@@ -35,32 +39,29 @@ const addToMyCar = ({product,user}) => (dispatch) => {
         .then((res)=>{
             console.log(info)
             console.log(res.data)
-        })
-        .catch((err)=>{ throw err })
-    axios.get(`http://localhost:8080/electriccars/getone/${info.eccarId}`)
-        .then((res)=>{
-            console.log(product)
-            dispatch(addToMyCarUnsafe(res.data,user))
             window.location.reload()
         })
         .catch((err)=>{ throw err })
+    // axios.get(`http://localhost:8080/electriccars/getone/${info.eccarId}`)
+    //     .then((res)=>{
+    //         console.log(product)
+    //         dispatch(addToMyCarUnsafe(res.data,user))
+    //         window.location.reload()
+    //     })
+    //     .catch((err)=>{ throw err })
 }
 const addToMyCarUnsafe = (product) => ({
     type: ADD_TO_MY_CAR,
     product
 })
-const receiveMyCar = myCars => ({
-    type: RECEIVE_MY_CARS,
-    myCars
-})
-export const getAllMyCar = (user) => dispatch => {
-    axios.get(`http://localhost:8080/usedCars/getAllMyCar/${user}`)
-        .then((res)=>{
-            console.log(res.data)
-            dispatch(receiveMyCar(res.data))
-        })
-        .catch(()=>{})
-}
+// export const getAllMyCar = (user) => dispatch => {
+//     axios.get(`http://localhost:8080/usedCars/getAllMyCar/${user}`)
+//         .then((res)=>{
+//             console.log(res.data)
+//             dispatch(receiveMyCar(res.data))
+//         })
+//         .catch(()=>{})
+// }
 const removeFromMyCar = product_id => (dispatch) => {
     dispatch({
         type: REMOVE_FROM_MY_CAR,
@@ -70,17 +71,18 @@ const removeFromMyCar = product_id => (dispatch) => {
 const removeAllCar = () => ({
     type: REMOVE_ALL_CAR
 })
+
 const receiveFirstCar = firstCar => ({
     type: RECEIVE_FIRST_CAR,
     firstCar
 })
-const getFirstCar = (user) => dispatch => {
-    axios.get(`http://localhost:8080/usedCars/getFirstCar/${user}`)
-        .then((res)=>{
-            console.log(res.data)
-            dispatch(receiveFirstCar(res.data))
-        })
-}
+// const getFirstCar = (user) => dispatch => {
+//     axios.get(`http://localhost:8080/usedCars/getFirstCar/${user}`)
+//         .then((res)=>{
+//             console.log(res.data)
+//             dispatch(receiveFirstCar(res.data))
+//         })
+// }
 const addToFirstCar = (product) => ({
     type: ADD_TO_FIRST_CAR,
     product
@@ -105,6 +107,15 @@ const changeFirstCar = ({product,before,eccarId,user}) => (dispatch) => {
         sale: false,
         main: true
     }
+    axios.post(`http://localhost:8080/usedCars/updateFirstCar`,info)
+        .then((res)=>{
+            console.log(info)
+            console.log(res.data)
+            window.location.reload()
+        })
+        .catch((err)=>{ throw err })
+    // dispatch(addToFirstCar(product))
+
     if (before) {
         const beforeInfo = {
             usedCarId: before.usedCarId,
@@ -123,15 +134,6 @@ const changeFirstCar = ({product,before,eccarId,user}) => (dispatch) => {
             })
             .catch((err)=>{ throw err })
     }
-    axios.post(`http://localhost:8080/usedCars/updateFirstCar`,info)
-        .then((res)=>{
-            console.log(info)
-            console.log(res.data)
-            window.location.reload()
-        })
-        .catch((err)=>{ throw err })
-
-    dispatch(addToFirstCar(product))
 }
 
 const initialState = {
@@ -179,8 +181,6 @@ export const myCarReducer = (state=initialState, action) => {
     return state
 }
 
-
-
 export const firstCarReducer = (state={list:[]}, action) => {
     switch (action.type) {
         case ADD_TO_FIRST_CAR:
@@ -225,7 +225,7 @@ export const MyCarRegister = () => {
     const [value, setValue] = useState(0)
     const [used, setUsed] = useState([])
     let [result,setResult] = useState([])
-    const [myCar,setMyCar] = useState([])
+    // const [myCar,setMyCar] = useState([])
     // const [first,setFirst] = useState([])
     const [userSession, setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
 
@@ -255,7 +255,7 @@ export const MyCarRegister = () => {
         axios.get(`http://localhost:8080/usedCars/getAllMyCar/${userSession.userSeq}`)
             .then((res)=>{
                 console.log(res.data)
-                setMyCar(res.data)
+                // setMyCar(res.data)
                 dispatch(receiveMyCar(res.data))
             })
             .catch(()=>{})
@@ -327,7 +327,6 @@ export const MyCarRegister = () => {
     const dispatch = useDispatch()
 
     return <>
-        {console.log(myCar)}
         <Container>
             <Row>
                 <Col/>
@@ -346,11 +345,11 @@ export const MyCarRegister = () => {
                                     <div className="box-content">
                                         <Slider {...setting} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
                                             {
-                                                myCar.length > 0 ?
-                                                    myCar.map((item,index)=>{
+                                                myCars.length > 0 ?
+                                                    myCars.map((item,index)=>{
                                                         return (
                                                             <div key={index}>
-                                                                <img src={item.img.img1} className="img-fluid image_zoom_cls-0"  alt={""} />
+                                                                <img src={item.img.img1 ? item.img.img1 : item.img} className="img-fluid image_zoom_cls-0"  alt={""} />
                                                                 <h4>{item.carName}</h4>
                                                             </div>
                                                         )})
@@ -404,7 +403,7 @@ export const MyCarRegister = () => {
                                             <select onChange={e=>setTargetId(e.target.value)}>
                                                 <option value="default">삭제할 차량을 선택해주세요.</option>
                                                 {
-                                                    myCar.map((item,index)=>{
+                                                    myCars.map((item,index)=>{
                                                         return <option key={index} value={item.usedCarId}>{item.carName}</option>
                                                     })
                                                 }
@@ -424,9 +423,9 @@ export const MyCarRegister = () => {
                                                     })
                                                 }
                                             </select>
-                                            <button onClick={()=>dispatch(changeFirstCar({product: myCar.find(x=>x.usedCarId == targetId),
-                                                before: myCar.find(x=>x.usedCarId != targetId),
-                                                eccarId: myCar.find(x=>x.usedCarId == targetId).eccarId,
+                                            <button onClick={()=>dispatch(changeFirstCar({product: myCars.find(x=>x.usedCarId == targetId),
+                                                before: myCars.find(x=>x.usedCarId != targetId),
+                                                eccarId: myCars.find(x=>x.usedCarId == targetId).eccarId,
                                                 user: userSession.userSeq}))}>변경</button>
                                             <button onClick={()=>dispatch(removeAllFirstCar())}>전체삭제</button>
                                         </div>

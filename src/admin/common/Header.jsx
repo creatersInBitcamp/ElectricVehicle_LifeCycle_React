@@ -39,26 +39,7 @@ export const Header = () => {
             document.querySelector(".right-sidebar").classList.remove('show');
         }
     }
-    const goFull = () => {
-        if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-            (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-            if (document.documentElement.requestFullScreen) {
-                document.documentElement.requestFullScreen();
-            } else if (document.documentElement.mozRequestFullScreen) {
-                document.documentElement.mozRequestFullScreen();
-            } else if (document.documentElement.webkitRequestFullScreen) {
-                document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-            }
-        } else {
-            if (document.cancelFullScreen) {
-                document.cancelFullScreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitCancelFullScreen) {
-                document.webkitCancelFullScreen();
-            }
-        }
-    }
+
     const openCloseSidebar = () => {
         if (sidebar) {
             setSidebar(false)
@@ -81,6 +62,12 @@ export const Header = () => {
         sessionStorage.clear()
         window.location.reload()
     }
+
+    const main = (e) =>{
+        e.preventDefault()
+        dispatch(adminCheckAction(admin))
+    }
+
         return (
             <>
                 {/* open */}
@@ -103,7 +90,7 @@ export const Header = () => {
                                         <img className="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src={image} alt="header-user" />
                                         <div className="dotted-animation"><span className="animate-circle"/><span className="main-circle"/></div>
                                         <ul className="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
-                                            <li><Link to={`${process.env.PUBLIC_URL}/pages/profile`} ><i data-feather="user"/>프로필 변경</Link></li>
+                                            <li onClick={main}><Link to={`${process.env.PUBLIC_URL}/`} ><i data-feather="user"/>홈으로 가기</Link></li>
                                             <li onClick={logout}><Link to={`${process.env.PUBLIC_URL}/`}><i data-feather="log-out"/>로그아웃</Link></li>
                                         </ul>
                                     </div>

@@ -77,7 +77,8 @@ const ClassicBoardMain = () => {
                 <Breadcrumb title={'Board'}/>
                 
                 {/*Blog Details section*/}
-                <section className="section-b-space  blog-page">
+
+                <section className="section-b-space blog-page">
                     <Container>
                         <Row>
                             <Col/>
@@ -120,7 +121,6 @@ const ClassicBoardMain = () => {
                                 </div>
                             </div>
                             <div className="col-xl-9 col-lg-8 col-md-7 order-sec">
-
                                 <div className="row blog-media">
                                     <Container>
                                         <Row>

@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios'
 import {Breadcrumb} from "../common";
 import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
 
 const ADMIN_CHECK = 'ADMIN_CHECK'
-const loginAction = admin =>({type: ADMIN_CHECK, check: admin})
 
 export const loginReducer = (state=false, action)=>{
     switch (action.type) {
@@ -48,6 +46,31 @@ export const Login = (props) => {
         }
 
     }
+    const on20 = (e) => {
+        e.preventDefault()
+        setUserid('16922')
+        setPassword('16922')
+    }
+    const on30 = (e) => {
+        e.preventDefault()
+        setUserid('6888')
+        setPassword('6888')
+    }
+    const on40 = (e) => {
+        e.preventDefault()
+        setUserid('8905')
+        setPassword('8905')
+    }
+    const on50 = (e) => {
+        e.preventDefault()
+        setUserid('27954')
+        setPassword('27954')
+    }
+    const onAdmin = (e) => {
+        e.preventDefault()
+        setUserid('tedd911')
+        setPassword('1234')
+    }
         return (
             <div>
                 <Breadcrumb title={'Login'}/>
@@ -63,12 +86,12 @@ export const Login = (props) => {
                                     <form className="theme-form">
                                         <div className="form-group">
                                             <label htmlFor="email">아이디</label>
-                                            <input type="text" className="form-control" id="email" placeholder="ID"
+                                            <input type="text" className="form-control" id="email" placeholder="ID" value={userId}
                                                    required="" onChange={(e)=>{setUserid(e.target.value)}}/>
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="review">비밀번호</label>
-                                            <input type="password" className="form-control" id="review"
+                                            <input type="password" className="form-control" id="review" value={password}
                                                    placeholder="Password" required="" onChange={(e)=>{setPassword(e.target.value)}}/>
                                         </div>
                                         <button className="btn btn-solid" onClick={login}>로그인</button>
@@ -84,6 +107,18 @@ export const Login = (props) => {
                                     <Link to={`${process.env.PUBLIC_URL}/pages/forgot`}><button className="btn btn-solid">비밀번호찾기</button></Link>
                                 </div>
                             </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <button className="btn btn-outline-primary" onClick={on20}>20대</button>
+                                <button className="btn btn-outline-primary" onClick={on30}>30대</button>
+                                <button className="btn btn-outline-primary" onClick={on40}>40대</button>
+                                <button className="btn btn-outline-primary" onClick={on50}>50대</button>
+                            </div>
+                            <div className="col">
+                                <button className="btn btn-outline-info" onClick={onAdmin}>관리자</button>
+                            </div>
+                            <div className="col"/>
                         </div>
                     </div>
                 </section>

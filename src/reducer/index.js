@@ -2,7 +2,7 @@ import {combineReducers} from 'redux'
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {datatableReducer, imageReducer, tabset_pageReducer, report_tableReducer, tabset_profileReducer} from "../admin/item"
 import {sidebarReducer, sidebarMenusReducer} from "../admin/common"
-import {communityReducer, elecCarReducer, reportsReducer, ordersReducer, userReducer, usedCarReducer, dashboardReducer, tabset_userReducer} from "../admin/page"
+import {communityReducer, elecCarReducer, ordersReducer, userReducer, usedCarReducer, dashboardReducer, tabset_userReducer} from "../admin/page"
 import {CartReducer,WishlistReducer,CompareReducer} from "../newCar";
 import ProductReducer from "../newCar/items/ProductReducer";
 import {usedWishlistReducer, usedCompareReducer, usedProductReducer} from "../usedCar"
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
         boardReducer,
         datatableReducer,
         imageReducer,sidebarReducer, sidebarMenusReducer, communityReducer, elecCarReducer,
-        reportsReducer, report_tableReducer, ordersReducer, tabset_profileReducer,
+        report_tableReducer, ordersReducer, tabset_profileReducer,
         tabset_pageReducer, usedCarReducer, userReducer, tabset_userReducer, dashboardReducer,
         data: ProductReducer,
         usedData: usedProductReducer,

@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {AdminBreadcrumb} from '../common';
 import order from '../../atomic/constants/convertcsv.json'
-import { Navigation, Box, MessageSquare, Users, Briefcase, CreditCard, ShoppingCart, Calendar } from 'react-feather';
+import { Box, Users, CreditCard, ShoppingCart } from 'react-feather';
 import CountUp from 'react-countup';
-import { Bar, Line } from 'react-chartjs-2';
-import {lineOptions, buyOption,} from '../../atomic/constants/chartData'
+import {Bar, Line} from 'react-chartjs-2';
 import axios from 'axios'
 
 const dashboardTypes = {REQUEST: 'dashboard/REQUEST'}
@@ -24,6 +23,9 @@ export const Dashboard = () => {
     const [monthSalesChatData,setMonthSalesChatData] = useState([])
     const [brandCar, setBrandCar] = useState({})
     const [brandCarData, setBrandCarData] = useState({})
+    const [usedBrandCar, setUsedBrandCar] = useState({})
+    const [usedBrandCarData, setUsedBrandCarData] = useState({})
+    const [popular, setPopular] = useState([])
 
     const makeColors = () => {
         let r = Math.floor(Math.random() * 255)
@@ -44,6 +46,10 @@ export const Dashboard = () => {
             .then((res)=>{
                 setBrandCar(res.data)
             })
+        axios.get(`http://localhost:8080/user/findBrandUsedCar`)
+            .then((res)=>{
+                setUsedBrandCar(res.data)
+            })
     },[])
 
     // 매출 및 판매 현황
@@ -52,9 +58,11 @@ export const Dashboard = () => {
         const orderKeys = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"]
         const intOnly = []
         const price = []
+        const name = []
         for(let i in order){
             intOnly.push(order[i].slice(2))
             price.push(order[i][1])
+            name.push(order[i][0])
         }
 
         let sales = 0
@@ -64,20 +72,25 @@ export const Dashboard = () => {
         const monthSales = []
 
         for(let i=0; i<12; i++){
+            sum = 0
             for(let j in intOnly){
                 sum += intOnly[j][i]
             }
             count += sum
             setSellCount(count)
         }
+
+        // 월별 차량 판매 수
         const total = []
         for(let j in intOnly){
+            all = 0
             for(let i=0; i<12; i++){
                 all += intOnly[j][i]
             }
-        // 총 판매 차량수
             total.push(all)
         }
+
+
 
         for(let i in total){
             sales += (total[i]*price[i])
@@ -96,7 +109,24 @@ export const Dashboard = () => {
             }
 
         )
-        // 브랜드별 차량 수드
+        const popularColr = []
+        for(let i in name){
+            popularColr.push(makeColors())
+        }
+
+        setPopular({
+                labels: name,
+                datasets:[
+                    {
+                        data: total,
+                        backgroundColor: popularColr
+                    },
+                ],
+            }
+
+        )
+
+        // 신차 브랜드별 차량 수드
         const carBrandKey = []
         const carBrandValues = []
         const brandColor = []
@@ -117,26 +147,29 @@ export const Dashboard = () => {
                 ],
             }
         )
-    },[userCount, brandCar])
 
-        const buyData = {
-            labels: ["", "10", "20", "30", "40", "50"],
-            datasets: [{
-                backgroundColor: "transparent",
-                borderColor: "#13c9ca",
-                data: [20, 5, 80, 10, 100, 15],
-            },
-            {
-                backgroundColor: "transparent",
-                borderColor: "#a5a5a5",
-                data: [0, 50, 20, 70, 30, 27],
-            },
-            {
-                backgroundColor: "transparent",
-                borderColor: "#ff8084",
-                data: [0, 30, 40, 10, 86, 40],
-            }]
+        // 중고 브랜드별 차량 수드
+        const usedCarBrandKey = []
+        const usedCarBrandValues = []
+        const usedBrandColor = []
+
+        for(let i in usedBrandCar){
+            usedCarBrandKey.push(usedBrandCar[i].BRAND)
+            usedCarBrandValues.push(usedBrandCar[i].COUNT)
+            usedBrandColor.push(makeColors())
         }
+        setUsedBrandCarData(
+            {
+                labels: usedCarBrandKey,
+                datasets:[
+                    {
+                        data: usedCarBrandValues,
+                        backgroundColor: brandColor
+                    },
+                ],
+            }
+        )
+    },[userCount, brandCar, usedBrandCar])
 
         return (
 
@@ -152,7 +185,7 @@ export const Dashboard = () => {
                                             <div className="align-self-center text-center"><CreditCard className="font-danger" /></div>
                                         </div>
                                         <div className="media-body col-15"><span className="m-0">총 매출</span>
-                                            <h3 className="mb-0"> <CountUp className="counter" end={sales} /> <small>만원</small></h3>
+                                            <h3 className="mb-0"> <CountUp className="counter" separator={','} end={sales} /> <small>만원</small></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +199,7 @@ export const Dashboard = () => {
                                             <div className="align-self-center text-center"><Box className="font-secondary" /></div>
                                         </div>
                                         <div className="media-body col-8"><span className="m-0">판매 차량 수</span>
-                                            <h3 className="mb-0"> <CountUp className="counter" end={sellCount} /> 대</h3>
+                                            <h3 className="mb-0"> <CountUp className="counter" separator={','} end={sellCount} /><small> 대</small> </h3>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +213,7 @@ export const Dashboard = () => {
                                             <div className="align-self-center text-center"><ShoppingCart className="font-primary" /></div>
                                         </div>
                                         <div className="media-body col-8"><span className="m-0">보유 중고차</span>
-                                            <h3 className="mb-0"> <CountUp className="counter" end={usedCarCount} /> 대</h3>
+                                            <h3 className="mb-0"> <CountUp className="counter" separator={','} end={usedCarCount} /> <small> 대</small></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +227,7 @@ export const Dashboard = () => {
                                             <div className="align-self-center text-center"><Users className="font-danger" /></div>
                                         </div>
                                         <div className="media-body col-8"><span className="m-0">총 회원 수</span>
-                                            <h3 className="mb-0"><CountUp className="counter" end={userCount} /> 명</h3>
+                                            <h3 className="mb-0"><CountUp className="counter" separator={','} end={userCount} /> <small> 명</small></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -216,64 +249,36 @@ export const Dashboard = () => {
                         <div className="col-xl-6 xl-100">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5>인기 차종</h5>
+                                    <h5>차량별 누적 판매수</h5>
                                 </div>
                                 <div className="card-body">
                                     <div className="user-status table-responsive latest-order-table">
-                                        <table className="table table-bordernone">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Order ID</th>
-                                                    <th scope="col">Order Total</th>
-                                                    <th scope="col">Payment Method</th>
-                                                    <th scope="col">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td className="digits">$120.00</td>
-                                                    <td className="font-danger">Bank Transfers</td>
-                                                    <td className="digits">On Way</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td className="digits">$90.00</td>
-                                                    <td className="font-secondary">Ewallets</td>
-                                                    <td className="digits">Delivered</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td className="digits">$240.00</td>
-                                                    <td className="font-warning">Cash</td>
-                                                    <td className="digits">Delivered</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td className="digits">$120.00</td>
-                                                    <td className="font-primary">Direct Deposit</td>
-                                                    <td className="digits">$6523</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td className="digits">$50.00</td>
-                                                    <td className="font-primary">Bank Transfers</td>
-                                                    <td className="digits">Delivered</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <a className="btn btn-primary">주문현황 더보기</a>
+                                        <div className="market-chart">
+                                            <Bar data={popular} options={{
+                                                dragData: true, dragDataRound: 0, legend:{ display: false}}} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-12">
+                        <div className="col-xl-6 xl-100">
                             <div className="card">
                                 <div className="card-header">
                                     <h5>신차 브랜드별 차량 수</h5>
                                 </div>
                                 <div className="card-body sell-graph">
                                     <Bar data={brandCarData} options={{
+                                        dragData: true, dragDataRound: 0, legend:{ display: false}}} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-xl-6 xl-100">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h5>중고차 브랜드별 차량 수</h5>
+                                </div>
+                                <div className="card-body sell-graph">
+                                    <Bar data={usedBrandCarData} options={{
                                         dragData: true, dragDataRound: 0, legend:{ display: false}}} />
                                 </div>
                             </div>

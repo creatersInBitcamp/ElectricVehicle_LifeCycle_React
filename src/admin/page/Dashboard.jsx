@@ -24,6 +24,8 @@ export const Dashboard = () => {
     const [monthSalesChatData,setMonthSalesChatData] = useState([])
     const [brandCar, setBrandCar] = useState({})
     const [brandCarData, setBrandCarData] = useState({})
+    const [usedBrandCar, setUsedBrandCar] = useState({})
+    const [usedBrandCarData, setUsedBrandCarData] = useState({})
 
     const makeColors = () => {
         let r = Math.floor(Math.random() * 255)
@@ -43,6 +45,10 @@ export const Dashboard = () => {
         axios.get(`http://localhost:8080/user/findBrandCar`)
             .then((res)=>{
                 setBrandCar(res.data)
+            })
+        axios.get(`http://localhost:8080/user/findBrandUsedCar`)
+            .then((res)=>{
+                setUsedBrandCar(res.data)
             })
     },[])
 
@@ -96,7 +102,7 @@ export const Dashboard = () => {
             }
 
         )
-        // 브랜드별 차량 수드
+        // 신차 브랜드별 차량 수드
         const carBrandKey = []
         const carBrandValues = []
         const brandColor = []
@@ -117,7 +123,29 @@ export const Dashboard = () => {
                 ],
             }
         )
-    },[userCount, brandCar])
+
+        // 중고 브랜드별 차량 수드
+        const usedCarBrandKey = []
+        const usedCarBrandValues = []
+        const usedBrandColor = []
+
+        for(let i in usedBrandCar){
+            usedCarBrandKey.push(usedBrandCar[i].BRAND)
+            usedCarBrandValues.push(usedBrandCar[i].COUNT)
+            usedBrandColor.push(makeColors())
+        }
+        setUsedBrandCarData(
+            {
+                labels: usedCarBrandKey,
+                datasets:[
+                    {
+                        data: usedCarBrandValues,
+                        backgroundColor: brandColor
+                    },
+                ],
+            }
+        )
+    },[userCount, brandCar, usedBrandCar])
 
         const buyData = {
             labels: ["", "10", "20", "30", "40", "50"],
@@ -152,7 +180,7 @@ export const Dashboard = () => {
                                             <div className="align-self-center text-center"><CreditCard className="font-danger" /></div>
                                         </div>
                                         <div className="media-body col-15"><span className="m-0">총 매출</span>
-                                            <h3 className="mb-0"> <CountUp className="counter" end={sales} /> <small>만원</small></h3>
+                                            <h3 className="mb-0"> <CountUp className="counter" separator={','} end={sales} /> <small>만원</small></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +194,7 @@ export const Dashboard = () => {
                                             <div className="align-self-center text-center"><Box className="font-secondary" /></div>
                                         </div>
                                         <div className="media-body col-8"><span className="m-0">판매 차량 수</span>
-                                            <h3 className="mb-0"> <CountUp className="counter" end={sellCount} /> 대</h3>
+                                            <h3 className="mb-0"> <CountUp className="counter" separator={','} end={sellCount} /><small> 대</small> </h3>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +208,7 @@ export const Dashboard = () => {
                                             <div className="align-self-center text-center"><ShoppingCart className="font-primary" /></div>
                                         </div>
                                         <div className="media-body col-8"><span className="m-0">보유 중고차</span>
-                                            <h3 className="mb-0"> <CountUp className="counter" end={usedCarCount} /> 대</h3>
+                                            <h3 className="mb-0"> <CountUp className="counter" separator={','} end={usedCarCount} /> <small> 대</small></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +222,7 @@ export const Dashboard = () => {
                                             <div className="align-self-center text-center"><Users className="font-danger" /></div>
                                         </div>
                                         <div className="media-body col-8"><span className="m-0">총 회원 수</span>
-                                            <h3 className="mb-0"><CountUp className="counter" end={userCount} /> 명</h3>
+                                            <h3 className="mb-0"><CountUp className="counter" separator={','} end={userCount} /> <small> 명</small></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -267,13 +295,24 @@ export const Dashboard = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-12">
+                        <div className="col-xl-6 xl-100">
                             <div className="card">
                                 <div className="card-header">
                                     <h5>신차 브랜드별 차량 수</h5>
                                 </div>
                                 <div className="card-body sell-graph">
                                     <Bar data={brandCarData} options={{
+                                        dragData: true, dragDataRound: 0, legend:{ display: false}}} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-xl-6 xl-100">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h5>중고차 브랜드별 차량 수</h5>
+                                </div>
+                                <div className="card-body sell-graph">
+                                    <Bar data={usedBrandCarData} options={{
                                         dragData: true, dragDataRound: 0, legend:{ display: false}}} />
                                 </div>
                             </div>

@@ -10,7 +10,6 @@ import {RefreshInfo} from '../items'
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const ClassicBoardDetails = ({history}) => {
-        const init = { userId : 'none' }
         const [user, setUser] = useState({})
         const [post, setPost] = useState({})
         const [commentText, setCommentText] = useState("")
@@ -133,7 +132,7 @@ const ClassicBoardDetails = ({history}) => {
                                                 {(linkOpen)?
                                                     <>
                                                         <button className="btn btn-outline-danger" onClick={()=>setLinkOpen(false)}> 링크 닫기 </button>
-                                                        <iframe src={post.link} width={1920} height={1500}/>
+                                                        <iframe src={post.link} width={1920} height={1000}/>
                                                     </>
                                                     :
                                                     <>

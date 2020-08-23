@@ -90,13 +90,21 @@ export const Dashboard = () => {
             total.push(all)
         }
 
-
-
-        for(let i in total){
-            sales += (total[i]*price[i])
+        for(let i in intOnly){
+            sales = 0
+            for(let j=0; j<12; j++){
+                sales += (intOnly[j][i] * price[j])
+            }
             monthSales.push(sales)
         }
+
+        //총 매출
+        for(let i in total){
+            sales = 0
+            sales += (total[i]*price[i])
+        }
         setSales(sales)
+
         // 월별 매출
         setMonthSalesChatData({
                 labels: orderKeys,

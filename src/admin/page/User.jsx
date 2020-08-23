@@ -3,6 +3,7 @@ import {AdminBreadcrumb} from '../common';
 import {Table} from '../item'
 import {Bar, Doughnut} from "react-chartjs-2";
 import axios from "axios";
+
 const userReducer = ( state= {}, action ) => {
     switch (action.type) {
         default: return state
@@ -12,6 +13,7 @@ const userReducer = ( state= {}, action ) => {
 export const User = () => {
 
     const[data,setData] = useState([])
+    const[banDate, setBanDate]  = useState("")
 
     const makeColors = () => {
         let r = Math.floor(Math.random() * 255)
@@ -46,7 +48,7 @@ export const User = () => {
             title:'이메일', field:'email', editable: 'never'
         },
         {
-            title:'등록날짜', field:'registerDate', editable: 'never'
+            title:'등록날짜', field:'registerDate', editable: 'never',
         },
         {
             title:'주소', field:'addr', editable: 'never'
@@ -55,7 +57,10 @@ export const User = () => {
             title:'등급', field:'grade'
         },
         {
-            title:'차단일자', field:'banDate', editable: 'never'
+            title:'차단일자', field:'banDate',
+            editComponent: props =>(
+                <input type={"date"} value={props.value} onChange={e=>props.onChange(e.target.value)}/>
+            )
         }
     ]
     const editable = {

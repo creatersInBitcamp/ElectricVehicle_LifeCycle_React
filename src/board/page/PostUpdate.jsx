@@ -35,7 +35,7 @@ const PostUadate = ({history}) => {
         e.preventDefault()
         const newPost = {
             postId: postId,
-            userName: user.name,
+            userId: user.userId,
             link : link,
             title : title,
             date : new Date().toLocaleString(),

@@ -25,7 +25,7 @@ import {MapChargingStation,MapSights,TableChargingStation,MapBookmark,Service} f
 import {BoardDetail, BoardInput, BoardMain, BoardUpdate} from "./board/";
 
 // Admin
-import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User,Reports} from './admin/page';
+import {Dashboard,ElecCar,Orders,UsedCar,Community,Notice,User} from './admin/page';
 
 //user
 import {ForgetPassword, Login, MyAccount, MyCarRegister, Register} from './user'
@@ -106,7 +106,6 @@ const Root = () => {
                                 <Route path={`${process.env.PUBLIC_URL}/admin/community`} component={Community} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/notice`} component={Notice} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/users`} component={User} />
-                                <Route path={`${process.env.PUBLIC_URL}/admin/reports`} component={Reports} />
                                 <Route path={`${process.env.PUBLIC_URL}/admin/userDetail`} component={MyAccount} />
                             </Layout>
                         </Switch>

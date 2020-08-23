@@ -90,6 +90,7 @@ export const Orders = () => {
         const total = []
         let sum = 0
         for(let i=0; i<12; i++){
+            sum = 0
             for(let j in intOnly){
                 sum += intOnly[j][i]
             }

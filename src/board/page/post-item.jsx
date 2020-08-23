@@ -8,7 +8,7 @@ export const PostItem = props => {
         <div className="product-box">
             <div className="img-wrapper">
                 <div className="front">
-                    <Link to={`${process.env.PUBLIC_URL}/board/detail/${post.postId}`} >
+                    <Link to={`${process.env.PUBLIC_URL}/board/details/${post.postId}`} >
                         <img src={post.img} alt="post img"/>
                     </Link>
                 </div>
@@ -20,7 +20,7 @@ export const PostItem = props => {
             </div>
             <div className="product-detail">
                 <div>
-                    <Link to={`${process.env.PUBLIC_URL}/board/detail/${post.postId}`}>
+                    <Link to={`${process.env.PUBLIC_URL}/board/details/${post.postId}`}>
                         <h6>{post.title}</h6>
                     </Link>
                 </div>

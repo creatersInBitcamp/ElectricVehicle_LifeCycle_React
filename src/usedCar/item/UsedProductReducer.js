@@ -3,7 +3,7 @@ import {CHANGE_CURRENCY} from "../../common/item/currency";
 
 export const usedCars = () => (dispatch) =>{
     let products = []
-    axios.get(`http://localhost:8080/usedCars/carInfo`)
+    axios.get(`http://localhost:8080/usedCars/findall`)
         .then((res)=> {
             let s = res.data.length
             for (let i=0; i<s; i++) {

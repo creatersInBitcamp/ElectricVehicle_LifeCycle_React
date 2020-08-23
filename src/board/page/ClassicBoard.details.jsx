@@ -10,7 +10,7 @@ import {RefreshInfo} from '../items'
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const ClassicBoardDetails = ({history}) => {
-        const [user, setUser] = useState(sessionUser)
+        const [user, setUser] = useState({})
         const [post, setPost] = useState({})
         const [commentText, setCommentText] = useState("")
         const [recommend, setrecommend] = useState(false)
@@ -132,7 +132,7 @@ const ClassicBoardDetails = ({history}) => {
                                                 {(linkOpen)?
                                                     <>
                                                         <button className="btn btn-outline-danger" onClick={()=>setLinkOpen(false)}> 링크 닫기 </button>
-                                                        <iframe src={post.link} width={1920} height={1500}/>
+                                                        <iframe src={post.link} width={1920} height={1000}/>
                                                     </>
                                                     :
                                                     <>
@@ -152,12 +152,16 @@ const ClassicBoardDetails = ({history}) => {
                                             }}>목록</button>
                                         </Col>
                                         <Col xs md={2}>
-                                            {(user !== null)?
+                                            {
+                                                (user !== null)?
+                                                (user.userId === post.userId)?
                                                 <>
                                                     <Link to={`${process.env.PUBLIC_URL}/board/update/${post.postId}`}><button className="btn btn-solid">수정</button></Link>
                                                     <button className="btn btn-solid" onClick={onDelete}>삭제</button>
                                                 </>
                                                 :
+                                            ""
+                                            :
                                             ""}
                                         </Col>
                                     </Row>

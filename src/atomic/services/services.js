@@ -183,7 +183,7 @@ export const getBestSellerProducts = (products, type) => {
 // Get Best Seller
 export const getBestSeller = products => {
     const items = products.filter(product => {
-        return product.sale === true && product.yyyy >2018;
+        return product.sale === true && product.price >4700 && product.price <= 6000;
     })
 
     return items.slice(0,8)
@@ -192,7 +192,7 @@ export const getBestSeller = products => {
 // Get Mens Wear
 export const getSpecialUsed = products => {
     const items = products.filter(product => {
-        return product.yyyy >= 2019;
+        return product.price > 3200 && product.price < 3400;
     })
 
     return items.slice(0,8)

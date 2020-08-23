@@ -23,7 +23,7 @@ const PostInput = ({history}) => {
     },[match])
 
     const newPost = {
-        userName: user.name,
+        userId: user.userId,
         link : link,
         title : title,
         date : new Date().toLocaleString(),
@@ -40,7 +40,10 @@ const PostInput = ({history}) => {
             .then((res) => {
                 console.log(res.statusText)
                 RefreshInfo()
-                history.push(`/board/main/${match}`)
+                switch (match){
+                    case 'faq': history.push('/pages/faq'); break;
+                    default: history.push(`/board/main/${match}`)
+                }
             })
             .catch((err) => {
                 console.log(err.status)
@@ -104,6 +107,12 @@ const PostInput = ({history}) => {
                                                         <Col xs lg={2}>
                                                             <button className="btn btn-solid" onClick={onNotice}>공지사항</button>
                                                             <button className="btn btn-solid" onClick={(e)=>{history.push(`/admin/notice`)}}>취소</button>
+                                                        </Col>
+                                                        :
+                                                        (category === 'faq')?
+                                                        <Col xs lg={2}>
+                                                            <button className="btn btn-solid" onClick={onPostIn}>Post</button>
+                                                            <button className="btn btn-solid" onClick={(e)=>{history.push(`/pages/faq`)}}>취소</button>
                                                         </Col>
                                                         :
                                                         <Col xs lg={2}>

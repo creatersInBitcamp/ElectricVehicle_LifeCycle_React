@@ -128,14 +128,10 @@ export const NavBar = (props) => {
                                 <span className="sub-arrow"/>
                             </Link>
                             <ul className="nav-submenu">
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/board/main/notice`}>{translate('notice')}</Link>
-                                </li>
-                                <li><Link
-                                    to={`${process.env.PUBLIC_URL}/board/main/news`}>{translate('news')}</Link>
-                                </li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/board/main/user`}>{translate('userboard')}</Link>
-                                </li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/board/main/notice`}>{translate('notice')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/board/main/news`}>{translate('news')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/board/main/user`}>{translate('userboard')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/board/main/qna`}>{translate('qna')}</Link></li>
                             </ul>
                         </li>
                         <li>

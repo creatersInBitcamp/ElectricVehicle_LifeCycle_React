@@ -258,7 +258,8 @@ var module = {
             userDetail: '사용자 관리',
             mypage: '마이페이지',
             news: '전기차 소식',
-            userboard: '유저 게시판'
+            userboard: '유저 게시판',
+            qna: 'FAQ'
         }
     }
 

@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {AdminBreadcrumb} from '../common';
 import order from '../../atomic/constants/convertcsv.json'
-import { Navigation, Box, MessageSquare, Users, Briefcase, CreditCard, ShoppingCart, Calendar } from 'react-feather';
+import { Box, Users, CreditCard, ShoppingCart } from 'react-feather';
 import CountUp from 'react-countup';
-import {Bar, Doughnut, Line} from 'react-chartjs-2';
-import {lineOptions, buyOption,} from '../../atomic/constants/chartData'
+import {Bar, Line} from 'react-chartjs-2';
 import axios from 'axios'
 
 const dashboardTypes = {REQUEST: 'dashboard/REQUEST'}
@@ -73,6 +72,7 @@ export const Dashboard = () => {
         const monthSales = []
 
         for(let i=0; i<12; i++){
+            sum = 0
             for(let j in intOnly){
                 sum += intOnly[j][i]
             }
@@ -80,14 +80,17 @@ export const Dashboard = () => {
             setSellCount(count)
         }
 
+        // 월별 차량 판매 수
         const total = []
         for(let j in intOnly){
+            all = 0
             for(let i=0; i<12; i++){
                 all += intOnly[j][i]
             }
-        // 총 판매 차량수
             total.push(all)
         }
+
+
 
         for(let i in total){
             sales += (total[i]*price[i])

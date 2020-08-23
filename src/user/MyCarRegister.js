@@ -96,8 +96,19 @@ const removeFromFirstCar = product_id => (dispatch) => {
 const removeAllFirstCar = () => ({
     type: REMOVE_ALL_FIRST_CAR
 })
-const changeFirstCar = ({product,before,eccarId,user}) => (dispatch) => {
-    const info = {
+const changeFirstCar = (myCars,targetId) => (dispatch) => {
+    const product = myCars.find(x=> (x.usedCarId == targetId));
+    const before = myCars.filter(x=> {
+            if(x.usedCarId != targetId){
+                return x.usedCarId
+            }
+        });
+    /*eccarId: myCars.find(x=>x.usedCarId == targetId).eccarId,
+    user: userSession.userSeq*/
+
+    console.log(product)
+    console.log(before)
+    /*const info = {
         usedCarId: product.usedCarId,
         eccarId: eccarId,
         userSeq: user,
@@ -106,18 +117,18 @@ const changeFirstCar = ({product,before,eccarId,user}) => (dispatch) => {
         mileage: product.mileage,
         sale: false,
         main: true
-    }
-    axios.post(`http://localhost:8080/usedCars/updateFirstCar`,info)
+    }*/
+    axios.get(`http://localhost:8080/usedCars/updateFirstCar/${product.usedCarId}`)
         .then((res)=>{
-            console.log(info)
-            console.log(res.data)
+            /*console.log(info)
+            console.log(res.data)*/
             window.location.reload()
         })
         .catch((err)=>{ throw err })
     // dispatch(addToFirstCar(product))
 
     if (before) {
-        const beforeInfo = {
+        /*const beforeInfo = {
             usedCarId: before.usedCarId,
             eccarId: before.eccarId,
             userSeq: user,
@@ -126,11 +137,11 @@ const changeFirstCar = ({product,before,eccarId,user}) => (dispatch) => {
             mileage: before.mileage,
             sale: false,
             main: false
-        }
-        axios.post(`http://localhost:8080/usedCars/updateFirstCar`,beforeInfo)
+        }*/
+        axios.post(`http://localhost:8080/usedCars/updateFirstCar`,before)
             .then((res)=>{
-                console.log(info)
-                console.log(res.data)
+                /*console.log(info)
+                console.log(res.data)*/
             })
             .catch((err)=>{ throw err })
     }
@@ -233,7 +244,7 @@ export const MyCarRegister = () => {
     const slider2 = useRef();
 
     useEffect(() => {
-        RefreshInfo()
+        // RefreshInfo()
         setUserSession(JSON.parse(sessionStorage.getItem("user")))
         // setValue(match)
     },[value])
@@ -423,10 +434,7 @@ export const MyCarRegister = () => {
                                                     })
                                                 }
                                             </select>
-                                            <button onClick={()=>dispatch(changeFirstCar({product: myCars.find(x=>x.usedCarId == targetId),
-                                                before: myCars.find(x=>x.usedCarId != targetId),
-                                                eccarId: myCars.find(x=>x.usedCarId == targetId).eccarId,
-                                                user: userSession.userSeq}))}>변경</button>
+                                            <button onClick={()=>dispatch(changeFirstCar(myCars,targetId))}>변경</button>
                                             <button onClick={()=>dispatch(removeAllFirstCar())}>전체삭제</button>
                                         </div>
                                     </div>

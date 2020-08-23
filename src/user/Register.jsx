@@ -87,6 +87,21 @@ export const Register = (props) =>  {
             })
     }
 
+    const onTest = (e) => {
+        e.preventDefault()
+        setUserId('testUser')
+        setPassword('0000')
+        setPasswordCheck('0000')
+        setName('testUser')
+        setAddr('서울시 강남구')
+        setAddr2('강남역 2번출구')
+        setYear('2020')
+        setMonth('08')
+        setDay('02')
+        setEmail('test@test.com')
+        setSex('남')
+    }
+
         return (
             <div>
                 <Breadcrumb title={'회원가입'}/>
@@ -101,7 +116,7 @@ export const Register = (props) =>  {
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">아이디</label>
-                                                <input type="text" className="form-control" id={"userIdJs"}
+                                                <input type="text" className="form-control" id={"userIdJs"} value={userId}
                                                        onChange={onChangeIdChk} placeholder="아이디" required="" />
                                                 <br/>
                                                 {idOverlap && <div style={{color: 'red'}}>중복된 아이디입니다.</div>}
@@ -113,7 +128,7 @@ export const Register = (props) =>  {
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">비밀번호</label>
-                                                <input type="password" className="form-control"
+                                                <input type="password" className="form-control" value={password}
                                                        onChange={(e)=>{setPassword(e.target.value)}} placeholder="비밀번호" required="" />
                                             </div>
                                         </div>
@@ -131,38 +146,38 @@ export const Register = (props) =>  {
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">이름</label>
-                                                <input type="text" className="form-control"
+                                                <input type="text" className="form-control" value={name}
                                                        onChange={(e)=>{setName(e.target.value)}} placeholder="이름" required="" />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">이메일</label>
-                                                <input type="text" className="form-control"
+                                                <input type="text" className="form-control" value={email}
                                                        onChange={(e)=>{setEmail(e.target.value)}} placeholder="이메일" required="" />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-2">
                                                 <label htmlFor="email">연도</label>
-                                                <input type="text" className="form-control"
+                                                <input type="text" className="form-control" value={year}
                                                        onChange={(e)=>{setYear(e.target.value)}} placeholder="년(4자)" required="" maxLength="4"/>
                                             </div>
                                             <div className="col-md-2">
                                                 <label htmlFor="email">월</label>
-                                                <input type="text" className="form-control"
+                                                <input type="text" className="form-control" value={month}
                                                        onChange={(e) => {setMonth(e.target.value)}} placeholder="월" required="" maxLength="2" />
                                             </div>
                                             <div className="col-md-2">
                                                 <label htmlFor="email">일</label>
-                                                <input type="text" className="form-control"
+                                                <input type="text" className="form-control" value={day}
                                                        onChange={(e)=>{setDay(e.target.value)}} placeholder="일" required="" maxLength="2" />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-1">
                                                 <label htmlFor="email">성별</label>
-                                                <select className="form-control"
+                                                <select className="form-control" value={sex}
                                                         onChange={onChangeSexChk} placeholder="성별" required="" >
                                                     <option>성별</option>
                                                     <option>남</option>
@@ -186,7 +201,7 @@ export const Register = (props) =>  {
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">나머지 주소</label>
-                                                <input type="text" className="form-control"
+                                                <input type="text" className="form-control" value={addr2}
                                                        onChange={(e)=>{setAddr2(e.target.value)}} placeholder="나머지 주소는 직접입력해 주세요." required="" />
                                             </div>
                                         </div>
@@ -195,7 +210,9 @@ export const Register = (props) =>  {
                                                 <button type="submit" className="btn btn-solid" onClick={handleSubmit} >가입하기</button>
                                                 <button type="submit" className="btn btn-solid" >취소</button>
                                             </Link>
-
+                                        </div>
+                                        <div className="form-row">
+                                            <button className="btn btn-outline-warning" onClick={onTest}>TEST 가입</button>
                                         </div>
                                     </form>
                                 </div>

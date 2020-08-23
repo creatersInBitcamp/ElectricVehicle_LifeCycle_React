@@ -117,7 +117,7 @@ export const MyCarComparison = () => {
                                         return (
                                             <>
                                                 <div className="img-section">
-                                                    <img className="img-fluid" src={item.img} alt=""/>
+                                                    <img className="img-fluid" src={item.img.img1} alt=""/>
                                                 </div>
                                                 <div className="detail-part">
                                                     <div className="title-detail">

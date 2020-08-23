@@ -58,7 +58,9 @@ const updateDetail = (props) => {
                 eccarId: carId,
                 age: age ? age : contents.age,
                 price: desiredPrice ? desiredPrice : contents.price,
-                mileage: mileage ? mileage : contents.mileage
+                mileage: mileage ? mileage : contents.mileage,
+                sale: true,
+                main: false
             }
             axios.post(`http://localhost:8080/usedCars/update`,info)
                 .then(alert('수정이 완료되었습니다.'), props.history.push(`${process.env.PUBLIC_URL}/used-car/collection`))

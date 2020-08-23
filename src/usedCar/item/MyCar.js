@@ -41,7 +41,7 @@ export const MyCar = props => {
                     {first.map((item) => {
                         return (
                             <>
-                                <img className="img-fluid" src={item.img} alt=""/>
+                                <img className="img-fluid" src={item.img.img1} alt=""/>
                                 <h5 style={{textAlign: "center"}}>{item.carName}</h5>
                             </>
                         )
@@ -99,7 +99,7 @@ export const MyCar = props => {
                                             return (
                                                 <>
                                                     <h2 style={{textAlign: "center"}}>{item.carName}</h2>
-                                                    <img className="img-fluid" src={item.img} alt=""/>
+                                                    <img className="img-fluid" src={item.img.img1} alt=""/>
                                                 </>
                                             )
                                         })}

@@ -16,7 +16,9 @@ export const MarketPrice = ({product}) => {
     const box = []
     const setChartData = () => {
         Items.map((item,index) => {
-            box.push({x: (item.age).replace("/","").replace("식",""), y: item.price})
+            box.push({x: item.age ? (item.age)
+                    .replace("/","")
+                    .replace("식","") : item.age , y: item.price})
         })
         return box
     }

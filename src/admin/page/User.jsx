@@ -72,7 +72,7 @@ export const User = () => {
                     dataUpdate[index] = newData
                     setData([...dataUpdate])
                     resolve()
-                    axios.post(`http://localhost:8080/user/allUpdate`, [...dataUpdate])
+                    axios.post(`http://localhost:8080/user/oneUpdate`, newData)
                         .then((res) => {
                         })
                         .catch(() => {

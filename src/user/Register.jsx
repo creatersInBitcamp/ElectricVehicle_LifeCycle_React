@@ -76,11 +76,9 @@ export const Register = (props) =>  {
             addr: addr.concat(" ",addr2),
             registerDate: new Date().toLocaleDateString()
         }
-        console.log(userInfo)
         axios.post(`http://localhost:8080/user/register`, userInfo)
             .then(res =>{
                 res.data ? props.history.push(`${process.env.PUBLIC_URL}/pages/login`) : alert("회원가입이 실패했습니다.")
-                console.log(res.data)
             })
             .catch(()=>{
                 alert("통신실패")

@@ -44,11 +44,13 @@ export const Dashboard = () => {
             })
         axios.get(`http://localhost:8080/user/findBrandCar`)
             .then((res)=>{
+                console.log(res.data)
                 setBrandCar(res.data)
             })
         axios.get(`http://localhost:8080/user/findBrandUsedCar`)
             .then((res)=>{
                 setUsedBrandCar(res.data)
+                console.log(res.data)
             })
     },[])
 
@@ -140,8 +142,8 @@ export const Dashboard = () => {
         const brandColor = []
 
         for(let i in brandCar){
-            carBrandKey.push(brandCar[i].BRAND)
-            carBrandValues.push(brandCar[i].COUNT)
+            carBrandKey.push(brandCar[i].brand)
+            carBrandValues.push(brandCar[i].count)
             brandColor.push(makeColors())
         }
         setBrandCarData(
@@ -162,8 +164,8 @@ export const Dashboard = () => {
         const usedBrandColor = []
 
         for(let i in usedBrandCar){
-            usedCarBrandKey.push(usedBrandCar[i].BRAND)
-            usedCarBrandValues.push(usedBrandCar[i].COUNT)
+            usedCarBrandKey.push(usedBrandCar[i].brand)
+            usedCarBrandValues.push(usedBrandCar[i].count)
             usedBrandColor.push(makeColors())
         }
         setUsedBrandCarData(

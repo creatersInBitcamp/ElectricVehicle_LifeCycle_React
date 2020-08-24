@@ -92,6 +92,7 @@ export const User = () => {
         axios.get(`http://localhost:8080/user/countAge`)
             .then((res)=>{
                 setAgeChart(res.data)
+                console.log(res.data)
             }).catch((err)=>{
                 throw err
         })
@@ -104,8 +105,8 @@ export const User = () => {
         const ageColor = []
 
         for(let i in ageChart) {
-            ageKeys.push(ageChart[i].AGE+"대")
-            ageValues.push(ageChart[i].CNT)
+            ageKeys.push(ageChart[i].age+"대")
+            ageValues.push(ageChart[i].cnt)
             ageColor.push(makeColors())
         }
         setAgeCharData({
@@ -137,8 +138,8 @@ export const User = () => {
         const sexValues = []
 
         for(let i in sexChart) {
-            sexKeys.push(sexChart[i].SEX)
-            sexValues.push(sexChart[i].COUNT)
+            sexKeys.push(sexChart[i].sex)
+            sexValues.push(sexChart[i].count)
         }
         setSexChartData({
             labels: sexKeys,

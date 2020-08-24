@@ -39,8 +39,6 @@ export const ForgetPassword = () => {
 
         return (
             <>
-                <Breadcrumb title={'forget password'}/>
-                {/*Forget Password section*/}
                 <section className="pwd-page section-b-space">
                     <div className="container">
                         <div className="row">

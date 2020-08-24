@@ -52,7 +52,7 @@ const removeFromMyCar = product_id => (dispatch) => {
 const removeAllCar = (myCars) => (dispatch) => {
     console.log(myCars)
     axios.post(`http://localhost:8080/usedCars/deleteAllCar`,myCars)
-        .then((res)=> dispatch({ type: REMOVE_ALL_CAR, result: res.data },console.log(res.data)), /*window.location.reload()*/)
+        .then((res)=> dispatch({ type: REMOVE_ALL_CAR, result: res.data },console.log(res.data)), window.location.reload())
         .catch(()=>alert(`삭제 실패`))
 }
 export const receiveFirstCar = firstCar => ({

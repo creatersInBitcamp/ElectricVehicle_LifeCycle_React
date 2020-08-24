@@ -99,7 +99,7 @@ export const AdminChargingStationTable = () => {
                     setMyData([...dataUpdate])
                     console.log(newData)
                     resolve()
-                    axios.post(`http://localhost:8080/chargingstations/allUpdate`, [...dataUpdate])
+                    axios.post(`http://localhost:8080/chargingstations/update`, newData)
                         .then((res) => {
                             window.location.reload()
                         })

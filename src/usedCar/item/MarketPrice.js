@@ -8,6 +8,8 @@ export const MarketPrice = ({product}) => {
             let carMatch;
             if (x.carName === product.carName)
                 carMatch = true;
+            else if (x.carName === product)
+                carMatch = true;
             return carMatch;
             }
         )

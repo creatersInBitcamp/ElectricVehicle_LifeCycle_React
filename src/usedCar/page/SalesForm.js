@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Breadcrumb} from "../../common";
 import {useSelector} from "react-redux";
 import axios from "axios";
+import {MarketPrice} from "..";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -105,6 +106,10 @@ export const SalesForm = (props) => {
                                             submitted && !desiredPrice &&
                                             <div style={{color:"red"}}>입력 필수입니다.</div>
                                         }
+                                    </div>
+                                    <div className="col">
+                                        <h5>현재 판매되고 있는 동일한 차량의 시세입니다.</h5>
+                                        <MarketPrice product={carName}/>
                                     </div>
                                 </div>
                                 <br/><br/>

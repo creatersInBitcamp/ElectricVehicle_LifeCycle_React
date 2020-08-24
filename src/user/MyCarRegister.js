@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import Slider from "react-slick";
 import {Table} from "../admin/item";
+import {Link} from "react-router-dom";
 
 /* type */
 const RECEIVE_MY_CARS = 'RECEIVE_MY_CARS'
@@ -210,8 +211,11 @@ export const MyCarRegister = () => {
         let usedNew = []
         if (used.length > 0){
             usedNew = used.find(x=>x.usedCarSalesList)
-            axios.get(`http://localhost:8080/usedCars/getDetail/${usedNew.usedCarId}`)
+            console.log(used)
+            console.log(usedNew)
+            axios.get(`http://localhost:8080/usedCars/getDetailList/${userSession.userSeq}`)
                 .then((res)=>{
+                    console.log(res.data)
                     setProduct(res.data)
                 })
             setResult(usedNew.usedCarSalesList)
@@ -306,7 +310,7 @@ export const MyCarRegister = () => {
                                 <div className="box">
                                     <div className="box-title">
                                         <h3>내 차 정보</h3>
-                                        <a onClick={() => { setOpenEdit(true) }}>Edit</a>
+                                        <Link onClick={() => { setOpenEdit(true) }}>Edit</Link>
                                     </div>
                                     <div className="box-content">
                                         <Slider {...setting} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
@@ -329,7 +333,7 @@ export const MyCarRegister = () => {
                                 <div className="box">
                                     <div className="box-title">
                                         <h3>메인 차</h3>
-                                        <a onClick={() => { setOpenEdit(true) }}>Edit</a>
+                                        <Link onClick={() => { setOpenEdit(true) }}>Edit</Link>
                                     </div>
                                     <div className="box-content">
                                         {

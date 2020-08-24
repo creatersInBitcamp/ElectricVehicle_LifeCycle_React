@@ -7,7 +7,6 @@ import Col from "react-bootstrap/Col";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import Slider from "react-slick";
 import {Table} from "../admin/item";
-import {RefreshInfo} from "../board/items";
 
 /* type */
 const RECEIVE_MY_CARS = 'RECEIVE_MY_CARS'
@@ -42,51 +41,31 @@ const addToMyCar = ({product,user}) => (dispatch) => {
             window.location.reload()
         })
         .catch((err)=>{ throw err })
-    // axios.get(`http://localhost:8080/electriccars/getone/${info.eccarId}`)
-    //     .then((res)=>{
-    //         console.log(product)
-    //         dispatch(addToMyCarUnsafe(res.data,user))
-    //         window.location.reload()
-    //     })
-    //     .catch((err)=>{ throw err })
 }
-const addToMyCarUnsafe = (product) => ({
-    type: ADD_TO_MY_CAR,
-    product
-})
-// export const getAllMyCar = (user) => dispatch => {
-//     axios.get(`http://localhost:8080/usedCars/getAllMyCar/${user}`)
-//         .then((res)=>{
-//             console.log(res.data)
-//             dispatch(receiveMyCar(res.data))
-//         })
-//         .catch(()=>{})
-// }
+// const addToMyCarUnsafe = (product) => ({
+//     type: ADD_TO_MY_CAR,
+//     product
+// })
 const removeFromMyCar = product_id => (dispatch) => {
     dispatch({
         type: REMOVE_FROM_MY_CAR,
         product_id
     })
 }
-const removeAllCar = () => ({
-    type: REMOVE_ALL_CAR
-})
+const removeAllCar = (userSeq) => (dispatch) => {
+    axios.get(`http://localhost:8080/usedCars/deleteAllCar/${userSeq}`)
+        .then((res)=> dispatch({ type: REMOVE_ALL_CAR, result: res.data },console.log(res.data)), /*window.location.reload()*/)
+        .catch(()=>alert(`삭제 실패`))
+}
 
 const receiveFirstCar = firstCar => ({
     type: RECEIVE_FIRST_CAR,
     firstCar
 })
-// const getFirstCar = (user) => dispatch => {
-//     axios.get(`http://localhost:8080/usedCars/getFirstCar/${user}`)
-//         .then((res)=>{
-//             console.log(res.data)
-//             dispatch(receiveFirstCar(res.data))
-//         })
-// }
-const addToFirstCar = (product) => ({
-    type: ADD_TO_FIRST_CAR,
-    product
-})
+// const addToFirstCar = (product) => ({
+//     type: ADD_TO_FIRST_CAR,
+//     product
+// })
 const removeFromFirstCar = product_id => (dispatch) => {
     dispatch({
         type: REMOVE_FROM_FIRST_CAR,
@@ -97,52 +76,20 @@ const removeAllFirstCar = () => ({
     type: REMOVE_ALL_FIRST_CAR
 })
 const changeFirstCar = (myCars,targetId) => (dispatch) => {
-    const product = myCars.find(x=> (x.usedCarId == targetId));
+    const product = myCars.find(x=> (x.usedCarId == targetId))
     const before = myCars.filter(x=> {
             if(x.usedCarId != targetId){
                 return x.usedCarId
             }
-        });
-    /*eccarId: myCars.find(x=>x.usedCarId == targetId).eccarId,
-    user: userSession.userSeq*/
-
-    console.log(product)
-    console.log(before)
-    /*const info = {
-        usedCarId: product.usedCarId,
-        eccarId: eccarId,
-        userSeq: user,
-        price: product.price,
-        age: product.age,
-        mileage: product.mileage,
-        sale: false,
-        main: true
-    }*/
+        })
     axios.get(`http://localhost:8080/usedCars/updateFirstCar/${product.usedCarId}`)
         .then((res)=>{
-            /*console.log(info)
-            console.log(res.data)*/
             window.location.reload()
         })
         .catch((err)=>{ throw err })
-    // dispatch(addToFirstCar(product))
-
     if (before) {
-        /*const beforeInfo = {
-            usedCarId: before.usedCarId,
-            eccarId: before.eccarId,
-            userSeq: user,
-            price: before.price,
-            age: before.age,
-            mileage: before.mileage,
-            sale: false,
-            main: false
-        }*/
         axios.post(`http://localhost:8080/usedCars/updateFirstCar`,before)
-            .then((res)=>{
-                /*console.log(info)
-                console.log(res.data)*/
-            })
+            .then((res)=>{})
             .catch((err)=>{ throw err })
     }
 }
@@ -154,21 +101,21 @@ const initialState = {
 /* reducer */
 export const myCarReducer = (state=initialState, action) => {
     switch (action.type) {
-        case ADD_TO_MY_CAR:
-            console.log(action)
-            const productId = action.product.eccarId
-            if (state.list.findIndex(product => product.eccarId === productId) !== -1) {
-                const list = state.list.reduce((cartAcc, product) => {
-                    if (product.eccarId === productId) {
-                        cartAcc.push({ ...product })
-                    } else {
-                        cartAcc.push(product)
-                    }
-                    return cartAcc
-                }, [])
-                return { ...state, list }
-            }
-            return { ...state, list: [...state.list, action.product] }
+        // case ADD_TO_MY_CAR:
+        //     console.log(action)
+        //     const productId = action.product.eccarId
+        //     if (state.list.findIndex(product => product.eccarId === productId) !== -1) {
+        //         const list = state.list.reduce((cartAcc, product) => {
+        //             if (product.eccarId === productId) {
+        //                 cartAcc.push({ ...product })
+        //             } else {
+        //                 cartAcc.push(product)
+        //             }
+        //             return cartAcc
+        //         }, [])
+        //         return { ...state, list }
+        //     }
+        //     return { ...state, list: [...state.list, action.product] }
 
         case RECEIVE_MY_CARS:
             return { ...state,
@@ -176,8 +123,16 @@ export const myCarReducer = (state=initialState, action) => {
             }
 
         case REMOVE_ALL_CAR:
-            return {
-                list: []
+            console.log(action)
+            if (action.result === true) {
+                return {
+                    list: []
+                }
+            } else {
+                alert('remove all error')
+                return {
+                    ...state
+                }
             }
 
         case REMOVE_FROM_MY_CAR:
@@ -423,7 +378,7 @@ export const MyCarRegister = () => {
                                                 dispatch(removeFromMyCar(myCars.find(x => x.usedCarId == targetId).usedCarId))
                                                 dispatch(removeFromFirstCar(myCars.find(x => x.usedCarId == targetId)))
                                             }}>삭제</button>
-                                            <button onClick={()=>dispatch(removeAllCar())}>전체삭제</button>
+                                            <button onClick={()=>dispatch(removeAllCar(userSession.userSeq))}>전체삭제</button>
                                         </div>
                                         <div className="col-sm-6">
                                             <select onChange={e=>setTargetId(e.target.value)}>

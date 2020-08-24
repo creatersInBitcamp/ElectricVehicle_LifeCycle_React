@@ -3,6 +3,8 @@ import {AdminBreadcrumb} from '../common';
 import {Table} from '../item'
 import {Bar, Doughnut} from "react-chartjs-2";
 import axios from "axios";
+import MaterialTable from "material-table";
+import {TablePagination} from "@material-ui/core";
 
 const userReducer = ( state= {}, action ) => {
     switch (action.type) {
@@ -13,7 +15,10 @@ const userReducer = ( state= {}, action ) => {
 export const User = () => {
 
     const[data,setData] = useState([])
-    const[banDate, setBanDate]  = useState("")
+    const[page, setPage]  = useState(0)
+    const[count, setCount] = useState(0)
+    const[rowPerPage, setRowPerPage] = useState(0)
+    const[size, setSize] = useState(10)
 
     const makeColors = () => {
         let r = Math.floor(Math.random() * 255)
@@ -24,14 +29,18 @@ export const User = () => {
 
     // 유저 테이블
     useEffect(() => {
-        axios.get(`http://localhost:8080/user/findAll`)
+        axios.get(`http://localhost:8080/user/findAll/${page}/${size}`)
             .then((res)=>{
-                setData(res.data)
+                setData(res.data.content)
+                setCount(res.data.totalElements)
+                setRowPerPage(res.data.totalPages)
+                setSize(res.data.size)
+                console.log(res.data)
             })
             .catch(()=>{
                 alert("통신실패")
             })
-    },[])
+    },[page, size])
 
     const columns = [
         {
@@ -193,7 +202,27 @@ export const User = () => {
                         <div className="card-body">
                             <div className="clearfix"/>
                             <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
-                                <Table title={"사용자"} data={data} columns={columns} editable={editable} />
+                                <MaterialTable
+                                    title={"사용자"} data={data} columns={columns} editable={editable} page={page} options={{pageSize:size}}
+                                    components={{
+                                        Pagination: props => (
+                                            <TablePagination
+                                                {...props}
+                                                rowsPerPageOptions={[5, 10, 20, 30]}
+                                                rowsPerPage={size}
+                                                count={count}
+                                                page={page}
+                                                onChangePage={(e, page) =>
+                                                    setPage(page)
+                                                }
+                                                onChangeRowsPerPage={e => {
+                                                    props.onChangeRowsPerPage(e);
+                                                    setSize(e.target.value);
+                                                }}
+                                            />
+                                        )
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>

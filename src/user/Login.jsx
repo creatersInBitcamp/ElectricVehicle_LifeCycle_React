@@ -86,7 +86,7 @@ export const Login = (props) => {
                                     <form className="theme-form">
                                         <div className="form-group">
                                             <label htmlFor="email">아이디</label>
-                                            <input type="text" className="form-control" id="email" placeholder="ID" value={userId}
+                                            <input type="text" className="form-control" id="email" placeholder="ID"
                                                    required="" onChange={(e)=>{setUserid(e.target.value)}}/>
                                         </div>
                                         <div className="form-group">

@@ -1,9 +1,35 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom'
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
+
 const Comment = ({comments}) => {
+    const history = useHistory()
+    const user = JSON.parse(sessionStorage.getItem('user'))
+
+    const onDeleteComment = (comment) => {
+        // if(user !== null) {
+        //     if(user.userId === comment.userId){
+        //         axios.get(`http://localhost:8080/comments/delete/${comment.commentId}`)
+        //             .then((res) => {
+        //                 console.log(res.status)
+        //                 window.location.reload()
+        //             })
+        //             .catch((err)=> {
+        //                 console.log(err.status)
+        //                 alert('삭제 실패')
+        //             })
+        //     } else {
+        //         alert('본인 댓글이 아닙니다.')
+        //     }
+        // } else {
+        //     alert('로그인이 필요합니다.')
+        //     history.push('/pages/login')
+        // }
+    }
+
     return (
         <>
             <div className="row section-b-space">
@@ -26,18 +52,29 @@ const Comment = ({comments}) => {
                 </div>
                                                 </Col>
                                                 <Col sm={2}>
-                                                    <button className="fa fa-close" onClick={(e)=>{
-                                                        e.preventDefault()
-                                                        axios.get(`http://localhost:8080/comments/delete/${comment.commentId}`)
-                                                            .then((res) => {
-                                                                console.log(res.status)
-                                                                window.location.reload()
-                                                            })
-                                                            .catch((err)=> {
-                                                                console.log(err.status)
-                                                                alert('삭제 실패')
-                                                            })
-                                                    }}/>
+                                                    <button className="fa fa-close" onClick={
+                                                        (e)=>{
+                                                            e.preventDefault()
+                                                            if(user !== null) {
+                                                                if(user.userId === comment.userId){
+                                                                    axios.get(`http://localhost:8080/comments/delete/${comment.commentId}`)
+                                                                        .then((res) => {
+                                                                            console.log(res.status)
+                                                                            window.location.reload()
+                                                                        })
+                                                                        .catch((err)=> {
+                                                                            console.log(err.status)
+                                                                            alert('삭제 실패')
+                                                                        })
+                                                                } else {
+                                                                    alert('본인 댓글이 아닙니다.')
+                                                                }
+                                                            } else {
+                                                                alert('로그인이 필요합니다.')
+                                                                history.push('/pages/login')
+                                                            }
+                                                        }
+                                                    }/>
                                                 </Col>
                                             </Row>
                                         </Container>

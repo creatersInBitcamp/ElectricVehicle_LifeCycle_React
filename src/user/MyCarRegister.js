@@ -61,7 +61,7 @@ const removeAllCar = (myCars) => (dispatch) => {
         .catch(()=>alert(`삭제 실패`))
 }
 
-const receiveFirstCar = firstCar => ({
+export const receiveFirstCar = firstCar => ({
     type: RECEIVE_FIRST_CAR,
     firstCar
 })

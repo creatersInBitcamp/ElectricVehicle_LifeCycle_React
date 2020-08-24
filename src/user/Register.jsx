@@ -116,7 +116,7 @@ export const Register = (props) =>  {
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">아이디</label>
-                                                <input type="text" className="form-control" id={"userIdJs"} value={userId}
+                                                <input type="text" className="form-control" id={"userIdJs"}
                                                        onChange={onChangeIdChk} placeholder="아이디" required="" />
                                                 <br/>
                                                 {idOverlap && <div style={{color: 'red'}}>중복된 아이디입니다.</div>}

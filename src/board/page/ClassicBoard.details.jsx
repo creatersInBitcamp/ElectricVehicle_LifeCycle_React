@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useRouteMatch} from 'react-router-dom'
 import {Breadcrumb} from "../../common";
-import {Comment} from "../items";
+import {Comment, RefreshInfo} from "../items";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
-import {RefreshInfo} from '../items'
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const ClassicBoardDetails = ({history}) => {

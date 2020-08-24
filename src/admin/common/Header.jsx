@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import { AlignLeft, Maximize2, Bell, MessageSquare, MoreHorizontal } from 'react-feather';
+import { AlignLeft } from 'react-feather';
 
 //images
 import logo from '../../assets/images/dashboard/08.png'
-import man from "../../assets/images/dashboard/man.png";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {clearWishlist} from "../../newCar/page/WishlistReducer";
@@ -18,7 +17,6 @@ const adminCheckAction = admin =>({type: ADMIN_CHECK, check: admin})
 
 export const Header = () => {
     const [sidebar, setSidebar] = useState(true)
-    const [rightSidebar, setRightSidebar] = useState(true)
     const [navMenus] = useState(false)
     const [admin] = useState(false)
     const [image, setImage] = useState('')
@@ -29,16 +27,6 @@ export const Header = () => {
     },[session])
 
     const dispatch = useDispatch()
-
-    const showRightSidebar = () => {
-        if (rightSidebar) {
-            setRightSidebar(false)
-            document.querySelector(".right-sidebar").classList.add('show');
-        } else {
-            setRightSidebar(true)
-            document.querySelector(".right-sidebar").classList.remove('show');
-        }
-    }
 
     const openCloseSidebar = () => {
         if (sidebar) {
@@ -85,6 +73,7 @@ export const Header = () => {
                         </div>
                         <div className="nav-right col">
                             <ul className={"nav-notice " + (navMenus ? 'open' : '')}>
+                                <div/>
                                 <li className="onhover-dropdown">
                                     <div className="media align-items-center">
                                         <img className="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src={image} alt="header-user" />
@@ -94,7 +83,6 @@ export const Header = () => {
                                             <li onClick={logout}><Link to={`${process.env.PUBLIC_URL}/`}><i data-feather="log-out"/>로그아웃</Link></li>
                                         </ul>
                                     </div>
-
                                 </li>
                             </ul>
                         </div>

@@ -2,6 +2,7 @@ import React from "react";
 import ChatBot from 'react-simple-chatbot'
 import {ThemeProvider} from "styled-components";
 import {Breadcrumb} from '../../common';
+import file from '../../assets/file/[서식 1] 전기차동차 배터리 반납신청서.hwp'
 
 const theme = {
     background: '#f5f8fb',
@@ -69,8 +70,7 @@ export const Scrapped = () => {
                                                     전기차 배터리 반납 후 일반차량과 동일하게 차량등록말소가 진행되며,
                                                     해당 과정은 폐차장에서 행정처리를 담당합니다. 폐차장에서 폐배터리 분리비용으로 수수료가 발생합니다.
                                                     <br/><br/>
-                                                    <a href={'public/assets/file/[서식 1] 전기차동차 배터리 반납신청서.hwp'}
-                                                       download>전기자동차 배터리 반납신청서 다운로드</a>
+                                                    <a href={file} download={'전기자동차 배터리 반납신청서.hwp'}>전기자동차 배터리 반납신청서 다운로드</a>
                                                 </div>,
 
                                         },

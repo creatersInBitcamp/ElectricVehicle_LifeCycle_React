@@ -97,6 +97,7 @@ export const AdminChargingStationTable = () => {
                     const index = oldData.tableData.id;
                     dataUpdate[index] = newData
                     setMyData([...dataUpdate])
+                    console.log(newData)
                     resolve()
                     axios.post(`http://localhost:8080/chargingstations/allUpdate`, [...dataUpdate])
                         .then((res) => {

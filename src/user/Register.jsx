@@ -178,8 +178,8 @@ export const Register = (props) =>  {
                                                 <select className="form-control" value={sex}
                                                         onChange={onChangeSexChk} placeholder="성별" required="" >
                                                     <option>성별</option>
-                                                    <option>남</option>
-                                                    <option>여</option>
+                                                    <option>남자</option>
+                                                    <option>여자</option>
                                                 </select>
                                                 <br/>
                                                 {mustSex && <div style={{color: 'red'}}>반드시 필요한 항목입니다.</div>}

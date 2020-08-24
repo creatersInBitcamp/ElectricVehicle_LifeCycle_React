@@ -18,6 +18,7 @@ const RECEIVE_FIRST_CAR = 'RECEIVE_FIRST_CAR'
 const ADD_TO_FIRST_CAR = 'ADD_TO_FIRST_CAR'
 const REMOVE_FROM_FIRST_CAR = 'REMOVE_FROM_FIRST_CAR'
 const REMOVE_ALL_FIRST_CAR = 'REMOVE_ALL_FIRST_CAR'
+const CLEAR_MYCAR = 'CLEAR_MYCAR'
 
 /* action */
 const receiveMyCar = myCars => ({
@@ -52,8 +53,9 @@ const removeFromMyCar = product_id => (dispatch) => {
         product_id
     })
 }
-const removeAllCar = (userSeq) => (dispatch) => {
-    axios.get(`http://localhost:8080/usedCars/deleteAllCar/${userSeq}`)
+const removeAllCar = (myCars) => (dispatch) => {
+    console.log(myCars)
+    axios.post(`http://localhost:8080/usedCars/deleteAllCar`,myCars)
         .then((res)=> dispatch({ type: REMOVE_ALL_CAR, result: res.data },console.log(res.data)), /*window.location.reload()*/)
         .catch(()=>alert(`삭제 실패`))
 }
@@ -93,6 +95,10 @@ const changeFirstCar = (myCars,targetId) => (dispatch) => {
             .catch((err)=>{ throw err })
     }
 }
+
+export const clearMycar = () =>({
+    type :CLEAR_MYCAR
+})
 
 const initialState = {
     list: []
@@ -142,6 +148,10 @@ export const myCarReducer = (state=initialState, action) => {
             return {
                 list: state.list.filter(id => id !== action.product_id)
             }
+        case CLEAR_MYCAR:
+            return{
+                list:[]
+            }
         default:
     }
     return state
@@ -176,6 +186,10 @@ export const firstCarReducer = (state={list:[]}, action) => {
         case REMOVE_ALL_FIRST_CAR:
             return {
                 list: []
+            }
+        case CLEAR_MYCAR:
+            return {
+                list:[]
             }
 
         default:
@@ -378,7 +392,7 @@ export const MyCarRegister = () => {
                                                 dispatch(removeFromMyCar(myCars.find(x => x.usedCarId == targetId).usedCarId))
                                                 dispatch(removeFromFirstCar(myCars.find(x => x.usedCarId == targetId)))
                                             }}>삭제</button>
-                                            <button onClick={()=>dispatch(removeAllCar(userSession.userSeq))}>전체삭제</button>
+                                            <button onClick={()=>dispatch(removeAllCar(myCars))}>전체삭제</button>
                                         </div>
                                         <div className="col-sm-6">
                                             <select onChange={e=>setTargetId(e.target.value)}>

@@ -10,6 +10,7 @@ import {removeAllUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
 import {clearCart} from "../../newCar/page/CartReducer";
 import {clearUsedCompare} from "../../usedCar/page/MyCarComparison";
 import {clearCompare} from "../../newCar/page/CompareReducer";
+import {clearMycar} from "../../user/MyCarRegister";
 
 
 const ADMIN_CHECK = 'ADMIN_CHECK'
@@ -46,6 +47,7 @@ export const Header = () => {
         dispatch(clearCart())
         dispatch(clearUsedCompare())
         dispatch(clearCompare())
+        dispatch(clearMycar())
         dispatch(adminCheckAction(admin))
         sessionStorage.clear()
         window.location.reload()

@@ -111,10 +111,10 @@ export const HeaderOne = props =>{
 									<div>
 										<div className="icon-nav">
 											<ul>
-												<li className="onhover-div mobile-search">
+												{/*<li className="onhover-div mobile-search">
 													<div><img src={`${process.env.PUBLIC_URL}/assets/images/icon/search.png`} onClick={openSearch} className="img-fluid" alt="" />
 														<i className="fa fa-search" onClick={openSearch}/></div>
-												</li>
+												</li>*/}
 												{/*Header Cart Component */}
 												<CartContainer/>
 											</ul>
@@ -127,7 +127,7 @@ export const HeaderOne = props =>{
 				</div>
 			</header>
 
-			<div id="search-overlay" className="search-overlay">
+			{/*<div id="search-overlay" className="search-overlay">
 				<div>
 					<span className="closebtn" onClick={closeSearch} title="Close Overlay">×</span>
 					<div className="overlay-content">
@@ -167,7 +167,7 @@ export const HeaderOne = props =>{
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>*/}
 
 		</div>
 	</>

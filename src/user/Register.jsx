@@ -76,11 +76,9 @@ export const Register = (props) =>  {
             addr: addr.concat(" ",addr2),
             registerDate: new Date().toLocaleDateString()
         }
-        console.log(userInfo)
         axios.post(`http://localhost:8080/user/register`, userInfo)
             .then(res =>{
                 res.data ? props.history.push(`${process.env.PUBLIC_URL}/pages/login`) : alert("회원가입이 실패했습니다.")
-                console.log(res.data)
             })
             .catch(()=>{
                 alert("통신실패")
@@ -180,8 +178,8 @@ export const Register = (props) =>  {
                                                 <select className="form-control" value={sex}
                                                         onChange={onChangeSexChk} placeholder="성별" required="" >
                                                     <option>성별</option>
-                                                    <option>남</option>
-                                                    <option>여</option>
+                                                    <option>남자</option>
+                                                    <option>여자</option>
                                                 </select>
                                                 <br/>
                                                 {mustSex && <div style={{color: 'red'}}>반드시 필요한 항목입니다.</div>}

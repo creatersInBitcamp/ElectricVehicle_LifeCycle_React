@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {Breadcrumb} from "../common";
-import {Link, useRouteMatch} from "react-router-dom";
 import {RefreshInfo} from '../board/items'
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -12,6 +11,7 @@ import MyComment from "./MyComment";
 import {MyCarRegister} from "./MyCarRegister";
 import TableBookmark from "../map/items/TableBookmark";
 import MyOrder from "./MyOrder";
+import ChangePassword from "./ChangePassword";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -129,7 +129,7 @@ export const MyAccount = () => {
                                                     <TableBookmark/>
                                                 </TabPanel>
                                                 <TabPanel value={value} index={6}>
-                                                    Change password
+                                                    <ChangePassword/>
                                                 </TabPanel>
                                         </div>
                                     </div>

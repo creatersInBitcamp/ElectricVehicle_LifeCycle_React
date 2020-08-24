@@ -78,7 +78,7 @@ export const Notice = () => {
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">
                                     </div>
-                                    <Image/>
+                                    <Image path={'imgUpload'}/>
                                 </div>
                             </div>
                             <div className="card">

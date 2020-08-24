@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {RefreshInfo} from '../items/index'
 import axios from "axios";
+import {Image} from "../../admin/item";
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const PostInput = ({history}) => {
@@ -90,9 +91,11 @@ const PostInput = ({history}) => {
                                                placeholder="Link"/>
                                     </div>
                                     <div className="col-md-12">
+                                        <input type="text" className="form-control" id="image" value={img}/>
                                         <label htmlFor="link">image</label>
-                                        <input type="text" className="form-control" id="img" onChange={(e) => {setImg(e.target.value)}}
-                                               placeholder="img"/>
+                                        <div className="col-md-8">
+                                            <Image path={"postImgUpload"} setImgLink={(imgLink)=>{setImg(imgLink)}}/>
+                                        </div>
                                     </div>
                                     <div className="col-md-12">
                                         <label htmlFor="content">내용</label>

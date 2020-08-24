@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import http from "./http";
 import FittedImage from "react-fitted-image";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const imageReducer = ( state={}, action ) => {
     switch (action.type) {
@@ -8,7 +11,7 @@ const imageReducer = ( state={}, action ) => {
     }
 }
 
-export const Image = () => {
+export const Image = ({path, setImgLink}) => {
     const[content, setContent] = useState(undefined)
     const[img, setImg] = useState(undefined)
     const[url, setUrl] = useState('')
@@ -21,7 +24,7 @@ export const Image = () => {
     };
     const uploadService = file => {
         formData.append("file", file)
-        return http.post("/imgUpload", formData, {})
+        return http.post(`/${path}`, formData, {})
     }
 
     const upload = () => {
@@ -33,8 +36,8 @@ export const Image = () => {
 
         uploadService(currentFile)
             .then((res)=>{
-                window.location.reload()
-                alert('파일이 업로드되었습니다.')
+                alert(`파일이 업로드되었습니다. imgLink : ${res.data}`)
+                setImgLink(`https://evcar.s3.ap-northeast-2.amazonaws.com/homeBanner${res.data}`)
             })
             .catch(()=>{
                 setImg(undefined)
@@ -61,16 +64,33 @@ export const Image = () => {
         <>
                 {url ? (
                     <>
-                        <h4>미리보기</h4>
-                        <FittedImage fit="contain" src={url} alt="#" />
+                        <div className="input-air-primary">
+                            <b>미리보기</b>
+                            <FittedImage fit="contain" src={url} alt="#" />
+                        </div>
                     </>
                 ) : (
                     ""
                 )}
-                <input type="file" onChange={addFile} />
-                <button type="button" onClick={upload}>업로드</button>
-                <button onClick={cancel}>취소</button>
-
+                <Container className="input-air-success">
+                    <Row>
+                        <Col/>
+                        <Col>
+                            <input type="file" onChange={addFile} />
+                        </Col>
+                        <Col/>
+                    </Row>
+                    <Row>
+                        <Col/>
+                        <Col>
+                            <button className="btn btn-outline-primary" type="button" onClick={upload}>업로드</button>
+                        </Col>
+                        <Col>
+                            <button className="btn btn-outline-danger" onClick={cancel}>취소</button>
+                        </Col>
+                        <Col/>
+                    </Row>
+                </Container>
         </>
 
     )

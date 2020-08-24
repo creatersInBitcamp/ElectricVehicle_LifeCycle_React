@@ -22,7 +22,6 @@ export const SalesForm = (props) => {
         products: state.data.products
     }))
 
-
     const onClickSelect = (e) => {
         e.preventDefault()
         if (targetId == 0) {

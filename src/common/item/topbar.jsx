@@ -8,7 +8,7 @@ import {removeAllUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
 import {clearCart} from "../../newCar/page/CartReducer";
 import {clearCompare} from "../../newCar/page/CompareReducer";
 import {clearUsedCompare} from "../../usedCar/page/MyCarComparison";
-import {clearMycar} from "../../user/MyCarRegister";
+import {clearMyCar} from "../../user/MyCarRegister";
 
 export const TopBar = () => {
     const contexts = {
@@ -38,7 +38,7 @@ export const TopBar = () => {
         dispatch(clearCart())
         dispatch(clearUsedCompare())
         dispatch(clearCompare())
-        dispatch(clearMycar())
+        dispatch(clearMyCar())
         sessionStorage.clear()
         window.location.reload()
     }

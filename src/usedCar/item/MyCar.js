@@ -2,9 +2,9 @@ import React, {useEffect, useState} from "react";
 import {Link, useHistory} from 'react-router-dom'
 import Modal from 'react-responsive-modal';
 import {useDispatch, useSelector} from "react-redux";
+import axios from "axios";
 import {addToUsedCompare} from '../page/MyCarComparison'
 import {receiveFirstCar} from "../../user/MyCarRegister";
-import axios from "axios";
 
 export const MyCar = props => {
     const [open,setOpen] = useState(false)
@@ -18,10 +18,6 @@ export const MyCar = props => {
         wishItems: state.usedWishlist.list
     }))
 
-    // useEffect(()=>{
-    //     setUserSession(JSON.parse(sessionStorage.getItem("user")))
-    // })
-
     useEffect(() => {
         userSession ? setSession(true) : setSession(false)
         if (userSession) {
@@ -34,33 +30,12 @@ export const MyCar = props => {
         }
     },[userSession])
 
-    // useEffect(()=>{
-    //     if (session) {
-    //         axios.get(`http://localhost:8080/usedCars/getFirstCar/${userSession.userSeq}`)
-    //             .then((res)=>{
-    //                 console.log(res.data)
-    //                 // setFirst(res.data)
-    //                 dispatch(receiveFirstCar(res.data))
-    //             })
-    //     }
-    // },[])
-
     const renderRedirect = () => {
         if (targetId !== 0) {
             dispatch(addToUsedCompare(items.find(x => x.usedCarId == targetId)))
             history.push(`${process.env.PUBLIC_URL}/used-car/comparison/${targetId}`)
         } else if (targetId === 0) {
 
-        }
-    }
-    const setMyCar = () => {
-        if (session) {
-            axios.get(`http://localhost:8080/usedCars/getFirstCar/${userSession.userSeq}`)
-                .then((res)=>{
-                    console.log(res.data)
-                    // setFirst(res.data)
-                    dispatch(receiveFirstCar(res.data))
-                })
         }
     }
 

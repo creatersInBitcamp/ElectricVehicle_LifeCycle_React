@@ -11,7 +11,6 @@ import {Link} from "react-router-dom";
 
 /* type */
 const RECEIVE_MY_CARS = 'RECEIVE_MY_CARS'
-const ADD_TO_MY_CAR = 'ADD_TO_MY_CAR'
 const REMOVE_FROM_MY_CAR = 'REMOVE_FROM_MY_CAR'
 const REMOVE_ALL_CAR = 'REMOVE_ALL_CAR'
 
@@ -19,7 +18,7 @@ const RECEIVE_FIRST_CAR = 'RECEIVE_FIRST_CAR'
 const ADD_TO_FIRST_CAR = 'ADD_TO_FIRST_CAR'
 const REMOVE_FROM_FIRST_CAR = 'REMOVE_FROM_FIRST_CAR'
 const REMOVE_ALL_FIRST_CAR = 'REMOVE_ALL_FIRST_CAR'
-const CLEAR_MYCAR = 'CLEAR_MYCAR'
+const CLEAR_MY_CAR = 'CLEAR_MY_CAR'
 
 /* action */
 const receiveMyCar = myCars => ({
@@ -44,10 +43,6 @@ const addToMyCar = ({product,user}) => (dispatch) => {
         })
         .catch((err)=>{ throw err })
 }
-// const addToMyCarUnsafe = (product) => ({
-//     type: ADD_TO_MY_CAR,
-//     product
-// })
 const removeFromMyCar = product_id => (dispatch) => {
     dispatch({
         type: REMOVE_FROM_MY_CAR,
@@ -60,15 +55,10 @@ const removeAllCar = (myCars) => (dispatch) => {
         .then((res)=> dispatch({ type: REMOVE_ALL_CAR, result: res.data },console.log(res.data)), /*window.location.reload()*/)
         .catch(()=>alert(`삭제 실패`))
 }
-
 export const receiveFirstCar = firstCar => ({
     type: RECEIVE_FIRST_CAR,
     firstCar
 })
-// const addToFirstCar = (product) => ({
-//     type: ADD_TO_FIRST_CAR,
-//     product
-// })
 const removeFromFirstCar = product_id => (dispatch) => {
     dispatch({
         type: REMOVE_FROM_FIRST_CAR,
@@ -97,8 +87,8 @@ const changeFirstCar = (myCars,targetId) => (dispatch) => {
     }
 }
 
-export const clearMycar = () =>({
-    type :CLEAR_MYCAR
+export const clearMyCar = () =>({
+    type :CLEAR_MY_CAR
 })
 
 const initialState = {
@@ -108,22 +98,6 @@ const initialState = {
 /* reducer */
 export const myCarReducer = (state=initialState, action) => {
     switch (action.type) {
-        // case ADD_TO_MY_CAR:
-        //     console.log(action)
-        //     const productId = action.product.eccarId
-        //     if (state.list.findIndex(product => product.eccarId === productId) !== -1) {
-        //         const list = state.list.reduce((cartAcc, product) => {
-        //             if (product.eccarId === productId) {
-        //                 cartAcc.push({ ...product })
-        //             } else {
-        //                 cartAcc.push(product)
-        //             }
-        //             return cartAcc
-        //         }, [])
-        //         return { ...state, list }
-        //     }
-        //     return { ...state, list: [...state.list, action.product] }
-
         case RECEIVE_MY_CARS:
             return { ...state,
                 list: action.myCars
@@ -149,10 +123,12 @@ export const myCarReducer = (state=initialState, action) => {
             return {
                 list: state.list.filter(id => id !== action.product_id)
             }
-        case CLEAR_MYCAR:
+
+        case CLEAR_MY_CAR:
             return{
                 list:[]
             }
+
         default:
     }
     return state
@@ -188,7 +164,7 @@ export const firstCarReducer = (state={list:[]}, action) => {
             return {
                 list: []
             }
-        case CLEAR_MYCAR:
+        case CLEAR_MY_CAR:
             return {
                 list:[]
             }
@@ -206,17 +182,13 @@ export const MyCarRegister = () => {
     const [value, setValue] = useState(0)
     const [used, setUsed] = useState([])
     let [result,setResult] = useState([])
-    // const [myCar,setMyCar] = useState([])
-    // const [first,setFirst] = useState([])
     const [userSession, setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
 
     const slider1 = useRef();
     const slider2 = useRef();
 
     useEffect(() => {
-        // RefreshInfo()
         setUserSession(JSON.parse(sessionStorage.getItem("user")))
-        // setValue(match)
     },[value])
 
 

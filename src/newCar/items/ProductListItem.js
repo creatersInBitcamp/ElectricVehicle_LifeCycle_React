@@ -10,7 +10,7 @@ export const ProductListItem = props => {
     useEffect(()=>{
         setImage('')
     },[product])
-    
+
     const onClickHandle = img =>{
         setImage(img);
     }

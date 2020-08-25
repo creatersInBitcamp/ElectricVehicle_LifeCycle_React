@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import {Breadcrumb} from "../common";
 import emailjs from 'emailjs-com'
+import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 
 export const ForgetPassword = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const history = useHistory()
 
     const findPassword = (e) => {
         e.preventDefault()
@@ -25,10 +27,17 @@ export const ForgetPassword = () => {
     }
 
     const sendEmail = (e) => {
+        e.preventDefault()
+        const info = {
+            email : email,
+            password: password
+        }
+
         if(password !== '') {
-            emailjs.sendForm('kwakky1@gmail.com','template_6MwZcBCh',e.target,'user_hmTOnrjGGf2wvM7F3cJKY')
+            emailjs.send('kwakky1@gmail.com','template_6MwZcBCh',info,'user_hmTOnrjGGf2wvM7F3cJKY')
                 .then((res)=> {
-                    alert("메일을 확인하세요")
+                    history.push('/pages/login')
+                    alert("임시 비밀번호가 발급되었습니다.")
                 }, (error) => {
                     alert(error)
                 })
@@ -43,17 +52,17 @@ export const ForgetPassword = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6 offset-lg-3">
+                                <h2> 이메일은 100회까지만 가능합니다.</h2>
                                 <h2>Forget Your Password</h2>
-                                <form className="theme-form" onSubmit={sendEmail} name='form'>
+                                <form className="theme-form" >
                                     <div className="form-row">
                                         <div className="col-md-12">
                                             <input type="email" className="form-control" name='email' onChange={(e)=>{setEmail(e.target.value)}}
                                                    placeholder="Enter Your Email"/>
 
                                         </div>
-                                        <input type="hidden" value={password} name='password'/>
                                         <button type='button' className="btn btn-solid" onClick={findPassword}>이메일 확인</button>
-                                        <button type='submit' className="btn btn-solid" >이메일 보내기</button>
+                                        <button type='button' onClick={sendEmail} className="btn btn-solid" >이메일 보내기</button>
                                     </div>
                                 </form>
                             </div>

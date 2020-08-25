@@ -38,7 +38,7 @@ const ChangePassword = (props) => {
             axios.post(`http://localhost:8080/user/changePassword`,userInfo)
                 .then((res)=>{
                     if(res.data){
-                        alert("다시 로그인해주세요!")
+                        alert("비밀번호가 변경되었습니다. 다시 로그인해주세요!")
                         history.push("/")
                         sessionStorage.clear()
                         window.location.reload()

@@ -111,22 +111,22 @@ export const HeaderOne = props =>{
 									<div>
 										<div className="icon-nav">
 											<ul>
-												{/*<li className="onhover-div mobile-setting">
+												<li className="onhover-div mobile-setting">
 													<div><img src={`${process.env.PUBLIC_URL}/assets/images/icon/setting.png`} className="img-fluid" alt="" />
 														<i className="fa fa-cog"/></div>
 													<div className="show-div setting">
 														<h6>language</h6>
 														<ul>
 															<li><a href={null} onClick={() => changeLanguage('ko')}>Korea</a> </li>
-															<li><a href={null} onClick={() => changeLanguage('en')}>English</a> </li>
+															{/*<li><a href={null} onClick={() => changeLanguage('en')}>English</a> </li>*/}
 														</ul>
 														<h6>currency</h6>
 														<ul className="list-inline">
 															<li><a href={null} onClick={()=>{dispatch(changeCurrency('만원'))}}>won</a> </li>
-															<li><a href={null} onClick={()=>{dispatch(changeCurrency('만￦'))}}>doller</a> </li>
+															{/*<li><a href={null} onClick={()=>{dispatch(changeCurrency('만￦'))}}>doller</a> </li>*/}
 														</ul>
 													</div>
-												</li>*/}
+												</li>
 												{/*Header Cart Component */}
 												<CartContainer/>
 											</ul>

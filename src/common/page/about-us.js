@@ -11,6 +11,10 @@ import rudduf from '../../assets/images/about/avtar/rudduf.png'
 import gudxo from '../../assets/images/about/avtar/gudxo.png'
 import wnsghk from '../../assets/images/about/avtar/wnsghk.png'
 import tnqls from '../../assets/images/about/avtar/tnqls.png'
+import kwak from '../../assets/images/team/kwak.jpg'
+import kim from '../../assets/images/team/kim.jpg'
+import boss from '../../assets/images/team/boss.jpg'
+import lee from '../../assets/images/team/lee.jpg'
 
 export const aboutUs = () => {
 
@@ -42,7 +46,7 @@ export const aboutUs = () => {
                 </section>
 
                 {/*Testimonial*/}
-                <section className="testimonial small-section">
+                {/*<section className="testimonial small-section">
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-12">
@@ -102,7 +106,7 @@ export const aboutUs = () => {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>*/}
 
                 {/*Team Section*/}
                 <section id="team" className="team section-b-space">
@@ -112,22 +116,22 @@ export const aboutUs = () => {
                                 <h2>Our Team</h2>
                                 <Slider {...Team4} className="team-4">
                                     <div>
-                                        <img src={img} className="img-fluid" alt=""/>
+                                        <img src={kwak} className="img-fluid" alt=""/>
                                         <h4>곽 경 열</h4>
                                         <h6>Admin Part</h6>
                                     </div>
                                     <div>
-                                        <img src={img} className="img-fluid" alt=""/>
+                                        <img src={boss} className="img-fluid" alt=""/>
                                         <h4>이 형 태</h4>
                                         <h6>PM, Board Part, etc</h6>
                                     </div>
                                     <div>
-                                        <img src={img} className="img-fluid" alt=""/>
+                                        <img src={lee} className="img-fluid" alt=""/>
                                         <h4>이 준 화</h4>
                                         <h6>Map, New Car Part</h6>
                                     </div>
                                     <div>
-                                        <img src={img} className="img-fluid" alt=""/>
+                                        <img src={kim} className="img-fluid" alt=""/>
                                         <h4>김 수 빈</h4>
                                         <h6>Used Car Part</h6>
                                     </div>

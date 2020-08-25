@@ -19,6 +19,8 @@ export const User = () => {
     const[count, setCount] = useState(0)
     const[rowPerPage, setRowPerPage] = useState(0)
     const[size, setSize] = useState(10)
+    const[message] = useState("사용자 수: ")
+    const[message2] = useState(" ** 데이터는 파이썬 Faker라이브러리를 이용해서 5만건의 데이터 csv파일로 만들어 DB에 저장하였습니다.")
 
     const makeColors = () => {
         let r = Math.floor(Math.random() * 255)
@@ -202,8 +204,9 @@ export const User = () => {
                         <div className="card-body">
                             <div className="clearfix"/>
                             <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
+                                <h3>데이터 양이 많아 페이지 네이션 사용</h3>
                                 <MaterialTable
-                                    title={"사용자"} data={data} columns={columns} editable={editable} page={page} options={{pageSize:size}}
+                                    title={message.concat(count).concat(message2)} data={data} columns={columns} editable={editable} page={page} options={{pageSize:size}}
                                     components={{
                                         Pagination: props => (
                                             <TablePagination

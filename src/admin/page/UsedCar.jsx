@@ -17,6 +17,8 @@ const usedCarReducer = ( state={}, action ) => {
 
 export const UsedCar = () => {
     const[data,setData] = useState([])
+    const [message] = useState("중고차 DB수: ")
+    const [message2] = useState(" ** 중고차 데이터는 SK엔카를 파이썬으로 크롤링해서 DB에 저장해서 사용했습니다.")
 
     useEffect(() => {
         axios.get(`http://localhost:8080/user/usedCar`)
@@ -82,7 +84,7 @@ export const UsedCar = () => {
                                 </Container>
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">
-                                        <Table title={"중고차현황"} data={data} columns={columns} />
+                                        <Table title={message.concat(data.length).concat(message2)} data={data} columns={columns} />
                                     </div>
                                 </div>
                             </div>

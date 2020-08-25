@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import {Table} from '../item'
 import http from "../item/http";
-import {getAllProducts} from "../../newCar/items/ProductReducer";
 
 const elecCarTypes = {REQUEST: 'elecCar/REQUEST'}
 const initialState = {
@@ -98,6 +97,7 @@ export const ElecCar = () => {
                                     <h5>전기차 종합관리</h5>
                                 </div>
                                 <div className="card-body">
+                                    <h3>전기차 DB수: {data.length}</h3>
                                     <div className="btn-popup pull-right">
                                         <button type="button" className="btn btn-primary" onClick={onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">전기차 추가</button>
                                         <Modal open={open} onClose={onCloseModal} >

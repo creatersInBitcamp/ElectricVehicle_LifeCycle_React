@@ -9,7 +9,7 @@ export const ProductItem = (props) => {
             <div className="img-wrapper">
                 <div className="front">
                     <Link to={`${process.env.PUBLIC_URL}/used-car/product/${product.usedCarId}`}>
-                        <img src={product.img.img1} className={"img-fluid"}/>
+                        <img src={product.img.img1} className={"img-fluid"} alt={''}/>
                     </Link>
                 </div>
                 <div className="cart-info cart-wrap">

@@ -24,7 +24,6 @@ const ProductListing = props => {
             setHasMoreItems(false)
             return
         }
-        // a fake async api call
         setTimeout(() => {
             setLimit(limit+5)
         }, 3000)
@@ -43,7 +42,7 @@ const ProductListing = props => {
                         loader={<div className="loading-cls"/>}
                         endMessage={
                             <p className="seen-cls seen-it-cls">
-                                <b>Yay! You have seen it all</b>
+                                <b>모든 상품을 확인하셨습니다.</b>
                             </p>
                         }
                     >
@@ -59,9 +58,9 @@ const ProductListing = props => {
                     :
                     <div className="row">
                         <div className="col-sm-12 text-center section-b-space mt-5 no-found" >
-                            <img src={`${process.env.PUBLIC_URL}/assets/images/empty-search.jpg`} className="img-fluid mb-4" alt={""} />
-                            <h3>Sorry! Couldn't find the product you were looking For!!!    </h3>
-                            <p>Please check if you have misspell something or try searching with other words.</p>
+                            <img src={`${process.env.PUBLIC_URL}/assets/images/empty-search.jpg`} className="img-fluid mb-4" alt={''} />
+                            <h3>현재 판매중인 차량이 없습니다!!</h3>
+                            <p>검색 조건을 다시 설정해주세요!</p>
                             <Link to={`${process.env.PUBLIC_URL}/`} className="btn btn-solid">continue shopping</Link>
                         </div>
                     </div>

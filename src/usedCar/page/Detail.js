@@ -61,8 +61,6 @@ export const productDetail = (props) => {
                 .catch(()=>{
                     alert('취소되었습니다.')
                 })
-        } else {
-
         }
     }
 

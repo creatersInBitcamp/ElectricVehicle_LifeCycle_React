@@ -1,6 +1,6 @@
 import React from "react";
-import { Scatter } from "react-chartjs-2";
 import {useSelector} from "react-redux";
+import { Scatter } from "react-chartjs-2";
 
 export const MarketPrice = ({product}) => {
     const {Items} = useSelector((state)=>({
@@ -18,9 +18,7 @@ export const MarketPrice = ({product}) => {
     const box = []
     const setChartData = () => {
         Items.map((item,index) => {
-            box.push({x: item.age ? (item.age)
-                    .replace("/","")
-                    .replace("식","") : item.age , y: item.price})
+            box.push({x: item.age ? (item.age).replace("/","").replace("식","") : item.age , y: item.price})
         })
         return box
     }

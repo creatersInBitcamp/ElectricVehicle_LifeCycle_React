@@ -39,7 +39,6 @@ const Filter = () => {
 
     return <>
         <div className="collection-filter-block">
-            {/* brand filter */}
             <div className="collection-mobile-back">
                 <span className="filter-back"
                       onClick={(e) => closeFilter(e)} >
@@ -72,8 +71,6 @@ const Filter = () => {
                     </div>
                 )}
             </SlideToggle>
-
-            {/* price filter */}
             <SlideToggle>
                 {({onToggle, setCollapsibleElement}) => (
                     <div className="collection-collapse-block open">

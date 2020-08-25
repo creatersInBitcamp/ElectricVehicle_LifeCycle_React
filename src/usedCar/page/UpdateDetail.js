@@ -6,7 +6,6 @@ import {useRouteMatch} from "react-router-dom";
 const updateDetail = (props) => {
     const [contents,setContents] = useState([])
     const [targetId,setTargetId] = useState(0)
-    const [item,setItem] = useState([])
     const [desiredPrice, setDesiredPrice] = useState('')
     const [age, setAge] = useState('')
     const [mileage, setMileage] = useState('')
@@ -41,7 +40,6 @@ const updateDetail = (props) => {
             setCarName('')
         } else {
             let product = products.find(x => x.eccarId == targetId)
-            setItem(product)
             setCarId(targetId)
             setCarName(product.carName)
             console.log(product)
@@ -51,7 +49,6 @@ const updateDetail = (props) => {
 
     const onClickSubmit = (e) => {
         e.preventDefault()
-
         if (carId !== 0) {
             const info = {
                 usedCarId: usedCarId,
@@ -77,67 +74,68 @@ const updateDetail = (props) => {
         <section className="register-page section-b-space">
             <div className="container">
                 <div className="col-lg-12">
-        <div className="theme-card">
-            <form className="theme-form">
-                <div className="form-row">
-                    <div className="col">
-                        <label htmlFor="car-type">차종</label>
-                        <select onChange={(e)=>setTargetId(e.target.value)}>
-                            <option value={0}>차종을 선택해주세요.</option>
-                            {
-                                products.map((item,index)=>{
-                                    return <option key={index} value={item.eccarId}>{item.carName}</option>
-                                })
-                            }
-                        </select>&nbsp;
-                        <button className="btn btn-solid" onClick={onClickSelect}>선택</button>
-                    </div>
-                    <div className="col">
-                        <label htmlFor="car-type">차종</label>
-                        <h3>{carName}</h3>
-                    </div>
-                </div>
-                <br/><br/>
-                <div className="form-row">
-                    <div className="col-md-6">
-                        <label htmlFor="review">희망가격(단위: 만원)</label>
-                        <input type="text"
-                               className="form-control"
-                               required="required"
-                               defaultValue={contents.price}
-                               onChange={(e) => { setDesiredPrice(e.target.value) }} />
-                    </div>
-                </div>
-                <br/><br/>
-                <div className="form-row">
-                    <div className="col-md-6">
-                        <label htmlFor="email">등록연월</label>
-                            <input type="text"
-                                   className="form-control"
-                                   required="required"
-                                   defaultValue={contents.age}
-                                   onChange={(e) => { setAge(e.target.value) }} />
+                    <div className="theme-card">
+                        <form className="theme-form">
+                            <div className="form-row">
+                                <div className="col">
+                                    <label htmlFor="car-type">차종</label>
+                                    <select onChange={(e)=>setTargetId(e.target.value)}>
+                                        <option value={0}>차종을 선택해주세요.</option>
+                                        {
+                                            products.map((item,index)=>{
+                                                return <option key={index} value={item.eccarId}>{item.carName}</option>
+                                            })
+                                        }
+                                    </select>&nbsp;
+                                    <button className="btn btn-solid" onClick={onClickSelect}>선택</button>
+                                </div>
+                                <div className="col">
+                                    <label htmlFor="car-type">차종</label>
+                                    <h3>{carName}</h3>
+                                </div>
+                            </div>
+                            <br/><br/>
+                            <div className="form-row">
+                                <div className="col-md-6">
+                                    <label htmlFor="review">희망가격(단위: 만원)</label>
+                                    <input type="text"
+                                           className="form-control"
+                                           required="required"
+                                           defaultValue={contents.price}
+                                           onChange={(e) => { setDesiredPrice(e.target.value) }} />
+                                </div>
+                            </div>
+                            <br/><br/>
+                            <div className="form-row">
+                                <div className="col-md-6">
+                                    <label htmlFor="email">등록연월</label>
+                                        <input type="text"
+                                               className="form-control"
+                                               required="required"
+                                               defaultValue={contents.age}
+                                               onChange={(e) => { setAge(e.target.value) }} />
 
+                                </div>
+                            </div>
+                            <br/><br/>
+                            <div className="form-row">
+                                <div className="col-md-6">
+                                    <label htmlFor="review">주행거리</label>
+                                    <input type="text"
+                                           className="form-control"
+                                           placeholder="Mileage"
+                                           required="required"
+                                           defaultValue={contents.mileage}
+                                           onChange={(e) => { setMileage(e.target.value) }} />
+                                </div>
+                            </div>
+                            <br/>
+                            <button className="btn btn-solid" onClick={onClickSubmit}>Submit</button>
+                        </form>
                     </div>
                 </div>
-                <br/><br/>
-                <div className="form-row">
-                    <div className="col-md-6">
-                        <label htmlFor="review">주행거리</label>
-                        <input type="text"
-                               className="form-control"
-                               placeholder="Mileage"
-                               required=""
-                               defaultValue={contents.mileage}
-
-                               onChange={(e) => { setMileage(e.target.value) }} />
-                    </div>
-                </div>
-                <br/>
-                <button className="btn btn-solid" onClick={onClickSubmit}>Submit</button>
-            </form>
-        </div>
-                </div></div></section>
+            </div>
+        </section>
     </>
 }
 export default updateDetail

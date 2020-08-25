@@ -8,13 +8,12 @@ const FilterBar = ({onLayoutViewClicked}) => {
         items: getVisibleUsedProducts(state.usedData, state.filters)
     }))
 
-    //List Layout View
     const listLayout = () => {
         document.querySelector(".collection-grid-view").style = "opacity:0";
         document.querySelector(".product-wrapper-grid").style = "opacity:0.2";
         document.querySelector(".product-wrapper-grid").classList.add("list-view");
-        const elems = document.querySelector(".infinite-scroll-component .row").childNodes;
-        [].forEach.call(elems, function(el) {
+        const elem = document.querySelector(".infinite-scroll-component .row").childNodes;
+        [].forEach.call(elem, function(el) {
             el.className = '';
             el.classList.add('col-lg-12');
         })
@@ -23,22 +22,20 @@ const FilterBar = ({onLayoutViewClicked}) => {
         }, 500)
     }
 
-    //Grid Layout View
     const gridLayout = () => {
         document.querySelector(".collection-grid-view").style = "opacity:1";
         document.querySelector(".product-wrapper-grid").classList.remove("list-view");
-        const elems = document.querySelector(".infinite-scroll-component .row").childNodes;
-        [].forEach.call(elems, function(el) {
+        const elem = document.querySelector(".infinite-scroll-component .row").childNodes;
+        [].forEach.call(elem, function(el) {
             el.className = '';
             el.classList.add('col-lg-3');
         })
     }
 
-    // Layout Column View
     const LayoutView = colSize =>{
         if(!document.querySelector(".product-wrapper-grid").classList.contains("list-view")) {
-            const elems = document.querySelector(".infinite-scroll-component .row").childNodes;
-            [].forEach.call(elems, function(el) {
+            const elem = document.querySelector(".infinite-scroll-component .row").childNodes;
+            [].forEach.call(elem, function(el) {
                 el.className = '';
                 el.classList.add('col-lg-'+colSize);
             })

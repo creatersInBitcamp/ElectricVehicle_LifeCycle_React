@@ -18,8 +18,9 @@ export const SalesForm = (props) => {
     const [carName,setCarName] = useState('')
     const [submitted,setSubmitted] = useState(false)
 
-    const {products} = useSelector(state=>({
-        products: state.data.products
+    const {products,used} = useSelector(state=>({
+        products: state.data.products,
+        used: state.usedData.products
     }))
 
     const onClickSelect = (e) => {
@@ -107,8 +108,8 @@ export const SalesForm = (props) => {
                                         }
                                     </div>
                                     <div className="col">
-                                        <h5>현재 판매되고 있는 동일한 차량의 시세입니다.</h5>
-                                        <MarketPrice product={carName}/>
+                                        <h5>현재 판매되고 있는 {used.filter(x=>x.sale===true).length}대의 차량 중 동일한 차량의 시세입니다.</h5>
+                                        <MarketPrice product={carName} sales={true}/>
                                     </div>
                                 </div>
                                 <br/><br/>

@@ -3,12 +3,9 @@ import 'react-table/react-table.css';
 import MaterialTable from 'material-table';
 import {GoogleMap,Marker, useLoadScript} from "@react-google-maps/api";
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
-import {stationRequest} from "./StationReducer";
+import {MAP_KEY} from '../../api/key'
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
-
-const MAP_KEY = 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0';
 
 const libraries = ["places"];
 

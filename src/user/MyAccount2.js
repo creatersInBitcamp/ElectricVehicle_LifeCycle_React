@@ -1,6 +1,35 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom'
 import axios from 'axios'
+import {Image} from "../admin/item";
+import Modal from "@material-ui/core/Modal";
+import {makeStyles} from "@material-ui/core/styles";
+
+function rand() {
+    return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+    const top = 50 + rand();
+    const left = 50 + rand();
+
+    return {
+        top: `${top}%`,
+        left: `${left}%`,
+        transform: `translate(-${top}%, -${left}%)`,
+    };
+}
+
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        position: 'absolute',
+        width: 550,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+}));
 
 const MyAccount2 = ({user}) => {
     const {userSeq, name, userId, email, sex, phoneNumber, birthDate, addr, profileImage, profileText} = user
@@ -11,6 +40,10 @@ const MyAccount2 = ({user}) => {
     const [modiEmail, setModiEmail] = useState(email)
     const [modiPhone, setModiPhone] = useState(phoneNumber)
     const [modiAddr, setModiAddr] = useState(addr)
+    const [modal, setModal] = useState(false)
+
+    const classes = useStyles()
+    const modalStyle = getModalStyle()
 
     const history = useHistory()
 
@@ -43,7 +76,16 @@ const MyAccount2 = ({user}) => {
             })
     }
 
-    return (
+    const onProfileImageModal = (e) => {
+        e.preventDefault()
+        if(modal) {
+            setModal(false)
+        } else {
+            setModal(true)
+        }
+    }
+
+     return (
         <>
             {(modify === false)?
                 <div className="row">
@@ -116,7 +158,16 @@ const MyAccount2 = ({user}) => {
                                 <div className="profile-details text-center">
                                     <img src={profileImage} alt="" className="img-fluid img-90 rounded-circle blur-up lazyloaded" />
                                     <input type="text" value={modiImage} onChange={(e)=>setModiImage(e.target.value)}/>
-                                    {modiImage}
+                                    <button className="btn btn-classic" onClick={onProfileImageModal}>프로필 사진 수정</button>
+                                    <Modal open={modal} onClose={onProfileImageModal}>
+                                        <div style={modalStyle} className={classes.paper}>
+                                            <h2 id="simple-modal-title">Text in a modal</h2>
+                                            <p id="simple-modal-description">
+                                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                            </p>
+                                            <Image path={"/profileUpload"} setImgLink={(imgLink)=>{setModiImage(imgLink)}}/>
+                                        </div>
+                                    </Modal>
                                     <h5 className="f-w-600 f-16 mb-0">{name}</h5>
                                     <span>ID : {userId}</span>
                                 </div>
@@ -126,7 +177,6 @@ const MyAccount2 = ({user}) => {
                                     <div className="media">
                                         <div className="media-body">
                                             <input type="text" value={modiText} onChange={(e)=>setModiText(e.target.value)}/>
-                                            {modiText}
                                         </div>
                                     </div>
                                 </div>

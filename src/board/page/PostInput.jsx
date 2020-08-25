@@ -91,8 +91,8 @@ const PostInput = ({history}) => {
                                                placeholder="Link"/>
                                     </div>
                                     <div className="col-md-12">
-                                        <input type="text" className="form-control" id="image" value={img}/>
                                         <label htmlFor="link">image</label>
+                                        <input type="text" className="form-control" id="image" value={img}/>
                                         <div className="col-md-8">
                                             <Image path={"postImgUpload"} setImgLink={(imgLink)=>{setImg(imgLink)}}/>
                                         </div>

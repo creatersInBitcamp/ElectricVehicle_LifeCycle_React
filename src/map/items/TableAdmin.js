@@ -4,9 +4,7 @@ import MaterialTable from 'material-table';
 import {GoogleMap,Marker, useLoadScript} from "@react-google-maps/api";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import {stationRequest} from "./StationReducer";
-
-const MAP_KEY = 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0';
+import {MAP_KEY} from '../../api/key'
 
 const libraries = ["places"];
 

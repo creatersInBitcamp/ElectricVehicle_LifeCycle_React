@@ -46,34 +46,16 @@ export const MapChargingStation = (props) =>{
 
     const dispatch = useDispatch()
 
-    const {first} = useSelector((state)=>({
-        first: state.firstCar.list,
-        // myData : state.stationData.myData
-    }))
-
     useEffect(()=>{
-        console.log(first)
         sessionUser?(
-            first.length>0?(
-                axios.get(`http://localhost:8080/chargingstations/getmycar/${first[0].eccarId}/${sessionUser.userSeq}`)
-                    .then((res)=>{
-                        setMyData(res.data)
-                        dispatch(stationMapRequest(res.data))
-                        {console.log(myData)}
-                    })
-                    .catch((err)=>{
-                        console.log('charging-staion-axios-error')
-                    })
-            ):(
-                axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
-                    .then((res)=>{
-                        setMyData(res.data)
-                        dispatch(stationMapRequest(res.data))
-                    })
-                    .catch((err)=>{
-                        console.log(err.status)
-                    })
-            )
+            axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
+                .then((res)=>{
+                    setMyData(res.data)
+                    dispatch(stationMapRequest(res.data))
+                })
+                .catch((err)=>{
+                    console.log('charging-staion-axios-error')
+                })
 
         ):(
             axios.get(`http://localhost:8080/chargingstations/getall`)
@@ -85,6 +67,7 @@ export const MapChargingStation = (props) =>{
                     console.log(err.status)
                 })
         )
+
     },[])
 
     const mapRef = useRef();
@@ -261,6 +244,7 @@ export const MapChargingStation = (props) =>{
                         <div className="dashboard-right">
                             <Locate panTo={panTo} />
                             <Search panTo={panTo} />
+                            {console.log(myData)}
 
                             <GoogleMap
                                 id="map"

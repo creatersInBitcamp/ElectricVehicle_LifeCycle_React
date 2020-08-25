@@ -8,7 +8,6 @@ import StickyBox from "react-sticky-box";
 import {MyCar} from "../../usedCar";
 import AdminChargingStationTable from "../items/TableAdmin";
 
-
 export const Service = () => {
     const [admin,setAdmin] = useState(false);
     const result = useSelector(state=>state.loginReducer)
@@ -42,7 +41,9 @@ export const Service = () => {
                                         <div>
                                             {/*{console.log(first)}*/}
                                             <h2>데이터 수</h2>
-                                            <h1>{myData.length}개</h1>
+                                            <div>
+                                                <h1 style={{color:'red'}}>{myData.length}개</h1>
+                                            </div>
                                             <h4>출처 : 공공데이터포털</h4>
                                         </div>
                                     </StickyBox>
@@ -65,7 +66,6 @@ export const Service = () => {
 
                                                                     <TabPanel>
                                                                         <div className="no-slider row">
-                                                                            {console.log(first)}
                                                                             <MapChargingStation first={first}/>
                                                                         </div>
                                                                     </TabPanel>

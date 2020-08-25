@@ -165,7 +165,7 @@ const MyAccount2 = ({user}) => {
                                             <p id="simple-modal-description">
                                                 Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
                                             </p>
-                                            <Image path={"/profileUpload"} setImgLink={(imgLink)=>{setModiImage(imgLink)}}/>
+                                            <Image path={"profileUpload"} setImgLink={(imgLink)=>{setModiImage(imgLink)}}/>
                                         </div>
                                     </Modal>
                                     <h5 className="f-w-600 f-16 mb-0">{name}</h5>

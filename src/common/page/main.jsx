@@ -8,12 +8,21 @@ import communityimg from '../../assets/images/mainPage/community.jpg'
 
 // Import custom item
 import {TopCollection,SpecialProducts} from '../index';
+import {useDispatch} from "react-redux";
+
+const ADMIN_CHECK = 'ADMIN_CHECK'
+const adminCheckAction = admin =>({type: ADMIN_CHECK, check: admin})
 
 export const Main = () => {
 
+    const [admin] =useState(false)
+
     useEffect(()=>{
-        document.getElementById("color").setAttribute("href", `#` );
-    })
+        dispatch(adminCheckAction(admin))
+    },[])
+
+    const dispatch = useDispatch()
+
     return <>
         <div>
             <Helmet>

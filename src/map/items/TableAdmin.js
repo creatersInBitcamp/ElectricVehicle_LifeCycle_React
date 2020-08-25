@@ -29,7 +29,6 @@ export const AdminChargingStationTable = () => {
     useEffect(()=>{
         axios.get('http://localhost:8080/chargingstations/getall')
             .then((res)=>{
-                console.log(res.data)
                 setMyData(res.data)
             })
             .catch((err)=>{
@@ -95,7 +94,6 @@ export const AdminChargingStationTable = () => {
                     const index = oldData.tableData.id;
                     dataUpdate[index] = newData
                     setMyData([...dataUpdate])
-                    console.log(newData)
                     resolve()
                     axios.post(`http://localhost:8080/chargingstations/update`, newData)
                         .then((res) => {
@@ -113,7 +111,6 @@ export const AdminChargingStationTable = () => {
                     const dataDelete = [...myData];
                     const index = oldData.tableData.id;
                     const chargingStationId = oldData.chargingStationId
-                    console.log(chargingStationId)
                     dataDelete.splice(index, 1);
                     setMyData([...dataDelete]);
                     resolve()

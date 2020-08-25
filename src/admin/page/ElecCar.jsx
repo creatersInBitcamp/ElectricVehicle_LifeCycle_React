@@ -26,7 +26,6 @@ export const ElecCar = () => {
     useEffect(()=>{
         axios.get('http://localhost:8080/electriccars/getall')
             .then((res)=>{
-                console.log(res.data)
                 setDate(res.data)
             })
             .catch((err)=>{
@@ -71,12 +70,10 @@ export const ElecCar = () => {
 
     const saveFile = (e) => {
         e.preventDefault()
-        console.log(files)
         uploadService(files)
             .then((res) => {
                 axios.get('http://localhost:8080/electriccars/getall')
                     .then((res)=>{
-                        console.log(res.data)
                         setDate(res.data)
                     })
                     .catch((err)=>{
@@ -86,14 +83,6 @@ export const ElecCar = () => {
             .catch((err)=>{
                 throw err
             })
-        /*axios.post(`http://localhost:8080/user/addCar`, files)
-            .then((res)=>{
-                console.log(res.data)
-            })
-            .catch((err)=>{
-                console.log(err)
-                throw err
-            })*/
         setOpen(false)
     }
 

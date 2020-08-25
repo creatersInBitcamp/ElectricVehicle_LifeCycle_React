@@ -16,7 +16,6 @@ export const sightsMapRequest = myData =>({
 const StationReducer = (state={},action)=>{
     switch (action.type){
         case STATION_REQUEST:
-            console.log(action)
             return {myData:action.myData}
         case STATION_MAP_REQUEST:
             return {myData:action.myData}

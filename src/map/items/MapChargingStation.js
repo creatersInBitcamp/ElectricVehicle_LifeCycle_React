@@ -33,9 +33,7 @@ export const userThunk = (props) => (dispatch)=>{
         props.first.length>0?(
             axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
                 .then((res)=>{
-                    console.log(res.data)
                     dispatch(stationMapRequest(res.data))
-                    // setMyData(res.data)
                 })
                 .catch((err)=>{
                     console.log('charging-staion-axios-error')
@@ -43,9 +41,7 @@ export const userThunk = (props) => (dispatch)=>{
         ):(
             axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
                 .then((res)=>{
-                    console.log(res.data)
                     dispatch(stationMapRequest(res.data))
-                    // setMyData(res.data)
                 })
                 .catch((err)=>{
                     console.log(err.status)
@@ -55,8 +51,6 @@ export const userThunk = (props) => (dispatch)=>{
     ):(
         axios.get(`http://localhost:8080/chargingstations/getall`)
             .then((res)=>{
-                console.log(res.data)
-                // setMyData(res.data)
                 dispatch(stationMapRequest(res.data))
             })
             .catch((err)=>{
@@ -73,9 +67,7 @@ export const useAnotherThunk = (id,props) => (dispatch) => {
             props.first.length>0?(
                 axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
                     .then((res)=>{
-                        console.log(res.data)
                         dispatch(stationMapRequest(res.data))
-                        // setMyData(res.data)
                     })
                     .catch((err)=>{
                         console.log('charging-staion-axios-error')
@@ -83,9 +75,7 @@ export const useAnotherThunk = (id,props) => (dispatch) => {
             ):(
                 axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
                     .then((res)=>{
-                        console.log(res.data)
                         dispatch(stationMapRequest(res.data))
-                        // setMyData(res.data)
                     })
                     .catch((err)=>{
                         console.log(err.status)
@@ -149,18 +139,15 @@ export const MapChargingStation = props =>{
         Geocode.setLanguage('ko')
         Geocode.fromLatLng(marker.lat,marker.lng).then(
             response => {
-                console.log(response)
                 const address = response.results[0].formatted_address
                 const length = response.results[0].address_components.length
                 const postcode = response.results[0].address_components[length-1].long_name
-                console.log(postcode.indexOf('-'))
                 if(postcode.indexOf('-') != -1){ //결과값이 없으면 -1 반환
                     setSelectedPc(postcode)
                 }else{
                     setSelectedPc("정보없음")
                 }
                 setSelectedAddr(address)
-                console.log(address);
             },
             error => {
                 console.error(error);
@@ -257,7 +244,6 @@ export const MapChargingStation = props =>{
             charging : true,
             userId: user.userSeq,
         }
-        console.log(id)
         dispatch(useAnotherThunk(id,props))
     }
 

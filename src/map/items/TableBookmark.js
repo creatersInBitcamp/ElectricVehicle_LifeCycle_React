@@ -35,9 +35,7 @@ export const TableBookmark = () => {
                 let size = res.data.length
                 for(let i=0; i<size; i++){
                     products.push(res.data.shift().place)
-                    console.log(products)
                 }
-                // console.log(res.data.shift().place)
                 setMyData(products)
             })
             .catch((err)=>{

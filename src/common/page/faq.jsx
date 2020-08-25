@@ -47,7 +47,6 @@ export const Faq = () => {
         const postAxios = () => {
             axios.get(`http://localhost:8080/posts/pages/${match}/${page}`)
                 .then((res) => {
-                    console.log(res.data)
                     setPosts(res.data.content)
                     setCount(res.data.totalPages)
                 })
@@ -58,7 +57,6 @@ export const Faq = () => {
         const searchMethod = () => {
             axios.get(`http://localhost:8080/posts/search/${match}/${title}/${searchWord}/${page}`)
                 .then((res)=>{
-                    console.log(res.data)
                     setPosts(res.data.content)
                     setCount(res.data.totalPages)
                 })

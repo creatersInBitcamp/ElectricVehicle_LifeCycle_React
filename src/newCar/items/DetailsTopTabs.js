@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.scss';
-import {Link} from 'react-router-dom'
 
 export const DetailsTopTabs = props => {
     const {item} = props

@@ -11,17 +11,6 @@ import {clearUsedCompare} from "../../usedCar/page/MyCarComparison";
 import {clearMyCar} from "../../user/MyCarRegister";
 
 export const TopBar = () => {
-    const contexts = {
-        user:'http://localhost:8080/user/csv',
-        post:"http://localhost:8080/posts/readcsv",
-        sights:"http://localhost:8080/sights/csv",
-        charge:"http://localhost:8080/chargingstations/csv",
-        cars:"http://localhost:8080/cars/csv",
-        used:"http://localhost:8080/usedCars/csv",
-        electric: "http://localhost:8080/electriccars/csv",
-        variants : "http://localhost:8080/variants/csv",
-        fare : "http://localhost:8080/fare/csv"
-    }
     const translate = useTranslate();
     const [session, setSession] = useState(false)
     const [userSession] = useState(sessionStorage.getItem("user"))
@@ -42,96 +31,6 @@ export const TopBar = () => {
         sessionStorage.clear()
         window.location.reload()
     }
-    const onCSVuser = (e) => {
-        e.preventDefault()
-            axios.get(`${contexts.user}`)
-                .then((res)=>{
-                    console.log(`user 성공`)
-                })
-                .catch((err)=>{
-                    console.log(`${contexts.user}: err: ${err.status}`)
-                })
-    }
-    const onCSVpost = (e) => {
-        e.preventDefault()
-        axios.get(`${contexts.post}`)
-            .then((res)=>{
-                console.log(`post 성공`)
-            })
-            .catch((err)=>{
-                console.log(`${contexts.post}: err: ${err.status}`)
-            })
-    }
-    const onCSVsight = (e) => {
-        e.preventDefault()
-        axios.get(`${contexts.sights}`)
-            .then((res)=>{
-                console.log(`관광지 성공`)
-            })
-            .catch((err)=>{
-                console.log(`${contexts.sights}: err: ${err.status}`)
-            })
-    }
-    const onCSVcharge = (e) => {
-        e.preventDefault()
-        axios.get(`${contexts.charge}`)
-            .then((res)=>{
-                console.log(`충전소 성공`)
-            })
-            .catch((err)=>{
-                console.log(`${contexts.charge}: err: ${err.status}`)
-            })
-    }
-    const onCSVcar = (e) => {
-        e.preventDefault()
-        axios.get(contexts.cars)
-            .then((res)=>{
-                console.log('차 성공')
-            })
-            .catch((err)=>{
-                console.log('차 실패')
-            })
-    }
-    const onCSVused = (e) => {
-        e.preventDefault()
-        axios.get(contexts.used)
-            .then((res)=>{
-                console.log('중고차 성공')
-            })
-            .catch((err)=>{
-                console.log('중고차 실패')
-            })
-    }
-    const onCSVnew = (e) => {
-        e.preventDefault()
-        axios.get(contexts.electric)
-            .then((res)=>{
-                console.log('신차 성공')
-            })
-            .catch((err)=>{
-                console.log('신차 실패')
-            })
-    }
-    const onCSVvariants = (e) => {
-        e.preventDefault()
-        axios.get(contexts.variants)
-            .then((res)=>{
-                console.log('variants 성공')
-            })
-            .catch((err)=>{
-                console.log('variants 실패')
-            })
-    }
-    const onCSVfare = (e) => {
-        e.preventDefault()
-        axios.get(contexts.fare)
-            .then((res)=>{
-                console.log('fare 성공')
-            })
-            .catch((err)=>{
-                console.log('fare 실패')
-            })
-    }
 
 
     return <>
@@ -143,17 +42,6 @@ export const TopBar = () => {
                             <ul>
                                 <li>{translate('topbar_title', { theme_name: ' ElectricVehicle_LifeCycle' })}</li>
                                 <li><i className="fa fa-phone" aria-hidden="true"/>{translate('call_us')}:  123 - 456 - 7890</li>
-                                <li>
-                                    <button onClick={(e)=> {onCSVuser(e)}}>USER</button>
-                                    <button onClick={(e)=> {onCSVpost(e)}}>POST</button>
-                                    <button onClick={(e)=> {onCSVsight(e)}}>SIGHTS</button>
-                                    <button onClick={(e)=> {onCSVcharge(e)}}>CHARGE</button>
-                                    <button onClick={(e)=> {onCSVcar(e)}}>car</button>
-                                    <button onClick={(e)=> {onCSVnew(e)}}>NewCar</button>
-                                    <button onClick={(e)=> {onCSVvariants(e)}}>Variants</button>
-                                    <button onClick={(e)=> {onCSVused(e)}}>UsedCar</button>
-                                    <button onClick={(e)=> {onCSVfare(e)}}>fare</button>
-                                </li>
                             </ul>
                         </div>
                     </div>

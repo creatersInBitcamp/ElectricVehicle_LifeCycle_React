@@ -113,14 +113,6 @@ export const getCartTotal = cartItems => {
     return total;
 }
 
-// Get Trending Tag wise Collection
-export const getTrendingTagCollection = (products, type, tag) => {
-    const items = products.filter(product => {
-        return product.category === type && product.tags.includes(tag);
-    })
-    return items.slice(0,8)
-}
-
 // Get Trending Collection
 export const getTrendingCollection = (products) => {
     const items = products.filter(product => {
@@ -198,22 +190,11 @@ export const getSpecialUsed = products => {
     return items.slice(0,8)
 }
 
-// Get Womens Wear
-export const getWomensWear = products => {
-    const items = products.filter(product => {
-        return product.sale === false;
-    })
-
-    return items.slice(0,8)
-}
-
 // Get Posts
 export const getPosts = () => {
     const posts = []
      axios.get('http://localhost:8080/posts/getall')
         .then((res)=>{
-            console.log('getPosts axios 작동')
-            console.log(res.data)
             res.data.slice(0,8)
         })
         .catch((err)=> {
@@ -230,14 +211,4 @@ export const getSingleItem = (products, id) => {
     })
     return items;
 }
-
-// Get Feature Products
-export const getFeatureImages = (products, type) => {
-
-    const items = products.filter(product => {
-        return product.type === type;
-    })
-    return items;
-}
-
 

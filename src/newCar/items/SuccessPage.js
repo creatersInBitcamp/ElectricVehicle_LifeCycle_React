@@ -4,10 +4,6 @@ import queryString from "query-string";
 export const OrderSuccess=({ history })=>{
     const { location } = history;
     const query = queryString.parse(location.state.query);
-    // const item = location.state.data.item
-    // const deliveryDate = new Date(Date.now() + 5 * 86400000)
-    console.log(location.state)
-    console.log(query)
     const { merchant_uid, error_msg, buyer_addr, buyer_email, buyer_name, buyer_postcode,buyer_tel, imp_uid } = query;
     const { pg, pay_method, amount, date, deliveryDate, item} = location.state.data;
     const isSuccessed = getIsSuccessed();

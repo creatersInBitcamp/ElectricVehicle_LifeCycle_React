@@ -37,7 +37,6 @@ function Payment({data}) {
                 userSeq:data.userSeq,
                 eccarId:data.item.eccarId
             }
-            console.log(newPurchase)
             axios.post(`http://localhost:8080/purchases/insert`, newPurchase)
                 .then((res)=>{
                     console.log('신차 구매 axios 성공')

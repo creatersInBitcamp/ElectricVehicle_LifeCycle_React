@@ -32,9 +32,7 @@ export const userThunk = () => (dispatch)=>{
     sessionUser?(
         axios.get(`http://localhost:8080/sights/getall/${sessionUser.userSeq}`)
             .then((res)=>{
-                console.log(res.data)
                 dispatch(sightsMapRequest(res.data))
-                // setMyData(res.data)
             })
             .catch((err)=>{
                 console.log(err.status)
@@ -42,9 +40,7 @@ export const userThunk = () => (dispatch)=>{
     ):(
         axios.get(`http://localhost:8080/sights/getall`)
             .then((res)=>{
-                console.log(res.data)
                 dispatch(sightsMapRequest(res.data))
-                // setMyData(res.data)
             })
             .catch((err)=>{
                 console.log(err.status)
@@ -58,9 +54,7 @@ export const useAnotherThunk = (info) => (dispatch) => {
             console.log("북마크 저장 성공")
             axios.get(`http://localhost:8080/sights/getall/${sessionUser.userSeq}`)
                 .then((res)=>{
-                    console.log(res.data)
                     dispatch(sightsMapRequest(res.data))
-                    // setMyData(res.data)
                 })
                 .catch((err)=>{
                     console.log('에러 '+err.status)
@@ -122,18 +116,15 @@ export const MapSights = () =>{
         Geocode.setLanguage('ko')
         Geocode.fromLatLng(marker.lat,marker.lng).then(
             response => {
-                console.log(response)
                 const address = response.results[0].formatted_address
                 const length = response.results[0].address_components.length
                 const postcode = response.results[0].address_components[length-1].long_name
-                console.log(postcode.indexOf('-'))
                 if(postcode.indexOf('-') != -1){ //결과값이 없으면 -1 반환
                     setSelectedPc(postcode)
                 }else{
                     setSelectedPc("정보없음")
                 }
                 setSelectedAddr(address)
-                console.log(address);
             },
             error => {
                 console.error(error);
@@ -190,7 +181,6 @@ export const MapSights = () =>{
 
             try {
                 const results = await getGeocode({ address });
-                // console.log(results[0]) formatted address, compo 전부 가져옴
                 const { lat, lng } = await getLatLng(results[0]);
                 const postal_code = await getZipCode(results[0],false)
                 panTo({ lat, lng });

@@ -1,15 +1,19 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 
 export const ProductListItem = props => {
+
+    const {product, symbol, onAddToCartClicked, onAddToWishlistClicked, onAddToCompareClicked, check} = props;
     const [image,setImage] = useState('')
 
+    useEffect(()=>{
+        setImage('')
+    },[product])
+    
     const onClickHandle = img =>{
         setImage(img);
     }
-
-    const {product, symbol, onAddToCartClicked, onAddToWishlistClicked, onAddToCompareClicked, check} = props;
 
     return (
         <div className="product-box">
@@ -41,12 +45,16 @@ export const ProductListItem = props => {
                         product.variants ?(
                             <ul className="product-thumb-list">
                                 {
-                                    product.variants.map((vari, i) =>
-                                        <li className={`grid_thumb_img ${(vari.images === image) ? 'active' : ''}`} key={i}>
+                                    product.variants.map((vari, i) => {
+                                        return (
+                                            <li
+                                                className={`grid_thumb_img ${(vari.images === image) ? 'active' : ''}`}
+                                                key={i}>
                                                 <a title="Add to Wishlist">
                                                     <img src={`${vari.images}`} onClick={() => onClickHandle(vari.images)}/>
                                                 </a>
-                                        </li>)
+                                            </li>)
+                                    })
                                 }
                             </ul>
                         ): ''

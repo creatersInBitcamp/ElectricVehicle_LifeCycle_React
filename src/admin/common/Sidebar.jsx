@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 // image import
 import logo from '../../assets/images/dashboard/logoEv.jpg'
-import man from '../../assets/images/dashboard/man.png'
 import {SidebarMenus} from "./index";
 
 const sidebarTypes = {REQUEST: 'sidebar/REQUEST'}

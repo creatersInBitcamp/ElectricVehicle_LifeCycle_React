@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import { AlignLeft } from 'react-feather';
 
 //images
-import logo from '../../assets/images/dashboard/08.png'
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {clearWishlist} from "../../newCar/page/WishlistReducer";
@@ -65,7 +64,6 @@ export const Header = () => {
                     <div className="main-header-right row">
                         <div className="main-header-left d-lg-none" >
                             <div className="logo-wrapper">
-                                    <img className="blur-up lazyloaded" src={logo} alt="" />
                             </div>
                         </div>
                         <div className="mobile-sidebar">

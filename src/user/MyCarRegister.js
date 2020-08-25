@@ -1,13 +1,13 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
+import {Link} from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import Slider from "react-slick";
 import {Table} from "../admin/item";
-import {Link} from "react-router-dom";
 
 /* type */
 const RECEIVE_MY_CARS = 'RECEIVE_MY_CARS'
@@ -25,7 +25,7 @@ const receiveMyCar = myCars => ({
     type: RECEIVE_MY_CARS,
     myCars
 })
-const addToMyCar = ({product,user}) => (dispatch) => {
+const addToMyCar = ({product,user}) => {
     const info = {
         price: null,
         age: null,
@@ -37,8 +37,6 @@ const addToMyCar = ({product,user}) => (dispatch) => {
     }
     axios.post(`http://localhost:8080/usedCars/register`, info)
         .then((res)=>{
-            console.log(info)
-            console.log(res.data)
             window.location.reload()
         })
         .catch((err)=>{ throw err })
@@ -50,9 +48,8 @@ const removeFromMyCar = product_id => (dispatch) => {
     })
 }
 const removeAllCar = (myCars) => (dispatch) => {
-    console.log(myCars)
     axios.post(`http://localhost:8080/usedCars/deleteAllCar`,myCars)
-        .then((res)=> dispatch({ type: REMOVE_ALL_CAR, result: res.data },console.log(res.data)), window.location.reload())
+        .then((res)=> dispatch({ type: REMOVE_ALL_CAR, result: res.data }), window.location.reload())
         .catch(()=>alert(`삭제 실패`))
 }
 export const receiveFirstCar = firstCar => ({
@@ -68,18 +65,20 @@ const removeFromFirstCar = product_id => (dispatch) => {
 const removeAllFirstCar = () => ({
     type: REMOVE_ALL_FIRST_CAR
 })
-const changeFirstCar = (myCars,targetId) => (dispatch) => {
+const changeFirstCar = (myCars,targetId) => {
     const product = myCars.find(x=> (x.usedCarId == targetId))
     const before = myCars.filter(x=> {
             if(x.usedCarId != targetId){
                 return x.usedCarId
             }
         })
+
     axios.get(`http://localhost:8080/usedCars/updateFirstCar/${product.usedCarId}`)
         .then((res)=>{
             window.location.reload()
         })
         .catch((err)=>{ throw err })
+
     if (before) {
         axios.post(`http://localhost:8080/usedCars/updateFirstCar`,before)
             .then((res)=>{})
@@ -104,7 +103,6 @@ export const myCarReducer = (state=initialState, action) => {
             }
 
         case REMOVE_ALL_CAR:
-            console.log(action)
             if (action.result === true) {
                 return {
                     list: []
@@ -137,7 +135,6 @@ export const myCarReducer = (state=initialState, action) => {
 export const firstCarReducer = (state={list:[]}, action) => {
     switch (action.type) {
         case ADD_TO_FIRST_CAR:
-            console.log(action)
             const productId = action.product.eccarId
             if (state.list.findIndex(product => product.eccarId === productId) !== -1) {
                 const list = state.list.reduce((cartAcc, product) => {
@@ -177,12 +174,12 @@ export const firstCarReducer = (state={list:[]}, action) => {
 export const MyCarRegister = () => {
     const [openEdit,setOpenEdit] = useState(false)
     const [targetId,setTargetId] = useState(0)
-    const [state, setState] = useState({ nav1: null, nav2: null })
+    const [state,setState] = useState({ nav1: null, nav2: null })
     const [product,setProduct] = useState([])
-    const [value, setValue] = useState(0)
-    const [used, setUsed] = useState([])
+    const [value,setValue] = useState(0)
+    const [used,setUsed] = useState([])
     let [result,setResult] = useState([])
-    const [userSession, setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
+    const [userSession,setUserSession] = useState(JSON.parse(sessionStorage.getItem("user")))
 
     const slider1 = useRef();
     const slider2 = useRef();
@@ -197,31 +194,26 @@ export const MyCarRegister = () => {
         let usedNew = []
         if (used.length > 0){
             usedNew = used.find(x=>x.usedCarSalesList)
-            console.log(used)
-            console.log(usedNew)
             axios.get(`http://localhost:8080/usedCars/getDetailList/${userSession.userSeq}`)
                 .then((res)=>{
-                    console.log(res.data)
                     setProduct(res.data)
                 })
             setResult(usedNew.usedCarSalesList)
         } else {
             setResult(usedNew)
         }
+
         axios.get(`http://localhost:8080/usedCars/getAllMyCar/${userSession.userSeq}`)
             .then((res)=>{
-                console.log(res.data)
-                // setMyCar(res.data)
                 dispatch(receiveMyCar(res.data))
             })
             .catch(()=>{})
-        // setMyCar(getAllMyCar(userSession.userSeq))
+
         axios.get(`http://localhost:8080/usedCars/getFirstCar/${userSession.userSeq}`)
             .then((res)=>{
-                console.log(res.data)
-                // setFirst(res.data)
                 dispatch(receiveFirstCar(res.data))
             })
+
     }, [userSession])
 
     useEffect(() => {

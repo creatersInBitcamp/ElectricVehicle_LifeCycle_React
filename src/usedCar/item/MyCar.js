@@ -23,8 +23,6 @@ export const MyCar = props => {
         if (userSession) {
             axios.get(`http://localhost:8080/usedCars/getFirstCar/${userSession.userSeq}`)
                 .then((res)=>{
-                    console.log(res.data)
-                    // setFirst(res.data)
                     dispatch(receiveFirstCar(res.data))
                 })
         }

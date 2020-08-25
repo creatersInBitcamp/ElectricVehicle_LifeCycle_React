@@ -77,8 +77,6 @@ export const MyCarComparison = () => {
         speed: 300,
         slidesToShow: 4,
         slidesToScroll: 1,
-        // autoplay: true,
-        // autoplaySpeed: 3000,
         responsive: [
             {
                 breakpoint: 1200,
@@ -106,7 +104,7 @@ export const MyCarComparison = () => {
 
     return <>
         <Breadcrumb title={'Compare'} />
-        {Items.length>0 ?
+        {first.length>0 ?
             <section className="compare-section section-b-space">
                 <div className="container">
                     <div className="row">
@@ -161,7 +159,7 @@ export const MyCarComparison = () => {
                                                 </div>
                                                 <div className="detail-part">
                                                     <div className="title-detail">
-                                                        market price
+                                                        Market Price
                                                     </div>
                                                     <div className="inner-detail">
                                                         <MarketPrice product={item}/>
@@ -232,7 +230,7 @@ export const MyCarComparison = () => {
                                             </div>
                                             <div className="detail-part">
                                                 <div className="title-detail">
-                                                    market price
+                                                    Market Price
                                                 </div>
                                                 <div className="inner-detail">
                                                     <MarketPrice product={item}/>

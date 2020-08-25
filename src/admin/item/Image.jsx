@@ -37,7 +37,7 @@ export const Image = ({path, setImgLink}) => {
         uploadService(currentFile)
             .then((res)=>{
                 alert(`파일이 업로드되었습니다. imgLink : ${res.data}`)
-                setImgLink(`https://evcar.s3.ap-northeast-2.amazonaws.com/homeBanner${res.data}`)
+                setImgLink(res.data)
             })
             .catch(()=>{
                 setImg(undefined)

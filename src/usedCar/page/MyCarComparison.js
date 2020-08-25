@@ -109,66 +109,61 @@ export const MyCarComparison = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <Slider {...settings} className="slide-4">
-                                <div className="compare-part">
-                                    {first.map((item) => {
-                                        return (
-                                            <>
-                                                <div className="img-section">
-                                                    <img className="img-fluid" src={item.img.img1} alt=""/>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>name</h5>
+                            <div className="form-row">
+                                <div className="col">
+                                    <div className="compare-part">
+                                        {first.map((item) => {
+                                            return (
+                                                <>
+                                                    <div className="img-section">
+                                                        <img className="img-fluid" src={item.img.img1} alt=""/>
                                                     </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.carName}</p>
+                                                    <div className="detail-part">
+                                                        <div className="title-detail">
+                                                            <h5>name</h5>
+                                                        </div>
+                                                        <div className="inner-detail">
+                                                            <p>{item.carName}</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>Brand</h5>
+                                                    <div className="detail-part">
+                                                        <div className="title-detail">
+                                                            <h5>Brand</h5>
+                                                        </div>
+                                                        <div className="inner-detail">
+                                                            <p>{item.brand}</p>
+                                                        </div>
                                                     </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.brand}</p>
+                                                    <div className="detail-part">
+                                                        <div className="title-detail">
+                                                            <h5>Trim</h5>
+                                                        </div>
+                                                        <div className="inner-detail">
+                                                            <p>{item.trim}</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>Trim</h5>
+                                                    <div className="detail-part">
+                                                        <div className="title-detail">
+                                                            <h5>Age</h5>
+                                                        </div>
+                                                        <div className="inner-detail">
+                                                            <p>{item.yyyy}년형 {item.age}</p>
+                                                        </div>
                                                     </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.trim}</p>
+                                                    <div className="detail-part">
+                                                        <div className="title-detail">
+                                                            <h5>Price</h5>
+                                                        </div>
+                                                        <div className="inner-detail">
+                                                            <p>{item.price}{symbol}</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>Age</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.yyyy}년형 {item.age}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        <h5>Price</h5>
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <p>{item.price}{symbol}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="detail-part">
-                                                    <div className="title-detail">
-                                                        Market Price
-                                                    </div>
-                                                    <div className="inner-detail">
-                                                        <MarketPrice product={item}/>
-                                                    </div>
-                                                </div>
-                                            </>
-                                        )
-                                    })}
+                                                </>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
+                                <div className="col">
                                 {Items.map((item,index) =>
                                     <div key={index}>
                                         <div className="compare-part">
@@ -228,14 +223,6 @@ export const MyCarComparison = () => {
                                                     <p>{item.price}{symbol}</p>
                                                 </div>
                                             </div>
-                                            <div className="detail-part">
-                                                <div className="title-detail">
-                                                    Market Price
-                                                </div>
-                                                <div className="inner-detail">
-                                                    <MarketPrice product={item}/>
-                                                </div>
-                                            </div>
                                             <div className="btn-part">
                                                 <a className="btn btn-solid">
                                                     <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.usedCarId}`}>
@@ -246,7 +233,19 @@ export const MyCarComparison = () => {
                                         </div>
                                     </div>
                                 )}
-                            </Slider>
+                                </div>
+                                <div className="col-5">
+                                    <h2>메인 차량 중고시세</h2>
+                                    {first.map((item) =>
+                                        <MarketPrice product={item}/>
+                                    )}
+                                    <br/><br/>
+                                    <h2>비교 차량 중고시세</h2>
+                                    {Items.map((item,index) =>
+                                        <MarketPrice product={item}/>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

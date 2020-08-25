@@ -8,6 +8,8 @@ import './map.css'
 import "@reach/combobox/styles.css";
 import axios from "axios";
 import {MAP_KEY} from '../../api/key'
+import {stationMapRequest} from "./StationReducer";
+import {useDispatch} from "react-redux";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -44,10 +46,12 @@ export const MapBookmark = () =>{
     const [id,setId] = useState(0)
     const userId = user.userSeq
 
+    const dispatch = useDispatch()
     useEffect(()=>{
         axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
             .then((res)=>{
                 setMyData(res.data)
+                dispatch(stationMapRequest(res.data))
             })
             .catch((err)=>{
                 console.log(err.status)

@@ -3,10 +3,11 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {MapChargingStation,MapSights,TableChargingStation,MapBookmark} from "../index";
 import {Breadcrumb} from "../../common";
 import {AdminBreadcrumb} from "../../admin/common"
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import StickyBox from "react-sticky-box";
 import {MyCar} from "../../usedCar";
 import AdminChargingStationTable from "../items/TableAdmin";
+
 
 export const Service = () => {
     const [admin,setAdmin] = useState(false);
@@ -23,8 +24,9 @@ export const Service = () => {
         setAdmin(result.check)
     },[result])
 
-    const {first} = useSelector(state=>({
-        first: state.firstCar.list
+    const {first,myData} = useSelector(state=>({
+        first: state.firstCar.list,
+        myData : state.stationData.myData
     }))
 
     return (
@@ -37,6 +39,12 @@ export const Service = () => {
                                 <div className="col-sm-3 collection-filter">
                                     <StickyBox offsetTop={20} offsetBottom={20}>
                                         <MyCar check={check}/>
+                                        <div>
+                                            {/*{console.log(first)}*/}
+                                            <h2>데이터 수</h2>
+                                            <h1>{myData.length}개</h1>
+                                            <h4>출처 : 공공데이터포털</h4>
+                                        </div>
                                     </StickyBox>
                                 </div>
                                 <div className="collection-content col">
@@ -52,13 +60,12 @@ export const Service = () => {
                                                                         <Tab>충전소 지도</Tab>
                                                                         <Tab>관광지 지도</Tab>
                                                                         <Tab>충전소 검색</Tab>
-                                                                        {session?(
-                                                                            <Tab>즐겨찾기</Tab>
-                                                                        ):null}
+                                                                        <Tab>즐겨찾기</Tab>
                                                                     </TabList>
 
                                                                     <TabPanel>
                                                                         <div className="no-slider row">
+                                                                            {console.log(first)}
                                                                             <MapChargingStation first={first}/>
                                                                         </div>
                                                                     </TabPanel>
@@ -74,7 +81,11 @@ export const Service = () => {
                                                                     </TabPanel>
                                                                     <TabPanel>
                                                                         <div className=" no-slider row">
-                                                                            <MapBookmark/>
+                                                                            {session ? <MapBookmark/> : (
+                                                                                <div>
+                                                                                    <h1>로그인이 필요한 서비스입니다.</h1>
+                                                                                </div>
+                                                                            )}
                                                                         </div>
                                                                     </TabPanel>
                                                                 </Tabs>

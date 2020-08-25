@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {AdminBreadcrumb} from '../common';
 import {Image, Table} from '../item'
-import {useSelector} from "react-redux";
 import axios from "axios";
 import {Link} from "react-router-dom";
 

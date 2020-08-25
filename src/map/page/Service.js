@@ -21,7 +21,6 @@ export const Service = () => {
 
     useEffect(()=>{
         setAdmin(result.check)
-        console.log(result.check)
     },[result])
 
     const {first} = useSelector(state=>({

@@ -30,7 +30,6 @@ export const Filter = () => {
 
     const clickBrandHendle = (event, brands) => {
         const index = brands.indexOf(event.target.value);
-        console.log(event.target.checked)
         if (event.target.checked)
             brands.push(event.target.value); // push in array checked value
         else

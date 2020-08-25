@@ -40,7 +40,6 @@ import {getAllProducts} from "./newCar/items/ProductReducer";
 const Root = () => {
     store.dispatch(getAllProducts());
     store.dispatch(getAllUsedProducts());
-    console.log(store.getState())
     return (
         <Provider store={store}>
             <IntlProvider translations={translations} locale='ko'>

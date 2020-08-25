@@ -16,7 +16,6 @@ export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 export const checkout = () => {
-    console.log(sessionUser)
     const [method, setMethod] = useState('구매상담')
     const [color, setColor] = useState('색상 선택')
     const [newCar, setNewCar] = useState({
@@ -33,7 +32,6 @@ export const checkout = () => {
     useEffect(()=>{
         axios.get(`http://localhost:8080/electriccars/getone/${eccarId}`)
             .then((res)=>{
-                console.log(res.data)
                 setNewCar(res.data)
             })
             .catch((err)=>{
@@ -51,7 +49,6 @@ export const checkout = () => {
             userSeq:sessionUser.userSeq,
             eccarId:newCar.eccarId
         }
-        console.log(newPurchase)
         axios.post(`http://localhost:8080/purchases/insert`, newPurchase)
             .then((res)=>{
                 alert('구매상담신청 성공')
@@ -144,17 +141,14 @@ export const checkout = () => {
                                             <div className="form-group col-md-12 col-sm-12 col-xs-12">
                                                 <div className="field-label">주문자</div>
                                                 <input type="text" name="first_name" value={sessionUser.name} />
-                                                {/*{validator.message('first_name', state.first_name, 'required|alpha')}*/}
                                             </div>
                                             <div className="form-group col-md-12 col-sm-12 col-xs-12">
                                                 <div className="field-label">주문자 전화번호</div>
                                                 <input type="text" name="phone"  value={sessionUser.phoneNumber} />
-                                                {/*{validator.message('phone', state.phone, 'required|phone')}*/}
                                             </div>
                                             <div className="form-group col-md-12 col-sm-12 col-xs-12">
                                                 <div className="field-label">Email Address</div>
                                                 <input type="text" name="email" value={sessionUser.email} />
-                                                {/*{validator.message('email', state.email, 'required|email')}*/}
                                             </div>
                                             <div className="form-group col-md-12 col-sm-12 col-xs-12">
                                                 <div className="field-label">Color</div>
@@ -171,12 +165,7 @@ export const checkout = () => {
                                             <div className="form-group col-md-12 col-sm-12 col-xs-12">
                                                 <div className="field-label">Address</div>
                                                 <input type="text" name="address" value={sessionUser.addr} placeholder="Street address" />
-                                                {/*{validator.message('address', state.address, 'required|min:20|max:120')}*/}
                                             </div>
-                                            {/*<div className="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <input type="checkbox" name="create_account" id="account-option" />
-                                                &ensp; <label htmlFor="account-option">Create An Account?</label>
-                                            </div>*/}
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-sm-12 col-xs-12">
@@ -188,9 +177,6 @@ export const checkout = () => {
                                                 </div>
                                                 <ul className="qty">
                                                     <li> {newCar.carName} <span>{totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span></li>
-                                                    {/*{cartItems.map((item, index) => {*/}
-                                                    {/*    return <li key={index}>{item.carName} <span>{item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</span></li> })*/}
-                                                    {/*}*/}
                                                 </ul>
                                             </div>
 
@@ -232,56 +218,6 @@ export const checkout = () => {
                                         </div>
                                     </div>
                                 </div>
-                                {/*<div className="row section-t-space">
-                                    <div className="col-lg-6">
-                                        <div className="stripe-section">
-                                            <h5>stripe js example</h5>
-                                            <div>
-                                                <h5 className="checkout_class">dummy test</h5>
-                                                <table>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>cart number</td>
-                                                        <td>4242424242424242</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>mm/yy</td>
-                                                        <td>2/2020</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>cvc</td>
-                                                        <td>2222</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-6 m-sm-t-2">
-                                        <div className="stripe-section">
-                                            <h5>paypal example</h5>
-                                            <div>
-                                                <h5 className="checkout_class">dummy test</h5>
-                                                <table>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>cart number</td>
-                                                        <td>4152521541244</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>mm/yy</td>
-                                                        <td>11/18</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>cvc</td>
-                                                        <td>521</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>*/}
                             </form>
                         </div>
                     </div>

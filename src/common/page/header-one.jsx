@@ -111,9 +111,21 @@ export const HeaderOne = props =>{
 									<div>
 										<div className="icon-nav">
 											<ul>
-												{/*<li className="onhover-div mobile-search">
-													<div><img src={`${process.env.PUBLIC_URL}/assets/images/icon/search.png`} onClick={openSearch} className="img-fluid" alt="" />
-														<i className="fa fa-search" onClick={openSearch}/></div>
+												{/*<li className="onhover-div mobile-setting">
+													<div><img src={`${process.env.PUBLIC_URL}/assets/images/icon/setting.png`} className="img-fluid" alt="" />
+														<i className="fa fa-cog"/></div>
+													<div className="show-div setting">
+														<h6>language</h6>
+														<ul>
+															<li><a href={null} onClick={() => changeLanguage('ko')}>Korea</a> </li>
+															<li><a href={null} onClick={() => changeLanguage('en')}>English</a> </li>
+														</ul>
+														<h6>currency</h6>
+														<ul className="list-inline">
+															<li><a href={null} onClick={()=>{dispatch(changeCurrency('만원'))}}>won</a> </li>
+															<li><a href={null} onClick={()=>{dispatch(changeCurrency('만￦'))}}>doller</a> </li>
+														</ul>
+													</div>
 												</li>*/}
 												{/*Header Cart Component */}
 												<CartContainer/>
@@ -126,48 +138,6 @@ export const HeaderOne = props =>{
 					</div>
 				</div>
 			</header>
-
-			{/*<div id="search-overlay" className="search-overlay">
-				<div>
-					<span className="closebtn" onClick={closeSearch} title="Close Overlay">×</span>
-					<div className="overlay-content">
-						<div className="container">
-							<div className="row">
-								<div className="col-xl-12">
-									<form>
-										<div className="form-group">
-											<input type="text" className="form-control" id="exampleInputPassword1" value={searchWord}
-												   placeholder="Search here"
-												   onChange={onChangeSearch}
-
-											/>
-										</div>
-										<button type="submit" className="btn btn-primary"><i className="fa fa-search"/></button>
-									</form>
-								</div>
-								<div className="col-xl-12">
-									{
-										(searchResult !== undefined)?
-											<ListGroup>
-												{
-													searchResult.map( item => (
-													<ListGroupItem key={item.eccarId}>
-														<img src={item.img} className="img-30" alt=""/>
-														<p>{item.carName}</p>
-													</ListGroupItem>
-														)
-												)}
-											</ListGroup>
-										:
-											""
-									}
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>*/}
 
 		</div>
 	</>

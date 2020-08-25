@@ -13,11 +13,6 @@ export const receiveProducts = products => ({ type: RECEIVE_PRODUCTS, products }
 export const getAllProducts = () => dispatch => {
     dispatch(fetchProductsBegin())
     dispatch(elecCars())
-   /* shops.getProducts(products => {
-        console.log(products)
-        dispatch(receiveProducts(products))
-        return products
-    })*/
 }
 
 export const fetchSingleProduct = productId => ({ type: FETCH_SINGLE_PRODUCT, productId })

@@ -44,7 +44,6 @@ export const NavBar = (props) => {
     })*/
 
     const openNav = () => {
-        console.log('open')
         setNavClose({right: '0px'})
     }
     const closeNav = () => {

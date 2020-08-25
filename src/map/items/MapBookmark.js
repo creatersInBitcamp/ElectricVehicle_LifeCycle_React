@@ -47,7 +47,6 @@ export const MapBookmark = () =>{
     useEffect(()=>{
         axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
             .then((res)=>{
-                console.log(res.data)
                 setMyData(res.data)
             })
             .catch((err)=>{
@@ -80,18 +79,15 @@ export const MapBookmark = () =>{
         Geocode.setLanguage('ko')
         Geocode.fromLatLng(marker.lat,marker.lng).then(
             response => {
-                console.log(response)
                 const address = response.results[0].formatted_address
                 const length = response.results[0].address_components.length
                 const postcode = response.results[0].address_components[length-1].long_name
-                console.log(postcode.indexOf('-'))
                 if(postcode.indexOf('-') != -1){ //결과값이 없으면 -1 반환
                     setSelectedPc(postcode)
                 }else{
                     setSelectedPc("정보없음")
                 }
                 setSelectedAddr(address)
-                console.log(address);
             },
             error => {
                 console.error(error);
@@ -148,7 +144,6 @@ export const MapBookmark = () =>{
 
             try {
                 const results = await getGeocode({ address });
-                // console.log(results[0]) formatted address, compo 전부 가져옴
                 const { lat, lng } = await getLatLng(results[0]);
                 const postal_code = await getZipCode(results[0],false)
                 panTo({ lat, lng });
@@ -184,13 +179,11 @@ export const MapBookmark = () =>{
 
 
     function deleteBookmark(bookmarkID){
-        console.log(bookmarkID)
         axios.get(`http://localhost:8080/bookmarks/delete/${bookmarkID}`)
             .then((res)=>{
                 console.log("북마크 삭제 성공")
                 axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
                     .then((res)=>{
-                        console.log(res.data)
                         setMyData(res.data)
                     })
                     .catch((err)=>{
@@ -203,11 +196,6 @@ export const MapBookmark = () =>{
     }
 
     function setting(store){
-        /*if(store.place.category === 'station'){
-            setSelected(store.chargingStation)
-        }else if(store.place.category  === 'sights'){
-            setSelected(store.sights)
-        }*/
         setSelected(store.place)
         setId(store.id)
     }

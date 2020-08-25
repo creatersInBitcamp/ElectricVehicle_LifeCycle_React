@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {useDispatch, useSelector} from 'react-redux'
-import {getBestSeller, getSpecialUsed, getWomensWear} from '../../atomic/services/services'
+import {getBestSeller, getSpecialUsed} from '../../atomic/services/services'
 import {ProductItem}from '../../usedCar'
 import {PostItem} from '../../board'
 import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
@@ -19,7 +19,6 @@ export const SpecialProducts = props => {
     useEffect(()=>{
         axios.get('http://localhost:8080/posts/getall')
             .then((res)=>{
-                console.log('getPosts axios 작동')
                 setPosts(res.data.slice(0,8))
             })
             .catch((err)=> {

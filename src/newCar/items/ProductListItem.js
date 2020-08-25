@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import Modal from 'react-responsive-modal';
 
 
 export const ProductListItem = props => {

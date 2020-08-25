@@ -47,7 +47,6 @@ export const ThemeSettings = () => {
         })
 
         e.target.classList.add('active');
-        console.log(color)
         document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/`+color+`.css` );
     }
 

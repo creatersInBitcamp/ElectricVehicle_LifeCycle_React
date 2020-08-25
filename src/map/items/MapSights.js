@@ -9,10 +9,9 @@ import "@reach/combobox/styles.css";
 import axios from "axios";
 import {sightsMapRequest, stationMapRequest} from "./StationReducer";
 import {useDispatch, useSelector} from "react-redux";
+import {MAP_KEY} from '../../api/key'
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
-
-const MAP_KEY = 'AIzaSyDgxaAVu6wZkfdefa5F1tDC6bVGXvLTqg0';
 
 const libraries = ["places"];
 

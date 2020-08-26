@@ -5,13 +5,14 @@ import queryString from 'query-string'
 import axios from "axios";
 import {clearCart} from "../../newCar/page/CartReducer";
 import {useDispatch} from "react-redux";
+import {IMP_ID} from "../../api/key";
 function Payment({data}) {
     const history = useHistory();
     function onClickPayment(e) {
         e.preventDefault()
         /* 1. 가맹점 식별하기 */
         const { IMP } = window;
-        IMP.init('imp07844468');
+        IMP.init(IMP_ID);
 
         /* 4. 결제 창 호출하기 */
         IMP.request_pay(data, callback);

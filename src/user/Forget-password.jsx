@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import emailjs from 'emailjs-com'
 import {useHistory} from 'react-router-dom'
 import axios from 'axios'
-import {SERVICE_ID, TEMPLATE_ID, USER_ID} from "../api/key";
+import {USER_ID,SERVICE_ID,TEMPLATE_ID} from '../api/key'
 
 export const ForgetPassword = () => {
     const [email, setEmail] = useState('')

@@ -1,9 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
 export const ProductItem = (props) => {
     const {product, symbol, onAddToWishlistClicked} = props;
-
     return <>
         <div className="product-box">
             <div className="img-wrapper">
@@ -23,7 +21,7 @@ export const ProductItem = (props) => {
                     <Link to={`${process.env.PUBLIC_URL}/used-car/product/${product.usedCarId}`}>
                         <h6>{product.carName}&nbsp;{product.age}</h6>
                     </Link>
-                    <h4>{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h4>
+                    <h4>{parseInt(product.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol}</h4>
                 </div>
             </div>
         </div>

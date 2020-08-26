@@ -73,6 +73,7 @@ export const Notice = () => {
                             <div className="card">
                                 <div className="card-header">
                                     <h5>배너 교체</h5>
+                                    <h5>상단 배너, 1.gif 이름으로 업로드, 하단 배너 2.jpg로 변경해야 반영됩니다.</h5>
                                 </div>
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">

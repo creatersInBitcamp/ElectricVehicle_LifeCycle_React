@@ -47,7 +47,6 @@ export const ForgetPassword = () => {
                         <div className="row">
                             <div className="col-lg-6 offset-lg-3">
                                 <h2> 이메일은 100회까지만 가능합니다.</h2>
-                                <h2> 버튼 클릭 후 2초 정도의 딜레이가 있습니다.</h2>
                                 <h2>Forget Your Password</h2>
                                 <form className="theme-form" >
                                     <div className="form-row">

@@ -202,7 +202,7 @@ export const MapChargingStation = (props) =>{
         }
         axios.post('http://localhost:8080/bookmarks/insert',id)
             .then((res)=>{
-                console.log("북마크 저장 성공")
+                alert("북마크 저장 성공")
                 props.first.length>0?(
                     axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
                         .then((res)=>{
@@ -223,7 +223,7 @@ export const MapChargingStation = (props) =>{
                 )
             })
             .catch((err) => {
-                console.log("북마크 저장 실패")
+                alert("북마크 저장 실패")
             })
     }
 

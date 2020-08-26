@@ -51,7 +51,7 @@ export const userThunk = () => (dispatch)=>{
 export const useAnotherThunk = (info) => (dispatch) => {
     axios.post('http://localhost:8080/bookmarks/insert',info)
         .then((res)=>{
-            console.log("북마크 저장 성공")
+            alert("북마크 저장 성공")
             axios.get(`http://localhost:8080/sights/getall/${sessionUser.userSeq}`)
                 .then((res)=>{
                     dispatch(sightsMapRequest(res.data))
@@ -61,7 +61,7 @@ export const useAnotherThunk = (info) => (dispatch) => {
                 })
         })
         .catch((err) => {
-            console.log("북마크 저장 실패")
+            alert("북마크 저장 실패")
         })
 }
 

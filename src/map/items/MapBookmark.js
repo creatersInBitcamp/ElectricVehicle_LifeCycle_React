@@ -185,7 +185,7 @@ export const MapBookmark = () =>{
     function deleteBookmark(bookmarkID){
         axios.get(`http://localhost:8080/bookmarks/delete/${bookmarkID}`)
             .then((res)=>{
-                console.log("북마크 삭제 성공")
+                alert("북마크 삭제 성공")
                 axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
                     .then((res)=>{
                         setMyData(res.data)
@@ -195,7 +195,7 @@ export const MapBookmark = () =>{
                     })
             })
             .catch((err) => {
-                console.log("북마크 삭제 실패")
+                alert("북마크 삭제 실패")
             })
     }
 

@@ -36,10 +36,12 @@ import {getAllUsedProducts} from "./usedCar/item/UsedProductReducer";
 import PaymentForm from "./common/payment/PaymentForm";
 import PaymentResult from "./common/payment/PaymentResult";
 import {getAllProducts} from "./newCar/items/ProductReducer";
+import {initilaMapSatate} from "./map/items/StationReducer";
 
 const Root = () => {
     store.dispatch(getAllProducts());
     store.dispatch(getAllUsedProducts());
+    store.dispatch(initilaMapSatate());
     return (
         <Provider store={store}>
             <IntlProvider translations={translations} locale='ko'>

@@ -33,37 +33,6 @@ export const Notice = () => {
             })
     },[])
 
-    const editable = {
-        onRowUpdate: (newData, oldData) =>
-            new Promise((resolve, reject)=>{
-                setTimeout(()=>{
-                    const dataUpdate = [...data]
-                    const index = oldData.tableData.id;
-                    dataUpdate[index] = newData
-                    setData([...dataUpdate])
-                    resolve()
-                    axios.post(`http://localhost:8080/posts/allUpdate`, [...dataUpdate])
-                        .then((res) => {
-                        })
-                        .catch(() => {
-                            alert("통신실패")
-                        })
-                }, 1000)
-            }),
-        onDelete: (oldData) =>
-            new Promise((resolve) =>{
-                setTimeout(()=>{
-                    resolve()
-                    axios.get(`http://localhost:8080/posts/delete/${oldData.postId}`)
-                        .then((res)=>{
-                            console.log(res.status)
-                        })
-                        .catch((err)=>{
-                            console.log(err.status)
-                        })
-                }, 1000)
-            })
-    }
         return (
             <>
                 <AdminBreadcrumb title="공지사항" parent="Menu" />
@@ -91,7 +60,6 @@ export const Notice = () => {
                                          title={"공지사항"}
                                          columns={columns}
                                          data={data}
-                                         editable={editable}
                                         />
                                     </div>
                                 </div>

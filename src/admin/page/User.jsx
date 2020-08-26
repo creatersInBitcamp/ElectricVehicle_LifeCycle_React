@@ -20,7 +20,7 @@ export const User = () => {
     const[rowPerPage, setRowPerPage] = useState(0)
     const[size, setSize] = useState(10)
     const[message] = useState("사용자 수: ")
-    const[message2] = useState(" ** 데이터는 파이썬 Faker라이브러리를 이용해서 5만건의 데이터 csv파일로 만들어 DB에 저장하였습니다.")
+    const[message2] = useState(" *데이터는 파이썬 Faker라이브러리를 이용, 5만건데이터를 csv파일로 만들어 DB에 저장하였습니다.")
 
     const makeColors = () => {
         let r = Math.floor(Math.random() * 255)

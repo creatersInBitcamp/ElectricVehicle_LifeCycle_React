@@ -1,4 +1,5 @@
-export const MAP_KEY = 'AIzaSyBCagz6-9uyPVeCh0YuUdYq883tSMvxfns';
-export const USER_ID = 'user_d33llO7uyLLVuqlgQgcI0'
-export const TEMPLATE_ID = 'template_KnT65Do9'
-export const SERVICE_ID = 'subinsparty@gmail.com'
+export const MAP_KEY = '';
+export const USER_ID = ''
+export const TEMPLATE_ID = ''
+export const SERVICE_ID = ''
+export const IMP_ID = ''

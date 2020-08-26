@@ -223,26 +223,25 @@ export const MyCarComparison = () => {
                                                     <p>{item.price}{symbol}</p>
                                                 </div>
                                             </div>
-                                            <div className="btn-part">
-                                                <a className="btn btn-solid">
-                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.usedCarId}`}>
-                                                        purchase request
-                                                    </Link>
-                                                </a>
-                                            </div>
+
                                         </div>
                                     </div>
                                 )}
                                 </div>
                                 <div className="col-5">
-                                    <h2>메인 차량 중고시세</h2>
-                                    {first.map((item) =>
-                                        <MarketPrice product={item}/>
-                                    )}
-                                    <br/><br/>
                                     <h2>비교 차량 중고시세</h2>
                                     {Items.map((item,index) =>
-                                        <MarketPrice product={item}/>
+                                        <>
+                                            <MarketPrice product={item}/>
+                                            <br/>
+                                            <div className="text-right">
+                                                <a className="btn btn-solid">
+                                                    <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.usedCarId}`}>
+                                                        구매요청
+                                                    </Link>
+                                                </a>
+                                            </div>
+                                        </>
                                     )}
                                 </div>
                             </div>

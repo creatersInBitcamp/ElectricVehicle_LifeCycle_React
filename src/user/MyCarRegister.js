@@ -390,14 +390,14 @@ export const MyCarRegister = () => {
                                 <Tabs className="tab-content nav-material">
                                     <TabList className="nav nav-tabs nav-material">
                                         <Tab className="nav-item">
-                                            <span className="nav-link active">
+                                            <Link className="nav-link active">
                                                 판매
-                                            </span>
+                                            </Link>
                                         </Tab>
                                         <Tab className="nav-item">
-                                            <span className="nav-link active">
+                                            <Link className="nav-link active">
                                                 구매요청
-                                            </span>
+                                            </Link>
                                         </Tab>
                                     </TabList>
                                     <TabPanel className="tab-pane fade mt-4 show active">

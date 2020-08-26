@@ -77,7 +77,7 @@ export const Notice = () => {
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">
                                     </div>
-                                    <Image path={'imgUpload'}/>
+                                    <Image path={'imgUpload'} setImgLink={(imgLink)=>{alert(imgLink)}}/>
                                 </div>
                             </div>
                             <div className="card">

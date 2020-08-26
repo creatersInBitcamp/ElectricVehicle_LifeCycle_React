@@ -38,6 +38,8 @@ export const UsedPurchaseCollection = () => {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <h5 style={{color:'red'}}>** SK엔카를 파이썬으로 크롤링한 데이터입니다.</h5>
+                                                <h5 style={{color:'red'}}>** 사진 출처: KB 차차차</h5>
                                                 <ProductListing colSize={layoutColumns}/>
                                             </div>
                                         </div>

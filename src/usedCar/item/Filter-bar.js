@@ -48,7 +48,7 @@ const FilterBar = ({onLayoutViewClicked}) => {
     return <>
         <div className="product-filter-content">
             <div className="search-count">
-                <h5>Showing Products 1-{items.length} Result</h5>
+                <h5 style={{color:'red'}}>Showing Products 1-{items.length} Result</h5>
             </div>
             <div className="collection-view">
                 <ul>

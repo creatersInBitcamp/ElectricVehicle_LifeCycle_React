@@ -26,7 +26,6 @@ const initialState = {
 const ProductReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_PRODUCTS:
-            console.log(action)
             return { ...state,
                 products: action.products};
         case FETCH_SINGLE_PRODUCT:

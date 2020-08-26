@@ -62,8 +62,9 @@ const removeFromFirstCar = product_id => (dispatch) => {
         product_id
     })
 }
-const removeAllFirstCar = () => ({
-    type: REMOVE_ALL_FIRST_CAR
+const removeAllFirstCar = firstCar => ({
+    type: REMOVE_ALL_FIRST_CAR,
+    firstCar
 })
 const changeFirstCar = (myCars,targetId) => {
     const product = myCars.find(x=> (x.usedCarId == targetId))
@@ -121,7 +122,14 @@ export const myCarReducer = (state=initialState, action) => {
             return {
                 list: state.list.filter(id => id !== action.product_id)
             }
-
+        case REMOVE_ALL_FIRST_CAR:
+            console.log(action.firstCar[0].usedCarId)
+            axios.get(`http://localhost:8080/usedCars/deleteMyFirstCar/${action.firstCar[0].usedCarId}`)
+                .then((res)=> res.data, window.location.reload())
+                .catch(()=> alert(`삭제 실패`))
+            return {
+                list:[]
+            }
         case CLEAR_MY_CAR:
             return{
                 list:[]
@@ -372,7 +380,7 @@ export const MyCarRegister = () => {
                                                 }
                                             </select>
                                             <button onClick={()=>dispatch(changeFirstCar(myCars,targetId))}>변경</button>
-                                            <button onClick={()=>dispatch(removeAllFirstCar())}>전체삭제</button>
+                                            <button onClick={()=>dispatch(removeAllFirstCar(first))}>전체삭제</button>
                                         </div>
                                     </div>
                                 </div>

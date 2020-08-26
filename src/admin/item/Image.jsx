@@ -30,25 +30,26 @@ export const Image = ({path, setImgLink}) => {
     const upload = () => {
         if(url === ''){
             alert("파일을 선택해주세요")
-        }
-        let currentFile = content
-        setImg(currentFile)
+        } else {
+            let currentFile = content
+            setImg(currentFile)
+            uploadService(currentFile)
+                .then((res)=>{
+                    alert(`파일이 업로드되었습니다. imgLink : ${res.data}`)
+                    setImgLink(res.data)
+                    setContent(undefined)
+                    setImg(undefined)
+                    setUrl('')
+                })
+                .catch(()=>{
+                    setImg(undefined)
+                    setContent(undefined)
+                    setUrl('')
+                    window.location.reload()
+                    alert('파일업로드 실패')
+                })
 
-        uploadService(currentFile)
-            .then((res)=>{
-                alert(`파일이 업로드되었습니다. imgLink : ${res.data}`)
-                setImgLink(res.data)
-            })
-            .catch(()=>{
-                setImg(undefined)
-                setContent(undefined)
-                setUrl('')
-                window.location.reload()
-                alert('파일업로드 실패')
-            })
-        setContent(undefined)
-        setImg(undefined)
-        setUrl('')
+        }
     }
 
     const cancel = () => {

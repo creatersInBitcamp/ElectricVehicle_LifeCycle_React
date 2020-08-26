@@ -1371,7 +1371,7 @@ header {
     height: 75vh;
     @for $i from 1 through 56 {
       &.home#{$i} {
-        background-image:url("https://evcar.s3.ap-northeast-2.amazonaws.com/homeBanner/1.gif");
+        background-image:url("https://teamev911.s3.ap-northeast-2.amazonaws.com/homeBanner/1.gif");
         //
         //homebanner img
       }
@@ -3273,7 +3273,7 @@ header {
   background-position: center;
   @for $i from 1 through 28 {
     &.parallax-banner#{$i} {
-      background-image:url("https://evcar.s3.ap-northeast-2.amazonaws.com/homeBanner/2.jpg");
+      background-image:url("https://teamev911.s3.ap-northeast-2.amazonaws.com/homeBanner/2.jpg");
     }
   }
   &.parallax-layout {

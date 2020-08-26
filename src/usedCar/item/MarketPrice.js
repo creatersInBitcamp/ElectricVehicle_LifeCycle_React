@@ -111,6 +111,7 @@ export const MarketPrice = ({product,sales}) => {
     }
 
     return <>
+        <h3>총 {setChartData().length}대의 차량이 검색되었습니다.</h3>
         <Scatter data={state.data} options={state.options} />
     </>
 

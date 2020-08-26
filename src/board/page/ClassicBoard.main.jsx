@@ -76,7 +76,7 @@ const ClassicBoardMain = () => {
             <div>
                 <Breadcrumb title={'Board'}/>
                     <div className="text-md-center">
-                        <h2>DB 데이터 수 : {count * 8} 건</h2>
+                        <h2 style={{color:'red'}}>DB 데이터 수 : {count * 8} 건</h2>
                         <h3>크롤링 데이터 출처 : EV POST, 링크주소 : https://www.evpost.co.kr/wp/</h3>
                         <h3>크롤링 후 DB에 저장하여 지속 조회되지 않습니다.</h3>
                     </div>

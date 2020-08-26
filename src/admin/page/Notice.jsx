@@ -23,6 +23,7 @@ const columns = [
 
 export const Notice = () => {
     const [data, setData] = useState([])
+    const [img, setImg] =useState('')
     useEffect(()=>{
         axios.get('http://localhost:8080/posts/notice/notice')
             .then((res)=>{
@@ -75,9 +76,9 @@ export const Notice = () => {
                                     <h5>배너 교체</h5>
                                 </div>
                                 <div className="card-body">
-                                    <div id="batchDelete" className="category-table order-table coupon-list-delete">
-                                    </div>
-                                    <Image path={'imgUpload'}/>
+                                    <div id="batchDelete" className="category-table order-table coupon-list-delete"/>
+                                    <input type="text" value={img}/>
+                                    <Image path={'imgUpload'} setImgLink={(imgLink)=>{setImg(imgLink)}}/>
                                 </div>
                             </div>
                             <div className="card">

@@ -18,7 +18,6 @@ export const Image = ({path, setImgLink}) => {
     const[formData] = useState(new FormData())
 
     const addFile = (e) => {
-
         setContent(e.target.files[0]);
         setUrl(URL.createObjectURL(e.target.files[0]))
     };
@@ -27,31 +26,35 @@ export const Image = ({path, setImgLink}) => {
         return http.post(`/${path}`, formData, {})
     }
 
-    const upload = () => {
-        if(url === ''){
+    const upload = (e) => {
+        e.preventDefault()
+        if(url !== ''){
+            let currentFile = content
+            setImg(currentFile)
+
+            uploadService(currentFile)
+                .then((res)=>{
+                    alert(`파일이 업로드되었습니다. imgLink : ${res.data}`)
+                    setImgLink(res.data)
+                    setContent(undefined)
+                    setImg(undefined)
+                    setUrl('')
+                })
+                .catch(()=>{
+                    setImg(undefined)
+                    setContent(undefined)
+                    setUrl('')
+                    window.location.reload()
+                    alert('파일업로드 실패')
+                })
+
+        }else{
             alert("파일을 선택해주세요")
         }
-        let currentFile = content
-        setImg(currentFile)
-
-        uploadService(currentFile)
-            .then((res)=>{
-                alert(`파일이 업로드되었습니다. imgLink : ${res.data}`)
-                setImgLink(res.data)
-            })
-            .catch(()=>{
-                setImg(undefined)
-                setContent(undefined)
-                setUrl('')
-                window.location.reload()
-                alert('파일업로드 실패')
-            })
-        setContent(undefined)
-        setImg(undefined)
-        setUrl('')
     }
 
-    const cancel = () => {
+    const cancel = (e) => {
+        e.preventDefault()
         setImg(undefined)
         setContent(undefined)
         setUrl('')

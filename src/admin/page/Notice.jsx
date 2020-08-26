@@ -23,6 +23,8 @@ const columns = [
 
 export const Notice = () => {
     const [data, setData] = useState([])
+    const [imgLink, setImgLink] = useState('')
+
     useEffect(()=>{
         axios.get('http://localhost:8080/posts/notice/notice')
             .then((res)=>{
@@ -73,11 +75,12 @@ export const Notice = () => {
                             <div className="card">
                                 <div className="card-header">
                                     <h5>배너 교체</h5>
+                                    <h3>배너에서 동영상은 1.gif, 아래사진은2.jpg로 변경 ImgLink: {imgLink}</h3>
                                 </div>
                                 <div className="card-body">
                                     <div id="batchDelete" className="category-table order-table coupon-list-delete">
                                     </div>
-                                    <Image path={'imgUpload'}/>
+                                    <Image path={'imgUpload'} setImgLink={(img)=>(setImgLink(img))}/>
                                 </div>
                             </div>
                             <div className="card">

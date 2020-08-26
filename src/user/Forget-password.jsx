@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import emailjs from 'emailjs-com'
 import {useHistory} from 'react-router-dom'
 import axios from 'axios'
+import {USER_ID,SERVICE_ID,TEMPLATE_ID} from '../api/key'
 
 export const ForgetPassword = () => {
     const [email, setEmail] = useState('')
@@ -19,7 +20,7 @@ export const ForgetPassword = () => {
                         email : email,
                         password: res.data
                     }
-                    emailjs.send('kwakky1@gmail.com','template_6MwZcBCh',info,'user_hmTOnrjGGf2wvM7F3cJKY')
+                    emailjs.send(SERVICE_ID,TEMPLATE_ID,info,USER_ID)
                         .then((res)=> {
                             history.push('/pages/login')
                             alert("임시 비밀번호가 발급되었습니다.")

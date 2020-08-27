@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import MaterialTable from "material-table";
+import {AWS_PATH} from '../api/key'
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -19,7 +20,7 @@ const MyOrder = () => {
 
     useEffect(()=>{
 
-        axios.get(`http://localhost:8080/purchases/getall/${sessionUser.userSeq}`)
+        axios.get(`${AWS_PATH}/purchases/getall/${sessionUser.userSeq}`)
             .then((res)=>{
                 /*let size = res.data.length
                 for(let i=0; i<size; i++){

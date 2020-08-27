@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import emailjs from 'emailjs-com'
 import {useHistory} from 'react-router-dom'
 import axios from 'axios'
-import {USER_ID,SERVICE_ID,TEMPLATE_ID} from '../api/key'
+import {USER_ID,SERVICE_ID,TEMPLATE_ID, AWS_PATH} from '../api/key'
 
 export const ForgetPassword = () => {
     const [email, setEmail] = useState('')
@@ -14,7 +14,7 @@ export const ForgetPassword = () => {
         e.preventDefault()
         if(email !== ''){
             setHideButton(true)
-            axios.get(`http://localhost:8080/user/sendPassword/${email}`)
+            axios.get(`${AWS_PATH}/user/sendPassword/${email}`)
                 .then((res)=>{
                     const info = {
                         email : email,

@@ -6,6 +6,7 @@ import CsvDownload from 'react-json-to-csv'
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {AWS_PATH} from '../../api/key'
 
 const usedCarTypes = {REQUEST: 'usedCar/REQUEST'}
 const usedCarReducer = ( state={}, action ) => {
@@ -21,7 +22,7 @@ export const UsedCar = () => {
     const [message2] = useState(" ** 중고차 데이터는 SK엔카를 파이썬으로 크롤링해서 DB에 저장해서 사용했습니다.")
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/user/usedCar`)
+        axios.get(`${AWS_PATH}/user/usedCar`)
             .then((res)=>{
                 setData(res.data)
             })

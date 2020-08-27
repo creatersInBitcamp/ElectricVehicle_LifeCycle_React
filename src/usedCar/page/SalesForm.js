@@ -3,6 +3,7 @@ import {Breadcrumb} from "../../common";
 import {useSelector} from "react-redux";
 import axios from "axios";
 import {MarketPrice} from "..";
+import {AWS_PATH} from '../../api/key'
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -50,7 +51,7 @@ export const SalesForm = (props) => {
                 eccarId: carId,
                 userSeq: user.userSeq
             }
-            axios.post(`http://localhost:8080/usedCars/register`, info)
+            axios.post(`${AWS_PATH}/usedCars/register`, info)
                 .then(res => {
                     res.data ? props.history.push(`${process.env.PUBLIC_URL}/`) : alert('등록 실패')
                 })

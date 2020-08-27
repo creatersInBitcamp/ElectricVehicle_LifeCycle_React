@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios'
 import {Breadcrumb} from "../common";
 import {Link} from "react-router-dom";
+import {AWS_PATH} from '../api/key'
 
 const ADMIN_CHECK = 'ADMIN_CHECK'
 
@@ -25,7 +26,7 @@ export const Login = (props) => {
             password : password
         }
         if(userId && password) {
-            axios.post(`http://localhost:8080/user/login`, userInfo)
+            axios.post(`${AWS_PATH}/user/login`, userInfo)
                 .then((res) => {
                     sessionStorage.setItem("user", JSON.stringify(res.data))
                     if(res.data.grade === 0 || res.data.grade === 9 ) {

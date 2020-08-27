@@ -5,6 +5,8 @@ import queryString from 'query-string'
 import axios from "axios";
 import {clearCart} from "../../newCar/page/CartReducer";
 import {useDispatch} from "react-redux";
+import {AWS_PATH} from '../../api/key'
+
 function Payment({data}) {
     const history = useHistory();
     function onClickPayment(e) {
@@ -37,7 +39,7 @@ function Payment({data}) {
                 userSeq:data.userSeq,
                 eccarId:data.item.eccarId
             }
-            axios.post(`http://localhost:8080/purchases/insert`, newPurchase)
+            axios.post(`${AWS_PATH}/purchases/insert`, newPurchase)
                 .then((res)=>{
                     console.log('신차 구매 axios 성공')
                 })

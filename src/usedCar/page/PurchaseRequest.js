@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 import axios from "axios";
 import {useRouteMatch} from 'react-router-dom';
 import {Breadcrumb} from "../../common";
+import {AWS_PATH} from '../../api/key'
 
 export const PurchaseRequest = (props) => {
     const [name, setName] = useState('')
@@ -34,7 +35,7 @@ export const PurchaseRequest = (props) => {
                 usedCarId: item.usedCarId
             }
             console.log(info)
-            axios.post(`http://localhost:8080/sales/register`, info)
+            axios.post(`${AWS_PATH}/sales/register`, info)
                 .then(res => {
                     res.data ? props.history.push(`${process.env.PUBLIC_URL}/`) : alert('등록 실패')
                 })

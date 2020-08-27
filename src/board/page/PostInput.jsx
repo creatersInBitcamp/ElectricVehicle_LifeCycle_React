@@ -7,6 +7,8 @@ import Col from "react-bootstrap/Col";
 import {RefreshInfo} from '../items/index'
 import axios from "axios";
 import {Image} from "../../admin/item";
+import {AWS_PATH} from '../../api/key'
+
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const PostInput = ({history}) => {
@@ -37,7 +39,7 @@ const PostInput = ({history}) => {
     const onPostIn = (e) => {
         e.preventDefault()
         console.log(newPost)
-        axios.post('http://localhost:8080/posts/insert', newPost)
+        axios.post(`${AWS_PATH}/posts/insert`, newPost)
             .then((res) => {
                 console.log(res.statusText)
                 RefreshInfo()
@@ -53,7 +55,7 @@ const PostInput = ({history}) => {
 
     const onNotice = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:8080/posts/insert', newPost)
+        axios.post(`${AWS_PATH}/posts/insert`, newPost)
             .then((res) => {
                 console.log(res.statusText)
                 history.push(`/admin/notice`)

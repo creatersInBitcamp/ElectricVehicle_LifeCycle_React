@@ -8,6 +8,7 @@ import '../../common/index.scss';
 import {Breadcrumb, NewProduct} from "../../common";
 import {MyCar,MarketPrice} from "../index";
 import {addToUsedWishlist} from "./UsedCarWishlist";
+import {AWS_PATH} from '../../api/key'
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -56,7 +57,7 @@ export const productDetail = (props) => {
 
     const onClickDelete = () => {
         if (window.confirm('삭제하시겠습니까?')) {
-            axios.get(`http://localhost:8080/usedCars/delete/${item.usedCarId}`)
+            axios.get(`${AWS_PATH}/usedCars/delete/${item.usedCarId}`)
                 .then(alert('삭제되었습니다.'), props.history.push(`${process.env.PUBLIC_URL}/used-car/collection`))
                 .catch(()=>{
                     alert('취소되었습니다.')

@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import Slider from "react-slick";
 import {Table} from "../admin/item";
+import {AWS_PATH} from '../api/key'
 
 /* type */
 const RECEIVE_MY_CARS = 'RECEIVE_MY_CARS'
@@ -35,7 +36,7 @@ const addToMyCar = ({product,user}) => {
         eccarId: product.eccarId,
         userSeq: user
     }
-    axios.post(`http://localhost:8080/usedCars/register`, info)
+    axios.post(`${AWS_PATH}/usedCars/register`, info)
         .then((res)=>{
             window.location.reload()
         })
@@ -48,7 +49,7 @@ const removeFromMyCar = product_id => (dispatch) => {
     })
 }
 const removeAllCar = (myCars) => (dispatch) => {
-    axios.post(`http://localhost:8080/usedCars/deleteAllCar`,myCars)
+    axios.post(`${AWS_PATH}/usedCars/deleteAllCar`,myCars)
         .then((res)=> dispatch({ type: REMOVE_ALL_CAR, result: res.data }), window.location.reload())
         .catch(()=>alert(`삭제 실패`))
 }
@@ -74,14 +75,14 @@ const changeFirstCar = (myCars,targetId) => {
             }
         })
 
-    axios.get(`http://localhost:8080/usedCars/updateFirstCar/${product.usedCarId}`)
+    axios.get(`${AWS_PATH}/usedCars/updateFirstCar/${product.usedCarId}`)
         .then((res)=>{
             window.location.reload()
         })
         .catch((err)=>{ throw err })
 
     if (before) {
-        axios.post(`http://localhost:8080/usedCars/updateFirstCar`,before)
+        axios.post(`${AWS_PATH}/usedCars/updateFirstCar`,before)
             .then((res)=>{})
             .catch((err)=>{ throw err })
     }
@@ -116,7 +117,7 @@ export const myCarReducer = (state=initialState, action) => {
             }
 
         case REMOVE_FROM_MY_CAR:
-            axios.get(`http://localhost:8080/usedCars/deleteMyCar/${action.product_id}`)
+            axios.get(`${AWS_PATH}/usedCars/deleteMyCar/${action.product_id}`)
                 .then((res)=> res.data, window.location.reload())
                 .catch(()=> alert(`삭제 실패`))
             return {
@@ -124,7 +125,7 @@ export const myCarReducer = (state=initialState, action) => {
             }
         case REMOVE_ALL_FIRST_CAR:
             console.log(action.firstCar[0].usedCarId)
-            axios.get(`http://localhost:8080/usedCars/deleteMyFirstCar/${action.firstCar[0].usedCarId}`)
+            axios.get(`${AWS_PATH}/usedCars/deleteMyFirstCar/${action.firstCar[0].usedCarId}`)
                 .then((res)=> res.data, window.location.reload())
                 .catch(()=> alert(`삭제 실패`))
             return {
@@ -202,7 +203,7 @@ export const MyCarRegister = () => {
         let usedNew = []
         if (used.length > 0){
             usedNew = used.find(x=>x.usedCarSalesList)
-            axios.get(`http://localhost:8080/usedCars/getDetailList/${userSession.userSeq}`)
+            axios.get(`${AWS_PATH}/usedCars/getDetailList/${userSession.userSeq}`)
                 .then((res)=>{
                     setProduct(res.data)
                 })
@@ -211,13 +212,13 @@ export const MyCarRegister = () => {
             setResult(usedNew)
         }
 
-        axios.get(`http://localhost:8080/usedCars/getAllMyCar/${userSession.userSeq}`)
+        axios.get(`${AWS_PATH}/usedCars/getAllMyCar/${userSession.userSeq}`)
             .then((res)=>{
                 dispatch(receiveMyCar(res.data))
             })
             .catch(()=>{})
 
-        axios.get(`http://localhost:8080/usedCars/getFirstCar/${userSession.userSeq}`)
+        axios.get(`${AWS_PATH}/usedCars/getFirstCar/${userSession.userSeq}`)
             .then((res)=>{
                 dispatch(receiveFirstCar(res.data))
             })

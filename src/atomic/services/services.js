@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {AWS_PATH} from '../../api/key'
 // Get Unique Brands from Json Data
 export const getBrands = (products) => {
     const uniqueBrands = [];
@@ -193,7 +194,7 @@ export const getSpecialUsed = products => {
 // Get Posts
 export const getPosts = () => {
     const posts = []
-     axios.get('http://localhost:8080/posts/getall')
+     axios.get(`${AWS_PATH}/posts/getall`)
         .then((res)=>{
             res.data.slice(0,8)
         })

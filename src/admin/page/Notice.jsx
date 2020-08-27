@@ -3,6 +3,7 @@ import {AdminBreadcrumb} from '../common';
 import {Image, Table} from '../item'
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {AWS_PATH} from '../../api/key'
 
 const noticeTypes = {REQUEST: 'notice/REQUEST'}
 const noticeReducer = ( state={}, action ) => {
@@ -24,7 +25,7 @@ const columns = [
 export const Notice = () => {
     const [data, setData] = useState([])
     useEffect(()=>{
-        axios.get('http://localhost:8080/posts/notice/notice')
+        axios.get(`${AWS_PATH}/posts/notice/notice`)
             .then((res)=>{
                 setData(res.data)
             })
@@ -42,7 +43,7 @@ export const Notice = () => {
                     dataUpdate[index] = newData
                     setData([...dataUpdate])
                     resolve()
-                    axios.post(`http://localhost:8080/posts/allUpdate`, [...dataUpdate])
+                    axios.post(`${AWS_PATH}/posts/allUpdate`, [...dataUpdate])
                         .then((res) => {
                         })
                         .catch(() => {
@@ -54,7 +55,7 @@ export const Notice = () => {
             new Promise((resolve) =>{
                 setTimeout(()=>{
                     resolve()
-                    axios.get(`http://localhost:8080/posts/delete/${oldData.postId}`)
+                    axios.get(`${AWS_PATH}/posts/delete/${oldData.postId}`)
                         .then((res)=>{
                             console.log(res.status)
                         })

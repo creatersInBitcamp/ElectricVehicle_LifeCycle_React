@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
+import {AWS_PATH} from '../api/key'
 
 const ChangePassword = (props) => {
 
@@ -35,7 +36,7 @@ const ChangePassword = (props) => {
                 userId : session.userId,
                 password : newPassword
             }
-            axios.post(`http://localhost:8080/user/changePassword`,userInfo)
+            axios.post(`${AWS_PATH}/user/changePassword`,userInfo)
                 .then((res)=>{
                     if(res.data){
                         alert("비밀번호가 변경되었습니다. 다시 로그인해주세요!")

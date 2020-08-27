@@ -13,6 +13,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import FormControl from "react-bootstrap/FormControl";
 import {Divider} from "@material-ui/core";
+import {AWS_PATH} from '../../api/key'
 
 const initialUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -35,7 +36,7 @@ const ClassicBoardMain = () => {
         const [searchWord, setSearchWord] = useState("")
         const [search, setSearch] = useState(false)
         const postAxios = () => {
-            axios.get(`http://localhost:8080/posts/pages/${match}/${page}`)
+            axios.get(`${AWS_PATH}/posts/pages/${match}/${page}`)
                 .then((res) => {
                     console.log(res.data)
                     setPosts(res.data.content)
@@ -56,7 +57,7 @@ const ClassicBoardMain = () => {
         }
         useEffect(()=>{(search) ? searchMethod() : postAxios()} , [match, page])
         const searchMethod = () => {
-            axios.get(`http://localhost:8080/posts/search/${match}/${title}/${searchWord}/${page}`)
+            axios.get(`${AWS_PATH}/posts/search/${match}/${title}/${searchWord}/${page}`)
                 .then((res)=>{
                     console.log(res.data)
                     setPosts(res.data.content)

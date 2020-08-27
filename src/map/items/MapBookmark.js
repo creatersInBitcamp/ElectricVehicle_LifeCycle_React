@@ -7,7 +7,7 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 
 import './map.css'
 import "@reach/combobox/styles.css";
 import axios from "axios";
-import {MAP_KEY} from '../../api/key'
+import {MAP_KEY, AWS_PATH} from '../../api/key'
 import {stationMapRequest} from "./StationReducer";
 import {useDispatch} from "react-redux";
 
@@ -48,7 +48,7 @@ export const MapBookmark = () =>{
 
     const dispatch = useDispatch()
     useEffect(()=>{
-        axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
+        axios.get(`${AWS_PATH}/bookmarks/getallbookmark/${userId}`)
             .then((res)=>{
                 setMyData(res.data)
                 dispatch(stationMapRequest(res.data))
@@ -183,10 +183,10 @@ export const MapBookmark = () =>{
 
 
     function deleteBookmark(bookmarkID){
-        axios.get(`http://localhost:8080/bookmarks/delete/${bookmarkID}`)
+        axios.get(`${AWS_PATH}/bookmarks/delete/${bookmarkID}`)
             .then((res)=>{
                 console.log("북마크 삭제 성공")
-                axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
+                axios.get(`${AWS_PATH}/bookmarks/getallbookmark/${userId}`)
                     .then((res)=>{
                         setMyData(res.data)
                     })

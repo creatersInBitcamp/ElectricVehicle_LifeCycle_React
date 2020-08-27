@@ -1,12 +1,13 @@
 /*
 import _products from './test.json'
 */
+import {AWS_PATH} from '../../api/key'
 import axios from "axios";
 import {receiveProducts} from "../../newCar";
 
 export const elecCars = () => (dispatch) => {
     let products=[]
-    axios.get(`http://localhost:8080/electriccars/getall`)
+    axios.get(`${AWS_PATH}/electriccars/getall`)
         .then((res) => {
             let size = res.data.length
             for(let i=0; i<size;i++){

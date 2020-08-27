@@ -45,13 +45,11 @@ export const Dashboard = () => {
             })
         axios.get(`${AWS_PATH}/user/findBrandCar`)
             .then((res)=>{
-                console.log(res.data)
                 setBrandCar(res.data)
             })
         axios.get(`${AWS_PATH}/user/findBrandUsedCar`)
             .then((res)=>{
                 setUsedBrandCar(res.data)
-                console.log(res.data)
             })
     },[])
 

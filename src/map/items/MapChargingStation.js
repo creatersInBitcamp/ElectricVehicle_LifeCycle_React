@@ -202,7 +202,6 @@ export const MapChargingStation = (props) =>{
         }
         axios.post(`${AWS_PATH}/bookmarks/insert`,id)
             .then((res)=>{
-                console.log("북마크 저장 성공")
                 props.first.length>0?(
                     axios.get(`${AWS_PATH}/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
                         .then((res)=>{
@@ -244,7 +243,6 @@ export const MapChargingStation = (props) =>{
                         <div className="dashboard-right">
                             <Locate panTo={panTo} />
                             <Search panTo={panTo} />
-                            {console.log(myData)}
 
                             <GoogleMap
                                 id="map"

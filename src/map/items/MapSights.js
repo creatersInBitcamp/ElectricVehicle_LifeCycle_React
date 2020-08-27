@@ -51,7 +51,6 @@ export const userThunk = () => (dispatch)=>{
 export const useAnotherThunk = (info) => (dispatch) => {
     axios.post(`${AWS_PATH}/bookmarks/insert`,info)
         .then((res)=>{
-            console.log("북마크 저장 성공")
             axios.get(`${AWS_PATH}/sights/getall/${sessionUser.userSeq}`)
                 .then((res)=>{
                     dispatch(sightsMapRequest(res.data))

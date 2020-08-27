@@ -40,9 +40,6 @@ function Payment({data}) {
                 eccarId:data.item.eccarId
             }
             axios.post(`${AWS_PATH}/purchases/insert`, newPurchase)
-                .then((res)=>{
-                    console.log('신차 구매 axios 성공')
-                })
                 .catch((err)=>{
                     console.log(`신차 구매 axios 실패 : ${err.status}`)
                 })

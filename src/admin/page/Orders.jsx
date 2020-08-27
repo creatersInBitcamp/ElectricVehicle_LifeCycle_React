@@ -68,7 +68,6 @@ export const Orders = () => {
             eccarName.push(order[i][0])
         }
         setEccarName(eccarName)
-        console.log(eccarName)
         setCarChartData({
                 labels: orderKeys,
                 datasets:[

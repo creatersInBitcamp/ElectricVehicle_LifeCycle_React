@@ -4,7 +4,6 @@ const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 const refreshUserInfo = () => {
     axios.get(`${AWS_PATH}/user/getone/${sessionUser.userSeq}`)
         .then((res) => {
-            console.log((res.data))
             sessionStorage.setItem('user', JSON.stringify(res.data))
         })
         .catch((err) => {

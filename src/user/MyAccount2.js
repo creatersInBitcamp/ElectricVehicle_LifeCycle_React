@@ -62,7 +62,6 @@ const MyAccount2 = ({user}) => {
             profileImage: modiImage,
             profileText: modiText,
         }
-        console.log(modiUser)
         axios.post(`${AWS_PATH}/user/updateOne`, modiUser)
             .then((res)=>{
                 if(res.data){

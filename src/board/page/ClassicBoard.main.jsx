@@ -38,7 +38,6 @@ const ClassicBoardMain = () => {
         const postAxios = () => {
             axios.get(`${AWS_PATH}/posts/pages/${match}/${page}`)
                 .then((res) => {
-                    console.log(res.data)
                     setPosts(res.data.content)
                     setCount(res.data.totalPages)
                 })
@@ -59,7 +58,6 @@ const ClassicBoardMain = () => {
         const searchMethod = () => {
             axios.get(`${AWS_PATH}/posts/search/${match}/${title}/${searchWord}/${page}`)
                 .then((res)=>{
-                    console.log(res.data)
                     setPosts(res.data.content)
                     setCount(res.data.totalPages)
                 })

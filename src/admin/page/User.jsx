@@ -38,7 +38,6 @@ export const User = () => {
                 setCount(res.data.totalElements)
                 setRowPerPage(res.data.totalPages)
                 setSize(res.data.size)
-                console.log(res.data)
             })
             .catch(()=>{
                 alert("통신실패")
@@ -104,7 +103,6 @@ export const User = () => {
         axios.get(`${AWS_PATH}/user/countAge`)
             .then((res)=>{
                 setAgeChart(res.data)
-                console.log(res.data)
             }).catch((err)=>{
                 throw err
         })
@@ -139,7 +137,6 @@ export const User = () => {
     useEffect(()=>{
         axios.get(`${AWS_PATH}/user/countSex`)
             .then((res)=>{
-                console.log(res.data)
                 setSexChart(res.data)
             })
     },[])

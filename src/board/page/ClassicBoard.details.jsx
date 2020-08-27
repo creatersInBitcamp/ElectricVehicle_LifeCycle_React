@@ -23,7 +23,6 @@ const ClassicBoardDetails = ({history}) => {
             setPost(
                 axios.get(`${AWS_PATH}/posts/getOne/${match}`)
                     .then((res) => {
-                        console.log(res.data)
                         setPost(res.data)
                     })
                     .catch((error) => {
@@ -37,7 +36,6 @@ const ClassicBoardDetails = ({history}) => {
         }, [match, user, recommend, report])
 
         const commentPush = () => {
-            console.log(user)
             const newComment = {
                 userId: user.userId,
                 regDate: new Date().toLocaleString(),
@@ -45,10 +43,8 @@ const ClassicBoardDetails = ({history}) => {
                 user: user,
                 post: {postId: match}
             }
-            console.log(newComment)
             axios.post(`${AWS_PATH}/comments/insert`, newComment)
                 .then((res)=>{
-                    console.log(res.status)
                     reFresh()
                     RefreshInfo()
                 })

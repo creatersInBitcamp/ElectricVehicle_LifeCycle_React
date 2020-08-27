@@ -5,6 +5,7 @@ import { Box, Users, CreditCard, ShoppingCart } from 'react-feather';
 import CountUp from 'react-countup';
 import {Bar, Line} from 'react-chartjs-2';
 import axios from 'axios'
+import {AWS_PATH} from '../../api/key'
 
 const dashboardTypes = {REQUEST: 'dashboard/REQUEST'}
 const dashboardReducer = ( state={}, action ) => {
@@ -34,20 +35,20 @@ export const Dashboard = () => {
         return "rgb(" + r + "," + g + "," + b + ")"
     }
     useEffect(()=>{
-        axios.get(`http://localhost:8080/user/count`)
+        axios.get(`${AWS_PATH}/user/count`)
             .then((res)=>{
                 setUserCount(res.data)
             })
-        axios.get(`http://localhost:8080/usedCars/count`)
+        axios.get(`${AWS_PATH}/usedCars/count`)
             .then((res)=>{
                 setUsedCarCount(res.data)
             })
-        axios.get(`http://localhost:8080/user/findBrandCar`)
+        axios.get(`${AWS_PATH}/user/findBrandCar`)
             .then((res)=>{
                 console.log(res.data)
                 setBrandCar(res.data)
             })
-        axios.get(`http://localhost:8080/user/findBrandUsedCar`)
+        axios.get(`${AWS_PATH}/user/findBrandUsedCar`)
             .then((res)=>{
                 setUsedBrandCar(res.data)
                 console.log(res.data)

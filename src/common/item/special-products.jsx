@@ -6,6 +6,7 @@ import {ProductItem}from '../../usedCar'
 import {PostItem} from '../../board'
 import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
 import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
+import {AWS_PATH} from '../../api/key'
 import axios from "axios";
 
 export const SpecialProducts = props => {
@@ -17,7 +18,7 @@ export const SpecialProducts = props => {
 
 
     useEffect(()=>{
-        axios.get('http://localhost:8080/posts/getall')
+        axios.get(`${AWS_PATH}/posts/getall`)
             .then((res)=>{
                 setPosts(res.data.slice(0,8))
             })

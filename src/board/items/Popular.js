@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import {AWS_PATH} from '../../api/key'
 import {Link} from "react-router-dom";
 
 const Popular = () => {
     const [populars, setPopulars] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:8080/posts/popular')
+        axios.get(`${AWS_PATH}/posts/popular`)
             .then((res) => {
                 setPopulars(res.data.content)
             })

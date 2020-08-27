@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import {Table} from '../item'
 import http from "../item/http";
+import {AWS_PATH} from '../../api/key'
 
 const elecCarTypes = {REQUEST: 'elecCar/REQUEST'}
 const initialState = {
@@ -23,7 +24,7 @@ export const ElecCar = () => {
     const [files, setFile] = useState(undefined)
 
     useEffect(()=>{
-        axios.get('http://localhost:8080/electriccars/getall')
+        axios.get(`${AWS_PATH}/electriccars/getall`)
             .then((res)=>{
                 setDate(res.data)
             })
@@ -71,7 +72,7 @@ export const ElecCar = () => {
         e.preventDefault()
         uploadService(files)
             .then((res) => {
-                axios.get('http://localhost:8080/electriccars/getall')
+                axios.get(`${AWS_PATH}/electriccars/getall`)
                     .then((res)=>{
                         setDate(res.data)
                     })

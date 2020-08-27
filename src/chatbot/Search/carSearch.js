@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import {AWS_PATH} from '../../api/key'
 
 const CarSearch = (props) => {
 
@@ -9,7 +10,7 @@ const CarSearch = (props) => {
     useEffect(()=>{
         const { steps } = props;
         setSearchWord(steps.carSearch.value)
-        axios.get(`http://localhost:8080/cars/carSearch/${searchWord}`)
+        axios.get(`${AWS_PATH}/cars/carSearch/${searchWord}`)
             .then( response => {
                 setresult(response.data)
             } ) // SUCCESS

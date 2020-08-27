@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Breadcrumb,PostCode} from "../common";
 import {Link} from "react-router-dom";
 import axios from "axios"
+import {AWS_PATH} from '../api/key'
 
 
 
@@ -30,7 +31,7 @@ export const Register = (props) =>  {
     const onChangeIdChk = (e) => {
         if(e.target.value !== ''){
             setUserId(e.target.value)
-            axios.get(`http://localhost:8080/user/check/${e.target.value}`)
+            axios.get(`${AWS_PATH}/user/check/${e.target.value}`)
                 .then((res) => {
                     if(res.data === false) {
                         setIdOverlap(res.data)
@@ -76,7 +77,7 @@ export const Register = (props) =>  {
             addr: addr.concat(" ",addr2),
             registerDate: new Date().toLocaleDateString()
         }
-        axios.post(`http://localhost:8080/user/register`, userInfo)
+        axios.post(`${AWS_PATH}/user/register`, userInfo)
             .then(res =>{
                 res.data ? props.history.push(`${process.env.PUBLIC_URL}/pages/login`) : alert("회원가입이 실패했습니다.")
             })

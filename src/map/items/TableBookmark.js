@@ -3,7 +3,7 @@ import 'react-table/react-table.css';
 import MaterialTable from 'material-table';
 import {GoogleMap,Marker, useLoadScript} from "@react-google-maps/api";
 import axios from "axios";
-import {MAP_KEY} from '../../api/key'
+import {MAP_KEY, AWS_PATH} from '../../api/key'
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -30,7 +30,7 @@ export const TableBookmark = () => {
     const products=[]
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/bookmarks/getallbookmark/${userId}`)
+        axios.get(`${AWS_PATH}/bookmarks/getallbookmark/${userId}`)
             .then((res)=>{
                 let size = res.data.length
                 for(let i=0; i<size; i++){

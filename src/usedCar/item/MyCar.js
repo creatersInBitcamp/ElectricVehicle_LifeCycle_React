@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {addToUsedCompare} from '../page/MyCarComparison'
 import {receiveFirstCar} from "../../user/MyCarRegister";
+import {AWS_PATH} from '../../api/key'
 
 export const MyCar = props => {
     const [open,setOpen] = useState(false)
@@ -21,7 +22,7 @@ export const MyCar = props => {
     useEffect(() => {
         userSession ? setSession(true) : setSession(false)
         if (userSession) {
-            axios.get(`http://localhost:8080/usedCars/getFirstCar/${userSession.userSeq}`)
+            axios.get(`${AWS_PATH}/usedCars/getFirstCar/${userSession.userSeq}`)
                 .then((res)=>{
                     dispatch(receiveFirstCar(res.data))
                 })

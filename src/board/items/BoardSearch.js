@@ -7,6 +7,7 @@ import {InputGroup} from "reactstrap";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import FormControl from "react-bootstrap/FormControl";
+import {AWS_PATH} from '../../api/key'
 import axios from 'axios'
 
 const BoardSearch = ({searchedPosts}) => {
@@ -15,7 +16,7 @@ const BoardSearch = ({searchedPosts}) => {
     const kepressChange = event =>{
         if (event.key === 'Enter') {
             alert(`title: ${title},searchWord : ${searchWord}`)
-            axios.get(`http://localhost:8080/posts/search/${searchWord}`)
+            axios.get(`${AWS_PATH}/posts/search/${searchWord}`)
                 .then((res)=>{
                     searchedPosts(res.data)
                 })

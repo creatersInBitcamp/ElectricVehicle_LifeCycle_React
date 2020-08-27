@@ -5,11 +5,10 @@ import axios from 'axios'
 
 // Import custom item
 import store from "../../store";
-import {NavBar,TopBar,LogoImage,changeCurrency} from "../index";
+import {NavBar,TopBar,LogoImage} from "../index";
 import {CartContainer} from "../../newCar";
 import {useDispatch} from "react-redux";
-import ListGroup from "react-bootstrap/ListGroup";
-import ListGroupItem from "react-bootstrap/ListGroupItem";
+import {AWS_PATH} from '../../api/key'
 
 export const HeaderOne = props =>{
 	const [isLoading, setIsLoading] = useState(false)
@@ -31,7 +30,7 @@ export const HeaderOne = props =>{
 	const onChangeSearch = (e) => {
 		if(e.target.value !== '') {
 			setSearchWord(e.target.value)
-			axios.get(`http://localhost:8080/electriccars/search/${searchWord}`)
+			axios.get(`${AWS_PATH}/electriccars/search/${searchWord}`)
 				.then((res)=>{
 					setSearchResult(res.data)
 				})

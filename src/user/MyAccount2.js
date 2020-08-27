@@ -4,6 +4,7 @@ import axios from 'axios'
 import {Image} from "../admin/item";
 import Modal from "@material-ui/core/Modal";
 import {makeStyles} from "@material-ui/core/styles";
+import {AWS_PATH} from '../api/key'
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -62,7 +63,7 @@ const MyAccount2 = ({user}) => {
             profileText: modiText,
         }
         console.log(modiUser)
-        axios.post('http://localhost:8080/user/updateOne', modiUser)
+        axios.post(`${AWS_PATH}/user/updateOne`, modiUser)
             .then((res)=>{
                 if(res.data){
                     alert('SUCCESS')

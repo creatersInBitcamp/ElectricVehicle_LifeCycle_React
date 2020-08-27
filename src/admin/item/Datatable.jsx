@@ -37,7 +37,6 @@ export const Datatable = (props) => {
             )
         });
         setMyData( filteredData );
-        console.log(filteredData)
     };
 
     const handleSearchClick = () => {

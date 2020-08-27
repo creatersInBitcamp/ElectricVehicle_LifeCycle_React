@@ -28,7 +28,6 @@ const MyOrder = () => {
                     console.log(products)
                 }*/
                 // console.log(res.data.shift().place)
-                console.log(res.data)
                 setData(res.data)
             })
             .catch((err)=>{

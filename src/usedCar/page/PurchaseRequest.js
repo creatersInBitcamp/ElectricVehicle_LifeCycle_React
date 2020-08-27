@@ -34,7 +34,6 @@ export const PurchaseRequest = (props) => {
                 carName: item.carName,
                 usedCarId: item.usedCarId
             }
-            console.log(info)
             axios.post(`${AWS_PATH}/sales/register`, info)
                 .then(res => {
                     res.data ? props.history.push(`${process.env.PUBLIC_URL}/`) : alert('등록 실패')

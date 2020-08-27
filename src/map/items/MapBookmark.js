@@ -185,7 +185,6 @@ export const MapBookmark = () =>{
     function deleteBookmark(bookmarkID){
         axios.get(`${AWS_PATH}/bookmarks/delete/${bookmarkID}`)
             .then((res)=>{
-                console.log("북마크 삭제 성공")
                 axios.get(`${AWS_PATH}/bookmarks/getallbookmark/${userId}`)
                     .then((res)=>{
                         setMyData(res.data)

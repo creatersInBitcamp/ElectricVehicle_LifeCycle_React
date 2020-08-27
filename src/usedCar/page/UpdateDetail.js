@@ -24,7 +24,6 @@ const updateDetail = (props) => {
         axios.get(`${AWS_PATH}/usedCars/getOne/${usedCarId}`)
             .then(res=>{
                 res.data ? setContents(res.data) : props.history.push(`${process.env.PUBLIC_URL}/used-car/collection`)
-                console.log(res.data)
             })
             .catch(()=>{
                 alert('통신실패')
@@ -43,7 +42,6 @@ const updateDetail = (props) => {
             let product = products.find(x => x.eccarId == targetId)
             setCarId(targetId)
             setCarName(product.carName)
-            console.log(product)
         }
 
     }

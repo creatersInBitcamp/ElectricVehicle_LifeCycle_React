@@ -67,23 +67,27 @@ export const Register = (props) =>  {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const userInfo =  {
-            userId: userId,
-            password: password,
-            name: name,
-            email: email,
-            ssn: year.concat("-",month,"-",day),
-            sex: sex,
-            addr: addr.concat(" ",addr2),
-            registerDate: new Date().toLocaleDateString()
+        if(userId !== '' && password !=='' && sex !== '성별' && idOverlap === false){
+            const userInfo =  {
+                userId: userId,
+                password: password,
+                name: name,
+                email: email,
+                ssn: year.concat("-",month,"-",day),
+                sex: sex,
+                addr: addr.concat(" ",addr2),
+                registerDate: new Date().toLocaleDateString()
+            }
+            axios.post(`${AWS_PATH}/user/register`, userInfo)
+                .then(res =>{
+                    res.data ? props.history.push(`${process.env.PUBLIC_URL}/pages/login`) : alert("회원가입이 실패했습니다.")
+                })
+                .catch(()=>{
+                    alert("통신실패")
+                })
+        } else {
+            alert('필수항목을 채워주세요!')
         }
-        axios.post(`${AWS_PATH}/user/register`, userInfo)
-            .then(res =>{
-                res.data ? props.history.push(`${process.env.PUBLIC_URL}/pages/login`) : alert("회원가입이 실패했습니다.")
-            })
-            .catch(()=>{
-                alert("통신실패")
-            })
     }
 
     const onTest = (e) => {

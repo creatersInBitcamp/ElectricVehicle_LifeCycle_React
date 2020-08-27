@@ -20,7 +20,6 @@ const PostUadate = ({history}) => {
     useEffect(() => {
         axios.get(`${AWS_PATH}/posts/getOne/${postId}`)
             .then((res)=> {
-                console.log(res.data)
                 setLink(res.data.link)
                 setTitle(res.data.title)
                 setImg(res.data.img)
@@ -46,10 +45,8 @@ const PostUadate = ({history}) => {
             category: category,
             userSeq : user.userSeq,
         }
-        console.log(newPost)
         axios.post(`${AWS_PATH}/posts/update`, newPost)
             .then((res) => {
-                console.log(res.statusText)
                 history.push(`/board/main/${category}`)
             })
             .catch((err) => {

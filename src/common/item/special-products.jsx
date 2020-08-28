@@ -7,6 +7,7 @@ import {PostItem} from '../../board'
 import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
 import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
 import axios from "axios";
+import {BACK_PATH} from "../../api/key";
 
 export const SpecialProducts = props => {
     const {elecCar,usedCar,symbol} = useSelector(state=>({
@@ -17,7 +18,7 @@ export const SpecialProducts = props => {
 
 
     useEffect(()=>{
-        axios.get('http://localhost:8080/posts/getall')
+        axios.get(`http://${BACK_PATH}/posts/getall`)
             .then((res)=>{
                 setPosts(res.data.slice(0,8))
             })

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import axios from "axios";
+import {BACK_PATH} from "../../api/key";
 import {useRouteMatch} from 'react-router-dom';
 import {Breadcrumb} from "../../common";
 
@@ -34,7 +35,7 @@ export const PurchaseRequest = (props) => {
                 usedCarId: item.usedCarId
             }
             console.log(info)
-            axios.post(`http://localhost:8080/sales/register`, info)
+            axios.post(`http://${BACK_PATH}/sales/register`, info)
                 .then(res => {
                     res.data ? props.history.push(`${process.env.PUBLIC_URL}/`) : alert('등록 실패')
                 })

@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from 'axios'
+import {BACK_PATH} from "../../api/key";
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const ClassicBoardDetails = ({history}) => {
@@ -20,7 +21,7 @@ const ClassicBoardDetails = ({history}) => {
         const reFresh = () => {
             setUser(sessionUser)
             setPost(
-                axios.get(`http://localhost:8080/posts/getOne/${match}`)
+                axios.get(`http://${BACK_PATH}/posts/getOne/${match}`)
                     .then((res) => {
                         console.log(res.data)
                         setPost(res.data)
@@ -45,7 +46,7 @@ const ClassicBoardDetails = ({history}) => {
                 post: {postId: match}
             }
             console.log(newComment)
-            axios.post(`http://localhost:8080/comments/insert`, newComment)
+            axios.post(`http://${BACK_PATH}/comments/insert`, newComment)
                 .then((res)=>{
                     console.log(res.status)
                     reFresh()
@@ -57,7 +58,7 @@ const ClassicBoardDetails = ({history}) => {
         }
 
         const onRecommend = () => {
-                axios.get(`http://localhost:8080/posts/recommend/${post.postId}`)
+                axios.get(`http://${BACK_PATH}/posts/recommend/${post.postId}`)
                     .then((res)=>{
                         setrecommend(res.data)
                     })
@@ -67,7 +68,7 @@ const ClassicBoardDetails = ({history}) => {
         }
 
         const onReport = () => {
-            axios.get(`http://localhost:8080/posts/report/${post.postId}`)
+            axios.get(`http://${BACK_PATH}/posts/report/${post.postId}`)
                 .then((res)=>{
                     setReport(res.data)
                 })
@@ -77,7 +78,7 @@ const ClassicBoardDetails = ({history}) => {
         }
 
         const onDelete = () => {
-                axios.get(`http://localhost:8080/posts/delete/${post.postId}`)
+                axios.get(`http://${BACK_PATH}/posts/delete/${post.postId}`)
                     .then((res) => {
                         history.push(`/board/main/${post.category}`)
                     })

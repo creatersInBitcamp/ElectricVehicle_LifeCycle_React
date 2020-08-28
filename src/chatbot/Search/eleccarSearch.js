@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import {BACK_PATH} from "../../api/key";
 
 const ElecCarSearch = (props) => {
 
@@ -9,7 +10,7 @@ const ElecCarSearch = (props) => {
     useEffect(()=>{
         const { steps } = props;
         setSearchWord(steps.eleccarSearch.value)
-        axios.get(`http://localhost:8080/electriccars/search/${searchWord}`)
+        axios.get(`http://${BACK_PATH}/electriccars/search/${searchWord}`)
             .then( response => {
                 setresult(response.data)
             } ) // SUCCESS

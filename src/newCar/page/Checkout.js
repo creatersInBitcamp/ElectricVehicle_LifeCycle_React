@@ -8,6 +8,7 @@ import {getCartTotal} from "../../atomic/services/services";
 import axios from "axios";
 import Payment from "../../common/payment/PaymentForm";
 import {clearCart} from "./CartReducer";
+import {BACK_PATH} from "../../api/key";
 
 /* type */
 export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
@@ -30,7 +31,7 @@ export const checkout = () => {
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/electriccars/getone/${eccarId}`)
+        axios.get(`http://${BACK_PATH}/electriccars/getone/${eccarId}`)
             .then((res)=>{
                 setNewCar(res.data)
             })
@@ -49,7 +50,7 @@ export const checkout = () => {
             userSeq:sessionUser.userSeq,
             eccarId:newCar.eccarId
         }
-        axios.post(`http://localhost:8080/purchases/insert`, newPurchase)
+        axios.post(`http://${BACK_PATH}/purchases/insert`, newPurchase)
             .then((res)=>{
                 alert('구매상담신청 성공')
                 dispatch(clearCart())

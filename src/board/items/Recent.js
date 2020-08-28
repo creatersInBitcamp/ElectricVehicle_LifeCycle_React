@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import axios from "axios";
+import {BACK_PATH} from "../../api/key";
 
 const Recent = () => {
     const [recents, setRecents] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:8080/posts/recent')
+        axios.get(`http://${BACK_PATH}/posts/recent`)
             .then((res) => {
                 setRecents(res.data.content)
             })

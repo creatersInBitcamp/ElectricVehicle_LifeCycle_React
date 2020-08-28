@@ -10,6 +10,7 @@ import axios from "axios";
 import {sightsMapRequest, stationMapRequest} from "./StationReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {MAP_KEY} from '../../api/key'
+import {BACK_PATH} from "../../api/key";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -30,7 +31,7 @@ const center = {
 
 export const userThunk = () => (dispatch)=>{
     sessionUser?(
-        axios.get(`http://localhost:8080/sights/getall/${sessionUser.userSeq}`)
+        axios.get(`http://${BACK_PATH}/sights/getall/${sessionUser.userSeq}`)
             .then((res)=>{
                 dispatch(sightsMapRequest(res.data))
             })
@@ -38,7 +39,7 @@ export const userThunk = () => (dispatch)=>{
                 console.log(err.status)
             })
     ):(
-        axios.get(`http://localhost:8080/sights/getall`)
+        axios.get(`http://${BACK_PATH}/sights/getall`)
             .then((res)=>{
                 dispatch(sightsMapRequest(res.data))
             })
@@ -49,10 +50,10 @@ export const userThunk = () => (dispatch)=>{
 }
 
 export const useAnotherThunk = (info) => (dispatch) => {
-    axios.post('http://localhost:8080/bookmarks/insert',info)
+    axios.post(`http://${BACK_PATH}/bookmarks/insert`,info)
         .then((res)=>{
             console.log("북마크 저장 성공")
-            axios.get(`http://localhost:8080/sights/getall/${sessionUser.userSeq}`)
+            axios.get(`http://${BACK_PATH}/sights/getall/${sessionUser.userSeq}`)
                 .then((res)=>{
                     dispatch(sightsMapRequest(res.data))
                 })

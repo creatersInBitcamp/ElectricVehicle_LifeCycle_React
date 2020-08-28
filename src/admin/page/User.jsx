@@ -5,6 +5,7 @@ import {Bar, Doughnut} from "react-chartjs-2";
 import axios from "axios";
 import MaterialTable from "material-table";
 import {TablePagination} from "@material-ui/core";
+import {BACK_PATH} from "../../api/key";
 
 const userReducer = ( state= {}, action ) => {
     switch (action.type) {
@@ -31,7 +32,7 @@ export const User = () => {
 
     // 유저 테이블
     useEffect(() => {
-        axios.get(`http://localhost:8080/user/findAll/${page}/${size}`)
+        axios.get(`http://${BACK_PATH}/user/findAll/${page}/${size}`)
             .then((res)=>{
                 setData(res.data.content)
                 setCount(res.data.totalElements)
@@ -83,7 +84,7 @@ export const User = () => {
                     dataUpdate[index] = newData
                     setData([...dataUpdate])
                     resolve()
-                    axios.post(`http://localhost:8080/user/oneUpdate`, newData)
+                    axios.post(`http://${BACK_PATH}/user/oneUpdate`, newData)
                         .then((res) => {
                         })
                         .catch(() => {
@@ -100,7 +101,7 @@ export const User = () => {
     //연령대별 차트
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/user/countAge`)
+        axios.get(`http://${BACK_PATH}/user/countAge`)
             .then((res)=>{
                 setAgeChart(res.data)
                 console.log(res.data)
@@ -136,7 +137,7 @@ export const User = () => {
 
     // 남녀 성비차트
     useEffect(()=>{
-        axios.get(`http://localhost:8080/user/countSex`)
+        axios.get(`http://${BACK_PATH}/user/countSex`)
             .then((res)=>{
                 console.log(res.data)
                 setSexChart(res.data)

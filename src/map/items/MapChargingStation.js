@@ -10,6 +10,7 @@ import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {stationMapRequest} from "./StationReducer";
 import {MAP_KEY} from '../../api/key'
+import {BACK_PATH} from "../../api/key";
 
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
@@ -48,7 +49,7 @@ export const MapChargingStation = (props) =>{
 
     useEffect(()=>{
         sessionUser?(
-            axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
+            axios.get(`http://${BACK_PATH}/chargingstations/getall/${sessionUser.userSeq}`)
                 .then((res)=>{
                     setMyData(res.data)
                     dispatch(stationMapRequest(res.data))
@@ -58,7 +59,7 @@ export const MapChargingStation = (props) =>{
                 })
 
         ):(
-            axios.get(`http://localhost:8080/chargingstations/getall`)
+            axios.get(`http://${BACK_PATH}/chargingstations/getall`)
                 .then((res)=>{
                     setMyData(res.data)
                     dispatch(stationMapRequest(res.data))
@@ -200,11 +201,11 @@ export const MapChargingStation = (props) =>{
             charging : true,
             userId: user.userSeq,
         }
-        axios.post('http://localhost:8080/bookmarks/insert',id)
+        axios.post(`http://${BACK_PATH}/bookmarks/insert`,id)
             .then((res)=>{
                 console.log("북마크 저장 성공")
                 props.first.length>0?(
-                    axios.get(`http://localhost:8080/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
+                    axios.get(`http://${BACK_PATH}/chargingstations/getmycar/${props.first[0].eccarId}/${sessionUser.userSeq}`)
                         .then((res)=>{
                             setMyData(res.data)
                             dispatch(stationMapRequest(res.data))
@@ -213,7 +214,7 @@ export const MapChargingStation = (props) =>{
                             console.log('charging-staion-axios-error')
                         })
                 ):(
-                    axios.get(`http://localhost:8080/chargingstations/getall/${sessionUser.userSeq}`)
+                    axios.get(`http://${BACK_PATH}/chargingstations/getall/${sessionUser.userSeq}`)
                         .then((res)=>{
                             dispatch(stationMapRequest(res.data))
                         })

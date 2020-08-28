@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {BACK_PATH} from "../../api/key";
 
 // types
 const FETCH_POSTS_BEGIN = 'FETCH_POSTS_BEGIN'
@@ -9,7 +10,7 @@ export const fetchPostsBegin = () => ({type: FETCH_POSTS_BEGIN })
 export const receivePosts = posts => ({type: RECEIVE_POSTS, posts})
 export const getAllPosts = () => dispatch => {
     dispatch(fetchPostsBegin())
-    axios.get(`http://localhost:8080/posts/findall`)
+    axios.get(`http://${BACK_PATH}/posts/findall`)
         .then( res => {
             dispatch(receivePosts(res.data))
             return res.data
@@ -20,7 +21,7 @@ export const getAllPosts = () => dispatch => {
 }
 export const receivePost = post => ({type: RECEIVE_POST, post})
 export const getOnePost = (postId) => {
-    return axios.get(`http://localhost:8080/posts/findone/${postId}`)
+    return axios.get(`http://${BACK_PATH}/posts/findone/${postId}`)
         .then(res => {
             receivePost(res.data)
         })

@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
+import {BACK_PATH} from "../../api/key";
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 const PostUadate = ({history}) => {
@@ -16,7 +17,7 @@ const PostUadate = ({history}) => {
     const [content, setContent] = useState("test")
     const [category, setCategory] = useState("")
     useEffect(() => {
-        axios.get(`http://localhost:8080/posts/getOne/${postId}`)
+        axios.get(`http://${BACK_PATH}/posts/getOne/${postId}`)
             .then((res)=> {
                 console.log(res.data)
                 setLink(res.data.link)
@@ -45,7 +46,7 @@ const PostUadate = ({history}) => {
             userSeq : user.userSeq,
         }
         console.log(newPost)
-        axios.post('http://localhost:8080/posts/update', newPost)
+        axios.post(`http://${BACK_PATH}/posts/update`, newPost)
             .then((res) => {
                 console.log(res.statusText)
                 history.push(`/board/main/${category}`)

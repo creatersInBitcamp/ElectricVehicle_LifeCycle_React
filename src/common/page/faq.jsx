@@ -13,6 +13,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import FormControl from "react-bootstrap/FormControl";
 import {Divider} from "@material-ui/core";
+import {BACK_PATH} from "../../api/key";
 
 const useStyles = makeStyles((theme) => ({
     pagination: {
@@ -45,7 +46,7 @@ export const Faq = () => {
             postAxios()
         }
         const postAxios = () => {
-            axios.get(`http://localhost:8080/posts/pages/${match}/${page}`)
+            axios.get(`http://${BACK_PATH}/posts/pages/${match}/${page}`)
                 .then((res) => {
                     setPosts(res.data.content)
                     setCount(res.data.totalPages)
@@ -55,7 +56,7 @@ export const Faq = () => {
                 })
         }
         const searchMethod = () => {
-            axios.get(`http://localhost:8080/posts/search/${match}/${title}/${searchWord}/${page}`)
+            axios.get(`http://${BACK_PATH}/posts/search/${match}/${title}/${searchWord}/${page}`)
                 .then((res)=>{
                     setPosts(res.data.content)
                     setCount(res.data.totalPages)

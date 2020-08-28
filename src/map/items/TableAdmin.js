@@ -5,6 +5,7 @@ import {GoogleMap,Marker, useLoadScript} from "@react-google-maps/api";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {MAP_KEY} from '../../api/key'
+import {BACK_PATH} from "../../api/key";
 
 const libraries = ["places"];
 
@@ -27,7 +28,7 @@ export const AdminChargingStationTable = () => {
 
     const dispatch = useDispatch()
     useEffect(()=>{
-        axios.get('http://localhost:8080/chargingstations/getall')
+        axios.get(`http://${BACK_PATH}/chargingstations/getall`)
             .then((res)=>{
                 setMyData(res.data)
             })
@@ -76,7 +77,7 @@ export const AdminChargingStationTable = () => {
                         boostingCharge : "급속(50kW)",
                         category : "station"
                     }
-                    axios.post(`http://localhost:8080/chargingstations/insert`, chargingStation)
+                    axios.post(`http://${BACK_PATH}/chargingstations/insert`, chargingStation)
                         .then((res) => {
                             window.location.reload()
                         })
@@ -95,7 +96,7 @@ export const AdminChargingStationTable = () => {
                     dataUpdate[index] = newData
                     setMyData([...dataUpdate])
                     resolve()
-                    axios.post(`http://localhost:8080/chargingstations/update`, newData)
+                    axios.post(`http://${BACK_PATH}/chargingstations/update`, newData)
                         .then((res) => {
                             window.location.reload()
                         })
@@ -114,7 +115,7 @@ export const AdminChargingStationTable = () => {
                     dataDelete.splice(index, 1);
                     setMyData([...dataDelete]);
                     resolve()
-                    axios.get(`http://localhost:8080/chargingstations/delete/${chargingStationId}`)
+                    axios.get(`http://${BACK_PATH}/chargingstations/delete/${chargingStationId}`)
                         .then((res) => {
                             window.location.reload()
                         })
@@ -148,7 +149,6 @@ export const AdminChargingStationTable = () => {
                                             }
                                         }
                                         editable={editable}
-                                        onRowClick={(evt, selectedRow,togglePanel) => togglePanel()}
                                     />
                                 </div>
                             </div>

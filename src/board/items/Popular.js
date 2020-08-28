@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {BACK_PATH} from "../../api/key";
 
 const Popular = () => {
     const [populars, setPopulars] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:8080/posts/popular')
+        axios.get(`http://${BACK_PATH}/posts/popular`)
             .then((res) => {
                 setPopulars(res.data.content)
             })

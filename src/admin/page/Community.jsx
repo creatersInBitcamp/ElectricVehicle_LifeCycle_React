@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {AdminBreadcrumb} from '../common';
 import axios from "axios";
 import {useDispatch} from "react-redux";
+import {BACK_PATH} from "../../api/key";
 import {Table} from "../item";
 const communityTypes = {REQUEST: 'community/REQUEST'}
 
@@ -13,7 +14,7 @@ const communityReducer = ( state={}, action ) => {
 }
 
 export const communityThunk = () => (dispatch) => {
-    axios.get(`http://localhost:8080/posts/getall`)
+    axios.get(`http://${BACK_PATH}/posts/getall`)
         .then(res =>{
             // dispatch(userRequest(res.data))
         })
@@ -29,7 +30,7 @@ export const Community = () => {
     // const  usposts = useSelector(state=> state.communityReducer)
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/posts/getall`)
+        axios.get(`http://${BACK_PATH}/posts/getall`)
             .then((res) => {
                 setPosts(res.data)
             })

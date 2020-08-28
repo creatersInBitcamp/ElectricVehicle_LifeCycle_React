@@ -1,9 +1,10 @@
 import axios from "axios";
 import {CHANGE_CURRENCY} from "../../common/item/currency";
+import {BACK_PATH} from "../../api/key";
 
 export const usedCars = () => (dispatch) =>{
     let products = []
-    axios.get(`http://localhost:8080/usedCars/findall`)
+    axios.get(`http://${BACK_PATH}/usedCars/findall`)
         .then((res)=> {
             let s = res.data.length
             for (let i=0; i<s; i++) {

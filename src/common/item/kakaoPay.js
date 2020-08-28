@@ -1,3 +1,5 @@
+import {FRONT_PATH} from "../../api/key";
+
 const axios = require('axios'); // using 'axios' node module for HTTP request
 
 const KakaoPay = async () => {
@@ -10,9 +12,9 @@ const KakaoPay = async () => {
     const vat_amount = 200;
     const tax_free_amount = 0;
 
-    const approval_url = 'http://localhost:3000/success';
-    const fail_url = 'http://localhost:3000/fail';
-    const cancel_url = 'http://localhost:3000/cancel';
+    const approval_url = `http://${FRONT_PATH}/success`;
+    const fail_url = `http://${FRONT_PATH}/fail`;
+    const cancel_url = `http://${FRONT_PATH}/cancel`;
 
     // set data
     const data = [

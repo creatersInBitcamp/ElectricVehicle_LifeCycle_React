@@ -6,6 +6,7 @@ import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {stationRequest} from "./StationReducer";
 import {MAP_KEY} from '../../api/key'
+import {BACK_PATH} from "../../api/key";
 
 const libraries = ["places"];
 
@@ -18,7 +19,7 @@ const options = {
 };
 
 export const userThunk = () => (dispatch)=>{
-    axios.get('http://localhost:8080/chargingstations/getall')
+    axios.get(`http://${BACK_PATH}/chargingstations/getall`)
         .then((res)=>{
             dispatch(stationRequest(res.data))
             // setMyData(res.data)

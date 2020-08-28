@@ -4,6 +4,7 @@ import Table from "../item/Table";
 import axios from 'axios'
 import order from '../../atomic/constants/convertcsv.json'
 import {Bar, Line} from "react-chartjs-2";
+import {BACK_PATH} from "../../api/key";
 
 const ordersTypes = {REQUEST: 'orders/REQUEST'}
 const ordersReducer = ( state, action ) => {
@@ -26,7 +27,7 @@ export const Orders = () => {
         {title:'요청시간', field:'purchaseTime'},
     ]
     useEffect(()=>{
-        axios.get('http://localhost:8080/purchases/getall')
+        axios.get(`http://${BACK_PATH}/purchases/getall`)
             .then((res)=>{
                 setData(res.data)
             })

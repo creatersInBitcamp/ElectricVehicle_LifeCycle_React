@@ -3,6 +3,7 @@ import {Link, useHistory} from 'react-router-dom'
 import Modal from 'react-responsive-modal';
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
+import {BACK_PATH} from "../../api/key";
 import {addToUsedCompare} from '../page/MyCarComparison'
 import {receiveFirstCar} from "../../user/MyCarRegister";
 
@@ -21,7 +22,7 @@ export const MyCar = props => {
     useEffect(() => {
         userSession ? setSession(true) : setSession(false)
         if (userSession) {
-            axios.get(`http://localhost:8080/usedCars/getFirstCar/${userSession.userSeq}`)
+            axios.get(`http://${BACK_PATH}/usedCars/getFirstCar/${userSession.userSeq}`)
                 .then((res)=>{
                     dispatch(receiveFirstCar(res.data))
                 })
@@ -35,6 +36,15 @@ export const MyCar = props => {
         } else if (targetId === 0) {
 
         }
+    }
+
+    const onClickLogin = (e) => {
+        e.preventDefault()
+        history.push(`${process.env.PUBLIC_URL}/pages/login`)
+    }
+    const onClickRegister = (e) => {
+        e.preventDefault()
+        history.push(`${process.env.PUBLIC_URL}/pages/profile/mycar`)
     }
 
     const dispatch = useDispatch()
@@ -57,10 +67,8 @@ export const MyCar = props => {
                     {
                         props.check === '지도'?(
                                 <div style={{textAlign: "center", padding: "15px"}}>
-                                    <button className="btn btn-solid">
-                                        <Link to={"/pages/profile/mycar"}>
-                                            내 차 변경하기
-                                        </Link>
+                                    <button className="btn btn-solid" onClick={onClickRegister}>
+                                        내 차 변경하기
                                     </button>
                                 </div>
                         )
@@ -75,10 +83,8 @@ export const MyCar = props => {
                 <div className="collection-filter-block">
                     <h2 style={{textAlign: "center", padding: "15px"}}>My Car</h2>
                     <div style={{textAlign: "center", padding: "15px"}}>
-                        <button className="btn btn-solid">
-                            <Link to={"/pages/profile/mycar"}>
-                                내 차 등록하기
-                            </Link>
+                        <button className="btn btn-solid" onClick={onClickRegister}>
+                            내 차 등록하기
                         </button>
                     </div>
                 </div>
@@ -87,10 +93,8 @@ export const MyCar = props => {
             <div className="collection-filter-block">
                 <h2 style={{textAlign: "center", padding: "15px"}}>My Car</h2>
                 <div style={{textAlign: "center", padding: "15px"}}>
-                    <button className="btn btn-solid">
-                        <Link to={"/pages/login"}>
-                            로그인이 필요한 서비스 입니다.
-                        </Link>
+                    <button className="btn btn-solid" onClick={onClickLogin}>
+                        로그인이 필요한 서비스 입니다.
                     </button>
                 </div>
             </div>

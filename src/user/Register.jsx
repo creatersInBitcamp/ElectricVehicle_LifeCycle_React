@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Breadcrumb,PostCode} from "../common";
 import {Link} from "react-router-dom";
 import axios from "axios"
+import {BACK_PATH} from "../api/key";
 
 
 
@@ -30,7 +31,7 @@ export const Register = (props) =>  {
     const onChangeIdChk = (e) => {
         if(e.target.value !== ''){
             setUserId(e.target.value)
-            axios.get(`http://localhost:8080/user/check/${e.target.value}`)
+            axios.get(`http://${BACK_PATH}/user/check/${e.target.value}`)
                 .then((res) => {
                     if(res.data === false) {
                         setIdOverlap(res.data)
@@ -66,23 +67,27 @@ export const Register = (props) =>  {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const userInfo =  {
-            userId: userId,
-            password: password,
-            name: name,
-            email: email,
-            ssn: year.concat("-",month,"-",day),
-            sex: sex,
-            addr: addr.concat(" ",addr2),
-            registerDate: new Date().toLocaleDateString()
+        if(mustId && mustPw && mustSex){
+            const userInfo =  {
+                userId: userId,
+                password: password,
+                name: name,
+                email: email,
+                ssn: year.concat("-",month,"-",day),
+                sex: sex,
+                addr: addr.concat(" ",addr2),
+                registerDate: new Date().toLocaleDateString()
+            }
+            axios.post(`${BACK_PATH}/user/register`, userInfo)
+                .then(res =>{
+                    res.data ? props.history.push(`${process.env.PUBLIC_URL}/pages/login`) : alert("회원가입이 실패했습니다.")
+                })
+                .catch(()=>{
+                    alert("통신실패")
+                })
+        } else {
+            alert('필수항목을 채워주세요!')
         }
-        axios.post(`http://localhost:8080/user/register`, userInfo)
-            .then(res =>{
-                res.data ? props.history.push(`${process.env.PUBLIC_URL}/pages/login`) : alert("회원가입이 실패했습니다.")
-            })
-            .catch(()=>{
-                alert("통신실패")
-            })
     }
 
     const onTest = (e) => {

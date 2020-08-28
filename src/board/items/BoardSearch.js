@@ -8,6 +8,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import FormControl from "react-bootstrap/FormControl";
 import axios from 'axios'
+import {BACK_PATH} from "../../api/key";
 
 const BoardSearch = ({searchedPosts}) => {
     const [title, setTitle] = useState("검색조건")
@@ -15,7 +16,7 @@ const BoardSearch = ({searchedPosts}) => {
     const kepressChange = event =>{
         if (event.key === 'Enter') {
             alert(`title: ${title},searchWord : ${searchWord}`)
-            axios.get(`http://localhost:8080/posts/search/${searchWord}`)
+            axios.get(`http://${BACK_PATH}/posts/search/${searchWord}`)
                 .then((res)=>{
                     searchedPosts(res.data)
                 })

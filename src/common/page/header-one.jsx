@@ -8,6 +8,7 @@ import store from "../../store";
 import {NavBar,TopBar,LogoImage,changeCurrency} from "../index";
 import {CartContainer} from "../../newCar";
 import {useDispatch} from "react-redux";
+import {BACK_PATH} from "../../api/key";
 import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 
@@ -31,7 +32,7 @@ export const HeaderOne = props =>{
 	const onChangeSearch = (e) => {
 		if(e.target.value !== '') {
 			setSearchWord(e.target.value)
-			axios.get(`http://localhost:8080/electriccars/search/${searchWord}`)
+			axios.get(`http://${BACK_PATH}/electriccars/search/${searchWord}`)
 				.then((res)=>{
 					setSearchResult(res.data)
 				})

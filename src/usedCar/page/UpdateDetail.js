@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import {BACK_PATH} from "../../api/key";
 import {useSelector} from "react-redux";
 import {useRouteMatch} from "react-router-dom";
 
@@ -20,7 +21,7 @@ const updateDetail = (props) => {
     let usedCarId = match.params.usedCarId
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/usedCars/getOne/${usedCarId}`)
+        axios.get(`http://${BACK_PATH}/usedCars/getOne/${usedCarId}`)
             .then(res=>{
                 res.data ? setContents(res.data) : props.history.push(`${process.env.PUBLIC_URL}/used-car/collection`)
                 console.log(res.data)
@@ -59,7 +60,7 @@ const updateDetail = (props) => {
                 sale: true,
                 main: false
             }
-            axios.post(`http://localhost:8080/usedCars/update`,info)
+            axios.post(`http://${BACK_PATH}/usedCars/update`,info)
                 .then(alert('수정이 완료되었습니다.'), props.history.push(`${process.env.PUBLIC_URL}/used-car/collection`))
                 .catch(()=>{
                     alert('통신실패')

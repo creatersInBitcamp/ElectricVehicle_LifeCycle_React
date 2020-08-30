@@ -1,60 +1,83 @@
 import React, {useEffect, useState} from "react";
-import {Link, Redirect} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import Modal from 'react-responsive-modal';
 import {useDispatch, useSelector} from "react-redux";
+import axios from "axios";
 import {addToUsedCompare} from '../page/MyCarComparison'
+import {receiveFirstCar} from "../../user/MyCarRegister";
+import {AWS_PATH} from '../../api/key'
 
-export const MyCar = () => {
+export const MyCar = props => {
     const [open,setOpen] = useState(false)
-    const [redirect,setRedirect] = useState(false)
     const [targetId,setTargetId] = useState(0)
     const [session, setSession] = useState(false)
-    const [userSession] = useState(sessionStorage.getItem("user"))
+    const [userSession] = useState(JSON.parse(sessionStorage.getItem("user")))
+
+    const {items,first,wishItems} = useSelector((state) => ({
+        items: state.usedData.products,
+        first: state.firstCar.list,
+        wishItems: state.usedWishlist.list
+    }))
 
     useEffect(() => {
         userSession ? setSession(true) : setSession(false)
+        if (userSession) {
+            axios.get(`${AWS_PATH}/usedCars/getFirstCar/${userSession.userSeq}`)
+                .then((res)=>{
+                    dispatch(receiveFirstCar(res.data))
+                })
+        }
     },[userSession])
 
-    const {first,items,products} = useSelector(state=>({
-        first: state.firstCar.list,
-        items: state.usedWishlist.list,
-        products: state.data.products
-    }))
-
     const renderRedirect = () => {
-        if(redirect===true && targetId!==0){
-            return <Redirect to={`${process.env.PUBLIC_URL}/used-car/comparison/${targetId}`} />
+        if (targetId !== 0) {
+            dispatch(addToUsedCompare(items.find(x => x.usedCarId == targetId)))
+            history.push(`${process.env.PUBLIC_URL}/used-car/comparison/${targetId}`)
+        } else if (targetId === 0) {
+
         }
     }
 
     const dispatch = useDispatch()
 
-    return <>
+    const history = useHistory()
 
+    return <>
         {session ?
-            (first.length>0?
+            (first.length > 0 ?
                 <div className="collection-filter-block">
                     <h2 style={{textAlign: "center", padding: "15px"}}>My Car</h2>
                     {first.map((item) => {
                         return (
                             <>
-                                <img className="img-fluid" src={item.variants?
-                                    item.variants[0].images
-                                    :item.pictures[0]} alt=""/>
-                                <h5 style={{textAlign: "center"}}>{item.name}</h5>
+                                <img className="img-fluid" src={item.img.img1} alt=""/>
+                                <h5 style={{textAlign: "center"}}>{item.carName}</h5>
                             </>
                         )
                     })}
-                    <div style={{textAlign: "center", padding: "15px"}}>
-                        <button onClick={()=>setOpen(true)} className="btn btn-solid">비교하기</button>
-                    </div>
+                    {
+                        props.check === '지도'?(
+                                <div style={{textAlign: "center", padding: "15px"}}>
+                                    <button className="btn btn-solid">
+                                        <Link to={"/pages/profile/mycar"}>
+                                            내 차 변경하기
+                                        </Link>
+                                    </button>
+                                </div>
+                        )
+                        :(
+                            <div style={{textAlign: "center", padding: "15px"}}>
+                                <button onClick={()=>setOpen(true)} className="btn btn-solid">비교하기</button>
+                            </div>
+                        )
+                    }
                 </div>
                 :
                 <div className="collection-filter-block">
                     <h2 style={{textAlign: "center", padding: "15px"}}>My Car</h2>
                     <div style={{textAlign: "center", padding: "15px"}}>
                         <button className="btn btn-solid">
-                            <Link to={"/pages/myCar"}>
+                            <Link to={"/pages/profile/mycar"}>
                                 내 차 등록하기
                             </Link>
                         </button>
@@ -84,10 +107,8 @@ export const MyCar = () => {
                                         {first.map((item) => {
                                             return (
                                                 <>
-                                                    <h2 style={{textAlign: "center"}}>{item.name}</h2>
-                                                    <img className="img-fluid" src={item.variants?
-                                                        item.variants[0].images
-                                                        :item.pictures[0]} alt=""/>
+                                                    <h2 style={{textAlign: "center"}}>{item.carName}</h2>
+                                                    <img className="img-fluid" src={item.img.img1} alt=""/>
                                                 </>
                                             )
                                         })}
@@ -99,22 +120,18 @@ export const MyCar = () => {
                                         <div className="border-product">
                                             <h6 className="product-title">관심상품</h6>
                                             <form>
-                                                <select onChange={e=>setTargetId(e.target.value)}>
-                                                    <option value="default">상품을 선택해주세요.</option>
+                                                <select onChange={(e)=>setTargetId(e.target.value)}>
+                                                    <option value={0}>상품을 선택해주세요.</option>
                                                     {
-                                                        items.map((item,index)=>{
-                                                            return <option key={index} value={item.id}>{item.name}</option>
+                                                        wishItems.map((item,index)=>{
+                                                            return <option key={index} value={item.usedCarId}>{item.carName}</option>
                                                         })
                                                     }
                                                 </select>
                                                 <div className="product-buttons">
-                                                    {renderRedirect()}
                                                     <button className="btn btn-solid"
                                                             type={'button'}
-                                                            onClick={()=>{
-                                                                setRedirect(true);
-                                                                dispatch(addToUsedCompare(products.find(x => x.id == targetId)));
-                                                            }}>
+                                                            onClick={()=>renderRedirect()}>
                                                         비교하기
                                                     </button>
                                                 </div>
@@ -127,10 +144,6 @@ export const MyCar = () => {
                     </div>
                 </div>
             </Modal>
-
-
-
-        
     </>
 }
 export default MyCar

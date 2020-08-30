@@ -1,18 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {useDispatch, useSelector} from 'react-redux'
-import {getBestSeller, getMensWear, getWomensWear} from '../../atomic/services/services'
+import {getBestSeller, getSpecialUsed} from '../../atomic/services/services'
 import {ProductItem}from '../../usedCar'
+import {PostItem} from '../../board'
 import {addToCompare,addToWishlist,addToCart,ProductListItem} from '../../newCar'
 import {addToUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
+import {AWS_PATH} from '../../api/key'
+import axios from "axios";
 
-export const SpecialProducts = () => {
-    const {bestSeller,mensWear,womensWear,symbol} = useSelector(state=>({
-        bestSeller: getBestSeller(state.data.products),
-        mensWear: getMensWear(state.data.products),
-        womensWear: getWomensWear(state.data.products),
+export const SpecialProducts = props => {
+    const {elecCar,usedCar,symbol} = useSelector(state=>({
+        elecCar: getBestSeller(state.data.products),
+        usedCar: getSpecialUsed(state.usedData.products),
         symbol: state.data.symbol
     }))
+
+
+    useEffect(()=>{
+        axios.get(`${AWS_PATH}/posts/getall`)
+            .then((res)=>{
+                setPosts(res.data.slice(0,8))
+            })
+            .catch((err)=> {
+                console.log(err.status)
+            })
+    }, [])
+    const [posts, setPosts] = useState([])
     const dispatch = useDispatch()
     return <>
         <div>
@@ -30,17 +44,17 @@ export const SpecialProducts = () => {
                         </TabList>
                         <TabPanel>
                             <div className="no-slider row">
-                                { bestSeller.map((product, index ) =>
+                                { elecCar.map((product, index ) =>
                                     <ProductListItem product={product} symbol={symbol}
                                                  onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
                                                  onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
-                                                 onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} /> )
+                                                 onAddToCartClicked={()=>{dispatch(addToCart(product))}} key={index} check={false}/> )
                                 }
                             </div>
                         </TabPanel>
                         <TabPanel>
                             <div className="no-slider row">
-                                { mensWear.map((product, index ) =>
+                                { usedCar.map((product, index ) =>
                                     <ProductItem product={product} symbol={symbol}
                                                  onAddToWishlistClicked={()=>{dispatch(addToUsedWishlist(product))}} key={index} /> )
                                 }
@@ -48,11 +62,8 @@ export const SpecialProducts = () => {
                         </TabPanel>
                         <TabPanel>
                             <div className=" no-slider row">
-                                { womensWear.map((product, index ) =>
-                                    <ProductItem product={product} symbol={symbol}
-                                                 onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
-                                                 onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
-                                                 onAddToCartClicked={()=>{dispatch(addToCart(product, 1))}} key={index} /> )
+                                { posts.map((post, index ) =>
+                                    <PostItem post={post} key={index}/>)
                                 }
                             </div>
                         </TabPanel>

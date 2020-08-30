@@ -1,33 +1,34 @@
 import {combineReducers} from 'redux'
+import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import {datatableReducer, imageReducer, tabset_pageReducer, report_tableReducer, tabset_profileReducer} from "../admin/item"
 import {sidebarReducer, sidebarMenusReducer} from "../admin/common"
-import {communityReducer, elecCarReducer, reportsReducer, ordersReducer, userReducer, usedCarReducer, dashboardReducer, tabset_userReducer} from "../admin/page"
-import productReducer from '../common/item/productReducer'
-import filtersReducer from '../common/item/filtersReducer'
-import {cartReducer,wishlistReducer,compareReducer} from "../newCar";
-import {usedWishlistReducer,usedCompareReducer} from "../usedCar"
-import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
-import {firstCarReducer, loginReducer} from "../user";
-import boardReducer from "../board/items/boardReducer";
-import {myCarReducer} from "../user/MyCar";
-
+import {communityReducer, elecCarReducer, ordersReducer, userReducer, usedCarReducer, dashboardReducer, tabset_userReducer} from "../admin/page"
+import {CartReducer,WishlistReducer,CompareReducer} from "../newCar";
+import ProductReducer from "../newCar/items/ProductReducer";
+import {usedWishlistReducer, usedCompareReducer, usedProductReducer} from "../usedCar"
+import {firstCarReducer, loginReducer, myCarReducer} from "../user";
+import {boardReducer} from "../board/items";
+import {StationReducer} from "../map";
+import FiltersReducer from "../newCar/items/FiltersReducer";
 
 const rootReducer = combineReducers({
         boardReducer,
         datatableReducer,
         imageReducer,sidebarReducer, sidebarMenusReducer, communityReducer, elecCarReducer,
-        reportsReducer, report_tableReducer, ordersReducer, tabset_profileReducer,
+        report_tableReducer, ordersReducer, tabset_profileReducer,
         tabset_pageReducer, usedCarReducer, userReducer, tabset_userReducer, dashboardReducer,
-        data: productReducer,
-        cartList: cartReducer,
-        filters: filtersReducer,
-        wishlist: wishlistReducer,
-        compare: compareReducer,
+        data: ProductReducer,
+        usedData: usedProductReducer,
+        cartList: CartReducer,
+        filters: FiltersReducer,
+        wishlist: WishlistReducer,
+        compare: CompareReducer,
         loginReducer,
         usedWishlist: usedWishlistReducer,
         usedCompare: usedCompareReducer,
         myCar: myCarReducer,
         firstCar: firstCarReducer,
+        stationData : StationReducer,
         Intl
 });
 export default rootReducer

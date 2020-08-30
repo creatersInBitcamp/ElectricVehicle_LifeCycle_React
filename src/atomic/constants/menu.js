@@ -2,14 +2,11 @@ import {
     Home,
     Box,
     DollarSign,
-    Tag,
     Clipboard,
     Camera,
     AlignLeft,
     UserPlus,
     Users,
-    Chrome,
-    BarChart,Settings,Archive, LogIn
 } from 'react-feather';
 
 export const MENUITEMS = [
@@ -37,7 +34,4 @@ export const MENUITEMS = [
     {
         title: '서비스현황', path: '/service', icon: Users, type: 'link', active: false
     },
-    {
-        title: '보고서',path:'/admin/reports', icon: BarChart, type: 'link', active: false
-    }
 ]

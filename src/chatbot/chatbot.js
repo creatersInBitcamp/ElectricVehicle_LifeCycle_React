@@ -2,6 +2,7 @@ import React from 'react';
 import ChatBot from 'react-simple-chatbot';
 import {CarSearch, FareSearch} from './Search'
 import { ThemeProvider } from 'styled-components';
+import ElecCarSearch from "./Search/eleccarSearch";
 
 // all available props
 const theme = {
@@ -32,25 +33,27 @@ const MyChatBot = () => (
                 {
                     id: '2',
                     options: [
-                        //차량정보 보기
-                        { value: 1, label: '차량정보 보기', trigger: 'car' },
+                        //전기차 정보 보기
+                        { value: 1, label: '전기차 정보 보기', trigger: 'eccar' },
                         //고속도로 비용
                         { value: 2, label: '고속도로 비용', trigger: 'fare' },
+                        //일반차량 정보 보기
+                        { value: 3, label: '차량정보 보기', trigger: 'car' },
                     ],
                 },
                 {
-                    id: 'car',
+                    id: 'eccar',
                     message: '자동차 또는 제조사 이름을 입력하세요',
-                    trigger: 'carSearch',
+                    trigger: 'eleccarSearch',
                 },
                 {
-                    id: 'carSearch',
+                    id: 'eleccarSearch',
                     user: true,
-                    trigger: 'carSearchResult',
+                    trigger: 'eleccarSearchResult',
                 },
                 {
-                    id: 'carSearchResult',
-                    component: <CarSearch/>,
+                    id: 'eleccarSearchResult',
+                    component: <ElecCarSearch/>,
                     trigger: '1',
                 },
                 {
@@ -76,6 +79,21 @@ const MyChatBot = () => (
                 {
                     id: 'fareResult',
                     component: <FareSearch/>,
+                    trigger: '1',
+                },
+                {
+                    id: 'car',
+                    message: '자동차 또는 제조사 이름을 입력하세요',
+                    trigger: 'carSearch',
+                },
+                {
+                    id: 'carSearch',
+                    user: true,
+                    trigger: 'carSearchResult',
+                },
+                {
+                    id: 'carSearchResult',
+                    component: <CarSearch/>,
                     trigger: '1',
                 },
             ]}

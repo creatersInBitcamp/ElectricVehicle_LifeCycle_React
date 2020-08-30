@@ -1,9 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { useTranslate  } from 'react-redux-multilingual'
+import axios from 'axios'
+import {clearWishlist} from "../../newCar/page/WishlistReducer";
+import {useDispatch} from "react-redux";
+import {removeAllUsedWishlist} from "../../usedCar/page/UsedCarWishlist";
+import {clearCart} from "../../newCar/page/CartReducer";
+import {clearCompare} from "../../newCar/page/CompareReducer";
+import {clearUsedCompare} from "../../usedCar/page/MyCarComparison";
+import {clearMyCar} from "../../user/MyCarRegister";
 
 export const TopBar = () => {
-
     const translate = useTranslate();
     const [session, setSession] = useState(false)
     const [userSession] = useState(sessionStorage.getItem("user"))
@@ -12,11 +19,19 @@ export const TopBar = () => {
         userSession ? setSession(true) : setSession(false)
     },[userSession])
 
+    const dispatch = useDispatch()
     const logout = (e) => {
         e.preventDefault()
+        dispatch(clearWishlist())
+        dispatch(removeAllUsedWishlist())
+        dispatch(clearCart())
+        dispatch(clearUsedCompare())
+        dispatch(clearCompare())
+        dispatch(clearMyCar())
         sessionStorage.clear()
         window.location.reload()
     }
+
 
     return <>
         <div className="top-header">
@@ -65,7 +80,7 @@ export const TopBar = () => {
                             {!session &&
                             <li className="onhover-dropdown mobile-account">
                                 <i className="fa fa-user" aria-hidden="true"/>
-                                {translate('my_account')}
+                                {translate('login')}
                                 <ul className="onhover-show-div">
                                     <li>
                                         <Link to={`${process.env.PUBLIC_URL}/pages/login`}
@@ -89,8 +104,8 @@ export const TopBar = () => {
                                     </li>
 
                                     <li>
-                                        <Link to={`${process.env.PUBLIC_URL}/admin/userDetail`}
-                                              data-lng="en">{translate('myaccount')}</Link>
+                                        <Link to={`${process.env.PUBLIC_URL}/pages/profile`}
+                                              data-lng="en">{translate('mypage')}</Link>
                                     </li>
                                 </ul>
                             </li>

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import useComponentWillMount from 'component-will-mount-hook'
 import {addToCart,addToWishlist,addToCompare} from '../index'
 import {getVisibleproducts} from '../../atomic/services/services';
 import {ProductListItem} from "../index";
@@ -16,10 +15,6 @@ export const ProductListing = props => {
         symbol: state.data.symbol,
     }))
 
-    /*useComponentWillMount(()=>{
-        fetchMoreItems()
-    })*/
-
     useEffect(()=>{
         fetchMoreItems()
     })
@@ -32,7 +27,7 @@ export const ProductListing = props => {
         // a fake async api call
         setTimeout(() => {
             setLimit(limit+5);
-        }, 3000);
+        }, 1500);
     }
 
 
@@ -59,7 +54,7 @@ export const ProductListing = props => {
                                     <ProductListItem product={product} symbol={symbol}
                                                      onAddToCompareClicked={()=>{dispatch(addToCompare(product))}}
                                                      onAddToWishlistClicked={()=>{dispatch(addToWishlist(product))}}
-                                                     onAddToCartClicked={()=>dispatch(addToCart(product,1))} key={index}/>
+                                                     onAddToCartClicked={()=>dispatch(addToCart(product,1))} key={index} check={true}/>
                                     </div>)
                                 }
                             </div>

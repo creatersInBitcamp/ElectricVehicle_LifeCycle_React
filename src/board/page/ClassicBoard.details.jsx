@@ -1,0 +1,217 @@
+import React, {useEffect, useState} from 'react';
+import {Link, useRouteMatch} from 'react-router-dom'
+import {Breadcrumb} from "../../common";
+import {Comment, RefreshInfo} from "../items";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import axios from 'axios'
+import {AWS_PATH} from '../../api/key'
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
+
+const ClassicBoardDetails = ({history}) => {
+        const [user, setUser] = useState({})
+        const [post, setPost] = useState({})
+        const [commentText, setCommentText] = useState("")
+        const [recommend, setrecommend] = useState(false)
+        const [report, setReport] = useState(false)
+        const [linkOpen, setLinkOpen] = useState(false)
+        const match = useRouteMatch('/board/details/:postId').params.postId
+
+        const reFresh = () => {
+            setUser(sessionUser)
+            setPost(
+                axios.get(`${AWS_PATH}/posts/getOne/${match}`)
+                    .then((res) => {
+                        setPost(res.data)
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            )
+        }
+
+        useEffect(() => {
+            reFresh()
+        }, [match, user, recommend, report])
+
+        const commentPush = () => {
+            const newComment = {
+                userId: user.userId,
+                regDate: new Date().toLocaleString(),
+                comment: commentText,
+                user: user,
+                post: {postId: match}
+            }
+            axios.post(`${AWS_PATH}/comments/insert`, newComment)
+                .then((res)=>{
+                    reFresh()
+                    RefreshInfo()
+                })
+                .catch((err)=> {
+                    console.log(err.status)
+                })
+        }
+
+        const onRecommend = () => {
+                axios.get(`${AWS_PATH}/posts/recommend/${post.postId}`)
+                    .then((res)=>{
+                        setrecommend(res.data)
+                    })
+                    .catch((err)=>{
+                        console.log(err.status)
+                    })
+        }
+
+        const onReport = () => {
+            axios.get(`${AWS_PATH}/posts/report/${post.postId}`)
+                .then((res)=>{
+                    setReport(res.data)
+                })
+                .catch((err)=>{
+                    console.log(err.status)
+                })
+        }
+
+        const onDelete = () => {
+                axios.get(`${AWS_PATH}/posts/delete/${post.postId}`)
+                    .then((res) => {
+                        history.push(`/board/main/${post.category}`)
+                    })
+                    .catch((err) => {
+                        console.log(err.status)
+                    })
+        }
+
+        return (
+            <div>
+                {/*Blog Details section*/}
+                    <>
+                    <Breadcrumb title={'Board - Details'}/>
+                    <section className="blog-detail-page section-b-space">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-sm-12 blog-detail">
+                                    <h3>{post.title}</h3>
+                                    <ul className="post-social">
+                                        <Container>
+                                            <Row>
+                                                <Col>
+                                                    <li>{post.date}</li>
+                                                    <li>Posted By :{post.userId}</li>
+                                                    <li><i className="fa fa-comments"/> {post.comments === undefined? 0 : post.comments.length} Comment</li>
+                                                        {(recommend)?
+                                                            <li><button className="fa fa-thumbs-up">{post.recommendation} Like</button></li>
+                                                            :
+                                                            <li><button className="fa fa-thumbs-o-up" onClick={onRecommend}>{post.recommendation} Like</button></li>
+                                                        }
+                                                    {
+                                                        (report)?
+                                                            <li><button className="fa fa-thumbs-down">{post.report} Report</button></li>
+                                                            :
+                                                            <li><button className="fa fa-thumbs-o-down" onClick={onReport}>{post.report} Report</button></li>
+
+                                                    }
+                                                </Col>
+                                            </Row>
+                                        </Container>
+                                    </ul>
+                                    <div className="row">
+                                        <Container>
+                                            <div className="row">
+                                                <img src={post.img} className="img-fluid" alt=""/>
+                                            </div>
+                                            <div className="row">
+                                                <p>{post.content}</p>
+                                            </div>
+                                            <div className="row">
+                                                {(linkOpen)?
+                                                    <>
+                                                        <button className="btn btn-outline-danger" onClick={()=>setLinkOpen(false)}> 링크 닫기 </button>
+                                                        <iframe src={post.link} width={1920} height={1000}/>
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <button className="btn btn-google" onClick={()=>setLinkOpen(true)}> 링크 보기 </button>
+                                                    </>
+                                                }
+                                            </div>
+                                        </Container>
+                                    </div>
+                                </div>
+                                <Container>
+                                    <Row>
+                                        <Col>
+                                            <button className="btn btn-solid" onClick={(e) => {
+                                                e.preventDefault()
+                                                history.push(`/board/main/${post.category}`)
+                                            }}>목록</button>
+                                        </Col>
+                                        <Col xs md={2}>
+                                            {
+                                                (user !== null)?
+                                                (user.userId === post.userId)?
+                                                <>
+                                                    <Link to={`${process.env.PUBLIC_URL}/board/update/${post.postId}`}><button className="btn btn-solid">수정</button></Link>
+                                                    <button className="btn btn-solid" onClick={onDelete}>삭제</button>
+                                                </>
+                                                :
+                                            ""
+                                            :
+                                            ""}
+                                        </Col>
+                                    </Row>
+                                </Container>
+                            </div>
+                            { (post.comments ) ?
+                                <Comment comments={post.comments}/>
+                                :
+                                <div className="row section-b-space">
+                                    <div className="col-sm-12">
+                                        <ul className="comment-section">
+                                                <li>
+                                                    <div className="media">
+                                                        <img src={`https://www.carparison.com.au/themes/front/images/user-profile.png`}
+                                                             alt="Generic placeholder image"/>
+                                                        <div className="media-body">
+                                                            <h6> 코멘트가 없습니다. </h6>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                            {(user !== null) ?
+                                <div className="row blog-contact">
+                                    <div className="col-sm-12">
+                                        <form className="theme-form">
+                                            <div className="form-row">
+                                                <div className="col-md-12">
+                                                    <label htmlFor="name">User ID : {user.userId}</label>
+                                                </div>
+                                                <div className="col-md-12">
+                                                    <label htmlFor="exampleFormControlTextarea1">Comment</label>
+                                                    <textarea className="form-control" placeholder="Write Your Comment"
+                                                              id="exampleFormControlTextarea1" rows="6"
+                                                              onChange={(e) => {
+                                                                  setCommentText(e.target.value)
+                                                              }}/>
+                                                </div>
+                                                <div className="col-md-12">
+                                                    <button className="btn btn-solid" onClick={(e) => {commentPush()}}>Post Comment</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                : ""
+                            }
+                        </div>
+                    </section>
+                    </>
+            </div>
+        )
+}
+
+export default ClassicBoardDetails

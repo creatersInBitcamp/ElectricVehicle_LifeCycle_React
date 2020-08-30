@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet'
 import '../index.scss';
 import Slider from 'react-slick';
@@ -8,11 +8,21 @@ import communityimg from '../../assets/images/mainPage/community.jpg'
 
 // Import custom item
 import {TopCollection,SpecialProducts} from '../index';
+import {useDispatch} from "react-redux";
+
+const ADMIN_CHECK = 'ADMIN_CHECK'
+const adminCheckAction = admin =>({type: ADMIN_CHECK, check: admin})
 
 export const Main = () => {
+
+    const [admin] =useState(false)
+
     useEffect(()=>{
-        document.getElementById("color").setAttribute("href", `#` );
-    })
+        dispatch(adminCheckAction(admin))
+    },[])
+
+    const dispatch = useDispatch()
+
     return <>
         <div>
             <Helmet>
@@ -23,7 +33,7 @@ export const Main = () => {
             <section className="p-0">
                 <Slider className="slide-1 home-slider" >
                     <div>
-                        <div className="home home2 text-center">
+                        <div className="home home1 text-center">
                             <div className="container">
                                 <div className="row">
                                     <div className="col">
@@ -60,7 +70,7 @@ export const Main = () => {
                             </Link>
                         </div>
                         <div className="col-md-6">
-                            <Link to={`${process.env.PUBLIC_URL}/post/main`}>
+                            <Link to={`${process.env.PUBLIC_URL}/board/main/news/1`}>
                                 <div className="collection-banner p-right text-center">
                                     <img src={communityimg} className="img-fluid" alt=""/>
                                     <div className="contain-banner">
@@ -76,7 +86,7 @@ export const Main = () => {
                 </div>
             </section>
             {/*collection banner end*/}
-            <TopCollection type={'women'} />
+            <TopCollection />
             {/*Parallax banner*/}
             <section className="p-0">
                 <div className="full-banner parallax-banner1 parallax text-center p-left">

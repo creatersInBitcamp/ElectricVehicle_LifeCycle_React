@@ -1,16 +1,21 @@
 import React, {useEffect, useState,useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {MDBTable, MDBTableBody, MDBTableHead} from "mdbreact";
 import {Link, useRouteMatch} from 'react-router-dom';
+import axios from "axios";
 import Slider from 'react-slick';
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import '../../common/index.scss';
-import {Breadcrumb} from "../../common";
+import {Breadcrumb, NewProduct} from "../../common";
 import {MyCar,MarketPrice} from "../index";
 import {addToUsedWishlist} from "./UsedCarWishlist";
+import {AWS_PATH} from '../../api/key'
 
-export const productDetail = () => {
+const sessionUser = JSON.parse(sessionStorage.getItem('user'))
+
+export const productDetail = (props) => {
+    const [user] = useState(sessionUser)
     const [state, setState] = useState({ nav1: null, nav2: null });
+
     const slider1 = useRef();
     const slider2 = useRef();
 
@@ -21,14 +26,17 @@ export const productDetail = () => {
         })
     }, [])
 
-    const match = useRouteMatch('/used-car/product/:id')
-    const {symbol, item} = useSelector((state) => {
-        let productId = match.params.id
+    const { nav1, nav2 } = state;
+
+    const match = useRouteMatch('/used-car/product/:usedCarId')
+    const {symbol, item} = useSelector((state)=>{
+        let productId = match.params.usedCarId
         return {
-            item: state.data.products.find(el => el.id == productId),
-            symbol: state.data.symbol
+            item: state.usedData.products.find(el => el.usedCarId == productId),
+            symbol: state.usedData.symbol
         }
     })
+
     const products = {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -47,17 +55,26 @@ export const productDetail = () => {
         document.getElementById("filter").style.left = "-365px";
     }
 
+    const onClickDelete = () => {
+        if (window.confirm('삭제하시겠습니까?')) {
+            axios.get(`${AWS_PATH}/usedCars/delete/${item.usedCarId}`)
+                .then(alert('삭제되었습니다.'), props.history.push(`${process.env.PUBLIC_URL}/used-car/collection`))
+                .catch(()=>{
+                    alert('취소되었습니다.')
+                })
+        }
+    }
+
     const dispatch = useDispatch()
 
     return <>
         <div>
-            <Breadcrumb parent={'Product'} title={item.name} />
+            <Breadcrumb parent={'Product'} title={item.carName} />
             {(item)?
                 <section className="section-b-space">
                     <div className="collection-wrapper">
                         <div className="container">
                             <div className="row">
-
                                 <div className="col-sm-3 collection-filter" id="filter">
                                     <div  className="collection-mobile-back pl-5">
                                         <span onClick={backClick}  className="filter-back">
@@ -65,55 +82,41 @@ export const productDetail = () => {
                                         </span>
                                     </div>
                                     <MyCar/>
-                                    {/* post */}
-                                    {/* video */}
+                                    <NewProduct/>
                                 </div>
                                 <div className="col-lg-9 col-sm-12 col-xs-12">
                                     <div className="">
                                         <div className="row">
                                             <div className="col-lg-6 product-thumbnail">
-                                                <Slider {...products} asNavFor={state.nav2} ref={slider => (state.nav1 = slider)} className="product-slick">
-                                                    {item.variants?
-                                                        item.variants.map((vari, index) =>
-                                                            <div key={index}>
-                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0" alt={""} />
-                                                            </div>
-                                                        ):
-                                                        item.pictures.map((vari, index) =>
-                                                            <div key={index}>
-                                                                <img src={vari.images} className="img-fluid image_zoom_cls-0"  alt={""} />
-                                                            </div>
-                                                        )}
+                                                <Slider {...products} asNavFor={nav2} ref={slider => (slider1.current = slider)} className="product-slick">
+                                                    <img src={item.img.img1} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                    <img src={item.img.img2} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                    <img src={item.img.img3} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                    <img src={item.img.img4} className="img-fluid image_zoom_cls-0" alt={""} />
                                                 </Slider>
                                                 <div className="row">
                                                     <div className="col-12 p-0">
-                                                        <Slider {...productsNav} asNavFor={state.nav1} ref={slider => (state.nav2 = slider)} className="slider-nav">
-                                                            {item.variants?
-                                                                item.variants.map((vari, index) =>
-                                                                    <div key={index}>
-                                                                        <img src={`${vari.images}`} key={index} alt=""  className="img-fluid" />
-                                                                    </div>
-                                                                ):
-                                                                item.pictures.map((vari, index) =>
-                                                                    <div key={index}>
-                                                                        <img src={`${vari}`} key={index} alt=""  className="img-fluid" />
-                                                                    </div>
-                                                                )}
+                                                        <Slider {...productsNav} asNavFor={nav1} ref={slider => (slider2.current = slider)} className="slider-nav">
+                                                            <img src={`${item.img.img1}`} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                            <img src={`${item.img.img2}`} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                            <img src={`${item.img.img3}`} className="img-fluid image_zoom_cls-0" alt={""} />
+                                                            <img src={`${item.img.img4}`} className="img-fluid image_zoom_cls-0" alt={""} />
                                                         </Slider>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 rtl-text">
                                                 <div className="product-right">
-                                                    <h2> {item.name} </h2>
+                                                    <h2> {item.carName} </h2>
                                                     <h3>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{symbol} </h3>
                                                     <div className="product-description border-product">
                                                         <div className="qty-box">
-                                                            <MarketPrice/>
+                                                            <MarketPrice product={item}/>
                                                         </div>
                                                     </div>
                                                     <div className="product-buttons" >
-                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase`} className="btn btn-solid">purchase request</Link>
+                                                        <Link to={`${process.env.PUBLIC_URL}/used-car/purchase/request/${item.usedCarId}`}
+                                                              className="btn btn-solid" >purchase request</Link>
                                                     </div>
                                                     <div className="border-product">
                                                         <div className="product-icon">
@@ -123,10 +126,7 @@ export const productDetail = () => {
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    <div className="border-product">
-                                                        <h6 className="product-title">product details</h6>
-                                                        <p>{item.shortDetails}</p>
-                                                    </div>
+                                                    <div className="border-product"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,14 +138,12 @@ export const productDetail = () => {
                                                     <TabList className="nav nav-tabs nav-material">
                                                         <Tab className="nav-item">
                                                             <span className="nav-link active">
-                                                                <i className="icofont icofont-ui-home"/>
-                                                                Description
-                                                            </span>
+                                                                <i className="icofont icofont-ui-home"/>Description</span>
                                                             <div className="material-border"/>
                                                         </Tab>
                                                         <Tab className="nav-item">
-                                                            <span className="nav-link" >
-                                                                <i className="icofont icofont-man-in-glasses"/>
+                                                            <span className="nav-link active">
+                                                                <i className="icofont icofont-ui-home"/>
                                                                 Details
                                                             </span>
                                                             <div className="material-border"/>
@@ -157,91 +155,69 @@ export const productDetail = () => {
                                                             </span>
                                                             <div className="material-border"/>
                                                         </Tab>
-                                                        <Tab className="nav-item">
-                                                            <span className="nav-link" >
-                                                                <i className="icofont icofont-contacts"/>
-                                                                Write Comments
-                                                            </span>
-                                                            <div className="material-border"/>
-                                                        </Tab>
                                                     </TabList>
+                                                    <TabPanel className="tab-pane fade mt-4 show active">
+                                                        <p className="mt-4 p-0">
+                                                            {item.pictures.map((vari, index) =>{
+                                                                if(vari !== ""){
+                                                                    return (
+                                                                        <div key={index}>
+                                                                            <img width={1000} height={300} src={`${vari}`} key={index} alt=""  className="img-fluid" />
+                                                                            <br/><br/>
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                            })}
+                                                        </p>
+                                                    </TabPanel>
                                                     <TabPanel className="tab-pane fade mt-4 show active">
                                                         <table className="table table-striped mb-0">
                                                             <tbody>
                                                             <tr>
-                                                                <th>Ideal For :</th>
-                                                                <td>Women's</td>
+                                                                <th>브랜드 :</th>
+                                                                <td>{item.brand}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Pattern :</th>
-                                                                <td>Embroidered</td>
+                                                                <th>연형 :</th>
+                                                                <td>{item.yyyy}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Dress Fabric :</th>
-                                                                <td>Silk</td>
+                                                                <th>모델명 :</th>
+                                                                <td>{item.modelName}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Type :</th>
-                                                                <td>Ghagra, Choli, Dupatta Set</td>
+                                                                <th>트림 :</th>
+                                                                <td>{item.trim}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Neck :</th>
-                                                                <td>Round Neck</td>
+                                                                <th>연식 :</th>
+                                                                <td>{item.age}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Sleeve :</th>
-                                                                <td>3/4 Sleeve</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Work :</th>
-                                                                <td>N/A</td>
+                                                                <th>주행거리 :</th>
+                                                                <td>{item.mileage}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
                                                     </TabPanel>
                                                     <TabPanel>
-                                                        <p className="mt-4 p-0">
-                                                            판매자의 말
-                                                        </p>
-                                                    </TabPanel>
-                                                    <TabPanel>
                                                         <div className="mt-4 text-center">
-                                                            <MarketPrice/>
+                                                            <MarketPrice product={item}/>
                                                         </div>
-                                                    </TabPanel>
-                                                    <TabPanel>
-                                                        {/* 댓글 리스트 */}
-                                                        <MDBTable>
-                                                            <MDBTableHead>
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th rowSpan={5}>댓글</th>
-                                                                    <th>글쓴이</th>
-                                                                </tr>
-                                                            </MDBTableHead>
-                                                            <MDBTableBody>
-                                                                <td>1</td>
-                                                                <td rowSpan={5}>test</td>
-                                                                <td>김수빈</td>
-                                                            </MDBTableBody>
-                                                        </MDBTable>
-                                                        {/* 댓글 쓰기 */}
-                                                        <form className="theme-form mt-4">
-                                                            <div className="form-row">
-                                                                <h6>궁금한 점이 있다면 물어보세요!</h6>
-                                                                <div className="col-md-12">
-                                                                    <textarea className="form-control" placeholder="Write Your Question Here" id="exampleFormControlTextarea1" rows="6"/>
-                                                                </div>
-                                                                <div className="col-md-12">
-                                                                    <button className="btn btn-solid" type="submit">Submit YOur DetailContents</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
                                                     </TabPanel>
                                                 </Tabs>
                                             </div>
                                         </div>
                                     </section>
+                                    { user !== null && (user.userSeq === item.user.userSeq) ?
+                                        <div className="text-right">
+                                            <Link to={`${process.env.PUBLIC_URL}/used-car/product/update/${item.usedCarId}`}>
+                                                <button className="btn-solid btn">수정</button>&nbsp;
+                                            </Link>
+                                            <button onClick={onClickDelete} className="btn-solid btn">삭제</button>
+                                        </div>
+                                        :''
+                                    }
                                 </div>
                             </div>
                         </div>

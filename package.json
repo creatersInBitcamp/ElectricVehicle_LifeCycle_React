@@ -164,7 +164,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "deploy": "aws s3 sync ./build s3://web.teamev911.com --profile=sample-deploy-s3"
+    "deploy": "aws s3 sync ./build s3://teamevleeht911.com --profile=lht911-deploy-s3"
   },
   "eslintConfig": {
     "extends": "react-app"

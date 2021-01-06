@@ -22,7 +22,7 @@
     "@types/react-dom": "^16.9.0",
     "antd": "^4.5.4",
     "availity-reactstrap-validation": "^2.6.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
